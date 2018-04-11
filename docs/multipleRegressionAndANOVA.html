@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data</title>
+  <title>Answering questions with data?</title>
   <meta name="description" content="An introductory statistics textbook for psychology students">
   <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:title" content="Answering questions with data?" />
   <meta property="og:type" content="book" />
   
   
@@ -17,12 +17,16 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data" />
+  <meta name="twitter:title" content="Answering questions with data?" />
   
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
 <meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anjali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+<meta name="author" content="Jeffrey Suzuki">
 
 
 <meta name="date" content="2018-04-11">
@@ -33,7 +37,7 @@
   
   
 <link rel="prev" href="linRegrForTwoVar.html">
-
+<link rel="next" href="inferenceForCategoricalData.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -69,8 +73,10 @@ mattcrump=1;
 <li><a href="./">Programming</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introductionToData.html"><a href="introductionToData.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introductionToData.html"><a href="introductionToData.html"><i class="fa fa-check"></i><b>1</b> Psychological Science and Data</a><ul>
 <li class="chapter" data-level="1.1" data-path="introductionToData.html"><a href="introductionToData.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
 <li class="chapter" data-level="1.2" data-path="introductionToData.html"><a href="introductionToData.html#dataBasics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="introductionToData.html"><a href="introductionToData.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data matrices</a></li>
@@ -92,170 +98,171 @@ mattcrump=1;
 <li class="chapter" data-level="1.5.1" data-path="introductionToData.html"><a href="introductionToData.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
 <li class="chapter" data-level="1.5.2" data-path="introductionToData.html"><a href="introductionToData.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="introductionToData.html"><a href="introductionToData.html#numericalData"><i class="fa fa-check"></i><b>1.6</b> Examining numerical data</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="introductionToData.html"><a href="introductionToData.html#scatterPlots"><i class="fa fa-check"></i><b>1.6.1</b> Scatterplots for paired data</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introductionToData.html"><a href="introductionToData.html#dotPlot"><i class="fa fa-check"></i><b>1.6.2</b> Dot plots and the mean</a></li>
-<li class="chapter" data-level="1.6.3" data-path="introductionToData.html"><a href="introductionToData.html#histogramsAndShape"><i class="fa fa-check"></i><b>1.6.3</b> Histograms and shape</a></li>
-<li class="chapter" data-level="1.6.4" data-path="introductionToData.html"><a href="introductionToData.html#variability"><i class="fa fa-check"></i><b>1.6.4</b> Variance and standard deviation</a></li>
-<li class="chapter" data-level="1.6.5" data-path="introductionToData.html"><a href="introductionToData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>1.6.5</b> Box plots, quartiles, and the median</a></li>
-<li class="chapter" data-level="1.6.6" data-path="introductionToData.html"><a href="introductionToData.html#robust-statistics"><i class="fa fa-check"></i><b>1.6.6</b> Robust statistics</a></li>
-<li class="chapter" data-level="1.6.7" data-path="introductionToData.html"><a href="introductionToData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>1.6.7</b> Transforming data (special topic)</a></li>
-<li class="chapter" data-level="1.6.8" data-path="introductionToData.html"><a href="introductionToData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>1.6.8</b> Mapping data (special topic)</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="introductionToData.html"><a href="introductionToData.html#categoricalData"><i class="fa fa-check"></i><b>1.7</b> Considering categorical data</a><ul>
-<li class="chapter" data-level="1.7.1" data-path="introductionToData.html"><a href="introductionToData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>1.7.1</b> Contingency tables and bar plots</a></li>
-<li class="chapter" data-level="1.7.2" data-path="introductionToData.html"><a href="introductionToData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>1.7.2</b> Row and column proportions</a></li>
-<li class="chapter" data-level="1.7.3" data-path="introductionToData.html"><a href="introductionToData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>1.7.3</b> Segmented bar and mosaic plots</a></li>
-<li class="chapter" data-level="1.7.4" data-path="introductionToData.html"><a href="introductionToData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>1.7.4</b> The only pie chart you will see in this book</a></li>
-<li class="chapter" data-level="1.7.5" data-path="introductionToData.html"><a href="introductionToData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>1.7.5</b> Comparing numerical data across groups</a></li>
+<li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#numericalData"><i class="fa fa-check"></i><b>2.1</b> Examining numerical data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="DescribingData.html"><a href="DescribingData.html#scatterPlots"><i class="fa fa-check"></i><b>2.1.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="DescribingData.html"><a href="DescribingData.html#dotPlot"><i class="fa fa-check"></i><b>2.1.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="2.1.3" data-path="DescribingData.html"><a href="DescribingData.html#histogramsAndShape"><i class="fa fa-check"></i><b>2.1.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="2.1.4" data-path="DescribingData.html"><a href="DescribingData.html#variability"><i class="fa fa-check"></i><b>2.1.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="DescribingData.html"><a href="DescribingData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.1.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="2.1.6" data-path="DescribingData.html"><a href="DescribingData.html#robust-statistics"><i class="fa fa-check"></i><b>2.1.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="2.1.7" data-path="DescribingData.html"><a href="DescribingData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>2.1.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="2.1.8" data-path="DescribingData.html"><a href="DescribingData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.1.8</b> Mapping data (special topic)</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>2</b> Foundation for inference</a><ul>
-<li class="chapter" data-level="2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>2.1</b> Randomization case study: gender discrimination</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>2.1.1</b> Variability within data</a></li>
-<li class="chapter" data-level="2.1.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>2.1.2</b> Simulating the study</a></li>
-<li class="chapter" data-level="2.1.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>2.1.3</b> Checking for independence</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>2.2</b> Randomization case study: opportunity cost</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>2.2.1</b> Exploring the data set before the analysis</a></li>
-<li class="chapter" data-level="2.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>2.2.2</b> Results from chance alone</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>2.3</b> Hypothesis testing</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>2.3.1</b> Hypothesis testing in the US court system</a></li>
-<li class="chapter" data-level="2.3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>2.3.2</b> p-value and statistical significance</a></li>
-<li class="chapter" data-level="2.3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>2.3.3</b> Decision errors</a></li>
-<li class="chapter" data-level="2.3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>2.3.4</b> Choosing a significance level</a></li>
-<li class="chapter" data-level="2.3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>2.3.5</b> Introducing two-sided hypotheses</a></li>
-<li class="chapter" data-level="2.3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>2.3.6</b> Controlling the Type 1 Error rate</a></li>
-<li class="chapter" data-level="2.3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>2.3.7</b> How to use a hypothesis test</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>2.4</b> Simulation case studies</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>2.4.1</b> Medical consultant</a></li>
-<li class="chapter" data-level="2.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>2.4.2</b> Tappers and listeners</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>2.5</b> Central Limit Theorem</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>2.5.1</b> Null distribution from the case studies</a></li>
-<li class="chapter" data-level="2.5.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>2.5.2</b> Examples of future settings we will consider</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>2.6</b> Normal distribution</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>2.6.1</b> Normal distribution model</a></li>
-<li class="chapter" data-level="2.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>2.6.2</b> Standardizing with Z scores</a></li>
-<li class="chapter" data-level="2.6.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>2.6.3</b> Normal probability table</a></li>
-<li class="chapter" data-level="2.6.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>2.6.4</b> Normal probability examples</a></li>
-<li class="chapter" data-level="2.6.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>2.6.5</b> 68-95-99.7 rule</a></li>
-<li class="chapter" data-level="2.6.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>2.6.6</b> Evaluating the normal approximation</a></li>
-</ul></li>
-<li class="chapter" data-level="2.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>2.7</b> Applying the normal model</a><ul>
-<li class="chapter" data-level="2.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>2.7.1</b> Standard error</a></li>
-<li class="chapter" data-level="2.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>2.7.2</b> Normal model application: opportunity cost</a></li>
-<li class="chapter" data-level="2.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>2.7.3</b> Normal model application: medical consultant</a></li>
-<li class="chapter" data-level="2.7.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>2.7.4</b> Conditions for applying the normal model</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>2.8</b> Confidence intervals</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>2.8.1</b> Capturing the population parameter</a></li>
-<li class="chapter" data-level="2.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>2.8.2</b> Constructing a 95% confidence interval</a></li>
-<li class="chapter" data-level="2.8.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>2.8.3</b> Changing the confidence level</a></li>
-<li class="chapter" data-level="2.8.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>2.8.4</b> Interpreting confidence intervals</a></li>
+<li class="chapter" data-level="2.2" data-path="DescribingData.html"><a href="DescribingData.html#categoricalData"><i class="fa fa-check"></i><b>2.2</b> Considering categorical data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DescribingData.html"><a href="DescribingData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.2.1</b> Contingency tables and bar plots</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DescribingData.html"><a href="DescribingData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>2.2.2</b> Row and column proportions</a></li>
+<li class="chapter" data-level="2.2.3" data-path="DescribingData.html"><a href="DescribingData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>2.2.3</b> Segmented bar and mosaic plots</a></li>
+<li class="chapter" data-level="2.2.4" data-path="DescribingData.html"><a href="DescribingData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>2.2.4</b> The only pie chart you will see in this book</a></li>
+<li class="chapter" data-level="2.2.5" data-path="DescribingData.html"><a href="DescribingData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>2.2.5</b> Comparing numerical data across groups</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>3</b> Inference for categorical data</a><ul>
-<li class="chapter" data-level="3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>3.1</b> Inference for a single proportion</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>3.1.1</b> When the sample proportion is nearly normal</a></li>
-<li class="chapter" data-level="3.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>3.1.2</b> Confidence intervals for a proportion</a></li>
-<li class="chapter" data-level="3.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>3.1.3</b> Hypothesis testing for a proportion</a></li>
-<li class="chapter" data-level="3.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>3.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+<li class="chapter" data-level="3" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>3</b> Foundation for inference</a><ul>
+<li class="chapter" data-level="3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>3.1</b> Randomization case study: gender discrimination</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>3.1.1</b> Variability within data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>3.1.2</b> Simulating the study</a></li>
+<li class="chapter" data-level="3.1.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>3.1.3</b> Checking for independence</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>3.2</b> Difference of two proportions</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>3.2.1</b> Sample distribution of the difference of two proportions</a></li>
-<li class="chapter" data-level="3.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>3.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
-<li class="chapter" data-level="3.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>3.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+<li class="chapter" data-level="3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>3.2</b> Randomization case study: opportunity cost</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>3.2.1</b> Exploring the data set before the analysis</a></li>
+<li class="chapter" data-level="3.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>3.2.2</b> Results from chance alone</a></li>
 </ul></li>
-<li><a href="inferenceForCategoricalData.html#oneWayChiSquare"><span class="toc-section-number">3.3</span> Testing for goodness of fit using chi-square<br />
-(special topic)</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>3.3.1</b> Creating a test statistic for one-way tables</a></li>
-<li class="chapter" data-level="3.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>3.3.2</b> The chi-square test statistic</a></li>
-<li class="chapter" data-level="3.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>3.3.3</b> The chi-square distribution and finding areas</a></li>
-<li class="chapter" data-level="3.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>3.3.4</b> Finding a p-value for a chi-square distribution</a></li>
-<li class="chapter" data-level="3.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>3.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+<li class="chapter" data-level="3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>3.3</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis testing in the US court system</a></li>
+<li class="chapter" data-level="3.3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>3.3.2</b> p-value and statistical significance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>3.3.3</b> Decision errors</a></li>
+<li class="chapter" data-level="3.3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>3.3.4</b> Choosing a significance level</a></li>
+<li class="chapter" data-level="3.3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>3.3.5</b> Introducing two-sided hypotheses</a></li>
+<li class="chapter" data-level="3.3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>3.3.6</b> Controlling the Type 1 Error rate</a></li>
+<li class="chapter" data-level="3.3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>3.3.7</b> How to use a hypothesis test</a></li>
 </ul></li>
-<li><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><span class="toc-section-number">3.4</span> Testing for independence in two-way tables<br />
-(special topic)</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>3.4.1</b> Expected counts in two-way tables</a></li>
-<li class="chapter" data-level="3.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>3.4.2</b> The chi-square test for two-way tables</a></li>
+<li class="chapter" data-level="3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>3.4</b> Simulation case studies</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>3.4.1</b> Medical consultant</a></li>
+<li class="chapter" data-level="3.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>3.4.2</b> Tappers and listeners</a></li>
 </ul></li>
+<li class="chapter" data-level="3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>3.5.1</b> Null distribution from the case studies</a></li>
+<li class="chapter" data-level="3.5.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>3.5.2</b> Examples of future settings we will consider</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html"><i class="fa fa-check"></i><b>4</b> Inference for numerical data</a><ul>
-<li class="chapter" data-level="4.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>4.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>4.1.1</b> Two examples using the normal distribution</a></li>
-<li class="chapter" data-level="4.1.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>4.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
-<li class="chapter" data-level="4.1.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>4.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
-<li class="chapter" data-level="4.1.4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>4.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
-<li class="chapter" data-level="4.1.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#oneSampleTTests"><i class="fa fa-check"></i><b>4.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+<li class="chapter" data-level="3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>3.6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>3.6.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="3.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Standardizing with Z scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>3.6.3</b> Normal probability table</a></li>
+<li class="chapter" data-level="3.6.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>3.6.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="3.6.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>3.6.5</b> 68-95-99.7 rule</a></li>
+<li class="chapter" data-level="3.6.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>3.6.6</b> Evaluating the normal approximation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#pairedData"><i class="fa fa-check"></i><b>4.2</b> Paired data</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#paired-observations"><i class="fa fa-check"></i><b>4.2.1</b> Paired observations</a></li>
-<li class="chapter" data-level="4.2.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#inference-for-paired-data"><i class="fa fa-check"></i><b>4.2.2</b> Inference for paired data</a></li>
+<li class="chapter" data-level="3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>3.7</b> Applying the normal model</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>3.7.1</b> Standard error</a></li>
+<li class="chapter" data-level="3.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>3.7.2</b> Normal model application: opportunity cost</a></li>
+<li class="chapter" data-level="3.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>3.7.3</b> Normal model application: medical consultant</a></li>
+<li class="chapter" data-level="3.7.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>3.7.4</b> Conditions for applying the normal model</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>4.3</b> Difference of two means</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Confidence interval for a differences of means</a></li>
-<li class="chapter" data-level="4.3.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>4.3.2</b> Hypothesis tests based on a difference in means</a></li>
-<li class="chapter" data-level="4.3.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>4.3.3</b> Case study: two versions of a course exam</a></li>
-<li class="chapter" data-level="4.3.4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>4.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
-<li class="chapter" data-level="4.3.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>4.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
-</ul></li>
-<li><a href="inferenceForNumericalData.html#anovaAndRegrWithCategoricalVariables"><span class="toc-section-number">4.4</span> Comparing many means with ANOVA<br />
-(special topic)</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>4.4.1</b> Is batting performance related to player position in MLB?</a></li>
-<li class="chapter" data-level="4.4.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>4.4.2</b> Analysis of variance (ANOVA) and the F test</a></li>
-<li class="chapter" data-level="4.4.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>4.4.3</b> Reading an ANOVA table from software</a></li>
-<li class="chapter" data-level="4.4.4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>4.4.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
-<li class="chapter" data-level="4.4.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>4.4.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>4.5</b> Bootstrapping to study the standard deviation</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>4.5.1</b> Bootstrap samples and distributions</a></li>
-<li class="chapter" data-level="4.5.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>4.5.2</b> Inference using the bootstrap</a></li>
-<li class="chapter" data-level="4.5.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#frequently-asked-questions"><i class="fa fa-check"></i><b>4.5.3</b> Frequently asked questions</a></li>
+<li class="chapter" data-level="3.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>3.8</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>3.8.1</b> Capturing the population parameter</a></li>
+<li class="chapter" data-level="3.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>3.8.2</b> Constructing a 95% confidence interval</a></li>
+<li class="chapter" data-level="3.8.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>3.8.3</b> Changing the confidence level</a></li>
+<li class="chapter" data-level="3.8.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>3.8.4</b> Interpreting confidence intervals</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>5</b> Introduction to linear regression</a><ul>
-<li class="chapter" data-level="5.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>5.1</b> Line fitting, residuals, and correlation</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>5.1.1</b> Beginning with straight lines</a></li>
-<li class="chapter" data-level="5.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>5.1.2</b> Fitting a line by eye</a></li>
-<li class="chapter" data-level="5.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>5.1.3</b> Residuals</a></li>
-<li class="chapter" data-level="5.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>5.1.4</b> Describing linear relationships with correlation</a></li>
+<li class="chapter" data-level="4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html"><i class="fa fa-check"></i><b>4</b> Inference for numerical data: t-Tests</a><ul>
+<li class="chapter" data-level="4.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>4.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>4.1.1</b> Two examples using the normal distribution</a></li>
+<li class="chapter" data-level="4.1.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>4.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="4.1.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>4.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
+<li class="chapter" data-level="4.1.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>4.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
+<li class="chapter" data-level="4.1.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTTests"><i class="fa fa-check"></i><b>4.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>5.2</b> Fitting a line by least squares regression</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>5.2.1</b> An objective measure for finding the best line</a></li>
-<li class="chapter" data-level="5.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>5.2.2</b> Finding the least squares line</a></li>
-<li class="chapter" data-level="5.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>5.2.3</b> Interpreting regression line parameter estimates</a></li>
-<li class="chapter" data-level="5.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>5.2.4</b> Extrapolation is treacherous</a></li>
-<li class="chapter" data-level="5.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>5.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
-<li class="chapter" data-level="5.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>5.2.6</b> Categorical predictors with two levels</a></li>
+<li class="chapter" data-level="4.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pairedData"><i class="fa fa-check"></i><b>4.2</b> Paired data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-observations"><i class="fa fa-check"></i><b>4.2.1</b> Paired observations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#inference-for-paired-data"><i class="fa fa-check"></i><b>4.2.2</b> Inference for paired data</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>5.3</b> Types of outliers in linear regression</a></li>
-<li class="chapter" data-level="5.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>5.4</b> Inference for linear regression</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>5.4.1</b> Conditions for the least squares line</a></li>
-<li class="chapter" data-level="5.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>5.4.2</b> Midterm elections and unemployment</a></li>
-<li class="chapter" data-level="5.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>5.4.3</b> Understanding regression output from software</a></li>
+<li class="chapter" data-level="4.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>4.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Confidence interval for a differences of means</a></li>
+<li class="chapter" data-level="4.3.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>4.3.2</b> Hypothesis tests based on a difference in means</a></li>
+<li class="chapter" data-level="4.3.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>4.3.3</b> Case study: two versions of a course exam</a></li>
+<li class="chapter" data-level="4.3.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>4.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="4.3.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>4.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>6</b> Multiple and logistic regression</a><ul>
-<li class="chapter" data-level="6.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>6.1</b> Introduction to multiple regression</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>6.1.1</b> A single-variable model for the Mario Kart data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>6.1.2</b> Including and assessing many variables in a model</a></li>
-<li class="chapter" data-level="6.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>6.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+<li class="chapter" data-level="5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>5</b> Inference for numerical data: ANOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>5.1</b> Comparing many means with ANOVA</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>5.1.1</b> Is batting performance related to player position in MLB?</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>5.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>5.1.3</b> Reading an ANOVA table from software</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>5.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>5.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>6.2</b> Model selection</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>6.2.1</b> Identifying variables in the model that may not be helpful</a></li>
-<li class="chapter" data-level="6.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>6.2.2</b> Two model selection strategies</a></li>
+<li class="chapter" data-level="5.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>5.2</b> Bootstrapping to study the standard deviation</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>5.2.1</b> Bootstrap samples and distributions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>5.2.2</b> Inference using the bootstrap</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#frequently-asked-questions"><i class="fa fa-check"></i><b>5.2.3</b> Frequently asked questions</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>6.3</b> Checking model assumptions using graphs</a></li>
-<li class="chapter" data-level="6.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>6.4</b> Logistic regression</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>6.4.1</b> Email data</a></li>
-<li class="chapter" data-level="6.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>6.4.2</b> Modeling the probability of an event</a></li>
-<li class="chapter" data-level="6.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>6.4.3</b> Practical decisions in the email application</a></li>
-<li class="chapter" data-level="6.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>6.4.4</b> Diagnostics for the email classifier</a></li>
-<li class="chapter" data-level="6.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>6.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear regression</a><ul>
+<li class="chapter" data-level="6.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>6.1</b> Line fitting, residuals, and correlation</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>6.1.1</b> Beginning with straight lines</a></li>
+<li class="chapter" data-level="6.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>6.1.2</b> Fitting a line by eye</a></li>
+<li class="chapter" data-level="6.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>6.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="6.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>6.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>6.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>6.2.1</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="6.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>6.2.2</b> Finding the least squares line</a></li>
+<li class="chapter" data-level="6.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>6.2.3</b> Interpreting regression line parameter estimates</a></li>
+<li class="chapter" data-level="6.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>6.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="6.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>6.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
+<li class="chapter" data-level="6.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>6.2.6</b> Categorical predictors with two levels</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>6.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="6.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>6.4</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>6.4.1</b> Conditions for the least squares line</a></li>
+<li class="chapter" data-level="6.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>6.4.2</b> Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="6.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>6.4.3</b> Understanding regression output from software</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>7</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="7.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>7.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>7.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>7.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="7.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>7.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>7.2</b> Model selection</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>7.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="7.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>7.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>7.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="7.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>7.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>7.4.1</b> Email data</a></li>
+<li class="chapter" data-level="7.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>7.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="7.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>7.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="7.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>7.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="7.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>7.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>8</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="8.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>8.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>8.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="8.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>8.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="8.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>8.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="8.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>8.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>8.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>8.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="8.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>8.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="8.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>8.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>8.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>8.3.1</b> Creating a test statistic for one-way tables</a></li>
+<li class="chapter" data-level="8.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>8.3.2</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="8.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>8.3.3</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="8.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>8.3.4</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="8.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>8.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>8.4</b> Testing for independence in two-way tables (special topic)</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>8.4.1</b> Expected counts in two-way tables</a></li>
+<li class="chapter" data-level="8.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>8.4.2</b> The chi-square test for two-way tables</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -270,7 +277,7 @@ mattcrump=1;
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data?</a>
           </h1>
         </div>
 
@@ -279,14 +286,14 @@ mattcrump=1;
 
             <section class="normal" id="section-">
 <div id="multipleRegressionAndANOVA" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Multiple and logistic regression</h1>
+<h1><span class="header-section-number">Chapter 7</span> Multiple and logistic regression</h1>
 <p>[multipleAndLogisticRegression]</p>
 <p>The principles of simple linear regression lay the foundation for more sophisticated regression methods used in a wide range of challenging settings. In Chapter [multipleAndLogisticRegression], we explore multiple regression, which introduces the possibility of more than one predictor, and logistic regression, a technique for predicting categorical outcomes with two possible categories.</p>
 <div id="introductionToMultipleRegression" class="section level2">
-<h2><span class="header-section-number">6.1</span> Introduction to multiple regression</h2>
+<h2><span class="header-section-number">7.1</span> Introduction to multiple regression</h2>
 <p>Multiple regression extends simple two-variable regression to the case that still has one response but many predictors (denoted <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_3\)</span>, …). The method is motivated by scenarios where many variables may be simultaneously connected to an output.</p>
 <p>We will consider Ebay auctions of a video game called <em>Mario Kart</em> for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.</p>
-<p>The data set includes results from 141 auctions.<a href="#fn165" class="footnoteRef" id="fnref165"><sup>165</sup></a> Four observations from this data set are shown in Table [marioKartDataMatrix], and descriptions for each variable are shown in Table [marioKartVariables]. Notice that the condition and stock photo variables are indicator variables. For instance, the variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section [categoricalPredictorsWithTwoLevels] for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.</p>
+<p>The data set includes results from 141 auctions.<a href="#fn139" class="footnoteRef" id="fnref139"><sup>139</sup></a> Four observations from this data set are shown in Table [marioKartDataMatrix], and descriptions for each variable are shown in Table [marioKartVariables]. Notice that the condition and stock photo variables are indicator variables. For instance, the variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section [categoricalPredictorsWithTwoLevels] for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.</p>
 <p><span>rrrrlr</span> &amp; price &amp; cond_</p>
 <p>new &amp; stock_</p>
 <p>photo &amp; duration &amp; wheels<br />
@@ -329,7 +336,7 @@ mattcrump=1;
 </table>
 <p>[marioKartVariables]</p>
 <div id="twoSingleVariableModelsForMarioKartData" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> A single-variable model for the Mario Kart data</h3>
+<h3><span class="header-section-number">7.1.1</span> A single-variable model for the Mario Kart data</h3>
 <p>Let’s fit a linear regression model with the game’s condition as a predictor of auction price. The model may be written as</p>
 <p><span class="math display">\[\begin{aligned}
 \widehat{price} &amp;= 42.87 + 10.90\times cond\_\hspace{0.3mm}new\end{aligned}\]</span></p>
@@ -348,11 +355,11 @@ cond_</p>
 <p class="caption">Scatterplot of the total auction price against the game’s condition. The least squares line is also shown.</p>
 </div>
 <p>[marioKartSingle]</p>
-<p>Examine Figure [marioKartSingle]. Does the linear model seem ?<a href="#fn166" class="footnoteRef" id="fnref166"><sup>166</sup></a></p>
+<p>Examine Figure [marioKartSingle]. Does the linear model seem ?<a href="#fn140" class="footnoteRef" id="fnref140"><sup>140</sup></a></p>
 <p><span>Interpret the coefficient for the game’s condition in the model. Is this coefficient significantly different from 0?</span> Note that is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra $10.90 for those games that are new versus those that are used. (See Section [categoricalPredictorsWithTwoLevels] for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Table [singleVarModelsForPriceUsingCond], we can see that the p-value for is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.</p>
 </div>
 <div id="includingAndAssessingManyVariablesInAModel" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Including and assessing many variables in a model</h3>
+<h3><span class="header-section-number">7.1.2</span> Including and assessing many variables in a model</h3>
 <p>Sometimes there are underlying structures or relationships between predictor variables. For instance, new games sold on Ebay tend to come with more Wii wheels, which may have led to higher prices for those auctions. We would like to fit a model that includes all potentially important variables simultaneously. This would help us evaluate the relationship between a predictor variable and the outcome while controlling for the potential influence of other variables. This is the strategy used in <strong>multiple regression</strong>. While we remain cautious about making any causal interpretations using multiple regression, such models are a common first step in providing evidence of a causal connection.</p>
 <p>We want to construct a model that accounts for not only the game condition, as in Section [twoSingleVariableModelsForMarioKartData], but simultaneously accounts for three other variables: , <strong>duration</strong>, and <strong>wheels</strong>.</p>
 <p><span class="math display">\[\begin{aligned}
@@ -390,39 +397,39 @@ wheels &amp; 7.2852 &amp; 0.5547 &amp; 13.13 &amp; 0.0000<br />
 <p><span class="math display">\[\begin{aligned}
 \hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k %+ \epsilon\end{aligned}\]</span></p>
 <p>when there are <span class="math inline">\(k\)</span> predictors. We often estimate the <span class="math inline">\(\beta_i\)</span> parameters using a computer.</p>
-<p>[eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients] Write out the model in Equation  using the point estimates from Table [outputForMultipleRegrOutputForAllPredictors]. How many predictors are there in this model?<a href="#fn167" class="footnoteRef" id="fnref167"><sup>167</sup></a></p>
-<p>What does <span class="math inline">\(\beta_4\)</span>, the coefficient of variable <span class="math inline">\(x_4\)</span> (Wii wheels), represent? What is the point estimate of <span class="math inline">\(\beta_4\)</span>?<a href="#fn168" class="footnoteRef" id="fnref168"><sup>168</sup></a></p>
-<p>[computeMultipleRegressionResidualForMarioKart] Compute the residual of the first observation in Table  using the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients].<a href="#fn169" class="footnoteRef" id="fnref169"><sup>169</sup></a></p>
+<p>[eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients] Write out the model in Equation  using the point estimates from Table [outputForMultipleRegrOutputForAllPredictors]. How many predictors are there in this model?<a href="#fn141" class="footnoteRef" id="fnref141"><sup>141</sup></a></p>
+<p>What does <span class="math inline">\(\beta_4\)</span>, the coefficient of variable <span class="math inline">\(x_4\)</span> (Wii wheels), represent? What is the point estimate of <span class="math inline">\(\beta_4\)</span>?<a href="#fn142" class="footnoteRef" id="fnref142"><sup>142</sup></a></p>
+<p>[computeMultipleRegressionResidualForMarioKart] Compute the residual of the first observation in Table  using the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients].<a href="#fn143" class="footnoteRef" id="fnref143"><sup>143</sup></a></p>
 <p><span>We estimated a coefficient for in Section [twoSingleVariableModelsForMarioKartData] of <span class="math inline">\(b_1 = 10.90\)</span> with a standard error of <span class="math inline">\(SE_{b_1} = 1.26\)</span> when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?</span> [colinearityOfCondNewAndStockPhoto] If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome <strong>price</strong> and predictor using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable <strong>wheels</strong>. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).</p>
 <p>Example [colinearityOfCondNewAndStockPhoto] describes a common issue in multiple regression: correlation among predictor variables. We say the two predictor variables are <strong>collinear</strong> (pronounced as <em>co-linear</em>) when they are correlated, and this collinearity complicates model estimation. While it is impossible to prevent collinearity from arising in observational data, experiments are usually designed to prevent predictors from being collinear.</p>
-<p>The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model’s predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?<a href="#fn170" class="footnoteRef" id="fnref170"><sup>170</sup></a></p>
+<p>The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model’s predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?<a href="#fn144" class="footnoteRef" id="fnref144"><sup>144</sup></a></p>
 </div>
 <div id="adjusted-r2-as-a-better-estimate-of-explained-variance" class="section level3">
-<h3><span class="header-section-number">6.1.3</span> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</h3>
+<h3><span class="header-section-number">7.1.3</span> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</h3>
 <p>We first used <span class="math inline">\(R^2\)</span> in Section [fittingALineByLSR] to determine the amount of variability in the response that was explained by the model:</p>
 <p><span class="math display">\[\begin{aligned}
 R^2 = 1 - \frac{\text{variability in residuals}}{\text{variability in the outcome}}
     = 1 - \frac{Var(e_i)}{Var(y_i)}\end{aligned}\]</span></p>
 <p>where <span class="math inline">\(e_i\)</span> represents the residuals of the model and <span class="math inline">\(y_i\)</span> the outcomes. This equation remains valid in the multiple regression framework, but a small enhancement can often be even more informative.</p>
-<p>[computeUnadjustedR2ForAllPredictorsInMarioKart] The variance of the residuals for the model given in Guided Practice [computeMultipleRegressionResidualForMarioKart] is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate <span class="math inline">\(R^2\)</span> for this model.<a href="#fn171" class="footnoteRef" id="fnref171"><sup>171</sup></a></p>
+<p>[computeUnadjustedR2ForAllPredictorsInMarioKart] The variance of the residuals for the model given in Guided Practice [computeMultipleRegressionResidualForMarioKart] is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate <span class="math inline">\(R^2\)</span> for this model.<a href="#fn145" class="footnoteRef" id="fnref145"><sup>145</sup></a></p>
 <p>This strategy for estimating <span class="math inline">\(R^2\)</span> is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular <span class="math inline">\(R^2\)</span> is actually a biased estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted <span class="math inline">\(R^2\)</span>.</p>
 <p>The is computed as</p>
 <p><span class="math display">\[\begin{aligned}
 R_{adj}^{2} = 1-\frac{Var(e_i) / (n-k-1)}{Var(y_i) / (n-1)}
     = 1-\frac{Var(e_i)}{Var(y_i)} \times \frac{n-1}{n-k-1}\end{aligned}\]</span></p>
 <p>where <span class="math inline">\(n\)</span> is the number of cases used to fit the model and <span class="math inline">\(k\)</span> is the number of predictor variables in the model.</p>
-<p>Because <span class="math inline">\(k\)</span> is never negative, the adjusted <span class="math inline">\(R^2\)</span> will be smaller – often times just a little smaller – than the unadjusted <span class="math inline">\(R^2\)</span>. The reasoning behind the adjusted <span class="math inline">\(R^2\)</span> lies in the associated with each variance.<a href="#fn172" class="footnoteRef" id="fnref172"><sup>172</sup></a></p>
-<p>There were <span class="math inline">\(n=141\)</span> auctions in the data set and <span class="math inline">\(k=4\)</span> predictor variables in the model. Use <span class="math inline">\(n\)</span>, <span class="math inline">\(k\)</span>, and the variances from Guided Practice [computeUnadjustedR2ForAllPredictorsInMarioKart] to calculate <span class="math inline">\(R_{adj}^2\)</span> for the Mario Kart model.<a href="#fn173" class="footnoteRef" id="fnref173"><sup>173</sup></a></p>
+<p>Because <span class="math inline">\(k\)</span> is never negative, the adjusted <span class="math inline">\(R^2\)</span> will be smaller – often times just a little smaller – than the unadjusted <span class="math inline">\(R^2\)</span>. The reasoning behind the adjusted <span class="math inline">\(R^2\)</span> lies in the associated with each variance.<a href="#fn146" class="footnoteRef" id="fnref146"><sup>146</sup></a></p>
+<p>There were <span class="math inline">\(n=141\)</span> auctions in the data set and <span class="math inline">\(k=4\)</span> predictor variables in the model. Use <span class="math inline">\(n\)</span>, <span class="math inline">\(k\)</span>, and the variances from Guided Practice [computeUnadjustedR2ForAllPredictorsInMarioKart] to calculate <span class="math inline">\(R_{adj}^2\)</span> for the Mario Kart model.<a href="#fn147" class="footnoteRef" id="fnref147"><sup>147</sup></a></p>
 <p>Suppose you added another predictor to the model, but the variance of the errors <span class="math inline">\(Var(e_i)\)</span> didn’t go down. What would happen to the <span class="math inline">\(R^2\)</span>? What would happen to the adjusted <span class="math inline">\(R^2\)</span>?</p>
-<p><a href="#fn174" class="footnoteRef" id="fnref174"><sup>174</sup></a></p>
+<p><a href="#fn148" class="footnoteRef" id="fnref148"><sup>148</sup></a></p>
 </div>
 </div>
 <div id="modelSelection" class="section level2">
-<h2><span class="header-section-number">6.2</span> Model selection</h2>
+<h2><span class="header-section-number">7.2</span> Model selection</h2>
 <p>The best model is not always the most complicated. Sometimes including variables that are not evidently important can actually reduce the accuracy of predictions. In this section we discuss model selection strategies, which will help us eliminate from the model variables that are less important.</p>
 <p>In this section, and in practice, the model that includes all available explanatory variables is often referred to as the <strong>full model</strong>. Our goal is to assess whether the full model is the best model. If it isn’t, we want to identify a smaller model that is preferable.</p>
 <div id="identifying-variables-in-the-model-that-may-not-be-helpful" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Identifying variables in the model that may not be helpful</h3>
+<h3><span class="header-section-number">7.2.1</span> Identifying variables in the model that may not be helpful</h3>
 <p>Table [outputForMultipleRegrOutputForAllPredictors2] provides a summary of the regression output for the full model for the auction data. The last column of the table lists p-values that can be used to assess hypotheses of the following form:</p>
 <ul>
 <li><p><span class="math inline">\(\beta_i = 0\)</span> when the other explanatory variables are included in the model.</p></li>
@@ -444,12 +451,12 @@ wheels &amp; 7.2852 &amp; 0.5547 &amp; 13.13 &amp; 0.0000<br />
 <p>[outputForMultipleRegrOutputForAllPredictors2]</p>
 <p><span>The coefficient of has a <span class="math inline">\(t\)</span> test statistic of <span class="math inline">\(T=4.88\)</span> and a p-value for its corresponding hypotheses (<span class="math inline">\(H_0: \beta_1 = 0\)</span>, <span class="math inline">\(H_A: \beta_1 \neq 0\)</span>) of about zero. How can this be interpreted?</span> If we keep all the other variables in the model and add no others, then there is strong evidence that a game’s condition (new or used) has a real relationship with the total auction price.</p>
 <p><span>Is there strong evidence that using a stock photo is related to the total auction price?</span> The <span class="math inline">\(t\)</span> test statistic for is <span class="math inline">\(T=1.02\)</span> and the p-value is about 0.31. After accounting for the other predictors, there is not strong evidence that using a stock photo in an auction is related to the total price of the auction. We might consider removing the variable from the model.</p>
-<p>Identify the p-values for both the <strong>duration</strong> and <strong>wheels</strong> variables in the model. Is there strong evidence supporting the connection of these variables with the total price in the model?<a href="#fn175" class="footnoteRef" id="fnref175"><sup>175</sup></a></p>
+<p>Identify the p-values for both the <strong>duration</strong> and <strong>wheels</strong> variables in the model. Is there strong evidence supporting the connection of these variables with the total price in the model?<a href="#fn149" class="footnoteRef" id="fnref149"><sup>149</sup></a></p>
 <p>There is not statistically significant evidence that either the stock photo or duration variables contribute meaningfully to the model. Next we consider common strategies for pruning such variables from a model.</p>
 <p><span> The adjusted <span class="math inline">\(R^2\)</span> may be used as an alternative to p-values for model selection, where a higher adjusted <span class="math inline">\(R^2\)</span> represents a better model fit. For instance, we could compare two models using their adjusted <span class="math inline">\(R^2\)</span>, and the model with the higher adjusted <span class="math inline">\(R^2\)</span> would be preferred. This approach tends to include more variables in the final model when compared to the p-value approach.</span></p>
 </div>
 <div id="two-model-selection-strategies" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Two model selection strategies</h3>
+<h3><span class="header-section-number">7.2.2</span> Two model selection strategies</h3>
 <p>Two common strategies for adding or removing variables in a multiple regression model are called <em>backward-selection</em> and <em>forward-selection</em>. These techniques are often referred to as <strong>stepwise</strong> model selection strategies, because they add or delete one variable at a time as they “step” through the candidate predictors. We will discuss these strategies in the context of the p-value approach. Alternatively, we could have employed an <span class="math inline">\(R_{adj}^2\)</span> approach.</p>
 <p>The <strong>backward-elimination</strong> strategy starts with the model that includes all potential predictor variables. Variables are eliminated one-at-a-time from the model until only variables with statistically significant p-values remain. The strategy within each elimination step is to drop the variable with the largest p-value, refit the model, and reassess the inclusion of all variables.</p>
 <p><span>Results corresponding to the <em>full model</em> for the data are shown in Table [outputForMultipleRegrOutputForAllPredictors2]. How should we proceed under the backward-elimination strategy?</span> [backwardEliminationExampleWMarioKartData] There are two variables with coefficients that are not statistically different from zero: and <strong>duration</strong>. We first drop the <strong>duration</strong> variable since it has a larger corresponding p-value, <em>then we refit the model</em>. A regression summary for the new model is shown in Table [outputForMultipleRegrOutputForAllPredictorsButDuration].</p>
@@ -497,7 +504,7 @@ wheels &amp; 7.2328 &amp; 0.5419 &amp; 13.35 &amp; 0.0000<br />
 </div>
 </div>
 <div id="multipleRegressionModelAssumptions" class="section level2">
-<h2><span class="header-section-number">6.3</span> Checking model assumptions using graphs</h2>
+<h2><span class="header-section-number">7.3</span> Checking model assumptions using graphs</h2>
 <p>Multiple regression methods using the model</p>
 <p><span class="math display">\[\begin{aligned}
 \hat{y} &amp;= \beta_0 + \beta_1x_1 + \beta_2x_2 + \cdots + \beta_kx_k\end{aligned}\]</span></p>
@@ -527,7 +534,7 @@ wheels &amp; 7.2328 &amp; 0.5419 &amp; 13.35 &amp; 0.0000<br />
 <p>[mkDiagnosticEvsAbsF]</p>
 </dd>
 <dt>Residuals in order of their data collection.</dt>
-<dd><p>A plot of the residuals in the order their corresponding auctions were observed is shown in Figure [mkDiagnosticInOrder]. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.<a href="#fn176" class="footnoteRef" id="fnref176"><sup>176</sup></a></p>
+<dd><p>A plot of the residuals in the order their corresponding auctions were observed is shown in Figure [mkDiagnosticInOrder]. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.<a href="#fn150" class="footnoteRef" id="fnref150"><sup>150</sup></a></p>
 <div class="figure">
 <img src="06/figures/marioKartDiagnostics/mkDiagnosticInOrder" alt="Plotting residuals in the order that their corresponding observations were collected helps identify connections between successive observations. If it seems that consecutive observations tend to be close to each other, this indicates the independence assumption of the observations would fail." />
 <p class="caption">Plotting residuals in the order that their corresponding observations were collected helps identify connections between successive observations. If it seems that consecutive observations tend to be close to each other, this indicates the independence assumption of the observations would fail.</p>
@@ -552,13 +559,13 @@ b_i \ \pm\ t_{df}^{\star}SE_{b_{i}}\end{aligned}\]</span></p>
 <p>where <span class="math inline">\(t_{df}^{\star}\)</span> is the appropriate <span class="math inline">\(t\)</span> value corresponding to the confidence level and model degrees of freedom, <span class="math inline">\(df=n-k-1\)</span>.</p>
 </div>
 <div id="logisticRegression" class="section level2">
-<h2><span class="header-section-number">6.4</span> Logistic regression</h2>
+<h2><span class="header-section-number">7.4</span> Logistic regression</h2>
 <p>In this section we introduce <strong>logistic regression</strong> as a tool for building models when there is a categorical response variable with two levels. Logistic regression is a type of <strong>generalized linear model</strong> (GLM) for response variables where regular multiple regression does not work very well. In particular, the response variable in these settings often takes a form where residuals look completely different from the normal distribution.</p>
 <p>GLMs can be thought of as a two-stage modeling approach. We first model the response variable using a probability distribution, such as the binomial or Poisson distribution. Second, we model the parameter of the distribution using a collection of predictors and a special form of multiple regression.</p>
 <p>In Section [logisticRegression] we will revisit the <strong>email</strong> data set from Chapter [introductionToData]. These emails were collected from a single email account, and we will work on developing a basic spam filter using these data. The response variable, <strong>spam</strong>, has been encoded to take value 0 when a message is not spam and 1 when it is spam. Our task will be to build an appropriate model that classifies messages as spam or not spam using email characteristics coded as predictor variables. While this model will not be the same as those used in large-scale spam filters, it shares many of the same features.</p>
 <div id="email-data" class="section level3">
-<h3><span class="header-section-number">6.4.1</span> Email data</h3>
-<p>The <strong>email</strong> data set was first presented in Chapter [introductionToData] with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Table [emailVariables]. The <strong>spam</strong> variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.<a href="#fn177" class="footnoteRef" id="fnref177"><sup>177</sup></a></p>
+<h3><span class="header-section-number">7.4.1</span> Email data</h3>
+<p>The <strong>email</strong> data set was first presented in Chapter [introductionToData] with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Table [emailVariables]. The <strong>spam</strong> variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.<a href="#fn151" class="footnoteRef" id="fnref151"><sup>151</sup></a></p>
 <table>
 <caption>Descriptions for 11 variables in the <strong>email</strong> data set. Notice that all of the variables are indicator variables, which take the value 1 if the specified characteristic is present and 0 otherwise.</caption>
 <thead>
@@ -617,7 +624,7 @@ b_i \ \pm\ t_{df}^{\star}SE_{b_{i}}\end{aligned}\]</span></p>
 <p>[emailVariables]</p>
 </div>
 <div id="modelingTheProbabilityOfAnEvent" class="section level3">
-<h3><span class="header-section-number">6.4.2</span> Modeling the probability of an event</h3>
+<h3><span class="header-section-number">7.4.2</span> Modeling the probability of an event</h3>
 <p>The outcome variable for a GLM is denoted by <span class="math inline">\(Y_i\)</span>, where the index <span class="math inline">\(i\)</span> is used to represent observation <span class="math inline">\(i\)</span>. In the email application, <span class="math inline">\(Y_i\)</span> will be used to represent whether email <span class="math inline">\(i\)</span> is spam (<span class="math inline">\(Y_i=1\)</span>) or not (<span class="math inline">\(Y_i=0\)</span>).</p>
 <p>The predictor variables are represented as follows: <span class="math inline">\(x_{1,i}\)</span> is the value of variable 1 for observation <span class="math inline">\(i\)</span>, <span class="math inline">\(x_{2,i}\)</span> is the value of variable 2 for observation <span class="math inline">\(i\)</span>, and so on.</p>
 <p>Logistic regression is a generalized linear model where the outcome is a two-level categorical variable. The outcome, <span class="math inline">\(Y_i\)</span>, takes the value 1 (in our application, this represents a spam message) with probability <span class="math inline">\(p_i\)</span> and the value 0 with probability <span class="math inline">\(1-p_i\)</span>. It is the probability <span class="math inline">\(p_i\)</span> that we model in relation to the predictor variables.</p>
@@ -689,13 +696,13 @@ re_</p>
 attach &amp; 0.8643 &amp; 0.2042 &amp; 4.23 &amp; 0.0000<br />
 password &amp; -1.4871 &amp; 0.5290 &amp; -2.81 &amp; 0.0049<br />
 [emailLogisticReducedModel]</p>
-<p>Examine the summary of the reduced model in Table [emailLogisticReducedModel], and in particular, examine the row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.<a href="#fn178" class="footnoteRef" id="fnref178"><sup>178</sup></a></p>
+<p>Examine the summary of the reduced model in Table [emailLogisticReducedModel], and in particular, examine the row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.<a href="#fn152" class="footnoteRef" id="fnref152"><sup>152</sup></a></p>
 <p>Point estimates will generally change a little – and sometimes a lot – depending on which other variables are included in the model. This is usually due to colinearity in the predictor variables. We previously saw this in the Ebay auction example when we compared the coefficient of in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections [twoSingleVariableModelsForMarioKartData] and [includingAndAssessingManyVariablesInAModel]).</p>
 <p><span>Spam filters are built to be automated, meaning a piece of software is written to collect information about emails as they arrive, and this information is put in the form of variables. These variables are then put into an algorithm that uses a statistical model, like the one we’ve fit, to classify the email. Suppose we write software for a spam filter using the reduced model shown in Table [emailLogisticReducedModel]. If an incoming email has the word “winner” in it, will this raise or lower the model’s calculated probability that the incoming email is spam?</span> [exampleForSpamAndWinner] The estimated coefficient of <strong>winner</strong> is positive (1.7370). A positive coefficient estimate in logistic regression, just like in multiple regression, corresponds to a positive association between the predictor and response variables when accounting for the other variables in the model. Since the response variable takes value 1 if an email is spam and 0 otherwise, the positive coefficient indicates that the presence of “winner” in an email raises the model probability that the message is spam.</p>
 <p><span>Suppose the same email from Example [exampleForSpamAndWinner] was in HTML format, meaning the <strong>format</strong> variable took value 1. Does this characteristic increase or decrease the probability that the email is spam according to the model?</span>[exampleForSpamAndFormat] Since HTML corresponds to a value of 1 in the <strong>format</strong> variable and the coefficient of this variable is negative (-1.5569), this would lower the probability estimate returned from the model.</p>
 </div>
 <div id="practical-decisions-in-the-email-application" class="section level3">
-<h3><span class="header-section-number">6.4.3</span> Practical decisions in the email application</h3>
+<h3><span class="header-section-number">7.4.3</span> Practical decisions in the email application</h3>
 <p>Examples [exampleForSpamAndWinner] and [exampleForSpamAndFormat] highlight a key feature of logistic and multiple regression. In the spam filter example, some email characteristics will push an email’s classification in the direction of spam while other characteristics will push it in the opposite direction.</p>
 <p>If we were to implement a spam filter using the model we have fit, then each future email we analyze would fall into one of three categories based on the email’s characteristics:</p>
 <ol style="list-style-type: decimal">
@@ -704,12 +711,12 @@ password &amp; -1.4871 &amp; 0.5290 &amp; -2.81 &amp; 0.0049<br />
 <li><p>The characteristics roughly balance each other out in terms of evidence for and against the message being classified as spam. Its probability falls in the remaining range, meaning the email cannot be adequately classified as spam or not spam.</p></li>
 </ol>
 <p>If we were managing an email service, we would have to think about what should be done in each of these three instances. In an email application, there are usually just two possibilities: filter the email out from the regular inbox and put it in a “spambox”, or let the email go to the regular inbox.</p>
-<p>The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?<a href="#fn179" class="footnoteRef" id="fnref179"><sup>179</sup></a></p>
-<p>Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?<a href="#fn180" class="footnoteRef" id="fnref180"><sup>180</sup></a></p>
+<p>The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?<a href="#fn153" class="footnoteRef" id="fnref153"><sup>153</sup></a></p>
+<p>Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?<a href="#fn154" class="footnoteRef" id="fnref154"><sup>154</sup></a></p>
 <p>Almost any classifier will have some error. In the spam filter guidelines above, we have decided that it is okay to allow up to 5% of the messages in the spambox to be real messages. If we wanted to make it a little harder to classify messages as spam, we could use a cutoff of 0.99. This would have two effects. Because it raises the standard for what can be classified as spam, it reduces the number of good emails that are classified as spam. However, it will also fail to correctly classify an increased fraction of spam messages. No matter the complexity and the confidence we might have in our model, these practical considerations are absolutely crucial to making a helpful spam filter. Without them, we could actually do more harm than good by using our statistical model.</p>
 </div>
 <div id="diagnostics-for-the-email-classifier" class="section level3">
-<h3><span class="header-section-number">6.4.4</span> Diagnostics for the email classifier</h3>
+<h3><span class="header-section-number">7.4.4</span> Diagnostics for the email classifier</h3>
 <p>There are two key conditions for fitting a logistic regression model:</p>
 <ol style="list-style-type: decimal">
 <li><p>Each predictor <span class="math inline">\(x_i\)</span> is linearly related to logit<span class="math inline">\((p_i)\)</span> if all other predictors are held constant.</p></li>
@@ -735,7 +742,7 @@ e_i = Y_i - \hat{p}_i\end{aligned}\]</span></p>
 <p>We could plot these residuals against a variety of variables or in their order of collection, as we did with the residuals in multiple regression. However, since the model will need to be revised to effectively classify spam and you have already seen similar residual plots in Section [multipleRegressionModelAssumptions], we won’t investigate the residuals here.</p>
 </div>
 <div id="improvingTheSetOfVariablesForASpamFilter" class="section level3">
-<h3><span class="header-section-number">6.4.5</span> Improving the set of variables for a spam filter</h3>
+<h3><span class="header-section-number">7.4.5</span> Improving the set of variables for a spam filter</h3>
 <p>If we were building a spam filter for an email service that managed many accounts (e.g. Gmail or Hotmail), we would spend much more time thinking about additional variables that could be useful in classifying emails as spam or not. We also would use transformations or other techniques that would help us include strongly skewed numerical variables as predictors.</p>
 <p>Take a few minutes to think about additional variables that might be useful in identifying spam. Below is a list of variables we think might be useful:</p>
 <ol style="list-style-type: decimal">
@@ -763,246 +770,25 @@ Total &amp; 2831 &amp; 1090 &amp;&amp; 3921<br />
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
-<ol start="165">
-<li id="fn165"><p>Diez DM, Barr CD, and Çetinkaya-Rundel M. 2012. <em>openintro</em>: OpenIntro data sets and supplemental functions. <a href="http://cran.r-project.org/web/packages/openintro">cran.r-project.org/web/packages/openintro</a>.<a href="multipleRegressionAndANOVA.html#fnref165">↩</a></p></li>
-<li id="fn166"><p>Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.<a href="multipleRegressionAndANOVA.html#fnref166">↩</a></p></li>
-<li id="fn167"><p><span class="math inline">\(\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4\)</span>, and there are <span class="math inline">\(k=4\)</span> predictor variables.<a href="multipleRegressionAndANOVA.html#fnref167">↩</a></p></li>
-<li id="fn168"><p>It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is <span class="math inline">\(b_4 = 7.29\)</span>.<a href="multipleRegressionAndANOVA.html#fnref168">↩</a></p></li>
-<li id="fn169"><p><span class="math inline">\(e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93\)</span>, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients].<a href="multipleRegressionAndANOVA.html#fnref169">↩</a></p></li>
-<li id="fn170"><p>Three of the variables (, , and <strong>wheels</strong>) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.<a href="multipleRegressionAndANOVA.html#fnref170">↩</a></p></li>
-<li id="fn171"><p><span class="math inline">\(R^2 = 1 - \frac{23.34}{83.06} = 0.719\)</span>.<a href="multipleRegressionAndANOVA.html#fnref171">↩</a></p></li>
-<li id="fn172"><p>In multiple regression, the degrees of freedom associated with the variance of the estimate of the residuals is <span class="math inline">\(n-k-1\)</span>, not <span class="math inline">\(n-1\)</span>. For instance, if we were to make predictions for new data using our current model, we would find that the unadjusted <span class="math inline">\(R^2\)</span> is an overly optimistic estimate of the reduction in variance in the response, and using the degrees of freedom in the adjusted <span class="math inline">\(R^2\)</span> formula helps correct this bias.<a href="multipleRegressionAndANOVA.html#fnref172">↩</a></p></li>
-<li id="fn173"><p><span class="math inline">\(R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711\)</span>.<a href="multipleRegressionAndANOVA.html#fnref173">↩</a></p></li>
-<li id="fn174"><p>The unadjusted <span class="math inline">\(R^2\)</span> would stay the same and the adjusted <span class="math inline">\(R^2\)</span> would go down.<a href="multipleRegressionAndANOVA.html#fnref174">↩</a></p></li>
-<li id="fn175"><p>The p-value for the auction duration is 0.8882, which indicates that there is not statistically significant evidence that the duration is related to the total auction price when accounting for the other variables. The p-value for the Wii wheels variable is about zero, indicating that this variable is associated with the total auction price.<a href="multipleRegressionAndANOVA.html#fnref175">↩</a></p></li>
-<li id="fn176"><p>An especially rigorous check would use <strong>time series</strong> methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.<a href="multipleRegressionAndANOVA.html#fnref176">↩</a></p></li>
-<li id="fn177"><p>Recall from Chapter [linRegrForTwoVar] that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter [introductionToData]. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.<a href="multipleRegressionAndANOVA.html#fnref177">↩</a></p></li>
-<li id="fn178"><p>The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.<a href="multipleRegressionAndANOVA.html#fnref178">↩</a></p></li>
-<li id="fn179"><p>In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.<a href="multipleRegressionAndANOVA.html#fnref179">↩</a></p></li>
-<li id="fn180"><p>First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.<a href="multipleRegressionAndANOVA.html#fnref180">↩</a></p></li>
+<ol start="139">
+<li id="fn139"><p>Diez DM, Barr CD, and Çetinkaya-Rundel M. 2012. <em>openintro</em>: OpenIntro data sets and supplemental functions. <a href="http://cran.r-project.org/web/packages/openintro">cran.r-project.org/web/packages/openintro</a>.<a href="multipleRegressionAndANOVA.html#fnref139">↩</a></p></li>
+<li id="fn140"><p>Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.<a href="multipleRegressionAndANOVA.html#fnref140">↩</a></p></li>
+<li id="fn141"><p><span class="math inline">\(\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4\)</span>, and there are <span class="math inline">\(k=4\)</span> predictor variables.<a href="multipleRegressionAndANOVA.html#fnref141">↩</a></p></li>
+<li id="fn142"><p>It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is <span class="math inline">\(b_4 = 7.29\)</span>.<a href="multipleRegressionAndANOVA.html#fnref142">↩</a></p></li>
+<li id="fn143"><p><span class="math inline">\(e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93\)</span>, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients].<a href="multipleRegressionAndANOVA.html#fnref143">↩</a></p></li>
+<li id="fn144"><p>Three of the variables (, , and <strong>wheels</strong>) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.<a href="multipleRegressionAndANOVA.html#fnref144">↩</a></p></li>
+<li id="fn145"><p><span class="math inline">\(R^2 = 1 - \frac{23.34}{83.06} = 0.719\)</span>.<a href="multipleRegressionAndANOVA.html#fnref145">↩</a></p></li>
+<li id="fn146"><p>In multiple regression, the degrees of freedom associated with the variance of the estimate of the residuals is <span class="math inline">\(n-k-1\)</span>, not <span class="math inline">\(n-1\)</span>. For instance, if we were to make predictions for new data using our current model, we would find that the unadjusted <span class="math inline">\(R^2\)</span> is an overly optimistic estimate of the reduction in variance in the response, and using the degrees of freedom in the adjusted <span class="math inline">\(R^2\)</span> formula helps correct this bias.<a href="multipleRegressionAndANOVA.html#fnref146">↩</a></p></li>
+<li id="fn147"><p><span class="math inline">\(R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711\)</span>.<a href="multipleRegressionAndANOVA.html#fnref147">↩</a></p></li>
+<li id="fn148"><p>The unadjusted <span class="math inline">\(R^2\)</span> would stay the same and the adjusted <span class="math inline">\(R^2\)</span> would go down.<a href="multipleRegressionAndANOVA.html#fnref148">↩</a></p></li>
+<li id="fn149"><p>The p-value for the auction duration is 0.8882, which indicates that there is not statistically significant evidence that the duration is related to the total auction price when accounting for the other variables. The p-value for the Wii wheels variable is about zero, indicating that this variable is associated with the total auction price.<a href="multipleRegressionAndANOVA.html#fnref149">↩</a></p></li>
+<li id="fn150"><p>An especially rigorous check would use <strong>time series</strong> methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.<a href="multipleRegressionAndANOVA.html#fnref150">↩</a></p></li>
+<li id="fn151"><p>Recall from Chapter [linRegrForTwoVar] that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter [introductionToData]. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.<a href="multipleRegressionAndANOVA.html#fnref151">↩</a></p></li>
+<li id="fn152"><p>The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.<a href="multipleRegressionAndANOVA.html#fnref152">↩</a></p></li>
+<li id="fn153"><p>In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.<a href="multipleRegressionAndANOVA.html#fnref153">↩</a></p></li>
+<li id="fn154"><p>First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.<a href="multipleRegressionAndANOVA.html#fnref154">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -1010,8 +796,8 @@ Total &amp; 2831 &amp; 1090 &amp;&amp; 3921<br />
           </div>
         </div>
       </div>
-<a href="linRegrForTwoVar.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="linRegrForTwoVar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inferenceForCategoricalData.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1040,7 +826,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/CrumpLab/programmingforpsych/blob/master/06-V01.Rmd",
+"link": "https://github.com/CrumpLab/programmingforpsych/blob/master/07-Multiple_Regression.Rmd",
 "text": "Edit"
 },
 "download": ["Programming_Crump.pdf"],

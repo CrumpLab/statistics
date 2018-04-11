@@ -1,4 +1,4 @@
-# Inference for numerical data: ANOVA {#inferenceForNumericalData}
+# Inference for numerical data: ANOVA {#inferenceForNumericalDataANOVA}
 
 ## Comparing many means with ANOVA {#anovaAndRegrWithCategoricalVariables}
 
@@ -70,7 +70,7 @@ We would like to discern whether there are real differences between the batting 
 
 [mlbBat10Variables]
 
-[nullHypForOBPAgainstPosition] The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}$. Write the null and corresponding alternative hypotheses in plain language.[^21]
+[nullHypForOBPAgainstPosition] The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}$. Write the null and corresponding alternative hypotheses in plain language.[^5.21]
 
 <span>The player positions have been divided into four groups: outfield (), infield (), designated hitter (), and catcher (). What would be an appropriate point estimate of the on-base percentage by outfielders, $\mu_{\resp{OF}}$?</span> A good estimate of the on-base percentage by outfielders would be the sample average of **AVG** for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
 
@@ -102,15 +102,15 @@ Why might it be inappropriate to run the test by simply estimating whether the d
 
 Suppose we are to measure the aptitude for students in 20 classes in a large elementary school at the beginning of the year. In this school, all students are randomly assigned to classrooms, so any differences we observe between the classes at the start of the year are completely due to chance. However, with so many groups, we will probably observe a few groups that look rather different from each other. If we select only these classes that look so different, we will probably make the wrong conclusion that the assignment wasn’t random. While we might only formally test differences for a few pairs of classes, we informally evaluated the other classes by eye before choosing the most extreme cases for a comparison.
 
-For additional information on the ideas expressed in Example [multipleComparisonExampleThatIncludesDiscussionOfClassrooms], we recommend reading about the **prosecutor’s fallacy**.[^22]
+For additional information on the ideas expressed in Example [multipleComparisonExampleThatIncludesDiscussionOfClassrooms], we recommend reading about the **prosecutor’s fallacy**.[^5.22]
 
 In the next section we will learn how to use the $F$ statistic and ANOVA to test whether observed differences in means could have happened just by chance even if there was no difference in the respective population means.
 
 ### Analysis of variance (ANOVA) and the F test
 
-The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will *simultaneously* consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the **mean square between groups ($MSG$)**, and it has an associated degrees of freedom, $df_{G}=k-1$ when there are $k$ groups. The $MSG$ can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn’t be too large. Details of $MSG$ calculations are provided in the footnote,[^23] however, we typically use software for these computations.
+The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will *simultaneously* consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the **mean square between groups ($MSG$)**, and it has an associated degrees of freedom, $df_{G}=k-1$ when there are $k$ groups. The $MSG$ can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn’t be too large. Details of $MSG$ calculations are provided in the footnote,[^5.23] however, we typically use software for these computations.
 
-The mean square between the groups is, on its own, quite useless in a hypothesis test. We need a benchmark value for how much variability should be expected among the sample means if the null hypothesis is true. To this end, we compute a pooled variance estimate, often abbreviated as the **mean square error ($MSE$)**, which has an associated degrees of freedom value $df_E=n-k$. It is helpful to think of $MSE$ as a measure of the variability within the groups. Details of the computations of the $MSE$ are provided in the footnote[^24] for interested readers.
+The mean square between the groups is, on its own, quite useless in a hypothesis test. We need a benchmark value for how much variability should be expected among the sample means if the null hypothesis is true. To this end, we compute a pooled variance estimate, often abbreviated as the **mean square error ($MSE$)**, which has an associated degrees of freedom value $df_E=n-k$. It is helpful to think of $MSE$ as a measure of the variability within the groups. Details of the computations of the $MSE$ are provided in the footnote[^5.24] for interested readers.
 
 When the null hypothesis is true, any differences among the sample means are only due to chance, and the $MSG$ and $MSE$ should be about equal. As a test statistic for ANOVA, we examine the fraction of $MSG$ and $MSE$:
 
@@ -120,7 +120,7 @@ F = \frac{MSG}{MSE}\end{aligned}$$
 
 The $MSG$ represents a measure of the between-group variability, and $MSE$ measures the variability within each of the groups.
 
-For the baseball data, $MSG = 0.00252$ and $MSE=0.00127$. Identify the degrees of freedom associated with MSG and MSE and verify the $F$ statistic is approximately 1.994.[^25]
+For the baseball data, $MSG = 0.00252$ and $MSE=0.00127$. Identify the degrees of freedom associated with MSG and MSE and verify the $F$ statistic is approximately 1.994.[^5.25]
 
 We can use the $F$ statistic to evaluate the hypotheses in what is called an **F test**. A p-value can be computed from the $F$ statistic using an $F$ distribution, which has two associated parameters: $df_{1}$ and $df_{2}$. For the $F$ statistic in ANOVA, $df_{1} = df_{G}$ and $df_{2}= df_{E}$. An $F$ distribution with 3 and 323 degrees of freedom, corresponding to the $F$ statistic for the baseball hypothesis test, is shown in Figure [fDist3And323].
 
@@ -132,7 +132,7 @@ The larger the observed variability in the sample means ($MSG$) relative to the 
 
 <span> Analysis of variance (ANOVA) is used to test whether the mean outcome differs across 2 or more groups. ANOVA uses a test statistic $F$, which represents a standardized ratio of variability in the sample means relative to the variability within the groups. If $H_0$ is true and the model assumptions are satisfied, the statistic $F$ follows an $F$ distribution with parameters $df_{1}=k-1$ and $df_{2}=n-k$. The upper tail of the $F$ distribution is used to represent the p-value.</span>
 
-[describePValueAreaForFDistributionInMLBOBPExample] The test statistic for the baseball example is $F=1.994$. Shade the area corresponding to the p-value in Figure [fDist3And323]. [^26]
+[describePValueAreaForFDistributionInMLBOBPExample] The test statistic for the baseball example is $F=1.994$. Shade the area corresponding to the p-value in Figure [fDist3And323]. [^5.26]
 
 <span>The p-value corresponding to the shaded area in the solution of Guided Practice [describePValueAreaForFDistributionInMLBOBPExample] is equal to about 0.115. Does this provide strong evidence against the null hypothesis?</span> The p-value is larger than 0.05, indicating the evidence is not strong enough to reject the null hypothesis at a significance level of 0.05. That is, the data do not provide strong evidence that the average on-base percentage varies by player’s primary field position.
 
@@ -158,7 +158,7 @@ Independence.
 
 Approximately normal.
 
-:   As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in Figure [mlbANOVADiagNormalityGroups]; there is some deviation from normality for infielders, but this isn’t a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn’t reasonable. See the footnote[^27] for guidance on how to handle such instances.
+:   As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in Figure [mlbANOVADiagNormalityGroups]; there is some deviation from normality for infielders, but this isn’t a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn’t reasonable. See the footnote[^5.27] for guidance on how to handle such instances.
 
     ![Normal probability plot of OBP for each field position.](04/figures/mlbANOVA/mlbANOVADiagNormalityGroups)
 
@@ -194,7 +194,7 @@ The box plots show approximately equal variability, which can be verified in Tab
 
 [classDataSBSBoxPlot]
 
-[exerExaminingAnovaSummaryTableForMidtermData] An ANOVA was conducted for the midterm data, and summary results are shown in Table [anovaSummaryTableForMidtermData]. What should we conclude?[^28]
+[exerExaminingAnovaSummaryTableForMidtermData] An ANOVA was conducted for the midterm data, and summary results are shown in Table [anovaSummaryTableForMidtermData]. What should we conclude?[^5.28]
 
 <span>lrrrrr</span> & Df & Sum Sq & Mean Sq & F value & Pr($>$F)\
 lecture & 2 & 1290.11 & 645.06 & 3.48 & 0.0330\
@@ -341,31 +341,28 @@ I’ve heard a technique called the percentile bootstrap that is very robust.
     It is a held belief that the percentile bootstrap is a robust bootstrap method. That is false. The percentile method is one of the least reliable bootstrap methods. Instead, use the method described in this section, which is more reliable, or learn about more advanced techniques.
 
 
-[^21]: $H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.
+[^5.21]: $H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.
 
-[^22]: See, for example, [www.stat.columbia.edu/$\sim$cook/movabletype/archives/2007/05/the\_prosecutors.html](http://www.stat.columbia.edu/~cook/movabletype/archives/2007/05/the_prosecutors.html).
+[^5.22]: See, for example, [www.stat.columbia.edu/$\sim$cook/movabletype/archives/2007/05/the\_prosecutors.html](http://www.stat.columbia.edu/~cook/movabletype/archives/2007/05/the_prosecutors.html).
 
-[^23]: Let $\bar{x}$ represent the mean of outcomes across all groups. Then the mean square between groups is computed as
+[^5.23]: Let $\bar{x}$ represent the mean of outcomes across all groups. Then the mean square between groups is computed as
 
     $$\begin{aligned}
     MSG = \frac{1}{df_{G}}SSG = \frac{1}{k-1}\sum_{i=1}^{k} n_{i}\left(\bar{x}_{i} - \bar{x}\right)^2\end{aligned}$$
 
     where $SSG$ is called the **sum of squares between groups** and $n_{i}$ is the sample size of group $i$.
 
-[^24]: Let $\bar{x}$ represent the mean of outcomes across all groups. Then the **sum of squares total ($SST$)** is computed as $SST = \sum_{i=1}^{n} \left(x_{i} - \bar{x}\right)^2$, where the sum is over all observations in the data set. Then we compute the **sum of squared errors ($SSE$)** in one of two equivalent ways:
+[^5.24]: Let $\bar{x}$ represent the mean of outcomes across all groups. Then the **sum of squares total ($SST$)** is computed as $SST = \sum_{i=1}^{n} \left(x_{i} - \bar{x}\right)^2$, where the sum is over all observations in the data set. Then we compute the **sum of squared errors ($SSE$)** in one of two equivalent ways:
 
     $$\begin{aligned}
     SSE = SST - SSG = (n_1-1)s_1^2 + (n_2-1)s_2^2 + \cdots + (n_k-1)s_k^2\end{aligned}$$
 
     where $s_i^2$ is the sample variance (square of the standard deviation) of the residuals in group $i$. Then the $MSE$ is the standardized form of $SSE$: $MSE = \frac{1}{df_{E}}SSE$.
 
-[^25]: There are $k=4$ groups, so $df_{G} = k-1 = 3$. There are $n = n_1 + n_2 + n_3 + n_4 = 327$ total observations, so $df_{E} = n - k = 323$. Then the $F$ statistic is computed as the ratio of $MSG$ and $MSE$: $F = \frac{MSG}{MSE} = \frac{0.00252}{0.00127} = 1.984 \approx 1.994$. ($F=1.994$ was computed by using values for $MSG$ and $MSE$ that were not rounded.)
+[^5.25]: There are $k=4$ groups, so $df_{G} = k-1 = 3$. There are $n = n_1 + n_2 + n_3 + n_4 = 327$ total observations, so $df_{E} = n - k = 323$. Then the $F$ statistic is computed as the ratio of $MSG$ and $MSE$: $F = \frac{MSG}{MSE} = \frac{0.00252}{0.00127} = 1.984 \approx 1.994$. ($F=1.994$ was computed by using values for $MSG$ and $MSE$ that were not rounded.)
 
-[^26]:  
+[^5.26]: ![image](04/figures/fDist3And323/fDist3And323Shaded)
 
-    \
-    ![image](04/figures/fDist3And323/fDist3And323Shaded)
+[^5.27]: First calculate the of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.435 would have a residual of $0.405 - \bar{x}_{OF} = 0.071$. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.
 
-[^27]: First calculate the of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.435 would have a residual of $0.405 - \bar{x}_{OF} = 0.071$. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.
-
-[^28]: The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.
+[^5.28]: The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.

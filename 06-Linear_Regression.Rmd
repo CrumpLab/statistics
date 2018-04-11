@@ -125,9 +125,9 @@ e_{\times} = y_{\times} - \hat{y}_{\times} = 85.3 -  86.4 = -1.1\end{aligned}$$
 
 This is very close to the visual estimate of -1.
 
-If a model underestimates an observation, will the residual be positive or negative? What about if it overestimates the observation?[^1]
+If a model underestimates an observation, will the residual be positive or negative? What about if it overestimates the observation?[^6.1]
 
-Compute the residuals for the observations $(85.0, 98.6)$ (“$+$” in the figure) and $(95.5, 94.0)$ (“$\triangle$”) using the linear relationship $\hat{y} = 41 + 0.59x$. [^2]
+Compute the residuals for the observations $(85.0, 98.6)$ (“$+$” in the figure) and $(95.5, 94.0)$ (“$\triangle$”) using the linear relationship $\hat{y} = 41 + 0.59x$. [^6.2]
 
 Residuals are helpful in evaluating how well a linear model fits a data set. We often display them in a **residual plot** such as the one shown in Figure [scattHeadLTotalLResidualPlot] for the regression line in Figure [scattHeadLTotalLLine]. The residuals are plotted at their original horizontal locations but with the vertical coordinate as the residual. For instance, the point $(85.0,98.6)_{+}$ had a residual of 7.45, so in the residual plot it is placed at $(85.0, 7.45)$. Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal.
 
@@ -159,7 +159,7 @@ correlation]
 $R$\
 correlation
 
-We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex,[^3] so we generally perform the calculations on a computer or calculator. Figure [posNegCorPlots] shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
+We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex,[^6.3] so we generally perform the calculations on a computer or calculator. Figure [posNegCorPlots] shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
 
 ![Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.](05/figures/posNegCorPlots/posNegCorPlots)
 
@@ -171,19 +171,19 @@ The correlation is intended to quantify the strength of a linear trend. Nonlinea
 
 [corForNonLinearPlots]
 
-It appears no straight line would fit any of the datasets represented in Figure [corForNonLinearPlots]. Instead, try drawing nonlinear curves on each plot. Once you create a curve for each, describe what is important in your fit.[^4]
+It appears no straight line would fit any of the datasets represented in Figure [corForNonLinearPlots]. Instead, try drawing nonlinear curves on each plot. Once you create a curve for each, describe what is important in your fit.[^6.4]
 
 ## Fitting a line by least squares regression {#fittingALineByLSR}
 
 Fitting linear models by eye is open to criticism since it is based on an individual preference. In this section, we use *least squares regression* as a more rigorous approach.
 
-This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois.[^5] Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure [elmhurstScatterW2Lines] along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
+This section considers family income and gift aid data from a random sample of fifty students in the 2011 freshman class of Elmhurst College in Illinois.[^6.5] Gift aid is financial aid that does not need to be paid back, as opposed to a loan. A scatterplot of the data is shown in Figure [elmhurstScatterW2Lines] along with two linear fits. The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
 ![Gift aid and family income for a random sample of 50 freshman students from Elmhurst College. Two lines are fit to the data, the solid line being the *least squares line*.](05/figures/elmhurstPlots/elmhurstScatterW2Lines)
 
 [elmhurstScatterW2Lines]
 
-Is the correlation positive or negative in Figure [elmhurstScatterW2Lines]?[^6]
+Is the correlation positive or negative in Figure [elmhurstScatterW2Lines]?[^6.6]
 
 ### An objective measure for finding the best line
 
@@ -207,7 +207,7 @@ The line that minimizes this **least squares criterion** is represented as the s
 
 3.  In many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.
 
-The first two reasons are largely for tradition and convenience; the last reason explains why Criterion  is typically most helpful.[^7]
+The first two reasons are largely for tradition and convenience; the last reason explains why Criterion  is typically most helpful.[^6.7]
 
 ### Finding the least squares line {#findingTheLeastSquaresLineSection}
 
@@ -248,7 +248,7 @@ of $\beta_0$, $\beta_1$
 
 We use $b_0$ and $b_1$ to represent the point estimates of the parameters $\beta_0$ and $\beta_1$.
 
-Table [summaryStatsOfSATGPAData] shows the sample means for the family income and gift aid as \$101,800 and \$19,940, respectively. Plot the point $(101.8, 19.94)$ on Figure  to verify it falls on the least squares line (the solid line).[^8]
+Table [summaryStatsOfSATGPAData] shows the sample means for the family income and gift aid as \$101,800 and \$19,940, respectively. Plot the point $(101.8, 19.94)$ on Figure  to verify it falls on the least squares line (the solid line).[^6.8]
 
 <span>l rr</span>
 
@@ -267,7 +267,7 @@ sd & $s_x = 63.2$ & $s_y = 5.46$
 
 [summaryStatsOfSATGPAData]
 
-[findingTheSlopeOfTheLSRLineForIncomeAndAid] Using the summary statistics in Table [summaryStatsOfSATGPAData], compute the slope for the regression line of gift aid against family income.[^9]
+[findingTheSlopeOfTheLSRLineForIncomeAndAid] Using the summary statistics in Table [summaryStatsOfSATGPAData], compute the slope for the regression line of gift aid against family income.[^6.9]
 
 You might recall the **point-slope** form of a line from math class (another common form is *slope-intercept*). Given the slope of a line and a point on the line, $(x_0, y_0)$, the equation for the line can be written as
 
@@ -328,7 +328,7 @@ The estimated intercept $b_0=24.3$ (in \$1000s) describes the average aid if a s
 
 Stephen Colbert
 
-April 6th, 2010 [^10]\
+April 6th, 2010 [^6.10]\
 
 Linear models can be used to approximate the relationship between two variables. However, these models have real limitations. Linear regression is simply a modeling framework. The truth is almost always much more complex than our simple line. For example, we do not know how the data outside of our limited window will behave.
 
@@ -356,11 +356,11 @@ The $R^2$ of a linear model describes the amount of variation in the response th
 $$\begin{aligned}
 R &= -0.499 &R^2 &= 0.25\end{aligned}$$
 
-If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?[^11]
+If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?[^6.11]
 
 ### Categorical predictors with two levels {#categoricalPredictorsWithTwoLevels}
 
-Categorical variables are also useful in predicting outcomes. Here we consider a categorical predictor with two levels (recall that a *level* is the same as a *category*). We’ll consider Ebay auctions for a video game, *Mario Kart* for the Nintendo Wii, where both the total price of the auction and the condition of the game were recorded.[^12] Here we want to predict total price based on game condition, which takes values and . A plot of the auction data is shown in Figure [marioKartNewUsed].
+Categorical variables are also useful in predicting outcomes. Here we consider a categorical predictor with two levels (recall that a *level* is the same as a *category*). We’ll consider Ebay auctions for a video game, *Mario Kart* for the Nintendo Wii, where both the total price of the auction and the condition of the game were recorded.[^6.12] Here we want to predict total price based on game condition, which takes values and . A plot of the auction data is shown in Figure [marioKartNewUsed].
 
 ![Total auction prices for the video game *Mario Kart*, divided into used ($x=0$) and new ($x=1$) condition games. The least squares regression line is also shown.](05/figures/marioKartNewUsed/marioKartNewUsed)
 
@@ -485,7 +485,7 @@ Examining the data, there are no clear deviations from linearity, the constant v
 
 [unemploymentAndChangeInHouse]
 
-The data for the Great Depression (1934 and 1938) were removed because the unemployment rate was 21% and 18%, respectively. Do you agree that they should be removed for this investigation? Why or why not?[^13]
+The data for the Great Depression (1934 and 1938) were removed because the unemployment rate was 21% and 18%, respectively. Do you agree that they should be removed for this investigation? Why or why not?[^6.13]
 
 There is a negative slope in the line shown in Figure [unemploymentAndChangeInHouse]. However, this slope (and the y-intercept) are only estimates of the parameter values. We might wonder, is this convincing evidence that the “true” linear model has a negative slope? That is, do the data provide strong evidence that the political theory is accurate? We can frame this investigation into a two-sided statistical hypothesis test. We use a two-sided test since a statistically significant result in either direction would be interesting.
 
@@ -536,7 +536,7 @@ We could have identified the $t$ test statistic from the software output in Tabl
 
 <span>Examine Figure , which relates the Elmhurst College aid and student family income. How sure are you that the slope is statistically significantly different from zero? That is, do you think a formal hypothesis test would reject the claim that the true slope of the line should be zero?</span> [overallAidIncomeInformalAssessmentOfRegressionLineSlope] While the relationship between the variables is not perfect, there is an evident decreasing trend in the data. This suggests the hypothesis test will reject the null claim that the slope is zero.
 
-Table [rOutputForIncomeAidLSRLineInInferenceSection] shows statistical software output from fitting the least squares regression line shown in Figure [elmhurstScatterWLSROnly]. Use this output to formally evaluate the following hypotheses. $H_0$: The true coefficient for family income is zero. $H_A$: The true coefficient for family income is not zero.[^14]
+Table [rOutputForIncomeAidLSRLineInInferenceSection] shows statistical software output from fitting the least squares regression line shown in Figure [elmhurstScatterWLSROnly]. Use this output to formally evaluate the following hypotheses. $H_0$: The true coefficient for family income is zero. $H_A$: The true coefficient for family income is not zero.[^6.14]
 
 <span>rrrrr</span>
 
@@ -554,40 +554,40 @@ income & -0.0431 & 0.0108 & -3.98 & 0.0002\
 
 <span> If conditions for fitting the regression line do not hold, then the methods presented here should not be applied. The standard error or distribution assumption of the point estimate – assumed to be normal when applying the $t$ test statistic – may not be valid.</span>
 
-[^1]: If a model underestimates an observation, then the model estimate is below the actual. The residual, which is the actual observation value minus the model estimate, must then be positive. The opposite is true when the model overestimates the observation: the residual is negative.
+[^6.1]: If a model underestimates an observation, then the model estimate is below the actual. The residual, which is the actual observation value minus the model estimate, must then be positive. The opposite is true when the model overestimates the observation: the residual is negative.
 
-[^2]: ($+$) First compute the predicted value based on the model: $$\hat{y}_{+} = 41+0.59x_{+} = 41+0.59\times 85.0 = 91.15$$ Then the residual is given by $$e_{+} = y_{+} - \hat{y}_{+} = 98.6-91.15=7.45$$This was close to the earlier estimate of 7.
+[^6.2]: ($+$) First compute the predicted value based on the model: $$\hat{y}_{+} = 41+0.59x_{+} = 41+0.59\times 85.0 = 91.15$$ Then the residual is given by $$e_{+} = y_{+} - \hat{y}_{+} = 98.6-91.15=7.45$$This was close to the earlier estimate of 7.
 
     ($\triangle$) $\hat{y}_{\triangle} = 41+0.59x_{\triangle} = 97.3$. $e_{\triangle} = y_{\triangle} - \hat{y}_{\triangle} = -3.3$, close to the estimate of -4.
 
-[^3]: Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula
+[^6.3]: Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula
 
     $$\begin{aligned}
     R = \frac{1}{n-1}\sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}\end{aligned}$$
 
     where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard deviations for each variable.
 
-[^4]: We’ll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.
+[^6.4]: We’ll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.
 
-[^5]: These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled *What Students Really Pay to Go to College* published online by *The Chronicle of Higher Education*: [chronicle.com/article/What-Students-Really-Pay-to-Go/131435](http://chronicle.com/article/What-Students-Really-Pay-to-Go/131435)
+[^6.5]: These data were sampled from a table of data for all freshman from the 2011 class at Elmhurst College that accompanied an article titled *What Students Really Pay to Go to College* published online by *The Chronicle of Higher Education*: [chronicle.com/article/What-Students-Really-Pay-to-Go/131435](http://chronicle.com/article/What-Students-Really-Pay-to-Go/131435)
 
-[^6]: Larger family incomes are associated with lower amounts of aid, so the correlation will be negative. Using a computer, the correlation can be computed: -0.499.
+[^6.6]: Larger family incomes are associated with lower amounts of aid, so the correlation will be negative. Using a computer, the correlation can be computed: -0.499.
 
-[^7]: There are applications where Criterion  may be more useful, and there are plenty of other criteria we might consider. However, this book only applies the least squares criterion.
+[^6.7]: There are applications where Criterion  may be more useful, and there are plenty of other criteria we might consider. However, this book only applies the least squares criterion.
 
-[^8]: If you need help finding this location, draw a straight line up from the x-value of 100 (or thereabout). Then draw a horizontal line at 20 (or thereabout). These lines should intersect on the least squares line.
+[^6.8]: If you need help finding this location, draw a straight line up from the x-value of 100 (or thereabout). Then draw a horizontal line at 20 (or thereabout). These lines should intersect on the least squares line.
 
-[^9]: Apply Equation  with the summary statistics from Table [summaryStatsOfSATGPAData] to compute the slope:
+[^6.9]: Apply Equation  with the summary statistics from Table [summaryStatsOfSATGPAData] to compute the slope:
 
     $$\begin{aligned}
     b_1 = \frac{s_y}{s_x} R = \frac{5.46}{63.2}(-0.499) = -0.0431\end{aligned}$$
 
-[^10]: 
+[^6.10]: 
 
-[^11]: About $R^2 = (-0.97)^2 = 0.94$ or 94% of the variation is explained by the linear model.
+[^6.11]: About $R^2 = (-0.97)^2 = 0.94$ or 94% of the variation is explained by the linear model.
 
-[^12]: These data were collected in Fall 2009 and may be found at [openintro.org](http://www.openintro.org).
+[^6.12]: These data were collected in Fall 2009 and may be found at [openintro.org](http://www.openintro.org).
 
-[^13]: We will provide two considerations. Each of these points would have very high leverage on any least-squares regression line, and years with such high unemployment may not help us understand what would happen in other years where the unemployment is only modestly high. On the other hand, these are exceptional cases, and we would be discarding important information if we exclude them from a final analysis.
+[^6.13]: We will provide two considerations. Each of these points would have very high leverage on any least-squares regression line, and years with such high unemployment may not help us understand what would happen in other years where the unemployment is only modestly high. On the other hand, these are exceptional cases, and we would be discarding important information if we exclude them from a final analysis.
 
-[^14]: We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the $t$ test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in Example [overallAidIncomeInformalAssessmentOfRegressionLineSlope].
+[^6.14]: We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the $t$ test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in Example [overallAidIncomeInformalAssessmentOfRegressionLineSlope].

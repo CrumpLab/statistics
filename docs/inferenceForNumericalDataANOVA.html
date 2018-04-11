@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data?</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data?" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An introductory statistics textbook for psychology students" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data?" />
+  
+  <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anjali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+<meta name="author" content="Jeffrey Suzuki">
+
+
+<meta name="date" content="2018-04-11">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="inferenceForNumericalDatattest.html">
+<link rel="next" href="linRegrForTwoVar.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introductionToData.html"><a href="introductionToData.html"><i class="fa fa-check"></i><b>1</b> Psychological Science and Data</a><ul>
+<li class="chapter" data-level="1.1" data-path="introductionToData.html"><a href="introductionToData.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.2" data-path="introductionToData.html"><a href="introductionToData.html#dataBasics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="introductionToData.html"><a href="introductionToData.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data matrices</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introductionToData.html"><a href="introductionToData.html#variableTypes"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introductionToData.html"><a href="introductionToData.html#variableRelations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introductionToData.html"><a href="introductionToData.html#overviewOfDataCollectionPrinciples"><i class="fa fa-check"></i><b>1.3</b> Overview of data collection principles</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introductionToData.html"><a href="introductionToData.html#populationsAndSamples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introductionToData.html"><a href="introductionToData.html#anecdotalEvidenceSubsection"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introductionToData.html"><a href="introductionToData.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introductionToData.html"><a href="introductionToData.html#explanatoryAndResponse"><i class="fa fa-check"></i><b>1.3.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.3.5" data-path="introductionToData.html"><a href="introductionToData.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.3.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introductionToData.html"><a href="introductionToData.html#observational-studies-and-sampling-strategies"><i class="fa fa-check"></i><b>1.4</b> Observational studies and sampling strategies</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introductionToData.html"><a href="introductionToData.html#observational-studies"><i class="fa fa-check"></i><b>1.4.1</b> Observational studies</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introductionToData.html"><a href="introductionToData.html#threeSamplingMethods"><i class="fa fa-check"></i><b>1.4.2</b> Three sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introductionToData.html"><a href="introductionToData.html#experimentsSection"><i class="fa fa-check"></i><b>1.5</b> Experiments</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="introductionToData.html"><a href="introductionToData.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introductionToData.html"><a href="introductionToData.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#numericalData"><i class="fa fa-check"></i><b>2.1</b> Examining numerical data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="DescribingData.html"><a href="DescribingData.html#scatterPlots"><i class="fa fa-check"></i><b>2.1.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="DescribingData.html"><a href="DescribingData.html#dotPlot"><i class="fa fa-check"></i><b>2.1.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="2.1.3" data-path="DescribingData.html"><a href="DescribingData.html#histogramsAndShape"><i class="fa fa-check"></i><b>2.1.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="2.1.4" data-path="DescribingData.html"><a href="DescribingData.html#variability"><i class="fa fa-check"></i><b>2.1.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="DescribingData.html"><a href="DescribingData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.1.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="2.1.6" data-path="DescribingData.html"><a href="DescribingData.html#robust-statistics"><i class="fa fa-check"></i><b>2.1.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="2.1.7" data-path="DescribingData.html"><a href="DescribingData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>2.1.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="2.1.8" data-path="DescribingData.html"><a href="DescribingData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.1.8</b> Mapping data (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="DescribingData.html"><a href="DescribingData.html#categoricalData"><i class="fa fa-check"></i><b>2.2</b> Considering categorical data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DescribingData.html"><a href="DescribingData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.2.1</b> Contingency tables and bar plots</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DescribingData.html"><a href="DescribingData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>2.2.2</b> Row and column proportions</a></li>
+<li class="chapter" data-level="2.2.3" data-path="DescribingData.html"><a href="DescribingData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>2.2.3</b> Segmented bar and mosaic plots</a></li>
+<li class="chapter" data-level="2.2.4" data-path="DescribingData.html"><a href="DescribingData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>2.2.4</b> The only pie chart you will see in this book</a></li>
+<li class="chapter" data-level="2.2.5" data-path="DescribingData.html"><a href="DescribingData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>2.2.5</b> Comparing numerical data across groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>3</b> Foundation for inference</a><ul>
+<li class="chapter" data-level="3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>3.1</b> Randomization case study: gender discrimination</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>3.1.1</b> Variability within data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>3.1.2</b> Simulating the study</a></li>
+<li class="chapter" data-level="3.1.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>3.1.3</b> Checking for independence</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>3.2</b> Randomization case study: opportunity cost</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>3.2.1</b> Exploring the data set before the analysis</a></li>
+<li class="chapter" data-level="3.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>3.2.2</b> Results from chance alone</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>3.3</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis testing in the US court system</a></li>
+<li class="chapter" data-level="3.3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>3.3.2</b> p-value and statistical significance</a></li>
+<li class="chapter" data-level="3.3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>3.3.3</b> Decision errors</a></li>
+<li class="chapter" data-level="3.3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>3.3.4</b> Choosing a significance level</a></li>
+<li class="chapter" data-level="3.3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>3.3.5</b> Introducing two-sided hypotheses</a></li>
+<li class="chapter" data-level="3.3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>3.3.6</b> Controlling the Type 1 Error rate</a></li>
+<li class="chapter" data-level="3.3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>3.3.7</b> How to use a hypothesis test</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>3.4</b> Simulation case studies</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>3.4.1</b> Medical consultant</a></li>
+<li class="chapter" data-level="3.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>3.4.2</b> Tappers and listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>3.5</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>3.5.1</b> Null distribution from the case studies</a></li>
+<li class="chapter" data-level="3.5.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>3.5.2</b> Examples of future settings we will consider</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>3.6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>3.6.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="3.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>3.6.2</b> Standardizing with Z scores</a></li>
+<li class="chapter" data-level="3.6.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>3.6.3</b> Normal probability table</a></li>
+<li class="chapter" data-level="3.6.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>3.6.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="3.6.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>3.6.5</b> 68-95-99.7 rule</a></li>
+<li class="chapter" data-level="3.6.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>3.6.6</b> Evaluating the normal approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>3.7</b> Applying the normal model</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>3.7.1</b> Standard error</a></li>
+<li class="chapter" data-level="3.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>3.7.2</b> Normal model application: opportunity cost</a></li>
+<li class="chapter" data-level="3.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>3.7.3</b> Normal model application: medical consultant</a></li>
+<li class="chapter" data-level="3.7.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>3.7.4</b> Conditions for applying the normal model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>3.8</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>3.8.1</b> Capturing the population parameter</a></li>
+<li class="chapter" data-level="3.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>3.8.2</b> Constructing a 95% confidence interval</a></li>
+<li class="chapter" data-level="3.8.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>3.8.3</b> Changing the confidence level</a></li>
+<li class="chapter" data-level="3.8.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>3.8.4</b> Interpreting confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html"><i class="fa fa-check"></i><b>4</b> Inference for numerical data: t-Tests</a><ul>
+<li class="chapter" data-level="4.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>4.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>4.1.1</b> Two examples using the normal distribution</a></li>
+<li class="chapter" data-level="4.1.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>4.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="4.1.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>4.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
+<li class="chapter" data-level="4.1.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>4.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
+<li class="chapter" data-level="4.1.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTTests"><i class="fa fa-check"></i><b>4.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pairedData"><i class="fa fa-check"></i><b>4.2</b> Paired data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-observations"><i class="fa fa-check"></i><b>4.2.1</b> Paired observations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#inference-for-paired-data"><i class="fa fa-check"></i><b>4.2.2</b> Inference for paired data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>4.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Confidence interval for a differences of means</a></li>
+<li class="chapter" data-level="4.3.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>4.3.2</b> Hypothesis tests based on a difference in means</a></li>
+<li class="chapter" data-level="4.3.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>4.3.3</b> Case study: two versions of a course exam</a></li>
+<li class="chapter" data-level="4.3.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>4.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="4.3.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>4.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>5</b> Inference for numerical data: ANOVA</a><ul>
+<li class="chapter" data-level="5.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>5.1</b> Comparing many means with ANOVA</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>5.1.1</b> Is batting performance related to player position in MLB?</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>5.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>5.1.3</b> Reading an ANOVA table from software</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>5.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>5.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>5.2</b> Bootstrapping to study the standard deviation</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>5.2.1</b> Bootstrap samples and distributions</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>5.2.2</b> Inference using the bootstrap</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#frequently-asked-questions"><i class="fa fa-check"></i><b>5.2.3</b> Frequently asked questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear regression</a><ul>
+<li class="chapter" data-level="6.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>6.1</b> Line fitting, residuals, and correlation</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>6.1.1</b> Beginning with straight lines</a></li>
+<li class="chapter" data-level="6.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>6.1.2</b> Fitting a line by eye</a></li>
+<li class="chapter" data-level="6.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>6.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="6.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>6.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>6.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>6.2.1</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="6.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>6.2.2</b> Finding the least squares line</a></li>
+<li class="chapter" data-level="6.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>6.2.3</b> Interpreting regression line parameter estimates</a></li>
+<li class="chapter" data-level="6.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>6.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="6.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>6.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
+<li class="chapter" data-level="6.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>6.2.6</b> Categorical predictors with two levels</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>6.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="6.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>6.4</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>6.4.1</b> Conditions for the least squares line</a></li>
+<li class="chapter" data-level="6.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>6.4.2</b> Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="6.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>6.4.3</b> Understanding regression output from software</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>7</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="7.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>7.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>7.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>7.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="7.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>7.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>7.2</b> Model selection</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>7.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="7.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>7.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>7.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="7.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>7.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>7.4.1</b> Email data</a></li>
+<li class="chapter" data-level="7.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>7.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="7.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>7.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="7.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>7.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="7.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>7.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>8</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="8.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>8.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>8.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="8.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>8.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="8.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>8.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="8.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>8.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>8.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>8.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="8.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>8.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="8.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>8.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>8.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>8.3.1</b> Creating a test statistic for one-way tables</a></li>
+<li class="chapter" data-level="8.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>8.3.2</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="8.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>8.3.3</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="8.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>8.3.4</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="8.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>8.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>8.4</b> Testing for independence in two-way tables (special topic)</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>8.4.1</b> Expected counts in two-way tables</a></li>
+<li class="chapter" data-level="8.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>8.4.2</b> The chi-square test for two-way tables</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data?</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inferenceForNumericalDataANOVA" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Inference for numerical data: ANOVA</h1>
+<div id="anovaAndRegrWithCategoricalVariables" class="section level2">
+<h2><span class="header-section-number">5.1</span> Comparing many means with ANOVA</h2>
+<p>Sometimes we want to compare means across many groups. We might initially think to do pairwise comparisons; for example, if there were three groups, we might be tempted to compare the first mean with the second, then with the third, and then finally compare the second and third means for a total of three comparisons. However, this strategy can be treacherous. If we have many groups and do many comparisons, it is likely that we will eventually find a difference just by chance, even if there is no difference in the populations.</p>
+<p>In this section, we will learn a new method called <strong>analysis of variance (ANOVA)</strong> and a new test statistic called <span class="math inline">\(F\)</span>. ANOVA uses a single hypothesis test to check whether the means across many groups are equal:</p>
+<ul>
+<li><p>The mean outcome is the same across all groups. In statistical notation, <span class="math inline">\(\mu_1 = \mu_2 = \cdots = \mu_k\)</span> where <span class="math inline">\(\mu_i\)</span> represents the mean of the outcome for observations in category <span class="math inline">\(i\)</span>.</p></li>
+<li><p>At least one mean is different.</p></li>
+</ul>
+<p>Generally we must check three conditions on the data before performing ANOVA:</p>
+<ul>
+<li><p>the observations are independent within and across groups,</p></li>
+<li><p>the data within each group are nearly normal, and</p></li>
+<li><p>the variability across the groups is about equal.</p></li>
+</ul>
+<p>When these three conditions are met, we may perform an ANOVA to determine whether the data provide strong evidence against the null hypothesis that all the <span class="math inline">\(\mu_i\)</span> are equal.</p>
+<p><span>College departments commonly run multiple lectures of the same introductory course each semester because of high demand. Consider a statistics department that runs three lectures of an introductory statistics course. We might like to determine whether there are statistically significant differences in first exam scores in these three classes (<span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span>). Describe appropriate hypotheses to determine whether there are any differences between the three classes.</span> [firstExampleForThreeStatisticsClassesAndANOVA] The hypotheses may be written in the following form:</p>
+<ul>
+<li><p>The average score is identical in all lectures. Any observed difference is due to chance. Notationally, we write <span class="math inline">\(\mu_A=\mu_B=\mu_C\)</span>.</p></li>
+<li><p>The average score varies by class. We would reject the null hypothesis in favor of the alternative hypothesis if there were larger differences among the class averages than what we might expect from chance alone.</p></li>
+</ul>
+<p>Strong evidence favoring the alternative hypothesis in ANOVA is described by unusually large differences among the group means. We will soon learn that assessing the variability of the group means relative to the variability among individual observations within each group is key to ANOVA’s success.</p>
+<p><span>Examine Figure [toyANOVA]. Compare groups I, II, and III. Can you visually determine if the differences in the group centers is due to chance or not? Now compare groups IV, V, and VI. Do these differences appear to be due to chance?</span></p>
+<div class="figure">
+<img src="04/figures/toyANOVA/toyANOVA" alt="Side-by-side dot plot for the outcomes for six groups." />
+<p class="caption">Side-by-side dot plot for the outcomes for six groups.</p>
+</div>
+<p>[toyANOVA]</p>
+<p>Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups’ centers are noticeable because those differences are large <em>relative to the variability in the individual observations within each group</em>.</p>
+<div id="is-batting-performance-related-to-player-position-in-mlb" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Is batting performance related to player position in MLB?</h3>
+<p>We would like to discern whether there are real differences between the batting performance of baseball players according to their position: outfielder (), infielder (), designated hitter (), and catcher (). We will use a data set called <strong>bat10</strong>, which includes batting records of 327 Major League Baseball (MLB) players from the 2010 season. Six of the 327 cases represented in <strong>bat10</strong> are shown in Table [mlbBat10DataMatrix], and descriptions for each variable are provided in Table [mlbBat10Variables]. The measure we will use for the player batting performance (the outcome variable) is on-base percentage (<strong>OBP</strong>). The on-base percentage roughly represents the fraction of the time a player successfully gets on base or hits a home run.</p>
+<table>
+<caption>Six cases from the <strong>bat10</strong> data matrix.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">name</th>
+<th align="left">team</th>
+<th align="left">position</th>
+<th align="right">AB</th>
+<th align="right">H</th>
+<th align="right">HR</th>
+<th align="right">RBI</th>
+<th align="right">AVG</th>
+<th align="right">OBP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="left">I Suzuki</td>
+<td align="left">SEA</td>
+<td align="left">OF</td>
+<td align="right">680</td>
+<td align="right">214</td>
+<td align="right">6</td>
+<td align="right">43</td>
+<td align="right">0.315</td>
+<td align="right">0.359</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="left">D Jeter</td>
+<td align="left">NYY</td>
+<td align="left">IF</td>
+<td align="right">663</td>
+<td align="right">179</td>
+<td align="right">10</td>
+<td align="right">67</td>
+<td align="right">0.270</td>
+<td align="right">0.340</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="left">M Young</td>
+<td align="left">TEX</td>
+<td align="left">IF</td>
+<td align="right">656</td>
+<td align="right">186</td>
+<td align="right">21</td>
+<td align="right">91</td>
+<td align="right">0.284</td>
+<td align="right">0.330</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td align="left"><span class="math inline">\(\vdots\)</span></td>
+<td align="left"><span class="math inline">\(\vdots\)</span></td>
+<td align="left"><span class="math inline">\(\vdots\)</span></td>
+<td align="right"><span class="math inline">\(\vdots\)</span></td>
+<td align="right"><span class="math inline">\(\vdots\)</span></td>
+<td align="right"><span class="math inline">\(\vdots\)</span></td>
+<td align="right"><span class="math inline">\(\vdots\)</span></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td>325</td>
+<td align="left">B Molina</td>
+<td align="left">SF</td>
+<td align="left">C</td>
+<td align="right">202</td>
+<td align="right">52</td>
+<td align="right">3</td>
+<td align="right">17</td>
+<td align="right">0.257</td>
+<td align="right">0.312</td>
+</tr>
+<tr class="even">
+<td>326</td>
+<td align="left">J Thole</td>
+<td align="left">NYM</td>
+<td align="left">C</td>
+<td align="right">202</td>
+<td align="right">56</td>
+<td align="right">3</td>
+<td align="right">17</td>
+<td align="right">0.277</td>
+<td align="right">0.357</td>
+</tr>
+<tr class="odd">
+<td>327</td>
+<td align="left">C Heisey</td>
+<td align="left">CIN</td>
+<td align="left">OF</td>
+<td align="right">201</td>
+<td align="right">51</td>
+<td align="right">8</td>
+<td align="right">21</td>
+<td align="right">0.254</td>
+<td align="right">0.324</td>
+</tr>
+</tbody>
+</table>
+<p>[mlbBat10DataMatrix]</p>
+<table>
+<caption>Variables and their descriptions for the <strong>bat10</strong> data set.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span><strong>variable</strong></span></th>
+<th align="left"><span><strong>description</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>name</strong></td>
+<td align="left">Player name</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>team</strong></td>
+<td align="left">The abbreviated name of the player’s team</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>position</strong></td>
+<td align="left">The player’s primary field position (, , , )</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>AB</strong></td>
+<td align="left">Number of opportunities at bat</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>H</strong></td>
+<td align="left">Number of hits</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>HR</strong></td>
+<td align="left">Number of home runs</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>RBI</strong></td>
+<td align="left">Number of runs batted in</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>AVG</strong></td>
+<td align="left">Batting average, which is equal to <span class="math inline">\(\resp{H}/\resp{AB}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>OBP</strong></td>
+<td align="left">On-base percentage, which is roughly equal to the fraction of times a player gets on base or hits a home run</td>
+</tr>
+</tbody>
+</table>
+<p>[mlbBat10Variables]</p>
+<p>[nullHypForOBPAgainstPosition] The null hypothesis under consideration is the following: <span class="math inline">\(\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}\)</span>. Write the null and corresponding alternative hypotheses in plain language.<a href="#fn117" class="footnoteRef" id="fnref117"><sup>117</sup></a></p>
+<p><span>The player positions have been divided into four groups: outfield (), infield (), designated hitter (), and catcher (). What would be an appropriate point estimate of the on-base percentage by outfielders, <span class="math inline">\(\mu_{\resp{OF}}\)</span>?</span> A good estimate of the on-base percentage by outfielders would be the sample average of <strong>AVG</strong> for just those players whose position is outfield: <span class="math inline">\(\bar{x}_{OF} = 0.334\)</span>.</p>
+<p>Table [mlbHRPerABSummaryTable] provides summary statistics for each group. A side-by-side box plot for the on-base percentage is shown in Figure [mlbANOVABoxPlot]. Notice that the variability appears to be approximately constant across groups; nearly constant variance across groups is an important assumption that must be satisfied before we consider the ANOVA approach.</p>
+<table>
+<caption>Summary statistics of on-base percentage, split by player position.</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Sample size (<span class="math inline">\(n_i\)</span>)</td>
+<td align="right">120</td>
+<td align="right">154</td>
+<td align="right">14</td>
+<td align="right">39</td>
+</tr>
+<tr class="even">
+<td align="left">Sample mean (<span class="math inline">\(\bar{x}_i\)</span>)</td>
+<td align="right">0.334</td>
+<td align="right">0.332</td>
+<td align="right">0.348</td>
+<td align="right">0.323</td>
+</tr>
+<tr class="odd">
+<td align="left">Sample SD (<span class="math inline">\(s_i\)</span>)</td>
+<td align="right">0.029</td>
+<td align="right">0.037</td>
+<td align="right">0.036</td>
+<td align="right">0.045</td>
+</tr>
+</tbody>
+</table>
+<p>[mlbHRPerABSummaryTable]</p>
+<div class="figure">
+<img src="04/figures/mlbANOVA/mlbANOVABoxPlot" alt="Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern." />
+<p class="caption">Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.</p>
+</div>
+<p>[mlbANOVABoxPlot]</p>
+<p>The largest difference between the sample means is between the designated hitter and the catcher positions. Consider again the original hypotheses:</p>
+<ul>
+<li><p><span class="math inline">\(\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}\)</span></p></li>
+<li><p>The average on-base percentage (<span class="math inline">\(\mu_i\)</span>) varies across some (or all) groups.</p></li>
+</ul>
+<p>Why might it be inappropriate to run the test by simply estimating whether the difference of <span class="math inline">\(\mu_{\textbf{DH}}\)</span> and <span class="math inline">\(\mu_{\resp{C}}\)</span> is statistically significant at a 0.05 significance level?</p>
+<p>[multipleComparisonExampleThatIncludesDiscussionOfClassrooms] The primary issue here is that we are inspecting the data before picking the groups that will be compared. It is inappropriate to examine all data by eye (informal testing) and only afterwards decide which parts to formally test. This is called <strong>data snooping</strong> or <strong>data fishing</strong>. Naturally we would pick the groups with the large differences for the formal test, leading to an inflation in the Type 1 Error rate. To understand this better, let’s consider a slightly different problem.</p>
+<p>Suppose we are to measure the aptitude for students in 20 classes in a large elementary school at the beginning of the year. In this school, all students are randomly assigned to classrooms, so any differences we observe between the classes at the start of the year are completely due to chance. However, with so many groups, we will probably observe a few groups that look rather different from each other. If we select only these classes that look so different, we will probably make the wrong conclusion that the assignment wasn’t random. While we might only formally test differences for a few pairs of classes, we informally evaluated the other classes by eye before choosing the most extreme cases for a comparison.</p>
+<p>For additional information on the ideas expressed in Example [multipleComparisonExampleThatIncludesDiscussionOfClassrooms], we recommend reading about the <strong>prosecutor’s fallacy</strong>.<a href="#fn118" class="footnoteRef" id="fnref118"><sup>118</sup></a></p>
+<p>In the next section we will learn how to use the <span class="math inline">\(F\)</span> statistic and ANOVA to test whether observed differences in means could have happened just by chance even if there was no difference in the respective population means.</p>
+</div>
+<div id="analysis-of-variance-anova-and-the-f-test" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Analysis of variance (ANOVA) and the F test</h3>
+<p>The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will <em>simultaneously</em> consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the <strong>mean square between groups (<span class="math inline">\(MSG\)</span>)</strong>, and it has an associated degrees of freedom, <span class="math inline">\(df_{G}=k-1\)</span> when there are <span class="math inline">\(k\)</span> groups. The <span class="math inline">\(MSG\)</span> can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn’t be too large. Details of <span class="math inline">\(MSG\)</span> calculations are provided in the footnote,<a href="#fn119" class="footnoteRef" id="fnref119"><sup>119</sup></a> however, we typically use software for these computations.</p>
+<p>The mean square between the groups is, on its own, quite useless in a hypothesis test. We need a benchmark value for how much variability should be expected among the sample means if the null hypothesis is true. To this end, we compute a pooled variance estimate, often abbreviated as the <strong>mean square error (<span class="math inline">\(MSE\)</span>)</strong>, which has an associated degrees of freedom value <span class="math inline">\(df_E=n-k\)</span>. It is helpful to think of <span class="math inline">\(MSE\)</span> as a measure of the variability within the groups. Details of the computations of the <span class="math inline">\(MSE\)</span> are provided in the footnote<a href="#fn120" class="footnoteRef" id="fnref120"><sup>120</sup></a> for interested readers.</p>
+<p>When the null hypothesis is true, any differences among the sample means are only due to chance, and the <span class="math inline">\(MSG\)</span> and <span class="math inline">\(MSE\)</span> should be about equal. As a test statistic for ANOVA, we examine the fraction of <span class="math inline">\(MSG\)</span> and <span class="math inline">\(MSE\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+ \label{formulaForTheFStatistic}
+F = \frac{MSG}{MSE}\end{aligned}\]</span></p>
+<p>The <span class="math inline">\(MSG\)</span> represents a measure of the between-group variability, and <span class="math inline">\(MSE\)</span> measures the variability within each of the groups.</p>
+<p>For the baseball data, <span class="math inline">\(MSG = 0.00252\)</span> and <span class="math inline">\(MSE=0.00127\)</span>. Identify the degrees of freedom associated with MSG and MSE and verify the <span class="math inline">\(F\)</span> statistic is approximately 1.994.<a href="#fn121" class="footnoteRef" id="fnref121"><sup>121</sup></a></p>
+<p>We can use the <span class="math inline">\(F\)</span> statistic to evaluate the hypotheses in what is called an <strong>F test</strong>. A p-value can be computed from the <span class="math inline">\(F\)</span> statistic using an <span class="math inline">\(F\)</span> distribution, which has two associated parameters: <span class="math inline">\(df_{1}\)</span> and <span class="math inline">\(df_{2}\)</span>. For the <span class="math inline">\(F\)</span> statistic in ANOVA, <span class="math inline">\(df_{1} = df_{G}\)</span> and <span class="math inline">\(df_{2}= df_{E}\)</span>. An <span class="math inline">\(F\)</span> distribution with 3 and 323 degrees of freedom, corresponding to the <span class="math inline">\(F\)</span> statistic for the baseball hypothesis test, is shown in Figure [fDist3And323].</p>
+<div class="figure">
+<img src="04/figures/fDist3And323/fDist3And323" alt="An F distribution with df_1=3 and df_2=323." />
+<p class="caption">An <span class="math inline">\(F\)</span> distribution with <span class="math inline">\(df_1=3\)</span> and <span class="math inline">\(df_2=323\)</span>.</p>
+</div>
+<p>[fDist3And323]</p>
+<p>The larger the observed variability in the sample means (<span class="math inline">\(MSG\)</span>) relative to the within-group observations (<span class="math inline">\(MSE\)</span>), the larger <span class="math inline">\(F\)</span> will be and the stronger the evidence against the null hypothesis. Because larger values of <span class="math inline">\(F\)</span> represent stronger evidence against the null hypothesis, we use the upper tail of the distribution to compute a p-value.</p>
+<p><span> Analysis of variance (ANOVA) is used to test whether the mean outcome differs across 2 or more groups. ANOVA uses a test statistic <span class="math inline">\(F\)</span>, which represents a standardized ratio of variability in the sample means relative to the variability within the groups. If <span class="math inline">\(H_0\)</span> is true and the model assumptions are satisfied, the statistic <span class="math inline">\(F\)</span> follows an <span class="math inline">\(F\)</span> distribution with parameters <span class="math inline">\(df_{1}=k-1\)</span> and <span class="math inline">\(df_{2}=n-k\)</span>. The upper tail of the <span class="math inline">\(F\)</span> distribution is used to represent the p-value.</span></p>
+<p>[describePValueAreaForFDistributionInMLBOBPExample] The test statistic for the baseball example is <span class="math inline">\(F=1.994\)</span>. Shade the area corresponding to the p-value in Figure [fDist3And323].<a href="#fn122" class="footnoteRef" id="fnref122"><sup>122</sup></a></p>
+<p><span>The p-value corresponding to the shaded area in the solution of Guided Practice [describePValueAreaForFDistributionInMLBOBPExample] is equal to about 0.115. Does this provide strong evidence against the null hypothesis?</span> The p-value is larger than 0.05, indicating the evidence is not strong enough to reject the null hypothesis at a significance level of 0.05. That is, the data do not provide strong evidence that the average on-base percentage varies by player’s primary field position.</p>
+</div>
+<div id="reading-an-anova-table-from-software" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Reading an ANOVA table from software</h3>
+<p>The calculations required to perform an ANOVA by hand are tedious and prone to human error. For these reasons, it is common to use statistical software to calculate the <span class="math inline">\(F\)</span> statistic and p-value.</p>
+<p>An ANOVA can be summarized in a table very similar to that of a regression summary, which we will see in . Table [anovaSummaryTableForOBPAgainstPosition] shows an ANOVA summary to test whether the mean of on-base percentage varies by player positions in the MLB. Many of these values should look familiar; in particular, the <span class="math inline">\(F\)</span> test statistic and p-value can be retrieved from the last columns.</p>
+<p><span>lrrrrr</span> &amp; Df &amp; Sum Sq &amp; Mean Sq &amp; F value &amp; Pr(<span class="math inline">\(&gt;\)</span>F)<br />
+position &amp; 3 &amp; 0.0076 &amp; 0.0025 &amp; 1.9943 &amp; 0.1147<br />
+Residuals &amp; 323 &amp; 0.4080 &amp; 0.0013 &amp; &amp;<br />
+[anovaSummaryTableForOBPAgainstPosition]</p>
+</div>
+<div id="graphical-diagnostics-for-an-anova-analysis" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Graphical diagnostics for an ANOVA analysis</h3>
+<p>There are three conditions we must check for an ANOVA analysis: all observations must be independent, the data in each group must be nearly normal, and the variance within each group must be approximately equal.</p>
+<dl>
+<dt>Independence.</dt>
+<dd><p>If the data are a simple random sample from less than 10% of the population, this condition is satisfied. For processes and experiments, carefully consider whether the data may be independent (e.g. no pairing). For example, in the MLB data, the data were not sampled. However, there are not obvious reasons why independence would not hold for most or all observations.</p>
+</dd>
+<dt>Approximately normal.</dt>
+<dd><p>As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in Figure [mlbANOVADiagNormalityGroups]; there is some deviation from normality for infielders, but this isn’t a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn’t reasonable. See the footnote<a href="#fn123" class="footnoteRef" id="fnref123"><sup>123</sup></a> for guidance on how to handle such instances.</p>
+<div class="figure">
+<img src="04/figures/mlbANOVA/mlbANOVADiagNormalityGroups" alt="Normal probability plot of OBP for each field position." />
+<p class="caption">Normal probability plot of OBP for each field position.</p>
+</div>
+<p>[mlbANOVADiagNormalityGroups]</p>
+</dd>
+<dt>Constant variance.</dt>
+<dd><p>The last assumption is that the variance in the groups is about equal from one group to the next. This assumption can be checked by examining a side-by-side box plot of the outcomes across the groups, as in Figure . In this case, the variability is similar in the four groups but not identical. We see in Table  that the standard deviation varies a bit from one group to the next. Whether these differences are from natural variation is unclear, so we should report this uncertainty with the final results.</p>
+</dd>
+</dl>
+<p><span>Diagnostics for an ANOVA analysis</span> <span>Independence is always important to an ANOVA analysis. The normality condition is very important when the sample sizes for each group are relatively small. The constant variance condition is especially important when the sample sizes differ between groups.</span></p>
+</div>
+<div id="multipleComparisonsAndControllingTheType1ErrorRate" class="section level3">
+<h3><span class="header-section-number">5.1.5</span> Multiple comparisons and controlling Type 1 Error rate</h3>
+<p>When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample <span class="math inline">\(t\)</span> test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table [anovaSummaryTableForOBPAgainstPosition].</p>
+<p><span>Example  discussed three statistics lectures, all taught during the same semester. Table [summaryStatisticsForClassTestData] shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure [classDataSBSBoxPlot]. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?</span> In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.</p>
+<p>The distributions in the side-by-side box plot appear to be roughly symmetric and show no noticeable outliers.</p>
+<p>The box plots show approximately equal variability, which can be verified in Table [summaryStatisticsForClassTestData], supporting the constant variance assumption.</p>
+<table>
+<caption>Summary statistics for the first midterm scores in three different lectures of the same course.</caption>
+<thead>
+<tr class="header">
+<th align="left">Class <span class="math inline">\(i\)</span></th>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(n_i\)</span></td>
+<td align="right">58</td>
+<td align="right">55</td>
+<td align="right">51</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\bar{x}_i\)</span></td>
+<td align="right">75.1</td>
+<td align="right">72.0</td>
+<td align="right">78.9</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(s_i\)</span></td>
+<td align="right">13.9</td>
+<td align="right">13.8</td>
+<td align="right">13.1</td>
+</tr>
+</tbody>
+</table>
+<p>[summaryStatisticsForClassTestData]</p>
+<div class="figure">
+<img src="04/figures/classData/classDataSBSBoxPlot" alt="Side-by-side box plot for the first midterm scores in three different lectures of the same course." />
+<p class="caption">Side-by-side box plot for the first midterm scores in three different lectures of the same course.</p>
+</div>
+<p>[classDataSBSBoxPlot]</p>
+<p>[exerExaminingAnovaSummaryTableForMidtermData] An ANOVA was conducted for the midterm data, and summary results are shown in Table [anovaSummaryTableForMidtermData]. What should we conclude?<a href="#fn124" class="footnoteRef" id="fnref124"><sup>124</sup></a></p>
+<p><span>lrrrrr</span> &amp; Df &amp; Sum Sq &amp; Mean Sq &amp; F value &amp; Pr(<span class="math inline">\(&gt;\)</span>F)<br />
+lecture &amp; 2 &amp; 1290.11 &amp; 645.06 &amp; 3.48 &amp; 0.0330<br />
+Residuals &amp; 161 &amp; 29810.13 &amp; 185.16 &amp; &amp;<br />
+[anovaSummaryTableForMidtermData]</p>
+<p>There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample <span class="math inline">\(t\)</span> test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example : when we run so many tests, the Type 1 Error rate increases. This issue is resolved by using a modified significance level.</p>
+<p>The scenario of testing many pairs of groups is called <strong>multiple comparisons</strong>. The <strong>Bonferroni correction</strong> suggests that a more stringent significance level is more appropriate for these tests:</p>
+<p><span class="math display">\[\begin{aligned}
+\alpha^* = \alpha / K\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(K\)</span> is the number of comparisons being considered (formally or informally). If there are <span class="math inline">\(k\)</span> groups, then usually all possible pairs are compared and <span class="math inline">\(K=\frac{k(k-1)}{2}\)</span>.</p>
+<p><span>In Guided Practice [exerExaminingAnovaSummaryTableForMidtermData], you found strong evidence of differences in the average midterm grades between the three lectures. Complete the three possible pairwise comparisons using the Bonferroni correction and report any differences.</span> [multipleComparisonsOfThreeStatClasses] We use a modified significance level of <span class="math inline">\(\alpha^* = 0.05/3 = 0.0167\)</span>. Additionally, we use the pooled estimate of the standard deviation: <span class="math inline">\(s_{pooled}=13.61\)</span> on <span class="math inline">\(df=161\)</span>, which is provided in the ANOVA summary table.</p>
+<p>Lecture A versus Lecture B: The estimated difference and standard error are, respectively,</p>
+<p><span class="math display">\[\begin{aligned}
+\bar{x}_A - \bar{x}_{B} &amp;= 75.1 - 72 = 3.1
+    &amp;SE = \sqrt{\frac{13.61^2}{58} + \frac{13.61^2}{55}} &amp;= 2.56\end{aligned}\]</span></p>
+<p>(See Section  for additional details.) This results in a <span class="math inline">\(T\)</span> score of 1.21 on <span class="math inline">\(df = 161\)</span> (we use the <span class="math inline">\(df\)</span> associated with <span class="math inline">\(s_{pooled}\)</span>). Statistical software was used to precisely identify the two-tailed p-value since the modified significance of 0.0167 is not found in the <span class="math inline">\(t\)</span> table. The p-value (0.228) is larger than <span class="math inline">\(\alpha^*=0.0167\)</span>, so there is not strong evidence of a difference in the means of lectures A and B.</p>
+<p>Lecture A versus Lecture C: The estimated difference and standard error are 3.8 and 2.61, respectively. This results in a <span class="math inline">\(T\)</span> score of 1.46 on <span class="math inline">\(df = 161\)</span> and a two-tailed p-value of 0.1462. This p-value is larger than <span class="math inline">\(\alpha^*\)</span>, so there is not strong evidence of a difference in the means of lectures A and C.</p>
+<p>Lecture B versus Lecture C: The estimated difference and standard error are 6.9 and 2.65, respectively. This results in a <span class="math inline">\(T\)</span> score of 2.60 on <span class="math inline">\(df = 161\)</span> and a two-tailed p-value of 0.0102. This p-value is smaller than <span class="math inline">\(\alpha^*\)</span>. Here we find strong evidence of a difference in the means of lectures B and C.</p>
+<p>We might summarize the findings of the analysis from Example [multipleComparisonsOfThreeStatClasses] using the following notation:</p>
+<p><span class="math display">\[\begin{aligned}
+\mu_A &amp;\stackrel{?}{=} \mu_B
+    &amp;\mu_A &amp;\stackrel{?}{=} \mu_C
+    &amp;\mu_B &amp;\neq \mu_C\end{aligned}\]</span></p>
+<p>The midterm mean in lecture A is not statistically distinguishable from those of lectures B or C. However, there is strong evidence that lectures B and C are different. In the first two pairwise comparisons, we did not have sufficient evidence to reject the null hypothesis. Recall that failing to reject <span class="math inline">\(H_0\)</span> does not imply <span class="math inline">\(H_0\)</span> is true.</p>
+<p><span>Sometimes an ANOVA will reject the null but no groups will have statistically significant differences</span> <span>It is possible to reject the null hypothesis using ANOVA and then to not subsequently identify differences in the pairwise comparisons. However, <em>this does not invalidate the ANOVA conclusion</em>. It only means we have not been able to successfully identify which groups differ in their means.</span></p>
+<p>The ANOVA procedure examines the big picture: it considers all groups simultaneously to decipher whether there is evidence that some difference exists. Even if the test indicates that there is strong evidence of differences in group means, identifying with high confidence a specific difference as statistically significant is more difficult.</p>
+<p>Consider the following analogy: we observe a Wall Street firm that makes large quantities of money based on predicting mergers. Mergers are generally difficult to predict, and if the prediction success rate is extremely high, that may be considered sufficiently strong evidence to warrant investigation by the Securities and Exchange Commission (SEC). While the SEC may be quite certain that there is insider trading taking place at the firm, the evidence against any single trader may not be very strong. It is only when the SEC considers all the data that they identify the pattern. This is effectively the strategy of ANOVA: stand back and consider all the groups simultaneously.</p>
+</div>
+</div>
+<div id="bootstrapping-to-study-the-standard-deviation" class="section level2">
+<h2><span class="header-section-number">5.2</span> Bootstrapping to study the standard deviation</h2>
+<p>We analyzed textbook pricing data in Section [pairedData] and found that prices on Amazon were statistically significantly cheaper on average. We might also want to better understand the variability of the price difference from one book to another, which we quantified using the standard deviation: <span class="math inline">\(s = \$14.26\)</span>. The sample standard deviation is a point estimate for the population standard deviation. Just as we care about the precision of a sample mean, we may care about the precise of the sample standard deviation.</p>
+<div id="bootstrap-samples-and-distributions" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Bootstrap samples and distributions</h3>
+<p>The theory required to quantify the uncertainty of the sample standard deviation is complex. In an ideal world, we would sample data from the population again and recompute the standard deviation with this new sample. Then we could do it again. And again. And so on until we get enough standard deviation estimates that we have a good sense of the precision of our original estimate. This is an ideal world where sampling data is free or extremely cheap. That is rarely the case, which poses a challenge to this “resample from the population” approach.</p>
+<p>However, we can sample from the sample. In the textbook pricing example, there are 73 price differences. This sample can serve as a proxy for the population: we sample from this data set to get a sense for what it would be like if we took new samples.</p>
+<p>A <strong>bootstrap sample</strong> is a sample of the original sample. In the case of the textbook data, we proceed as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Randomly sample one observation from the 73 price differences.</p></li>
+<li><p>Randomly sample a second observation from the 73 price differences. There is a chance that this second observation will be the same one sampled in the first step.<br />
+<span class="math inline">\(\vdots\)</span></p></li>
+<li><p>Randomly sample a 73<span class="math inline">\(^{rd}\)</span> observation from the 73 price differences.</p></li>
+</ol>
+<p>This type of sampling is called <strong>sampling with replacement</strong>. Table [textbookBootstrapSample] shows a bootstrap sample for the textbook pricing example. Some of the values, such as , are duplicated since occasionally we sample the same observation multiple times.</p>
+<table>
+<caption>A bootstrap sample of the textbook price differences, which represents a sample of 73 values from the original 73 observations, where we are sampling with replacement. In sampling with replacement, it is possible for a value to be sampled multiple times. For example, was sampled twice in this bootstrap sample.</caption>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="center">6.63</td>
+<td align="center">5.39</td>
+<td align="center">6.39</td>
+<td align="center">14.05</td>
+<td align="center">6.63</td>
+<td align="center">-0.25</td>
+<td align="center">12.45</td>
+<td align="center">-0.22</td>
+<td align="center">9.45</td>
+<td align="center">9.45</td>
+</tr>
+<tr class="even">
+<td>11.70</td>
+<td align="center">39.08</td>
+<td align="center">4.80</td>
+<td align="center">28.72</td>
+<td align="center">9.45</td>
+<td align="center">-0.25</td>
+<td align="center">-3.88</td>
+<td align="center">2.82</td>
+<td align="center">45.34</td>
+<td align="center">28.72</td>
+<td align="center">16.62</td>
+</tr>
+<tr class="odd">
+<td>38.35</td>
+<td align="center">4.74</td>
+<td align="center">44.40</td>
+<td align="center">3.74</td>
+<td align="center">1.75</td>
+<td align="center">2.84</td>
+<td align="center">30.25</td>
+<td align="center">3.35</td>
+<td align="center">6.63</td>
+<td align="center">30.50</td>
+<td align="center">0.00</td>
+</tr>
+<tr class="even">
+<td>4.96</td>
+<td align="center">6.39</td>
+<td align="center">9.48</td>
+<td align="center"></td>
+<td align="center">66.00</td>
+<td align="center">44.40</td>
+<td align="center">-0.25</td>
+<td align="center">-2.55</td>
+<td align="center">17.98</td>
+<td align="center">2.82</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>29.29</td>
+<td align="center">9.22</td>
+<td align="center">11.70</td>
+<td align="center">9.31</td>
+<td align="center">4.80</td>
+<td align="center">13.63</td>
+<td align="center">9.45</td>
+<td align="center">38.23</td>
+<td align="center">4.96</td>
+<td align="center">19.69</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td>14.26</td>
+<td align="center">12.45</td>
+<td align="center">5.39</td>
+<td align="center">-0.28</td>
+<td align="center">8.23</td>
+<td align="center">0.42</td>
+<td align="center">2.82</td>
+<td align="center">4.78</td>
+<td align="center">7.01</td>
+<td align="center">4.64</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td>9.12</td>
+<td align="center">9.31</td>
+<td align="center">9.12</td>
+<td align="center">11.70</td>
+<td align="center">27.15</td>
+<td align="center">28.72</td>
+<td align="center">30.71</td>
+<td align="center">2.84</td>
+<td align="center">-9.53</td>
+<td align="center">14.05</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>[textbookBootstrapSample]</p>
+<p>A bootstrap sample behaves similarly to how an actual sample would behave, and we compute the point estimate of interest. In the textbook price example, we compute the standard deviation of the bootstrap sample: $13.98.</p>
+</div>
+<div id="inference-using-the-bootstrap" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Inference using the bootstrap</h3>
+<p>One bootstrap sample is not enough to understand the uncertainty of the standard deviation, so we need to collect another bootstrap sample and compute the standard deviation: $16.21. And another: $14.07. And so on. Using a computer, we took 10,000 bootstrap samples and computed the standard deviation for each, and these are summarized in . This is called the <strong>bootstrap distribution</strong> of the standard deviation for the textbook price differences. To make use of this distribution, we make an important assumption: the bootstrap distribution shown in Figure [textbookBootstrapSamplingForSD] is similar to the sampling distribution of the standard deviation. This assumption is reasonable when doing an informal exploration of the uncertainty of an estimate, and under certain conditions, we can rely on it for more formal inference methods.</p>
+<div class="figure">
+<img src="04/figures/textbooksS10/textbookBootstrapSamplingForSD" alt="Bootstrap distribution for the standard deviation of textbook price differences. The distribution is approximately centered at the original sample’s standard deviation, $14.26." />
+<p class="caption">Bootstrap distribution for the standard deviation of textbook price differences. The distribution is approximately centered at the original sample’s standard deviation, $14.26.</p>
+</div>
+<p>[textbookBootstrapSamplingForSD]</p>
+<p><span>Describe the bootstrap distribution for the standard deviation shown in Figure [textbookBootstrapSamplingForSD].</span> The distribution is symmetric, bell-shaped, and centered near $14.26, which is the point estimate from the original data. The standard deviation of the bootstrap distribution is $1.60, and most observations in this distribution lie between $11 and $17.</p>
+<p>In this example, the bootstrap distribution’s standard deviation, $1.60, quantifies the uncertainty of the point estimate. This is an estimate of the standard error based on the bootstrap. We might be tempted to use it for a 95% confidence interval, but first we must perform some due diligence. As with every statistical method, we must check certain conditions before performing formal inference using the bootstrap.</p>
+<p>The bootstrap distribution for the standard deviation will be a good approximation of the sampling distribution for the standard deviation when</p>
+<ol style="list-style-type: decimal">
+<li><p>observations in the original sample are independent,</p></li>
+<li><p>the original sample size is at least 30, and</p></li>
+<li><p>the bootstrap distribution is nearly normal.</p></li>
+</ol>
+<p>We’re already familiar with checking independence of observations, which we previously checked for this data set, and the second condition is easy to check. The last condition can be checked by examining the bootstrap distribution using a normal probability plot, as shown in Figure [textbookBootstrapSamplingQQPlotForSD]. In this example, we see a very straight line, which indicates the bootstrap distribution is nearly normal, and we can move forward with constructing a confidence interval.</p>
+<div class="figure">
+<img src="04/figures/textbooksS10/textbookBootstrapSamplingQQPlotForSD" alt="Normal probability plot for the bootstrap distribution." />
+<p class="caption">Normal probability plot for the bootstrap distribution.</p>
+</div>
+<p>[textbookBootstrapSamplingQQPlotForSD]</p>
+<p>As with many other point estimates, we will use the familiar formula</p>
+<p><span class="math display">\[\begin{aligned}
+\text{point estimate} \pm t_{df}^{\star} \times SE\end{aligned}\]</span></p>
+<p>In the textbook example, using <span class="math inline">\(df = 73 - 1 = 72\)</span> leads to <span class="math inline">\(t_{72}^{\star} = 1.99\)</span> for a 95% confidence level. For bootstrapping, the standard error is computed as the standard deviation of the bootstrap distribution.</p>
+<p><span>Compute the 95% confidence interval for the standard deviation of the textbook price difference.</span> We use the general formula for a 95% confidence interval with the <span class="math inline">\(t\)</span> distribution:</p>
+<p><span class="math display">\[\begin{aligned}
+\text{point estimate} &amp;\pm t_{df}^{\star} \times SE \\
+14.26 &amp;\pm 1.99 \times 1.60 \\
+(\$11.08, &amp;\$17.44)\end{aligned}\]</span></p>
+<p>We are 95% confident that the standard deviation of the textbook price differences is between $11.08 and $17.44.</p>
+<p>Had we wanted to conduct a hypothesis test, we could have used the point estimate and standard error for a t test as we have in previous sections.</p>
+<p><span> The bootstrap may be used with any parameters using the same conditions as were provided for the standard deviation. However, in other situations, it may be more important to examine the validity of the third condition: that the bootstrap distribution is nearly normal.</span></p>
+</div>
+<div id="frequently-asked-questions" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Frequently asked questions</h3>
+<dl>
+<dt>There are more types of bootstrap techniques, right?</dt>
+<dd><p>Yes! There are many excellent bootstrap techniques. We have only chosen to present one bootstrap technique that could be explained in a single section and is also reasonably reliable.</p>
+</dd>
+<dt>Can we use the bootstrap for the mean or difference of means?</dt>
+<dd><p>Technically, yes. However, the methods introduced earlier tend to be more reliable than this particular bootstrapping method and other simple bootstrapping techniques. See the following page for details on an investigation into the accuracy of several bootstrapping methods as well as the <span class="math inline">\(t\)</span> distribution method introduced earlier in this chapter:</p>
+<p><a href="http://www.openintro.org/stat/bootstrap">www.openintro.org/stat/bootstrap</a></p>
+</dd>
+<dt>I’ve heard a technique called the percentile bootstrap that is very robust.</dt>
+<dd><p> <br />
+It is a held belief that the percentile bootstrap is a robust bootstrap method. That is false. The percentile method is one of the least reliable bootstrap methods. Instead, use the method described in this section, which is more reliable, or learn about more advanced techniques.</p>
+</dd>
+</dl>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="117">
+<li id="fn117"><p><span class="math inline">\(H_0\)</span>: The average on-base percentage is equal across the four positions. <span class="math inline">\(H_A\)</span>: The average on-base percentage varies across some (or all) groups.<a href="inferenceForNumericalDataANOVA.html#fnref117">↩</a></p></li>
+<li id="fn118"><p>See, for example, <a href="http://www.stat.columbia.edu/~cook/movabletype/archives/2007/05/the_prosecutors.html">www.stat.columbia.edu/<span class="math inline">\(\sim\)</span>cook/movabletype/archives/2007/05/the_prosecutors.html</a>.<a href="inferenceForNumericalDataANOVA.html#fnref118">↩</a></p></li>
+<li id="fn119"><p>Let <span class="math inline">\(\bar{x}\)</span> represent the mean of outcomes across all groups. Then the mean square between groups is computed as</p>
+<p><span class="math display">\[\begin{aligned}
+MSG = \frac{1}{df_{G}}SSG = \frac{1}{k-1}\sum_{i=1}^{k} n_{i}\left(\bar{x}_{i} - \bar{x}\right)^2\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(SSG\)</span> is called the <strong>sum of squares between groups</strong> and <span class="math inline">\(n_{i}\)</span> is the sample size of group <span class="math inline">\(i\)</span>.<a href="inferenceForNumericalDataANOVA.html#fnref119">↩</a></p></li>
+<li id="fn120"><p>Let <span class="math inline">\(\bar{x}\)</span> represent the mean of outcomes across all groups. Then the <strong>sum of squares total (<span class="math inline">\(SST\)</span>)</strong> is computed as <span class="math inline">\(SST = \sum_{i=1}^{n} \left(x_{i} - \bar{x}\right)^2\)</span>, where the sum is over all observations in the data set. Then we compute the <strong>sum of squared errors (<span class="math inline">\(SSE\)</span>)</strong> in one of two equivalent ways:</p>
+<p><span class="math display">\[\begin{aligned}
+SSE = SST - SSG = (n_1-1)s_1^2 + (n_2-1)s_2^2 + \cdots + (n_k-1)s_k^2\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(s_i^2\)</span> is the sample variance (square of the standard deviation) of the residuals in group <span class="math inline">\(i\)</span>. Then the <span class="math inline">\(MSE\)</span> is the standardized form of <span class="math inline">\(SSE\)</span>: <span class="math inline">\(MSE = \frac{1}{df_{E}}SSE\)</span>.<a href="inferenceForNumericalDataANOVA.html#fnref120">↩</a></p></li>
+<li id="fn121"><p>There are <span class="math inline">\(k=4\)</span> groups, so <span class="math inline">\(df_{G} = k-1 = 3\)</span>. There are <span class="math inline">\(n = n_1 + n_2 + n_3 + n_4 = 327\)</span> total observations, so <span class="math inline">\(df_{E} = n - k = 323\)</span>. Then the <span class="math inline">\(F\)</span> statistic is computed as the ratio of <span class="math inline">\(MSG\)</span> and <span class="math inline">\(MSE\)</span>: <span class="math inline">\(F = \frac{MSG}{MSE} = \frac{0.00252}{0.00127} = 1.984 \approx 1.994\)</span>. (<span class="math inline">\(F=1.994\)</span> was computed by using values for <span class="math inline">\(MSG\)</span> and <span class="math inline">\(MSE\)</span> that were not rounded.)<a href="inferenceForNumericalDataANOVA.html#fnref121">↩</a></p></li>
+<li id="fn122"><p><img src="04/figures/fDist3And323/fDist3And323Shaded" title="fig:" alt="image" /><a href="inferenceForNumericalDataANOVA.html#fnref122">↩</a></p></li>
+<li id="fn123"><p>First calculate the of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.435 would have a residual of <span class="math inline">\(0.405 - \bar{x}_{OF} = 0.071\)</span>. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.<a href="inferenceForNumericalDataANOVA.html#fnref123">↩</a></p></li>
+<li id="fn124"><p>The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.<a href="inferenceForNumericalDataANOVA.html#fnref124">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inferenceForNumericalDatattest.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linRegrForTwoVar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/programmingforpsych/blob/master/05-ANOVA.Rmd",
+"text": "Edit"
+},
+"download": ["Programming_Crump.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

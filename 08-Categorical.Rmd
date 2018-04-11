@@ -65,7 +65,7 @@ Typically we do not know the true proportion, $p$, so we substitute some value t
 
 ### Confidence intervals for a proportion {#confIntForPropSection}
 
-According to a New York Times / CBS News poll in June 2012, only about 44% of the American public approves of the job the Supreme Court is doing.[^1] This poll included responses of 976 randomly sampled adults.
+According to a New York Times / CBS News poll in June 2012, only about 44% of the American public approves of the job the Supreme Court is doing.[^8.1] This poll included responses of 976 randomly sampled adults.
 
 We want a confidence interval for the proportion of Americans who approve of the job the Supreme Court is doing. Our point estimate, based on a simple random sample of size $n = 976$ from the NYTimes/CBS poll, is $\hat{p} = 0.44$. To use our confidence interval formula from Section [ConfidenceIntervals], we must first check whether the sampling distribution of $\hat{p}$ is nearly normal and calculate the standard error of the estimate.
 
@@ -73,7 +73,7 @@ The data are based on a simple random sample and consist of far fewer than 10% o
 
 With the conditions met, we are assured that the sampling distribution of $\hat{p}$ is nearly normal. Next, a standard error for $\hat{p}$ is needed, and then we can employ the usual method to construct a confidence interval.
 
-[seOfPropOfAmericansJobApprovalOfSupremeCourt] Estimate the standard error of $\hat{p}=0.44$ using Equation . Because $p$ is unknown and the standard error is for a confidence interval, use $\hat{p}$ in place of $p$. [^2]
+[seOfPropOfAmericansJobApprovalOfSupremeCourt] Estimate the standard error of $\hat{p}=0.44$ using Equation . Because $p$ is unknown and the standard error is for a confidence interval, use $\hat{p}$ in place of $p$. [^8.2]
 
 <span>Construct a 95% confidence interval for $p$, the proportion of Americans who approve of the job the Supreme Court is doing.</span> Using the standard error estimate from Guided Practice [seOfPropOfAmericansJobApprovalOfSupremeCourt], the point estimate 0.44, and $z^{\star} = 1.96$ for a 95% confidence interval, the confidence interval can be computed as
 
@@ -92,7 +92,7 @@ We are 95% confident that the true proportion of Americans who approve of the jo
 
 To apply the same normal distribution framework in the context of a hypothesis test for a proportion, the independence and success-failure conditions must also be satisfied. However, in a hypothesis test, the success-failure condition is checked using the null proportion: we verify $np_0$ and $n(1-p_0)$ are at least 10, where $p_0$ is the null value.
 
-Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50% support from the district’s electorate. Ms. Toohey’s opponent claimed that Ms. Toohey has *less* than 50%. Set up a hypothesis test to evaluate who is right.[^3]
+Deborah Toohey is running for Congress, and her campaign manager claims she has more than 50% support from the district’s electorate. Ms. Toohey’s opponent claimed that Ms. Toohey has *less* than 50%. Set up a hypothesis test to evaluate who is right.[^8.3]
 
 <span>A newspaper collects a simple random sample of 500 likely voters in the district and estimates Toohey’s support to be 52%. Does this provide convincing evidence for the claim of Toohey’s manager at the 5% significance level?</span> [TooheyInferenceExample]
 
@@ -132,13 +132,13 @@ We would need at least 600.25 participants, which means we need 601 participants
 
 As noted in the example, if we have an estimate of the proportion, we should use it in place of the worst case estimate of the proportion, 0.5.
 
-A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate what proportion of these tires will be rejected through quality control. The quality control team has monitored the last three tire models produced by the factory, failing 1.7% of tires in the first model, 6.2% of the second model, and 1.3% of the third model. The manager would like to examine enough tires to estimate the failure rate of the new tire model to within about 2% with a 90% confidence level.[^4]
+A manager is about to oversee the mass production of a new tire model in her factory, and she would like to estimate what proportion of these tires will be rejected through quality control. The quality control team has monitored the last three tire models produced by the factory, failing 1.7% of tires in the first model, 6.2% of the second model, and 1.3% of the third model. The manager would like to examine enough tires to estimate the failure rate of the new tire model to within about 2% with a 90% confidence level.[^8.4]
 
 -   There are three different failure rates to choose from. Perform the sample size computation for each separately, and identify three sample sizes to consider.
 
 -   The sample sizes vary widely. Which of the three would you suggest using? What would influence your choice?
 
-A recent estimate of Congress’ approval rating was 17%.[^5] If we were to conduct a new poll and wanted an estimate with a margin of error smaller than about 0.04 with 95% confidence, how big of a sample should we use?[^6]
+A recent estimate of Congress’ approval rating was 17%.[^8.5] If we were to conduct a new poll and wanted an estimate with a margin of error smaller than about 0.04 with 95% confidence, how big of a sample should we use?[^8.6]
 
 ## Difference of two proportions {#differenceOfTwoProportions}
 
@@ -170,7 +170,7 @@ where $p_1$ and $p_2$ represent the population proportions, and $n_1$ and $n_2$ 
 
 In the setting of confidence intervals, the sample proportions are used to verify the success-failure condition and also compute standard error, just as was the case with a single proportion.
 
-The way a question is phrased can influence a person’s response. For example, Pew Research Center conducted a survey with the following question:[^7]
+The way a question is phrased can influence a person’s response. For example, Pew Research Center conducted a survey with the following question:[^8.7]
 
 > As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
 
@@ -186,7 +186,7 @@ For each randomly sampled respondent, the statements in brackets were randomized
 
 First the conditions must be verified. Because each group is a simple random sample from less than 10% of the population, the observations are independent, both within the samples and between the samples. The success-failure condition also holds for each sample. Because all conditions are met, the normal model can be used for the point estimate of the difference in support, where $p_1$ corresponds to the original ordering and $p_2$ to the reversed ordering: $$\hat{p}_{1} - \hat{p}_{2} = 0.47 - 0.34 = 0.13$$ The standard error may be computed from Equation  using the sample proportions: $$SE \approx \sqrt{\frac{0.47(1-0.47)}{771} + \frac{0.34(1-0.34)}{732}} = 0.025$$ For a 90% confidence interval, we use $z^{\star} = 1.65$: $$\text{point estimate} \ \pm\ z^{\star}SE \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.025 \quad \to \quad (0.09, 0.17)$$ We are 90% confident that the approval rating for the 2010 healthcare law changes between 9% and 17% due to the ordering of the two statements in the survey question. The Pew Research Center reported that this modestly large difference suggests that the opinions of much of the public are still fluid on the health insurance mandate.
 
-[carWheelGearManufacturer] A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. If there is strong evidence of a more than 3% improvement in the percent of gears that pass inspection, management says they will switch suppliers, otherwise they will maintain the current supplier. Set up appropriate hypotheses for the test.[^8]
+[carWheelGearManufacturer] A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. If there is strong evidence of a more than 3% improvement in the percent of gears that pass inspection, management says they will switch suppliers, otherwise they will maintain the current supplier. Set up appropriate hypotheses for the test.[^8.8]
 
 <span>The quality control engineer from Guided Practice [carWheelGearManufacturer] collects a sample of gears, examining 1000 gears from each company and finds that 899 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, evaluate the hypothesis setup of Guided Practice [carWheelGearManufacturer] using a significance level of 5%.</span> First, we check the conditions. The sample is not necessarily random, so to proceed we must assume the gears are all independent; for this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. The success-failure condition also holds for each sample. Thus, the difference in sample proportions, $0.958-0.899=0.059$, can be said to come from a nearly normal distribution.
 
@@ -200,7 +200,7 @@ Next, we compute the test statistic and use it to find the p-value, which is dep
 
 ### Hypothesis testing when $H_0: p_1=p_2$ {#pooledHTForProportionsSection}
 
-Here we use a new example to examine a special estimate of standard error when $H_0: p_1 = p_2$. We investigate whether there is an increased risk of cancer in dogs that are exposed to the herbicide 2,4-dichlorophenoxyacetic acid (2,4-D). A study in 1994 examined 491 dogs that had developed cancer and 945 dogs as a control group.[^9] Of these two groups, researchers identified which dogs had been exposed to 2,4-D in their owner’s yard. The results are shown in Table [24DAndCancerInDogs].
+Here we use a new example to examine a special estimate of standard error when $H_0: p_1 = p_2$. We investigate whether there is an increased risk of cancer in dogs that are exposed to the herbicide 2,4-dichlorophenoxyacetic acid (2,4-D). A study in 1994 examined 491 dogs that had developed cancer and 945 dogs as a control group.[^8.9] Of these two groups, researchers identified which dogs had been exposed to 2,4-D in their owner’s yard. The results are shown in Table [24DAndCancerInDogs].
 
                cancer   no cancer
   ---------- -------- -----------
@@ -211,9 +211,9 @@ Here we use a new example to examine a special estimate of standard error when $
 
 [24DAndCancerInDogs]
 
-Is this study an experiment or an observational study?[^10]
+Is this study an experiment or an observational study?[^8.10]
 
-[htFor24DAndCancerInDogs] Set up hypotheses to test whether 2,4-D and the occurrence of cancer in dogs are related. Use a one-sided test and compare across the cancer and no cancer groups.[^11]
+[htFor24DAndCancerInDogs] Set up hypotheses to test whether 2,4-D and the occurrence of cancer in dogs are related. Use a one-sided test and compare across the cancer and no cancer groups.[^8.11]
 
 <span>Are the conditions met to use the normal model and make inference on the results?</span>[condFor24DAndCancerInDogsNormalInference] (1) It is unclear whether this is a random sample. However, if we believe the dogs in both the cancer and no cancer groups are representative of each respective population and that the dogs in the study do not interact in any way, then we may find it reasonable to assume independence between observations. (2) The success-failure condition holds for each sample.
 
@@ -239,7 +239,7 @@ $$\begin{aligned}
 SE = \sqrt{\frac{\hat{p}(1-\hat{p})}{n_1} + \frac{\hat{p}(1-\hat{p})}{n_2}} 
 \label{seOfDiffInPropUsingPooledEstimate}\end{aligned}$$
 
-[verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs] Using Equation , $\hat{p}=0.345$, $n_1 = 491$, and $n_2=945$, verify the estimate for the standard error is $SE = 0.026$. Next, complete the hypothesis test using a significance level of 0.05. Be certain to draw a picture, compute the p-value, and state your conclusion in both statistical language and plain language.[^12]
+[verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs] Using Equation , $\hat{p}=0.345$, $n_1 = 491$, and $n_2=945$, verify the estimate for the standard error is $SE = 0.026$. Next, complete the hypothesis test using a significance level of 0.05. Be certain to draw a picture, compute the p-value, and state your conclusion in both statistical language and plain language.[^8.12]
 
 ## Testing for goodness of fit using chi-square (special topic) {#oneWayChiSquare}
 
@@ -305,7 +305,7 @@ $$\begin{aligned}
 Z_{1} = \frac{\text{observed white count} - \text{null white count}}
                 {\text{SE of observed white count}}\end{aligned}$$
 
-The standard error for the point estimate of the count in binned data is the square root of the count under the null.[^13] Therefore:
+The standard error for the point estimate of the count in binned data is the square root of the count under the null.[^8.13] Therefore:
 
 $$\begin{aligned}
 Z_1 = \frac{205 - 198}{\sqrt{198}} = 0.50\end{aligned}$$
@@ -354,7 +354,7 @@ test statistic
 
 The **chi-square distribution** is sometimes used to characterize data sets and statistics that are always positive and typically right skewed. Recall the normal distribution had two parameters – mean and standard deviation – that could be used to describe its exact characteristics. The chi-square distribution has just one parameter called , which influences the shape, center, and spread of the distribution.
 
-[exerChiSquareDistributionDescriptionWithMoreDOF] Figure [chiSquareDistributionWithInceasingDF] shows three chi-square distributions. (a) How does the center of the distribution change when the degrees of freedom is larger? (b) What about the variability (spread)? (c) How does the shape change?[^14]
+[exerChiSquareDistributionDescriptionWithMoreDOF] Figure [chiSquareDistributionWithInceasingDF] shows three chi-square distributions. (a) How does the center of the distribution change when the degrees of freedom is larger? (b) What about the variability (spread)? (c) How does the shape change?[^8.14]
 
 ![Three chi-square distributions with varying degrees of freedom.](03/figures/chiSquareDistributionWithInceasingDF/chiSquareDistributionWithInceasingDF)
 
@@ -389,11 +389,11 @@ Our principal interest in the chi-square distribution is the calculation of p-va
 
 <span>Figure [chiSquareAreaAbove5Point1WithDF5] shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area.</span>[chisquaredistexample03] Looking in the row with 5 df, 5.1 falls below the smallest cutoff for this row (6.06). That means we can only say that the area is *greater than 0.3*.
 
-[ChiSquareDistGuidedPractice01] Figure [chiSquareAreaAbove11Point7WithDF7] shows a cutoff of 11.7 on a chi-square distribution with 7 degrees of freedom. Find the area of the upper tail.[^15]
+[ChiSquareDistGuidedPractice01] Figure [chiSquareAreaAbove11Point7WithDF7] shows a cutoff of 11.7 on a chi-square distribution with 7 degrees of freedom. Find the area of the upper tail.[^8.15]
 
-[ChiSquareDistGuidedPractice02] Figure [chiSquareAreaAbove10WithDF4] shows a cutoff of 10 on a chi-square distribution with 4 degrees of freedom. Find the area of the upper tail.[^16]
+[ChiSquareDistGuidedPractice02] Figure [chiSquareAreaAbove10WithDF4] shows a cutoff of 10 on a chi-square distribution with 4 degrees of freedom. Find the area of the upper tail.[^8.16]
 
-[ChiSquareDistGuidedPractice03] Figure [chiSquareAreaAbove9Point21WithDF3] shows a cutoff of 9.21 with a chi-square distribution with 3 df. Find the area of the upper tail.[^17]
+[ChiSquareDistGuidedPractice03] Figure [chiSquareAreaAbove9Point21WithDF3] shows a cutoff of 9.21 with a chi-square distribution with 3 df. Find the area of the upper tail.[^8.17]
 
 ### Finding a p-value for a chi-square distribution {#pValueForAChiSquareTest}
 
@@ -489,9 +489,9 @@ Because applying the chi-square framework requires expected counts to be at leas
 
 <span>Do you notice any unusually large deviations in the graph? Can you tell if these deviations are due to chance just by looking?</span> It is not obvious whether differences in the observed counts and the expected counts from the geometric distribution are significantly different. That is, it is not clear whether these deviations might be due to chance or whether they are so strong that the data provide convincing evidence against the null hypothesis. However, we can perform a chi-square test using the counts in Table [sAndP500For1990To2011TimeToPosTrade2].
 
-Table [sAndP500For1990To2011TimeToPosTrade2] provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $X^2$.[^18]
+Table [sAndP500For1990To2011TimeToPosTrade2] provides a set of count data for waiting times ($O_1=1532$, $O_2=760$, ...) and expected counts under the geometric distribution ($E_1=1569$, $E_2=734$, ...). Compute the chi-square test statistic, $X^2$.[^8.18]
 
-Because the expected counts are all at least 5, we can safely apply the chi-square distribution to $X^2$. However, how many degrees of freedom should we use?[^19]
+Because the expected counts are all at least 5, we can safely apply the chi-square distribution to $X^2$. However, how many degrees of freedom should we use?[^8.19]
 
 <span>If the observed counts follow the geometric model, then the chi-square test statistic $X^2=15.08$ would closely follow a chi-square distribution with $df=6$. Using this information, compute a p-value.</span> [RejectGeomModelForSP500StockDataFor1990To2011] Figure [geomFitPValueForSP500For1990To2011] shows the chi-square distribution, cutoff, and the shaded p-value. If we look up the statistic $X^2=15.08$ in Appendix [chiSquareProbabilityTable], we find that the p-value is between 0.01 and 0.02. In other words, we have sufficient evidence to reject the notion that the wait times follow a geometric distribution, i.e. trading days are not independent and past days may help predict what the stock market will do today.
 
@@ -503,7 +503,7 @@ Because the expected counts are all at least 5, we can safely apply the chi-squ
 
 ## Testing for independence in two-way tables (special topic) {#twoWayTablesAndChiSquare}
 
-Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Table [googleSearchAlgorithmByAlgorithmOnly] shows an example of 10,000 queries split into three algorithm groups.[^20] The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
+Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. Table [googleSearchAlgorithmByAlgorithmOnly] shows an example of 10,000 queries split into three algorithm groups.[^8.20] The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
 
 <span>ll ccc ll</span> Search algorithm &
 
@@ -543,7 +543,7 @@ The hypothesis test for this Google experiment is really about assessing whether
 
 <span>From the experiment, we estimate the proportion of users who were satisfied with their initial search (no new search) as $7078/10000 = 0.7078$. If there really is no difference among the algorithms and 70.78% of people are satisfied with the search results, how many of the 5000 people in the “current algorithm” group would be expected to not perform a new search?</span> [googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch] About 70.78% of the 5000 would be satisfied with the initial search: $$0.7078\times 5000 = 3539\text{ users}$$ That is, if there was no difference between the three groups, then we would expect 3539 of the current algorithm users not to perform a new search.
 
-[googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch] Using the same rationale described in Example [googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch], about how many users in each test group would not perform a new search if the algorithms were equally helpful?[^21]
+[googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch] Using the same rationale described in Example [googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch], about how many users in each test group would not perform a new search if the algorithms were equally helpful?[^8.21]
 
 We can compute the expected number of users who would perform a new search for each group using the same strategy employed in Example [googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch] and Guided Practice [googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch]. These expected counts were used to construct Table [googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts], which is the same as Table [googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals], except now the expected counts have been added in parentheses.
 
@@ -589,7 +589,7 @@ $$\begin{aligned}
 & \hspace{9mm}\vdots & &\hspace{13mm}\vdots \\
 &\text{Row 2, Col 3}& &\frac{(682 - 730.5)^2}{730.5} = 3.220\end{aligned}$$
 
-Adding the computed value for each cell gives the chi-square test statistic $X^2$: $$X^2 = 0.222 + 0.237 + \dots + 3.220 = 6.120$$ Just like before, this test statistic follows a chi-square distribution. However, the degrees of freedom are computed a little differently for a two-way table.[^22] For two way tables, the degrees of freedom is equal to
+Adding the computed value for each cell gives the chi-square test statistic $X^2$: $$X^2 = 0.222 + 0.237 + \dots + 3.220 = 6.120$$ Just like before, this test statistic follows a chi-square distribution. However, the degrees of freedom are computed a little differently for a two-way table.[^8.22] For two way tables, the degrees of freedom is equal to
 
 $$\begin{aligned}
 df = \text{(number of rows minus 1)}\times \text{(number of columns minus 1)}\end{aligned}$$
@@ -611,7 +611,7 @@ If the null hypothesis is true (i.e. the algorithms are equally useful), then th
 
 <span>Compute the p-value and draw a conclusion about whether the search algorithms have different performances.</span> Looking in Appendix [chiSquareProbabilityTable] on page , we examine the row corresponding to 2 degrees of freedom. The test statistic, $X^2=6.120$, falls between the fourth and fifth columns, which means the p-value is between 0.02 and 0.05. Because we typically test at a significance level of $\alpha=0.05$ and the p-value is less than 0.05, the null hypothesis is rejected. That is, the data provide convincing evidence that there is some difference in performance among the algorithms.
 
-<span>Table [pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises] summarizes the results of a Pew Research poll.[^23] We would like to determine if there are actually differences in the approval ratings of Barack Obama, Democrats in Congress, and Republicans in Congress. What are appropriate hypotheses for such a test?</span>[hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection]
+<span>Table [pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises] summarizes the results of a Pew Research poll.[^8.23] We would like to determine if there are actually differences in the approval ratings of Barack Obama, Democrats in Congress, and Republicans in Congress. What are appropriate hypotheses for such a test?</span>[hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection]
 
 -   There is no difference in approval ratings between the three groups.
 
@@ -629,19 +629,19 @@ Total & & 1458 & 1382 & 1383 & & 4223\
 
 [pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises]
 
-A chi-square test for a two-way table may be used to test the hypotheses in Example [hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection]. As a first step, compute the expected values for each of the six table cells.[^24]
+A chi-square test for a two-way table may be used to test the hypotheses in Example [hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection]. As a first step, compute the expected values for each of the six table cells.[^8.24]
 
-Compute the chi-square test statistic.[^25]
+Compute the chi-square test statistic.[^8.25]
 
-Because there are 2 rows and 3 columns, the degrees of freedom for the test is $df=(2-1)\times (3-1) = 2$. Use $X^2=106.4$, $df=2$, and the chi-square table on page  to evaluate whether to reject the null hypothesis.[^26]
+Because there are 2 rows and 3 columns, the degrees of freedom for the test is $df=(2-1)\times (3-1) = 2$. Use $X^2=106.4$, $df=2$, and the chi-square table on page  to evaluate whether to reject the null hypothesis.[^8.26]
 
-[^1]: [nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html](http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html)
+[^8.1]: [nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html](http://www.nytimes.com/2012/06/08/us/politics/44-percent-of-americans-approve-of-supreme-court-in-new-poll.html)
 
-[^2]: $SE = \sqrt{\frac{p(1-p)}{n}} \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} = \sqrt{\frac{0.44(1-0.44)}{976}} = 0.016$
+[^8.2]: $SE = \sqrt{\frac{p(1-p)}{n}} \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} = \sqrt{\frac{0.44(1-0.44)}{976}} = 0.016$
 
-[^3]: We should run a two-sided.$H_0$: Ms. Toohey’s support is 50%. $p = 0.50$. $H_A$: Ms. Toohey’s support is either above or below 50%. $p \neq 0.50$.
+[^8.3]: We should run a two-sided.$H_0$: Ms. Toohey’s support is 50%. $p = 0.50$. $H_A$: Ms. Toohey’s support is either above or below 50%. $p \neq 0.50$.
 
-[^4]: \(a) For the 1.7% estimate of $p$, we estimate the appropriate sample size as follows:
+[^8.4]: \(a) For the 1.7% estimate of $p$, we estimate the appropriate sample size as follows:
 
     $$\begin{aligned}
     1.65\times \sqrt{\frac{p(1-p)}{n}} \approx
@@ -651,9 +651,9 @@ Because there are 2 rows and 3 columns, the degrees of freedom for the test is $
 
     \(b) We could examine which of the old models is most like the new model, then choose the corresponding sample size. Or if two of the previous estimates are based on small samples while the other is based on a larger sample, we should consider the value corresponding to the larger sample. (Answers will vary.)
 
-[^5]: [www.gallup.com/poll/155144/Congress-Approval-June.aspx](http://www.gallup.com/poll/155144/Congress-Approval-June.aspx)
+[^8.5]: [www.gallup.com/poll/155144/Congress-Approval-June.aspx](http://www.gallup.com/poll/155144/Congress-Approval-June.aspx)
 
-[^6]: We complete the same computations as before, except now we use $0.17$ instead of $0.5$ for $p$:
+[^8.6]: We complete the same computations as before, except now we use $0.17$ instead of $0.5$ for $p$:
 
     $$\begin{aligned}
     1.96\times \sqrt{\frac{p(1-p)}{n}} \approx
@@ -661,49 +661,49 @@ Because there are 2 rows and 3 columns, the degrees of freedom for the test is $
 
     A sample size of 339 or more would be reasonable.
 
-[^7]: [www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/](http://www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/). Sample sizes for each polling group are approximate.
+[^8.7]: [www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/](http://www.people-press.org/2012/03/26/public-remains-split-on-health-care-bill-opposed-to-mandate/). Sample sizes for each polling group are approximate.
 
-[^8]: $H_0$: The higher quality gears will pass inspection no more than 3% more frequently than the standard quality gears. $p_{highQ} - p_{standard} = 0.03$. $H_A$: The higher quality gears will pass inspection more than 3% more often than the standard quality gears. $p_{highQ} - p_{standard} > 0.03$.
+[^8.8]: $H_0$: The higher quality gears will pass inspection no more than 3% more frequently than the standard quality gears. $p_{highQ} - p_{standard} = 0.03$. $H_A$: The higher quality gears will pass inspection more than 3% more often than the standard quality gears. $p_{highQ} - p_{standard} > 0.03$.
 
-[^9]: Hayes HM, Tarone RE, Cantor KP, Jessen CR, McCurnin DM, and Richardson RC. 1991. Case-Control Study of Canine Malignant Lymphoma: Positive Association With Dog Owner’s Use of 2, 4-Dichlorophenoxyacetic Acid Herbicides. Journal of the National Cancer Institute 83(17):1226-1231.
+[^8.9]: Hayes HM, Tarone RE, Cantor KP, Jessen CR, McCurnin DM, and Richardson RC. 1991. Case-Control Study of Canine Malignant Lymphoma: Positive Association With Dog Owner’s Use of 2, 4-Dichlorophenoxyacetic Acid Herbicides. Journal of the National Cancer Institute 83(17):1226-1231.
 
-[^10]: The owners were not instructed to apply or not apply the herbicide, so this is an observational study. This question was especially tricky because one group was called the *control group*, which is a term usually seen in experiments.
+[^8.10]: The owners were not instructed to apply or not apply the herbicide, so this is an observational study. This question was especially tricky because one group was called the *control group*, which is a term usually seen in experiments.
 
-[^11]: Using the proportions within the cancer and no cancer groups may seem odd. We intuitively may desire to compare the fraction of dogs with cancer in the 2,4-D and no 2,4-D groups, since the herbicide is an explanatory variable. However, the cancer rates in each group do not necessarily reflect the cancer rates in reality due to the way the data were collected. For this reason, computing cancer rates may greatly alarm dog owners.\
+[^8.11]: Using the proportions within the cancer and no cancer groups may seem odd. We intuitively may desire to compare the fraction of dogs with cancer in the 2,4-D and no 2,4-D groups, since the herbicide is an explanatory variable. However, the cancer rates in each group do not necessarily reflect the cancer rates in reality due to the way the data were collected. For this reason, computing cancer rates may greatly alarm dog owners.\
     $H_0$: the proportion of dogs with exposure to 2,4-D is the same in “cancer” and “no cancer” dogs, $p_c - p_n = 0$.\
     $H_A$: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, $p_c - p_n > 0$.
 
-[^12]: Compute the test statistic:
+[^8.12]: Compute the test statistic:
 
     $$\begin{aligned}
     Z = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{0.067 - 0}{0.026} = 2.58\end{aligned}$$
 
     We leave the picture to you. Looking up $Z=2.58$ in the normal probability table: 0.9951. However this is the lower tail, and the upper tail represents the p-value: $1-0.9951 = 0.0049$. We reject the null hypothesis and conclude that dogs getting cancer and owners using 2,4-D are associated.
 
-[^13]: Using some of the rules learned in earlier chapters, we might think that the standard error would be $np(1-p)$, where $n$ is the sample size and $p$ is the proportion in the population. This would be correct if we were looking only at one count. However, we are computing many standardized differences and adding them together. It can be shown – though not here – that the square root of the count is a better way to standardize the count differences.
+[^8.13]: Using some of the rules learned in earlier chapters, we might think that the standard error would be $np(1-p)$, where $n$ is the sample size and $p$ is the proportion in the population. This would be correct if we were looking only at one count. However, we are computing many standardized differences and adding them together. It can be shown – though not here – that the square root of the count is a better way to standardize the count differences.
 
-[^14]: (a) The center becomes larger. If we look carefully, we can see that the center of each distribution is equal to the distribution’s degrees of freedom. (b) The variability increases as the degrees of freedom increases. (c) The distribution is very strongly skewed for $df=2$, and then the distributions become more symmetric for the larger degrees of freedom $df=4$ and $df=9$. We would see this trend continue if we examined distributions with even more larger degrees of freedom.
+[^8.14]: (a) The center becomes larger. If we look carefully, we can see that the center of each distribution is equal to the distribution’s degrees of freedom. (b) The variability increases as the degrees of freedom increases. (c) The distribution is very strongly skewed for $df=2$, and then the distributions become more symmetric for the larger degrees of freedom $df=4$ and $df=9$. We would see this trend continue if we examined distributions with even more larger degrees of freedom.
 
-[^15]: The value 11.7 falls between 9.80 and 12.02 in the 7 df row. Thus, the area is between 0.1 and 0.2.
+[^8.15]: The value 11.7 falls between 9.80 and 12.02 in the 7 df row. Thus, the area is between 0.1 and 0.2.
 
-[^16]: The area is between 0.02 and 0.05.
+[^8.16]: The area is between 0.02 and 0.05.
 
-[^17]: Between 0.02 and 0.05.
+[^8.17]: Between 0.02 and 0.05.
 
-[^18]: $X^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$
+[^8.18]: $X^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08$
 
-[^19]: There are $k=7$ groups, so we use $df=k-1=6$.
+[^8.19]: There are $k=7$ groups, so we use $df=k-1=6$.
 
-[^20]: Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.
+[^8.20]: Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.
 
-[^21]: We would expect $0.7078*2500 = 1769.5$. It is okay that this is a fraction.
+[^8.21]: We would expect $0.7078*2500 = 1769.5$. It is okay that this is a fraction.
 
-[^22]: Recall: in the one-way table, the degrees of freedom was the number of cells minus 1.
+[^8.22]: Recall: in the one-way table, the degrees of freedom was the number of cells minus 1.
 
-[^23]: See the Pew Research website: <span>[www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama](http://www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama/)</span>. The counts in Table [pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises] are approximate.
+[^8.23]: See the Pew Research website: <span>[www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama](http://www.people-press.org/2012/03/14/romney-leads-gop-contest-trails-in-matchup-with-obama/)</span>. The counts in Table [pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises] are approximate.
 
-[^24]: The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{3902} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0
+[^8.24]: The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): $\frac{2119\times 1458}{3902} = 731.6$. Similarly for the first column and the second row: $\frac{2104\times 1458}{4223} = 726.4$. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0
 
-[^25]: For each cell, compute $\frac{(\text{obs} - \text{exp})^2}{exp}$. For instance, the first row and first column: $\frac{(842-731.6)^2}{731.6} = 16.7$. Adding the results of each cell gives the chi-square test statistic: <span>$X^2 = 16.7 + \cdots + 34.0 = 106.4$</span>.
+[^8.25]: For each cell, compute $\frac{(\text{obs} - \text{exp})^2}{exp}$. For instance, the first row and first column: $\frac{(842-731.6)^2}{731.6} = 16.7$. Adding the results of each cell gives the chi-square test statistic: <span>$X^2 = 16.7 + \cdots + 34.0 = 106.4$</span>.
 
-[^26]: The test statistic is larger than the right-most column of the $df=2$ row of the chi-square table, meaning the p-value is less than 0.001. That is, we reject the null hypothesis because the p-value is less than 0.05, and we conclude that Americans’ approval has differences among Democrats in Congress, Republicans in Congress, and the president.
+[^8.26]: The test statistic is larger than the right-most column of the $df=2$ row of the chi-square table, meaning the p-value is less than 0.001. That is, we reject the null hypothesis because the p-value is less than 0.05, and we conclude that Americans’ approval has differences among Democrats in Congress, Republicans in Congress, and the president.

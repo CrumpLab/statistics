@@ -1,4 +1,4 @@
-# Inference for numerical data: t-Tests {#inferenceForNumericalData}
+# Inference for numerical data: t-Tests {#inferenceForNumericalDatattest}
 
 Chapters [FoundationForInference] and [inferenceForCategoricalData] introduced us to inference for proportions using the normal model, and in Section [oneWayChiSquare], we encountered the chi-square distribution, which is useful for working with categorical data with many levels. In this chapter, our focus will be on numerical data, where we will encounter two more distributions: the $t$ distribution (looks a lot like the normal distribution) and the $F$ distribution. Our general approach will be:
 
@@ -32,7 +32,7 @@ If we look at this formula, there are some characteristics that we can think abo
 
 As we did with proportions, we’ll also need to check a few conditions before using the normal model. We’ll forgo describing those details until later this section, but these conditions have been verified for the two examples below.
 
-<span>We’ve taken a random sample of 100 runners from a race called the Cherry Blossom Run in Washington, DC, which was a race with 16,924 participants.[^1] The sample data for the 100 runners is summarized in Table [run10SampDF], histograms of the run time and age of participants are in Figure [run10SampHistograms], and summary statistics are available in Table [ptEstimatesNetTimeAge]. Create a 95% confidence interval for the average time it takes runners in the Cherry Blossom Run to complete the race.</span> We can use the same confidence interval formula for the mean that we used for a proportion:
+<span>We’ve taken a random sample of 100 runners from a race called the Cherry Blossom Run in Washington, DC, which was a race with 16,924 participants.[^4.1] The sample data for the 100 runners is summarized in Table [run10SampDF], histograms of the run time and age of participants are in Figure [run10SampHistograms], and summary statistics are available in Table [ptEstimatesNetTimeAge]. Create a 95% confidence interval for the average time it takes runners in the Cherry Blossom Run to complete the race.</span> We can use the same confidence interval formula for the mean that we used for a proportion:
 
 $$\begin{aligned}
 \text{point estimate}\ \pm\ 1.96 \times SE\end{aligned}$$
@@ -77,7 +77,7 @@ We are 95% confident that the average time for all runners in the 2012 Cherry Bl
 
 [ptEstimatesNetTimeAge]
 
-Use the data to calculate a 90% confidence interval for the average age of participants in the 2012 Cherry Blossom Run. The conditions for applying the normal model have already been verified.[^2]
+Use the data to calculate a 90% confidence interval for the average age of participants in the 2012 Cherry Blossom Run. The conditions for applying the normal model have already been verified.[^4.2]
 
 <span>The nutrition label on a bag of potato chips says that a one ounce (28 gram) serving of potato chips has 130 calories and contains ten grams of fat, with three grams of saturated fat. A random sample of 35 bags yielded a sample mean of 134 calories with a standard deviation of 17 calories. Is there evidence that the nutrition label does not provide an accurate measure of calories in the bags of potato chips? The conditions necessary for applying the normal model have been checked and are satisfied.</span> The question has been framed in terms of two possibilities: the nutrition label accurately lists the correct average calories per bag of chips or it does not, which may be framed as a hypothesis test:
 
@@ -100,7 +100,7 @@ The normal model works well when the sample size is larger than about 30. For sm
 
 ### Introducing the $t$ distribution {#introducingTheTDistribution}
 
-A $t$ distribution, shown as a solid line in Figure [tDistCompareToNormalDist], has a bell shape that looks very similar to a normal distribution (dotted line). However, its tails are thicker, which means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.[^3] When our sample is small, the value $s$ used to compute the standard error isn’t very reliable. The extra thick tails of the $t$ distribution are exactly the correction we need to resolve this problem.
+A $t$ distribution, shown as a solid line in Figure [tDistCompareToNormalDist], has a bell shape that looks very similar to a normal distribution (dotted line). However, its tails are thicker, which means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.[^4.3] When our sample is small, the value $s$ used to compute the standard error isn’t very reliable. The extra thick tails of the $t$ distribution are exactly the correction we need to resolve this problem.
 
 ![Comparison of a $t$ distribution (solid line) and a normal distribution (dotted line).](04/figures/tDistCompareToNormalDist/tDistCompareToNormalDist)
 
@@ -161,7 +161,7 @@ Each row in the $t$ table represents a $t$ distribution with different degrees o
 
 <span>A $t$ distribution with 2 degrees of freedom is shown in the right panel of Figure [tDistDF20RightTail1Point65]. Estimate the proportion of the distribution falling more than 3 units from the mean (above or below).</span> As before, first identify the appropriate row: $df=2$. Next, find the columns that capture 3; because $2.92 < 3 < 4.30$, we use the second and third columns. Finally, we find bounds for the tail areas by looking at the two tail values: 0.05 and 0.10. We use the two tail values because we are looking for two (symmetric) tails.
 
-What proportion of the $t$ distribution with 19 degrees of freedom falls above -1.79 units?[^4]
+What proportion of the $t$ distribution with 19 degrees of freedom falls above -1.79 units?[^4.4]
 
 ### Applying the $t$ distribution to the single-mean situation {#tDistSolutionToSEProblem}
 
@@ -191,7 +191,7 @@ Dolphins are at the top of the oceanic food chain, which causes dangerous substa
 
 [rissosDolphin]
 
-Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso’s dolphins from the Taiji area in Japan.[^5] The data are summarized in Table [summaryStatsOfHgInMuscleOfRissosDolphins]. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
+Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso’s dolphins from the Taiji area in Japan.[^4.5] The data are summarized in Table [summaryStatsOfHgInMuscleOfRissosDolphins]. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
 
   ----- ----------- ----- --------- ---------
    $n$   $\bar{x}$   $s$   minimum   maximum
@@ -253,13 +253,13 @@ $$\begin{aligned}
 
 where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample. The normality condition may be relaxed for larger sample sizes.
 
-[croakerWhiteFishPacificExerConditions] The FDA’s webpage provides some data on mercury content of fish.[^6] Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?[^7]
+[croakerWhiteFishPacificExerConditions] The FDA’s webpage provides some data on mercury content of fish.[^4.6] Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?[^4.7]
 
 <span>Estimate the standard error of the sample mean using the data summaries in Guided Practice [croakerWhiteFishPacificExerConditions]. If we are to use the $t$ distribution to create a 90% confidence interval for the actual mean of the mercury content, identify the degrees of freedom we should use and also find $t^{\star}_{df}$.</span> [croakerWhiteFishPacificExerSEDFTStar] The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. Degrees of freedom: $df = n - 1 = 14$.
 
 Looking in the column where two tails is 0.100 (for a 90% confidence interval) and row $df=14$, we identify $t^{\star}_{14} = 1.76$.
 
-Using the results of Guided Practice [croakerWhiteFishPacificExerConditions] and Example [croakerWhiteFishPacificExerSEDFTStar], compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).[^8]
+Using the results of Guided Practice [croakerWhiteFishPacificExerConditions] and Example [croakerWhiteFishPacificExerSEDFTStar], compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).[^4.8]
 
 ### One sample $t$ tests {#oneSampleTTests}
 
@@ -267,19 +267,19 @@ Is the typical US runner getting faster or slower over time? We consider this qu
 
 The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2012 Cherry Blossom Run whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
-What are appropriate hypotheses for this context?[^9]
+What are appropriate hypotheses for this context?[^4.9]
 
-The data come from a simple random sample from less than 10% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram of the differences was shown in the left panel of Figure . [^10]
+The data come from a simple random sample from less than 10% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram of the differences was shown in the left panel of Figure . [^4.10]
 
 With independence satisfied and skew not a concern, we can proceed with performing a hypothesis test using the $t$ distribution.
 
-The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?[^11]
+The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?[^4.11]
 
 <span> To help us remember to use the $t$ distribution, we use a $T$ to represent the test statistic, and we often call this a **T score**. The Z score and T score are computed in the exact same way and are conceptually identical: each represents how many standard errors the observed value is from the null value.</span>
 
 ## Paired data {#pairedData}
 
-Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles’ (UCLA’s) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10% of all UCLA courses.[^12] A portion of the data set is shown in Table [textbooksDF].
+Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles’ (UCLA’s) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10% of all UCLA courses.[^4.12] A portion of the data set is shown in Table [textbooksDF].
 
              dept       course           ucla     amazon       diff
   ---------- ---------- ---------- ---------- ---------- ----------
@@ -312,7 +312,7 @@ for each book. It is important that we always subtract using a consistent order;
 
 [diffInTextbookPricesS10]
 
-The first difference shown in Table [textbooksDF] is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations 2 and 3.[^13]
+The first difference shown in Table [textbooksDF] is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations 2 and 3.[^4.13]
 
 ### Inference for paired data
 
@@ -345,7 +345,7 @@ To find the tail areas, we compute the test statistic, which is the T score of $
 
 [textbooksS10HTTails]
 
-Create a 95% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.[^14]
+Create a 95% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.[^4.14]
 
 In the textbook price example, we applied the $t$ distribution. However, as we mentioned in the last section, the $t$ distribution looks a lot like the normal distribution when the degrees of freedom are larger than about 30. In such cases, including this one, it would be reasonable to use the normal distribution in place of the $t$ distribution.
 
@@ -394,7 +394,7 @@ SE_{\bar{x}_{esc} - \bar{x}_{control}}
     &\approx \sqrt{\frac{s_{esc}^2}{n_{esc}} + \frac{s_{control}^2}{n_{control}}}
     = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95\end{aligned}$$
 
-Because we will use the $t$ distribution, we also must identify the appropriate degrees of freedom. This can be done using computer software. An alternative technique is to use the smaller of $n_1 - 1$ and $n_2 - 1$, which is the method we will typically apply in the examples and guided practice.[^15]
+Because we will use the $t$ distribution, we also must identify the appropriate degrees of freedom. This can be done using computer software. An alternative technique is to use the smaller of $n_1 - 1$ and $n_2 - 1$, which is the method we will typically apply in the examples and guided practice.[^4.15]
 
 The sample difference of two means, $\bar{x}_1 - \bar{x}_2$, can be modeled using the $t$ distribution and the standard error
 
@@ -457,7 +457,7 @@ We check the two conditions necessary to apply the $t$ distribution to the diffe
 
 [summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers]
 
-The summary statistics in Table [summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers] may be useful for this exercise. (a) What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b) Compute the standard error of the point estimate from part (a).[^16]
+The summary statistics in Table [summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers] may be useful for this exercise. (a) What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b) Compute the standard error of the point estimate from part (a).[^4.16]
 
 <span>Draw a picture to represent the p-value for the hypothesis test from Example [babySmokeHTForWeight].</span> [pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights] To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
 
@@ -470,9 +470,9 @@ T = \frac{\ 0.40 - 0\ }{0.26} = 1.54\end{aligned}$$
 
 Next, we compare this value to values in the $t$ table in Appendix , where we use the smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the degrees of freedom: $df = 49$. The T score falls between the first and second columns in the $df = 49$ row of the $t$ table, meaning the two-tailed p-value falls between 0.10 and 0.20 (reminder, find tail areas along the top of the table). This p-value is larger than the significance value, 0.05, so we fail to reject the null hypothesis. There is insufficient evidence to say there is a difference in average birth weight of newborns from North Carolina mothers who did smoke during pregnancy and newborns from North Carolina mothers who did not smoke during pregnancy.
 
-Does the conclusion to Example [babySmokeHTForWeightComputePValueAndEvalHT] mean that smoking and average birth weight are unrelated?[^17]
+Does the conclusion to Example [babySmokeHTForWeightComputePValueAndEvalHT] mean that smoking and average birth weight are unrelated?[^4.17]
 
-[babySmokeHTIDingHowToDetectDifferences] If we made a Type 2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?[^18]
+[babySmokeHTIDingHowToDetectDifferences] If we made a Type 2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?[^4.18]
 
 ### Case study: two versions of a course exam
 
@@ -486,9 +486,9 @@ B & 27 & 74.1 & 20 & 32 & 100\
 
 [summaryStatsForTwoVersionsOfExams]
 
-[htSetupForEvaluatingTwoExamVersions] Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.[^19]
+[htSetupForEvaluatingTwoExamVersions] Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.[^4.19]
 
-[conditionsForTDistForEvaluatingTwoExamVersions] To evaluate the hypotheses in Guided Practice [htSetupForEvaluatingTwoExamVersions] using the $t$ distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?[^20]
+[conditionsForTDistForEvaluatingTwoExamVersions] To evaluate the hypotheses in Guided Practice [htSetupForEvaluatingTwoExamVersions] using the $t$ distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?[^4.20]
 
 After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$ distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated as
 
@@ -554,37 +554,37 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 <span>Pooling standard deviations should be done only after careful research</span> <span>A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.</span>
 
-[^1]: See [www.cherryblossom.org](http://www.cherryblossom.org).
+[^4.1]: See [www.cherryblossom.org](http://www.cherryblossom.org).
 
-[^2]: As before, we identify the point estimate, $\bar{x} = 35.05$, and the standard error, $SE = 8.97 / \sqrt{100} = 0.897$. Next, we apply the formula for a 90% confidence interval, which uses $z^{\star} = 1.65$: $35.05 \pm 1.65\times 0.897 \to (33.57, 36.53)$. We are 90% confident that the average age of all participants in the 2012 Cherry Blossom Run is between 33.57 and 36.53 years.
+[^4.2]: As before, we identify the point estimate, $\bar{x} = 35.05$, and the standard error, $SE = 8.97 / \sqrt{100} = 0.897$. Next, we apply the formula for a 90% confidence interval, which uses $z^{\star} = 1.65$: $35.05 \pm 1.65\times 0.897 \to (33.57, 36.53)$. We are 90% confident that the average age of all participants in the 2012 Cherry Blossom Run is between 33.57 and 36.53 years.
 
-[^3]: The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.
+[^4.3]: The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.
 
-[^4]: We find the shaded area *above* -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.
+[^4.4]: We find the shaded area *above* -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.
 
-[^5]: Taiji was featured in the movie *The Cove*, and it is a significant source of dolphin and whale meat in Japan. Thousands of dolphins pass through the Taiji area annually, and we will assume these 19 dolphins represent a simple random sample from those dolphins. Data reference: Endo T and Haraguchi K. 2009. High mercury levels in hair samples from residents of Taiji, a Japanese whaling town. Marine Pollution Bulletin 60(5):743-747.
+[^4.5]: Taiji was featured in the movie *The Cove*, and it is a significant source of dolphin and whale meat in Japan. Thousands of dolphins pass through the Taiji area annually, and we will assume these 19 dolphins represent a simple random sample from those dolphins. Data reference: Endo T and Haraguchi K. 2009. High mercury levels in hair samples from residents of Taiji, a Japanese whaling town. Marine Pollution Bulletin 60(5):743-747.
 
-[^6]: http://www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm
+[^4.6]: http://www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm
 
-[^7]: There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.
+[^4.7]: There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.
 
-[^8]: $\bar{x} \ \pm\ t^{\star}_{14} \times SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.
+[^4.8]: $\bar{x} \ \pm\ t^{\star}_{14} \times SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.
 
-[^9]: $H_0$: The average 10 mile run time was the same for 2006 and 2012. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2012 was *different* than that of 2006. $\mu \neq 93.29$ minutes.
+[^4.9]: $H_0$: The average 10 mile run time was the same for 2006 and 2012. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2012 was *different* than that of 2006. $\mu \neq 93.29$ minutes.
 
-[^10]: With a sample of 100, we should only be concerned if there is extreme skew. The histogram of the data suggest, at worst, slight skew.
+[^4.10]: With a sample of 100, we should only be concerned if there is extreme skew. The histogram of the data suggest, at worst, slight skew.
 
-[^11]: With the conditions satisfied for the $t$ distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the *T score*: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. (There is more on this after the guided practice, but a T score and Z score are basically the same thing.) For $df = 100 - 1 = 99$, we would find $T = 1.47$ to fall between the first and second column, which means the p-value is between 0.05 and 0.10 (use $df = 90$ and consider two tails since the test is two-sided). Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.
+[^4.11]: With the conditions satisfied for the $t$ distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the *T score*: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. (There is more on this after the guided practice, but a T score and Z score are basically the same thing.) For $df = 100 - 1 = 99$, we would find $T = 1.47$ to fall between the first and second column, which means the p-value is between 0.05 and 0.10 (use $df = 90$ and consider two tails since the test is two-sided). Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.
 
-[^12]: When a class had multiple books, only the most expensive text was considered.
+[^4.12]: When a class had multiple books, only the most expensive text was considered.
 
-[^13]: Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.
+[^4.13]: Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.
 
-[^14]: Conditions have already verified and the standard error computed in Example [htForDiffInUCLAAndAmazonTextbookPrices]. To find the interval, identify $t^{\star}_{72}$ (use $df=70$ in the table, $t^{\star}_{70} = 1.99$) and plug it, the point estimate, and the standard error into the confidence interval formula: $$\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 12.76 \ \pm\ 1.99\times 1.67 \quad\to\quad (9.44, 16.08)$$ We are 95% confident that Amazon is, on average, between \$9.44 and \$16.08 cheaper than the UCLA bookstore for UCLA course books.
+[^4.14]: Conditions have already verified and the standard error computed in Example [htForDiffInUCLAAndAmazonTextbookPrices]. To find the interval, identify $t^{\star}_{72}$ (use $df=70$ in the table, $t^{\star}_{70} = 1.99$) and plug it, the point estimate, and the standard error into the confidence interval formula: $$\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 12.76 \ \pm\ 1.99\times 1.67 \quad\to\quad (9.44, 16.08)$$ We are 95% confident that Amazon is, on average, between \$9.44 and \$16.08 cheaper than the UCLA bookstore for UCLA course books.
 
-[^15]: This technique for degrees of freedom is conservative with respect to a Type 1 Error; it is more difficult to reject the null hypothesis using this $df$ method. In this example, computer software would have provided us a more precise degrees of freedom of $df = 12.225$.
+[^4.15]: This technique for degrees of freedom is conservative with respect to a Type 1 Error; it is more difficult to reject the null hypothesis using this $df$ method. In this example, computer software would have provided us a more precise degrees of freedom of $df = 12.225$.
 
-[^16]: (a) The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b) The standard error of the estimate can be estimated using Equation ([seOfDifferenceInMeans]):
+[^4.16]: (a) The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b) The standard error of the estimate can be estimated using Equation ([seOfDifferenceInMeans]):
 
     $$\begin{aligned}
     SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
@@ -592,11 +592,11 @@ The benefits of pooling the standard deviation are realized through obtaining a 
         = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
         = 0.26\end{aligned}$$
 
-[^17]: Absolutely not. It is possible that there is some difference but we did not detect it. If there is a difference, we made a Type 2 Error. Notice: we also don’t have enough information to, if there is an actual difference difference, confidently say which direction that difference would be in.
+[^4.17]: Absolutely not. It is possible that there is some difference but we did not detect it. If there is a difference, we made a Type 2 Error. Notice: we also don’t have enough information to, if there is an actual difference difference, confidently say which direction that difference would be in.
 
-[^18]: We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.
+[^4.18]: We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.
 
-[^19]: Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.
+[^4.19]: Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.
 
-[^20]: \(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn’t seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.
+[^4.20]: \(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn’t seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.
 

@@ -10,7 +10,7 @@ Multiple regression extends simple two-variable regression to the case that stil
 
 We will consider Ebay auctions of a video game called *Mario Kart* for the Nintendo Wii. The outcome variable of interest is the total price of an auction, which is the highest bid plus the shipping cost. We will try to determine how total price is related to each characteristic in an auction while simultaneously controlling for other variables. For instance, all other characteristics held constant, are longer auctions associated with higher or lower prices? And, on average, how much more do buyers tend to pay for additional Wii wheels (plastic steering wheels that attach to the Wii controller) in auctions? Multiple regression will help us answer these and other questions.
 
-The data set includes results from 141 auctions.[^1] Four observations from this data set are shown in Table [marioKartDataMatrix], and descriptions for each variable are shown in Table [marioKartVariables]. Notice that the condition and stock photo variables are indicator variables. For instance, the variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section [categoricalPredictorsWithTwoLevels] for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
+The data set includes results from 141 auctions.[^7.1] Four observations from this data set are shown in Table [marioKartDataMatrix], and descriptions for each variable are shown in Table [marioKartVariables]. Notice that the condition and stock photo variables are indicator variables. For instance, the variable takes value 1 if the game up for auction is new and 0 if it is used. Using indicator variables in place of category names allows for these variables to be directly used in regression. See Section [categoricalPredictorsWithTwoLevels] for additional details. Multiple regression also allows for categorical variables with many levels, though we do not have any such variables in this analysis, and we save these details for a second or third course.
 
 <span>rrrrlr</span> & price & cond\_
 
@@ -64,7 +64,7 @@ new & 10.8996 & 1.2583 & 8.66 & 0.0000\
 
 [marioKartSingle]
 
-Examine Figure [marioKartSingle]. Does the linear model seem ?[^2]
+Examine Figure [marioKartSingle]. Does the linear model seem ?[^7.2]
 
 <span>Interpret the coefficient for the game’s condition in the model. Is this coefficient significantly different from 0?</span> Note that is a two-level categorical variable that takes value 1 when the game is new and value 0 when the game is used. So 10.90 means that the model predicts an extra \$10.90 for those games that are new versus those that are used. (See Section [categoricalPredictorsWithTwoLevels] for a review of the interpretation for two-level categorical predictor variables.) Examining the regression output in Table [singleVarModelsForPriceUsingCond], we can see that the p-value for is very close to zero, indicating there is strong evidence that the coefficient is different from zero when using this simple one-variable model.
 
@@ -123,17 +123,17 @@ $$\begin{aligned}
 
 when there are $k$ predictors. We often estimate the $\beta_i$ parameters using a computer.
 
-[eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients] Write out the model in Equation  using the point estimates from Table [outputForMultipleRegrOutputForAllPredictors]. How many predictors are there in this model?[^3]
+[eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients] Write out the model in Equation  using the point estimates from Table [outputForMultipleRegrOutputForAllPredictors]. How many predictors are there in this model?[^7.3]
 
-What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? What is the point estimate of $\beta_4$?[^4]
+What does $\beta_4$, the coefficient of variable $x_4$ (Wii wheels), represent? What is the point estimate of $\beta_4$?[^7.4]
 
-[computeMultipleRegressionResidualForMarioKart] Compute the residual of the first observation in Table  using the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients]. [^5]
+[computeMultipleRegressionResidualForMarioKart] Compute the residual of the first observation in Table  using the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients]. [^7.5]
 
 <span>We estimated a coefficient for in Section [twoSingleVariableModelsForMarioKartData] of $b_1 = 10.90$ with a standard error of $SE_{b_1} = 1.26$ when using simple linear regression. Why might there be a difference between that estimate and the one in the multiple regression setting?</span> [colinearityOfCondNewAndStockPhoto] If we examined the data carefully, we would see that some predictors are correlated. For instance, when we estimated the connection of the outcome **price** and predictor using simple linear regression, we were unable to control for other variables like the number of Wii wheels included in the auction. That model was biased by the confounding variable **wheels**. When we use both variables, this particular underlying and unintentional bias is reduced or eliminated (though bias from other confounding variables may still remain).
 
 Example [colinearityOfCondNewAndStockPhoto] describes a common issue in multiple regression: correlation among predictor variables. We say the two predictor variables are **collinear** (pronounced as *co-linear*) when they are correlated, and this collinearity complicates model estimation. While it is impossible to prevent collinearity from arising in observational data, experiments are usually designed to prevent predictors from being collinear.
 
-The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model’s predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?[^6]
+The estimated value of the intercept is 36.21, and one might be tempted to make some interpretation of this coefficient, such as, it is the model’s predicted price when each of the variables take value zero: the game is used, the primary image is not a stock photo, the auction duration is zero days, and there are no wheels included. Is there any value gained by making this interpretation?[^7.6]
 
 ### Adjusted $R^2$ as a better estimate of explained variance
 
@@ -145,7 +145,7 @@ R^2 = 1 - \frac{\text{variability in residuals}}{\text{variability in the outcom
 
 where $e_i$ represents the residuals of the model and $y_i$ the outcomes. This equation remains valid in the multiple regression framework, but a small enhancement can often be even more informative.
 
-[computeUnadjustedR2ForAllPredictorsInMarioKart] The variance of the residuals for the model given in Guided Practice [computeMultipleRegressionResidualForMarioKart] is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate $R^2$ for this model.[^7]
+[computeUnadjustedR2ForAllPredictorsInMarioKart] The variance of the residuals for the model given in Guided Practice [computeMultipleRegressionResidualForMarioKart] is 23.34, and the variance of the total price in all the auctions is 83.06. Calculate $R^2$ for this model.[^7.7]
 
 This strategy for estimating $R^2$ is acceptable when there is just a single variable. However, it becomes less helpful when there are many variables. The regular $R^2$ is actually a biased estimate of the amount of variability explained by the model. To get a better estimate, we use the adjusted $R^2$.
 
@@ -157,13 +157,13 @@ R_{adj}^{2} = 1-\frac{Var(e_i) / (n-k-1)}{Var(y_i) / (n-1)}
 
 where $n$ is the number of cases used to fit the model and $k$ is the number of predictor variables in the model.
 
-Because $k$ is never negative, the adjusted $R^2$ will be smaller – often times just a little smaller – than the unadjusted $R^2$. The reasoning behind the adjusted $R^2$ lies in the associated with each variance.[^8]
+Because $k$ is never negative, the adjusted $R^2$ will be smaller – often times just a little smaller – than the unadjusted $R^2$. The reasoning behind the adjusted $R^2$ lies in the associated with each variance.[^7.8]
 
-There were $n=141$ auctions in the data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice [computeUnadjustedR2ForAllPredictorsInMarioKart] to calculate $R_{adj}^2$ for the Mario Kart model.[^9]
+There were $n=141$ auctions in the data set and $k=4$ predictor variables in the model. Use $n$, $k$, and the variances from Guided Practice [computeUnadjustedR2ForAllPredictorsInMarioKart] to calculate $R_{adj}^2$ for the Mario Kart model.[^7.9]
 
 Suppose you added another predictor to the model, but the variance of the errors $Var(e_i)$ didn’t go down. What would happen to the $R^2$? What would happen to the adjusted $R^2$?
 
-[^10]
+[^7.10]
 
 ## Model selection {#modelSelection}
 
@@ -204,7 +204,7 @@ wheels & 7.2852 & 0.5547 & 13.13 & 0.0000\
 
 <span>Is there strong evidence that using a stock photo is related to the total auction price?</span> The $t$ test statistic for is $T=1.02$ and the p-value is about 0.31. After accounting for the other predictors, there is not strong evidence that using a stock photo in an auction is related to the total price of the auction. We might consider removing the variable from the model.
 
-Identify the p-values for both the **duration** and **wheels** variables in the model. Is there strong evidence supporting the connection of these variables with the total price in the model?[^11]
+Identify the p-values for both the **duration** and **wheels** variables in the model. Is there strong evidence supporting the connection of these variables with the total price in the model?[^7.11]
 
 There is not statistically significant evidence that either the stock photo or duration variables contribute meaningfully to the model. Next we consider common strategies for pruning such variables from a model.
 
@@ -324,7 +324,7 @@ Absolute values of residuals against fitted values.
 
 Residuals in order of their data collection.
 
-:   A plot of the residuals in the order their corresponding auctions were observed is shown in Figure [mkDiagnosticInOrder]. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.[^12]
+:   A plot of the residuals in the order their corresponding auctions were observed is shown in Figure [mkDiagnosticInOrder]. Such a plot is helpful in identifying any connection between cases that are close to one another, e.g. we could look for declining prices over time or if there was a time of the day when auctions tended to fetch a higher price. Here we see no structure that indicates a problem.[^7.12]
 
     ![Plotting residuals in the order that their corresponding observations were collected helps identify connections between successive observations. If it seems that consecutive observations tend to be close to each other, this indicates the independence assumption of the observations would fail.](06/figures/marioKartDiagnostics/mkDiagnosticInOrder)
 
@@ -361,7 +361,7 @@ In Section [logisticRegression] we will revisit the **email** data set from Cha
 
 ### Email data
 
-The **email** data set was first presented in Chapter [introductionToData] with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Table [emailVariables]. The **spam** variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.[^13]
+The **email** data set was first presented in Chapter [introductionToData] with a relatively small number of variables. In fact, there are many more variables available that might be useful for classifying spam. Descriptions of these variables are presented in Table [emailVariables]. The **spam** variable will be the outcome, and the other 10 variables will be the model predictors. While we have limited the predictors used in this section to be categorical variables (where many are represented as indicator variables), numerical predictors may also be used in logistic regression. See the footnote for an additional discussion on this topic.[^7.13]
 
   <span>**variable**</span>   <span>**description**</span>
   --------------------------- ----------------------------------------------------------------------------------------------------
@@ -489,7 +489,7 @@ password & -1.4871 & 0.5290 & -2.81 & 0.0049\
 
 [emailLogisticReducedModel]
 
-Examine the summary of the reduced model in Table [emailLogisticReducedModel], and in particular, examine the row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.[^14]
+Examine the summary of the reduced model in Table [emailLogisticReducedModel], and in particular, examine the row. Is the point estimate the same as we found before, -1.81, or is it different? Explain why this might be.[^7.14]
 
 Point estimates will generally change a little – and sometimes a lot – depending on which other variables are included in the model. This is usually due to colinearity in the predictor variables. We previously saw this in the Ebay auction example when we compared the coefficient of in a single-variable model and the corresponding coefficient in the multiple regression model that used three additional variables (see Sections [twoSingleVariableModelsForMarioKartData] and [includingAndAssessingManyVariablesInAModel]).
 
@@ -511,9 +511,9 @@ If we were to implement a spam filter using the model we have fit, then each fut
 
 If we were managing an email service, we would have to think about what should be done in each of these three instances. In an email application, there are usually just two possibilities: filter the email out from the regular inbox and put it in a “spambox”, or let the email go to the regular inbox.
 
-The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?[^15]
+The first and second scenarios are intuitive. If the evidence strongly suggests a message is not spam, send it to the inbox. If the evidence strongly suggests the message is spam, send it to the spambox. How should we handle emails in the third category?[^7.15]
 
-Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?[^16]
+Suppose we apply the logistic model we have built as a spam filter and that 100 messages are placed in the spambox over 3 months. If we used the guidelines above for putting messages into the spambox, about how many legitimate (non-spam) messages would you expect to find among the 100 messages?[^7.16]
 
 Almost any classifier will have some error. In the spam filter guidelines above, we have decided that it is okay to allow up to 5% of the messages in the spambox to be real messages. If we wanted to make it a little harder to classify messages as spam, we could use a cutoff of 0.99. This would have two effects. Because it raises the standard for what can be classified as spam, it reduces the number of good emails that are classified as spam. However, it will also fail to correctly classify an increased fraction of spam messages. No matter the complexity and the confidence we might have in our model, these practical considerations are absolutely crucial to making a helpful spam filter. Without them, we could actually do more harm than good by using our statistical model.
 
@@ -589,34 +589,34 @@ In addition to finding more and better predictors, we would need to create a cus
 
 For what is the extremely challenging task of classifying spam messages, we have made a lot of progress. We have seen that simple email variables, such as the format, inclusion of certain words, and other circumstantial characteristics, provide helpful information for spam classification. Many challenges remain, from better understanding logistic regression to carrying out the necessary computer programming, but completing such a task is very nearly within your reach.
 
-[^1]: Diez DM, Barr CD, and Çetinkaya-Rundel M. 2012. *openintro*: OpenIntro data sets and supplemental functions. [cran.r-project.org/web/packages/openintro](http://cran.r-project.org/web/packages/openintro).
+[^7.1]: Diez DM, Barr CD, and Çetinkaya-Rundel M. 2012. *openintro*: OpenIntro data sets and supplemental functions. [cran.r-project.org/web/packages/openintro](http://cran.r-project.org/web/packages/openintro).
 
-[^2]: Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.
+[^7.2]: Yes. Constant variability, nearly normal residuals, and linearity all appear reasonable.
 
-[^3]: $\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.
+[^7.3]: $\hat{y} = 36.21 + 5.13x_1 + 1.08x_2 - 0.03x_3 + 7.29x_4$, and there are $k=4$ predictor variables.
 
-[^4]: It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is $b_4 = 7.29$.
+[^7.4]: It is the average difference in auction price for each additional Wii wheel included when holding the other variables constant. The point estimate is $b_4 = 7.29$.
 
-[^5]: $e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients].
+[^7.5]: $e_i = y_i - \hat{y_i} = 51.55 - 49.62 = 1.93$, where 49.62 was computed using the variables values from the observation and the equation identified in Guided Practice [eqForMultipleRegrOfTotalPrForAllPredictorsWithCoefficients].
 
-[^6]: Three of the variables (, , and **wheels**) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.
+[^7.6]: Three of the variables (, , and **wheels**) do take value 0, but the auction duration is always one or more days. If the auction is not up for any days, then no one can bid on it! That means the total auction price would always be zero for such an auction; the interpretation of the intercept in this setting is not insightful.
 
-[^7]: $R^2 = 1 - \frac{23.34}{83.06} = 0.719$.
+[^7.7]: $R^2 = 1 - \frac{23.34}{83.06} = 0.719$.
 
-[^8]: In multiple regression, the degrees of freedom associated with the variance of the estimate of the residuals is $n-k-1$, not $n-1$. For instance, if we were to make predictions for new data using our current model, we would find that the unadjusted $R^2$ is an overly optimistic estimate of the reduction in variance in the response, and using the degrees of freedom in the adjusted $R^2$ formula helps correct this bias.
+[^7.8]: In multiple regression, the degrees of freedom associated with the variance of the estimate of the residuals is $n-k-1$, not $n-1$. For instance, if we were to make predictions for new data using our current model, we would find that the unadjusted $R^2$ is an overly optimistic estimate of the reduction in variance in the response, and using the degrees of freedom in the adjusted $R^2$ formula helps correct this bias.
 
-[^9]: $R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711$.
+[^7.9]: $R_{adj}^2 = 1 - \frac{23.34}{83.06}\times \frac{141-1}{141-4-1} = 0.711$.
 
-[^10]: The unadjusted $R^2$ would stay the same and the adjusted $R^2$ would go down.
+[^7.10]: The unadjusted $R^2$ would stay the same and the adjusted $R^2$ would go down.
 
-[^11]: The p-value for the auction duration is 0.8882, which indicates that there is not statistically significant evidence that the duration is related to the total auction price when accounting for the other variables. The p-value for the Wii wheels variable is about zero, indicating that this variable is associated with the total auction price.
+[^7.11]: The p-value for the auction duration is 0.8882, which indicates that there is not statistically significant evidence that the duration is related to the total auction price when accounting for the other variables. The p-value for the Wii wheels variable is about zero, indicating that this variable is associated with the total auction price.
 
-[^12]: An especially rigorous check would use **time series** methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.
+[^7.12]: An especially rigorous check would use **time series** methods. For instance, we could check whether consecutive residuals are correlated. Doing so with these residuals yields no statistically significant correlations.
 
-[^13]: Recall from Chapter [linRegrForTwoVar] that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter [introductionToData]. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.
+[^7.13]: Recall from Chapter [linRegrForTwoVar] that if outliers are present in predictor variables, the corresponding observations may be especially influential on the resulting model. This is the motivation for omitting the numerical variables, such as the number of characters and line breaks in emails, that we saw in Chapter [introductionToData]. These variables exhibited extreme skew. We could resolve this issue by transforming these variables (e.g. using a log-transformation), but we will omit this further investigation for brevity.
 
-[^14]: The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.
+[^7.14]: The new estimate is different: -2.87. This new value represents the estimated coefficient when we are also accounting for other variables in the logistic regression model.
 
-[^15]: In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.
+[^7.15]: In this particular application, we should err on the side of sending more mail to the inbox rather than mistakenly putting good messages in the spambox. So, in summary: emails in the first and last categories go to the regular inbox, and those in the second scenario go to the spambox.
 
-[^16]: First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.
+[^7.16]: First, note that we proposed a cutoff for the predicted probability of 0.95 for spam. In a worst case scenario, all the messages in the spambox had the minimum probability equal to about 0.95. Thus, we should expect to find about 5 or fewer legitimate messages among the 100 messages placed in the spambox.
