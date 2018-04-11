@@ -1,0 +1,971 @@
+# Inference for numerical data {#inferenceForNumericalData}
+
+Chapters [FoundationForInference] and [inferenceForCategoricalData] introduced us to inference for proportions using the normal model, and in Section [oneWayChiSquare], we encountered the chi-square distribution, which is useful for working with categorical data with many levels. In this chapter, our focus will be on numerical data, where we will encounter two more distributions: the $t$ distribution (looks a lot like the normal distribution) and the $F$ distribution. Our general approach will be:
+
+1.  Determine which point estimate or test statistic is useful.
+
+2.  Identify an appropriate distribution for the point estimate or test statistic.
+
+3.  Apply the hypothesis and confidence interval techniques from Chapter [FoundationForInference] using the distribution from step 2.
+
+## One-sample means with the $t$ distribution {#oneSampleMeansWithTDistribution}
+
+The sampling distribution associated with a sample mean or difference of two sample means is, if certain conditions are satisfied, nearly normal. However, this becomes more complex when the sample size is small, where *small* here typically means a sample size smaller than 30 observations. For this reason, we’ll use a new distribution called the $t$ distribution that will often work for both small and large samples of numerical data.
+
+### Two examples using the normal distribution
+
+Before we get started with the $t$ distribution, let’s take a look at two applications where it is okay to use the normal model for the sample mean. For the case of a single mean, the standard error of the sample mean can be calculated as
+
+$$\begin{aligned}
+SE = \frac{\sigma}{\sqrt{n}}\end{aligned}$$
+
+where $\sigma$ is the population standard deviation and $n$ is the sample size. Generally we use the sample standard deviation, denoted by $s$, in place of the population standard deviation when we compute the standard error:
+
+$$\begin{aligned}
+SE \approx \frac{s}{\sqrt{n}}\end{aligned}$$
+
+If we look at this formula, there are some characteristics that we can think about intuitively.
+
+-   If we examine the standard error formula, we would see that a larger $s$ corresponds to a larger $SE$. This makes intuitive sense: if the data are more volatile, then we’ll be less certain of the location of the true mean, so the standard error should be bigger. On the other hand, if the observations all fall very close together, then $s$ will be small, and the sample mean should be a more precise estimate of the true mean.
+
+-   In the formula, the larger the sample size $n$, the smaller the standard error. This matches our intuition: we expect estimates to be more precise when we have more data, so the standard error $SE$ should get smaller when $n$ gets bigger.
+
+As we did with proportions, we’ll also need to check a few conditions before using the normal model. We’ll forgo describing those details until later this section, but these conditions have been verified for the two examples below.
+
+<span>We’ve taken a random sample of 100 runners from a race called the Cherry Blossom Run in Washington, DC, which was a race with 16,924 participants.[^1] The sample data for the 100 runners is summarized in Table [run10SampDF], histograms of the run time and age of participants are in Figure [run10SampHistograms], and summary statistics are available in Table [ptEstimatesNetTimeAge]. Create a 95% confidence interval for the average time it takes runners in the Cherry Blossom Run to complete the race.</span> We can use the same confidence interval formula for the mean that we used for a proportion:
+
+$$\begin{aligned}
+\text{point estimate}\ \pm\ 1.96 \times SE\end{aligned}$$
+
+In this case, the best estimate of the overall mean is the sample mean, $\bar{x} = 95.61$ minutes. The standard error can be calculated using sample standard deviation ($s = 15.78$), the sample size ($n=100$), and the standard error formula:
+
+$$\begin{aligned}
+SE = \frac{s}{\sqrt{n}} = \frac{15.78}{\sqrt{100}} = 1.578\end{aligned}$$
+
+Finally, we can calculate a 95% confidence interval:
+
+$$\begin{aligned}
+\text{point estimate}\ \pm\ z^{\star} \times SE \quad\rightarrow\quad
+95.61 \pm 1.96 \times 1.578 \quad\rightarrow\quad
+(92.52, 98.70)\end{aligned}$$
+
+We are 95% confident that the average time for all runners in the 2012 Cherry Blossom Run is between 92.52 and 98.70 minutes.
+
+          ID       time        age     gender      state
+  ---------- ---------- ---------- ---------- ----------
+           1      88.31         59          M         MD
+           2     100.67         32          M         VA
+           3     109.52         33          F         VA
+    $\vdots$   $\vdots$   $\vdots$   $\vdots$   $\vdots$
+         100      89.49         26          M         DC
+
+  : Four observations for the **run10Samp** data set, which represents a simple random sample of 100 runners from the 2012 Cherry Blossom Run.
+
+[run10SampDF]
+
+![Histograms of **time** and **age** for the sample Cherry Blossom Run data. The average time is in the mid-90s, and the average age is in the mid-30s. The age distribution is moderately skewed to the right.](04/figures/run10SampHistograms/run10SampHistograms)
+
+[run10SampHistograms]
+
+  ----------------- ------- -------
+  sample mean         95.61   35.05
+  sample median       95.37   32.50
+  sample st. dev.     15.78    8.97
+  ----------------- ------- -------
+
+  : Point estimates and parameter values for the **time** variable.
+
+[ptEstimatesNetTimeAge]
+
+Use the data to calculate a 90% confidence interval for the average age of participants in the 2012 Cherry Blossom Run. The conditions for applying the normal model have already been verified.[^2]
+
+<span>The nutrition label on a bag of potato chips says that a one ounce (28 gram) serving of potato chips has 130 calories and contains ten grams of fat, with three grams of saturated fat. A random sample of 35 bags yielded a sample mean of 134 calories with a standard deviation of 17 calories. Is there evidence that the nutrition label does not provide an accurate measure of calories in the bags of potato chips? The conditions necessary for applying the normal model have been checked and are satisfied.</span> The question has been framed in terms of two possibilities: the nutrition label accurately lists the correct average calories per bag of chips or it does not, which may be framed as a hypothesis test:
+
+-   The average is listed correctly. $\mu = 130$
+
+-   The nutrition label is incorrect. $\mu \neq 130$
+
+The observed average is $\bar{x} = 134$ and the standard error may be calculated as $SE = \frac{17}{\sqrt{35}} = 2.87$. First, we draw a picture summarizing this scenario.
+
+![image](04/figures/potatoChips/potatoChips)
+
+We can compute a test statistic as the Z score:
+
+$$\begin{aligned}
+Z = \frac{134 - 130}{2.87} = 1.39\end{aligned}$$
+
+The upper-tail area is 0.0823, so the p-value is $2 \times 0.0823 = 0.1646$. Since the p-value is larger than 0.05, we do not reject the null hypothesis. That is, there is not enough evidence to show the nutrition label has incorrect information.
+
+The normal model works well when the sample size is larger than about 30. For smaller sample sizes, we run into a problem: our estimate of $s$, which is used to compute the standard error, isn’t as reliable when the sample size is small. To solve this problem, we’ll use a new distribution: the $t$ distribution.
+
+### Introducing the $t$ distribution {#introducingTheTDistribution}
+
+A $t$ distribution, shown as a solid line in Figure [tDistCompareToNormalDist], has a bell shape that looks very similar to a normal distribution (dotted line). However, its tails are thicker, which means observations are more likely to fall beyond two standard deviations from the mean than under the normal distribution.[^3] When our sample is small, the value $s$ used to compute the standard error isn’t very reliable. The extra thick tails of the $t$ distribution are exactly the correction we need to resolve this problem.
+
+![Comparison of a $t$ distribution (solid line) and a normal distribution (dotted line).](04/figures/tDistCompareToNormalDist/tDistCompareToNormalDist)
+
+[tDistCompareToNormalDist]
+
+The $t$ distribution, always centered at zero, has a single parameter: degrees of freedom. The describe the precise form of the bell-shaped $t$ distribution. Several $t$ distributions are shown in Figure [tDistConvergeToNormalDist] with various degrees of freedom. When there are more degrees of freedom, the $t$ distribution looks very much like the standard normal distribution.
+
+![The larger the degrees of freedom, the more closely the $t$ distribution resembles the standard normal model.](04/figures/tDistConvergeToNormalDist/tDistConvergeToNormalDist)
+
+[tDistConvergeToNormalDist]
+
+<span> The degrees of freedom describe the shape of the $t$ distribution. The larger the degrees of freedom, the more closely the distribution approximates the normal model.</span>
+
+When the degrees of freedom is about 30 or more, the $t$ distribution is nearly indistinguishable from the normal distribution, e.g. see Figure [tDistConvergeToNormalDist]. In Section [tDistSolutionToSEProblem], we relate degrees of freedom to sample size.
+
+We will find it very useful to become familiar with the $t$ distribution, because it plays a very similar role to the normal distribution during inference for numerical data. We use a , partially shown in Table [tTableSample], in place of the normal probability table for small sample numerical data. A larger table is presented in Appendix . Alternatively, we could use statistical software to get this same information.
+
+<span>r | rrr rr</span> one tail &
+
+0.100 &
+
+0.050 &
+
+0.025 &
+
+0.010 &
+
+0.005\
+two tails & 0.200 & 0.100 & 0.050 & 0.020 & 0.010\
+ 1 & <span>3.08</span> & <span>6.31</span> & <span>12.71</span> & <span>31.82</span> & <span>63.66</span>\
+2 & <span>1.89</span> & <span>2.92</span> & <span>4.30</span> & <span>6.96</span> & <span>9.92</span>\
+3 & <span>1.64</span> & <span>2.35</span> & <span>3.18</span> & <span>4.54</span> & <span>5.84</span>\
+$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &\
+17 & <span>1.33</span> & <span>1.74</span> & <span>2.11</span> & <span>2.57</span> & <span>2.90</span>\
+ & & & & &\
+19 & <span>1.33</span> & <span>1.73</span> & <span>2.09</span> & <span>2.54</span> & <span>2.86</span>\
+20 & <span>1.33</span> & <span>1.72</span> & <span>2.09</span> & <span>2.53</span> & <span>2.85</span>\
+$\vdots$ & $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ &\
+400 & <span>1.28</span> & <span>1.65</span> & <span>1.97</span> & <span>2.34</span> & <span>2.59</span>\
+500 & <span>1.28</span> & <span>1.65</span> & <span>1.96</span> & <span>2.33</span> & <span>2.59</span>\
+$\infty$ & <span>1.28</span> & <span>1.65</span> & <span>1.96</span> & <span>2.33</span> & <span>2.58</span>\
+
+[tTableSample]
+
+Each row in the $t$ table represents a $t$ distribution with different degrees of freedom. The columns correspond to tail probabilities. For instance, if we know we are working with the $t$ distribution with $df=18$, we can examine row 18, which is in Table [tTableSample]. If we want the value in this row that identifies the cutoff for an upper tail of 10%, we can look in the column where *one tail* is 0.100. This cutoff is 1.33. If we had wanted the cutoff for the lower 10%, we would use -1.33. Just like the normal distribution, all $t$ distributions are symmetric.
+
+<span>What proportion of the $t$ distribution with 18 degrees of freedom falls below -2.10?</span> Just like a normal probability problem, we first draw the picture in Figure [tDistDF18LeftTail2Point10] and shade the area below -2.10. To find this area, we identify the appropriate row: $df=18$. Then we identify the column containing the absolute value of -2.10; it is the third column. Because we are looking for just one tail, we examine the top line of the table, which shows that a one tail area for a value in the third row corresponds to 0.025. About 2.5% of the distribution falls below -2.10. In the next example we encounter a case where the exact $t$ value is not listed in the table.
+
+![The $t$ distribution with 18 degrees of freedom. The area below -2.10 has been shaded.](04/figures/tDistDF18LeftTail2Point10/tDistDF18LeftTail2Point10)
+
+[tDistDF18LeftTail2Point10]
+
+<span>A $t$ distribution with 20 degrees of freedom is shown in the left panel of Figure [tDistDF20RightTail1Point65]. Estimate the proportion of the distribution falling above 1.65.</span> We identify the row in the $t$ table using the degrees of freedom: $df=20$. Then we look for 1.65; it is not listed. It falls between the first and second columns. Since these values bound 1.65, their tail areas will bound the tail area corresponding to 1.65. We identify the one tail area of the first and second columns, 0.050 and 0.10, and we conclude that between 5% and 10% of the distribution is more than 1.65 standard deviations above the mean. If we like, we can identify the precise area using statistical software: 0.0573.
+
+![Left: The $t$ distribution with 20 degrees of freedom, with the area above 1.65 shaded. Right: The $t$ distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded.](04/figures/tDistDF20RightTail1Point65/tDistDF20RightTail1Point65)
+
+[tDistDF20RightTail1Point65]
+
+<span>A $t$ distribution with 2 degrees of freedom is shown in the right panel of Figure [tDistDF20RightTail1Point65]. Estimate the proportion of the distribution falling more than 3 units from the mean (above or below).</span> As before, first identify the appropriate row: $df=2$. Next, find the columns that capture 3; because $2.92 < 3 < 4.30$, we use the second and third columns. Finally, we find bounds for the tail areas by looking at the two tail values: 0.05 and 0.10. We use the two tail values because we are looking for two (symmetric) tails.
+
+What proportion of the $t$ distribution with 19 degrees of freedom falls above -1.79 units?[^4]
+
+### Applying the $t$ distribution to the single-mean situation {#tDistSolutionToSEProblem}
+
+When estimating the mean and standard error from a sample of numerical data, the $t$ distribution is a little more accurate than the normal model. This is true for both small and large samples, though the benefits for larger samples are limited.
+
+<span> Use the $t$ distribution for inference of the sample mean when observations are independent and nearly normal. You may relax the nearly normal condition as the sample size increases. For example, the data distribution may be moderately skewed when the sample size is at least 30. </span>
+
+Before applying the $t$ distribution for inference about a single mean, we check two conditions.
+
+Independence of observations.
+
+:   We verify this condition just as we did before. We collect a simple random sample from less than 10% of the population, or if the data are from an experiment or random process, we carefully check to the best of our abilities that the observations were independent.
+
+Observations come from a nearly normal distribution.
+
+:   This second condition is difficult to verify with small data sets. We often (i) take a look at a plot of the data for obvious departures from the normal model, usually in the form of prominent outliers, and (ii) consider whether any previous experiences alert us that the data may not be nearly normal. However, if the sample size is somewhat large, then we can relax this condition, e.g. moderate skew is acceptable when the sample size is 30 or more, and strong skew is acceptable when the size is about 60 or more.
+
+When examining a sample mean and estimated standard error from a sample of $n$ independent and nearly normal observations, we use a $t$ distribution with $n-1$ degrees of freedom ($df$). For example, if the sample size was 19, then we would use the $t$ distribution with $df=19-1=18$ degrees of freedom and proceed in the same way as we did in Chapter [inferenceForCategoricalData], except that *now we use the $t$ table*.
+
+<span> If the sample has $n$ observations and we are examining a single mean, then we use the $t$ distribution with $df=n-1$ degrees of freedom.</span>
+
+### One sample $t$ confidence intervals {#oneSampleTConfidenceIntervals}
+
+Dolphins are at the top of the oceanic food chain, which causes dangerous substances such as mercury to concentrate in their organs and muscles. This is an important problem for both dolphins and other animals, like humans, who occasionally eat them. For instance, this is particularly relevant in Japan where school meals have included dolphin at times.
+
+![A Risso’s dolphin.](04/figures/rissosDolphin/rissosDolphin.jpg "fig:")\
+
+[rissosDolphin]
+
+Here we identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso’s dolphins from the Taiji area in Japan.[^5] The data are summarized in Table [summaryStatsOfHgInMuscleOfRissosDolphins]. The minimum and maximum observed values can be used to evaluate whether or not there are obvious outliers or skew.
+
+  ----- ----------- ----- --------- ---------
+   $n$   $\bar{x}$   $s$   minimum   maximum
+   19       4.4      2.3     1.7       9.2
+  ----- ----------- ----- --------- ---------
+
+  : Summary of mercury content in the muscle of 19 Risso’s dolphins from the Taiji area. Measurements are in $\mu$g/wet g (micrograms of mercury per wet gram of muscle).
+
+[summaryStatsOfHgInMuscleOfRissosDolphins]
+
+<span>Are the independence and normality conditions satisfied for this data set?</span> The observations are a simple random sample and consist of less than 10% of the population, therefore independence is reasonable. Ideally we would see a visualization of the data to check for skew and outliers. However, we can instead examine the summary statistics in Table [summaryStatsOfHgInMuscleOfRissosDolphins], which do not suggest any skew or outliers. All observations are within 2.5 standard deviations of the mean. Based on this evidence, the normality assumption seems reasonable.
+
+In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$ distribution:
+
+$$\begin{aligned}
+\bar{x} \ \pm\  t^{\star}_{df} \times SE\end{aligned}$$
+
+[
+
+$t^{\star}_{df}$
+
+\
+Multiplication\
+factor for\
+$t$ conf. interval]
+
+$t^{\star}_{df}$
+
+\
+Multiplication\
+factor for\
+$t$ conf. interval
+
+The sample mean and estimated standard error are computed just as in our earlier examples that used the normal model ($\bar{x} = 4.4$ and $SE = s/\sqrt{n} = 0.528$). The value $t^{\star}_{df}$ is a cutoff we obtain based on the confidence level and the $t$ distribution with $df$ degrees of freedom. Before determining this cutoff, we will first need the degrees of freedom.
+
+In our current example, we should use the $t$ distribution with $df = n - 1 = 19 - 1 = 18$ degrees of freedom. Then identifying $t_{18}^{\star}$ is similar to how we found $z^{\star}$:
+
+-   For a 95% confidence interval, we want to find the cutoff $t^{\star}_{18}$ such that 95% of the $t$ distribution is between -$t^{\star}_{18}$ and $t^{\star}_{18}$.
+
+-   We look in the $t$ table on page , find the column with area totaling 0.05 in the two tails (third column), and then the row with 18 degrees of freedom: $t^{\star}_{18} = 2.10$.
+
+Generally the value of $t^{\star}_{df}$ is slightly larger than what we would get under the normal model with $z^{\star}$.
+
+Finally, we can substitute all the values into the confidence interval equation to create the 95% confidence interval for the average mercury content in muscles from Risso’s dolphins that pass through the Taiji area:
+
+$$\begin{aligned}
+\bar{x} \ \pm\  t^{\star}_{18} \times SE
+    \quad \to \quad
+4.4 \ \pm\  2.10 \times 0.528
+    \quad \to \quad
+(3.29, 5.51)\end{aligned}$$
+
+We are 95% confident the average mercury content of muscles in Risso’s dolphins is between 3.29 and 5.51 $\mu$g/wet gram, which is considered extremely high.
+
+Based on a sample of $n$ independent and nearly normal observations, a confidence interval for the population mean is
+
+$$\begin{aligned}
+\bar{x} \ \pm\  t^{\star}_{df} \times SE\end{aligned}$$
+
+where $\bar{x}$ is the sample mean, $t^{\star}_{df}$ corresponds to the confidence level and degrees of freedom, and $SE$ is the standard error as estimated by the sample. The normality condition may be relaxed for larger sample sizes.
+
+[croakerWhiteFishPacificExerConditions] The FDA’s webpage provides some data on mercury content of fish.[^6] Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively. The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent. Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?[^7]
+
+<span>Estimate the standard error of the sample mean using the data summaries in Guided Practice [croakerWhiteFishPacificExerConditions]. If we are to use the $t$ distribution to create a 90% confidence interval for the actual mean of the mercury content, identify the degrees of freedom we should use and also find $t^{\star}_{df}$.</span> [croakerWhiteFishPacificExerSEDFTStar] The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$. Degrees of freedom: $df = n - 1 = 14$.
+
+Looking in the column where two tails is 0.100 (for a 90% confidence interval) and row $df=14$, we identify $t^{\star}_{14} = 1.76$.
+
+Using the results of Guided Practice [croakerWhiteFishPacificExerConditions] and Example [croakerWhiteFishPacificExerSEDFTStar], compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).[^8]
+
+### One sample $t$ tests {#oneSampleTTests}
+
+Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Run, comparing runners in 2006 and 2012. Technological advances in shoes, training, and diet might suggest runners would be faster in 2012. An opposing viewpoint might say that with the average body mass index on the rise, people tend to run slower. In fact, all of these components might be influencing run time.
+
+The average time for all runners who finished the Cherry Blossom Run in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2012 Cherry Blossom Run whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
+
+What are appropriate hypotheses for this context?[^9]
+
+The data come from a simple random sample from less than 10% of all participants, so the observations are independent. However, should we be worried about skew in the data? A histogram of the differences was shown in the left panel of Figure . [^10]
+
+With independence satisfied and skew not a concern, we can proceed with performing a hypothesis test using the $t$ distribution.
+
+The sample mean and sample standard deviation are 95.61 and 15.78 minutes, respectively. Recall that the sample size is 100. What is the p-value for the test, and what is your conclusion?[^11]
+
+<span> To help us remember to use the $t$ distribution, we use a $T$ to represent the test statistic, and we often call this a **T score**. The Z score and T score are computed in the exact same way and are conceptually identical: each represents how many standard errors the observed value is from the null value.</span>
+
+## Paired data {#pairedData}
+
+Are textbooks actually cheaper online? Here we compare the price of textbooks at the University of California, Los Angeles’ (UCLA’s) bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10% of all UCLA courses.[^12] A portion of the data set is shown in Table [textbooksDF].
+
+             dept       course           ucla     amazon       diff
+  ---------- ---------- ---------- ---------- ---------- ----------
+           1 Am Ind     C170            27.67      27.95      -0.28
+           2 Anthro     9               40.59      31.14       9.45
+           3 Anthro     135T            31.68      32.00      -0.32
+           4 Anthro     191HB           16.00      11.52       4.48
+    $\vdots$ $\vdots$   $\vdots$     $\vdots$   $\vdots$   $\vdots$
+          72 Wom Std    M144            23.76      18.72       5.04
+          73 Wom Std    285             27.70      18.22       9.48
+
+  : Six cases of the **textbooks** data set.
+
+[textbooksDF]
+
+### Paired observations
+
+Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be **paired**.
+
+<span> Two sets of observations are *paired* if each observation in one set has a special correspondence or connection with exactly one observation in the other data set.</span>
+
+To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the **textbook** data set, we look at the difference in prices, which is represented as the **diff** variable in the **textbooks** data. Here the differences are taken as
+
+$$\begin{aligned}
+\text{UCLA price} - \text{Amazon price}\end{aligned}$$
+
+for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. A histogram of these differences is shown in Figure [diffInTextbookPricesS10]. Using differences between paired observations is a common and useful way to analyze paired data.
+
+![Histogram of the difference in price for each book sampled. These data are strongly skewed.](04/figures/textbooksS10/diffInTextbookPricesS10)
+
+[diffInTextbookPricesS10]
+
+The first difference shown in Table [textbooksDF] is computed as $27.67-27.95=-0.28$. Verify the differences are calculated correctly for observations 2 and 3.[^13]
+
+### Inference for paired data
+
+To analyze a paired data set, we simply analyze the differences. We can use the same $t$ distribution techniques we applied in the last section.
+
+<span>ccccc</span> $n_{_{diff}}$ &
+
+& $\bar{x}_{_{diff}}$ &
+
+& $s_{_{diff}}$
+
+\
+73 && 12.76 && 14.26\
+
+[textbooksSummaryStats]
+
+<span>Set up and implement a hypothesis test to determine whether, on average, there is a difference between Amazon’s price for a book and the UCLA bookstore’s price.</span> [htForDiffInUCLAAndAmazonTextbookPrices] We are considering two scenarios: there is no difference or there is some difference in average prices.
+
+-   $\mu_{diff}=0$. There is no difference in the average textbook price.
+
+-   $\mu_{diff} \neq 0$. There is a difference in average prices.
+
+Can the $t$ distribution be used for this application? The observations are based on a simple random sample from less than 10% of all books sold at the bookstore, so independence is reasonable. While the distribution is strongly skewed, the sample is reasonably large ($n=73$), so we can proceed. Because the conditions are reasonably satisfied, we can apply the $t$ distribution to this setting.
+
+We compute the standard error associated with $\bar{x}_{diff}$ using the standard deviation of the differences ($s_{_{diff}}=14.26$) and the number of differences ($n_{_{diff}}=73$): $$SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67$$ To visualize the p-value, the sampling distribution of $\bar{x}_{diff}$ is drawn as though $H_0$ is true, which is shown in Figure [textbooksS10HTTails]. The p-value is represented by the two (very) small tails.
+
+To find the tail areas, we compute the test statistic, which is the T score of $\bar{x}_{diff}$ under the null condition that the actual mean difference is 0: $$T = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.59$$ The degrees of freedom are $df = 73 - 1 = 72$. If we examined Appendix , we would see that this value is larger than any in the 70 df row (we round down for $df$ when using the table), meaning the two-tailed p-value is less than 0.01. If we used statistical software, we would find the p-value is less than 1-in-10 billion! Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon is, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
+
+![Sampling distribution for the mean difference in book prices, if the true average difference is zero.](04/figures/textbooksS10/textbooksS10HTTails)
+
+[textbooksS10HTTails]
+
+Create a 95% confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon.[^14]
+
+In the textbook price example, we applied the $t$ distribution. However, as we mentioned in the last section, the $t$ distribution looks a lot like the normal distribution when the degrees of freedom are larger than about 30. In such cases, including this one, it would be reasonable to use the normal distribution in place of the $t$ distribution.
+
+## Difference of two means {#differenceOfTwoMeans}
+
+In this section we consider a difference in two population means, $\mu_1 - \mu_2$, under the condition that the data are not paired. Just as with a single sample, we identify conditions to ensure we can use the $t$ distribution with a point estimate of the difference, $\bar{x}_1 - \bar{x}_2$.
+
+We apply these methods in three contexts: determining whether stem cells can improve heart function, exploring the impact of pregnant womens’ smoking habits on birth weights of newborns, and exploring whether there is statistically significant evidence that one variations of an exam is harder than another variation. This section is motivated by questions like “Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don’t smoke?”
+
+### Confidence interval for a differences of means
+
+Does treatment using embryonic stem cells (ESCs) help improve heart function following a heart attack? Table [summaryStatsForSheepHeartDataWhoReceivedMiceESCs] contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts’ pumping capacity was measured in the study. A positive value corresponds to increased pumping capacity, which generally suggests a stronger recovery. Our goal will be to identify a 95% confidence interval for the effect of ESCs on the change in heart pumping capacity relative to the control group.
+
+A point estimate of the difference in the heart pumping variable can be found using the difference in the sample means:
+
+$$\begin{aligned}
+\bar{x}_{esc} - \bar{x}_{control}\ =\ 3.50 - (-4.33)\ =\ 7.83\end{aligned}$$
+
+<span>l rrrrr</span>
+
+& $n$ & $\bar{x}$ & $s$\
+ESCs & 9 & 3.50 & 5.17\
+control & 9 & -4.33 & 2.76\
+
+[summaryStatsForSheepHeartDataWhoReceivedMiceESCs]
+
+![Histograms for both the embryonic stem cell group and the control group. Higher values are associated with greater improvement. We don’t see any evidence of skew in these data; however, it is worth noting that skew would be difficult to detect with such a small sample.](04/figures/stemCellTherapyForHearts/stemCellTherapyForHearts)
+
+[stemCellTherapyForHearts]
+
+<span> [ConditionsForTwoSampleTDist]The $t$ distribution can be used for inference when working with the standardized difference of two means if (1) each sample meets the conditions for using the $t$ distribution and (2) the samples are independent.</span>
+
+<span>Can the point estimate, $\bar{x}_{esc} - \bar{x}_{control} = 7.83$, be analyzed using the $t$ distribution?</span> We check the two required conditions:
+
+1.  In this study, the sheep were independent of each other. Additionally, the distributions in Figure [stemCellTherapyForHearts] don’t show any clear deviations from normality, where we watch for prominent outliers in particular for such small samples. These findings imply each sample mean could itself be modeled using a $t$ distribution.
+
+2.  The sheep in each group were also independent of each other.
+
+Because both conditions are met, we can use the $t$ distribution to model the difference of the two sample means.
+
+Before we construct a confidence interval, we must calculate the standard error of the point estimate of the difference. For this, we use the following formula, where just as before we substitute the sample standard deviations into the formula:
+
+$$\begin{aligned}
+SE_{\bar{x}_{esc} - \bar{x}_{control}}
+    &= \sqrt{\frac{\sigma_{esc}^2}{n_{esc}} + \frac{\sigma_{control}^2}{n_{control}}} \\
+    &\approx \sqrt{\frac{s_{esc}^2}{n_{esc}} + \frac{s_{control}^2}{n_{control}}}
+    = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95\end{aligned}$$
+
+Because we will use the $t$ distribution, we also must identify the appropriate degrees of freedom. This can be done using computer software. An alternative technique is to use the smaller of $n_1 - 1$ and $n_2 - 1$, which is the method we will typically apply in the examples and guided practice.[^15]
+
+The sample difference of two means, $\bar{x}_1 - \bar{x}_2$, can be modeled using the $t$ distribution and the standard error
+
+$$\begin{aligned}
+\textstyle
+SE_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+\label{seOfDifferenceInMeans}\end{aligned}$$
+
+when each sample mean can itself be modeled using a $t$ distribution and the samples are independent. To calculate the degrees of freedom, use statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.
+
+<span>Calculate a 95% confidence interval for the effect of ESCs on the change in heart pumping capacity of sheep after they’ve suffered a heart attack.</span> We will use the sample difference and the standard error for that point estimate from our earlier calculations:
+
+$$\begin{aligned}
+& \bar{x}_{esc} - \bar{x}_{control} = 7.83 \\
+& SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95\end{aligned}$$
+
+Using $df = 8$, we can identify the appropriate $t^{\star}_{df} = t^{\star}_{8}$ for a 95% confidence interval as 2.31. Finally, we can enter the values into the confidence interval formula:
+
+$$\begin{aligned}
+\text{point estimate} \ \pm\ z^{\star}SE \quad\rightarrow\quad
+7.83 \ \pm\ 2.31\times 1.95 \quad\rightarrow\quad (3.38, 12.38)\end{aligned}$$
+
+We are 95% confident that embryonic stem cells improve the heart’s pumping function in sheep that have suffered a heart attack by 3.38% to 12.38%.
+
+### Hypothesis tests based on a difference in means
+
+A data set called represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table [babySmokeDF]. We are particularly interested in two variables: **weight** and **smoke**. The **weight** variable represents the weights of the newborns and the **smoke** variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don’t smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases, represented in Figure [babySmokePlotOfTwoGroupsToExamineSkew].
+
+                   fAge       mAge      weeks     weight sexBaby    smoke
+  ---------- ---------- ---------- ---------- ---------- ---------- -----------
+           1         NA         13         37       5.00 female     nonsmoker
+           2         NA         14         36       5.88 female     nonsmoker
+           3         19         15         41       8.13 male       smoker
+    $\vdots$   $\vdots$   $\vdots$   $\vdots$   $\vdots$ $\vdots$   
+         150         45         50         36       9.25 female     nonsmoker
+
+  : Four cases from the data set. The value “NA”, shown for the first two entries of the first variable, indicates that piece of data is missing.
+
+[babySmokeDF]
+
+![The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke. The distributions exhibit moderate-to-strong and strong skew, respectively.](04/figures/babySmokePlotOfTwoGroupsToExamineSkew/babySmokePlotOfTwoGroupsToExamineSkew)
+
+[babySmokePlotOfTwoGroupsToExamineSkew]
+
+<span>Set up appropriate hypotheses to evaluate whether there is a relationship between a mother smoking and average birth weight.</span>[babySmokeHTForWeight] The null hypothesis represents the case of no difference between the groups.
+
+-   There is no difference in average birth weight for newborns from mothers who did and did not smoke. In statistical notation: $\mu_{n} - \mu_{s} = 0$, where $\mu_{n}$ represents non-smoking mothers and $\mu_s$ represents mothers who smoked.
+
+-   There is some difference in average newborn weights from mothers who did and did not smoke ($\mu_{n} - \mu_{s} \neq 0$).
+
+We check the two conditions necessary to apply the $t$ distribution to the difference in sample means. (1) Because the data come from a simple random sample and consist of less than 10% of all such cases, the observations are independent. Additionally, while each distribution is strongly skewed, the sample sizes of 50 and 100 would make it reasonable to model each mean separately using a $t$ distribution. The skew is reasonable for these sample sizes of 50 and 100. (2) The independence reasoning applied in (1) also ensures the observations in each sample are independent. Since both conditions are satisfied, the difference in sample means may be modeled using a $t$ distribution.
+
+  ------------ ------ ------
+  mean           6.78   7.18
+  st. dev.       1.43   1.60
+  samp. size       50    100
+  ------------ ------ ------
+
+  : Summary statistics for the data set.
+
+[summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers]
+
+The summary statistics in Table [summaryStatsOfBirthWeightForNewbornsFromSmokingAndNonsmokingMothers] may be useful for this exercise. (a) What is the point estimate of the population difference, $\mu_{n} - \mu_{s}$? (b) Compute the standard error of the point estimate from part (a).[^16]
+
+<span>Draw a picture to represent the p-value for the hypothesis test from Example [babySmokeHTForWeight].</span> [pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights] To depict the p-value, we draw the distribution of the point estimate as though $H_0$ were true and shade areas representing at least as much evidence against $H_0$ as what was observed. Both tails are shaded because it is a two-sided test.
+
+![image](04/figures/distOfDiffOfSampleMeansForBWOfBabySmokeData/distOfDiffOfSampleMeansForBWOfBabySmokeData)
+
+<span>Compute the p-value of the hypothesis test using the figure in Example [pictureOfPValueForEstimateOfDiffOfMeansOfBirthWeights], and evaluate the hypotheses using a significance level of $\alpha=0.05$.</span> [babySmokeHTForWeightComputePValueAndEvalHT] We start by computing the T score:
+
+$$\begin{aligned}
+T = \frac{\ 0.40 - 0\ }{0.26} = 1.54\end{aligned}$$
+
+Next, we compare this value to values in the $t$ table in Appendix , where we use the smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the degrees of freedom: $df = 49$. The T score falls between the first and second columns in the $df = 49$ row of the $t$ table, meaning the two-tailed p-value falls between 0.10 and 0.20 (reminder, find tail areas along the top of the table). This p-value is larger than the significance value, 0.05, so we fail to reject the null hypothesis. There is insufficient evidence to say there is a difference in average birth weight of newborns from North Carolina mothers who did smoke during pregnancy and newborns from North Carolina mothers who did not smoke during pregnancy.
+
+Does the conclusion to Example [babySmokeHTForWeightComputePValueAndEvalHT] mean that smoking and average birth weight are unrelated?[^17]
+
+[babySmokeHTIDingHowToDetectDifferences] If we made a Type 2 Error and there is a difference, what could we have done differently in data collection to be more likely to detect such a difference?[^18]
+
+### Case study: two versions of a course exam
+
+An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Table [summaryStatsForTwoVersionsOfExams]. Anticipating complaints from students who took Version B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version B was more difficult (on average) than Version A.
+
+<span>l rrrrr</span> Version
+
+& $n$ & $\bar{x}$ & $s$ & min & max\
+A & 30 & 79.4 & 14 & 45 & 100\
+B & 27 & 74.1 & 20 & 32 & 100\
+
+[summaryStatsForTwoVersionsOfExams]
+
+[htSetupForEvaluatingTwoExamVersions] Construct a hypotheses to evaluate whether the observed difference in sample means, $\bar{x}_A - \bar{x}_B=5.3$, is due to chance.[^19]
+
+[conditionsForTDistForEvaluatingTwoExamVersions] To evaluate the hypotheses in Guided Practice [htSetupForEvaluatingTwoExamVersions] using the $t$ distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality / skew condition for observations in each group? (c) Do you think scores from the two groups would be independent of each other, i.e. the two samples are independent?[^20]
+
+After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$ distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 5.3$. The standard error of the estimate can be calculated as
+
+$$\begin{aligned}
+SE = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}} = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62\end{aligned}$$
+
+Finally, we construct the test statistic:
+
+$$\begin{aligned}
+T = \frac{\text{point estimate} - \text{null value}}{SE} = \frac{(79.4-74.1) - 0}{4.62} = 1.15\end{aligned}$$
+
+If we have a computer handy, we can identify the degrees of freedom as 45.97. Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
+
+![The $t$ distribution with 26 degrees of freedom. The shaded right tail represents values with $T \geq 1.15$. Because it is a two-sided test, we also shade the corresponding lower tail.](04/figures/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26)
+
+[pValueOfTwoTailAreaOfExamVersionsWhereDFIs26]
+
+<span>Identify the p-value using $df = 26$ and provide a conclusion in the context of the case study.</span> We examine row $df=26$ in the $t$ table. Because this value is smaller than the value in the left column, the p-value is larger than 0.200 (two tails!). Because the p-value is so large, we do not reject the null hypothesis. That is, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
+
+### Summary for inference using the $t$ distribution
+
+**Hypothesis tests.** When applying the $t$ distribution for a hypothesis test, we proceed as follows:
+
+-   Write appropriate hypotheses.
+
+-   Verify conditions for using the $t$ distribution.
+
+    -   One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g. slight skew is okay or sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.
+
+    -   For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$ distribution, and the data in the groups must also be independent.
+
+-   Compute the point estimate of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.
+
+-   Compute the T score and p-value.
+
+-   Make a conclusion based on the p-value, and write a conclusion in context and in plain language so anyone can understand the result.
+
+**Confidence intervals.** Similarly, the following is how we generally computed a confidence interval using a $t$ distribution:
+
+-   Verify conditions for using the $t$ distribution. (See above.)
+
+-   Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_df$.
+
+-   Calculate the confidence interval using the general formula, point estimate $\pm t_{df}^{\star} SE$.
+
+-   Put the conclusions in context and in plain language so even non-statisticians can understand the results.
+
+### Pooled standard deviation estimate (special topic) {#pooledStandardDeviations}
+
+Occasionally, two populations will have standard deviations that are so similar that they can be treated as identical. For example, historical data or a well-understood biological mechanism may justify this strong assumption. In such cases, we can make the $t$ distribution approach slightly more precise by using a pooled standard deviation.
+
+The **pooled standard deviation** of two groups is a way to use data from both samples to better estimate the standard deviation and standard error. If $s_1^{}$ and $s_2^{}$ are the standard deviations of groups 1 and 2 and there are good reasons to believe that the population standard deviations are equal, then we can obtain an improved estimate of the group variances by pooling their data:
+
+$$\begin{aligned}
+s_{pooled}^2 = \frac{s_1^2\times (n_1-1) + s_2^2\times (n_2-1)}{n_1 + n_2 - 2}\end{aligned}$$
+
+where $n_1$ and $n_2$ are the sample sizes, as before. To use this new statistic, we substitute $s_{pooled}^2$ in place of $s_1^2$ and $s_2^2$ in the standard error formula, and we use an updated formula for the degrees of freedom:
+
+$$\begin{aligned}
+df = n_1 + n_2 - 2\end{aligned}$$
+
+The benefits of pooling the standard deviation are realized through obtaining a better estimate of the standard deviation for each group and using a larger degrees of freedom parameter for the $t$ distribution. Both of these changes may permit a more accurate model of the sampling distribution of $\bar{x}_1 - \bar{x}_2$.
+
+<span>Pooling standard deviations should be done only after careful research</span> <span>A pooled standard deviation is only appropriate when background research indicates the population standard deviations are nearly equal. When the sample size is large and the condition may be adequately checked with data, the benefits of pooling the standard deviations greatly diminishes.</span>
+
+## Comparing many means with ANOVA\
+(special topic) {#anovaAndRegrWithCategoricalVariables}
+
+Sometimes we want to compare means across many groups. We might initially think to do pairwise comparisons; for example, if there were three groups, we might be tempted to compare the first mean with the second, then with the third, and then finally compare the second and third means for a total of three comparisons. However, this strategy can be treacherous. If we have many groups and do many comparisons, it is likely that we will eventually find a difference just by chance, even if there is no difference in the populations.
+
+In this section, we will learn a new method called **analysis of variance (ANOVA)** and a new test statistic called $F$. ANOVA uses a single hypothesis test to check whether the means across many groups are equal:
+
+-   The mean outcome is the same across all groups. In statistical notation, $\mu_1 = \mu_2 = \cdots = \mu_k$ where $\mu_i$ represents the mean of the outcome for observations in category $i$.
+
+-   At least one mean is different.
+
+Generally we must check three conditions on the data before performing ANOVA:
+
+-   the observations are independent within and across groups,
+
+-   the data within each group are nearly normal, and
+
+-   the variability across the groups is about equal.
+
+When these three conditions are met, we may perform an ANOVA to determine whether the data provide strong evidence against the null hypothesis that all the $\mu_i$ are equal.
+
+<span>College departments commonly run multiple lectures of the same introductory course each semester because of high demand. Consider a statistics department that runs three lectures of an introductory statistics course. We might like to determine whether there are statistically significant differences in first exam scores in these three classes ($A$, $B$, and $C$). Describe appropriate hypotheses to determine whether there are any differences between the three classes.</span> [firstExampleForThreeStatisticsClassesAndANOVA] The hypotheses may be written in the following form:
+
+-   The average score is identical in all lectures. Any observed difference is due to chance. Notationally, we write $\mu_A=\mu_B=\mu_C$.
+
+-   The average score varies by class. We would reject the null hypothesis in favor of the alternative hypothesis if there were larger differences among the class averages than what we might expect from chance alone.
+
+Strong evidence favoring the alternative hypothesis in ANOVA is described by unusually large differences among the group means. We will soon learn that assessing the variability of the group means relative to the variability among individual observations within each group is key to ANOVA’s success.
+
+<span>Examine Figure [toyANOVA]. Compare groups I, II, and III. Can you visually determine if the differences in the group centers is due to chance or not? Now compare groups IV, V, and VI. Do these differences appear to be due to chance?</span>
+
+![Side-by-side dot plot for the outcomes for six groups.](04/figures/toyANOVA/toyANOVA)
+
+[toyANOVA]
+
+Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups’ centers are noticeable because those differences are large *relative to the variability in the individual observations within each group*.
+
+### Is batting performance related to player position in MLB?
+
+We would like to discern whether there are real differences between the batting performance of baseball players according to their position: outfielder (), infielder (), designated hitter (), and catcher (). We will use a data set called **bat10**, which includes batting records of 327 Major League Baseball (MLB) players from the 2010 season. Six of the 327 cases represented in **bat10** are shown in Table [mlbBat10DataMatrix], and descriptions for each variable are provided in Table [mlbBat10Variables]. The measure we will use for the player batting performance (the outcome variable) is on-base percentage (**OBP**). The on-base percentage roughly represents the fraction of the time a player successfully gets on base or hits a home run.
+
+             name       team       position           AB          H         HR        RBI     AVG     OBP
+  ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ------- -------
+           1 I Suzuki   SEA        OF                680        214          6         43   0.315   0.359
+           2 D Jeter    NYY        IF                663        179         10         67   0.270   0.340
+           3 M Young    TEX        IF                656        186         21         91   0.284   0.330
+    $\vdots$ $\vdots$   $\vdots$   $\vdots$     $\vdots$   $\vdots$   $\vdots$   $\vdots$         
+         325 B Molina   SF         C                 202         52          3         17   0.257   0.312
+         326 J Thole    NYM        C                 202         56          3         17   0.277   0.357
+         327 C Heisey   CIN        OF                201         51          8         21   0.254   0.324
+
+  : Six cases from the **bat10** data matrix.
+
+[mlbBat10DataMatrix]
+
+  <span>**variable**</span>   <span>**description**</span>
+  --------------------------- --------------------------------------------------------------------------------------------------------------
+  **name**                    Player name
+  **team**                    The abbreviated name of the player’s team
+  **position**                The player’s primary field position (, , , )
+  **AB**                      Number of opportunities at bat
+  **H**                       Number of hits
+  **HR**                      Number of home runs
+  **RBI**                     Number of runs batted in
+  **AVG**                     Batting average, which is equal to $\resp{H}/\resp{AB}$
+  **OBP**                     On-base percentage, which is roughly equal to the fraction of times a player gets on base or hits a home run
+
+  : Variables and their descriptions for the **bat10** data set.
+
+[mlbBat10Variables]
+
+[nullHypForOBPAgainstPosition] The null hypothesis under consideration is the following: $\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}$. Write the null and corresponding alternative hypotheses in plain language.[^21]
+
+<span>The player positions have been divided into four groups: outfield (), infield (), designated hitter (), and catcher (). What would be an appropriate point estimate of the on-base percentage by outfielders, $\mu_{\resp{OF}}$?</span> A good estimate of the on-base percentage by outfielders would be the sample average of **AVG** for just those players whose position is outfield: $\bar{x}_{OF} = 0.334$.
+
+Table [mlbHRPerABSummaryTable] provides summary statistics for each group. A side-by-side box plot for the on-base percentage is shown in Figure [mlbANOVABoxPlot]. Notice that the variability appears to be approximately constant across groups; nearly constant variance across groups is an important assumption that must be satisfied before we consider the ANOVA approach.
+
+  --------------------------- ------- ------- ------- -------
+  Sample size ($n_i$)             120     154      14      39
+  Sample mean ($\bar{x}_i$)     0.334   0.332   0.348   0.323
+  Sample SD ($s_i$)             0.029   0.037   0.036   0.045
+  --------------------------- ------- ------- ------- -------
+
+  : Summary statistics of on-base percentage, split by player position.
+
+[mlbHRPerABSummaryTable]
+
+![Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.](04/figures/mlbANOVA/mlbANOVABoxPlot)
+
+[mlbANOVABoxPlot]
+
+The largest difference between the sample means is between the designated hitter and the catcher positions. Consider again the original hypotheses:
+
+-   $\mu_{\resp{OF}} = \mu_{\resp{IF}} = \mu_{\resp{DH}} = \mu_{\resp{C}}$
+
+-   The average on-base percentage ($\mu_i$) varies across some (or all) groups.
+
+Why might it be inappropriate to run the test by simply estimating whether the difference of $\mu_{\textbf{DH}}$ and $\mu_{\resp{C}}$ is statistically significant at a 0.05 significance level?
+
+[multipleComparisonExampleThatIncludesDiscussionOfClassrooms] The primary issue here is that we are inspecting the data before picking the groups that will be compared. It is inappropriate to examine all data by eye (informal testing) and only afterwards decide which parts to formally test. This is called **data snooping** or **data fishing**. Naturally we would pick the groups with the large differences for the formal test, leading to an inflation in the Type 1 Error rate. To understand this better, let’s consider a slightly different problem.
+
+Suppose we are to measure the aptitude for students in 20 classes in a large elementary school at the beginning of the year. In this school, all students are randomly assigned to classrooms, so any differences we observe between the classes at the start of the year are completely due to chance. However, with so many groups, we will probably observe a few groups that look rather different from each other. If we select only these classes that look so different, we will probably make the wrong conclusion that the assignment wasn’t random. While we might only formally test differences for a few pairs of classes, we informally evaluated the other classes by eye before choosing the most extreme cases for a comparison.
+
+For additional information on the ideas expressed in Example [multipleComparisonExampleThatIncludesDiscussionOfClassrooms], we recommend reading about the **prosecutor’s fallacy**.[^22]
+
+In the next section we will learn how to use the $F$ statistic and ANOVA to test whether observed differences in means could have happened just by chance even if there was no difference in the respective population means.
+
+### Analysis of variance (ANOVA) and the F test
+
+The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will *simultaneously* consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the **mean square between groups ($MSG$)**, and it has an associated degrees of freedom, $df_{G}=k-1$ when there are $k$ groups. The $MSG$ can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn’t be too large. Details of $MSG$ calculations are provided in the footnote,[^23] however, we typically use software for these computations.
+
+The mean square between the groups is, on its own, quite useless in a hypothesis test. We need a benchmark value for how much variability should be expected among the sample means if the null hypothesis is true. To this end, we compute a pooled variance estimate, often abbreviated as the **mean square error ($MSE$)**, which has an associated degrees of freedom value $df_E=n-k$. It is helpful to think of $MSE$ as a measure of the variability within the groups. Details of the computations of the $MSE$ are provided in the footnote[^24] for interested readers.
+
+When the null hypothesis is true, any differences among the sample means are only due to chance, and the $MSG$ and $MSE$ should be about equal. As a test statistic for ANOVA, we examine the fraction of $MSG$ and $MSE$:
+
+$$\begin{aligned}
+ \label{formulaForTheFStatistic}
+F = \frac{MSG}{MSE}\end{aligned}$$
+
+The $MSG$ represents a measure of the between-group variability, and $MSE$ measures the variability within each of the groups.
+
+For the baseball data, $MSG = 0.00252$ and $MSE=0.00127$. Identify the degrees of freedom associated with MSG and MSE and verify the $F$ statistic is approximately 1.994.[^25]
+
+We can use the $F$ statistic to evaluate the hypotheses in what is called an **F test**. A p-value can be computed from the $F$ statistic using an $F$ distribution, which has two associated parameters: $df_{1}$ and $df_{2}$. For the $F$ statistic in ANOVA, $df_{1} = df_{G}$ and $df_{2}= df_{E}$. An $F$ distribution with 3 and 323 degrees of freedom, corresponding to the $F$ statistic for the baseball hypothesis test, is shown in Figure [fDist3And323].
+
+![An $F$ distribution with $df_1=3$ and $df_2=323$.](04/figures/fDist3And323/fDist3And323)
+
+[fDist3And323]
+
+The larger the observed variability in the sample means ($MSG$) relative to the within-group observations ($MSE$), the larger $F$ will be and the stronger the evidence against the null hypothesis. Because larger values of $F$ represent stronger evidence against the null hypothesis, we use the upper tail of the distribution to compute a p-value.
+
+<span> Analysis of variance (ANOVA) is used to test whether the mean outcome differs across 2 or more groups. ANOVA uses a test statistic $F$, which represents a standardized ratio of variability in the sample means relative to the variability within the groups. If $H_0$ is true and the model assumptions are satisfied, the statistic $F$ follows an $F$ distribution with parameters $df_{1}=k-1$ and $df_{2}=n-k$. The upper tail of the $F$ distribution is used to represent the p-value.</span>
+
+[describePValueAreaForFDistributionInMLBOBPExample] The test statistic for the baseball example is $F=1.994$. Shade the area corresponding to the p-value in Figure [fDist3And323]. [^26]
+
+<span>The p-value corresponding to the shaded area in the solution of Guided Practice [describePValueAreaForFDistributionInMLBOBPExample] is equal to about 0.115. Does this provide strong evidence against the null hypothesis?</span> The p-value is larger than 0.05, indicating the evidence is not strong enough to reject the null hypothesis at a significance level of 0.05. That is, the data do not provide strong evidence that the average on-base percentage varies by player’s primary field position.
+
+### Reading an ANOVA table from software
+
+The calculations required to perform an ANOVA by hand are tedious and prone to human error. For these reasons, it is common to use statistical software to calculate the $F$ statistic and p-value.
+
+An ANOVA can be summarized in a table very similar to that of a regression summary, which we will see in . Table [anovaSummaryTableForOBPAgainstPosition] shows an ANOVA summary to test whether the mean of on-base percentage varies by player positions in the MLB. Many of these values should look familiar; in particular, the $F$ test statistic and p-value can be retrieved from the last columns.
+
+<span>lrrrrr</span> & Df & Sum Sq & Mean Sq & F value & Pr($>$F)\
+position & 3 & 0.0076 & 0.0025 & 1.9943 & 0.1147\
+Residuals & 323 & 0.4080 & 0.0013 & &\
+
+[anovaSummaryTableForOBPAgainstPosition]
+
+### Graphical diagnostics for an ANOVA analysis
+
+There are three conditions we must check for an ANOVA analysis: all observations must be independent, the data in each group must be nearly normal, and the variance within each group must be approximately equal.
+
+Independence.
+
+:   If the data are a simple random sample from less than 10% of the population, this condition is satisfied. For processes and experiments, carefully consider whether the data may be independent (e.g. no pairing). For example, in the MLB data, the data were not sampled. However, there are not obvious reasons why independence would not hold for most or all observations.
+
+Approximately normal.
+
+:   As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in Figure [mlbANOVADiagNormalityGroups]; there is some deviation from normality for infielders, but this isn’t a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn’t reasonable. See the footnote[^27] for guidance on how to handle such instances.
+
+    ![Normal probability plot of OBP for each field position.](04/figures/mlbANOVA/mlbANOVADiagNormalityGroups)
+
+    [mlbANOVADiagNormalityGroups]
+
+Constant variance.
+
+:   The last assumption is that the variance in the groups is about equal from one group to the next. This assumption can be checked by examining a side-by-side box plot of the outcomes across the groups, as in Figure . In this case, the variability is similar in the four groups but not identical. We see in Table  that the standard deviation varies a bit from one group to the next. Whether these differences are from natural variation is unclear, so we should report this uncertainty with the final results.
+
+<span>Diagnostics for an ANOVA analysis</span> <span>Independence is always important to an ANOVA analysis. The normality condition is very important when the sample sizes for each group are relatively small. The constant variance condition is especially important when the sample sizes differ between groups.</span>
+
+### Multiple comparisons and controlling Type 1 Error rate {#multipleComparisonsAndControllingTheType1ErrorRate}
+
+When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample $t$ test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of Table [anovaSummaryTableForOBPAgainstPosition].
+
+<span>Example  discussed three statistics lectures, all taught during the same semester. Table [summaryStatisticsForClassTestData] shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in Figure [classDataSBSBoxPlot]. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?</span> In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.
+
+The distributions in the side-by-side box plot appear to be roughly symmetric and show no noticeable outliers.
+
+The box plots show approximately equal variability, which can be verified in Table [summaryStatisticsForClassTestData], supporting the constant variance assumption.
+
+  Class $i$          A      B      C
+  ------------- ------ ------ ------
+  $n_i$             58     55     51
+  $\bar{x}_i$     75.1   72.0   78.9
+  $s_i$           13.9   13.8   13.1
+
+  : Summary statistics for the first midterm scores in three different lectures of the same course.
+
+[summaryStatisticsForClassTestData]
+
+![Side-by-side box plot for the first midterm scores in three different lectures of the same course.](04/figures/classData/classDataSBSBoxPlot)
+
+[classDataSBSBoxPlot]
+
+[exerExaminingAnovaSummaryTableForMidtermData] An ANOVA was conducted for the midterm data, and summary results are shown in Table [anovaSummaryTableForMidtermData]. What should we conclude?[^28]
+
+<span>lrrrrr</span> & Df & Sum Sq & Mean Sq & F value & Pr($>$F)\
+lecture & 2 & 1290.11 & 645.06 & 3.48 & 0.0330\
+Residuals & 161 & 29810.13 & 185.16 & &\
+
+[anovaSummaryTableForMidtermData]
+
+There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample $t$ test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in Example : when we run so many tests, the Type 1 Error rate increases. This issue is resolved by using a modified significance level.
+
+The scenario of testing many pairs of groups is called **multiple comparisons**. The **Bonferroni correction** suggests that a more stringent significance level is more appropriate for these tests:
+
+$$\begin{aligned}
+\alpha^* = \alpha / K\end{aligned}$$
+
+where $K$ is the number of comparisons being considered (formally or informally). If there are $k$ groups, then usually all possible pairs are compared and $K=\frac{k(k-1)}{2}$.
+
+<span>In Guided Practice [exerExaminingAnovaSummaryTableForMidtermData], you found strong evidence of differences in the average midterm grades between the three lectures. Complete the three possible pairwise comparisons using the Bonferroni correction and report any differences.</span> [multipleComparisonsOfThreeStatClasses] We use a modified significance level of $\alpha^* = 0.05/3 = 0.0167$. Additionally, we use the pooled estimate of the standard deviation: $s_{pooled}=13.61$ on $df=161$, which is provided in the ANOVA summary table.
+
+Lecture A versus Lecture B: The estimated difference and standard error are, respectively,
+
+$$\begin{aligned}
+\bar{x}_A - \bar{x}_{B} &= 75.1 - 72 = 3.1
+    &SE = \sqrt{\frac{13.61^2}{58} + \frac{13.61^2}{55}} &= 2.56\end{aligned}$$
+
+(See Section  for additional details.) This results in a $T$ score of 1.21 on $df = 161$ (we use the $df$ associated with $s_{pooled}$). Statistical software was used to precisely identify the two-tailed p-value since the modified significance of 0.0167 is not found in the $t$ table. The p-value (0.228) is larger than $\alpha^*=0.0167$, so there is not strong evidence of a difference in the means of lectures A and B.
+
+Lecture A versus Lecture C: The estimated difference and standard error are 3.8 and 2.61, respectively. This results in a $T$ score of 1.46 on $df = 161$ and a two-tailed p-value of 0.1462. This p-value is larger than $\alpha^*$, so there is not strong evidence of a difference in the means of lectures A and C.
+
+Lecture B versus Lecture C: The estimated difference and standard error are 6.9 and 2.65, respectively. This results in a $T$ score of 2.60 on $df = 161$ and a two-tailed p-value of 0.0102. This p-value is smaller than $\alpha^*$. Here we find strong evidence of a difference in the means of lectures B and C.
+
+We might summarize the findings of the analysis from Example [multipleComparisonsOfThreeStatClasses] using the following notation:
+
+$$\begin{aligned}
+\mu_A &\stackrel{?}{=} \mu_B
+    &\mu_A &\stackrel{?}{=} \mu_C
+    &\mu_B &\neq \mu_C\end{aligned}$$
+
+The midterm mean in lecture A is not statistically distinguishable from those of lectures B or C. However, there is strong evidence that lectures B and C are different. In the first two pairwise comparisons, we did not have sufficient evidence to reject the null hypothesis. Recall that failing to reject $H_0$ does not imply $H_0$ is true.
+
+<span>Sometimes an ANOVA will reject the null but no groups will have statistically significant differences</span> <span>It is possible to reject the null hypothesis using ANOVA and then to not subsequently identify differences in the pairwise comparisons. However, *this does not invalidate the ANOVA conclusion*. It only means we have not been able to successfully identify which groups differ in their means.</span>
+
+The ANOVA procedure examines the big picture: it considers all groups simultaneously to decipher whether there is evidence that some difference exists. Even if the test indicates that there is strong evidence of differences in group means, identifying with high confidence a specific difference as statistically significant is more difficult.
+
+Consider the following analogy: we observe a Wall Street firm that makes large quantities of money based on predicting mergers. Mergers are generally difficult to predict, and if the prediction success rate is extremely high, that may be considered sufficiently strong evidence to warrant investigation by the Securities and Exchange Commission (SEC). While the SEC may be quite certain that there is insider trading taking place at the firm, the evidence against any single trader may not be very strong. It is only when the SEC considers all the data that they identify the pattern. This is effectively the strategy of ANOVA: stand back and consider all the groups simultaneously.
+
+## Bootstrapping to study the standard deviation
+
+We analyzed textbook pricing data in Section [pairedData] and found that prices on Amazon were statistically significantly cheaper on average. We might also want to better understand the variability of the price difference from one book to another, which we quantified using the standard deviation: $s = \$14.26$. The sample standard deviation is a point estimate for the population standard deviation. Just as we care about the precision of a sample mean, we may care about the precise of the sample standard deviation.
+
+### Bootstrap samples and distributions
+
+The theory required to quantify the uncertainty of the sample standard deviation is complex. In an ideal world, we would sample data from the population again and recompute the standard deviation with this new sample. Then we could do it again. And again. And so on until we get enough standard deviation estimates that we have a good sense of the precision of our original estimate. This is an ideal world where sampling data is free or extremely cheap. That is rarely the case, which poses a challenge to this “resample from the population” approach.
+
+However, we can sample from the sample. In the textbook pricing example, there are 73 price differences. This sample can serve as a proxy for the population: we sample from this data set to get a sense for what it would be like if we took new samples.
+
+A **bootstrap sample** is a sample of the original sample. In the case of the textbook data, we proceed as follows:
+
+1.  Randomly sample one observation from the 73 price differences.
+
+2.  Randomly sample a second observation from the 73 price differences. There is a chance that this second observation will be the same one sampled in the first step.\
+    $\vdots$
+
+3.  Randomly sample a 73$^{rd}$ observation from the 73 price differences.
+
+This type of sampling is called **sampling with replacement**. Table [textbookBootstrapSample] shows a bootstrap sample for the textbook pricing example. Some of the values, such as , are duplicated since occasionally we sample the same observation multiple times.
+
+  ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+           6.63    5.39    6.39    14.05   6.63    -0.25   12.45   -0.22   9.45    9.45
+   11.70   39.08   4.80    28.72   9.45    -0.25   -3.88   2.82    45.34   28.72   16.62
+   38.35   4.74    44.40   3.74    1.75    2.84    30.25   3.35    6.63    30.50   0.00
+   4.96    6.39    9.48            66.00   44.40   -0.25   -2.55   17.98   2.82   
+   29.29   9.22    11.70   9.31    4.80    13.63   9.45    38.23   4.96    19.69  
+   14.26   12.45   5.39    -0.28   8.23    0.42    2.82    4.78    7.01    4.64   
+   9.12    9.31    9.12    11.70   27.15   28.72   30.71   2.84    -9.53   14.05  
+  ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+
+  : A bootstrap sample of the textbook price differences, which represents a sample of 73 values from the original 73 observations, where we are sampling with replacement. In sampling with replacement, it is possible for a value to be sampled multiple times. For example, was sampled twice in this bootstrap sample.
+
+[textbookBootstrapSample]
+
+A bootstrap sample behaves similarly to how an actual sample would behave, and we compute the point estimate of interest. In the textbook price example, we compute the standard deviation of the bootstrap sample: \$13.98.
+
+### Inference using the bootstrap
+
+One bootstrap sample is not enough to understand the uncertainty of the standard deviation, so we need to collect another bootstrap sample and compute the standard deviation: \$16.21. And another: \$14.07. And so on. Using a computer, we took 10,000 bootstrap samples and computed the standard deviation for each, and these are summarized in . This is called the **bootstrap distribution** of the standard deviation for the textbook price differences. To make use of this distribution, we make an important assumption: the bootstrap distribution shown in Figure [textbookBootstrapSamplingForSD] is similar to the sampling distribution of the standard deviation. This assumption is reasonable when doing an informal exploration of the uncertainty of an estimate, and under certain conditions, we can rely on it for more formal inference methods.
+
+![Bootstrap distribution for the standard deviation of textbook price differences. The distribution is approximately centered at the original sample’s standard deviation, \$14.26.](04/figures/textbooksS10/textbookBootstrapSamplingForSD)
+
+[textbookBootstrapSamplingForSD]
+
+<span>Describe the bootstrap distribution for the standard deviation shown in Figure [textbookBootstrapSamplingForSD].</span> The distribution is symmetric, bell-shaped, and centered near \$14.26, which is the point estimate from the original data. The standard deviation of the bootstrap distribution is \$1.60, and most observations in this distribution lie between \$11 and \$17.
+
+In this example, the bootstrap distribution’s standard deviation, \$1.60, quantifies the uncertainty of the point estimate. This is an estimate of the standard error based on the bootstrap. We might be tempted to use it for a 95% confidence interval, but first we must perform some due diligence. As with every statistical method, we must check certain conditions before performing formal inference using the bootstrap.
+
+The bootstrap distribution for the standard deviation will be a good approximation of the sampling distribution for the standard deviation when
+
+1.  observations in the original sample are independent,
+
+2.  the original sample size is at least 30, and
+
+3.  the bootstrap distribution is nearly normal.
+
+We’re already familiar with checking independence of observations, which we previously checked for this data set, and the second condition is easy to check. The last condition can be checked by examining the bootstrap distribution using a normal probability plot, as shown in Figure [textbookBootstrapSamplingQQPlotForSD]. In this example, we see a very straight line, which indicates the bootstrap distribution is nearly normal, and we can move forward with constructing a confidence interval.
+
+![Normal probability plot for the bootstrap distribution.](04/figures/textbooksS10/textbookBootstrapSamplingQQPlotForSD)
+
+[textbookBootstrapSamplingQQPlotForSD]
+
+As with many other point estimates, we will use the familiar formula
+
+$$\begin{aligned}
+\text{point estimate} \pm t_{df}^{\star} \times SE\end{aligned}$$
+
+In the textbook example, using $df = 73 - 1 = 72$ leads to $t_{72}^{\star} = 1.99$ for a 95% confidence level. For bootstrapping, the standard error is computed as the standard deviation of the bootstrap distribution.
+
+<span>Compute the 95% confidence interval for the standard deviation of the textbook price difference.</span> We use the general formula for a 95% confidence interval with the $t$ distribution:
+
+$$\begin{aligned}
+\text{point estimate} &\pm t_{df}^{\star} \times SE \\
+14.26 &\pm 1.99 \times 1.60 \\
+(\$11.08, &\$17.44)\end{aligned}$$
+
+We are 95% confident that the standard deviation of the textbook price differences is between \$11.08 and \$17.44.
+
+Had we wanted to conduct a hypothesis test, we could have used the point estimate and standard error for a t test as we have in previous sections.
+
+<span> The bootstrap may be used with any parameters using the same conditions as were provided for the standard deviation. However, in other situations, it may be more important to examine the validity of the third condition: that the bootstrap distribution is nearly normal.</span>
+
+### Frequently asked questions
+
+There are more types of bootstrap techniques, right?
+
+:   Yes! There are many excellent bootstrap techniques. We have only chosen to present one bootstrap technique that could be explained in a single section and is also reasonably reliable.
+
+Can we use the bootstrap for the mean or difference of means?
+
+:   Technically, yes. However, the methods introduced earlier tend to be more reliable than this particular bootstrapping method and other simple bootstrapping techniques. See the following page for details on an investigation into the accuracy of several bootstrapping methods as well as the $t$ distribution method introduced earlier in this chapter:
+
+    [www.openintro.org/stat/bootstrap](http://www.openintro.org/stat/bootstrap)
+
+I’ve heard a technique called the percentile bootstrap that is very robust.
+
+:    \
+    It is a held belief that the percentile bootstrap is a robust bootstrap method. That is false. The percentile method is one of the least reliable bootstrap methods. Instead, use the method described in this section, which is more reliable, or learn about more advanced techniques.
+
+[^1]: See [www.cherryblossom.org](http://www.cherryblossom.org).
+
+[^2]: As before, we identify the point estimate, $\bar{x} = 35.05$, and the standard error, $SE = 8.97 / \sqrt{100} = 0.897$. Next, we apply the formula for a 90% confidence interval, which uses $z^{\star} = 1.65$: $35.05 \pm 1.65\times 0.897 \to (33.57, 36.53)$. We are 90% confident that the average age of all participants in the 2012 Cherry Blossom Run is between 33.57 and 36.53 years.
+
+[^3]: The standard deviation of the $t$ distribution is actually a little more than 1. However, it is useful to always think of the $t$ distribution as having a standard deviation of 1 in all of our applications.
+
+[^4]: We find the shaded area *above* -1.79 (we leave the picture to you). The small left tail is between 0.025 and 0.05, so the larger upper region must have an area between 0.95 and 0.975.
+
+[^5]: Taiji was featured in the movie *The Cove*, and it is a significant source of dolphin and whale meat in Japan. Thousands of dolphins pass through the Taiji area annually, and we will assume these 19 dolphins represent a simple random sample from those dolphins. Data reference: Endo T and Haraguchi K. 2009. High mercury levels in hair samples from residents of Taiji, a Japanese whaling town. Marine Pollution Bulletin 60(5):743-747.
+
+[^6]: http://www.fda.gov/food/foodborneillnesscontaminants/metals/ucm115644.htm
+
+[^7]: There are no obvious outliers; all observations are within 2 standard deviations of the mean. If there is skew, it is not evident. There are no red flags for the normal model based on this (limited) information, and we do not have reason to believe the mercury content is not nearly normal in this type of fish.
+
+[^8]: $\bar{x} \ \pm\ t^{\star}_{14} \times SE \ \to\  0.287 \ \pm\  1.76\times 0.0178\ \to\ (0.256, 0.318)$. We are 90% confident that the average mercury content of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.
+
+[^9]: $H_0$: The average 10 mile run time was the same for 2006 and 2012. $\mu = 93.29$ minutes. $H_A$: The average 10 mile run time for 2012 was *different* than that of 2006. $\mu \neq 93.29$ minutes.
+
+[^10]: With a sample of 100, we should only be concerned if there is extreme skew. The histogram of the data suggest, at worst, slight skew.
+
+[^11]: With the conditions satisfied for the $t$ distribution, we can compute the standard error ($SE = 15.78 / \sqrt{100} = 1.58$ and the *T score*: $T = \frac{95.61 - 93.29}{1.58} = 1.47$. (There is more on this after the guided practice, but a T score and Z score are basically the same thing.) For $df = 100 - 1 = 99$, we would find $T = 1.47$ to fall between the first and second column, which means the p-value is between 0.05 and 0.10 (use $df = 90$ and consider two tails since the test is two-sided). Because the p-value is greater than 0.05, we do not reject the null hypothesis. That is, the data do not provide strong evidence that the average run time for the Cherry Blossom Run in 2012 is any different than the 2006 average.
+
+[^12]: When a class had multiple books, only the most expensive text was considered.
+
+[^13]: Observation 2: $40.59 - 31.14 = 9.45$. Observation 3: $31.68 - 32.00 = -0.32$.
+
+[^14]: Conditions have already verified and the standard error computed in Example [htForDiffInUCLAAndAmazonTextbookPrices]. To find the interval, identify $t^{\star}_{72}$ (use $df=70$ in the table, $t^{\star}_{70} = 1.99$) and plug it, the point estimate, and the standard error into the confidence interval formula: $$\text{point estimate} \ \pm\ z^{\star}SE \quad\to\quad 12.76 \ \pm\ 1.99\times 1.67 \quad\to\quad (9.44, 16.08)$$ We are 95% confident that Amazon is, on average, between \$9.44 and \$16.08 cheaper than the UCLA bookstore for UCLA course books.
+
+[^15]: This technique for degrees of freedom is conservative with respect to a Type 1 Error; it is more difficult to reject the null hypothesis using this $df$ method. In this example, computer software would have provided us a more precise degrees of freedom of $df = 12.225$.
+
+[^16]: (a) The difference in sample means is an appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$. (b) The standard error of the estimate can be estimated using Equation ([seOfDifferenceInMeans]):
+
+    $$\begin{aligned}
+    SE = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
+        \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+        = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
+        = 0.26\end{aligned}$$
+
+[^17]: Absolutely not. It is possible that there is some difference but we did not detect it. If there is a difference, we made a Type 2 Error. Notice: we also don’t have enough information to, if there is an actual difference difference, confidently say which direction that difference would be in.
+
+[^18]: We could have collected more data. If the sample sizes are larger, we tend to have a better shot at finding a difference if one exists.
+
+[^19]: Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. $H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0$.
+
+[^20]: \(a) It is probably reasonable to conclude the scores are independent, provided there was no cheating. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn’t seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.
+
+[^21]: $H_0$: The average on-base percentage is equal across the four positions. $H_A$: The average on-base percentage varies across some (or all) groups.
+
+[^22]: See, for example, [www.stat.columbia.edu/$\sim$cook/movabletype/archives/2007/05/the\_prosecutors.html](http://www.stat.columbia.edu/~cook/movabletype/archives/2007/05/the_prosecutors.html).
+
+[^23]: Let $\bar{x}$ represent the mean of outcomes across all groups. Then the mean square between groups is computed as
+
+    $$\begin{aligned}
+    MSG = \frac{1}{df_{G}}SSG = \frac{1}{k-1}\sum_{i=1}^{k} n_{i}\left(\bar{x}_{i} - \bar{x}\right)^2\end{aligned}$$
+
+    where $SSG$ is called the **sum of squares between groups** and $n_{i}$ is the sample size of group $i$.
+
+[^24]: Let $\bar{x}$ represent the mean of outcomes across all groups. Then the **sum of squares total ($SST$)** is computed as $SST = \sum_{i=1}^{n} \left(x_{i} - \bar{x}\right)^2$, where the sum is over all observations in the data set. Then we compute the **sum of squared errors ($SSE$)** in one of two equivalent ways:
+
+    $$\begin{aligned}
+    SSE = SST - SSG = (n_1-1)s_1^2 + (n_2-1)s_2^2 + \cdots + (n_k-1)s_k^2\end{aligned}$$
+
+    where $s_i^2$ is the sample variance (square of the standard deviation) of the residuals in group $i$. Then the $MSE$ is the standardized form of $SSE$: $MSE = \frac{1}{df_{E}}SSE$.
+
+[^25]: There are $k=4$ groups, so $df_{G} = k-1 = 3$. There are $n = n_1 + n_2 + n_3 + n_4 = 327$ total observations, so $df_{E} = n - k = 323$. Then the $F$ statistic is computed as the ratio of $MSG$ and $MSE$: $F = \frac{MSG}{MSE} = \frac{0.00252}{0.00127} = 1.984 \approx 1.994$. ($F=1.994$ was computed by using values for $MSG$ and $MSE$ that were not rounded.)
+
+[^26]:  
+
+    \
+    ![image](04/figures/fDist3And323/fDist3And323Shaded)
+
+[^27]: First calculate the of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.435 would have a residual of $0.405 - \bar{x}_{OF} = 0.071$. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.
+
+[^28]: The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.

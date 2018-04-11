@@ -1,0 +1,1170 @@
+library(openintro)#
+k  <- -50:500#
+p  <- 0.1#
+n  <- c(10, 30, 100, 300)#
+xl <- c(0, 0, 0, 10)#
+xu <- c(7, 11, 24, 50)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 4.8, mfrow=c(2,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+for(i in 1:4){#
+  pk   <- dbinom(k, n[i], p)#
+  xlab <- paste("n =", n[i])#
+  plot(k+0.5,pk,type='s',xlim=c(xl[i], xu[i]), axes=FALSE, xlab=xlab, ylab="")#
+  axis(1)#
+  abline(h=0)#
+  if(i == 2){#
+  	par(mar=c(3.4, 1, 0.9, 1))#
+  }#
+}#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,75)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(2,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s',xlim=c(xl[i], xu[i]), axes=FALSE, xlab=xlab, ylab="")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,75)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s',xlim=c(xl[i], xu[i]), axes=FALSE, xlab=xlab, ylab="")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,75)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s',xlim=c(xlim), axes=FALSE, xlab=xlab, ylab="")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s',xlim=c(xlim), axes=FALSE, xlab=xlab, ylab="")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s',xlim=c(xlim), axes=FALSE, xlab=xlab, ylab="")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8))#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab=xlab, ylab="")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab=xlab, ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8))#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8))#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8))#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,70,71,71)+0.5, dbinom(c(-1000, 69, 70, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,70,70,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,70,70,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+c(69,69,70,70,71,71)
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,69,70,70,71,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,70,70,71,71,71,1)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,70,70,71,71,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,70,70,71,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,69,70,70,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,69,69,70,70,71,71)+0.5, dbinom(c(-1000, 69, 69, 70, 70, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+polygon(c(69,69,69,69,70,70,71,71)+0.5, dbinom(c(-1000, 69,69, 69, 70, 70, 71, -1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k+0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#lines(c(68,68,69,69,70,70,71,71)+0.5,#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#lines(c(68,68,69,69,70,70,71,71)+0.5,#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#lines(c(68,68,69,69,70,70,71,71)+0.5,#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), lty=3, lwd=3)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#lines(c(68,68,69,69,70,70,71,71)+0.5,#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), lwd=3)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#lines(c(68,68,69,69,70,70,71,71)+0.5,#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#88552288")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,2), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+pk <- dbinom(k, n, p)#
+plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#lines(c(68,68,69,69,70,70,71,71)+0.5,#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#88552288", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(65,85)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#88552288", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="Normal approximation", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#88552288", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(3.9, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#88552288", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#88552288", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, tcl=-0.015)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, tcl=-0.15)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0))#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.15)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.15)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(2, 1, 0.5, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,90)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 100, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 5.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 6.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255CC", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+pnorm((65-80)/8,80,8)
+pnorm(65,80,8)
+pbinom(65,80,0.2)
+pbinom(65,400,0.2)
+pnorm(65.5,80,8)
+pnorm(64.5,80,8)
+pbinom(64,400,0.2)
+pnorm(64,80,8)
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 6.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558833")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 6.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 6.5, 2.4, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="", col="#225588)#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="", col="#225588#)#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="", col="#225588")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=1.5)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border="#882255FF", lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col="#22558844")#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border=COL[4], lwd=2)#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col=COL[1])#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+k  <- 0:400#
+p  <- 0.2#
+n  <- 400#
+xlim <- c(60,100)#
+#
+myPDF('normApproxToBinomFail.pdf', 7.5, 2.6, mfrow=c(1,1), mar=c(1.9, 1, 0.3, 1), mgp=c(2.2, 0.6, 0), tcl=-0.35)#
+#
+#pk <- dbinom(k, n, p)#
+#plot(k-0.5,pk,type='s', xlim=xlim, axes=FALSE, xlab="Exact binomial", ylab="")#
+#polygon(c(68,68,69,69,70,70,71,71)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), col="#22558833")#
+#axis(1)#
+#abline(h=0)#
+#
+X <- seq(40, 120, 0.01)#
+Y <- dnorm(X, 80, 8)#
+plot(X, Y, type="l", xlim=xlim, axes=FALSE, xlab="", ylab="")#
+polygon(c(69,69,71,71), dnorm(c(-1000, 69, 71, -1000), 80, 8), col=COL[1])#
+polygon(c(67.9,67.9,69,69,70,70,71.1,71.1)+0.5, dbinom(c(-1000,69,69,70,70,71,71,-1000), 400, .2), border=COL[4], lwd=2)#
+axis(1)#
+axis(1, 1:200, rep("", 200), tcl=-0.12)#
+abline(h=0)#
+#
+dev.off()

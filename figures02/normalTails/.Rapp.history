@@ -1,0 +1,556 @@
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 5, 1.3, mar=c(1,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 5, 1.3, mar=c(1,1,0.3,1), mgp=c(3,0,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1.2, mar=c(1,1,0.3,1), mgp=c(3,0,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(1,1,0.3,1), mgp=c(3,0,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(1,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1.1, mar=c(1,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1.1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1.05, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#CCCCCC', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.55)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.56)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.53)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.52)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.4)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(X, Y)#
+abline(h=0)#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#CCCCCC')#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#22558844')#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col='#22558844')#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col='#BBBBBB', lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.3, 1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+#===> plot <===##
+myPDF("normalTails.pdf", 4.7, 1.1, mar=c(0.81,1,0.3,1), mgp=c(3,-0.2,0), mfrow=c(1,2))#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'negative Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= -0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+plot(X, Y, type='l', axes=F, xlim=c(-3.4,3.4))#
+axis(1, at=c(-5,0,5), label=c(-5,'positive Z',5), cex.axis=0.7, tick=FALSE)#
+these <- which(X <= 0.8)#
+polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])#
+lines(c(0,0), dnorm(0)*c(0.01,0.99), col=COL[6], lty=3, lwd=1.5)#
+lines(X, Y)#
+abline(h=0)#
+#
+dev.off()

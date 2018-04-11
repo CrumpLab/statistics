@@ -1,0 +1,616 @@
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p <- apply(X, 1, mean)
+hist(p)
+set.seed(8135)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5
+hist(p)
+library(openintro)#
+data(COL)#
+#
+set.seed(8135)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, mean)
+hist(p.)
+library(openintro)#
+data(COL)#
+#
+set.seed(8335)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, mean)
+hist(p.)
+bin.width <- diff(p.)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)
+bin.width <- diff(p.)[1]#
+breaks <- c(p. - bin.width / 4, p. + bin.width / 4)
+breaks
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[1]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)
+breaks
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum)#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[1]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListeners.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(diffs <= 3 / 120)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum)#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[1]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListeners.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+myPDF('TappersAndListeners.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+breaks
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListeners.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+myPDF('TappersAndListeners.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+myPDF('TappersAndListeners.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum)
+p.[1:10]
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum)#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum)#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(1)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+nsim <- 3e4
+library(openintro)#
+data(COL)#
+#
+set.seed(1)#
+#
+nsim <- 3e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(3)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(4)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 3e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = 3 * seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 3e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = 3 * seq(0, 750, 250), labels = format(3 * seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 3e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = 1e4 * seq(0, 750, 250) / nsim, labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 3e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = nsim * seq(0, 750, 250) / 1e4, labels = format(nsim * seq(0, 750, 250) / 1e8))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 5e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = nsim * seq(0, 750, 250) / 1e4, labels = format(nsim * seq(0, 750, 250) / 1e8))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(5)#
+#
+nsim <- 5e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = 5 * seq(0, 750, 250), labels = format(5 * seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)
+library(openintro)#
+data(COL)#
+#
+set.seed(6)#
+#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+myPDF('TappersAndListenersNullDistribution.pdf', 6.5, 3.25,#
+      mar=c(3.7, 5.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 750, 250), labels = format(seq(0, 750, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed", pos = 3)#
+par(las = 0)#
+mtext("Simulated Correct Number of Guesses Out Of 120", 1, 2.5)#
+dev.off()#
+#
+mean(p. <= 3)

@@ -1,0 +1,2125 @@
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.7, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.26'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x <- rnorm(1, m, SE)#
+	ci <- x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	}#
+	col <- 1#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.8, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.26'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x <- rnorm(1, m, SE)#
+	ci <- x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	}#
+	col <- 1#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.26'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x <- rnorm(1, m, SE)#
+	ci <- x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	}#
+	col <- 1#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x <- rnorm(1, m, SE)#
+	ci <- x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	}#
+	col <- 1#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x <- rnorm(1, m, SE)#
+	ci <- x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+for(i in 1:1000){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:1000){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(x-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+means
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+warnings()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}
+warnings()
+means[i]
+m
+SE
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(x, i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(x, i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(11)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(1)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(2)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(19)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(18)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col='#00000088')#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- '#FF0000BB'#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- "#225588"#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[4]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=5)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[4]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=4)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[4]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=3)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[1]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=3)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[4]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=3)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, expression(mu*' = 94.52'), cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[4]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=4)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+m <- 94.52#
+s <- 16.0#
+n <- 100#
+k <- 25#
+SE <- s/sqrt(n)#
+#
+set.seed(3)#
+means <- c()#
+SE    <- c()#
+for(i in 1:k){#
+	temp <- sample(nrow(run10), n)#
+	d    <- run10$time[temp]#
+	means[i] <- mean(d, na.rm=TRUE)#
+	SE[i]    <- sd(d)/sqrt(n)#
+}#
+xR <- m + 4*c(-1, 1)*s/sqrt(n)#
+yR <- c(0, 41*k/40)#
+plot(xR, yR, type='n', xlab='run time (minutes)', ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, 'p = 0.3', cex.axis=1.15)#
+#axis(2)#
+for(i in 1:k){#
+	#x  <- rnorm(1, m, SE)#
+	ci <- means[i] + 2*c(-1,1)*SE[i]#
+			#x + 1.96*c(-1,1)*SE#
+	if(abs(means[i]-m) > 1.96*SE[i]){#
+		col <- COL[4]#
+		points(means[i], i, cex=1.4, col=col)#
+#		points(x, i, pch=20, cex=1.2, col=col)#
+		lines(ci, rep(i, 2), col=col, lwd=4)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(means[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n <- 100#
+p <- 0.3#
+#
+p.hat <- rbinom(num.sim, n, p)
+p.hat
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n <- 100#
+p <- 0.3#
+#
+p.hat <- rbinom(num.sim, n, p) / n
+p.hat
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 100#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)
+SE
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 1000#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)
+SE
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(52)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)
+p.hat
+plot(p.hat)
+p / SE
+(p.hat - p) / SE
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(1)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(1.5, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=m, lty=2, col=COL[6])#
+axis(1, at=m, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(1)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(1.5, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(1)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(2)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(3)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(4)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(5)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(6)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(7)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(8)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+data(run10)#
+set.seed(9)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(10)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(11)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(12)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(13)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(14)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p, 'p = 0.3', cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+p.hat
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05), c("", "p = 0.3", ""),#
+     cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.25"), cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 1.96 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 1.96 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 6, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.25"), cex.axis=1.15)#
+for(i in 1:k){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 7, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.25"), cex.axis=1.15)#
+for(i in 1:n){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i]-p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+abs(p.hat[i] - p)
+p
+p.hat
+i
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 7, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.25"), cex.axis=1.15)#
+for(i in 1:num.sim){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i] - p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 8, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4.5*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.25"), cex.axis=1.15)#
+for(i in 1:num.sim){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i] - p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 8, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.25"), cex.axis=1.15)#
+for(i in 1:num.sim){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i] - p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+pbinom(3, 120, .5)
+3/120
+56 / 120
+rbinom(10, 120, 0.5) / 120
+round(rbinom(10, 120, 0.5) / 120, 3)
+paste(round(rbinom(10, 120, 0.5) / 120, 3), collapse = " \\quad ")
+paste(round(rbinom(10, 120, 0.5) / 120, 3), collapse = " \quad ")
+paste(round(rbinom(10, 120, 0.5) / 120, 3), collapse = " \\quad ")
+paste(format(round(rbinom(10, 120, 0.5) / 120, 3)), collapse = " \\quad ")
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 8, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.3", "0.35"), cex.axis=1.15)#
+for(i in 1:num.sim){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i] - p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(15)#
+#
+# _____ Run Simulations ____ ##
+num.sim <- 25#
+n       <- 300#
+p       <- 0.3#
+p.hat   <- rbinom(num.sim, n, p) / n#
+SE      <- sqrt(p.hat * (1 - p.hat) / n)#
+#
+pdf('95PercentConfidenceInterval.pdf', 8, 4)#
+#
+par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.9, 0))#
+xR <- p + 4*c(-1, 1)*max(SE)#
+yR <- c(0, 25)#
+plot(xR, yR, type='n', xlab='',#
+     ylab='', axes=FALSE)#
+abline(v=p, lty=2, col=COL[6])#
+axis(1, at=p + c(-0.05, 0, 0.05),#
+     c("0.25", "p = 0.30", "0.35"), cex.axis=1.15)#
+for(i in 1:num.sim){#
+	ci <- p.hat[i] + 2 * c(-1, 1) * SE[i]#
+	if(abs(p.hat[i] - p) > 2 * SE[i]){#
+		col <- COL[4]#
+		points(p.hat[i], i, cex=1.4, col=col)#
+	} else {#
+		col <- COL[1]#
+	}#
+	points(p.hat[i], i, pch=20, cex=1.2, col=col)#
+	lines(ci, rep(i, 2), col=col)#
+}#
+dev.off()

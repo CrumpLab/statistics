@@ -1,0 +1,2179 @@
+library(openintro)#
+#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- su[trf == 1] / 50#
+	p2   <- su[trf == 2] / 40#
+	d[i] <- p2 - p1#
+}
+su[trf == 1]
+library(openintro)#
+#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}
+hist(d)
+hist(d, breaks=20)
+hist(d, breaks=25)
+hist(d, breaks=30)
+hist(d, breaks=30, col="#E5E5E5")
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE")
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE")
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE")#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", axes=FALSE)#
+axis(1)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.1, mar=c(2, 0.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 0.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 0.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:2)*/10, labels=(0:2)/10)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 0.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:2)*N/10, labels=(0:2)/10)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 0.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=(0:3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=(0:3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()
+sum(abs(d) > 0.1299) / N
+2*sum(d > 0.1299) / N
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+2*sum(d > 0.1299) / N#
+#
+myPDF("pValueCPRStudyLargeSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+2*sum(d > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	pv[i] <- 2*sum(dd[i] > 0.1299) / N	#
+}#
+hist(pv)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+2*sum(d > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	pv[i] <- 2*sum(dd[i] > 0.1299) / N	#
+}#
+hist(pv)
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv)
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(abs(d) > dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(abs(d) > dd[i]) / N	#
+	}#
+}#
+hist(pv)
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- sum(abs(d) > dd[i]) / N	#
+	} else {#
+		pv[i] <- sum(abs(d) > dd[i]) / N	#
+	}#
+}#
+hist(pv)
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv)
+hist(pv, breaks=50)
+hist(pv, breaks=5)
+hist(pv, breaks=seq(0, 1, 0.2)
+hist(pv, breaks=seq(0, 1, 0.15)
+hist(pv, breaks=seq(0, 1, 0.15))
+par(mfrow=2:1)#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))
+par(mfrow=2:1)#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))
+d <- rchisq(10000, 3)#
+par(mfrow=2:1)#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))
+d <- rchisq(10000, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=seq(0, 1, 0.15))
+d <- rchisq(10000, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv)#
+dd <- sample(d, 1000)#
+pv <- rep(NA, 1000)#
+for(i in 1:1000){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv)
+d <- rchisq(50000, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, 5000)#
+pv <- rep(NA, 5000)#
+for(i in 1:1000){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=20)#
+dd <- sample(d, 5000)#
+pv <- rep(NA, 5000)#
+for(i in 1:1000){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=20)
+N <- 50000#
+d <- rchisq(N, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=20)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=20)
+N <- 50000#
+d <- rchisq(N, 2.2)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=20)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=20)
+N <- 50000#
+d <- exp(rnorm(N, 1, 1.3))#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+hist(pv, breaks=20)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+hist(pv, breaks=20)
+N <- 50000#
+d <- exp(rnorm(N, 1, 1.3))#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+plot(cumsum(pv))#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+plot(cumsum(pv))
+q()
+dev.off()
+plot(1)
+q()
+))))
+}}}}}
+q()
+n
+N <- 50000#
+d <- exp(rnorm(N, 1, 1.3))#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+plot(cumsum(pv))#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+plot(cumsum(sort(pv))
+)
+N <- 20000#
+d <- exp(rnorm(N, 1, 1.3))#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.02*j)#
+}#
+plot(br)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.02*j)#
+}#
+plot(br)
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.02*j)#
+}#
+plot(br)
+N <- 20000#
+d <- exp(rnorm(N, 1, 1.3))#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+2*sum(d > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()#
+#
+#N <- 20000#
+#d <- exp(rnorm(N, 1, 1.3))#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d < dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d > dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)#
+#}#
+#plot(br)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)#
+#}#
+#plot(br)
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+2*sum(d > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()#
+#
+#N <- 20000#
+#d <- exp(rnorm(N, 1, 1.3))#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d < dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d > dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)#
+#}#
+#plot(br)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)#
+#}#
+#plot(br)
+sum(abs(d) > 0.1299) / N
+N <- 20000#
+d <- rpois(N, 2)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)
+abline(0, N/10)
+abline(0, N)
+abline(0, 1/N)
+abline(0, 1)
+abline(0, 10)
+abline(0, N/100)
+abline(0, N/10)
+abline(0, N/20)
+plot(br)#
+abline(0, N/20)
+abline(0, N/100)
+abline(0, N/1000)
+N <- 20000#
+d <- rpois(N, 2)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d < dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d > dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+abline(0, N/1000)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) > abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)
+N <- 20000#
+d <- rpois(N, 2)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d <= dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d >= dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+abline(0, N/1000)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)
+abline(0, N/1000)
+N <- 20000#
+d <- rpois(N, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d <= dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d >= dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+abline(0, N/1000)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+abline(0, N/1000)
+N <- 50000#
+d <- rpois(N, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d <= dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d >= dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+abline(0, N/1000)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)#
+}#
+plot(br)#
+abline(0, N/1000)
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)/N*10#
+}#
+plot(br)#
+abline(0, 1)
+abline(0, 1/100)
+N <- 50000#
+d <- rpois(N, 3)#
+d <- d - mean(d)#
+par(mfrow=2:1)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	if(dd[i] < 0){#
+		pv[i] <- 2*sum(d <= dd[i]) / N	#
+	} else {#
+		pv[i] <- 2*sum(d >= dd[i]) / N	#
+	}#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)/N*10#
+}#
+plot(br)#
+abline(0, 1/100)#
+dd <- sample(d, N/10)#
+pv <- rep(NA, N/10)#
+for(i in 1:(N/10)){#
+	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+}#
+br <- rep(NA, 200)#
+for(j in 1:200){#
+	br[j] <- sum(pv < 0.01*j)/N*10#
+}#
+plot(br)#
+abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/30)#
+dev.off()
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3)#
+lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(-0.13, 3*N/25, "-0.13", pos=3)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+#lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum(abs(d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col="#EEEEEE", main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+sum((d) > 0.1299) / N
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N
+N <- 3*10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N
+su
+cbind(tr, su)
+table(cbind(tr, su))
+table(data.frame(tr, su))
+fisher.test(table(data.frame(tr, su)))
+sum(abs(d) > 0.1299) / N
+15/25 - 35/65
+15/50 - 10/40
+11/50 - 14/40
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5, 2.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col=COL[7], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col=COL[1], add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+sum((d) > 0.1299) / N
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5*1.2, 2.3*1.2, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col=COL[7], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col=COL[1], add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5*1.3, 2.3*1.3, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col=COL[7], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col=COL[1], add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5*1.35, 2.3*1.35, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col=COL[7], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col=COL[1], add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf", 5*1.35, 2.3*1.35, mar=c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks=seq(-0.4, 0.4, 0.02), col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col=COL[1], add=TRUE)#
+#hist(d[d < -0.1299], breaks=seq(-0.4, 0.4, 0.02), col="#4488AA", add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+#lines(rep(-0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+#text(-0.13, 3*N/25, "-0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+#N <- 50000#
+#d <- rpois(N, 3)#
+#d <- d - mean(d)#
+#par(mfrow=2:1)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	if(dd[i] < 0){#
+#		pv[i] <- 2*sum(d <= dd[i]) / N	#
+#	} else {#
+#		pv[i] <- 2*sum(d >= dd[i]) / N	#
+#	}#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)#
+#dd <- sample(d, N/10)#
+#pv <- rep(NA, N/10)#
+#for(i in 1:(N/10)){#
+#	pv[i] <- sum(abs(d) >= abs(dd[i])) / N	#
+#}#
+#br <- rep(NA, 200)#
+#for(j in 1:200){#
+#	br[j] <- sum(pv < 0.01*j)/N*10#
+#}#
+#plot(br)#
+#abline(0, 1/100)
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^4#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}
+d[1:5]
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)
+breaks
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks=seq(-0.4, 0.4, 0.02), col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("pValueCPRStudySmallSampleAnalysisInSmallSampleSection.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("CPR_study_p_value.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF("CPR_study_right_tail.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+udiff
+udiffs
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF("CPR_study_right_tail.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, y0)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 100)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 25)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 23)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+# axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 23)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()
+pnorm(-1.3)
+normTail(0, 0.1, -0.13, 0.13)
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5, 2.3, mar = c(2, 2.5, 0.5, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 0.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+# axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 23)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5, 2.3, mar = c(2, 0.5, 0.5, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 1.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+# axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 23)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5, 2.3, mar = c(2, 0.5, 0.5, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*0.9, 2.3*0.9, mar = c(2, 0.5, 0.5, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*0.9, 2.3*0.9, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*0.9, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*0.7, 2.3*0.6, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*0.8, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)), rep(c("s", "d"), c(14, 26)))#
+#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF("CPR_study_right_tail.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value.pdf",#
+      5*1.35, 2.3*1.35, mar = c(2, 2.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value_w_normal.pdf",#
+      5*1.35, 2.3*1.1, mar = c(2, 1.5, 0.5, 0.5))#
+hist(d, breaks = breaks, col=COL[7,3], main="", xlab="Differences under the null hypothesis", ylab="", axes=FALSE)#
+axis(1)#
+# axis(2, at=(0:3)*N/20, labels=c(0, NA, NA, 3)/20)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.095)#
+lines(x0, N * y0 / 23)#
+hist(d[d > 0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+hist(d[d < -0.1299], breaks = breaks, col=COL[1], add=TRUE)#
+abline(h=0)#
+lines(rep(0.13, 2), c(0, 3)*N/25, lty=3, lwd=1.7)#
+text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)#
+dev.off()#
+#
+myPDF("CPR_study_p_value_normal_only.pdf",#
+      5*0.8, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.1, -0.13, 0.13, col = COL[1])#
+dev.off()
+pnorm(-1.3)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)

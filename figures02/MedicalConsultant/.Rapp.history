@@ -1,0 +1,1754 @@
+plot(gr)
+plot(gr, log='y')
+library(OIsurv)
+library(survival)
+?Surv
+with(lung, Surv(time, status))#
+Surv(heart$start, heart$stop, heart$event)
+with(lung, Surv(time, status))#
+Surv(heart$start, heart$stop, heart$event) -> hold
+hold
+class(hold)
+citation()
+citation("survival")
+citation("KMsurv")
+library(survival)
+?Surv
+sample(rep(1:2,c(5,5)))
+t <- c(9.05, 15.02, 0.96, 15.84, 2.61, 11.31, 2.52, 15.34, 12.10, 15.65)
+g <- rep(1:2,5)
+t.test(t ~ g)
+library(openintro)
+dotPlot(t, g)
+1.06^10
+c("VWINX", "BAC")
+getReturns(c("VWINX", "BAC"))
+library(stockPortfolio)
+getReturns(c("VWINX", "BAC")) -> gr
+plot(gr)
+gr$R[1:120,]
+apply(1+gr$R[1:120,], 2, prod)
+apply(1+gr$R, 2, prod)
+(1+gr$R)
+apply(1+gr$R[1:120+12,], 2, prod)
+apply(1+gr$R[1:120,], 2, prod)
+apply(1+gr$R[1:12,], 2, prod)
+getReturns(c("VWINX", "VTIVX")) -> gr
+plot(gr)
+library(stockPortfolio)
+t <- c("GOOG", "XOM")
+g <- getReturns(t, start="2006-01-01")
+summary(g)
+0.011*6 + 0.0066*2
+36^5
+36^4
+library(stockPortfolio)#
+tickers  <- c("HPQ", "DELL", "IBM", "TDC", "IGT", #
+			"LUV", "JBLU", "LFL", "GOL", "CPA",#
+			"GOOG", "BIDU", "YHOO", "AKAM", "YOKU")#
+industry <- c("comp", "comp", "comp", "comp", "comp",#
+			"airline", "airline", "airline", "airline", "airline",#
+			"web", "web", "web", "web", "web")
+g <- getReturns(tickers, freq="day", start="2010-10-01", end="2011-01-18")#
+s <- stockModel(g, model="MGM", industry=industry)
+o <- optimalPort(s)
+o <- optimalPort(s, Rf=-0.01)
+`optimalPort` <-#
+function(model, Rf=NULL, shortSell=NULL, eps=10^(-4)){#
+	#===> updating model and error checking <===##
+	if(!is.null(Rf)){#
+		model$Rf <- Rf#
+	}#
+	if(!is.null(shortSell)){#
+		model$shorts <- ifelse(shortSell[1] %in% c('y', 'yes', 'Y', 'Yes', 'YES', TRUE), TRUE, FALSE)#
+	}#
+	if(!model$shorts & model$model == 'MGM'){#
+		warning('Short sales are always permitted under the multigroup model.')#
+		model$shorts <- TRUE#
+	}#
+	if(!model$shorts & model$model == 'none'){#
+		warning('Short sales are always permitted when no model is specified.')#
+		model$shorts <- TRUE#
+	}#
+	#===> ensuring Rf is reasonable for the data <===##
+	if(model$Rf > -10^6){#
+		temp <- optimalPort(model, Rf=-10^5, eps=eps)#
+		if(model$Rf >= temp$R-eps){#
+			errMess <- paste("Rf must be less than",#
+							round(temp$R-0.005, 4))#
+			errMess <- paste(errMess,#
+						"\nRf may not be valid for this stock model.",#
+						"\nNote that this message does indicate NOT a bug.",#
+						"\nSee the optimalPort help file for more info.")#
+			stop(errMess)#
+		}#
+	} else {#
+		stop("The chosen Rf value is too negative.\n")#
+	}#
+	#===> setup the model <===##
+	op <- list()#
+	class(op) <- "optimalPortfolio"#
+	op$model  <- model#
+	op$X      <- NA#
+	op$R      <- NA#
+	op$risk   <- NA#
+	#===> find optimal portfolio based on model <===##
+	if(model$model == 'none'){#
+		optimalPortUt <- function(model){#
+			R <- model$R - model$Rf#
+			Z <- solve(model$COV) %*% R#
+			X <- as.numeric(Z / sum(Z))#
+			names(X) <- rownames(Z)#
+			ps       <- portReturn(list(R=model$R, COV=model$COV), X)#
+			return(list(X=X, R=ps$R, VAR=ps$VAR))#
+		}#
+		minRiskPortUt <- function(model){#
+			if(length(model$R) > 2){#
+				MRPM <- minRiskPortMultiUt(model)#
+				return(MRPM)#
+			}#
+			temp <- as.numeric(t(c(1,-1)) %*% model$COV %*% c(1,-1))#
+			X    <- model$COV[2:1,] %*% c(1,-1) * c(-1, 1) / temp#
+			port <- portReturn(model, X)#
+			R    <- sum(X*model$R)#
+			V    <- as.numeric(t(X) %*% model$COV %*% X)#
+			return(list(X=X, R=port$R, VAR=V))#
+		}#
+		minRiskPortMultiUt <- function(model, curveInfo=FALSE){#
+			maxRf <- optimalPortUt(model, -1000)$R#
+			Rf    <- maxRf - 0.001*(1:2)#
+			G1    <- optimalPortUt(model, Rf[1])#
+			G2    <- optimalPortUt(model, Rf[2])#
+			R.    <- c(G1$R, G2$R)#
+			V.    <- matrix(NA, 2, 2)#
+			V.[1,1] <- G1$VAR#
+			V.[2,2] <- G2$VAR#
+			V.[2,1] <- V.[1,2] <- as.numeric(t(G1$X) %*% model$COV %*% G2$X)#
+			MRP     <- minRiskPortUt(list(R=R., COV=V.))#
+			X       <- G1$X * MRP$X[1] + G2$X * MRP$X[2]#
+			if(!curveInfo){#
+				return(list(R=MRP$R, VAR=MRP$VAR, X=X))#
+			} else {#
+				return(list(R=MRP$R, VAR=MRP$VAR, X=X, G1=G1))#
+			}#
+		}#
+		OP      <- optimalPortUt(model)#
+		op$X    <- OP$X#
+		op$R    <- OP$R#
+		op$risk <- sqrt(OP$VAR)#
+	} else if(model$model == 'SIM'){#
+		ratio <- (model$R - model$Rf)/model$beta#
+		o     <- order(-ratio)#
+		alpha <- model$alpha[o]#
+		beta  <- model$beta[o]#
+		R     <- model$R[o]#
+		MSE   <- model$MSE[o]#
+		ratio <- ratio[o]#
+		c1    <- (R-model$Rf)*beta/MSE#
+		c2    <- cumsum(c1)#
+		c3    <- beta^2 / MSE#
+		c4    <- cumsum(c3)#
+		Ci    <- model$VM*c2 / (1 + model$VM*c4)#
+		cStar <- ifelse(model$shorts, rev(Ci)[1], max(Ci))#
+		z <- (beta/MSE) * (ratio - cStar)#
+		t <- ifelse(model$shorts, length(Ci), which.max(Ci)[1])#
+		X <- z[1:t]/sum(z[1:t])#
+		temp <- list(R=R[1:t], COV=model$COV[o[1:t],o[1:t]])#
+		ps   <- portReturn(temp, X)#
+		VAR  <- sum(beta[1:t]*X)^2*model$VM + sum(MSE[1:t] * X^2)#
+		X    <- X[match(model$ticker, names(X))]#
+		names(X)    <- model$ticker#
+		X[is.na(X)] <- 0#
+		op$X    <- X#
+		op$R    <- ps$R#
+		op$risk <- sqrt(ps$VAR)#
+	} else if(model$model == 'CCM'){#
+		ratio    <- (model$R - model$Rf)/model$sigma#
+		o        <- order(-ratio)#
+		ratio    <- ratio[o]#
+		R        <- model$R[o]#
+		rhoRatio <- model$rho / (1+(1:length(model$R) - 1)*model$rho)#
+		ratioSum <- cumsum(ratio)#
+		Ci       <- rhoRatio * ratioSum#
+		cStar    <- ifelse(model$shorts, rev(Ci)[1], max(Ci))#
+		z    <- (ratio - cStar) / ((1-model$rho) * model$sigma[o])#
+		t    <- ifelse(model$shorts, length(Ci), which.max(Ci)[1])#
+		X    <- z[1:t]/sum(z[1:t])#
+		temp <- list(R=R[1:t], COV=model$COV[o[1:t],o[1:t]])#
+		ps   <- portReturn(temp, X)#
+		X    <- X[match(model$ticker, names(X))]#
+		names(X)    <- model$ticker#
+		X[is.na(X)] <- 0#
+		op$X    <- X#
+		op$R    <- ps$R#
+		op$risk <- sqrt(ps$VAR)#
+	} else if(model$model == 'MGM'){#
+		ind  <- model$industry#
+		indU <- unique(model$industry)#
+		N    <- rep(NA, length(indU))#
+		for(i in 1:length(indU)){#
+			N[i] <- sum(ind == indU[i])#
+		}#
+		I3    <- diag(rep(1,length(indU)))#
+		A     <- I3 + model$rho*N/(1-diag(model$rho))#
+		C     <- rep(NA, length(indU))#
+		ratio <- (model$R - model$Rf) / model$sigma#
+		for(i in 1:length(indU)){#
+			theI <- (ind == indU[i])#
+			C[i] <- sum(ratio[theI]/(1-model$rho[i,i]))#
+		}#
+		PHI        <- as.numeric(solve(A) %*% C)#
+		names(PHI) <- indU#
+		z          <- rep(NA, length(ind))#
+		for(i in 1:length(ind)){#
+			k     <- which(indU == ind[i])#
+			cStar <- sum(model$rho[k,] * PHI)#
+			den   <- model$sigma[i] * (1-model$rho[k,k])#
+			z[i]  <- (ratio[i] - cStar) / den#
+		}#
+		X        <- z / sum(z)#
+		names(X) <- names(model$R)#
+		ps       <- portReturn(model, X)#
+		op$X     <- X#
+		op$R     <- ps$R#
+		op$risk  <- sqrt(ps$VAR)#
+	}#
+	return(op)#
+}
+o <- optimalPort(s, Rf=-0.01)
+`optimalPort` <-#
+function(model, Rf=NULL, shortSell=NULL, eps=10^(-4)){#
+	#===> updating model and error checking <===##
+	if(!is.null(Rf)){#
+		model$Rf <- Rf#
+	}#
+	if(!is.null(shortSell)){#
+		model$shorts <- ifelse(shortSell[1] %in% c('y', 'yes', 'Y', 'Yes', 'YES', TRUE), TRUE, FALSE)#
+	}#
+	if(!model$shorts & model$model == 'MGM'){#
+		warning('Short sales are always permitted under the multigroup model.')#
+		model$shorts <- TRUE#
+	}#
+	if(!model$shorts & model$model == 'none'){#
+		warning('Short sales are always permitted when no model is specified.')#
+		model$shorts <- TRUE#
+	}#
+	#===> ensuring Rf is reasonable for the data <===##
+	if(model$Rf > -10^6){#
+		temp <- optimalPort(model, Rf=-10^7, eps=eps)#
+		if(model$Rf >= temp$R-eps){#
+			errMess <- paste("Rf must be less than",#
+							round(temp$R-0.005, 4))#
+			errMess <- paste(errMess,#
+						"\nRf may not be valid for this stock model.",#
+						"\nNote that this message does indicate NOT a bug.",#
+						"\nSee the optimalPort help file for more info.")#
+			stop(errMess)#
+		}#
+	}#
+	#===> setup the model <===##
+	op <- list()#
+	class(op) <- "optimalPortfolio"#
+	op$model  <- model#
+	op$X      <- NA#
+	op$R      <- NA#
+	op$risk   <- NA#
+	#===> find optimal portfolio based on model <===##
+	if(model$model == 'none'){#
+		optimalPortUt <- function(model){#
+			R <- model$R - model$Rf#
+			Z <- solve(model$COV) %*% R#
+			X <- as.numeric(Z / sum(Z))#
+			names(X) <- rownames(Z)#
+			ps       <- portReturn(list(R=model$R, COV=model$COV), X)#
+			return(list(X=X, R=ps$R, VAR=ps$VAR))#
+		}#
+		minRiskPortUt <- function(model){#
+			if(length(model$R) > 2){#
+				MRPM <- minRiskPortMultiUt(model)#
+				return(MRPM)#
+			}#
+			temp <- as.numeric(t(c(1,-1)) %*% model$COV %*% c(1,-1))#
+			X    <- model$COV[2:1,] %*% c(1,-1) * c(-1, 1) / temp#
+			port <- portReturn(model, X)#
+			R    <- sum(X*model$R)#
+			V    <- as.numeric(t(X) %*% model$COV %*% X)#
+			return(list(X=X, R=port$R, VAR=V))#
+		}#
+		minRiskPortMultiUt <- function(model, curveInfo=FALSE){#
+			maxRf <- optimalPortUt(model, -1000)$R#
+			Rf    <- maxRf - 0.001*(1:2)#
+			G1    <- optimalPortUt(model, Rf[1])#
+			G2    <- optimalPortUt(model, Rf[2])#
+			R.    <- c(G1$R, G2$R)#
+			V.    <- matrix(NA, 2, 2)#
+			V.[1,1] <- G1$VAR#
+			V.[2,2] <- G2$VAR#
+			V.[2,1] <- V.[1,2] <- as.numeric(t(G1$X) %*% model$COV %*% G2$X)#
+			MRP     <- minRiskPortUt(list(R=R., COV=V.))#
+			X       <- G1$X * MRP$X[1] + G2$X * MRP$X[2]#
+			if(!curveInfo){#
+				return(list(R=MRP$R, VAR=MRP$VAR, X=X))#
+			} else {#
+				return(list(R=MRP$R, VAR=MRP$VAR, X=X, G1=G1))#
+			}#
+		}#
+		OP      <- optimalPortUt(model)#
+		op$X    <- OP$X#
+		op$R    <- OP$R#
+		op$risk <- sqrt(OP$VAR)#
+	} else if(model$model == 'SIM'){#
+		ratio <- (model$R - model$Rf)/model$beta#
+		o     <- order(-ratio)#
+		alpha <- model$alpha[o]#
+		beta  <- model$beta[o]#
+		R     <- model$R[o]#
+		MSE   <- model$MSE[o]#
+		ratio <- ratio[o]#
+		c1    <- (R-model$Rf)*beta/MSE#
+		c2    <- cumsum(c1)#
+		c3    <- beta^2 / MSE#
+		c4    <- cumsum(c3)#
+		Ci    <- model$VM*c2 / (1 + model$VM*c4)#
+		cStar <- ifelse(model$shorts, rev(Ci)[1], max(Ci))#
+		z <- (beta/MSE) * (ratio - cStar)#
+		t <- ifelse(model$shorts, length(Ci), which.max(Ci)[1])#
+		X <- z[1:t]/sum(z[1:t])#
+		temp <- list(R=R[1:t], COV=model$COV[o[1:t],o[1:t]])#
+		ps   <- portReturn(temp, X)#
+		VAR  <- sum(beta[1:t]*X)^2*model$VM + sum(MSE[1:t] * X^2)#
+		X    <- X[match(model$ticker, names(X))]#
+		names(X)    <- model$ticker#
+		X[is.na(X)] <- 0#
+		op$X    <- X#
+		op$R    <- ps$R#
+		op$risk <- sqrt(ps$VAR)#
+	} else if(model$model == 'CCM'){#
+		ratio    <- (model$R - model$Rf)/model$sigma#
+		o        <- order(-ratio)#
+		ratio    <- ratio[o]#
+		R        <- model$R[o]#
+		rhoRatio <- model$rho / (1+(1:length(model$R) - 1)*model$rho)#
+		ratioSum <- cumsum(ratio)#
+		Ci       <- rhoRatio * ratioSum#
+		cStar    <- ifelse(model$shorts, rev(Ci)[1], max(Ci))#
+		z    <- (ratio - cStar) / ((1-model$rho) * model$sigma[o])#
+		t    <- ifelse(model$shorts, length(Ci), which.max(Ci)[1])#
+		X    <- z[1:t]/sum(z[1:t])#
+		temp <- list(R=R[1:t], COV=model$COV[o[1:t],o[1:t]])#
+		ps   <- portReturn(temp, X)#
+		X    <- X[match(model$ticker, names(X))]#
+		names(X)    <- model$ticker#
+		X[is.na(X)] <- 0#
+		op$X    <- X#
+		op$R    <- ps$R#
+		op$risk <- sqrt(ps$VAR)#
+	} else if(model$model == 'MGM'){#
+		ind  <- model$industry#
+		indU <- unique(model$industry)#
+		N    <- rep(NA, length(indU))#
+		for(i in 1:length(indU)){#
+			N[i] <- sum(ind == indU[i])#
+		}#
+		I3    <- diag(rep(1,length(indU)))#
+		A     <- I3 + model$rho*N/(1-diag(model$rho))#
+		C     <- rep(NA, length(indU))#
+		ratio <- (model$R - model$Rf) / model$sigma#
+		for(i in 1:length(indU)){#
+			theI <- (ind == indU[i])#
+			C[i] <- sum(ratio[theI]/(1-model$rho[i,i]))#
+		}#
+		PHI        <- as.numeric(solve(A) %*% C)#
+		names(PHI) <- indU#
+		z          <- rep(NA, length(ind))#
+		for(i in 1:length(ind)){#
+			k     <- which(indU == ind[i])#
+			cStar <- sum(model$rho[k,] * PHI)#
+			den   <- model$sigma[i] * (1-model$rho[k,k])#
+			z[i]  <- (ratio[i] - cStar) / den#
+		}#
+		X        <- z / sum(z)#
+		names(X) <- names(model$R)#
+		ps       <- portReturn(model, X)#
+		op$X     <- X#
+		op$R     <- ps$R#
+		op$risk  <- sqrt(ps$VAR)#
+	}#
+	return(op)#
+}
+o <- optimalPort(s, Rf=-0.01)
+o <- optimalPort(s, Rf)
+o <- optimalPort(s)
+o
+summary(o)
+plot(s)
+s$cov
+s$Cov
+s$COV
+cov2cor(s$COV)
+library(stockPortfolio)#
+tickers  <- c("HPQ", "DELL", "IBM", "TDC", "IGT", #
+			"LUV", "JBLU", "LFL", "GOL", "CPA",#
+			"GOOG", "BIDU", "YHOO", "AKAM", "YOKU",#
+			"F", "SORL", "TM", "CVR", "TTM",#
+			"GE", "UTX", "DHR", "IX", "CBE",#
+			"XOM", "PTR", "CVX", "BP", "TOT")#
+industry <- c("comp", "comp", "comp", "comp", "comp",#
+			"airline", "airline", "airline", "airline", "airline",#
+			"web", "web", "web", "web", "web",#
+			"car", "car", "car", "car", "car",#
+			"tech", "tech", "tech", "tech", "tech",#
+			"fossil", "fossil", "fossil", "fossil", "fossil")#
+g <- getReturns(tickers, freq="day", start="2010-10-01", end="2011-01-18")#
+s <- stockModel(g, model="MGM", industry=industry)#
+o <- optimalPort(s)
+plot(o)
+o
+portPossCurve(s)
+points(o)
+portPossCurve(s, 5)#
+points(o)
+portPossCurve(s, 10)#
+points(o)
+s$risk
+s$sigma
+max(s$sigma)
+portPossCurve(s, 15)#
+points(o)
+portPossCurve(s, 115)#
+points(o)
+portPossCurve(s, 25)#
+points(o)
+portPossCurve(s, 35)#
+points(o)
+portPossCurve(s, 15)#
+points(o)
+portPossCurve(s, 15, detail=1000)#
+points(o)
+portPossCurve(s, 10, detail=1000)#
+points(o)
+s
+summary(o)
+length(tickers)
+700*.001
+36^7
+36^8
+36^8/1000
+library(OIsurv)
+library(help=OIsurv)
+?OIsurv
+library(OIsurv)
+=====> 10. Cox PH model, time-dependent covariates <=====##
+data(relapse)#
+relapse#
+#
+attach(relapse)#
+N  <- dim(relapse)[1]#
+t1 <- rep(0, N+sum(!is.na(int)))  # Initialize start times at 0#
+t2 <- rep(NA, length(t1))         # The end times for each record#
+e  <- rep(NA, length(t1))         # Was the event censored?#
+g  <- rep(NA, length(t1))         # Gender#
+i  <- rep(FALSE, length(t1))      # Initialize intervention at FALSE#
+#
+R  <- 1                            # Row of new record#
+for(ii in 1:dim(relapse)[1]){#
+  if(is.na(relapse$int[ii])){      # no intervention, copy survival record#
+    t2[R] <- relapse$time[ii]#
+    e[R]  <- relapse$event[ii]#
+    g[R]  <- relapse$gender[ii]#
+    R <- R+1#
+  } else {                         # intervention, split records#
+    g[R+0:1] <- relapse$gender[ii] # gender is same for each time#
+    e[R]     <- 0                  # no relapse observed pre-intervention#
+    e[R+1]   <- relapse$event[ii]  # relapse occur post-intervention?#
+    i[R+1]   <- TRUE               # Intervention covariate, post-intervention#
+    t2[R]    <- relapse$int[ii]-1  # End of pre-intervention#
+    t1[R+1]  <- relapse$int[ii]-1  # Start of post-intervention#
+    t2[R+1]  <- relapse$time[ii]   # End of post-intervention#
+    R <- R+2                       # Two records added#
+  }#
+}#
+detach(relapse)
+rm(list=ls())
+=====> 10. Cox PH model, time-dependent covariates <=====##
+data(relapse)#
+relapse#
+#
+attach(relapse)#
+N  <- dim(relapse)[1]#
+t1 <- rep(0, N+sum(!is.na(inter)))  # Initialize start times at 0#
+t2 <- rep(NA, length(t1))           # The end times for each record#
+e  <- rep(NA, length(t1))           # Was the event censored?#
+g  <- rep(NA, length(t1))           # Gender#
+i  <- rep(FALSE, length(t1))        # Initialize intervention at FALSE#
+#
+R  <- 1                         # Row of new record#
+for(ii in 1:dim(relapse)[1]){#
+  if(is.na(inter[ii])){   # no intervention, copy survival record#
+    t2[R] <- event[ii]#
+    e[R]  <- delta[ii]#
+    g[R]  <- gender[ii]#
+    R <- R+1#
+  } else {                  # intervention, split records#
+    g[R+0:1] <- gender[ii]  # gender is same for each time#
+    e[R]     <- 0           # no relapse observed pre-intervention#
+    e[R+1]   <- delta[ii]   # relapse occur post-intervention?#
+    i[R+1]   <- TRUE        # Intervention covariate, post-intervention#
+    t2[R]    <- inter[ii]-1 # End of pre-intervention#
+    t1[R+1]  <- inter[ii]-1 # Start of post-intervention#
+    t2[R+1]  <- event[ii]   # End of post-intervention#
+    R <- R+2                # Two records added#
+  }#
+}#
+detach(relapse)
+attach(relapse)#
+N  <- dim(relapse)[1]#
+t1 <- rep(0, N+sum(!is.na(inter)))  # Initialize start times at 0#
+t2 <- rep(NA, length(t1))           # The end times for each record#
+e  <- rep(NA, length(t1))           # Was the event censored?#
+g  <- rep(NA, length(t1))           # Gender#
+i  <- rep(FALSE, length(t1))        # Initialize intervention at FALSE#
+#
+R  <- 1                         # Row of new record#
+for(ii in 1:dim(relapse)[1]){#
+  if(is.na(inter[ii])){         # no intervention, copy survival record#
+    t2[R] <- event[ii]#
+    e[R]  <- delta[ii]#
+    g[R]  <- gender[ii]#
+    R <- R+1#
+  } else {                  # intervention, split records#
+    g[R+0:1] <- gender[ii]  # gender is same for each time#
+    e[R]     <- 0           # no relapse observed pre-intervention#
+    e[R+1]   <- delta[ii]   # relapse occur post-intervention?#
+    i[R+1]   <- TRUE        # Intervention covariate, post-intervention#
+    t2[R]    <- inter[ii]-1 # End of pre-intervention#
+    t1[R+1]  <- inter[ii]-1 # Start of post-intervention#
+    t2[R+1]  <- event[ii]   # End of post-intervention#
+    R <- R+2                # Two records added#
+  }#
+}#
+detach(relapse)
+attach(relapse)#
+N  <- dim(relapse)[1]#
+t1 <- rep(0, N+sum(!is.na(inter)))  # Initialize start times at 0#
+t2 <- rep(NA, length(t1))           # The end times for each record#
+e  <- rep(NA, length(t1))           # Was the event censored?#
+g  <- rep(NA, length(t1))           # Gender#
+PI <- rep(FALSE, length(t1))        # Initialize intervention at FALSE#
+#
+R  <- 1                         # Row of new record#
+for(ii in 1:dim(relapse)[1]){#
+  if(is.na(inter[ii])){         # no intervention, copy survival record#
+    t2[R] <- event[ii]#
+    e[R]  <- delta[ii]#
+    g[R]  <- gender[ii]#
+    R <- R+1#
+  } else {                  # intervention, split records#
+    g[R+0:1] <- gender[ii]  # gender is same for each time#
+    e[R]     <- 0           # no relapse observed pre-intervention#
+    e[R+1]   <- delta[ii]   # relapse occur post-intervention?#
+    PI[R+1]  <- TRUE        # Intervention covariate, post-intervention#
+    t2[R]    <- inter[ii]-1 # End of pre-intervention#
+    t1[R+1]  <- inter[ii]-1 # Start of post-intervention#
+    t2[R+1]  <- event[ii]   # End of post-intervention#
+    R <- R+2                # Two records added#
+  }#
+}#
+detach(relapse)
+PI
+rm(PI)
+PI
+E
+attach(relapse)#
+N  <- dim(relapse)[1]#
+t1 <- rep(0, N+sum(!is.na(inter)))  # Initialize start times at 0#
+t2 <- rep(NA, length(t1))           # The end times for each record#
+e  <- rep(NA, length(t1))           # Was the event censored?#
+g  <- rep(NA, length(t1))           # Gender#
+PI <- rep(FALSE, length(t1))        # Initialize intervention at FALSE#
+#
+R  <- 1                         # Row of new record#
+for(ii in 1:dim(relapse)[1]){#
+  if(is.na(inter[ii])){         # no intervention, copy survival record#
+    t2[R] <- event[ii]#
+    e[R]  <- delta[ii]#
+    g[R]  <- gender[ii]#
+    R <- R+1#
+  } else {                  # intervention, split records#
+    g[R+0:1] <- gender[ii]  # gender is same for each time#
+    e[R]     <- 0           # no relapse observed pre-intervention#
+    e[R+1]   <- delta[ii]   # relapse occur post-intervention?#
+    PI[R+1]  <- TRUE        # Intervention covariate, post-intervention#
+    t2[R]    <- inter[ii]-1 # End of pre-intervention#
+    t1[R+1]  <- inter[ii]-1 # Start of post-intervention#
+    t2[R+1]  <- event[ii]   # End of post-intervention#
+    R <- R+2                # Two records added#
+  }#
+}#
+#
+mySurv <- Surv(t1, t2, e)#
+myCPH  <- coxph(mySurv ~ g + PI)#
+#
+detach(relapse)
+mySurv
+myCPH
+citation("KMsurv")
+library(OIsurv)
+?Surv
+data(lung)
+lung
+?Surv
+?lung
+data(lung)
+lung
+library(survival)
+data(lung)
+lung
+library(OIsurv)
+library(help=survival)
+?OIsurv
+=====> 3. Survival objects <=====##
+data(tongue)#
+attach(tongue)#
+mySurvObject <- Surv(time[type==1], delta[type==1])#
+mySurvObject#
+detach(tongue)
+?psych
+x <- round(rnorm(500, 50, 10))#
+y <- round(rnorm(500, 40, 10))#
+t <- y#
+t[x<y] <- x[x<y]
+hist(y)
+hist(t)
+hist(y)
+hist(t)
+x <- round(rnorm(500, 50, 10))#
+y <- round(rnorm(500, 45, 10))#
+t <- y#
+t[x<y] <- x[x<y]
+hist(t)
+hist(y)
+hist(t)
+x <- round(rnorm(500, 50, 10))#
+y <- round(rnorm(500, 45, 10))#
+t <- y#
+o <- x<y#
+t[o] <- x[o]#
+#
+Surv(t, event=!o, type="left")
+?psych
+library(help=KMsurv)
+?Surv
+x <- round(rnorm(500, 50, 10))#
+y <- round(rnorm(500, 45, 10))#
+t <- y#
+t[x<y] <- x[x<y]#
+Surv(t, event = x>y, type="left")
+x <- round(rnorm(500, 50, 10))#
+y <- round(rnorm(500, 45, 10))#
+t <- y#
+t[x<y] <- x[x<y]#
+plot(survfit(Surv(t, event = x>y, type="left") ~ 1))
+x <- round(rnorm(5000, 50, 10))#
+y <- round(rnorm(5000, 45, 10))#
+t <- y#
+t[x<y] <- x[x<y]#
+plot(survfit(Surv(t, event = x>y, type="left") ~ 1))
+?Surv
+library(help=KMsurv)
+?Surv
+t1 <- c(NA, 3, 3, 3)#
+t2 <- c(3, NA, 5, 3)#
+Surv(t1, t2, type="interval2")
+data(psych)#
+attach(psych)#
+mySurvObject <- Surv(age, age+time, death)#
+mySurvObject#
+detach(psych)
+t1 <- c(NA, 3, 3, 3)#
+t2 <- c(3, NA, 5, 3)#
+Surv(t1, t2, type="interval2")
+t1 <- c(NA, 3, 3, 3)#
+t2 <- c(3, NA, 5, 3)#
+Surv(t1, t2, type="interval")
+?Surv
+27*4
+80*.8*5.83
+80*.8*5.83/30
+86*.5*5.83/30
+86*.5*5.83/30*20
+86*.5*5.83
+36*.5*5.83
+29*.5*5.83
+50*.8*5.83
+40*.8*5.83
+34*.8*5.83
+42*.8*5.83
+42*.8*5.83 + 2*.8*23
+5.83*42+2*23
+.5*5*86
+p <- rep(0,50000)#
+x <- rbinom(50000, 30, 0.2)#
+d <- abs(x/30 - 0.2)#
+for(i in 1:50000){#
+	tail1 <- pbinom(30*(0.2-d[i]), 30, 0.2)#
+	tail2 <- 1-pbinom(30*(0.2+d[i]), 30, 0.2)#
+	p[i]  <- tail1 + tail2#
+}
+p
+hist(p)
+plot(cumsum(p)
+)
+plot(cumsum(sort(p)))
+3/62
+5/62
+library(openintro)
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+#
+histPlot(pHat)#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:max+0.5)/62)#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:M+0.5)/62)#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/62)#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62)#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim])#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim])))#
+dev.off()
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim])))#
+dev.off()
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]))
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]))#
+dev.off()
+library(openintro)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#225588', add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#4499CC', add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5599CC', add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5599BB', add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "))#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#DDDDDD')#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE)#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#E2E2E2')#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE)#
+dev.off()
+sum(pHat<0.05)/10^4
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#E2E2E2', probability=TRUE)#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE, probability=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#E2E2E2', probability=TRUE)#
+#
+pHat[pHat>0.05] <- 3#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE, probability=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+pHat
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#E2E2E2', probability=TRUE)#
+#
+pHat[pHat>0.05] <- 3#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE, probability=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#E2E2E2', probability=TRUE)#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE, probability=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col='#E2E2E2')#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col='#5588BB', add=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf")#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="Number of simulations")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+choose(62, 0:4
+)
+choose(62, 0:4) *0.1^(0:4)*0.9^(62-(0:4))
+0.0015 + 0.0100 + 0.0340 + 0.0755
+choose(62, 0:3) *0.1^(0:3)*0.9^(62-(0:3))
+sum(choose(62, 0:3) *0.1^(0:3)*0.9^(62-(0:3)))
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", mgp=c(2, 0.5, 0), mar=c(3.1, 3.1, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="Number of simulations")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=1)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 5, 2.6 mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 5, 2.6, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 5.5, 2.9, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 6, 3.3, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col="#E2E2E2", ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col="#5588BB", add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7], ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+myPDF("nullDistForPHatIfLiverTransplantConsultantIsNotHelpful.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+#
+sum(pHat<0.05)/10^4#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("TransConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()
+sd(pHat)
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4
+sd(pHat)
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("TransConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("TransConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+x0 <- seq(0, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 250 * y0)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()
+myPDF("TransConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="", axes = FALSE)#
+axis(1)#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+x0 <- seq(0, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 200 * y0)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()
+myPDF("TransConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="", axes = FALSE)#
+axis(1)#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+x0 <- seq(0, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 200 * y0)#
+dev.off()
+myPDF("TransConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="", axes = FALSE)#
+axis(1)#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 200 * y0)#
+dev.off()
+myPDF("TransConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="", axes = FALSE)#
+axis(1)#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+dev.off()
+pnorm(-0.52 / 0.038) * 2
+pnorm(-0.052 / 0.038) * 2
+myPDF('TransConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+myPDF('TransConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="", axes = FALSE)#
+axis(1)#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.048, 0.048), c(0, 20), lty = 2, lwd = 2)#
+text(0.048, 20, "Observed\nvalue", pos = 3)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+y0
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.048, 0.048), c(0, 200), lty = 2, lwd = 2)#
+text(0.048, 200, "Observed\nvalue", pos = 3)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+table(pHat)
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.048, 0.048), c(0, 200), lty = 2, lwd = 2)#
+text(0.048, 200, "Observed\nvalue", pos = 3)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+table(pHat)
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.0484, 0.0484), c(0, 200), lty = 2, lwd = 2)#
+text(0.0484, 200, "Observed\nvalue", pos = 3)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 200), lty = 2, lwd = 2)#
+text(0.05, 200, "Observed\nvalue", pos = 3)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 600), lty = 2, lwd = 2)#
+text(0.05, 600, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 900), lty = 2, lwd = 2)#
+text(0.05, 900, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1300), lty = 2, lwd = 2)#
+text(0.05, 1300, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1200), lty = 2, lwd = 2)#
+text(0.05, 1200, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2)#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+table(pHat)
+M
+library(openintro)#
+data(COL)#
+set.seed(2)
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2, axes = FALSE)
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1200), lty = 2, lwd = 2)#
+text(0.05, 1200, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2, axes = FALSE)#
+a <- c(0.02, 0.1, 0.18)#
+axis(1, a, format(a))#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 3, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1200), lty = 2, lwd = 2)#
+text(0.05, 1200, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2, axes = FALSE)#
+a <- c(0.02, 0.1, 0.18)#
+axis(1, a, format(a))#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 2.7, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1200), lty = 2, lwd = 2)#
+text(0.05, 1200, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2, axes = FALSE)#
+a <- c(0.02, 0.1, 0.18)#
+axis(1, a, format(a))#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 2.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 6.6, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1200), lty = 2, lwd = 2)#
+text(0.05, 1200, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()#
+#
+myPDF('MedConsNullSim_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0.1, 0.038, 0.048, 0.152, col = COL[1], xAxisIncr = 2, axes = FALSE)#
+a <- c(0.02, 0.1, 0.18)#
+axis(1, a, format(a))#
+dev.off()#
+#
+pnorm(-0.052 / 0.038) * 2
+round(rbinom(10, 120, 0.5) / 120, 3)
+library(openintro)#
+set.seed(1)#
+#
+x <- rnorm(100000)#
+hold <- hist(x, breaks=50, prob=T)#
+#
+#===> plot <===##
+myPDF("twoSampleNormalsStacked.pdf", mfrow=c(1,1), las=1, mar=c(2.5,1,0.5,1))#
+#
+# curve 1#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+plot(X, Y, type='l', axes=F, xlim=c(-5,35))#
+axis(1, at=seq(-10, 40, 10))#
+lines(X, Y)#
+abline(h=0)#
+#
+# curve 2#
+X <- seq(3,35,0.01)#
+Y <- dnorm(X, 19, 4)#
+lines(X, Y)#
+dev.off()
+hold <- hist(x, breaks=50, prob=TRUE, plot = FALSE)
+?hist
+hold <- hist(x, breaks=50, plot = FALSE)
+library(openintro)#
+set.seed(1)#
+#
+x <- rnorm(100000)#
+hold <- hist(x, breaks=50, plot = FALSE)#
+#
+#===> plot <===##
+myPDF("twoSampleNormalsStacked.pdf", mfrow=c(1,1), las=1, mar=c(2.5,1,0.5,1))#
+#
+# curve 1#
+X <- seq(-4,4,0.01)#
+Y <- dnorm(X)#
+plot(X, Y, type='l', axes=F, xlim=c(-5,35))#
+axis(1, at=seq(-10, 40, 10))#
+lines(X, Y)#
+abline(h=0)#
+#
+# curve 2#
+X <- seq(3,35,0.01)#
+Y <- dnorm(X, 19, 4)#
+lines(X, Y)#
+dev.off()
+library(openintro)#
+data(COL)#
+set.seed(2)#
+#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+#
+sum(pHat<0.05)/10^4#
+myPDF("MedConsNullSim.pdf", 6.6, 2.5, mgp=c(2, 0.5, 0), mar=c(3.1, 4.6, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[7,3], ylab="")#
+histPlot(pHat[pHat < 0.05], breaks=(-1:(2*M)+0.75)/2/62, col=COL[1], add=TRUE)#
+par(las=0)#
+mtext("Number of simulations", 2, 3.3)#
+dev.off()#
+#
+myPDF("MedConsNullSim_w_normal.pdf", 7, 3.5, mgp=c(2, 0.5, 0), mar=c(3.1, 1.5, 0.5, 0.5))#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62, xlab=expression(hat(p)[sim]*"    "), col=COL[2], ylab="", axes = FALSE)#
+axis(1)#
+x0 <- seq(-0.1, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0.1, 0.038)#
+lines(x0, 150 * y0)#
+lines(c(0.05, 0.05), c(0, 1200), lty = 2, lwd = 2)#
+text(0.05, 1200, "Observed\nvalue", pos = 3, cex = 0.8)#
+dev.off()

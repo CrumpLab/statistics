@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Programming for Psychologists: Data Creation and Analysis</title>
+  <meta name="description" content="Tips on learning programming skills for experimental psychology">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Programming for Psychologists: Data Creation and Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tips on learning programming skills for experimental psychology" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Programming for Psychologists: Data Creation and Analysis" />
+  
+  <meta name="twitter:description" content="Tips on learning programming skills for experimental psychology" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+
+
+<meta name="date" content="2017-10-17">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="visualizing-the-data.html">
+<link rel="next" href="livecode-experiments.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html"><i class="fa fa-check"></i><b>1</b> Fundamentals of Computer Programming Languages</a><ul>
+<li class="chapter" data-level="1.1" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#why-should-psychologists-learn-to-program"><i class="fa fa-check"></i><b>1.1</b> Why should Psychologists learn to program?</a></li>
+<li class="chapter" data-level="1.2" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#learning-to-program"><i class="fa fa-check"></i><b>1.2</b> Learning to program</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#some-preliminaries"><i class="fa fa-check"></i><b>1.2.1</b> Some Preliminaries</a></li>
+<li class="chapter" data-level="1.2.2" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#chicken-and-egg-problem"><i class="fa fa-check"></i><b>1.2.2</b> Chicken and Egg Problem</a></li>
+<li class="chapter" data-level="1.2.3" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#understanding-the-tools-available-to-you"><i class="fa fa-check"></i><b>1.2.3</b> Understanding the tools available to you</a></li>
+<li class="chapter" data-level="1.2.4" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#applying-the-tools-to-the-problems-you-want-to-solve"><i class="fa fa-check"></i><b>1.2.4</b> Applying the tools to the problems you want to solve</a></li>
+<li class="chapter" data-level="1.2.5" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#being-a-good-coder"><i class="fa fa-check"></i><b>1.2.5</b> Being a good coder</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#foundational-concepts-in-computer-programming"><i class="fa fa-check"></i><b>1.3</b> Foundational concepts in computer programming</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#algorithms"><i class="fa fa-check"></i><b>1.3.1</b> Algorithms</a></li>
+<li class="chapter" data-level="1.3.2" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#median-a-conceptual-algorithm"><i class="fa fa-check"></i><b>1.3.2</b> Median: A conceptual algorithm</a></li>
+<li class="chapter" data-level="1.3.3" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#variables"><i class="fa fa-check"></i><b>1.3.3</b> Variables</a></li>
+<li class="chapter" data-level="1.3.4" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#logic"><i class="fa fa-check"></i><b>1.3.4</b> Logic</a></li>
+<li class="chapter" data-level="1.3.5" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#loops"><i class="fa fa-check"></i><b>1.3.5</b> Loops</a></li>
+<li class="chapter" data-level="1.3.6" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#functions"><i class="fa fa-check"></i><b>1.3.6</b> Functions</a></li>
+<li class="chapter" data-level="1.3.7" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#intrinsics"><i class="fa fa-check"></i><b>1.3.7</b> Intrinsics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="fundamentals-of-computer-programming-languages.html"><a href="fundamentals-of-computer-programming-languages.html#what-is-the-computer-actually-doing-a-view-from-the-top"><i class="fa fa-check"></i><b>1.4</b> What is the computer actually doing? A view from the top</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="programming-in-r.html"><a href="programming-in-r.html"><i class="fa fa-check"></i><b>2</b> Programming in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="programming-in-r.html"><a href="programming-in-r.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>2.1</b> Installing R and R Studio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="programming-in-r.html"><a href="programming-in-r.html#r-studio-notes-and-tips"><i class="fa fa-check"></i><b>2.1.1</b> R studio notes and tips</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="programming-in-r.html"><a href="programming-in-r.html#basic-math"><i class="fa fa-check"></i><b>2.2</b> Basic Math</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="programming-in-r.html"><a href="programming-in-r.html#precedence"><i class="fa fa-check"></i><b>2.2.1</b> Precedence</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="programming-in-r.html"><a href="programming-in-r.html#variables-1"><i class="fa fa-check"></i><b>2.3</b> Variables</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="programming-in-r.html"><a href="programming-in-r.html#numbers"><i class="fa fa-check"></i><b>2.3.1</b> Numbers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="programming-in-r.html"><a href="programming-in-r.html#integers"><i class="fa fa-check"></i><b>2.3.2</b> Integers</a></li>
+<li class="chapter" data-level="2.3.3" data-path="programming-in-r.html"><a href="programming-in-r.html#numeric"><i class="fa fa-check"></i><b>2.3.3</b> Numeric</a></li>
+<li class="chapter" data-level="2.3.4" data-path="programming-in-r.html"><a href="programming-in-r.html#vector"><i class="fa fa-check"></i><b>2.3.4</b> Vector</a></li>
+<li class="chapter" data-level="2.3.5" data-path="programming-in-r.html"><a href="programming-in-r.html#matrices"><i class="fa fa-check"></i><b>2.3.5</b> Matrices</a></li>
+<li class="chapter" data-level="2.3.6" data-path="programming-in-r.html"><a href="programming-in-r.html#strings"><i class="fa fa-check"></i><b>2.3.6</b> Strings</a></li>
+<li class="chapter" data-level="2.3.7" data-path="programming-in-r.html"><a href="programming-in-r.html#arrays-lists-dataframes-factors-and-other-classes"><i class="fa fa-check"></i><b>2.3.7</b> Arrays, Lists, Dataframes, Factors and other classes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="programming-in-r.html"><a href="programming-in-r.html#logic-1"><i class="fa fa-check"></i><b>2.4</b> Logic</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="programming-in-r.html"><a href="programming-in-r.html#if-statements"><i class="fa fa-check"></i><b>2.4.1</b> IF statements</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="programming-in-r.html"><a href="programming-in-r.html#loops-1"><i class="fa fa-check"></i><b>2.5</b> Loops</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="programming-in-r.html"><a href="programming-in-r.html#for-loops"><i class="fa fa-check"></i><b>2.5.1</b> FOR Loops</a></li>
+<li class="chapter" data-level="2.5.2" data-path="programming-in-r.html"><a href="programming-in-r.html#while-loops"><i class="fa fa-check"></i><b>2.5.2</b> WHILE loops</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="programming-in-r.html"><a href="programming-in-r.html#algorithms-1"><i class="fa fa-check"></i><b>2.6</b> Algorithms</a></li>
+<li class="chapter" data-level="2.7" data-path="programming-in-r.html"><a href="programming-in-r.html#functions-1"><i class="fa fa-check"></i><b>2.7</b> Functions</a></li>
+<li class="chapter" data-level="2.8" data-path="programming-in-r.html"><a href="programming-in-r.html#intrinsics-1"><i class="fa fa-check"></i><b>2.8</b> Intrinsics</a></li>
+<li class="chapter" data-level="2.9" data-path="programming-in-r.html"><a href="programming-in-r.html#r-libraries"><i class="fa fa-check"></i><b>2.9</b> R Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html"><i class="fa fa-check"></i><b>3</b> Programming Challenges I: Learning the fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#tips-for-approaching-the-problems"><i class="fa fa-check"></i><b>3.1</b> Tips for Approaching the Problems</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#rstudios-text-editor"><i class="fa fa-check"></i><b>3.1.1</b> Rstudio’s Text editor</a></li>
+<li class="chapter" data-level="3.1.2" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#use-informative-variable-names."><i class="fa fa-check"></i><b>3.1.2</b> Use informative variable names.</a></li>
+<li class="chapter" data-level="3.1.3" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#use-comments."><i class="fa fa-check"></i><b>3.1.3</b> Use comments.</a></li>
+<li class="chapter" data-level="3.1.4" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#r-markdown."><i class="fa fa-check"></i><b>3.1.4</b> R Markdown.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#use-hypothesis-to-annotate-your-solutions"><i class="fa fa-check"></i><b>3.2</b> Use Hypothesis to annotate your solutions</a></li>
+<li class="chapter" data-level="3.3" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#easier-problems"><i class="fa fa-check"></i><b>3.3</b> Easier Problems</a></li>
+<li class="chapter" data-level="3.4" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#harder-problems"><i class="fa fa-check"></i><b>3.4</b> Harder Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dealing-with-data.html"><a href="dealing-with-data.html"><i class="fa fa-check"></i><b>4</b> Dealing with Data</a><ul>
+<li class="chapter" data-level="4.1" data-path="dealing-with-data.html"><a href="dealing-with-data.html#data"><i class="fa fa-check"></i><b>4.1</b> Data</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="dealing-with-data.html"><a href="dealing-with-data.html#experiments-are-data-machines"><i class="fa fa-check"></i><b>4.1.1</b> Experiments are data machines</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dealing-with-data.html"><a href="dealing-with-data.html#what-is-data"><i class="fa fa-check"></i><b>4.1.2</b> What is Data?</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dealing-with-data.html"><a href="dealing-with-data.html#practical-issues-with-data-in-psychology"><i class="fa fa-check"></i><b>4.1.3</b> Practical issues with data in Psychology</a></li>
+<li class="chapter" data-level="4.1.4" data-path="dealing-with-data.html"><a href="dealing-with-data.html#data-transformation-skills"><i class="fa fa-check"></i><b>4.1.4</b> Data Transformation Skills</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dealing-with-data.html"><a href="dealing-with-data.html#standard-data-formats"><i class="fa fa-check"></i><b>4.2</b> Standard Data Formats</a></li>
+<li class="chapter" data-level="4.3" data-path="dealing-with-data.html"><a href="dealing-with-data.html#examples-using-excel"><i class="fa fa-check"></i><b>4.3</b> Examples Using Excel</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dealing-with-data.html"><a href="dealing-with-data.html#a-simple-detection-experiment"><i class="fa fa-check"></i><b>4.3.1</b> A simple detection experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html"><i class="fa fa-check"></i><b>5</b> Simulating and Analyzing Data in R</a><ul>
+<li class="chapter" data-level="5.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#creating-a-sample-distribution"><i class="fa fa-check"></i><b>5.1</b> Creating a sample distribution</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#sampling-random-numbers-uniform-distribution"><i class="fa fa-check"></i><b>5.1.1</b> Sampling random numbers (uniform distribution)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#sampling-from-a-normal-distribution"><i class="fa fa-check"></i><b>5.1.2</b> Sampling from a normal distribution</a></li>
+<li class="chapter" data-level="5.1.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#other-distributions"><i class="fa fa-check"></i><b>5.1.3</b> Other distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-a-coin-toss"><i class="fa fa-check"></i><b>5.2</b> Simulating a coin toss</a></li>
+<li class="chapter" data-level="5.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#t-testdata-simulation-and-analysis"><i class="fa fa-check"></i><b>5.3</b> t-test:Data Simulation and Analysis</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>5.3.1</b> Simulating a one-sample t-test</a></li>
+<li class="chapter" data-level="5.3.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-an-independent-samples-t-test-two-groups-between-subjects"><i class="fa fa-check"></i><b>5.3.2</b> Simulating an independent samples t-test (two groups, between-subjects)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-a-paired-samples-t-test-two-conditions-within-subjects"><i class="fa fa-check"></i><b>5.3.3</b> Simulating a paired samples t-test (two conditions, within-subjects)</a></li>
+<li class="chapter" data-level="5.3.4" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#generality-of-the-t-test-examples"><i class="fa fa-check"></i><b>5.3.4</b> Generality of the t-test examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#formatting-data-in-r-for-more-complex-designs"><i class="fa fa-check"></i><b>5.4</b> Formatting data in R for more complex designs</a></li>
+<li class="chapter" data-level="5.5" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#single-factor-anovas-data-simulation-and-analysis"><i class="fa fa-check"></i><b>5.5</b> Single Factor ANOVAs: Data-Simulation and Analysis</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-data-for-a-one-way-within-subjects-anova-with-3-levels"><i class="fa fa-check"></i><b>5.5.1</b> Simulating data for a one-way within subjects ANOVA with 3 levels</a></li>
+<li class="chapter" data-level="5.5.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-data-for-a-one-way-between-subjects-design-with-3-levels"><i class="fa fa-check"></i><b>5.5.2</b> Simulating data for a one-way between subjects design with 3 levels</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#using-the-aov-function-for-within-or-between-subjects-designs"><i class="fa fa-check"></i><b>5.6</b> Using the aov function for within or between-subjects designs</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#between-subjects-anova-formulas"><i class="fa fa-check"></i><b>5.6.1</b> Between subjects ANOVA formulas</a></li>
+<li class="chapter" data-level="5.6.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#within-subjects-anova-formulas-all-factors-within"><i class="fa fa-check"></i><b>5.6.2</b> Within subjects ANOVA formulas (all factors within)</a></li>
+<li class="chapter" data-level="5.6.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#mixed-design-anovas-with-between-and-within-factors"><i class="fa fa-check"></i><b>5.6.3</b> Mixed design ANOVAs with between and within factors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs"><i class="fa fa-check"></i><b>5.7</b> Simulating data for multi-factor designs</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-between-subjects-design"><i class="fa fa-check"></i><b>5.7.1</b> 2x2 between subjects design</a></li>
+<li class="chapter" data-level="5.7.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-within-subjects-designs"><i class="fa fa-check"></i><b>5.7.2</b> 2x2 within subjects designs</a></li>
+<li class="chapter" data-level="5.7.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-mixed-design-1-within-1-between"><i class="fa fa-check"></i><b>5.7.3</b> 2x2 mixed design (1 within, 1 between)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#power-analysis-and-sample-size-planning-by-monte-carlo-simulation"><i class="fa fa-check"></i><b>5.8</b> Power analysis and sample-size planning by Monte Carlo simulation</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#monte-carlo-one-sample-t-test-simulation"><i class="fa fa-check"></i><b>5.8.1</b> Monte-Carlo one-sample T-test Simulation</a></li>
+<li class="chapter" data-level="5.8.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#monte-carlo-paired-t-test-simulation"><i class="fa fa-check"></i><b>5.8.2</b> Monte-Carlo paired T-test Simulation</a></li>
+<li class="chapter" data-level="5.8.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#monte-carlo-one-way-repeated-measures-simulation"><i class="fa fa-check"></i><b>5.8.3</b> Monte-Carlo One-way Repeated Measures Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#analysing-data-from-a-file"><i class="fa fa-check"></i><b>5.9</b> Analysing data from a file</a></li>
+<li class="chapter" data-level="5.10" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#reading-data-into-r"><i class="fa fa-check"></i><b>5.10</b> Reading data into R</a></li>
+<li class="chapter" data-level="5.11" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#running-an-anova-for-a-single-factor-design-between-subjects-design"><i class="fa fa-check"></i><b>5.11</b> Running an ANOVA for a single-factor design between-subjects design</a><ul>
+<li class="chapter" data-level="5.11.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#prettier-results-using-kable-and-broom"><i class="fa fa-check"></i><b>5.11.1</b> Prettier results using kable and broom</a></li>
+<li class="chapter" data-level="5.11.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#writing-up-the-results"><i class="fa fa-check"></i><b>5.11.2</b> Writing up the results</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#running-a-between-subjects-anova-for-a-2x2-factorial-design"><i class="fa fa-check"></i><b>5.12</b> Running a between subjects ANOVA for a 2x2 Factorial design</a><ul>
+<li class="chapter" data-level="5.12.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#writing-up-the-results-section"><i class="fa fa-check"></i><b>5.12.1</b> Writing up the results section</a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#practice-problems"><i class="fa fa-check"></i><b>5.13</b> Practice Problems</a><ul>
+<li class="chapter" data-level="5.13.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#single-factor-design-with-a-within-subjects-factor"><i class="fa fa-check"></i><b>5.13.1</b> Single factor design with a within-subjects factor</a></li>
+<li class="chapter" data-level="5.13.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-within-subjects-design"><i class="fa fa-check"></i><b>5.13.2</b> 2x2 within-subjects design</a></li>
+</ul></li>
+<li class="chapter" data-level="5.14" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#loading-raw-data-into-r"><i class="fa fa-check"></i><b>5.14</b> Loading raw-data into R</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html"><i class="fa fa-check"></i><b>6</b> Visualizing the Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#graphing-results-in-r"><i class="fa fa-check"></i><b>6.1</b> Graphing results in R</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#install-the-ggplot2-package"><i class="fa fa-check"></i><b>6.1.1</b> Install the ggplot2 package</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#simulating-analyzing-and-graphing-the-results-from-a-2x4-within-subjects-design"><i class="fa fa-check"></i><b>6.2</b> Simulating, analyzing, and graphing the results from a 2x4 within-subjects design</a></li>
+<li class="chapter" data-level="6.3" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#graphing-the-data-using-ggplot2"><i class="fa fa-check"></i><b>6.3</b> Graphing the data using ggplot2</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#the-ggplot2-layer-metaphor-for-graphing-data"><i class="fa fa-check"></i><b>6.3.1</b> The ggplot2 layer metaphor for graphing data</a></li>
+<li class="chapter" data-level="6.3.2" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#changing-labels-and-making-a-journal-ready-figure"><i class="fa fa-check"></i><b>6.3.2</b> Changing labels and making a journal-ready figure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#adding-error-bars-to-figures-in-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Adding error bars to figures in ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="programming-challenges-ii-data.html"><a href="programming-challenges-ii-data.html"><i class="fa fa-check"></i><b>7</b> Programming Challenges II: Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="programming-challenges-ii-data.html"><a href="programming-challenges-ii-data.html#creating-and-analyzing-simulated-data"><i class="fa fa-check"></i><b>7.1</b> Creating and Analyzing Simulated Data</a></li>
+<li class="chapter" data-level="7.2" data-path="programming-challenges-ii-data.html"><a href="programming-challenges-ii-data.html#working-with-real-raw-data"><i class="fa fa-check"></i><b>7.2</b> Working with Real Raw Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="livecode-experiments.html"><a href="livecode-experiments.html"><i class="fa fa-check"></i><b>8</b> LIVECODE experiments</a><ul>
+<li class="chapter" data-level="8.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#download-livecode"><i class="fa fa-check"></i><b>8.1</b> Download LIVECODE</a></li>
+<li class="chapter" data-level="8.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#what-is-livecode"><i class="fa fa-check"></i><b>8.2</b> What is LIVECODE</a></li>
+<li class="chapter" data-level="8.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#basic-livecode-concepts"><i class="fa fa-check"></i><b>8.3</b> Basic LIVECODE concepts</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#stacks-cards-and-elements"><i class="fa fa-check"></i><b>8.3.1</b> Stacks, Cards and Elements</a></li>
+<li class="chapter" data-level="8.3.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#scripting"><i class="fa fa-check"></i><b>8.3.2</b> Scripting</a></li>
+<li class="chapter" data-level="8.3.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#livecode-syntax"><i class="fa fa-check"></i><b>8.3.3</b> LIVECODE syntax</a></li>
+<li class="chapter" data-level="8.3.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#manipulating-words-and-letters-strings"><i class="fa fa-check"></i><b>8.3.4</b> Manipulating words and letters (strings)</a></li>
+<li class="chapter" data-level="8.3.5" data-path="livecode-experiments.html"><a href="livecode-experiments.html#manipulating-numbers-items"><i class="fa fa-check"></i><b>8.3.5</b> Manipulating numbers (items)</a></li>
+<li class="chapter" data-level="8.3.6" data-path="livecode-experiments.html"><a href="livecode-experiments.html#advanced-data-storage-arrays"><i class="fa fa-check"></i><b>8.3.6</b> Advanced data storage (arrays)</a></li>
+<li class="chapter" data-level="8.3.7" data-path="livecode-experiments.html"><a href="livecode-experiments.html#logic-statements-if-then"><i class="fa fa-check"></i><b>8.3.7</b> Logic statements (IF THEN)</a></li>
+<li class="chapter" data-level="8.3.8" data-path="livecode-experiments.html"><a href="livecode-experiments.html#loops-2"><i class="fa fa-check"></i><b>8.3.8</b> Loops</a></li>
+<li class="chapter" data-level="8.3.9" data-path="livecode-experiments.html"><a href="livecode-experiments.html#functions-2"><i class="fa fa-check"></i><b>8.3.9</b> Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#practice-coding"><i class="fa fa-check"></i><b>8.4</b> Practice coding</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#livecode-features-checklist"><i class="fa fa-check"></i><b>8.4.1</b> LIVECODE features checklist</a></li>
+<li class="chapter" data-level="8.4.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#using-the-interface"><i class="fa fa-check"></i><b>8.4.2</b> Using the interface</a></li>
+<li class="chapter" data-level="8.4.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#livecode-commands"><i class="fa fa-check"></i><b>8.4.3</b> LIVECODE commands</a></li>
+<li class="chapter" data-level="8.4.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#simple-programming-problems"><i class="fa fa-check"></i><b>8.4.4</b> Simple programming problems</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="livecode-experiments.html"><a href="livecode-experiments.html#logic-for-programming-experiments"><i class="fa fa-check"></i><b>8.5</b> Logic for programming experiments</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#experiments-are-designed-to-create-data-files"><i class="fa fa-check"></i><b>8.5.1</b> Experiments are designed to create data-files</a></li>
+<li class="chapter" data-level="8.5.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#long-format-data-files"><i class="fa fa-check"></i><b>8.5.2</b> Long-format data files</a></li>
+<li class="chapter" data-level="8.5.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#the-data-file-is-the-design"><i class="fa fa-check"></i><b>8.5.3</b> The Data-file is the Design</a></li>
+<li class="chapter" data-level="8.5.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#creating-the-list-of-trials"><i class="fa fa-check"></i><b>8.5.4</b> Creating the list of trials</a></li>
+<li class="chapter" data-level="8.5.5" data-path="livecode-experiments.html"><a href="livecode-experiments.html#interpeting-the-list-to-run-each-trial"><i class="fa fa-check"></i><b>8.5.5</b> Interpeting the list to run each trial</a></li>
+<li class="chapter" data-level="8.5.6" data-path="livecode-experiments.html"><a href="livecode-experiments.html#presenting-a-stimulus"><i class="fa fa-check"></i><b>8.5.6</b> Presenting a stimulus</a></li>
+<li class="chapter" data-level="8.5.7" data-path="livecode-experiments.html"><a href="livecode-experiments.html#collecting-a-response"><i class="fa fa-check"></i><b>8.5.7</b> Collecting a response</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="livecode-experiments.html"><a href="livecode-experiments.html#look-and-feel"><i class="fa fa-check"></i><b>8.6</b> Look and feel</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#preventing-unwanted-actions"><i class="fa fa-check"></i><b>8.6.1</b> Preventing unwanted actions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="livecode-experiments.html"><a href="livecode-experiments.html#saving-the-data"><i class="fa fa-check"></i><b>8.7</b> Saving the data</a></li>
+<li class="chapter" data-level="8.8" data-path="livecode-experiments.html"><a href="livecode-experiments.html#data-analysis"><i class="fa fa-check"></i><b>8.8</b> Data-analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="web-experiments.html"><a href="web-experiments.html"><i class="fa fa-check"></i><b>9</b> Web Experiments</a><ul>
+<li class="chapter" data-level="9.1" data-path="web-experiments.html"><a href="web-experiments.html#getting-started-html-javascript-jquery"><i class="fa fa-check"></i><b>9.1</b> Getting started: HTML, Javascript, JQUERY</a></li>
+<li class="chapter" data-level="9.2" data-path="web-experiments.html"><a href="web-experiments.html#basic-html"><i class="fa fa-check"></i><b>9.2</b> Basic HTML</a></li>
+<li class="chapter" data-level="9.3" data-path="web-experiments.html"><a href="web-experiments.html#javascript-basics"><i class="fa fa-check"></i><b>9.3</b> Javascript Basics</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="web-experiments.html"><a href="web-experiments.html#variables-2"><i class="fa fa-check"></i><b>9.3.1</b> Variables</a></li>
+<li class="chapter" data-level="9.3.2" data-path="web-experiments.html"><a href="web-experiments.html#variable-types"><i class="fa fa-check"></i><b>9.3.2</b> Variable Types</a></li>
+<li class="chapter" data-level="9.3.3" data-path="web-experiments.html"><a href="web-experiments.html#common-operations"><i class="fa fa-check"></i><b>9.3.3</b> Common operations</a></li>
+<li class="chapter" data-level="9.3.4" data-path="web-experiments.html"><a href="web-experiments.html#loops-3"><i class="fa fa-check"></i><b>9.3.4</b> Loops</a></li>
+<li class="chapter" data-level="9.3.5" data-path="web-experiments.html"><a href="web-experiments.html#logic-2"><i class="fa fa-check"></i><b>9.3.5</b> Logic</a></li>
+<li class="chapter" data-level="9.3.6" data-path="web-experiments.html"><a href="web-experiments.html#writing-a-function"><i class="fa fa-check"></i><b>9.3.6</b> Writing a function</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="web-experiments.html"><a href="web-experiments.html#programming-a-simple-stroop-experiment"><i class="fa fa-check"></i><b>9.4</b> Programming a simple Stroop Experiment</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="web-experiments.html"><a href="web-experiments.html#implementing-the-design"><i class="fa fa-check"></i><b>9.4.1</b> Implementing the design</a></li>
+<li class="chapter" data-level="9.4.2" data-path="web-experiments.html"><a href="web-experiments.html#coding-the-design-in-javascript"><i class="fa fa-check"></i><b>9.4.2</b> Coding the design in Javascript</a></li>
+<li class="chapter" data-level="9.4.3" data-path="web-experiments.html"><a href="web-experiments.html#displaying-trials-on-screen"><i class="fa fa-check"></i><b>9.4.3</b> Displaying trials on screen</a></li>
+<li class="chapter" data-level="9.4.4" data-path="web-experiments.html"><a href="web-experiments.html#next-steps-webstrooptutorial"><i class="fa fa-check"></i><b>9.4.4</b> Next steps: WebStroopTutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="web-experiments.html"><a href="web-experiments.html#amazon-turk"><i class="fa fa-check"></i><b>9.5</b> Amazon Turk</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="web-experiments.html"><a href="web-experiments.html#create-an-account"><i class="fa fa-check"></i><b>9.5.1</b> Create an Account</a></li>
+<li class="chapter" data-level="9.5.2" data-path="web-experiments.html"><a href="web-experiments.html#worker-site-requester-site-the-sandbox"><i class="fa fa-check"></i><b>9.5.2</b> Worker site, Requester site, &amp; the Sandbox</a></li>
+<li class="chapter" data-level="9.5.3" data-path="web-experiments.html"><a href="web-experiments.html#basic-overview-of-interfacing-with-amazon-turk"><i class="fa fa-check"></i><b>9.5.3</b> Basic overview of interfacing with Amazon Turk</a></li>
+<li class="chapter" data-level="9.5.4" data-path="web-experiments.html"><a href="web-experiments.html#download-the-command-line-tools"><i class="fa fa-check"></i><b>9.5.4</b> Download the Command Line Tools</a></li>
+<li class="chapter" data-level="9.5.5" data-path="web-experiments.html"><a href="web-experiments.html#external-hit-sample-application"><i class="fa fa-check"></i><b>9.5.5</b> External Hit sample application</a></li>
+<li class="chapter" data-level="9.5.6" data-path="web-experiments.html"><a href="web-experiments.html#running-the-example"><i class="fa fa-check"></i><b>9.5.6</b> Running the example</a></li>
+<li class="chapter" data-level="9.5.7" data-path="web-experiments.html"><a href="web-experiments.html#running-the-example-in-the-terminal"><i class="fa fa-check"></i><b>9.5.7</b> Running the example in the terminal</a></li>
+<li class="chapter" data-level="9.5.8" data-path="web-experiments.html"><a href="web-experiments.html#getting-results"><i class="fa fa-check"></i><b>9.5.8</b> Getting results</a></li>
+<li class="chapter" data-level="9.5.9" data-path="web-experiments.html"><a href="web-experiments.html#approving-and-deleting"><i class="fa fa-check"></i><b>9.5.9</b> Approving and deleting</a></li>
+<li class="chapter" data-level="9.5.10" data-path="web-experiments.html"><a href="web-experiments.html#general-points-about-the-example"><i class="fa fa-check"></i><b>9.5.10</b> General points about the example</a></li>
+<li class="chapter" data-level="9.5.11" data-path="web-experiments.html"><a href="web-experiments.html#data-handling"><i class="fa fa-check"></i><b>9.5.11</b> Data handling</a></li>
+<li class="chapter" data-level="9.5.12" data-path="web-experiments.html"><a href="web-experiments.html#loading-the-stroop-example-experiment-onto-amazon-turk"><i class="fa fa-check"></i><b>9.5.12</b> Loading the Stroop example experiment onto Amazon Turk</a></li>
+<li class="chapter" data-level="9.5.13" data-path="web-experiments.html"><a href="web-experiments.html#steps-to-run-the-demo-on-amazon-turk"><i class="fa fa-check"></i><b>9.5.13</b> Steps to run the demo on Amazon Turk</a></li>
+<li class="chapter" data-level="9.5.14" data-path="web-experiments.html"><a href="web-experiments.html#ready-to-load"><i class="fa fa-check"></i><b>9.5.14</b> Ready to Load!</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Programming for Psychologists: Data Creation and Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="programming-challenges-ii-data" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Programming Challenges II: Data</h1>
+<p>This set of programming challenges will give you hands on experience with using R for data-analysis.</p>
+<div id="creating-and-analyzing-simulated-data" class="section level2">
+<h2><span class="header-section-number">7.1</span> Creating and Analyzing Simulated Data</h2>
+<ol style="list-style-type: decimal">
+<li><p>Sample n values from a distribution</p></li>
+<li><p>Summary Statistics</p></li>
+<li><p>Mean, Median, Mode</p></li>
+<li><p>Standard Deviation, Variance</p></li>
+<li><p>Simulate and analyze data for a one sample t-test</p></li>
+<li><p>Simulate and analyze data for an independent samples t-test</p></li>
+<li><p>Simulate and analyze data for a paired samples t-test</p></li>
+<li><p>Simulate and analyze correlated data between continuous X and Y variables</p></li>
+<li><p>Simulate and analyze data for a chi-square test</p></li>
+<li><p>Simulate and analyze data for a one-way ANOVA</p></li>
+<li><p>Simulate and analyze data for a one-way repeated-measures ANOVA</p></li>
+<li><p>Simulate and analyze data for a factorial ANOVA</p></li>
+<li><p>Simulate and analyze data for a factorial repeated measures ANOVA</p></li>
+<li><p>Simulate and analyze data for mixed design ANOVAs</p></li>
+<li><p>Simulate and analyze the above by starting with simulated data for individual trials for each subject, and not simply simulated means for each condition</p></li>
+<li><p>Monte-Carlo simulation for power-analysis</p></li>
+</ol>
+</div>
+<div id="working-with-real-raw-data" class="section level2">
+<h2><span class="header-section-number">7.2</span> Working with Real Raw Data</h2>
+<ol style="list-style-type: decimal">
+<li><p>Loading data-files from a file</p></li>
+<li><p>Pre-processing</p></li>
+<li><p>Handling Exceptions, buggy data</p></li>
+<li><p>Outliers</p></li>
+<li><p>Binning means</p></li>
+<li><p>Splitting the data into subsets</p></li>
+<li><p>Creating new conditions for exploratory analysis</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualizing-the-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="livecode-experiments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/programmingforpsych/blob/master/07-C7.Rmd",
+"text": "Edit"
+},
+"download": ["Programming_Crump.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

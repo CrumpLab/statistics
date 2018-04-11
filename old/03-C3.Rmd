@@ -1,0 +1,102 @@
+
+# Programming Challenges I: Learning the fundamentals
+
+What is the purpose of these problems, and why should you try to solve them? An important overarching goal in learning to code is to become justifiably confident in your ability to write scripts to solve problems. At the end of the day you will be applying your skills to new problems without textbook answers, and your ability to solve these problems rests in learning how to write new code that works. This is not an abstract problem, and instead requires practice with writing code to solve new problems. The following problem sets are designed primarily with this aim in mind. Solving these problems will simultaneously develop your ability to write scripts to solve new problems, as well as give you hands on exposure to learning the syntax of the R language. These problems are not written specifically for the R language, and the solving the same problems in another language is a useful strategy for learning the syntax of another language.
+
+The problems are roughly ordered in terms of difficulty, with easier problems first and harder problems second. All of the problems can be solve by combining the foundational programming concepts already discussed. That is, they can be solved by declaring variables, using logic statements, and for loops to create algorithms that solve each problem. Some of the problems require writing functions, which is a more formal and general way of writing algorithms. Many of the problems can be solved very quickly and efficiently by writing only a few lines of code, and by using intrinsic functions already supplied by the R programming language. For each of the problems you might consider writing different solutions to explore different syntax options.
+
+## Tips for Approaching the Problems
+
+Before you begin solving each of the problems it is worth considering how you will organize your solutions. This is important, as the code that you write now may become useful as a reference later, and to use the reference you will want to be able to find your code quickly and easily in the future. An example of bad practice here is to save your solutions to your desktop or other random folder on your computer. Instead, create a programming folder (or something similar), and organize your progress by saving informatively named files to appropriately named subfolders.
+
+### Rstudio's Text editor
+
+You should be making use of R studio’s text editor to complete the problem sets. It is important to establish good coding practices from the very beginning. Make sure that your code is easy to read. This will help you understand your own code later, and help other people understand your code when sharing it or when asking for help.
+
+### Use informative variable names.
+
+You will be declaring many different kinds of variables. R usually will not care what name you give to any variable. Oftentimes scripts can be written very quickly when variables are declared with names like a, b, i, or x (which are common variable names in algebra). These kinds of variable names are not very informative, and it is preferable to give names that represent the meaning of the data stored in each variable.
+
+### Use comments.
+
+You can insert comments into your scripts. In R, all text following the number sign \# will turn to green (become commented out), and will not be compiled by R when the code is run. Comments are useful for explaining to yourself and to others what various parts of the script are accomplishing (or attempting to accomplish). Clear and easy follow code generally contains useful (and non-redundant comments).
+
+### R Markdown.
+
+R studio’s text editor allows for the creation of markdown files. Markdown is a very simple short-form language for creating HTML documents that can be viewed in a web-browser, or printed as a .pdf. This is an extremely powerful tool because it combines the power of a simple word-processor, with the power of R. In practice, this means that you can write documents with titles, headings, paragraphs, and sentences, and include in these documents the R-scripts that you are writing, and the output of these scripts. Thinking ahead, when you are using R to transform and analyse your own data, it is possible to create a data-journal to combine all of your efforts into one document. For example, a data-journal could include notes on the design of the experiment, links to the data, notes about pre-processing considerations, code use to pre-process the data, notes on statistical tests, code to run them along with the output from the tests, thoughts on how to present the data along with journal-quality figures formatted to specific sizes, and so on.
+
+To make use of Markdown, it is recommended that you create a single markdown document, that will list each of the problems and your solutions.
+
+## Use Hypothesis to annotate your solutions
+
+[Hypothesis](https://web.hypothes.is) is a web-browser add-on tool for annotating web-pages. It's free, open-source, and to get started all you need to do is go to the website, sign-up, and install the add-on for chrome, or follow the instructions to use a bookmarklet for other browsers. Then, for any webpage including this one, you can post public comments (annotations) by selecting text on the page, and clicking the annotate button that pops up. I will be posting sample code for each of the problems using hypothesis, and the answers will only be viewable if you have that working. Please feel free to contribute your own answers by posting code for each of the problems. Repositories of working code are an invaluable resource when learning to code, and perhaps some good examples can be provided here by anyone interested in participating.
+
+## Easier Problems
+
+1.  Do simple math with numbers, addition, subtraction, multiplication, division
+2.  Put numbers into variables, do simple math on the variables
+3.  Write code that will place the numbers 1 to 100 separately into a variable using for loop. Then, again using the seq function.
+4.  Find the sum of all the integer numbers from 1 to 100.
+5.  Write a function to find the sum of all integers between any two values.
+6.  List all of the odd numbers from 1 to 100.
+7.  List all of the prime numbers from 1 to 1000.
+8.  Generate 100 random numbers
+9.  Generate 100 random numbers within a specific range
+10. Write your own functions to give descriptive statistics for a vector variable storing multiple numbers. Write functions for the following without using R intrinsics: mean, mode, median, range, standard deviation
+11. Count the number of characters in a string variable
+12. Count the number of words in a string variable
+13. Count the number of sentences in a string variable
+14. Count the number of times a specific character occurs in a string variable
+15. Do a logical test to see if one word is found within the text of another string variable.
+16. Put the current computer time in milliseconds into a variable
+17. Measure how long a piece of code takes to run by measuring the time before the code is run, and after the code is run, and taking the difference to find the total time
+18. Read a .txt file or .csv file into a variable
+19. Output the contents of a variable to a .txt file
+20. Create a variable that stores a 20x20 matrix of random numbers
+21. Output any matrix to a txt file using commas or tabs to separate column values, and new lines to separate row values
+
+## Harder Problems
+
+1.  **The FizzBuzz Problem.** List the numbers from 1 to 100 with the following constraints. If the number can be divided by three evenly, then print Fizz instead of the number. If the number can be divided by five evenly, then print Buzz instead of the number. Finally, if the number can be divided by three and five evenly, then print FizzBuzz instead of the number. The answer could look something like this:
+
+```{block} 
+1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz, 16, 17, Fizz, 19, Buzz, Fizz, 22, 23, Fizz, Buzz, 26, Fizz, 28, 29, FizzBuzz, 31, 32, Fizz, 34, Buzz, Fizz, 37, 38, Fizz, Buzz, 41, Fizz, 43, 44, FizzBuzz, 46, 47, Fizz, 49, Buzz, Fizz, 52, 53, Fizz, Buzz, 56, Fizz, 58, 59, FizzBuzz, 61, 62, Fizz, 64, Buzz, Fizz, 67, 68, Fizz, Buzz, 71, Fizz, 73, 74, FizzBuzz, 76, 77, Fizz, 79, Buzz, Fizz, 82, 83, Fizz, Buzz, 86, Fizz, 88, 89, FizzBuzz, 91, 92, Fizz, 94, Buzz, Fizz, 97, 98, Fizz, Buzz
+```
+
+2.  **Frequency Counts** Take text as input, and be able to produce a table that shows the counts for each character in the text. This problem is related to the earlier easy problem asking you to count the number of times that a single letter appears in a text. The slightly harder problem is the more general version: count the frequencies of all unique characters in a text.
+
+3.  **Test the Random Number Generator** Test the random number generator for a flat distribution. Generate a few million random numbers between 0 and 100. Count the number of 0s, 1s, 2s, 3s, etc. all the way up to 100. Look at the counts for each of the numbers and determine if they are relatively equal. For example, you could plot the counts in Excel to make a histogram. If all of the bars are close to being flat, then each number had an equal chance of being selected, and the random number generator is working without bias.
+
+<div class="margintnote">
+
+```{r 3rnum, fig.cap="Histogram showing sampled data from a uniform distribution", echo=FALSE,fig.env='png'}
+knitr::include_graphics("figures/Fig8_randomNumber.png")
+```
+
+</div>
+
+4.  **Create a multiplication table** Generate a matrix for a multiplication table. For example, the labels for the columns could be the numbers 1 to 10, and the labels for the rows could be the numbers 1 to 10. The contents of each of the cells in the matrix should be correct answer for multiplying the column value by the row value.
+
+5.  **Encrypt and Decrypt the Alphabet** Turn any normal english text into an encrypted version of the text, and be able to turn any decrypted text back into normal english text. A simple encryption would be to scramble the alphabet such that each letter corresponds to a new randomly chosen (but unique) letter.
+
+6.  **Snakes and Ladders**
+
+```{r 3snl, echo=FALSE,dev='png'}
+knitr::include_graphics('figures/SnakesLadders.png')
+```
+
+Your task here is to write an algorithm that can simulate playing the above depicted Snakes and Ladders board. You should assume that each roll of the dice produces a random number between 1 and 6. After you are able to simulate one played game, you will then write a loop to simulate 1000 games, and estimate the average number of dice rolls needed to successfully complete the game.
+
+7.  **Dice-rolling simulations.** Assume that a pair of dice are rolled. Using monte carlo-simulation, compute the probabilities of rolling a 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, and 12, respectively.
+
+8.  **Monte Hall problem.** The monte-hall problem is as follows. A contestant in a game show is presented with three closed doors. They are told that a prize is behind one door, and two goats are behind the other two doors. They are asked to choose which door contains the prize. After making their choice the game show host opens one of the remaining two doors (not chosen by the contestant), and reveals a goat. There are now two door remaining. The contestant is asked if they would like to switch their choice to the other door, or keep their initial choice. The correct answer is that the participant should switch their initial choice, and choose the other door. This will increase their odds of winning. Demonstrate by monte-carlo simulation that the odds of winning is higher if the participant switches than if the participants keeps their original choice.
+
+9.  **100 doors problem.** Problem: You have 100 doors in a row that are all initially closed. You make 100 passes by the doors. The first time through, you visit every door and toggle the door (if the door is closed, you open it; if it is open, you close it). The second time you only visit every 2nd door (door 2, 4, 6, etc.). The third time, every 3rd door (door 3, 6, 9, etc.), etc, until you only visit the 100th door.
+
+Question: What state are the doors in after the last pass? Which are open, which are closed?
+
+10. **99 Bottles of Beer Problem** In this puzzle, write code to print out the entire "99 bottles of beer on the wall"" song. For those who do not know the song, the lyrics follow this form:
+
+X bottles of beer on the wall X bottles of beer Take one down, pass it around X-1 bottles of beer on the wall
+
+Where X and X-1 are replaced by numbers of course, from 99 all the way down to 0.

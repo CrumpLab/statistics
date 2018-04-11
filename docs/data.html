@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An introductory statistics textbook for psychology students" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data" />
+  
+  <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+
+
+<meta name="date" content="2017-10-17">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="programming-in-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>1</b> Data</a><ul>
+<li class="chapter" data-level="1.1" data-path="data.html"><a href="data.html#more-data-than-anyone-can-imagine"><i class="fa fa-check"></i><b>1.1</b> More data than anyone can imagine</a></li>
+<li class="chapter" data-level="1.2" data-path="data.html"><a href="data.html#recipes-versus-cooking-or-the-calculator-controversy"><i class="fa fa-check"></i><b>1.2</b> Recipes versus Cooking: Or, the calculator controversy</a></li>
+<li class="chapter" data-level="1.3" data-path="data.html"><a href="data.html#why-should-psychologists-learn-to-program"><i class="fa fa-check"></i><b>1.3</b> Why should Psychologists learn to program?</a></li>
+<li class="chapter" data-level="1.4" data-path="data.html"><a href="data.html#learning-to-program"><i class="fa fa-check"></i><b>1.4</b> Learning to program</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="data.html"><a href="data.html#some-preliminaries"><i class="fa fa-check"></i><b>1.4.1</b> Some Preliminaries</a></li>
+<li class="chapter" data-level="1.4.2" data-path="data.html"><a href="data.html#chicken-and-egg-problem"><i class="fa fa-check"></i><b>1.4.2</b> Chicken and Egg Problem</a></li>
+<li class="chapter" data-level="1.4.3" data-path="data.html"><a href="data.html#understanding-the-tools-available-to-you"><i class="fa fa-check"></i><b>1.4.3</b> Understanding the tools available to you</a></li>
+<li class="chapter" data-level="1.4.4" data-path="data.html"><a href="data.html#applying-the-tools-to-the-problems-you-want-to-solve"><i class="fa fa-check"></i><b>1.4.4</b> Applying the tools to the problems you want to solve</a></li>
+<li class="chapter" data-level="1.4.5" data-path="data.html"><a href="data.html#being-a-good-coder"><i class="fa fa-check"></i><b>1.4.5</b> Being a good coder</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="data.html"><a href="data.html#foundational-concepts-in-computer-programming"><i class="fa fa-check"></i><b>1.5</b> Foundational concepts in computer programming</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="data.html"><a href="data.html#algorithms"><i class="fa fa-check"></i><b>1.5.1</b> Algorithms</a></li>
+<li class="chapter" data-level="1.5.2" data-path="data.html"><a href="data.html#median-a-conceptual-algorithm"><i class="fa fa-check"></i><b>1.5.2</b> Median: A conceptual algorithm</a></li>
+<li class="chapter" data-level="1.5.3" data-path="data.html"><a href="data.html#variables"><i class="fa fa-check"></i><b>1.5.3</b> Variables</a></li>
+<li class="chapter" data-level="1.5.4" data-path="data.html"><a href="data.html#logic"><i class="fa fa-check"></i><b>1.5.4</b> Logic</a></li>
+<li class="chapter" data-level="1.5.5" data-path="data.html"><a href="data.html#loops"><i class="fa fa-check"></i><b>1.5.5</b> Loops</a></li>
+<li class="chapter" data-level="1.5.6" data-path="data.html"><a href="data.html#functions"><i class="fa fa-check"></i><b>1.5.6</b> Functions</a></li>
+<li class="chapter" data-level="1.5.7" data-path="data.html"><a href="data.html#intrinsics"><i class="fa fa-check"></i><b>1.5.7</b> Intrinsics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="data.html"><a href="data.html#what-is-the-computer-actually-doing-a-view-from-the-top"><i class="fa fa-check"></i><b>1.6</b> What is the computer actually doing? A view from the top</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="programming-in-r.html"><a href="programming-in-r.html"><i class="fa fa-check"></i><b>2</b> Programming in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="programming-in-r.html"><a href="programming-in-r.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>2.1</b> Installing R and R Studio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="programming-in-r.html"><a href="programming-in-r.html#r-studio-notes-and-tips"><i class="fa fa-check"></i><b>2.1.1</b> R studio notes and tips</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="programming-in-r.html"><a href="programming-in-r.html#basic-math"><i class="fa fa-check"></i><b>2.2</b> Basic Math</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="programming-in-r.html"><a href="programming-in-r.html#precedence"><i class="fa fa-check"></i><b>2.2.1</b> Precedence</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="programming-in-r.html"><a href="programming-in-r.html#variables-1"><i class="fa fa-check"></i><b>2.3</b> Variables</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="programming-in-r.html"><a href="programming-in-r.html#numbers"><i class="fa fa-check"></i><b>2.3.1</b> Numbers</a></li>
+<li class="chapter" data-level="2.3.2" data-path="programming-in-r.html"><a href="programming-in-r.html#integers"><i class="fa fa-check"></i><b>2.3.2</b> Integers</a></li>
+<li class="chapter" data-level="2.3.3" data-path="programming-in-r.html"><a href="programming-in-r.html#numeric"><i class="fa fa-check"></i><b>2.3.3</b> Numeric</a></li>
+<li class="chapter" data-level="2.3.4" data-path="programming-in-r.html"><a href="programming-in-r.html#vector"><i class="fa fa-check"></i><b>2.3.4</b> Vector</a></li>
+<li class="chapter" data-level="2.3.5" data-path="programming-in-r.html"><a href="programming-in-r.html#matrices"><i class="fa fa-check"></i><b>2.3.5</b> Matrices</a></li>
+<li class="chapter" data-level="2.3.6" data-path="programming-in-r.html"><a href="programming-in-r.html#strings"><i class="fa fa-check"></i><b>2.3.6</b> Strings</a></li>
+<li class="chapter" data-level="2.3.7" data-path="programming-in-r.html"><a href="programming-in-r.html#arrays-lists-dataframes-factors-and-other-classes"><i class="fa fa-check"></i><b>2.3.7</b> Arrays, Lists, Dataframes, Factors and other classes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="programming-in-r.html"><a href="programming-in-r.html#logic-1"><i class="fa fa-check"></i><b>2.4</b> Logic</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="programming-in-r.html"><a href="programming-in-r.html#if-statements"><i class="fa fa-check"></i><b>2.4.1</b> IF statements</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="programming-in-r.html"><a href="programming-in-r.html#loops-1"><i class="fa fa-check"></i><b>2.5</b> Loops</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="programming-in-r.html"><a href="programming-in-r.html#for-loops"><i class="fa fa-check"></i><b>2.5.1</b> FOR Loops</a></li>
+<li class="chapter" data-level="2.5.2" data-path="programming-in-r.html"><a href="programming-in-r.html#while-loops"><i class="fa fa-check"></i><b>2.5.2</b> WHILE loops</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="programming-in-r.html"><a href="programming-in-r.html#algorithms-1"><i class="fa fa-check"></i><b>2.6</b> Algorithms</a></li>
+<li class="chapter" data-level="2.7" data-path="programming-in-r.html"><a href="programming-in-r.html#functions-1"><i class="fa fa-check"></i><b>2.7</b> Functions</a></li>
+<li class="chapter" data-level="2.8" data-path="programming-in-r.html"><a href="programming-in-r.html#intrinsics-1"><i class="fa fa-check"></i><b>2.8</b> Intrinsics</a></li>
+<li class="chapter" data-level="2.9" data-path="programming-in-r.html"><a href="programming-in-r.html#r-libraries"><i class="fa fa-check"></i><b>2.9</b> R Libraries</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html"><i class="fa fa-check"></i><b>3</b> Programming Challenges I: Learning the fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#tips-for-approaching-the-problems"><i class="fa fa-check"></i><b>3.1</b> Tips for Approaching the Problems</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#rstudios-text-editor"><i class="fa fa-check"></i><b>3.1.1</b> Rstudio’s Text editor</a></li>
+<li class="chapter" data-level="3.1.2" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#use-informative-variable-names."><i class="fa fa-check"></i><b>3.1.2</b> Use informative variable names.</a></li>
+<li class="chapter" data-level="3.1.3" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#use-comments."><i class="fa fa-check"></i><b>3.1.3</b> Use comments.</a></li>
+<li class="chapter" data-level="3.1.4" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#r-markdown."><i class="fa fa-check"></i><b>3.1.4</b> R Markdown.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#use-hypothesis-to-annotate-your-solutions"><i class="fa fa-check"></i><b>3.2</b> Use Hypothesis to annotate your solutions</a></li>
+<li class="chapter" data-level="3.3" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#easier-problems"><i class="fa fa-check"></i><b>3.3</b> Easier Problems</a></li>
+<li class="chapter" data-level="3.4" data-path="programming-challenges-i-learning-the-fundamentals.html"><a href="programming-challenges-i-learning-the-fundamentals.html#harder-problems"><i class="fa fa-check"></i><b>3.4</b> Harder Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dealing-with-data.html"><a href="dealing-with-data.html"><i class="fa fa-check"></i><b>4</b> Dealing with Data</a><ul>
+<li class="chapter" data-level="4.1" data-path="dealing-with-data.html"><a href="dealing-with-data.html#data-1"><i class="fa fa-check"></i><b>4.1</b> Data</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="dealing-with-data.html"><a href="dealing-with-data.html#experiments-are-data-machines"><i class="fa fa-check"></i><b>4.1.1</b> Experiments are data machines</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dealing-with-data.html"><a href="dealing-with-data.html#what-is-data"><i class="fa fa-check"></i><b>4.1.2</b> What is Data?</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dealing-with-data.html"><a href="dealing-with-data.html#practical-issues-with-data-in-psychology"><i class="fa fa-check"></i><b>4.1.3</b> Practical issues with data in Psychology</a></li>
+<li class="chapter" data-level="4.1.4" data-path="dealing-with-data.html"><a href="dealing-with-data.html#data-transformation-skills"><i class="fa fa-check"></i><b>4.1.4</b> Data Transformation Skills</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dealing-with-data.html"><a href="dealing-with-data.html#standard-data-formats"><i class="fa fa-check"></i><b>4.2</b> Standard Data Formats</a></li>
+<li class="chapter" data-level="4.3" data-path="dealing-with-data.html"><a href="dealing-with-data.html#examples-using-excel"><i class="fa fa-check"></i><b>4.3</b> Examples Using Excel</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dealing-with-data.html"><a href="dealing-with-data.html#a-simple-detection-experiment"><i class="fa fa-check"></i><b>4.3.1</b> A simple detection experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html"><i class="fa fa-check"></i><b>5</b> Simulating and Analyzing Data in R</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#sampling-random-numbers-uniform-distribution"><i class="fa fa-check"></i><b>5.0.1</b> Sampling random numbers (uniform distribution)</a></li>
+<li class="chapter" data-level="5.0.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#sampling-from-a-normal-distribution"><i class="fa fa-check"></i><b>5.0.2</b> Sampling from a normal distribution</a></li>
+<li class="chapter" data-level="5.0.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#other-distributions"><i class="fa fa-check"></i><b>5.0.3</b> Other distributions</a></li>
+<li class="chapter" data-level="5.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-a-coin-toss"><i class="fa fa-check"></i><b>5.1</b> Simulating a coin toss</a></li>
+<li class="chapter" data-level="5.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#t-testdata-simulation-and-analysis"><i class="fa fa-check"></i><b>5.2</b> t-test:Data Simulation and Analysis</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>5.2.1</b> Simulating a one-sample t-test</a></li>
+<li class="chapter" data-level="5.2.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-an-independent-samples-t-test-two-groups-between-subjects"><i class="fa fa-check"></i><b>5.2.2</b> Simulating an independent samples t-test (two groups, between-subjects)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-a-paired-samples-t-test-two-conditions-within-subjects"><i class="fa fa-check"></i><b>5.2.3</b> Simulating a paired samples t-test (two conditions, within-subjects)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#generality-of-the-t-test-examples"><i class="fa fa-check"></i><b>5.2.4</b> Generality of the t-test examples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#single-factor-anovas-data-simulation-and-analysis"><i class="fa fa-check"></i><b>5.3</b> Single Factor ANOVAs: Data-Simulation and Analysis</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-data-for-a-one-way-within-subjects-anova-with-3-levels"><i class="fa fa-check"></i><b>5.3.1</b> Simulating data for a one-way within subjects ANOVA with 3 levels</a></li>
+<li class="chapter" data-level="5.3.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-data-for-a-one-way-between-subjects-design-with-3-levels"><i class="fa fa-check"></i><b>5.3.2</b> Simulating data for a one-way between subjects design with 3 levels</a></li>
+<li class="chapter" data-level="5.3.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#between-subjects-anova-formulas"><i class="fa fa-check"></i><b>5.3.3</b> Between subjects ANOVA formulas</a></li>
+<li class="chapter" data-level="5.3.4" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#within-subjects-anova-formulas-all-factors-within"><i class="fa fa-check"></i><b>5.3.4</b> Within subjects ANOVA formulas (all factors within)</a></li>
+<li class="chapter" data-level="5.3.5" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#mixed-design-anovas-with-between-and-within-factors"><i class="fa fa-check"></i><b>5.3.5</b> Mixed design ANOVAs with between and within factors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs"><i class="fa fa-check"></i><b>5.4</b> Simulating data for multi-factor designs</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-between-subjects-design"><i class="fa fa-check"></i><b>5.4.1</b> 2x2 between subjects design</a></li>
+<li class="chapter" data-level="5.4.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-within-subjects-designs"><i class="fa fa-check"></i><b>5.4.2</b> 2x2 within subjects designs</a></li>
+<li class="chapter" data-level="5.4.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-mixed-design-1-within-1-between"><i class="fa fa-check"></i><b>5.4.3</b> 2x2 mixed design (1 within, 1 between)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#power-analysis-and-sample-size-planning-by-monte-carlo-simulation"><i class="fa fa-check"></i><b>5.5</b> Power analysis and sample-size planning by Monte Carlo simulation</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#monte-carlo-one-sample-t-test-simulation"><i class="fa fa-check"></i><b>5.5.1</b> Monte-Carlo one-sample T-test Simulation</a></li>
+<li class="chapter" data-level="5.5.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#monte-carlo-paired-t-test-simulation"><i class="fa fa-check"></i><b>5.5.2</b> Monte-Carlo paired T-test Simulation</a></li>
+<li class="chapter" data-level="5.5.3" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#monte-carlo-one-way-repeated-measures-simulation"><i class="fa fa-check"></i><b>5.5.3</b> Monte-Carlo One-way Repeated Measures Simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#analysing-data-from-a-file"><i class="fa fa-check"></i><b>5.6</b> Analysing data from a file</a></li>
+<li class="chapter" data-level="5.7" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#reading-data-into-r"><i class="fa fa-check"></i><b>5.7</b> Reading data into R</a></li>
+<li class="chapter" data-level="5.8" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#running-an-anova-for-a-single-factor-design-between-subjects-design"><i class="fa fa-check"></i><b>5.8</b> Running an ANOVA for a single-factor design between-subjects design</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#prettier-results-using-kable-and-broom"><i class="fa fa-check"></i><b>5.8.1</b> Prettier results using kable and broom</a></li>
+<li class="chapter" data-level="5.8.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#writing-up-the-results"><i class="fa fa-check"></i><b>5.8.2</b> Writing up the results</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#running-a-between-subjects-anova-for-a-2x2-factorial-design"><i class="fa fa-check"></i><b>5.9</b> Running a between subjects ANOVA for a 2x2 Factorial design</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#writing-up-the-results-section"><i class="fa fa-check"></i><b>5.9.1</b> Writing up the results section</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#practice-problems"><i class="fa fa-check"></i><b>5.10</b> Practice Problems</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#single-factor-design-with-a-within-subjects-factor"><i class="fa fa-check"></i><b>5.10.1</b> Single factor design with a within-subjects factor</a></li>
+<li class="chapter" data-level="5.10.2" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#x2-within-subjects-design"><i class="fa fa-check"></i><b>5.10.2</b> 2x2 within-subjects design</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="simulating-and-analyzing-data-in-r.html"><a href="simulating-and-analyzing-data-in-r.html#loading-raw-data-into-r"><i class="fa fa-check"></i><b>5.11</b> Loading raw-data into R</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html"><i class="fa fa-check"></i><b>6</b> Visualizing the Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#graphing-results-in-r"><i class="fa fa-check"></i><b>6.1</b> Graphing results in R</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#install-the-ggplot2-package"><i class="fa fa-check"></i><b>6.1.1</b> Install the ggplot2 package</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#simulating-analyzing-and-graphing-the-results-from-a-2x4-within-subjects-design"><i class="fa fa-check"></i><b>6.2</b> Simulating, analyzing, and graphing the results from a 2x4 within-subjects design</a></li>
+<li class="chapter" data-level="6.3" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#graphing-the-data-using-ggplot2"><i class="fa fa-check"></i><b>6.3</b> Graphing the data using ggplot2</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#the-ggplot2-layer-metaphor-for-graphing-data"><i class="fa fa-check"></i><b>6.3.1</b> The ggplot2 layer metaphor for graphing data</a></li>
+<li class="chapter" data-level="6.3.2" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#changing-labels-and-making-a-journal-ready-figure"><i class="fa fa-check"></i><b>6.3.2</b> Changing labels and making a journal-ready figure</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="visualizing-the-data.html"><a href="visualizing-the-data.html#adding-error-bars-to-figures-in-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Adding error bars to figures in ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="programming-challenges-ii-data.html"><a href="programming-challenges-ii-data.html"><i class="fa fa-check"></i><b>7</b> Programming Challenges II: Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="programming-challenges-ii-data.html"><a href="programming-challenges-ii-data.html#creating-and-analyzing-simulated-data"><i class="fa fa-check"></i><b>7.1</b> Creating and Analyzing Simulated Data</a></li>
+<li class="chapter" data-level="7.2" data-path="programming-challenges-ii-data.html"><a href="programming-challenges-ii-data.html#working-with-real-raw-data"><i class="fa fa-check"></i><b>7.2</b> Working with Real Raw Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="livecode-experiments.html"><a href="livecode-experiments.html"><i class="fa fa-check"></i><b>8</b> LIVECODE experiments</a><ul>
+<li class="chapter" data-level="8.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#download-livecode"><i class="fa fa-check"></i><b>8.1</b> Download LIVECODE</a></li>
+<li class="chapter" data-level="8.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#what-is-livecode"><i class="fa fa-check"></i><b>8.2</b> What is LIVECODE</a></li>
+<li class="chapter" data-level="8.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#basic-livecode-concepts"><i class="fa fa-check"></i><b>8.3</b> Basic LIVECODE concepts</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#stacks-cards-and-elements"><i class="fa fa-check"></i><b>8.3.1</b> Stacks, Cards and Elements</a></li>
+<li class="chapter" data-level="8.3.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#scripting"><i class="fa fa-check"></i><b>8.3.2</b> Scripting</a></li>
+<li class="chapter" data-level="8.3.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#livecode-syntax"><i class="fa fa-check"></i><b>8.3.3</b> LIVECODE syntax</a></li>
+<li class="chapter" data-level="8.3.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#manipulating-words-and-letters-strings"><i class="fa fa-check"></i><b>8.3.4</b> Manipulating words and letters (strings)</a></li>
+<li class="chapter" data-level="8.3.5" data-path="livecode-experiments.html"><a href="livecode-experiments.html#manipulating-numbers-items"><i class="fa fa-check"></i><b>8.3.5</b> Manipulating numbers (items)</a></li>
+<li class="chapter" data-level="8.3.6" data-path="livecode-experiments.html"><a href="livecode-experiments.html#advanced-data-storage-arrays"><i class="fa fa-check"></i><b>8.3.6</b> Advanced data storage (arrays)</a></li>
+<li class="chapter" data-level="8.3.7" data-path="livecode-experiments.html"><a href="livecode-experiments.html#logic-statements-if-then"><i class="fa fa-check"></i><b>8.3.7</b> Logic statements (IF THEN)</a></li>
+<li class="chapter" data-level="8.3.8" data-path="livecode-experiments.html"><a href="livecode-experiments.html#loops-2"><i class="fa fa-check"></i><b>8.3.8</b> Loops</a></li>
+<li class="chapter" data-level="8.3.9" data-path="livecode-experiments.html"><a href="livecode-experiments.html#functions-2"><i class="fa fa-check"></i><b>8.3.9</b> Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#practice-coding"><i class="fa fa-check"></i><b>8.4</b> Practice coding</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#livecode-features-checklist"><i class="fa fa-check"></i><b>8.4.1</b> LIVECODE features checklist</a></li>
+<li class="chapter" data-level="8.4.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#using-the-interface"><i class="fa fa-check"></i><b>8.4.2</b> Using the interface</a></li>
+<li class="chapter" data-level="8.4.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#livecode-commands"><i class="fa fa-check"></i><b>8.4.3</b> LIVECODE commands</a></li>
+<li class="chapter" data-level="8.4.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#simple-programming-problems"><i class="fa fa-check"></i><b>8.4.4</b> Simple programming problems</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="livecode-experiments.html"><a href="livecode-experiments.html#logic-for-programming-experiments"><i class="fa fa-check"></i><b>8.5</b> Logic for programming experiments</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#experiments-are-designed-to-create-data-files"><i class="fa fa-check"></i><b>8.5.1</b> Experiments are designed to create data-files</a></li>
+<li class="chapter" data-level="8.5.2" data-path="livecode-experiments.html"><a href="livecode-experiments.html#long-format-data-files"><i class="fa fa-check"></i><b>8.5.2</b> Long-format data files</a></li>
+<li class="chapter" data-level="8.5.3" data-path="livecode-experiments.html"><a href="livecode-experiments.html#the-data-file-is-the-design"><i class="fa fa-check"></i><b>8.5.3</b> The Data-file is the Design</a></li>
+<li class="chapter" data-level="8.5.4" data-path="livecode-experiments.html"><a href="livecode-experiments.html#creating-the-list-of-trials"><i class="fa fa-check"></i><b>8.5.4</b> Creating the list of trials</a></li>
+<li class="chapter" data-level="8.5.5" data-path="livecode-experiments.html"><a href="livecode-experiments.html#interpeting-the-list-to-run-each-trial"><i class="fa fa-check"></i><b>8.5.5</b> Interpeting the list to run each trial</a></li>
+<li class="chapter" data-level="8.5.6" data-path="livecode-experiments.html"><a href="livecode-experiments.html#presenting-a-stimulus"><i class="fa fa-check"></i><b>8.5.6</b> Presenting a stimulus</a></li>
+<li class="chapter" data-level="8.5.7" data-path="livecode-experiments.html"><a href="livecode-experiments.html#collecting-a-response"><i class="fa fa-check"></i><b>8.5.7</b> Collecting a response</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="livecode-experiments.html"><a href="livecode-experiments.html#look-and-feel"><i class="fa fa-check"></i><b>8.6</b> Look and feel</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="livecode-experiments.html"><a href="livecode-experiments.html#preventing-unwanted-actions"><i class="fa fa-check"></i><b>8.6.1</b> Preventing unwanted actions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="livecode-experiments.html"><a href="livecode-experiments.html#saving-the-data"><i class="fa fa-check"></i><b>8.7</b> Saving the data</a></li>
+<li class="chapter" data-level="8.8" data-path="livecode-experiments.html"><a href="livecode-experiments.html#data-analysis"><i class="fa fa-check"></i><b>8.8</b> Data-analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="web-experiments.html"><a href="web-experiments.html"><i class="fa fa-check"></i><b>9</b> Web Experiments</a><ul>
+<li class="chapter" data-level="9.1" data-path="web-experiments.html"><a href="web-experiments.html#getting-started-html-javascript-jquery"><i class="fa fa-check"></i><b>9.1</b> Getting started: HTML, Javascript, JQUERY</a></li>
+<li class="chapter" data-level="9.2" data-path="web-experiments.html"><a href="web-experiments.html#basic-html"><i class="fa fa-check"></i><b>9.2</b> Basic HTML</a></li>
+<li class="chapter" data-level="9.3" data-path="web-experiments.html"><a href="web-experiments.html#javascript-basics"><i class="fa fa-check"></i><b>9.3</b> Javascript Basics</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="web-experiments.html"><a href="web-experiments.html#variables-2"><i class="fa fa-check"></i><b>9.3.1</b> Variables</a></li>
+<li class="chapter" data-level="9.3.2" data-path="web-experiments.html"><a href="web-experiments.html#variable-types"><i class="fa fa-check"></i><b>9.3.2</b> Variable Types</a></li>
+<li class="chapter" data-level="9.3.3" data-path="web-experiments.html"><a href="web-experiments.html#common-operations"><i class="fa fa-check"></i><b>9.3.3</b> Common operations</a></li>
+<li class="chapter" data-level="9.3.4" data-path="web-experiments.html"><a href="web-experiments.html#loops-3"><i class="fa fa-check"></i><b>9.3.4</b> Loops</a></li>
+<li class="chapter" data-level="9.3.5" data-path="web-experiments.html"><a href="web-experiments.html#logic-2"><i class="fa fa-check"></i><b>9.3.5</b> Logic</a></li>
+<li class="chapter" data-level="9.3.6" data-path="web-experiments.html"><a href="web-experiments.html#writing-a-function"><i class="fa fa-check"></i><b>9.3.6</b> Writing a function</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="web-experiments.html"><a href="web-experiments.html#programming-a-simple-stroop-experiment"><i class="fa fa-check"></i><b>9.4</b> Programming a simple Stroop Experiment</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="web-experiments.html"><a href="web-experiments.html#implementing-the-design"><i class="fa fa-check"></i><b>9.4.1</b> Implementing the design</a></li>
+<li class="chapter" data-level="9.4.2" data-path="web-experiments.html"><a href="web-experiments.html#coding-the-design-in-javascript"><i class="fa fa-check"></i><b>9.4.2</b> Coding the design in Javascript</a></li>
+<li class="chapter" data-level="9.4.3" data-path="web-experiments.html"><a href="web-experiments.html#displaying-trials-on-screen"><i class="fa fa-check"></i><b>9.4.3</b> Displaying trials on screen</a></li>
+<li class="chapter" data-level="9.4.4" data-path="web-experiments.html"><a href="web-experiments.html#next-steps-webstrooptutorial"><i class="fa fa-check"></i><b>9.4.4</b> Next steps: WebStroopTutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="web-experiments.html"><a href="web-experiments.html#amazon-turk"><i class="fa fa-check"></i><b>9.5</b> Amazon Turk</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="web-experiments.html"><a href="web-experiments.html#create-an-account"><i class="fa fa-check"></i><b>9.5.1</b> Create an Account</a></li>
+<li class="chapter" data-level="9.5.2" data-path="web-experiments.html"><a href="web-experiments.html#worker-site-requester-site-the-sandbox"><i class="fa fa-check"></i><b>9.5.2</b> Worker site, Requester site, &amp; the Sandbox</a></li>
+<li class="chapter" data-level="9.5.3" data-path="web-experiments.html"><a href="web-experiments.html#basic-overview-of-interfacing-with-amazon-turk"><i class="fa fa-check"></i><b>9.5.3</b> Basic overview of interfacing with Amazon Turk</a></li>
+<li class="chapter" data-level="9.5.4" data-path="web-experiments.html"><a href="web-experiments.html#download-the-command-line-tools"><i class="fa fa-check"></i><b>9.5.4</b> Download the Command Line Tools</a></li>
+<li class="chapter" data-level="9.5.5" data-path="web-experiments.html"><a href="web-experiments.html#external-hit-sample-application"><i class="fa fa-check"></i><b>9.5.5</b> External Hit sample application</a></li>
+<li class="chapter" data-level="9.5.6" data-path="web-experiments.html"><a href="web-experiments.html#running-the-example"><i class="fa fa-check"></i><b>9.5.6</b> Running the example</a></li>
+<li class="chapter" data-level="9.5.7" data-path="web-experiments.html"><a href="web-experiments.html#running-the-example-in-the-terminal"><i class="fa fa-check"></i><b>9.5.7</b> Running the example in the terminal</a></li>
+<li class="chapter" data-level="9.5.8" data-path="web-experiments.html"><a href="web-experiments.html#getting-results"><i class="fa fa-check"></i><b>9.5.8</b> Getting results</a></li>
+<li class="chapter" data-level="9.5.9" data-path="web-experiments.html"><a href="web-experiments.html#approving-and-deleting"><i class="fa fa-check"></i><b>9.5.9</b> Approving and deleting</a></li>
+<li class="chapter" data-level="9.5.10" data-path="web-experiments.html"><a href="web-experiments.html#general-points-about-the-example"><i class="fa fa-check"></i><b>9.5.10</b> General points about the example</a></li>
+<li class="chapter" data-level="9.5.11" data-path="web-experiments.html"><a href="web-experiments.html#data-handling"><i class="fa fa-check"></i><b>9.5.11</b> Data handling</a></li>
+<li class="chapter" data-level="9.5.12" data-path="web-experiments.html"><a href="web-experiments.html#loading-the-stroop-example-experiment-onto-amazon-turk"><i class="fa fa-check"></i><b>9.5.12</b> Loading the Stroop example experiment onto Amazon Turk</a></li>
+<li class="chapter" data-level="9.5.13" data-path="web-experiments.html"><a href="web-experiments.html#steps-to-run-the-demo-on-amazon-turk"><i class="fa fa-check"></i><b>9.5.13</b> Steps to run the demo on Amazon Turk</a></li>
+<li class="chapter" data-level="9.5.14" data-path="web-experiments.html"><a href="web-experiments.html#ready-to-load"><i class="fa fa-check"></i><b>9.5.14</b> Ready to Load!</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Data</h1>
+<p><span class="newthought"> If you go back a few hundred years, what we take for granted today would seem like magic - being able to talk to people over long distances, to transmit images, flying, accessing vast amounts of data like an oracle. These are all things that would have been considered magic a few hundred years ago. —Elon Musk </span></p>
+<p>The goal of this book is to develop practical skills for making sense of data. It is aimed at students who are not familiar with statistics, may be afraid of math (or not), and have little to no experience with using computers to ask and answer questions with data.</p>
+<p>Before we begin, let me say a few things. First, why should you care about making sense of data? The real goal is to use data to ask and answer questions about the world around us. Making sense of data helps us ask and answer those questions.</p>
+<p>Second, in simple arithmetic problems, like 1+1=?, there are right and wrong answers. In statistics, there are some arithmetic problems to solve, but there are no right answers, even when the arithmetic is done correctly. Instead there are different kinds of answers, some more useful than others. There are different philosophies about statistics, how to teach it, and how to do it. Statistics are like tools, they were built with a purpose in mind, but can be used in different ways. I can use a screwdriver to twist a screw, or to pop a balloon, but I don’t use a screwdriver as my pillow, because it isn’t a good pillow. Similarly, the same statistics can be used to solve different problems, and the same problem can be solved by using different statistics. What is most important is solving the problem, and justifying why your solution solves the problem.</p>
+<p>We will be focusing on how to solve problems with making sense of data. Data are records of measurements about things around us in the world. Data could be the scores on midterm exams, the heights of people in France, or anything else that can be measured or counted. We are living in an age of data, where human’s have created more data than anyone can imagine.</p>
+<div id="more-data-than-anyone-can-imagine" class="section level2">
+<h2><span class="header-section-number">1.1</span> More data than anyone can imagine</h2>
+<p>People have been producing data about the world around them for a long time. They have also been using data to ask and answer questions about the world around them for as long a time. With the invention of the computer, humans have been radically increasing the amount of data they are producing and storing, as well as radically increasing the ability to make sense of that data to answer all sorts of new and old questions.</p>
+<div class="marginnote">
+<p>How many books can an average person read in a lifetime? How could you estimate this? You would need to know the average lifespan of a person, the average reading speed (words per minute), and the average number of words in a book. You could find estimates for those numbers by searching the internet. Post your answers as an annotation using Hypothesis.</p>
+</div>
+<p>The capacity for storing data has already <em>radically</em> increased beyond anyone one person’s ability to imagine the scale of the situation. And the capacity continues to increase. For example, humans have already written more books than anyone can read in a lifetime. According to wikipedia, Google has digitized 25 million books as of 2015, and estimates that there are about 130 million total distinct books to digitize (they plan to digitize them all). According to <a href="http://www.internetlivestats.com/total-number-of-websites/">Internet Live Stats</a> there over 1.27 billion websites as of October 2017, they also have a counter that is going up and up every second. In 2010, the CEO of Google, Eric Schmidt said “Every two days now we create as much information as we did from the dawn of civilization up until 2003, according to Schmidt. That’s something like five exabytes of data”. In other words, more than anyone can imagine.</p>
+<p>At the same time, our ability to process data using computers has been increasing to astounding levels. The first mechanical computers were big and slow, taking up entire rooms. Now, they are faster and faster and smaller and smaller. We carry them in our pockets. In 1965, Gordon Moore, co-founder of Intel (producer of circuits for computers), published a paper pointing out that the number of transitors that could be packed into an integrated circuit was doubling every two years. Roughly this means that the processing speed of computer systems was doubling every two years. Ever since 1965, this trend has continued. In recent years, the trend has slowed down a bit, with speed doubling every two and half years. That’s a lot of doubling.</p>
+<p>The doubling of computer speed every two years is a great example of something that <em>radically increases</em> in an astounding fashion. To get an intuition for doubling, let’s look a sequence of numbers that doubles. We start with 2, then we double it (2x2=4), then we double that (2x4=8), then double that (2x8=16), and so on. What do those numbers look like if we keep doubling 25 times. Well, 2x16=32, 2x32=64, 2x64=128, 2x128=256, 2x256=…you know what, I’m tired of doing that in my head. And, I lost my calculator (I don’t even own a calculator). I could use the calculator app on my phone, but it’s not nearby, and I really don’t feel like tapping out the numbers. Call me lazy. Instead, I’ll force my computer to do the work for me. It’s much easier that way.</p>
+<p>Below you will see two things. In the grey box is some computer code to compute the sequence using free software called R. Next is a table, with three columns. The first column shows the number (2) that we are doubling, the second column shows how many times we double the number, and the third column shows the resulting answer.</p>
+<div class="marginnote">
+<p>Over this course you will be learning how to use the free software R to analyze data. I will also be using R in this textbook to illustrate different concepts. I will usually present the R code I use, just like the code in the grey box. At this point you do not need to focus on the code, however it is there for your future reference.</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+base_number&lt;-<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">25</span>)
+exponent&lt;-<span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">25</span>)
+result&lt;-base_number^exponent
+table_of_doubling&lt;-<span class="kw">data.frame</span>(base_number,exponent,result)
+<span class="kw">kable</span>(table_of_doubling)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">base_number</th>
+<th align="right">exponent</th>
+<th align="right">result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">32</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">64</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">128</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">256</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">512</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">10</td>
+<td align="right">1024</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">11</td>
+<td align="right">2048</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">12</td>
+<td align="right">4096</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">13</td>
+<td align="right">8192</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">14</td>
+<td align="right">16384</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">15</td>
+<td align="right">32768</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">16</td>
+<td align="right">65536</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">17</td>
+<td align="right">131072</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">18</td>
+<td align="right">262144</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">19</td>
+<td align="right">524288</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">20</td>
+<td align="right">1048576</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">21</td>
+<td align="right">2097152</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">22</td>
+<td align="right">4194304</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">23</td>
+<td align="right">8388608</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">24</td>
+<td align="right">16777216</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">25</td>
+<td align="right">33554432</td>
+</tr>
+</tbody>
+</table>
+<p>You can see from the table that the result keeps getting bigger and bigger. In fact, each result is twice as big as the one before. This is called exponential growth. It can be useful to see what exponential growth looks like in a figure.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(table_of_doubling$result)</code></pre></div>
+<p><img src="Programming_Crump_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="marginnote">
+<p>If the result of doubling leads to big increases each time, why do so many of the dots appear on the bottom of the figure, and only a few dots on the right look as if they are increasing?</p>
+<p>Every new number is so big, by comparison most of the previous numbers are tiny, which is why only a few dots look as if they are going up.</p>
+</div>
+<p>Each dot shows how our number doubles at every step. It looks like the first several dots are very small numbers, almost like a flat line. However, the dots near the right end of the graph are shooting straight up into huge numbers.</p>
+<p>What does all of this mean for computing power? It means as of today our computers already have a huge ability to process data with great speed, and that every couple of years that ability gets twice as huge. In other words, we can solve some problems now that we couldn’t solve two years ago, and in two years from now we will able to solve new problems that nobody has even thought of yet.</p>
+<p>I brought up two facts about data for two reasons. The first fact was that humans are creating mountains of new data everyday, more than anyone can imagine. This is exciting because it means we have new opportunities to use that data to ask and answer questions about the world around us. The second fact was that computers are doubling in their processing speed roughly every two years. This is exciting because it means we can use computers to process data for us very quickly, which will allow us to ask and answer questions more easily, and without spending all of our time doing calculations. We can use our precious time to ask better questions, and get better answers.</p>
+</div>
+<div id="recipes-versus-cooking-or-the-calculator-controversy" class="section level2">
+<h2><span class="header-section-number">1.2</span> Recipes versus Cooking: Or, the calculator controversy</h2>
+<p>If a student learns to add numbers only by using a calculator, have they really learned anything about adding? Perhaps they wouldn’t know how to add if they didn’t have a calculator. After all, adding on a caluculator is just pressing a bunch of buttons in the correct order, that’s not adding. If a student learns how to add numbers by using a pencil and paper, then they must really know how to add. Writing numbers and + signs down on paper is not at all the same as pressing buttons. Writing numbers down is the real deal. Sometimes teachers ban the use of calculators in math classes. There is no ban in this class, use them if you want. Instead, we use computers, they are much better calculators, and much faster than pencil and paper. In fact, once you tell a computer what to do, it can do so much more than adding, all with a click of a single button.</p>
+<p>The calculator controversy points to issues that sometimes pop up in classrooms. Some teachers worry that if they give students a tool, like a calculator, that can easily solve a problem, like adding, then students may learn to use the tool (press buttons), but fail to learn the concepts behind the tool (adding). So, they ban the tool, and assume that students will have no choice but to learn the concept. The problem isn’t the tool, teaching and learning concepts always involves some kind of tool (pencil and paper are tools, math would be even harder without them). The problem is that teaching and learning concepts can be challenging.</p>
+<p>Courses in statistics usually have a goal of teaching the concepts behind statistics. The idea is that if you understand the concepts, you can use them flexibly to solve different kinds of problems. Even more, if you understand how the concepts work, you could make new concepts and use those to solve problems. These are good ideals to aspire to. However, practical matters often get in the way of these ideals. For example, statistics often involve mathematical formulas, and exam questions often challenge students to compute the correct answer for a given math problem. Although this is a useful skill, it is a little bit like the calculator controversy. If you can provide a numerical answer to a math equation, do you understand what the equation means? Or, have you simply demonstrated that you can plug numbers into a formula, and then use your calulator to arrive at the correct answer. Similarly, there are numerous software packages for statistics that, like calculators, can compute desired statistics for a set of data with a few mouse clicks. Does learning how to click buttons in a computer program require that you understand the concepts behind the statistics you are performing?</p>
+<p>A student who can plug numbers into formulas, and click buttons on a computer screen can probably pass most introductory statistics courses. This usually means those students didn’t learn much about statistics. For students who never have to use statistics again, this might not be too bad, why bother learning a skill that you’ll never use. However, it is not uncommon for researchers (who have to use statistics all the time) to find themselves in a similar position. They might know how to plug numbers into formulas, and how to click buttons in statistics software to analyze data, and they may even publish their findings without having a solid understanding of what they were doing to their data. This can happen for lots of reasons, including the fact that not everybody has enough time to get a Ph.D. in statistics before they do research. But, this is not an excuse. If you are going to work with data, you should think about what you are doing, and be able to describe why your methods of analysis make sense for the problem you are tring to solve.</p>
+<p>In making these observations I have built up some tension between the goals of understanding concepts behind statistics, and using tools like formulas and software packages. By analogy, I point to similar tension between cooking and recipes. For example, a good cook doesn’t need to use recipes, they know the principles behind cooking, and use those principle to craft dishes. If the cook writes down a recipe in a clear, step-by-step format, then other people, who do not understand the principles behind the recipe, can also create the dish, just by following the step-by-step instructions. I think you would find many chefs who learned the principles behind cooking partly by studying and using recipes. So, learning the principles behind cooking and can go hand-in-hand with using recipes. The same goes for statistics. Learning the principles behind statistics goes hand-in-hand with using the wide variety of tools we have at our disposal to crunch numbers. In this course, we will use recipes for statistics to show how to cook with data.</p>
+<p>The underlying metaphor to these observations is the difference between recipes and cooking. Recipes are step-by-step guides to making a dish. If the recipe is a clear one, and you follow all the steps, then you will make the final dish. Recipes are great for learning how to cook. Cooking is being able to make dishes without recipes.</p>
+</div>
+<div id="why-should-psychologists-learn-to-program" class="section level2">
+<h2><span class="header-section-number">1.3</span> Why should Psychologists learn to program?</h2>
+<p>The benefits of learning to program for Psychologists are numerous. Programming makes data-analysis more efficient, accurate, and transparent; and, opens new doors for new analyses that would not be practical or possible without programming. Experiments are often run on computers, so programming is important for designing, creating, and implementing experiments themselves. Programs can be written to formally express psychological theories, so programming can also help a researcher iron out and clearly express their own ideas about psychological processes.</p>
+<div class="marginnote">
+<p>Experiment builders</p>
+<ul>
+<li><a href="http://www.pstnet.com/eprime.cfm">Eprime</a></li>
+<li><a href="http://www.neurobs.com">Presentation</a></li>
+<li><a href="http://www.superlab.com">Superlab</a></li>
+<li><a href="http://www.psychopy.org">PsychoPy</a></li>
+<li><a href="http://osdoc.cogsci.nl/2.8.3/">Open Sesame</a></li>
+<li><a href="http://www.qualtrics.com">Qualtrics</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Comparison_of_behavioral_experiment_software">More on wikipedia</a></li>
+</ul>
+</div>
+<div class="marginnote">
+<p>Statistics Software</p>
+<ul>
+<li><a href="http://www-01.ibm.com/software/analytics/spss/">SPSS</a></li>
+<li><a href="http://www.sas.com/en_us/home.html">SAS</a></li>
+<li><a href="http://www.jmp.com">JMP</a></li>
+<li><a href="http://www.r-project.org">R</a></li>
+<li><a href="http://julialang.org">Julia</a></li>
+<li><a href="http://www.mathworks.com/products/matlab/">Matlab</a></li>
+</ul>
+</div>
+<p>Computing technology plays an important role in psychological research, and there are many kinds of proprietary software developed specifically for psychologists. For example, experiments can be created using experiment builder programs such as E-prime, Presentation, and Superlab. Similarly, statistical analysis can be conducted using proprietary software like SPSS, SAS, JMP, and many others. These kinds of canned software packages can be very useful. They are generally user-friendly, require little programming knowledge, and tasks can be completed in relatively small amounts of time using click-and-drag interfaces. However, in many cases the code driving these programs is private (versus open-source where the code is public). So, it can be difficult and sometimes impossible to determine if the program is accomplishing a task that needs to be accomplished in a specific way. Not infrequently the program may simply be incapable of completing a particular kind of statistical analysis, or running a particular kind of experiment. At this point it becomes helpful (necessary) to learn programming so that solutions to unique research problems can be solved by the researcher directly.</p>
+<p>Learning how to program experiments from scratch and how to analyze data using your own code allows <strong>control</strong> over every detail of design and analysis. This level of control is invaluable for creating flexible and customizable experimental designs, and for being confident that the intended design is actually being implemented (after all if you write the code, you can check that it works). Although we will not be learning to program with proprietary software packages, these packages often include their own scripting language, so learning general programming techniques will also allow you to exert more fine grained control over canned software packages.</p>
+<p>Another merit worth mentioning is <strong>time-savings</strong>. Becoming fluent in programming enables researchers to rapidly implement their designs, making experiment building take days, afternoons, or sometimes even a half-hour or so. As well, many monotonous, tedious, and time-consuming aspects of data-analysis can be automatized with scripts, saving researchers copious amounts of time in analyzing their data, and opening new doors for understanding the data that was collected.</p>
+<p>Finally, computer programming is a valuable skill in general and may open doors in the larger workforce outside of Psychology.</p>
+</div>
+<div id="learning-to-program" class="section level2">
+<h2><span class="header-section-number">1.4</span> Learning to program</h2>
+<p>Learning how to program a computer is a skill and requires an initial investment. It takes practice, time, and effort. There is no easy way out. There are many layers to individual programming languages, and there are many programming languages out there to learn that could be useful. Where to begin?</p>
+<p>The purpose of this chapter is to give a broad overview of basic elements common to most every programming language. It is intended for complete novices who have no experience with programming.</p>
+<div class="marginnote">
+<p>The website <a href="http://rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a> lists many common programming problems and solutions for them across many different languages. It’s a great resource to get a sense of the breadth of programming languages, for examples of working code, and for problems to solve when learning to program.</p>
+</div>
+<div id="some-preliminaries" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Some Preliminaries</h3>
+<p>Let’s get started with what might be a golden rule of programming: <strong>Try to figure it out yourself</strong>. Before beginning to learn to code, it is important to recognize that the underlying skill of computer programming is problem-solving, which is the ability to solve new problems by yourself. So, the super-keen student of programming might stop reading here, generate a list of things they need to learn to solve their own particular research problems, and then go learn all of those things themselves by whatever clever means they can. If you are trying to learn to code, and you aren’t coding something, then you aren’t learning how to code. Or, you could skip ahead to the programming challenges in Chapter 3 and spend your time working on those.</p>
+<p>Of course, for a complete novice the big question is to figure out what <strong>it</strong> is? From the perspective of applying computer programming techniques to experimental psychology, there are three major aspects to learning programming. These are:</p>
+<ol style="list-style-type: decimal">
+<li>Understanding the <strong>tools</strong> available to you</li>
+<li>Applying the tools to the <strong>problems</strong> you want to solve</li>
+<li>Being a <strong>good coder</strong></li>
+</ol>
+</div>
+<div id="chicken-and-egg-problem" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Chicken and Egg Problem</h3>
+<p>What should you learn first? What should be taught first? This is the chicken and egg problem in learning and teaching programming. Should a student learn about how to organize their code at the beginning or after they have learned some of the basic aspects of the language? Should they learn seemingly random tidbits of programming languages before learning how to apply those tidbits to solving a problem, or should they be given a problem first? This is a dilemma for a student, because they must decide where to start, and for a teacher, because they decide where to begin. From the perspective of teaching, it is particularly troubling because it is fairly obvious that regardless of order some knowledge of the tools, the problems, and good coding practice are all helpful. So, for students entering the arena it is important to build meta-cognitive awareness about these three things: what are the tools, how do I apply them to my problems, and am I being a good-coder. Students should also be prepared to lift themselves up by their own bootstraps.</p>
+</div>
+<div id="understanding-the-tools-available-to-you" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> Understanding the tools available to you</h3>
+<p>The major portion of this chapter will be devoted to outlining the basic building blocks of programming languages. This outline will take place in the abstract, without examples from specific programming languages. Later chapters go into details about coding in specific languages like R and Livecode. Fortunately, most programming languages use the same basic concepts forming the building blocks for making all sorts of programs. However, although the concepts are the same across languages, they are expressed with different syntax (just like spoken languages have different words for the same concept). So, part of understanding the tools available to you are, 1) understanding the conceptual tool, and then 2) understanding how to implement the tool using the specific syntax of the language you are working in.</p>
+</div>
+<div id="applying-the-tools-to-the-problems-you-want-to-solve" class="section level3">
+<h3><span class="header-section-number">1.4.4</span> Applying the tools to the problems you want to solve</h3>
+<p>Coding is writing a recipe for solving a problem. More specifically, it is writing the solution to a problem in a highly detailed manner that forces a computer to follow the directions to solve your problem. These code-based recipes are also known as algorithms. Learning how to create algorithms involves first determining the problem, and then converting the solution into a fully articulated, step-by-step series of instructions. These step-by-step series of instructions make use of the tools, or building blocks, of the programming language.</p>
+<p>The easiest part of teaching programming is the description of tools that are available. The hardest, and perhaps most impossible part of teaching programming is how to apply the tools to solve problems. This is because it is difficult to teach people how to think, how to become better at thinking, and how to think carefully, deeply, and creatively. Yet, all of this kind of thinking is part of learning how to develop algorithms. Finally, it is important to note that the thinking really is in the doing. If you aren’t attempting to apply programming tools to solve your problems, then you aren’t thinking or doing.</p>
+</div>
+<div id="being-a-good-coder" class="section level3">
+<h3><span class="header-section-number">1.4.5</span> Being a good coder</h3>
+<p>Without knowing what code looks like, or how it can be used to solve problems, it is difficult to discuss what it means to be a good coder. A fuller discussion of these issues will be delivered in later chapters. Nevertheless, for students beginning to code it is worth keeping a few things in mind.</p>
+<ol style="list-style-type: decimal">
+<li>Readability: Can I understand my code? Could someone else understand my code? Is there anyway that I could make my code easier to read? Do that.</li>
+<li>Elegance: Is there a shorter way to write this code?</li>
+<li>Reusability: Can I find this code again if I need to use it? Can I write this code in a more general way so that it can be used in more than one situation?</li>
+</ol>
+</div>
+</div>
+<div id="foundational-concepts-in-computer-programming" class="section level2">
+<h2><span class="header-section-number">1.5</span> Foundational concepts in computer programming</h2>
+<p>The purpose of this guide is to provide a roadmap for psychologists to learn how to apply programming techniques to solve problems relevant for research in Psychology (e.g., creating experiments and analyzing data). To this end, only a thin slice of foundational concepts will be discussed. Fortunately, only a few concepts are needed to get started, and to solve many different problems that arise in research.</p>
+<p>The following concepts are fundamental to any programming language. These are <strong>Algorithms</strong>, <strong>Variables</strong>, <strong>Logic</strong>, <strong>Loops</strong>, <strong>Functions</strong>, and <strong>Intrinsics</strong>. Each are discussed separately below.</p>
+<p>Readers interested in learning to program should take an active approach to learning, and develop meta-cognitive awareness of the content they are trying to learn during the learning process. This simply means that you should ask yourself questions about what you already know, and what you need to learn, and then focus your efforts on learning what you don’t already know, and identifying aspects of these concepts that should receive further self-study. To encourage this approach, some good questions that you should keep in mind are discussed below for each topic.</p>
+<div id="algorithms" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Algorithms</h3>
+<p>Here are some questions you should have about algorithms. What are algorithms? What is algorithmic thinking/ what is an algorithmic approach to problem solving? How do you combine the programming concepts in the next sections to write algorithms for solving problems with code? How would you explain the concept of an algorithm to another person? And, can the problem I am trying to solve be answered with an algorithmic approach.</p>
+<p>An algorithm is simply a set of detailed instructions for accomplishing a task, or the infallible recipe for solving a problem. If the step-by-step instructions are followed exactly, the algorithm will always provide the answer to the problem it was intended to solve. Real-world examples of algorithms are recipes for preparing food, or IKEA instructions for putting together furniture.</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1alg"></span>
+<img src="figures/algorithm.png" alt="Algorithm for fixing a lamp, from the Swedish picture dictionary" width="162" />
+<p class="caption">
+Figure 1.1: Algorithm for fixing a lamp, from the Swedish picture dictionary
+</p>
+</div>
+</div>
+<p>These kinds of algorithms often leave much to be desired in terms of their specificity. A home cook might get halfway through a recipe and find a next step unclear (what temperature should the oven be? How much is add some salt?). When a step in a list of instructions is unclear in the real world people have to problem solve and come up with a workable solution (e.g., keeping adding salt and tasting the dish).</p>
+<p>Algorithms for controlling computers are similar, they are also a list of step-by-step instructions for the computer to take to solve a problem. But, unlike real-world algorithms that can be interpreted by creative people when an instruction is unclear, computer algorithms require each instruction to be precise. The computer is not creative. If the instructions do not specify each step precisely, the computer will fail to implement the algorithm.</p>
+<p>Perhaps the most important skill for computer programming is learning to think algorithmically. This is the ability to transform the solution to a problem into a series of step-by-step instructions that a computer can perform. There are two critically important levels to algorithms, the conceptual level, and the syntax level. The conceptual level involves breaking down a problem into component steps and understanding how the order of each step combines together to produce a final solution. This is similar to writing an outline for a draft of a paper, or creating a story-board for a movie. Here, the steps of an algorithm might be jotted down on paper before they are implemented on a computer. The syntax level involves using a specific programming language to implement each of the conceptual steps of the algorithm. This would be similar to choosing the English language to write an entire paper, in all of its gory detail. However, in a programming language, this would involve writing a script using terminology supplied by the language of choice. A practical understanding of algorithms involves a blend of conceptual and syntax levels, which inform each other. A conceptual understanding will help guide a novice to the appropriate terminology to write a script, and experience with writing scripts in a specific language will help clarify the conceptual steps necessary to code a desired algorithm.</p>
+<p>Throughout the remaining chapters algorithms will be used to create and run experiments, and to analyze and report data. As well, as a part of introducing the syntax of languages covered here (R, LIVECODE, HTML, JAVAVASCRIPT, etc.), the reader will be encouraged to create algorithms to solve many different kinds of problems. This problem-based approach will build confidence in your ability to write your own algorithms from scratch, and will orient you to the syntax of each language.</p>
+<p>Mastering the skill of algorithmic thinking is challenging, however it is not difficult to give examples of simple algorithms, especially at the conceptual level. Let’s consider the problem of finding the median of a set of numbers, which is the exact middle number in the set. Here is the set of numbers: 8,3,6,2,7,4,9.</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1median"></span>
+<img src="figures/median.jpg" alt="The median is the exact middle number in a set of numbers"  />
+<p class="caption">
+Figure 1.2: The median is the exact middle number in a set of numbers
+</p>
+</div>
+</div>
+</div>
+<div id="median-a-conceptual-algorithm" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Median: A conceptual algorithm</h3>
+<ol style="list-style-type: decimal">
+<li><p>Identify your set of numbers</p></li>
+<li><p>Sort them from smallest to largest</p></li>
+<li><p>Count the number of total numbers</p></li>
+<li><p>Divide the count by 2 to find the midway point.</p></li>
+<li><p>If the count is an even number, then follow these instructions, otherwise following the next set of instructions. The midway point will be an integer, and will indicate two ranges of numbers. The first range is the first number to the number occupying the midway point. The second range is the number occupying the midway point plus one, to the last number. Add the number occupying midway point and the next number (number occupying midway point plus one), then divide the sum by two to find the median.</p></li>
+<li><p>If the count is an odd number, then follow these instructions. Round the midway point up to the nearest integer. The median is the number occupying this integer value position in the list.</p></li>
+</ol>
+<p>Let’s work through each of these steps to find the median of our set of numbers:</p>
+<ol style="list-style-type: decimal">
+<li><p>Set of numbers is: 8,3,6,2,7,4,9</p></li>
+<li><p>Sort numbers: 2,3,4,6,7,8,9</p></li>
+<li><p>Count total numbers: 7</p></li>
+<li><p>Divide count by 2: 3.5</p></li>
+<li><p>count is odd, round up: 4</p></li>
+<li><p>find the 4th number in the list: 6 is the median number</p></li>
+</ol>
+<p>Taken together these steps to compute the median form a complete algorithm. If we were to implement this algorithm in a programming language we would make use of the remaining fundamental programming concepts including use of: variables, logic, loops, functions, and intrinsics.</p>
+<p>For example, in step 1 we would store our set of numbers in a variable. For step 2, we could use a loop to sort our numbers. For steps 5 and 6 we would make use of logic statements to tell the computer to follow either set of instructions. We could write a generalizable script that would compute the median for any set of numbers that we wanted to input, and this would make use of writing a function. Or, if we used a statistical programming language like R, we could simply use the built-in function (intrinsic) for finding the median already provided in that language.</p>
+<p>Most readers will already know how to compute the median, and in this case algorithmic thinking simply involves stating all of the steps in the process in an explicit fashion. Many problems that can be solved with algorithms are similar in that they involve making already known steps fully explicit. In these situations, the main difficulty will not be in understanding the algorithm at the conceptual level, but instead at the syntax level where specific commands are needed to accomplish each step in a particular language. Other problems will involve algorithms that are not immediately obvious. Here, developing a conceptual level algorithm prior to implementing it can be helpful in identifying the important steps needed to solve the problem.</p>
+</div>
+<div id="variables" class="section level3">
+<h3><span class="header-section-number">1.5.3</span> Variables</h3>
+<p>Here are some questions you should have about variables. What are programming variables? What different forms do they take? How are they declared? How are they changed and updated? What kind of variables does your programming language support?</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1val"></span>
+<img src="figures/value-container.jpg" alt="Variables are containers that hold information."  />
+<p class="caption">
+Figure 1.3: Variables are containers that hold information.
+</p>
+</div>
+</div>
+<p>Variables are simply containers. They hold stuff. To be more precise, variables hold information in computer memory. The stuff that they hold partly defines the type or form of the variable. For example, a variable could hold a number or a character, or several numbers, or several characters, or several numbers and characters. The fact that variables “hold stuff” is important because this property of variables allows us to save information in the computer. Another important property of variables is the ability to “get stuff back”, or retrieve information for later use.</p>
+<p>One aspect of variables that is very important, but which will receive limited treatment in this guide, is their relation to computer memory. Computers are limited in their ability to represent information. Information is stored in two primary ways, on the hard-drive (traditionally read-only memory or ROM), or in memory (traditionally random-access memory or RAM). A given computer only has so much room, defined by the limits on the hard-drive or RAM, and they can not store information beyond these limits.</p>
+<p>Different programming languages support different kinds of variables, and you will have to learn the details for storing and retrieving information using those variables. The important questions to be asking when learning about different variables are:</p>
+<ol style="list-style-type: decimal">
+<li>How do I store stuff into this variable?</li>
+<li>How do I get back what I stored in this variable?</li>
+</ol>
+<p>Once you can verify how storage and retrieval works for your variable type, then you should be well on your way to understanding the basics of using that kind of variable.</p>
+<p>Here are some common variable types for numbers. Integer variables store numbers without decimal places. Real number variables store numbers (including integers) with decimals. Vectors store lists of numbers. Matrices and arrays store two-dimensional lists of numbers.</p>
+<p>Here are some common variable types for characters (letters etc). String variables store text. Arrays can store multiple sections of text.</p>
+<p>At this point it is not particularly helpful to go on listing all of the different kinds of variables. They won’t make much sense anyway until you have to use them, and the programming language that you choose will implement each variable type differently. The take home message here is that you can store and retrieve information (numbers and letters etc.) in variables. More importantly, you can also manipulate and change the state of variables, and this process of storing, changing, and retrieving information from variables is, in the abstract, how problems are solved by computation.</p>
+</div>
+<div id="logic" class="section level3">
+<h3><span class="header-section-number">1.5.4</span> Logic</h3>
+<p>Here are some questions you should have about logic statements. What are logical statements? How are logical statements implemented in your programming language? What are some examples of how they are used? How are they used to identify the contents of a variable? How are they used to create different conditions depending on the contents of variable?</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1ifthen"></span>
+<img src="figures/ifthen.png" alt="Logic statements evaluate the current situation (IF current situation is X) and then allow the computer to proceed along different paths (THEN do one or another thing)." width="282" />
+<p class="caption">
+Figure 1.4: Logic statements evaluate the current situation (IF current situation is X) and then allow the computer to proceed along different paths (THEN do one or another thing).
+</p>
+</div>
+</div>
+<p>Consider the following scenario. You walk into a room full of screaming children. You immediately assess the situation to find out what is going on. You decide that if what is going on is really, really, bad, you might need to call 911; or, if what is going on is just kids being kids, then you might need to ask them to calm down, or perhaps just leave them room. Logic statements help accomplish these kinds of goals when writing algorithms. They generally involve two steps. Identifying the current situation, and then creating conditions to act accordingly.</p>
+<p>Logic statements are used to assess the current situation. For example, is the information in the variable I am looking at the information that I want it to be? The answer will be yes, or no.</p>
+<p>Logic statements are used to create conditions, and then allow different actions to occur depending on the condition. If the answer is yes, do one thing, but if the answer is no, do another thing.</p>
+<p>How logical statements are implemented depends on the syntax of the programming language. Get to know the logical operators, and how to use IF/THEN statements.</p>
+<p>Some common logical operators are: equals, greater than, less than, greater than or equal to, less than or equal to, not, and, or, etc. These operations are used to compare the value of one variable to another. The result of these comparisons when should yield one of two values, TRUE or FALSE (also referred to as Boolean Logic). When these comparisons are implemented in a programming language, a third result can also occur. This is known as an error, and errors occur when a comparison is not possible. Most programming languages will produce an error if you try to compare two variables that can not logically be compared. For example, what is the answer to the question: is 2 greater than forest? The word forest is not a number, and thus is not greater or less than two. Attempting such a comparison can result in an error.</p>
+</div>
+<div id="loops" class="section level3">
+<h3><span class="header-section-number">1.5.5</span> Loops</h3>
+<p>Here are some questions you should have about loops. What is the concept of a repeat loop in programming? Why is this useful? What is the syntax for looping? Are their different kinds of looping methods available in your language, such as while loops? How can a loop be stopped?</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1loop"></span>
+<img src="figures/Loop.png" alt="Loops allow steps within an algorithm to occur repeatedly, either a specific number of times, or until specific logical condition is satisfied." width="188" />
+<p class="caption">
+Figure 1.5: Loops allow steps within an algorithm to occur repeatedly, either a specific number of times, or until specific logical condition is satisfied.
+</p>
+</div>
+</div>
+<p>Consider the following scenario. An insane pirate captures you and gives you two choices. Walk the plank and be eaten by hungry eels, or write down all of the numbers from 1 to 1 billion no matter how long it takes. The pirate also says you can print out all of the numbers from 1 to 1 billion if you learn how to use a programming language to do it. Obviously you should the learn programming language. This will allow you to make the computer do the tedious work of starting at the number 1, printing it, adding 1 to the number to get to 2, printing it, adding 1 to the number to get to 3, printing it, and so on to a billion.</p>
+<p>Looping is the ability to do something over and over. It is a powerful tool in the toolkit. Here is some good advice. If you are coding and feel like you are trapped on a pirate ship because you are writing tedious code to do basically the same thing over and over again, then you should consider how you might be able to rewrite your code in a loop so the computer does the tedious part.</p>
+<p>As with variables and logic, how loops are implemented depends on the syntax of the programming language. Oftentimes there are more than one ways to implement loops, so be on the lookout for the different forms. One form or another may come in handy down the road.</p>
+</div>
+<div id="functions" class="section level3">
+<h3><span class="header-section-number">1.5.6</span> Functions</h3>
+<p>Here are some questions you should have about functions? What are functions? Why are they used? What is the syntax for writing functions?</p>
+<p>Consider the following scenario. You go to McDonald’s and order a quarter pounder with cheese meal, regular size fries, and coke. You give the attendant some cash. You wait. You get your McDonald’s. This is the procedure for turning your money into a McDonald’s hamburger. You go to McDonald’s, you give them your money, then they give you a hamburger.</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1func"></span>
+<img src="figures/function.png" alt="Functions generally take some input, transform it, and then return some output." width="110" />
+<p class="caption">
+Figure 1.6: Functions generally take some input, transform it, and then return some output.
+</p>
+</div>
+</div>
+<p>This situation highlights the important aspects of functions in programming. Functions are simply a collection of procedures (or an algorithm) for transforming some input into some output. They typically have a name (Quarter pounder with cheese meal), take some value as an input (regular fries, coke,your money), process the input in some manner to produce an output (your meal is made in the back), and then provide the output (your meal is handed to you). Functions are also general, so in our example, you can go to most any McDonald’s and say the name of the function (Quarter pounder with cheese please), and you will get your McDonald’s meal as the output.</p>
+<p>In programming functions are a convenient way to wrap together all of the step-by-step instructions for one algorithm in one place, typically so the same algorithm can be used again and again whenever it is needed. For example, if you wrote some code to find the median of a set of numbers, it would be nice if you didn’t have to write the same code over and over again whenever you wanted to compute the median. Instead, it would be much easier if you could simply use the word Median, or something like that name, to call upon the algorithm that you have already written. Functions provide this possibility. They allow you to write an algorithm once, and call for its use by using its name as many times as you want.</p>
+<p>Writing functions in particular programming languages involve special syntax for combining your algorithm and identifying it as a function that can be called upon later. Writing functions also involves making your code more general so that it can be used in more than one situation. For example, you could write an algorithm that would find the median of these numbers: 1,2,3,4,5. The answer would be 3. It is possible to write the code for the median in a specific way that would only solve the problem for this one set of numbers. It is also possible to write the code in a more general way so that it could be used to find the median for any set of numbers. This will become more clear as you progress in your coding ability. But, it is worth keeping the notion of making your code more general in your head, as it is a skill that will serve you well in the long run.</p>
+</div>
+<div id="intrinsics" class="section level3">
+<h3><span class="header-section-number">1.5.7</span> Intrinsics</h3>
+<p>Here are some questions you should have about intrinsics. What are the functions that are already written for you in your language? What kinds of functionality does your programming language supply that you do not need to duplicate by writing your own functions? Do you have the manual for your programming language? Have you read it? Which websites provide helpful tips for programming in your language?</p>
+<div class="marginnote">
+<div class="figure"><span id="fig:1intr"></span>
+<img src="figures/tools.jpg" alt="Intrinsics are functions that come with your programming languages. They are readymade tools for use."  />
+<p class="caption">
+Figure 1.7: Intrinsics are functions that come with your programming languages. They are readymade tools for use.
+</p>
+</div>
+</div>
+<p>Intrinsics are simply pre-existing functions in your programming language of choice. They are tools already in the toolbox that you don’t have to write. For example, the ability to make the computer run in a loop is almost always provided as an intrinsic, you do not need to write your own function to create loops. Modern programming languages have laundry lists of intrinsic functions that you can use when making your own algorithms to solve your own problems. It is worth reading the manual of any given programming language to learn about the syntax for that language. This will show you how to define variables of various types, implement logical statements, run loops, and call various other functions to solve common programming tasks. For example, the R language is at once a general-purpose programming language, but it has been written more specifically for conducting statistical analysis. Thus, it is many intrinsic functions for computing common descriptive statistics (e.g., mean, mode, median, standard deviation, range), and many kinds of inferential statistics (t-tests, ANOVAs, correlations, linear regression, multiple regression, non-linear regression, etc.). R, like many other open-source programming languages (which are free), also has an active community of developers who make freely available libraries of functions for solving specific problems encountered by those communities. These libraries can be downloaded and added to extend the functionality of your programming language.</p>
+</div>
+</div>
+<div id="what-is-the-computer-actually-doing-a-view-from-the-top" class="section level2">
+<h2><span class="header-section-number">1.6</span> What is the computer actually doing? A view from the top</h2>
+<p>This chapter outlined some of the foundational concepts of programming, and discussed algorithms, variables, logic, loops, functions, and intrinsics. A basic understanding of how these concepts are used together can help psychologists solve a vast array of problems in almost any programming language. This discussion has not yet delved into a specific language, and it has avoided many underlying details of computing technology that often form the basis of whole introductory courses in the computer sciences. The surface has been skimmed in order to speed along the process of getting your hands dirty with actual coding. Nevertheless, it is worth describing, again in fairly general terms, the underbelly of the computing process. Interested readers should seek out more information on these topics independently.</p>
+<p>Computing is generally accomplished by two processes: an instruction process, and a memory process. The instruction process is called the central processing unit, and the memory process could be the hard-drive or computer memory. At the lowest level, all information is represented by the memory process in terms of binary values, or 1s and 0s. Computer memory is literally composed of physical slots that allow 1s and 0s to be represented by the presence or absence of electrical signals. The central processing unit is capable of evaluating individual slots to determine whether they contain a 1 or 0, and is capable of changing the value of any given slot. Algorithm are implemented by joining these two processes. The central processing unit receives instructions (code prepared by the programmer) for taking an input (which is represented by 1s and 0s in specific slots), and through a series of step-by-step transformations changes the input into a desired output pattern (again represented by a series of 1s and 0s). In the programming activities for this guide we will never directly see any of this. All of the code that we write will be at a much higher level, and the programming language will compile our higher level instructions into lower-level operations that actually meddle with 1s and 0s.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="programming-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/programmingforpsych/blob/master/01-C1.Rmd",
+"text": "Edit"
+},
+"download": ["Programming_Crump.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

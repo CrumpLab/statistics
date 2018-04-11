@@ -1,0 +1,568 @@
+# Programming in R
+
+Students already familiar with one programming language should find R fairly easy to pick up. Students not familiar any programming language may find learning R more challenging. Learning your first programming language is always challenging, and takes time, effort, practice, persistence, trial and error, and lots of googling. Don’t worry, you’ll get there.
+
+<div class="marginnote">
+
+```{r 2rlogo, echo=FALSE,dev='png'}
+knitr::include_graphics('figures/rlogo.jpg')
+```
+
+</div>
+
+All programming languages involve the same basic building blocks described in the previous chapter. You will be introduced to these building blocks first in R. Learning the building blocks in any programming language will help you the next time you have to learn a different language.
+
+R is primarily a programming language for statistical analysis. It is a powerful language that can be used for all sorts of mathematical operations, data-processing, analysis, and graphical display of data. Because our goal as researchers is to produce and analyze data, we will begin learning R, which is well-suited to this purpose. First, we will learn how to work with basic programming concepts in R (this chapter), then you will learn handle and analyse data in R (next chapter).
+
+The basic building blocks of any programming language in short order are Variables, Logic, Loops, Functions, Algorithms, and Intrinsics. In this course, we won’t go much beyond learning how to use these aspects of programming languages. The rest will be left to self-study. This chapter provides only a cursory overview of the building blocks, look at the resources page for this course for more in-depth tutorials on using R. Also, Google is your friend. Use it.
+
+## Installing R and R Studio
+
+Download and install R onto your computer. The R website is: <http://www.r-project.org>
+
+Find the download R link. This will take you to a page with many different mirror links. You can click any of these links to download a version of R that will work on your computer. After you have installed R you can continue.
+
+After you have installed R on your computer, you might want to install another program called R studio. This program provides a user-friendly interface for using R. You must already have installed R before you perform this step. The R-studio website is: <http://www.rstudio.com>
+
+Find the download link on the front-page, and then download R studio desktop version for your computer. After you have installed R studio you will be ready to start using R.
+
+<div class="marginnote">
+The website [R-fiddle](http://www.r-fiddle.org) allows you to run R scripts in the cloud, so you can practive R from your web-browser!
+</div>
+
+### R studio notes and tips
+
+```{r 2rstudiod, fig.cap="The R-studio workspace", echo=FALSE,dev='png'}
+knitr::include_graphics('figures/FigRstudio.pdf')
+```
+
+
+##### Console
+
+When you open up R studio you will see three or four main windows (the placement of each are configurable). In the above example, the bottom left window is the command line (terminal or console) for R. This is used to directly enter commands into R. Once you have entered a command here, press enter to execute the command. The console is useful for entering single lines of code and running them. Oftentimes this occurs when you are learning how to correctly execute a line of code in R. Your first few attempts may be incorrect resulting in errors, but trying out different variations on your code in the command line can help you produce the correct code. Pressing the up arrow while in the console will scroll through the most recently executed lines of code.
+
+##### Script Editor
+
+The top left corner contains the script editor. This is a simple text editor for writing and saving R scripts with many lines. Several tabs can be opened at once, with each tab representing a different R script. R scripts can be saved from the editor (resulting in a .r file). Whole scripts can be run by copy and pasting them into the console and pressing enter. Alternatively, you can highlight portions of the script that you want to run (in the script editor) and press command-enter to automatically run that portion in the console (or press the button for running the current line/section: green arrow pointing right).
+
+##### Workspace and History
+
+The top right panel contains two tabs, one for the workspace and another for history. The workspace lists out all of the variables and functions that are currently loaded in R’s memory. You can inspect each of the variables by clicking on them. This is generally only useful for variables that do not contain large amounts of information. The history tab provides a record of the recent commands executed in the console.
+
+##### File, Plot, Packages, Help
+
+The bottom-right window has four tabs for files, plots, packages, and help. The files tab allows browsing of the computers file directory. An important concept in R is the **current working directory**. This is file folder that R points to by default. Many functions in R will save things directly to this direct, or attempt to read files from this directory. The current working directory can be changed by navigating to the desired folder in the file menu, and then clicking on the more option to set that folder to the current working directory. This is especially important when reading in data to R. The current working directory should be set to the folder containing the data to be inputted into R. The plots tab will show recent plots and figures made in R. The packages tab lists the current R libraries loaded into memory, and provides the ability to download and enable new R packages. The help menu is an invaluable tool. Here, you can search for individual R commands to see examples of how they are used. Sometimes the help files for individual commands are opaque and difficult to understand, so it is necessary to do a google search to find better examples of using these commands.
+
+
+
+## Basic Math
+The R terminal can be used like a calculator for simple math. Here are some examples:
+
+```{r}
+1+1
+10-8
+12*4
+3/2
+2^2
+3%%3
+3%%2
+```
+
+More info on using these arithmetic operators (plus, minus, times, divide, exponent, modulus) can be found in  R help.
+
+### Precedence
+R can be used to express much more complicated mathematical formulas. For anyone unfamiliar with writing out formulas on computers, it is important to recognize that R will make assumptions about which parts of the formula to compute first. This is called precedence. Consider how you might ask R to compute the mean of the numbers 1, 2, and 3. The answer should be 2. First, we sum the numbers (6), then divide by the number of numbers (3). To get 2.
+
+```{r}
+1+2+3/3
+(1+2+3)/3
+```
+
+Google the words operator precedence and R if you would like an indepth treatment of the topic. Otherwise, use parentheses to group parts of your formulas that need to be computed separately.
+
+## Variables
+
+Variables are used to store and manipulate data. They have a few important properties. They can be named by the programmer. They can be filled with different kinds of information. They can be called to bring back stored data. They can be changed and manipulated. R has many types of variables that store different kinds of data in different ways. Here are some examples:
+
+```{r}
+a<-1
+b<-"Hello World"
+MyVector<-c(1,2,3,4)
+AnotherVector<-c("a","b","c")
+```
+
+Try creating your own variables like these ones. Typing the names of these variables into the terminal and pressing enter will return the contents of the variables.
+
+```{r}
+a
+b
+MyVector
+AnotherVector
+```
+
+### Numbers
+Some notes about different kinds of number formats
+
+### Integers
+Integer values do not have decimal places. They are commonly used for counting or indexing. Let's define a few integer variables.To learn more about anything in R, including integers, check out the R help. If you search for integer you will find an R help file on integer types.
+```{r}
+i<-1
+j<-2
+k<-3.4 #Note 3.4 is clearly not an integer
+```
+As before, we can type the letter names into the terminal to see that they hold the value we just assigned to each variable. If you are using RStudio, you should also be able to see the contents of each variable by using the workspace, which lists all of the current variables.
+```{r}
+i
+j
+k
+```
+Now, it would seem that variables i and j are integers, but k is not an integer. This is true in the sense that i and j do not have decimals. However, R is not treating i and j as integers. We can see this by using the following \textbf{is.integer()} function. This evaluates variables placed between the parentheses, and returns a TRUE if the variable is an integer, otherwise it returns FALSE.
+```{r}
+is.integer(i)
+is.integer(k)
+```
+Querying the variables i and k both return FALSE< indicating they are not integers. What's going on? It makes sense that k is not an integer, but why is i not an integer. The answer is that R automatically assigns numbers to the numeric type, rather than the integer type. The numeric type is described in the next section. You can use the \textbf{class()} function to query the current class or type of variable.
+```{r}
+class(i)
+```
+It is often possible to convert between (coerce in R-speak) variable classes. To convert a number to an integer, we use the \textbf{as.integer()} function.
+```{r}
+k<-as.integer(k)
+is.integer(k)
+k
+```
+Notice that k has now been turned into a 3, which and is converted to the integer class.
+
+We have looked at putting single numbers into variables, and have discovered some small nuances. R will automatically assign numbers to the numeric class unless told otherwise. One important message here is to recognize that R has different kinds of classes for variables. This knowledge will become important later as you code in R, as you will discover that in some circumstances it will be necessary for your variables to be of a particular class.
+
+### Numeric
+The numeric class holds the set of real numbers, or more simply, numbers with decimal places. The numeric class is more general than the integer class, and includes the integer numbers. Here are some variable assignment examples.
+
+```{r}
+i<-1.5
+j<-23.5678
+```
+
+We don't have to tell R in advance that the number will contain digits, and therefore must be of the numeric type.
+
+### Vector
+Often times we want to store lists of numbers all in one place. One way to do this is using vectors in R. Vectors store several numbers. Take a look at some examples for creating vectors:
+
+```{r}
+a<-c(1,2,3,4,5)
+b<-c(1234,2345,3456,4567)
+```
+
+The syntax uses the \textbf{c()} function, which is short for combine. In plain english, we are combining all of the numbers together into one container. Notice that all of the individual numbers are separated with a comma. The comma is reffered to as an item-delimiter. It allows R to hold each of the numbers separately. This is extremely important, because without the item-delimiter, R would view the numbers as one big, unseperated, number.
+
+#### Indexing an element in a vector
+Once a vector is defined, it is possible to extract individual elements in the vector. This process is known as indexing. This is acccomplished using square brackets as follows:
+
+```{r}
+b[1]
+b[2]
+```
+
+#### Indexing a range of elements in a vector
+The square bracket notation is extremely powerful, as will become apparent in following sections on subsetting data. For now, it is worth mentioning that ranges of numbers in the vector can also be pulled out using the colon.
+
+```{r}
+b[1:3]
+```
+
+#### Replacing an element in a vector
+It is possible to reassign elements of an existing vector. Here is an example:
+
+```{r}
+a<-c(24,32,65,34,78)
+a[1]<-44
+a
+```
+
+#### Adding an element to the end of a vector
+It is possible to add numbers to the end of a vector. Here is an example:
+
+```{r}
+a<-c(24,32,65,34,78)
+a<-c(a,99)
+a
+```
+In plain language, the above statements are accomplishing these tasks. First, combine the five numbers and put them in the variable a. Next, combine a with an extra number. Finally, print a. We see a now contains 6 numbers. How would you use the same ideas to put a new number before the first number in the vector?
+
+#### Finding the number of elements in the vector
+R has lots of built in functions for asking questions about variables. One question you might have is, how many elements are in my vector? The answer can be found using the \textbf{length()} function. The above a variable should have a length of 6. let's find out
+
+```{r}
+length(a)
+```
+
+### Matrices
+R supports matrices of numbers. The matrix class is a two-dimensional structure, with rows and columns, much like a spreadsheet in excel. The notation for creating matrices can seem opaque for novice users. Here is a simple example:
+
+```{r}
+a<-c(1,1,1,2,2,2,3,3,3)
+b<-matrix(a,nrow=3)
+b
+```
+
+We created the vector a, which contains 9 numbers. This is a single row of numbers. We then created a matrix b, by converting the row of numbers into a matrix with 3 rows. R will automatically split the vector into the appropriate sections to create the matrix. Note that the first three values  (1s) have been assigned to column 1. This is the default. The values can be assigned by row by changing the byrow option in the matrix function.
+
+```{r}
+a<-c(1,1,1,2,2,2,3,3,3)
+b<-matrix(a,nrow=3,byrow=TRUE)
+b
+```
+
+#### Indexing values in a matrix
+Square bracket notation is again used to index values in a matrix. The first value defines the row, the second value defines the column. An empty value on either side of the comma print the entire row or column.
+```{r}
+b[1,1]
+b[1,2]
+b[1,]
+b[,1]
+```
+
+### Strings
+R variables can also hold characters and letters, and these are generally termed string variables. String variables are declared by putting quotes around the characters to store as a string.
+
+```{r}
+a<-"Hello World"
+b<-"adsfafgghsdfgsdfghs adsf asdf adsf fgsdghgsdg"
+c<-"1"
+class(a)
+class(c)
+```
+
+Try adding a number to the variable c. It won't work. This is because the contents of c, which is a 1, being treated as the character 1, and not the number 1. How would you convert the variable c to a number so that it can be used for arithmetic?
+
+R has several built-in functions (intrinsics) for manipulating strings. These are covered in the intrinsics section.
+
+### Arrays, Lists, Dataframes, Factors and other classes
+
+There are several other variables classes in R, and R even allows you to create your own classes. This chapter will not cover many of these other classes, and the reader is left to their own devices to learn about them. That said, when appropriate, some of these other classes will mentioned as needed.
+
+## Logic
+
+The ability to use logic statements is a fundamental building block of all programming languages. Here are some examples of using logic statements in R. The first two lines place a 1 into a, and a 2 into b. Then a series of logic statements are written that evaluate relationships between a and b. If the relationship is TRUE, then R returns the value TRUE. If the relationship is FALSE, then R returns the value FALSE. These values are of the class logical.
+
+```{r}
+a<-1
+b<-2
+a==1
+a==b
+a<b
+a>b
+a<=b
+a>=b
+a!=b
+```
+
+### IF statements
+
+Logic statements are commonly used to control aspects of an algorithm. They allow conditional actions to occur: If X is true, then do one thing, else if X is not true, then do another thing. Here's a strange problem to illustrate. Let's say we want to evaluate a variable called myNumber. If the variable myNumber is a 1, then we want to add 5 to the variable, otherwise do nothing.
+
+```{r}
+myNumber<-0
+if(myNumber==1){
+  myNumber<-myNumber+1
+}
+myNumber
+```
+
+The original value of myNumber was 0, so nothing should happen. We see that the final value of myNumber is still 0, so our logic statement worked. Let's set the original value to 1 and see what happens.
+
+```{r}
+myNumber<-1
+if(myNumber==1){
+  myNumber<-myNumber+1
+}
+myNumber
+```
+
+Let's take a closer look at the syntax for the IF statement. The general form is:
+
+if(Logic statemtent here) \{do something\}
+
+The "do something" will be executed only if the conditions of the logic statement are satisfied. Otherwise, in this case nothing will happen.
+
+Often you may want one thing to happen if the logical condition is satisfied, and another thing to happen if the logical condition is not satisfied. For example, we could add 1 to the number is the statement is satisfied, or add 2 to the number if the statement is not satisfied. This is accomplished using the else statment.
+
+```{r}
+myNumber<-0
+if(myNumber==1){
+  myNumber<-myNumber+1
+} else {
+  myNumber<-myNumber+2
+}
+myNumber
+```
+
+#### Nested IF statements
+IF statements can be nested within other IF statements. This is useful because sometimes the actions you might want to take require more complicated conditions. Let's try using nested logic statements to produce actions that depend on the situation. Consider that you could be inside or outside, and it could be raining or not raining. Do you need an umbrella for your current situation? How can this problem be represented with variables and logic statements?
+
+```{r}
+CurrentLocation<-"outside"
+Weather<-"raining"
+if(CurrentLocation=="outside"){
+  if(Weather=="raining"){
+    Umbrella<-TRUE
+  }else{
+    Umbrella<-FALSE
+  }
+}else{
+  Umbrella<-FALSE
+}
+Umbrella
+```
+
+The purpose of the above statements is to create a variable that tells us whether we need an Umbrella. If Umbrella contains TRUE, then we need an umbrella because we are outside and it is raining. If Umbrella contains FALSE, then it is either not raining, or we are not outside. Let's verify our statement a bit to see if it checks out. Let's set the CurrentLocation to inside. Umbrella should return FALSE, and as you can see it does.
+
+```{r}
+CurrentLocation<-"inside"
+Weather<-"raining"
+if(CurrentLocation=="outside"){
+  if(Weather=="raining"){
+    Umbrella<-TRUE
+  }else{
+    Umbrella<-FALSE
+  }
+}else{
+  Umbrella<-FALSE
+}
+Umbrella
+```
+
+#### AND
+The above series of conditions can be written more compactly. The essence of the statment is: if we are outside AND it is raining, set Umbrella to TRUE, else set to FALSE. The AND operator can involves two ampersands \&\&.
+
+```{r}
+CurrentLocation<-"outside"
+Weather<-"raining"
+if(CurrentLocation=="outside" && Weather=="raining"){
+    Umbrella<-TRUE
+  }else{
+  Umbrella<-FALSE
+}
+Umbrella
+```
+
+The above statement can be compressed even further. Here, we create the variable Umbrella outside of the logic statement, and give it an initial value of FALSE. It will remain in this state unless the conditions of the IF statement are satisfied
+
+```{r}
+CurrentLocation<-"outside"
+Weather<-"raining"
+Umbrella<-FALSE
+if(CurrentLocation=="outside" && Weather=="raining"){
+    Umbrella<-TRUE
+  }
+Umbrella
+```
+
+#### OR
+
+Besides the AND operator, you can also use the OR operator. AND is more restrictive, it means, if condition 1 and condition 2 are TRUE then do something. OR is less restrictive, it means if either condition 1 or 2 is TRUE then do something. OR uses two straight lines. Notice, that Umbrella now returns TRUE, even though the CurrentLocation is set to "inside".
+
+```{r}
+CurrentLocation<-"inside"
+Weather<-"raining"
+Umbrella<-FALSE
+if(CurrentLocation=="outside" || Weather=="raining"){
+    Umbrella<-TRUE
+  }
+Umbrella
+```
+
+## Loops
+Looping is used to force R to repeat actions over and over again. They are incredibly useful for automating tasks in R, and have wide range of application. Let's start with the FOR loop
+
+### FOR Loops
+
+Here is an example FOR loop. It has a similar syntax to the IF statement.
+
+for(range)\{do something\}
+
+In the example, the statement "i in 1:5" means repeat five times. More formally, for each round of the loop, the variable i will take the next value in the range of number between 1 to 5, starting with 1. It's easier to look at the example and see what happens. Notice, that the "do something" has the result in the value of i being printed to the terminal on each round of the loop. So, the output of this loop should be a series of numbers from 1 to 5.
+```{r}
+for(i in 1:5){
+  print(i)
+}
+```
+
+Loops can be used in combination with the other building blocks. For example, consider how you would use a loop to create a vector with 10 ones in it.
+
+```{r}
+myVector<-c()
+for(i in 1:10){
+  myVector<-c(myVector,1)
+}
+myVector
+```
+
+There are several ways to skin a cat in R. Consider this next example that accomplishes the exact same job, but with a different approach.
+
+```{r}
+myVector<-vector(length=10)
+for(i in 1:10){
+  myVector[i]<-1
+}
+myVector
+```
+
+
+### WHILE loops
+The FOR loop is used when a known number of loops are required. Sometimes the number of loops required is not known, and you would like R to keep looping until a specific logical condition is satisfied. WHILE loops allow this functionality. Conside the following silly problem. You want R to keep adding 57 to a variable, but you want to stop after the variable reaches 1000. You also want to count the number of loops that R took to get past 1000. Consider the following code:
+
+```{r}
+myNum<-0
+counter<-0
+while(myNum <= 1000){
+  myNum<-myNum+57
+  counter<-counter+1
+}
+myNum
+counter
+```
+
+#### Counters
+The above code uses an important device, the counter. The counter is simply a variable that was created, and it's sole purpose is to increment by one for each pass of the loop. It simply keeps a count of the number of loops that took place. The insight here is that you can create your own tools like counters to keep track of information states that you want to track. Counters are a very basic tool that will often be helpful in solving coding problems.
+
+## Algorithms
+Some of the examples above are examples algorithms. Algorithms are simply a series of well-specified steps for solving a problem. Algorithms in R are created by combining the basic building blocks we have discussed so far. These are Variables, Logic, and Loops. Simple algorithms may only need one or two of the building blocks. More complicated Algorithms may need all of them and even more building blocks. Developing skill in writing Algorithms in R requires practice. The programming challenges in the following chapter are a good spot to begin. Write algorithms in R to solve those problems. When you are done, you will have a better idea of what algorithms are. Then, you can email me with your definition of algorithms, and how to teach them with example code, and I will replace this section with your thoughts.
+
+Many people learn to code by working off of example code. Looking at example code provides examples of syntax that work, and can provide insight into the logic and strategy for solving the problem. The following tidbits are example code for solving a simple, but multi-component problem.
+
+The problem is: Find the sum of all even numbers between 1 and 100. The first step is to think about the parts of this problem. For example, we could list all of the numbers from 1 to 100 in a variable. Then, loop through each of the numbers to determine if it is an even number. If it is an even number, then we want to store that number in another variable. Then, when finished, add up all of the numbers in the variable holding the even numbers. Here is some example code that takes this approach:
+
+```{r}
+AllNumbers<-c()
+for(i in 1:100){
+  AllNumbers<-c(AllNumbers,i)
+}
+EvenNumbers<-c()
+for(j in AllNumbers){
+  if(j%%2 ==0){
+    EvenNumbers<-c(EvenNumbers,j)
+  }
+}
+TotalSum<-0
+for(k in EvenNumbers){
+  TotalSum<-TotalSum+k
+}
+TotalSum
+```
+
+A keen observer might notice that the above code can be shortened. For example, the loop generating all of the numbers from 1 to 100 is redundant. Here's a shortened version:
+
+```{r}
+EvenNumbers<-c()
+for(i in 1:100){
+  if(i%%2 ==0){
+    EvenNumbers<-c(EvenNumbers,i)
+  }
+}
+TotalSum<-0
+for(k in EvenNumbers){
+  TotalSum<-TotalSum+k
+}
+TotalSum
+```
+
+Here's an even shorter version. We can compute the TotalSum variable inside the first loop.
+
+```{r}
+EvenNumbers<-c()
+TotalSum<-0
+for(i in 1:100){
+  if(i%%2 ==0){
+    EvenNumbers<-c(EvenNumbers,i)
+    TotalSum<-TotalSum+i
+  }
+}
+TotalSum
+```
+
+Let's take a look at the contents of the variable EvenNumbers. It should contain all of the even numbers between 1 an 100.
+
+```{r}
+EvenNumbers
+```
+
+You might have guessed that R has it's own function to compute the sum of a vector. It's called sum.
+
+```{r}
+sum(EvenNumbers)
+```
+
+So the above code can be shortened even further:
+
+```{r}
+EvenNumbers<-c()
+for(i in 1:100){
+  if(i%%2 ==0){
+    EvenNumbers<-c(EvenNumbers,i)
+  }
+}
+sum(EvenNumbers)
+```
+
+R has many more built-in functions that can be used for a variety of tasks. These are discussed in the intrinsics section. These kinds of functions can be used to solve the above problem with even less code. This example uses the \textbf{seq} function, which creates an ordered series of numbers between a starting value and an ending value. The by option sets the step size.
+
+```{r}
+sum(seq(2,100,by=2))
+```
+
+Here's another one-liner that solves the same problem in a different way.
+
+```{r}
+sum(seq(1,100)[seq(1,100)%%2==0])
+```
+
+Learning how to create algorithms to solve problems will take time and practice. Start now. The above examples show that the same algorithm can be implemented in many different ways. Some code is longer than others. Some is easier to read than others. Learning how to create code that is readable and short will take time and practice. Another thing to note is that R is highly flexible, and the same problem can be solved in multiple ways. This becomes important later on as you realize that you can bring many different kinds of tools to the table to solve your problem.
+
+## Functions
+
+Functions are generally input/transform/output engines. They take some input, apply some algorithm to manipulate the input in some fashion to produce the desired output, then they return the output. R come prepackaged with many built-in functions. As well, because R is open-source, you can download functions that other folks have written (usuall in the form of packages). You can also write your own functions. Let's take a look at teh syntax for writing a function. We will write a function to calculate the sum of a vector of numbers.
+
+```{r}
+mySum<- function (x) {
+  totalSum<-0
+  for (i in x){
+    totalSum<-totalSum+i
+  }
+  return(totalSum)
+}
+test<-c(1,2,3,4,5)
+mySum(test)
+sum(test)
+```
+
+Functions are useful for solving problems that keep popping up during programming. Instead of re-writing the algorithm to solve the problem time and time again, just write one function for the algorithm, then call the function the next time you need it.
+
+## Intrinsics
+
+R has many built-in functions that can be used for a great variety of tasks. As has already been mentioned, these can be supplemented by packages which contain even more functions for solving other kinds of problems. When you want to accomplish some task in R, there might be an intrinsic that you can use. Try googling your problem, "how do I do X in R", and you might get lucky and find the name of the intrinsic you are looking for. Below is a very short list of common functions that are useful in R.
+
+
+- rep
+- seq
+- c
+- aggregate
+- table
+- plot
+- hist
+- mean
+- sum
+- length
+- sd
+
+
+This list is too short to be remotely meaningful. The main way thay you will learn about what R has to offer is by using R to solve problems. As you work through problems you will engage yourself in a process of discovery, and through that process you will become aware of the many more tools at your disposal.
+
+One tip is to google R cheatsheets. These will contain lists of common and useful R commands all in one or two handy documents. See also the course resources.
+
+## R Libraries
+
+There are many different freely available libraries for R that extend its functionality. These libraries are also known as repositories or packages. They contain groups of functions that can be loaded into R. RStudio can be used to download and install these libraries. Navigate to the packages tab, and choose install package, then type the name of the package you want to install. RStudio will automatically install the package. To make sure that R loads the package into memory, click the package on, after it has been installed. Here is a list of helpful R packages:
+
+-   ggplot2: amazing graphics package
+-   plyr: very helpful for transforming data-sets

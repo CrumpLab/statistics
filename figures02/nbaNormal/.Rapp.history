@@ -1,0 +1,512 @@
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs)#
+#
+myPDF("nbaNormal.pdf", mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+plot(0, 0, type='n', xlab='inches', ylab='', axes=F, main='', xlim=c(69, 90), ylim=c(0,.12))#
+for(i in 1:length(hold$counts)){#
+	rect(hold$breaks[i], 0, hold$breaks[i+1], hold$density[i],#
+		 border='#222222', col='#BBCCDD')#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+plot(0, 0, type='n', xlab='inches', ylab='', axes=F, main='', xlim=c(69, 90), ylim=c(0,.12))#
+for(i in 1:length(hold$counts)){#
+	rect(hold$breaks[i], 0, hold$breaks[i+1], hold$density[i],#
+		 border='#222222', col='#BBCCDD')#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.5 mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+plot(0, 0, type='n', xlab='inches', ylab='', axes=F, main='', xlim=c(69, 90), ylim=c(0,.12))#
+for(i in 1:length(hold$counts)){#
+	rect(hold$breaks[i], 0, hold$breaks[i+1], hold$density[i],#
+		 border='#222222', col='#BBCCDD')#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+plot(0, 0, type='n', xlab='inches', ylab='', axes=F, main='', xlim=c(69, 90), ylim=c(0,.12))#
+for(i in 1:length(hold$counts)){#
+	rect(hold$breaks[i], 0, hold$breaks[i+1], hold$density[i],#
+		 border='#222222', col='#BBCCDD')#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 5.8, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+plot(0, 0, type='n', xlab='inches', ylab='', axes=F, main='', xlim=c(69, 90), ylim=c(0,.12))#
+for(i in 1:length(hold$counts)){#
+	rect(hold$breaks[i], 0, hold$breaks[i+1], hold$density[i],#
+		 border='#222222', col='#BBCCDD')#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 5.8, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+plot(0, 0, type='n', xlab='inches', ylab='', axes=F, main='', xlim=c(69, 90), ylim=c(0,.12))#
+for(i in 1:length(hold$counts)){#
+	rect(hold$breaks[i], 0, hold$breaks[i+1], hold$density[i], col=COL[1])#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 5.8, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+histPlot(obsxlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+}#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 5.8, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+histPlot(obsxlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 5.8, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights')#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 5.8, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights', xlab="Theoretical quantiles")#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=F, ylab='NBA heights', xlab="Theoretical quantiles")#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,3,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,1,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, col='#775533')#
+#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,1,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=2)#
+#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3,1,1,1))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3, 0.5, 0.5, 1.5))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.7, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3, 0.5, 0.5, 2))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+par(mar=c(3, 2, 0.5, 0.5))#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.6, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3, 0.5, 0.5, 2))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+par(mar=c(3, 2, 0.5, 0.5))#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3, 0.5, 0.5, 2))#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+par(mar=c(3, 2, 0.5, 0.5))#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.7,0), mar=c(3, 0.5, 0.5, 2), cex.axis=0.8)#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+par(mar=c(3, 2, 0.5, 0.5))#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+d <- read.delim('NBA-heights_08-09.txt',sep='\t')#
+obs <- d[,4]#
+#
+hold <- hist(obs, plot=FALSE)#
+#
+myPDF("nbaNormal.pdf", 6, 2.5, mfrow=c(1,2), las=1, mgp=c(2,.5,0), mar=c(3, 0.5, 0.5, 2), cex.axis=0.8)#
+histPlot(obs, xlab='Height (inches)', ylab='', axes=FALSE, main='', xlim=c(69, 90), ylim=c(0,.12), col=COL[1], probability=TRUE)#
+axis(1)#
+M  <- mean(obs)#
+SD <- sd(obs)#
+x <- seq(min(obs)-2, max(obs)+2, 0.01)#
+y <- dnorm(x, M, SD)#
+lines(x, y, lwd=1.5)#
+#
+par(mar=c(3, 2, 0.5, 0.5))#
+qqnorm(obs, cex=0.5, main='', axes=FALSE, ylab='NBA heights', xlab="Theoretical quantiles", col=COL[1])#
+axis(1)#
+axis(2)#
+abline(M, SD)#
+#
+dev.off()

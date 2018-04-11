@@ -1,0 +1,183 @@
+library(openintro)#
+data(email)#
+COL <- c('#55000044','#556699')
+data(spam)
+spam$length
+names(spam)
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')
+set.seed(3)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, xlim=range(spam$lines), ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+pairs(spam)
+pairs(spam[sample(800, 50)])
+pairs(spam[sample(800, 50),])
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')
+set.seed(3)#
+d <- spam$dollar[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Mentions of "Dollar"', ylab='', pch=20, col=COL[1], cex=1.5, xlim=range(spam$dollar), ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+d <- spam$dollar[sample(nrow(spam), 40)]
+dotPlot(d, xlab='Number of Mentions of "Dollar"', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+set.seed(1)#
+d <- spam$dollar[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Mentions of "Dollar"', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+set.seed(3)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, xlim=range(spam$lines), ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*1000, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+polygon(M + c(-2,2,0)*100, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+set.seed(3)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*100, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+set.seed(1)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*100, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])
+#
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*100, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+#
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*30, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+#
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*15, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+mean(spam$lines)
+M
+d
+set.seed(1)#
+d <- spam[sample(nrow(spam), 40),]
+d[1:5,]
+data(countyComplete)
+cc <- (countyComplete)
+cc[1:2,]
+d
+hist(d$num_char)
+hist(d$lines, d$num_char)
+plot(d$lines, d$num_char)
+plot(d$lines, d$num_char, log="xy")
+mean(spam$lines)
+hist(spam$lines)
+hist(log(spam$lines))
+#
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- spam$lines[sample(nrow(spam), 40)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*15, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+d
+hist(d)
+email40 <- d
+save(email40, file="email40.rda")
+prompt(email40)
+#
+library(openintro)#
+data(spam)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- spam$lines[sample(nrow(spam), 50)]#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*15, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+M
+email50 <- d
+prompt(email50)
+save(email50, file="email50.rda")
+data(spam)#
+set.seed(1)#
+samp  <- spam[sample(nrow(spam), 50),]#
+identical(samp, email50)
+set.seed(1)#
+email50 <- spam[sample(nrow(spam), 50),]
+save(email50, file="email50.rda")
+prompt(email50)
+data(spam)#
+set.seed(1)#
+samp  <- spam[sample(nrow(spam), 50),]#
+identical(samp, email50)
+#
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- email50$lines#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*15, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()
+#
+library(openintro)#
+data(email50)#
+COL <- c('#55000044','#556699')#
+#
+myPDF("emailLengthDotPlot.pdf", 7.5, 1.25, mar=c(3.6,1,0,1), las=1, mgp=c(2.5,0.7,0))#
+set.seed(1)#
+d <- email50$line_breaks#
+dotPlot(d, xlab='Number of Lines', ylab='', pch=20, col=COL[1], cex=1.5, ylim=c(0.95,1.05))#
+M <- mean(d)#
+polygon(M + c(-2,2,0)*15, c(0.95, 0.95, 0.98), border=COL[2], col=COL[2])#
+#
+dev.off()

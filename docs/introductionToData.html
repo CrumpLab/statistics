@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students">
+  <meta name="generator" content="bookdown 0.6 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An introductory statistics textbook for psychology students" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data" />
+  
+  <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+
+
+<meta name="date" content="2018-04-11">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="FoundationForInference.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introductionToData.html"><a href="introductionToData.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
+<li class="chapter" data-level="1.1" data-path="introductionToData.html"><a href="introductionToData.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.2" data-path="introductionToData.html"><a href="introductionToData.html#dataBasics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="introductionToData.html"><a href="introductionToData.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data matrices</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introductionToData.html"><a href="introductionToData.html#variableTypes"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introductionToData.html"><a href="introductionToData.html#variableRelations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introductionToData.html"><a href="introductionToData.html#overviewOfDataCollectionPrinciples"><i class="fa fa-check"></i><b>1.3</b> Overview of data collection principles</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introductionToData.html"><a href="introductionToData.html#populationsAndSamples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introductionToData.html"><a href="introductionToData.html#anecdotalEvidenceSubsection"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introductionToData.html"><a href="introductionToData.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introductionToData.html"><a href="introductionToData.html#explanatoryAndResponse"><i class="fa fa-check"></i><b>1.3.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.3.5" data-path="introductionToData.html"><a href="introductionToData.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.3.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introductionToData.html"><a href="introductionToData.html#observational-studies-and-sampling-strategies"><i class="fa fa-check"></i><b>1.4</b> Observational studies and sampling strategies</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introductionToData.html"><a href="introductionToData.html#observational-studies"><i class="fa fa-check"></i><b>1.4.1</b> Observational studies</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introductionToData.html"><a href="introductionToData.html#threeSamplingMethods"><i class="fa fa-check"></i><b>1.4.2</b> Three sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introductionToData.html"><a href="introductionToData.html#experimentsSection"><i class="fa fa-check"></i><b>1.5</b> Experiments</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="introductionToData.html"><a href="introductionToData.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introductionToData.html"><a href="introductionToData.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introductionToData.html"><a href="introductionToData.html#numericalData"><i class="fa fa-check"></i><b>1.6</b> Examining numerical data</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="introductionToData.html"><a href="introductionToData.html#scatterPlots"><i class="fa fa-check"></i><b>1.6.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introductionToData.html"><a href="introductionToData.html#dotPlot"><i class="fa fa-check"></i><b>1.6.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introductionToData.html"><a href="introductionToData.html#histogramsAndShape"><i class="fa fa-check"></i><b>1.6.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introductionToData.html"><a href="introductionToData.html#variability"><i class="fa fa-check"></i><b>1.6.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="1.6.5" data-path="introductionToData.html"><a href="introductionToData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>1.6.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="1.6.6" data-path="introductionToData.html"><a href="introductionToData.html#robust-statistics"><i class="fa fa-check"></i><b>1.6.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="1.6.7" data-path="introductionToData.html"><a href="introductionToData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>1.6.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="1.6.8" data-path="introductionToData.html"><a href="introductionToData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>1.6.8</b> Mapping data (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introductionToData.html"><a href="introductionToData.html#categoricalData"><i class="fa fa-check"></i><b>1.7</b> Considering categorical data</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="introductionToData.html"><a href="introductionToData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>1.7.1</b> Contingency tables and bar plots</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introductionToData.html"><a href="introductionToData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>1.7.2</b> Row and column proportions</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introductionToData.html"><a href="introductionToData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>1.7.3</b> Segmented bar and mosaic plots</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introductionToData.html"><a href="introductionToData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>1.7.4</b> The only pie chart you will see in this book</a></li>
+<li class="chapter" data-level="1.7.5" data-path="introductionToData.html"><a href="introductionToData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>1.7.5</b> Comparing numerical data across groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>2</b> Foundation for inference</a><ul>
+<li class="chapter" data-level="2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>2.1</b> Randomization case study: gender discrimination</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>2.1.1</b> Variability within data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>2.1.2</b> Simulating the study</a></li>
+<li class="chapter" data-level="2.1.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>2.1.3</b> Checking for independence</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>2.2</b> Randomization case study: opportunity cost</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>2.2.1</b> Exploring the data set before the analysis</a></li>
+<li class="chapter" data-level="2.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>2.2.2</b> Results from chance alone</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>2.3</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>2.3.1</b> Hypothesis testing in the US court system</a></li>
+<li class="chapter" data-level="2.3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>2.3.2</b> p-value and statistical significance</a></li>
+<li class="chapter" data-level="2.3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>2.3.3</b> Decision errors</a></li>
+<li class="chapter" data-level="2.3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>2.3.4</b> Choosing a significance level</a></li>
+<li class="chapter" data-level="2.3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>2.3.5</b> Introducing two-sided hypotheses</a></li>
+<li class="chapter" data-level="2.3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>2.3.6</b> Controlling the Type 1 Error rate</a></li>
+<li class="chapter" data-level="2.3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>2.3.7</b> How to use a hypothesis test</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>2.4</b> Simulation case studies</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>2.4.1</b> Medical consultant</a></li>
+<li class="chapter" data-level="2.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>2.4.2</b> Tappers and listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>2.5</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>2.5.1</b> Null distribution from the case studies</a></li>
+<li class="chapter" data-level="2.5.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>2.5.2</b> Examples of future settings we will consider</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>2.6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>2.6.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="2.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>2.6.2</b> Standardizing with Z scores</a></li>
+<li class="chapter" data-level="2.6.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>2.6.3</b> Normal probability table</a></li>
+<li class="chapter" data-level="2.6.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>2.6.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="2.6.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>2.6.5</b> 68-95-99.7 rule</a></li>
+<li class="chapter" data-level="2.6.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>2.6.6</b> Evaluating the normal approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>2.7</b> Applying the normal model</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>2.7.1</b> Standard error</a></li>
+<li class="chapter" data-level="2.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>2.7.2</b> Normal model application: opportunity cost</a></li>
+<li class="chapter" data-level="2.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>2.7.3</b> Normal model application: medical consultant</a></li>
+<li class="chapter" data-level="2.7.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>2.7.4</b> Conditions for applying the normal model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>2.8</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>2.8.1</b> Capturing the population parameter</a></li>
+<li class="chapter" data-level="2.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>2.8.2</b> Constructing a 95% confidence interval</a></li>
+<li class="chapter" data-level="2.8.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>2.8.3</b> Changing the confidence level</a></li>
+<li class="chapter" data-level="2.8.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>2.8.4</b> Interpreting confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>3</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>3.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>3.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="3.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>3.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="3.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>3.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="3.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>3.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>3.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>3.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="3.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>3.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="3.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>3.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li><a href="inferenceForCategoricalData.html#testing-for-goodness-of-fit-using-chi-square-creating-a-test-statistic-for-one-way-tables"><span class="toc-section-number">3.3</span> Testing for goodness of fit using chi-square<br />
+### Creating a test statistic for one-way tables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>3.3.1</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="3.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>3.3.2</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>3.3.3</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="3.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>3.3.4</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li><a href="inferenceForCategoricalData.html#testing-for-independence-in-two-way-tables-expected-counts-in-two-way-tables"><span class="toc-section-number">3.4</span> Testing for independence in two-way tables<br />
+### Expected counts in two-way tables</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>3.4.1</b> The chi-square test for two-way tables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html"><i class="fa fa-check"></i><b>4</b> Inference for numerical data</a><ul>
+<li class="chapter" data-level="4.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>4.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>4.1.1</b> Two examples using the normal distribution</a></li>
+<li class="chapter" data-level="4.1.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>4.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="4.1.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>4.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
+<li class="chapter" data-level="4.1.4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>4.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
+<li class="chapter" data-level="4.1.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#oneSampleTTests"><i class="fa fa-check"></i><b>4.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#pairedData"><i class="fa fa-check"></i><b>4.2</b> Paired data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#paired-observations"><i class="fa fa-check"></i><b>4.2.1</b> Paired observations</a></li>
+<li class="chapter" data-level="4.2.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#inference-for-paired-data"><i class="fa fa-check"></i><b>4.2.2</b> Inference for paired data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>4.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>4.3.1</b> Confidence interval for a differences of means</a></li>
+<li class="chapter" data-level="4.3.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>4.3.2</b> Hypothesis tests based on a difference in means</a></li>
+<li class="chapter" data-level="4.3.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>4.3.3</b> Case study: two versions of a course exam</a></li>
+<li class="chapter" data-level="4.3.4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>4.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="4.3.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>4.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
+</ul></li>
+<li><a href="inferenceForNumericalData.html#comparing-many-means-with-anova-is-batting-performance-related-to-player-position-in-mlb"><span class="toc-section-number">4.4</span> Comparing many means with ANOVA<br />
+### Is batting performance related to player position in MLB?</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>4.4.1</b> Analysis of variance (ANOVA) and the F test</a></li>
+<li class="chapter" data-level="4.4.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>4.4.2</b> Reading an ANOVA table from software</a></li>
+<li class="chapter" data-level="4.4.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>4.4.3</b> Graphical diagnostics for an ANOVA analysis</a></li>
+<li class="chapter" data-level="4.4.4" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>4.4.4</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>4.5</b> Bootstrapping to study the standard deviation</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>4.5.1</b> Bootstrap samples and distributions</a></li>
+<li class="chapter" data-level="4.5.2" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>4.5.2</b> Inference using the bootstrap</a></li>
+<li class="chapter" data-level="4.5.3" data-path="inferenceForNumericalData.html"><a href="inferenceForNumericalData.html#frequently-asked-questions"><i class="fa fa-check"></i><b>4.5.3</b> Frequently asked questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>5</b> Introduction to linear regression</a><ul>
+<li class="chapter" data-level="5.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>5.1</b> Line fitting, residuals, and correlation</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>5.1.1</b> Beginning with straight lines</a></li>
+<li class="chapter" data-level="5.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>5.1.2</b> Fitting a line by eye</a></li>
+<li class="chapter" data-level="5.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>5.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="5.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>5.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>5.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>5.2.1</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="5.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>5.2.2</b> Finding the least squares line</a></li>
+<li class="chapter" data-level="5.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>5.2.3</b> Interpreting regression line parameter estimates</a></li>
+<li class="chapter" data-level="5.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>5.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="5.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>5.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
+<li class="chapter" data-level="5.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>5.2.6</b> Categorical predictors with two levels</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>5.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="5.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>5.4</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>5.4.1</b> Conditions for the least squares line</a></li>
+<li class="chapter" data-level="5.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>5.4.2</b> Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="5.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>5.4.3</b> Understanding regression output from software</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>6</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="6.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>6.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>6.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>6.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="6.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>6.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>6.2</b> Model selection</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>6.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="6.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>6.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>6.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="6.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>6.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>6.4.1</b> Email data</a></li>
+<li class="chapter" data-level="6.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>6.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="6.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>6.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="6.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>6.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="6.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>6.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introductionToData" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction to data</h1>
+<p>Scientists seek to answer questions using rigorous methods and careful observations. These observations – collected from the likes of field notes, surveys, and experiments – form the backbone of a statistical investigation and are called . Statistics is the study of how best to collect, analyze, and draw conclusions from data. It is helpful to put statistics in the context of a general process of investigation:</p>
+<ol style="list-style-type: decimal">
+<li>Identify a question or problem.</li>
+<li>Collect relevant data on the topic.</li>
+<li>Analyze the data.</li>
+<li>Form a conclusion.</li>
+</ol>
+<p>Statistics as a subject focuses on making stages 2-4 objective, rigorous, and efficient. That is, statistics has three primary components: How best can we collect data? How should it be analyzed? And what can we infer from the analysis?</p>
+<p>The topics scientists investigate are as diverse as the questions they ask. However, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference. This chapter provides a glimpse into these and other themes we will encounter throughout the rest of the book. We introduce the basic principles of each branch and learn some tools along the way. We will encounter applications from other fields, some of which are not typically associated with science but nonetheless can benefit from statistical study.</p>
+<div id="basicExampleOfStentsAndStrokes" class="section level2">
+<h2><span class="header-section-number">1.1</span> Case study: using stents to prevent strokes</h2>
+<p>Section <a href="introductionToData.html#basicExampleOfStentsAndStrokes">1.1</a> introduces a classic challenge in statistics: evaluating the efficacy of a medical treatment. Terms in this section, and indeed much of this chapter, will all be revisited later in the text. The plan for now is simply to get a sense of the role statistics can play in practice.</p>
+<p>In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<div class="marginnote">
+<p>1.Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003. <a href="http://www.nejm.org/doi/" class="uri">http://www.nejm.org/doi/</a> full/10.1056/NEJMoa1105335.</p>
+<p>NY Times article reporting on the study: <a href="http://www.nytimes.com/2011/09/08/health/research/08stent.html" class="uri">http://www.nytimes.com/2011/09/08/health/research/08stent.html</a>.</p>
+</div>
+<p>Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
+<blockquote>
+<p>Does the use of stents reduce the risk of stroke?</p>
+</blockquote>
+<p>The researchers who asked this question collected data on 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:</p>
+<ul>
+<li><p><strong>Treatment group.</strong> Patients in the treatment group received a stent and medical management. The medical management included medications, management of risk factors, and help in lifestyle modification.</p></li>
+<li><p><strong>Control Group.</strong> Patients in the control group received the same medical management as the treatment group but did not receive stents.</p></li>
+</ul>
+<p>Researchers randomly assigned 224 patients to the treatment group and 227 to the control group. In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.</p>
+<p>Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment. The results of 5 patients are summarized in Table <a href="introductionToData.html#tab:stentStudyResultsDF">1.1</a>. Patient outcomes are recorded as “stroke” or “no event”.</p>
+<table>
+<caption><span id="tab:stentStudyResultsDF">Table 1.1: </span> Results for five patients from the stent study.</caption>
+<thead>
+<tr class="header">
+<th align="left">Patient</th>
+<th align="center">group</th>
+<th align="center">0-30 days</th>
+<th align="center">0-365 days</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="center">treatment</td>
+<td align="center">no event</td>
+<td align="center">no event</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="center">treatment</td>
+<td align="center">stroke</td>
+<td align="center">stroke</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="center">treatment</td>
+<td align="center">no event</td>
+<td align="center">no event</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">450</td>
+<td align="center">control</td>
+<td align="center">no event</td>
+<td align="center">no event</td>
+</tr>
+<tr class="even">
+<td align="left">451</td>
+<td align="center">control</td>
+<td align="center">no event</td>
+<td align="center">no event</td>
+</tr>
+</tbody>
+</table>
+<p>Considering data from each patient individually would be a long, cumbersome path towards answering the original research question. Instead, a statistical analysis allows us to consider all of the data at once. Table <a href="#tab:stentStudyResults">1.2</a> summarizes the raw data in a more helpful way. In this table, we can quickly see what happened over the entire study. For instance, to identify the number of patients in the treatment group who had a stroke within 30 days, we look on the left-side of the table at the intersection of the treatment and stroke: 33.</p>
+<p><span>l cc c cc</span> &amp; &amp;</p>
+<p> &amp;<br />
+&amp; stroke &amp; no event &amp;&amp; stroke &amp; no event<br />
+treatment &amp; 33 &amp; 191 &amp;&amp; 45 &amp; 179<br />
+control &amp; 13 &amp; 214 &amp;&amp; 28 &amp; 199<br />
+Total &amp; 46 &amp; 405 &amp;&amp; 73 &amp; 378<br />
+Table: (#tab:stentStudyResults) Descriptive statistics for the stent study.</p>
+<div class="marginnote">
+<p>Guided Practice 1.1</p>
+<p>Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year. (Answers to all in-text exercises are provided in footnotes.)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+</div>
+<p>We can compute summary statistics from the table. A <strong>summary statistics</strong> is a single number summarizing a large amount of data.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.</p>
+<ul>
+<li><p>Proportion who had a stroke in the treatment (stent) group: <span class="math inline">\(45/224 = 0.20 = 20\%\)</span>.</p></li>
+<li><p>Proportion who had a stroke in the control group: <span class="math inline">\(28/227 = 0.12 = 12\%\)</span>.</p></li>
+</ul>
+<p>These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke! This is important for two reasons. First, it is contrary to what doctors expected, which was that stents would <em>reduce</em> the rate of strokes. Second, it leads to a statistical question: do the data show a “real” difference due to the treatment?</p>
+<p>This second question is subtle. Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won’t observe exactly 50 heads. This type of fluctuation is part of almost any type of data generating process. It is possible that the 8% difference in the stent study is due to this natural variation. However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance. So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?</p>
+<p>While we haven’t yet covered statistical tools to fully address this question, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.</p>
+<p><strong>Be careful:</strong> do not generalize the results of this study to all patients and all stents. This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients. In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific). However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</p>
+</div>
+<div id="dataBasics" class="section level2">
+<h2><span class="header-section-number">1.2</span> Data basics</h2>
+<p>Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.</p>
+<div id="observations-variables-and-data-matrices" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Observations, variables, and data matrices</h3>
+<p>Table <a href="introductionToData.html#tab:email50DF">1.3</a> displays rows 1, 2, 3, and 50 of a data set concerning 50 emails received in 2012. These observations will be referred to as the data set, and they are a random sample from a larger data set that we will see in Section <a href="introductionToData.html#categoricalData">1.7</a>.</p>
+<p>Each row in the table represents a single email or <strong>case</strong>.<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> The columns represent characteristics, called <strong>variables</strong>, for each of the emails. For example, the first row represents email 1, which is not spam, contains 21,705 characters, 551 line breaks, is written in HTML format, and contains only small numbers.</p>
+<p>In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood. For instance, it is always important to be sure we know what each variable means and the units of measurement. Descriptions of all five email variables are given in Table <a href="introductionToData.html#tab:email50Variables">1.4</a>.</p>
+<table>
+<caption><span id="tab:email50DF">Table 1.3: </span> Four rows from the email50 data matrix.</caption>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">no</td>
+<td align="center">21,705</td>
+<td align="center">551</td>
+<td align="center">html</td>
+<td align="center">small</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">no</td>
+<td align="center">7,011</td>
+<td align="center">183</td>
+<td align="center">html</td>
+<td align="center">big</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">yes</td>
+<td align="center">631</td>
+<td align="center">28</td>
+<td align="center">text</td>
+<td align="center">none</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">50</td>
+<td align="center">no</td>
+<td align="center">15,829</td>
+<td align="center">242</td>
+<td align="center">html</td>
+<td align="center">small</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:email50Variables">Table 1.4: </span> Variables and their descriptions for the data set.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span><strong>variable</strong></span></th>
+<th align="left"><span><strong>description</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">am</td>
+<td align="left">Specifies whether the message was spam</td>
+</tr>
+<tr class="even">
+<td align="left">m_char</td>
+<td align="left">The number of characters in the email</td>
+</tr>
+<tr class="odd">
+<td align="left">ne_breaks</td>
+<td align="left">The number of line breaks in the email (not including text wrapping)</td>
+</tr>
+<tr class="even">
+<td align="left">rmat</td>
+<td align="left">Indicates if the email contained special formatting, such as bolding, tables, or links, which would indicate the message is in HTML format</td>
+</tr>
+<tr class="odd">
+<td align="left">mber</td>
+<td align="left">Indicates whether the email contained no number, a small number (under 1 million), or a large number</td>
+</tr>
+</tbody>
+</table>
+<p>The data in Table <a href="introductionToData.html#tab:email50DF">1.3</a> represent a <strong>data matrix</strong>, which is a common way to organize data. Each row of a data matrix corresponds to a unique case, and each column corresponds to a variable. A data matrix for the stroke study introduced in Section <a href="introductionToData.html#basicExampleOfStentsAndStrokes">1.1</a> is shown in Table @ref(#tab:stentStudyResultsDF), where the cases were patients and there were three variables recorded for each patient.</p>
+<p>Data matrices are a convenient way to record and store data. If another individual or case is added to the data set, an additional row can be easily added. Similarly, another column can be added for a new variable.</p>
+<div class="marginnote">
+<p>Guided Practice 1.2</p>
+<p>We consider a publicly available data set that summarizes information about the 3,143 counties in the United States, and we call this the data set. This data set includes information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and five additional characteristics. How might these data be organized in a data matrix? Reminder: look in the footnotes for answers to in-text exercises.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+</div>
+<p>Seven rows of the data set are shown in Table <a href="introductionToData.html#tab:countyDF">1.5</a>, and the variables are summarized in Table <a href="introductionToData.html#tab:countyVariables">1.6</a>. These data were collected from the US Census website.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></p>
+<table>
+<caption><span id="tab:countyDF">Table 1.5: </span> Seven rows from the data set.</caption>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">Autauga</td>
+<td align="center">AL</td>
+<td align="center">43671</td>
+<td align="center">54571</td>
+<td align="center">6.068</td>
+<td align="center">10.6</td>
+<td align="center">77.5</td>
+<td align="center">7.2</td>
+<td align="center">24568</td>
+<td align="center">53255</td>
+<td align="center">none</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">Baldwin</td>
+<td align="center">AL</td>
+<td align="center">140415</td>
+<td align="center">182265</td>
+<td align="center">6.140</td>
+<td align="center">12.2</td>
+<td align="center">76.7</td>
+<td align="center">22.6</td>
+<td align="center">26469</td>
+<td align="center">50147</td>
+<td align="center">none</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">Barbour</td>
+<td align="center">AL</td>
+<td align="center">29038</td>
+<td align="center">27457</td>
+<td align="center">8.752</td>
+<td align="center">25.0</td>
+<td align="center">68.0</td>
+<td align="center">11.1</td>
+<td align="center">15875</td>
+<td align="center">33219</td>
+<td align="center">none</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">Bibb</td>
+<td align="center">AL</td>
+<td align="center">20826</td>
+<td align="center">22915</td>
+<td align="center">7.122</td>
+<td align="center">12.6</td>
+<td align="center">82.9</td>
+<td align="center">6.6</td>
+<td align="center">19918</td>
+<td align="center">41770</td>
+<td align="center">none</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">Blount</td>
+<td align="center">AL</td>
+<td align="center">51024</td>
+<td align="center">57322</td>
+<td align="center">5.131</td>
+<td align="center">13.4</td>
+<td align="center">82.0</td>
+<td align="center">3.7</td>
+<td align="center">21070</td>
+<td align="center">45549</td>
+<td align="center">none</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">3142</td>
+<td align="center">Washakie</td>
+<td align="center">WY</td>
+<td align="center">8289</td>
+<td align="center">8533</td>
+<td align="center">8.714</td>
+<td align="center">5.6</td>
+<td align="center">70.9</td>
+<td align="center">10.0</td>
+<td align="center">28557</td>
+<td align="center">48379</td>
+<td align="center">none</td>
+</tr>
+<tr class="even">
+<td align="center">3143</td>
+<td align="center">Weston</td>
+<td align="center">WY</td>
+<td align="center">6644</td>
+<td align="center">7208</td>
+<td align="center">6.695</td>
+<td align="center">7.9</td>
+<td align="center">77.9</td>
+<td align="center">6.5</td>
+<td align="center">28463</td>
+<td align="center">53853</td>
+<td align="center">none</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:countyVariables">Table 1.6: </span> Variables and their descriptions for the data set.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span><strong>variable</strong></span></th>
+<th align="left"><span><strong>description</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">me</td>
+<td align="left">County name</td>
+</tr>
+<tr class="even">
+<td align="left">ate</td>
+<td align="left">State where the county resides (also including the District of Columbia)</td>
+</tr>
+<tr class="odd">
+<td align="left">p2000</td>
+<td align="left">Population in 2000</td>
+</tr>
+<tr class="even">
+<td align="left">p2010</td>
+<td align="left">Population in 2010</td>
+</tr>
+<tr class="odd">
+<td align="left">d_spend</td>
+<td align="left">Federal spending per capita</td>
+</tr>
+<tr class="even">
+<td align="left">verty</td>
+<td align="left">Percent of the population in poverty</td>
+</tr>
+<tr class="odd">
+<td align="left">meownership</td>
+<td align="left">Percent of the population that lives in their own home or lives with the owner (e.g. children living with parents who own the home)</td>
+</tr>
+<tr class="even">
+<td align="left">ltiunit</td>
+<td align="left">Percent of living units that are in multi-unit structures (e.g. apartments)</td>
+</tr>
+<tr class="odd">
+<td align="left">come</td>
+<td align="left">Income per capita</td>
+</tr>
+<tr class="even">
+<td align="left">d_income</td>
+<td align="left">Median household income for the county, where a household’s income equals the total income of its occupants who are 15 years or older</td>
+</tr>
+<tr class="odd">
+<td align="left">okingban</td>
+<td align="left">Type of county-wide smoking ban in place at the end of 2011, which takes one of three values: , , or , where a ban means smoking was not permitted in restaurants, bars, or workplaces, and means smoking was banned in at least one of those three locations</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="variableTypes" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Types of variables</h3>
+<div class="figure"><span id="fig:variables"></span>
+<img src="Programming_Crump_files/figure-html/variables-1.png" alt="Breakdown of variables into their respective types" width="672" />
+<p class="caption">
+Figure 1.1: Breakdown of variables into their respective types
+</p>
+</div>
+<p>Examine the <strong>fed_spend</strong>, <strong>pop2010</strong>, <strong>state</strong> , and <strong>smoking ban</strong> variables in the data set. Each of these variables is inherently different from the other three yet many of them share certain characteristics.</p>
+<p>First consider <strong>fed_spend</strong>, which is said to be a <strong>numerical</strong> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values. On the other hand, we would not classify a variable reporting telephone area codes as numerical since their average, sum, and difference have no clear meaning.</p>
+<p>The <strong>pop2010</strong> variable is also numerical, although it seems to be a little different than <strong>fed_spend</strong>. This variable of the population count can only be a whole non-negative number (0, 1, 2, …). For this reason, the population variable is said to be <strong>dicrete</strong> since it can only take numerical values with jumps. On the other hand, the federal spending variable is said to be <strong>continuous</strong>.</p>
+<p>The variable can take up to 51 values after accounting for Washington, DC: AL, …, and WY. Because the responses themselves are categories, <em>state</em> is called a <strong>categorical</strong> variable,<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> and the possible values are called the variable’s <strong>levels</strong>.</p>
+<div class="marginnote">
+<p>Consider the variables and (at 30 days) from the stent study in Section <a href="introductionToData.html#basicExampleOfStentsAndStrokes">1.1</a>. Are these numerical or categorical variables?<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></p>
+</div>
+<p>Finally, consider the <strong>smoking ban</strong> variable, which describes the type of county-wide smoking ban and takes a value <strong>none</strong>, <strong>partial</strong>, or <strong>comprehensive</strong> in each county. This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering. A variable with these properties is called an <strong>ordinal</strong> variable. To simplify analyses, any ordinal variables in this book will be treated as categorical variables.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.3</strong>: Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.</p>
+</blockquote>
+<p><code>The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories – those who have and those who have not taken a statistics course – which makes this variable categorical.</code></p>
+<hr />
+</div>
+<div id="variableRelations" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Relationships between variables</h3>
+<p>Many analyses are motivated by a researcher looking for a relationship between two or more variables. A social scientist may like to answer some of the following questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>Is federal spending, on average, higher or lower in counties with high rates of poverty?</p></li>
+<li><p>If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?</p></li>
+<li><p>Which counties have a higher average income: those that enact one or more smoking bans or those that do not?</p></li>
+</ol>
+<p>To answer these questions, data must be collected, such as the data set shown in Table <a href="introductionToData.html#tab:countyDF">1.5</a>. Examining summary statistics could provide insights for each of the three questions about counties. Additionally, graphs can be used to visually summarize data and are useful for answering such questions as well.</p>
+<div class="figure"><span id="fig:countyfedspendVsPoverty"></span>
+<img src="Programming_Crump_files/figure-html/countyfedspendVsPoverty-1.png" alt="A scatterplot showing fed spend against poverty. Owsley County of Kentucky, with a poverty rate of 41.5% and federal spending of $21.50 per capita, is highlighted." width="672" />
+<p class="caption">
+Figure 1.2: A scatterplot showing fed spend against poverty. Owsley County of Kentucky, with a poverty rate of 41.5% and federal spending of $21.50 per capita, is highlighted.
+</p>
+</div>
+<p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two numerical variables. Figure <a href="introductionToData.html#fig:countyfedspendVsPoverty">1.2</a> compares the variables <strong>fed_spend</strong> and <strong>poverty</strong>. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County 1088 in the <strong>county</strong> data set: Owsley County, Kentucky, which had a poverty rate of 41.5% and federal spending of $21.50 per capita. The dense cloud in the scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.</p>
+<div class="marginnote">
+<p>Guided Practice 1.5</p>
+<p>Examine the variables in the data set, which are described in Table . Create two questions about the relationships between these variables that are of interest to you.<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a></p>
+</div>
+<p>The and variables are said to be associated because the plot shows adiscernible pattern. When two variables show some connection with oneanother, they are called variables. Associated variables can also be called variables and vice-versa.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.6</strong> The relationship between the homeownership rate and the percent of units in multi-unit structures (e.g. apartments, condos) is visualized using a scatterplot in Figure <a href="introductionToData.html#fig:multiunitsVsOwnership">1.3</a>. Are these variables associated?</p>
+</blockquote>
+<div class="figure"><span id="fig:multiunitsVsOwnership"></span>
+<img src="Programming_Crump_files/figure-html/multiunitsVsOwnership-1.png" alt="A scatterplot of the homeownership rate versus the percent of units that are in multi-unit structures for all 3,143 counties." width="672" />
+<p class="caption">
+Figure 1.3: A scatterplot of the homeownership rate versus the percent of units that are in multi-unit structures for all 3,143 counties.
+</p>
+</div>
+<p><code>It appears that the larger the fraction of units in multi-unit structures, the lower the homeownership rate. Since there is some relationship between the variables, they are associated.</code></p>
+<hr />
+<p>Because there is a downward trend in Figure <a href="introductionToData.html#fig:multiunitsVsOwnership">1.3</a> counties with more units in multi-unit structures are associated with lower homeownership – these variables are said to be <strong>negatively associated</strong>. A <strong>positive association</strong> is shown in the relationship between the <strong>poverty</strong> and <strong>fed_spend </strong> variables represented in Figure <a href="introductionToData.html#fig:countyfedspendVsPoverty">1.2</a>, where counties with higher poverty rates tend to receive more federal spending per capita.</p>
+<div class="marginnote">
+<p><strong>Associated or indepedendent, not both</strong> A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.</p>
+</div>
+<p>If two variables are not associated, then they are said to be . That is, two variables are independent if there is no evident relationship between the two.</p>
+</div>
+</div>
+<div id="overviewOfDataCollectionPrinciples" class="section level2">
+<h2><span class="header-section-number">1.3</span> Overview of data collection principles</h2>
+<p>The first step in conducting research is to identify topics or questions that are to be investigated. A clearly laid out research question is helpful in identifying what subjects or cases should be studied and what variables are important. It is also important to consider <em>how</em> data are collected so that they are reliable and help achieve the research goals.</p>
+<div id="populationsAndSamples" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Populations and samples</h3>
+<p>Consider the following three research questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>What is the average mercury content in swordfish in the Atlantic Ocean?</p></li>
+<li><p>Over the last 5 years, what is the average time to complete a degree for Duke undergraduate students?</p></li>
+<li><p>Does a new drug reduce the number of deaths in patients with severe heart disease?</p></li>
+</ol>
+<p>Each research question refers to a target <strong>population</strong>. In the first question, the target population is all swordfish in the Atlantic ocean, and each fish represents a case. It is usually too expensive to collect data for every case in a population. Instead, a sample is taken. A <strong>sample</strong> represents a subset of the cases and is often a small fraction of the population. For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.</p>
+<div class="marginnote">
+<p>Guided Practice 1.7</p>
+<p>For the second and third questions above, identify the target population and what represents an individual case.<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a></p>
+</div>
+</div>
+<div id="anecdotalEvidenceSubsection" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Anecdotal evidence</h3>
+<p>Consider the following possible responses to the three research questions:</p>
+<ol style="list-style-type: decimal">
+<li><p>A man on the news got mercury poisoning from eating swordfish, so the average mercury concentration in swordfish must be dangerously high.</p></li>
+<li><p>I met two students who took more than 7 years to graduate from Duke, so it must take longer to graduate at Duke than at many other colleges.</p></li>
+<li><p>My friend’s dad had a heart attack and died after they gave him a new heart disease drug, so the drug must not work.</p></li>
+</ol>
+<p>Each conclusion is based on data. However, there are two problems. First, the data only represent one or two cases. Second, and more importantly, it is unclear whether these cases are actually representative of the population. Data collected in this haphazard fashion are called <strong>anecdotal evidence</strong>.</p>
+<div class="marginnote">
+<p><strong>Anecdotal Evidence</strong> Be careful of data collected haphazardly. Such evidence may be true and verifiable, but it may only represent extraordinary cases.</p>
+</div>
+<p>Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we are more likely to remember the two people we met who took 7 years to graduate than the six others who graduated in four years. Instead of looking at the most unusual cases, we should examine a sample of many cases that represent the population.</p>
+</div>
+<div id="sampling-from-a-population" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Sampling from a population</h3>
+<p>We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students. All graduates in the last 5 years represent the <em>population</em>, and graduates who are selected for review are collectively called the <em>sample</em>. In general, we always seek to <em>randomly</em> select a sample from a population. The most basic type of random selection is equivalent to how raffles are conducted. For example, in selecting graduates, we could write each graduate’s name on a raffle ticket and draw 100 tickets. The selected names would represent a random sample of 100 graduates.</p>
+<p>Why pick a sample randomly? Why not just pick a sample by hand? Consider the following scenario.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.8</strong> Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study. What kind of students do you think she might collect? Do you think her sample would be representative of all graduates?</p>
+</blockquote>
+<p><code>Perhaps she would pick a disproportionate number of graduates from health-related fields. Or perhaps her selection would be well-representative of the population. When selecting samples by hand, we run the risk of picking a *biased* sample, even if that bias is unintentional or difficult to discern.</code></p>
+<hr />
+<div class="figure"><span id="fig:popToSampleGraduates"></span>
+<img src="figures01/popToSample/popToSampleGraduates.pdf" alt="In this graphic, five graduates are randomly selected from the population to be included in the sample."  />
+<p class="caption">
+Figure 1.4: In this graphic, five graduates are randomly selected from the population to be included in the sample.
+</p>
+</div>
+<div class="figure"><span id="fig:popToSubSampleGraduates"></span>
+<img src="figures01/popToSample/popToSubSampleGraduates.pdf" alt="Instead of sampling from all graduates equally, a nutrition major might inadvertently pick graduates with health-related majors disproportionately often."  />
+<p class="caption">
+Figure 1.5: Instead of sampling from all graduates equally, a nutrition major might inadvertently pick graduates with health-related majors disproportionately often.
+</p>
+</div>
+<p>If someone was permitted to pick and choose exactly which graduates were included in the sample, it is entirely possible that the sample could be skewed to that person’s interests, which may be entirely unintentional. This introduces <strong>bias</strong> into a sample. Sampling randomly helps resolve this problem. The most basic random sample is called a <strong>simple random sample</strong>, which is equivalent to using a raffle to select cases. This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.</p>
+<p>The act of taking a simple random sample helps minimize bias, however, bias can crop up in other ways. Even when people are picked at random, e.g. for surveys, caution must be exercised if the <strong>non-response</strong> is high. For instance, if only 30% of the people randomly sampled for a survey actually respond, and it is unclear whether the respondents are <strong>representative</strong> of the entire population, the survey might suffer from <strong>non-response bias</strong>.</p>
+<div class="figure"><span id="fig:surveySample"></span>
+<img src="figures01/popToSample/surveySample.pdf" alt="Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often impossible, to completely fix this problem."  />
+<p class="caption">
+Figure 1.6: Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often impossible, to completely fix this problem.
+</p>
+</div>
+<p>Another common downfall is a <strong>convenience sample</strong> , where individuals who are easily accessible are more likely to be included in the sample. For instance, if a political survey is done by stopping people walking in the Bronx, it will not represent all of New York City. It is often difficult to discern what sub-population a convenience sample represents.</p>
+<div class="marginnote">
+<p>Guided Practice 1.9</p>
+<p>We can easily access ratings for products, sellers, and companiesthrough websites. These ratings are based only on those people who goout of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product?<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
+</div>
+</div>
+<div id="explanatoryAndResponse" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> Explanatory and response variables</h3>
+<p>Consider the following question from page for the <strong>county</strong> data set:</p>
+<ol style="list-style-type: decimal">
+<li>Is federal spending, on average, higher or lower in counties with high rates of poverty?</li>
+</ol>
+<p>If we suspect poverty might affect spending in a county, then poverty is the variable and federal spending is the <strong>response</strong> variable in the relationship.<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> If there are many variables, it may be possible to consider a number of them as explanatory variables.</p>
+<hr />
+<blockquote>
+<p>Tip: Explanatory and response variables</p>
+</blockquote>
+<p>To identify the explanatory variable in a pair of variables, identify which of the two is suspected of affecting the other.</p>
+<div class="figure"><span id="fig:expResp"></span>
+<img src="figures01/expResp/expResp.pdf" alt="Making the assumption that an explanatory variable might causally influence some response variable"  />
+<p class="caption">
+Figure 1.7: Making the assumption that an explanatory variable might causally influence some response variable
+</p>
+</div>
+<blockquote>
+<p>Caution: association does not imply causation</p>
+</blockquote>
+<p>Labeling variables as <em>explanatory</em> and <em>response</em> does not guarantee the relationship between the two is actually causal, even if there is an association identified between the two variables. We use these labels only to keep track of which variable we suspect affects the other.</p>
+<hr />
+<p>In some cases, there is no explanatory or response variable. Consider the following question:</p>
+<ol style="list-style-type: decimal">
+<li>If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?</li>
+</ol>
+<p>It is difficult to decide which of these variables should be considered the explanatory and response variable, i.e. the direction is ambiguous, so no explanatory or response labels are suggested here.</p>
+</div>
+<div id="introducing-observational-studies-and-experiments" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> Introducing observational studies and experiments</h3>
+<p>There are two primary types of data collection: observational studies and experiments.</p>
+<p>Researchers perform an <strong>observational study</strong> when they collect data in a way that does not directly interfere with how the data arise. For instance, researchers may collect information via surveys, review medical or company records, or follow a <strong>cohort</strong> of many similar individuals to study why certain diseases might develop. In each of these situations, researchers merely observe what happens. In general, observational studies can provide evidence of a naturally occurring association between variables, but they cannot by themselves show a causal connection.</p>
+<p>When researchers want to investigate the possibility of a causal connection, they conduct an <strong>experiment</strong>. Usually there will be both an explanatory and a response variable. For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year. To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups. The individuals in each group are <em>assigned</em> a treatment. When individuals are randomly assigned to a group, the experiment is called a <strong>randomized experiment</strong>. For example, each heart attack patient in the drug trial could be randomly assigned, perhaps by flipping a coin, into one of two groups: the first group receives a <strong>placebo</strong> (fake treatment) and the second group receives the drug. See the case study in Section <a href="introductionToData.html#basicExampleOfStentsAndStrokes">1.1</a> for another example of an experiment, though that study did not employ a placebo.</p>
+<blockquote>
+<p><strong>Tip: Association does not equal Causation</strong>: In a data analysis, association does not imply causation, and causation can only be inferred from a randomized experiment.</p>
+</blockquote>
+</div>
+</div>
+<div id="observational-studies-and-sampling-strategies" class="section level2">
+<h2><span class="header-section-number">1.4</span> Observational studies and sampling strategies</h2>
+<div id="observational-studies" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Observational studies</h3>
+<p>Generally, data in observational studies are collected only by monitoring what occurs, while experiments require the primary explanatory variable in a study be assigned for each subject by the researchers.</p>
+<p>Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Thus, observational studies are generally only sufficient to show associations.</p>
+<div class="marginnote">
+<p>Guided Practice 1.10</p>
+<p>Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a></p>
+</div>
+<p>Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. One important piece of information that is absent is sun exposure. If someone is out in the sun all day, she is more likely to use sunscreen <em>and</em> more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.</p>
+<div class="figure"><span id="fig:sunCausesCancer"></span>
+<img src="figures01/variables/sunCausesCancer" alt="Sun exposure could be a confounding variable that accounts for an association between sunscreen use and skin cancer."  />
+<p class="caption">
+Figure 1.8: Sun exposure could be a confounding variable that accounts for an association between sunscreen use and skin cancer.
+</p>
+</div>
+<p>Sun exposure is what is called a <strong>confounding variable</strong> ,<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> which is a variable that is correlated with both the explanatory and response variables. While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.</p>
+<p>In the same way, the data set is an observational study with confounding variables, and its data cannot easily be used to make causal conclusions.</p>
+<div class="marginnote">
+<p>Guided Practice 1.11</p>
+<p>Figure <a href="introductionToData.html#fig:multiunitsVsOwnership">1.3</a> shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county. However, it is unreasonable to conclude that there is a causal relationship between the two variables. Suggest one or more other variables that might explain the relationship in Figure <a href="introductionToData.html#fig:multiunitsVsOwnership">1.3</a> .<a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a></p>
+</div>
+<p>Observational studies come in two forms: prospective and retrospective studies. A <strong>prospective study</strong> identifies individuals and collects information as events unfold. For instance, medical researchers may identify and follow a group of similar individuals over many years to assess the possible influences of behavior on cancer risk. One example of such a study is The Nurses’ Health Study, started in 1976 and expanded in 1989.<a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> This prospective study recruits registered nurses and then collects data from them using questionnaires. <strong>Retrospective studies</strong> collect data after events have taken place, e.g. researchers may review past events in medical records. Some data sets, such as , may contain both prospectively- and retrospectively-collected variables. Local governments prospectively collect some variables as events unfolded (e.g. retails sales) while the federal government retrospectively collected others during the 2010 census (e.g. county population).</p>
+</div>
+<div id="threeSamplingMethods" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Three sampling methods (special topic)</h3>
+<p>Almost all statistical methods are based on the notion of implied randomness. If observational data are not collected in a random framework from a population, results from these statistical methods are not reliable. Here we consider three random sampling techniques: simple, stratified, and cluster sampling. Figure <a href="introductionToData.html#fig:samplingMethodsFigure">1.9</a> provides a graphical representation of these techniques.</p>
+<div class="figure"><span id="fig:samplingMethodsFigure"></span>
+<img src="figures01/samplingMethodsFigure/samplingMethodsFigure.pdf" alt="Examples of simple random, stratified, and cluster sampling. In the top panel, simple random sampling was used to randomly select the 18 cases. In the middle panel, stratified sampling was used: cases were grouped into strata, and then simple random sampling was employed within each stratum. In the bottom panel, cluster sampling was used, where data were binned into nine clusters, and three of the clusters were randomly selected."  />
+<p class="caption">
+Figure 1.9: Examples of simple random, stratified, and cluster sampling. In the top panel, simple random sampling was used to randomly select the 18 cases. In the middle panel, stratified sampling was used: cases were grouped into strata, and then simple random sampling was employed within each stratum. In the bottom panel, cluster sampling was used, where data were binned into nine clusters, and three of the clusters were randomly selected.
+</p>
+</div>
+<p><strong>Simple random sampling</strong> is probably the most intuitive form of random sampling. Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league’s 30 teams. To take a simple random sample of 120 baseball players and their salaries from the 2010 season, we could write the names of that season’s 828 players onto slips of paper, drop the slips into a bucket, shake the bucket around until we are sure the names are all mixed up, then draw out slips until we have the sample of 120 players. In general, a sample is referred to as “simple random” if each case in the population has an equal chance of being included in the final sample <em>and</em> knowing that a case is included in a sample does not provide useful information about which other cases are included.</p>
+<p><strong>Stratified sampling</strong> is a divide-and-conquer sampling strategy. The population is divided into groups called <strong>strata</strong>. The strata are chosen so that similar cases are grouped together, then a second sampling method, usually simple random sampling, is employed within each stratum. In the baseball salary example, the teams could represent the strata; some teams have a lot more money (we’re looking at you, Yankees). Then we might randomly sample 4 players from each team for a total of 120 players.</p>
+<p>Stratified sampling is especially useful when the cases in each stratum are very similar with respect to the outcome of interest. The downside is that analyzing data from a stratified sample is a more complex task than analyzing data from a simple random sample. The analysis methods introduced in this book would need to be extended to analyze data collected using stratified sampling.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.12</strong> Why would it be good for cases within each stratum to be very similar?</p>
+</blockquote>
+<p><code>We might get a more stable estimate for the subpopulation in a stratum if the cases are very similar. These improved estimates for each subpopulation will help us build a reliable estimate for the full population.</code></p>
+<hr />
+<p>In <strong>cluster sampling</strong>, we group observations into clusters, then randomly sample some of the clusters. Sometimes cluster sampling can be a more economical technique than the alternatives. Also, unlike stratified sampling, cluster sampling is most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don’t look very different from one another. For example, if neighborhoods represented clusters, then this sampling method works best when the neighborhoods are very diverse. A downside of cluster sampling is that more advanced analysis techniques are typically required, though the methods in this book can be extended to handle such data.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.13</strong> Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia. We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next. What sampling method should be employed?</p>
+</blockquote>
+<p><code>A simple random sample would likely draw individuals from all 30 villages, which could make data collection extremely expensive. Stratified sampling would be a challenge since it is unclear how we would build strata of similar individuals. However, cluster sampling seems like a very good idea. We might randomly select a small number of villages. This would probably reduce our data collection costs substantially in comparison to a simple random sample and would still give us helpful information.</code></p>
+<hr />
+<p>Another technique called <strong>multistage sampling</strong> is similar to cluster sampling, except that we take a simple random sample within each selected cluster. For instance, if we sampled neighborhoods using cluster sampling, we would next sample a subset of homes within each selected neighborhood if we were using multistage sampling.</p>
+</div>
+</div>
+<div id="experimentsSection" class="section level2">
+<h2><span class="header-section-number">1.5</span> Experiments</h2>
+<p>Studies where the researchers assign treatments to cases are called. When this assignment includes randomization, e.g. using a coin flip to decide which treatment a patient receives, it is called a . Randomized experiments are fundamentally important when trying to show a causal connection between two variables.</p>
+<div id="experimentalDesignPrinciples" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Principles of experimental design</h3>
+<p>Randomized experiments are generally built on four principles.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Controlling.</strong> Researchers assign treatments to cases, and they do their best to any other differences in the groups. For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water. To control for the effect of water consumption, a doctor may ask all patients to drink a 12 ounce glass of water with the pill.</p></li>
+<li><p><strong>Randomization.</strong> Researchers randomize patients into treatment groups to account for variables that cannot be controlled. For example, some patients may be more susceptible to a disease than others due to their dietary habits. Randomizing patients into the treatment or control group helps even out such differences, and it also prevents accidental bias from entering the study.</p></li>
+<li><p><strong>Replication.</strong> The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response. In a single study, we by collecting a sufficiently large sample. Additionally, a group of scientists may replicate an entire study to verify an earlier finding.</p></li>
+<li><p><strong>Blocking.</strong> Researchers sometimes know or suspect that variables, other than the treatment, influence the response. Under these circumstances, they may first group individuals based on this variable and then randomize cases within each block to the treatment groups. This strategy is often referred to as . For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients into low-risk and high-risk , then randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure <a href="introductionToData.html#fig:figureShowingBlocking">1.10</a>. This strategy ensures each treatment group has an equal number of low-risk and high-risk patients.</p></li>
+</ol>
+<div class="figure"><span id="fig:figureShowingBlocking"></span>
+<img src="figures01/figureShowingBlocking/figureShowingBlocking.pdf" alt="Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly divided into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories."  />
+<p class="caption">
+Figure 1.10: Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly divided into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories.
+</p>
+</div>
+<p>It is important to incorporate the first three experimental design principles into any study, and this book describes methods for analyzing data from such experiments. Blocking is a slightly more advanced technique, and statistical methods in this book may be extended to analyze data collected using blocking.</p>
+</div>
+<div id="biasInHumanExperiments" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Reducing bias in human experiments</h3>
+<p>Randomized experiments are the gold standard for data collection, but they do not ensure an unbiased perspective into the cause and effect relationships in all cases. Human studies are perfect examples where bias can unintentionally arise. Here we reconsider a study where a new drug was used to treat heart attack patients.<a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a> In particular, researchers wanted to know if the drug reduced deaths in patients.</p>
+<p>These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug’s effect. Study volunteers<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a> were randomly placed into two study groups. One group, the <strong>treatment group</strong> , received the drug. The other group, called the <strong>control group</strong>, did not receive any drug treatment.</p>
+<p>Put yourself in the place of a person in the study. If you are in the treatment group, you are given a fancy new drug that you anticipate will help you. On the other hand, a person in the other group doesn’t receive the drug and sits idly, hoping her participation doesn’t increase her risk of death. These perspectives suggest there are actually two effects: the one of interest is the effectiveness of the drug, and the second is an emotional effect that is difficult to quantify.</p>
+<p>Researchers aren’t usually interested in the emotional effect, which might bias the study. To circumvent this problem, researchers do not want patients to know which group they are in. When researchers keep the patients uninformed about their treatment, the study is said to be <strong>blind</strong>. But there is one problem: if a patient doesn’t receive a treatment, she will know she is in the control group. The solution to this problem is to give fake treatments to patients in the control group. A fake treatment is called a <strong>placebo</strong>, and an effective placebo is the key to making a study truly blind. A classic example of a placebo is a sugar pill that is made to look like the actual treatment pill. Often times, a placebo results in a slight but real improvement in patients. This effect has been dubbed the <strong>placebo effect</strong>.</p>
+<p>The patients are not the only ones who should be blinded: doctors and researchers can accidentally bias a study. When a doctor knows a patient has been given the real treatment, she might inadvertently give that patient more attention or care than a patient that she knows is on the placebo. To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a href="#fn19" class="footnoteRef" id="fnref19"><sup>19</sup></a></p>
+<div class="marginnote">
+<p>Guided Practice 1.14</p>
+<p>Look back to the study in Section <a href="introductionToData.html#basicExampleOfStentsAndStrokes">1.1</a> where researchers were testing whether stents were effective at reducing strokes in at-risk patients. Is this an experiment? Was the study blinded? Was it double-blinded?<a href="#fn20" class="footnoteRef" id="fnref20"><sup>20</sup></a></p>
+</div>
+</div>
+</div>
+<div id="numericalData" class="section level2">
+<h2><span class="header-section-number">1.6</span> Examining numerical data</h2>
+<p>This section introduces techniques for exploring and summarizing numerical variables, and the <strong>email50</strong> and <strong>county</strong> data sets from Section <a href="introductionToData.html#dataBasics">1.2</a> provide rich opportunities for examples. Recall that outcomes of numerical variables are numbers on which it is reasonable to perform basic arithmetic operations. For example, the <strong>pop20</strong> variable, which represents the populations of counties in 2010, is numerical since we can sensibly discuss the difference or ratio of the populations in two counties. On the other hand, area codes and zip codes are not numerical.</p>
+<div id="scatterPlots" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Scatterplots for paired data</h3>
+<p>A provides a case-by-case view of data for two numerical variables. In Figure <a href="introductionToData.html#fig:countyfedspendVsPoverty">1.2</a>, a scatterplot was used to examine how federal spending and poverty were related in the data set. Another scatterplot is shown in Figure <a href="introductionToData.html#fig:email50LinesCharacters">1.11</a>, comparing the number of line breaks (<strong>line_breaks</strong>) and number of characters (<strong>num_char</strong>) in emails for the <strong>email50</strong> data set. In any scatterplot, each point represents a single case. Since there are 50 cases in <strong>email50</strong>, there are 50 points in Figure [email50LinesCharacters].</p>
+<div class="figure"><span id="fig:email50LinesCharacters"></span>
+<img src="figures01/email50LinesCharacters/email50LinesCharacters.pdf" alt="A scatterplot of versus for thedata."  />
+<p class="caption">
+Figure 1.11: A scatterplot of versus for thedata.
+</p>
+</div>
+<p>To put the number of characters in perspective, this paragraph has 363 characters. Looking at Figure <a href="#email50LinesCharacters"><strong>??</strong></a>, it seems that some emails are incredibly long! Upon further investigation, we would actually find that most of the long emails use the HTML format, which means most of the characters in those emails are used to format the email rather than provide text.</p>
+<div class="marginnote">
+<p>Guided Practice 1.15</p>
+<p>What do scatterplots reveal about the data, and how might they be useful?<a href="#fn21" class="footnoteRef" id="fnref21"><sup>21</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.17</p>
+<p>Describe two variables that would have a horseshoe shaped association in a scatterplot.<a href="#fn22" class="footnoteRef" id="fnref22"><sup>22</sup></a></p>
+</div>
+<blockquote>
+<p><strong>Example 1.16</strong> Consider a new data set of 54 cars with two variables: vehicle price and weight.<a href="#fn23" class="footnoteRef" id="fnref23"><sup>23</sup></a> A scatterplot of vehicle price versus weight is shown in Figure <a href="introductionToData.html#fig:carsPriceVsWeight">1.12</a>. What can be said about the relationship between these variables?</p>
+</blockquote>
+<div class="figure"><span id="fig:carsPriceVsWeight"></span>
+<img src="figures01/carsPriceVsWeight/carsPriceVsWeight.pdf" alt="A scatterplot of versus for 54 cars."  />
+<p class="caption">
+Figure 1.12: A scatterplot of versus for 54 cars.
+</p>
+</div>
+<blockquote>
+<p>The relationship is evidently nonlinear, as highlighted by the dashed line. This is different from previous scatterplots we’ve seen, such as Figure <a href="introductionToData.html#fig:countyfedspendVsPoverty">1.2</a> and Figure <a href="introductionToData.html#fig:email50LinesCharacters">1.11</a>, which show relationships that are very linear.</p>
+</blockquote>
+</div>
+<div id="dotPlot" class="section level3">
+<h3><span class="header-section-number">1.6.2</span> Dot plots and the mean</h3>
+<p>Sometimes two variables is one too many: only one variable may be of interest. In these cases, a dot plot provides the most basic of displays. A <strong>dot plot</strong> is a one-variable scatterplot; an example using the number of characters from 50 emails is shown in Figure <a href="introductionToData.html#fig:emailCharactersDotPlot">1.13</a>. A stacked version of this dot plot is shown in Figure <a href="introductionToData.html#fig:emailCharactersDotPlotStacked">1.14</a>.</p>
+<div class="figure"><span id="fig:emailCharactersDotPlot"></span>
+<img src="figures01/emailCharactersDotPlot/emailCharactersDotPlot.pdf" alt="A dot plot of for the data set."  />
+<p class="caption">
+Figure 1.13: A dot plot of for the data set.
+</p>
+</div>
+<div class="figure"><span id="fig:emailCharactersDotPlotStacked"></span>
+<img src="figures01/emailCharactersDotPlot/emailCharactersDotPlotStacked.pdf" alt="A stacked dot plot of for the data set."  />
+<p class="caption">
+Figure 1.14: A stacked dot plot of for the data set.
+</p>
+</div>
+<p>The <strong>mean</strong>, sometimes called the average, is a common way to measure the center of a <strong>distribution</strong> of data. To find the mean number of characters in the 50 emails (see Equation <a href="introductionToData.html#eq:mean">(1.1)</a>), we add up all the character counts and divide by the number of emails. For computational convenience, the number of characters is listed in the thousands and rounded to the first decimal.</p>
+<span class="math display" id="eq:mean">\[\begin{equation}
+  \bar{x} = \frac{21.7 + 7.0 + \cdots + 15.8}{50} = 11.6
+  \tag{1.1}
+\end{equation}\]</span>
+<p>The sample mean is often labeled <span class="math inline">\(\bar{x}\)</span>, and the letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable of interest, <strong>num_char</strong>. The sample mean is shown as a triangle in Figures <a href="#emailCharactersDotPlot"><strong>??</strong></a> and <a href="introductionToData.html#fig:emailCharactersDotPlotStacked">1.14</a>.</p>
+<hr />
+<blockquote>
+<p><strong>Mean</strong></p>
+</blockquote>
+<p>The sample mean of a numerical variable is the sum of all of the observations divided by the number of observations:</p>
+<span class="math display" id="eq:meanb">\[\begin{equation}
+  \bar{x} = \frac{x_1+x_2+\cdots+x_n}{n}
+  \tag{1.2}
+\end{equation}\]</span>
+<p>where <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> represent the <span class="math inline">\(n\)</span> observed values.</p>
+<hr />
+<div class="marginnote">
+<p>Guided Practice 1.20</p>
+<p>Examine Equations <a href="introductionToData.html#eq:mean">(1.1)</a> and <a href="introductionToData.html#eq:meanb">(1.2)</a> above. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span>? Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn24" class="footnoteRef" id="fnref24"><sup>24</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.21</p>
+<p>What was <span class="math inline">\(n\)</span> in this sample of emails?<a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a></p>
+</div>
+<p>The <strong>email50</strong> data set is a sample from a larger population of emails that were received in January and March. We could compute a mean for this population in the same way as the sample mean. However, there is a difference in notation: the population mean has a special label: <span class="math inline">\(\mu\)</span>. The symbol <span class="math inline">\(\mu\)</span> is the Greek letter <em>mu</em> and represents the average of all observations in the population. Sometimes a subscript, such as <span class="math inline">\(_x\)</span>, is used to represent which variable the population mean refers to, e.g. <span class="math inline">\(\mu_x\)</span>.</p>
+<hr />
+<blockquote>
+<p><strong>Example 1.22</strong> The average number of characters across all emails can be estimated using the sample data. Based on the sample of 50 emails, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean number of characters in all emails in the <strong>email</strong> data set? (Recall that <strong>email50</strong> is a sample from <strong>email</strong>.)</span></p>
+</blockquote>
+<blockquote>
+<p>The sample mean, 11,600, may provide a reasonable estimate of <span class="math inline">\(\mu_x\)</span>. While this number will not be perfect, it provides a <strong>point estimate</strong> of the population mean. In Chapter 2 and beyond, we will develop tools to characterize the accuracy of point estimates, and we will find that point estimates based on larger samples tend to be more accurate than those based on smaller samples.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>Example 1.23</strong> We might like to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes from the 3,143 counties in the data set. What would be a better approach?</p>
+</blockquote>
+<blockquote>
+<p>The <strong>county</strong> data set is special in that each county actually represents many individual people. If we were to simply average across the variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations. Instead, we should compute the total income for each county, add up all the counties’ totals, and then divide by the number of people in all the counties. If we completed these steps with the data, we would find that the per capita income for the US is $27,348.43. Had we computed the <em>simple</em> mean of per capita income across counties, the result would have been just $22,504.70!</p>
+</blockquote>
+<hr />
+<p>Example 1.23 used what is called a <strong>weighted mean</strong>, which will not be a key topic in this textbook. However, we have provided an online supplement on weighted means for interested readers: <a href="http://www.openintro.org/stat/down/supp/wtdmean.pdf" class="uri">http://www.openintro.org/stat/down/supp/wtdmean.pdf</a></p>
+</div>
+<div id="histogramsAndShape" class="section level3">
+<h3><span class="header-section-number">1.6.3</span> Histograms and shape</h3>
+<p>Dot plots show the exact value of each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, think of the value as belonging to a <em>bin</em>. For example, in the data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Observations that fall on the boundary of a bin (e.g. 5,000) are allocated to the lower bin. This tabulation is shown in Table<a href="introductionToData.html#tab:binnedNumCharTable">1.7</a>. These binned counts are plotted as bars in Figure <a href="introductionToData.html#fig:email50NumCharHist">1.15</a> into what is called a , which resembles the stacked dot plot shown in Figure <a href="introductionToData.html#fig:emailCharactersDotPlotStacked">1.14</a>.</p>
+<table>
+<caption><span id="tab:binnedNumCharTable">Table 1.7: </span> The counts for the binned *num_char** data.</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Characters</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">(in thousands)</td>
+<td><span>0-5</span> &lt;spa</td>
+<td>n&gt;5-10</span> <span>10-</td>
+<td>15</span> <span>15-20&lt;/s</td>
+<td>pan&gt; <span>20-25</span></td>
+<td><span>25-30</span> &lt;sp</td>
+<td>an&gt;<span class="math inline">\(\cdots\)</span></span> &lt;span</td>
+<td>&gt;55-60</span> <span>60-65&lt;/</td>
+<td>span&gt;</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">Count</td>
+<td>19</td>
+<td>12</td>
+<td>6</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td><span class="math inline">\(\cdots\)</span></td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="figure"><span id="fig:email50NumCharHist"></span>
+<img src="figures01/email50NumCharHist/email50NumCharHist.pdf" alt="A histogram of num_char. This distribution is very strongly skewed to the right."  />
+<p class="caption">
+Figure 1.15: A histogram of num_char. This distribution is very strongly skewed to the right.
+</p>
+</div>
+<p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more dense. For instance, there are many more emails between 0 and 10,000 characters than emails between 10,000 and 20,000 characters in the data set. The bars make it easy to see how the density of the data changes relative to the number of characters.</p>
+<p>Histograms are especially convenient for describing the shape of the data distribution. Figure <a href="introductionToData.html#fig:email50NumCharHist">1.15</a> shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right , the shape is said to be <strong>right skewed</strong>.<a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a></p>
+<p>Data sets with the reverse characteristic – a long, thin tail to the left – are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called .</p>
+<blockquote>
+<p>Tip: <strong>Use Long tails identify skew</strong> When data trail off in one direction, the distribution has a . If a distribution has a long left tail, it is left skewed. If a distribution has a long right tail, it is right skewed.</p>
+</blockquote>
+<div class="marginnote">
+<p>Guided Practice 1.24</p>
+<p>Take a look at the dot plots in Figures <a href="introductionToData.html#fig:emailCharactersDotPlot">1.13</a> and <span class="citation">(<span class="citeproc-not-found" data-reference-id="ref"><strong>???</strong></span>)</span>(fig:emailCharactersDotPlotStacked). Can you see the skew in the data? Is it easier to see the skew in this histogram or the dot plots?<a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.25</p>
+<p>Besides the mean (since it was labeled), what can you see in the dot plots that you cannot see in the histogram?<a href="#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a></p>
+</div>
+<p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution.<a href="#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a> There is only one prominent peak in the histogram of <strong>num_char</strong>.</p>
+<div class="figure"><span id="fig:singleBiMultiModalPlots"></span>
+<img src="figures01/singleBiMultiModalPlots/singleBiMultiModalPlots.pdf" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal."  />
+<p class="caption">
+Figure 1.16: Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal.
+</p>
+</div>
+<p>Figure <a href="introductionToData.html#fig:singleBiMultiModalPlots">1.16</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
+<div class="marginnote">
+<p>Guided Practice 1.26</p>
+<p>Figure <a href="introductionToData.html#fig:email50NumCharHist">1.15</a> reveals only one prominent mode in the number of characters. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.27</p>
+<p>Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?<a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a></p>
+</div>
+<blockquote>
+<p>Tip: <strong>Looking for modes</strong> isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The important part of this examination is to better understand your data and how it might be structured.</span></p>
+</blockquote>
+</div>
+<div id="variability" class="section level3">
+<h3><span class="header-section-number">1.6.4</span> Variance and standard deviation</h3>
+<p>The mean is used to describe the center of a data set, but the in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though the formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to conceptually understand, and it roughly describes how far away the typical observation is from the mean.</p>
+<p>We call the distance of an observation from its mean its <em>deviation</em>. Below are the deviations for the <span class="math inline">\(1^{st}_{}\)</span>, <span class="math inline">\(2^{nd}_{}\)</span>, <span class="math inline">\(3^{rd}\)</span>, and <span class="math inline">\(50^{th}_{}\)</span> observations in the variable. For computational convenience, the number of characters is listed in the thousands and rounded to the first decimal.</p>
+<p><span class="math display">\[\begin{aligned}
+x_1^{}-\bar{x} &amp;= 21.7 - 11.6 = 10.1 \hspace{5mm}\text{ } \\
+x_2^{}-\bar{x} &amp;= 7.0 - 11.6 = -4.6 \\
+x_3^{}-\bar{x} &amp;= 0.6 - 11.6 = -11.0 \\
+            &amp;\ \vdots \\
+x_{50}^{}-\bar{x} &amp;= 15.8 - 11.6 = 4.2\end{aligned}\]</span></p>
+<p>If we square these deviations and then take an average, the result is about equal to the sample <em>variance</em>, denoted by <span class="math inline">\(s_{}^2\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+s_{}^2 &amp;= \frac{10.1_{}^2 + (-4.6)_{}^2 + (-11.0)_{}^2 + \cdots + 4.2_{}^2}{50-1} \\
+    &amp;= \frac{102.01 + 21.16 + 121.00 + \cdots + 17.64}{49} \\
+    &amp;= 172.44\end{aligned}\]</span></p>
+<p>We divide by <span class="math inline">\(n-1\)</span>, rather than dividing by <span class="math inline">\(n\)</span>, when computing the variance; you need not worry about this mathematical nuance for the material in this textbook. Notice that squaring the deviations does two things. First, it makes large values much larger, seen by comparing <span class="math inline">\(10.1^2\)</span>, <span class="math inline">\((-4.6)^2\)</span>, <span class="math inline">\((-11.0)^2\)</span>, and <span class="math inline">\(4.2^2\)</span>. Second, it gets rid of any negative signs.</p>
+<p>The <em>standard deviation</em> is the square root of the variance: <span class="math display">\[s=\sqrt{172.44} = 13.13\]</span> [</p>
+<p>The standard deviation of the number of characters in an email is about 13.13 thousand. A subscript of <span class="math inline">\(_x\)</span> may be added to the variance and standard deviation, i.e. <span class="math inline">\(s_x^2\)</span> and <span class="math inline">\(s_x^{}\)</span>, as a reminder that these are the variance and standard deviation of the observations represented by <span class="math inline">\(x_1^{}\)</span>, <span class="math inline">\(x_2^{}\)</span>, …, <span class="math inline">\(x_n^{}\)</span>. The <span class="math inline">\(_{x}\)</span> subscript is usually omitted when it is clear which data the variance or standard deviation is referencing.</p>
+<blockquote>
+<p><strong>Variance and Standard Deviation</strong> The variance is roughly the average squared distance from the mean. The standard deviation is the square root of the variance and describes how close the data are to the mean.</p>
+</blockquote>
+<p>Formulas and methods used to compute the variance and standard deviation for a population are similar to those used for a sample.<a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> However, like the mean, the population values have special symbols: <span class="math inline">\(\sigma_{}^2\)</span> for the variance and <span class="math inline">\(\sigma\)</span> for thge standard deviation. The symbol <span class="math inline">\(\sigma\)</span> is the Greek letter <em>sigma</em>.</p>
+<div class="figure"><span id="fig:sdAsRuleForEmailNumChar"></span>
+<img src="figures01/sdAsRuleForEmailNumChar/sdAsRuleForEmailNumChar.pdf" alt="In the data, 41 of the 50 emails (82%) are within 1 standard deviation of the mean, and 47 of the 50 emails (94%) are within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% are within 2 standard deviations, though this rule of thumb is less accurate for skewed data, as shown in this example."  />
+<p class="caption">
+Figure 1.17: In the data, 41 of the 50 emails (82%) are within 1 standard deviation of the mean, and 47 of the 50 emails (94%) are within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% are within 2 standard deviations, though this rule of thumb is less accurate for skewed data, as shown in this example.
+</p>
+</div>
+<blockquote>
+<p>Tip: <strong>Standard Deviation describes variability</strong> Focus on the conceptual meaning of the standard deviation as a descriptor of variability rather than the formulas. Usually 70% of the data will be within one standard deviation of the mean and about 95% will be within two standard deviations. However, as seen in Figures <a href="introductionToData.html#fig:sdAsRuleForEmailNumChar">1.17</a> and <a href="introductionToData.html#fig:severalDiffDistWithSdOf1">1.18</a>, these percentages are not strict rules.</p>
+</blockquote>
+<div class="figure"><span id="fig:severalDiffDistWithSdOf1"></span>
+<img src="figures01/severalDiffDistWithSdOf1/severalDiffDistWithSdOf1.pdf" alt="Three very different population distributions with the same mean and standard deviation."  />
+<p class="caption">
+Figure 1.18: Three very different population distributions with the same mean and standard deviation.
+</p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.28</p>
+<p>A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side. Using Figure <a href="introductionToData.html#fig:severalDiffDistWithSdOf1">1.18</a> as an example, explain why such a description is important.<a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a></p>
+</div>
+<blockquote>
+<p><strong>Example 1.29</strong> Describe the distribution of the variable using the histogram in Figure <a href="introductionToData.html#fig:email50NumCharHist">1.15</a>. The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context: the number of characters in emails. Also note any especially unusual cases.</p>
+</blockquote>
+<blockquote>
+<p>The distribution of email character counts is unimodal and very strongly skewed to the high end. Many of the counts fall near the mean at 11,600, and most fall within one standard deviation (13,130) of the mean. There is one exceptionally long email with about 65,000 characters.</p>
+</blockquote>
+<p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter 2 we will use the variance and standard deviation to assess how close the sample mean is to the population mean.</p>
+</div>
+<div id="box-plots-quartiles-and-the-median" class="section level3">
+<h3><span class="header-section-number">1.6.5</span> Box plots, quartiles, and the median</h3>
+<p>A <em>box plot</em> summarizes a data set using five statistics while also plotting unusual observations. Figure <a href="introductionToData.html#fig:boxPlotLayoutNumVar">1.19</a> provides a vertical dot plot alongside a box plot of the variable from the data set.</p>
+<div class="figure"><span id="fig:boxPlotLayoutNumVar"></span>
+<img src="figures01/boxPlotLayoutNumVar/boxPlotLayoutNumVar.pdf" alt="A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6,890), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively."  />
+<p class="caption">
+Figure 1.19: A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6,890), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively.
+</p>
+</div>
+<p>The first step in building a box plot is drawing a dark line denoting the <em>median</em>, which splits the data in half. Figure <a href="introductionToData.html#fig:boxPlotLayoutNumVar">1.19</a> shows 50% of the data falling below the median (dashes) and other 50% falling above the median (open circles). There are 50 character counts in the data set (an even number) so the data are perfectly split into two groups of 25. We take the median in this case to be the average of the two observations closest to the <span class="math inline">\(50^{th}\)</span> percentile: <span class="math inline">\((\text{6,768} + \text{7,012}) / 2 = \text{6,890}\)</span>. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).</p>
+<blockquote>
+<p><strong>Median: the number in the middle</strong> If the data are ordered from smallest to largest, the <em>median</em> is the observation right in the middle. If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.</p>
+</blockquote>
+<p>The second step in building a box plot is drawing a rectangle to represent the middle 50% of the data. The total length of the box, shown vertically in Figure @ref(fig:boxPlotLayoutNumVar, is called the <em>interquartile range</em> (, for short). It, like the standard deviation, is a measure of in data. The more variable the data, the larger the standard deviation and IQR. The two boundaries of the box are called the <em>first quartile</em> (the <span class="math inline">\(25^{th}\)</span> , i.e. 25% of the data fall below this value) and the <em>third quartile</em> (the <span class="math inline">\(75^{th}\)</span> percentile), and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively.</p>
+<hr />
+<blockquote>
+<p><strong>Interquartile range (IQR)</strong> The IQR is the length of the box in a box plot. It is computed as</p>
+</blockquote>
+<p><span class="math display">\[\begin{aligned}
+IQR = Q_3 - Q_1\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the <span class="math inline">\(25^{th}\)</span> and <span class="math inline">\(75^{th}\)</span> percentiles.</p>
+<hr />
+<div class="marginnote">
+<p>Guided Practice 1.30</p>
+<p>What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median? What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a></p>
+</div>
+<p>Extending out from the box, the <em>whiskers</em> attempt to capture the data outside of the box, however, their reach is never allowed to be more than <span class="math inline">\(1.5\times IQR\)</span>.<a href="#fn35" class="footnoteRef" id="fnref35"><sup>35</sup></a> They capture everything within this reach. In Figure [boxPlotLayoutNumVar], the upper whisker does not extend to the last three points, which are beyond <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit. The lower whisker stops at the lowest value, 33, since there is no additional data to reach; the lower whisker’s limit is not shown in the figure because the plot does not extend down to <span class="math inline">\(Q_1 - 1.5\times IQR\)</span>. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.</p>
+<p>Any observation that lies beyond the whiskers is labeled with a dot. The purpose of labeling these points – instead of just extending the whiskers to the minimum and maximum observed values – is to help identify any observations that appear to be unusually distant from the rest of the data. Unusually distant observations are called . In this case, it would be reasonable to classify the emails with character counts of 41,623, 42,793, and 64,401 as outliers since they are numerically distant from most of the data.</p>
+<blockquote>
+<p><strong>Outliers are extreme.</strong> An <em>outlier</em> is an observation that is extreme relative to the rest of the data.</p>
+</blockquote>
+<blockquote>
+<p><strong>Tip: Why it is important to look for outliers.</strong> Examination of data for possible outliers serves many useful purposes, including:</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p>Identifying in the distribution.</p></li>
+<li><p>Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64,401 characters to ensure this value was accurate.</p></li>
+<li><p>Providing insight into interesting properties of the data.</p></li>
+</ol>
+<hr />
+<div class="marginnote">
+<p>Guided Practice 1.31</p>
+<p>The observation 64,401, an outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?<a href="#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.32</p>
+<p>Using Figure <a href="introductionToData.html#fig:boxPlotLayoutNumVar">1.19</a>, estimate the following values for in the data set: (a) <span class="math inline">\(Q_1\)</span>, (b) <span class="math inline">\(Q_3\)</span>, and (c) IQR.<a href="#fn37" class="footnoteRef" id="fnref37"><sup>37</sup></a></p>
+</div>
+</div>
+<div id="robust-statistics" class="section level3">
+<h3><span class="header-section-number">1.6.6</span> Robust statistics</h3>
+<p>How are the sample statistics of the <strong>num_char</strong> data set affected by the observation, 64,401? What would have happened if this email wasn’t observed? What would happen to these summary statistics if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure <a href="introductionToData.html#fig:email50NumCharDotPlotRobustEx">1.20</a>, and sample statistics are computed under each scenario in Table <a href="#tab:robustOrNotTable"><strong>??</strong></a>.</p>
+<div class="figure"><span id="fig:email50NumCharDotPlotRobustEx"></span>
+<img src="figures01/email50NumCharDotPlotRobustEx/email50NumCharDotPlotRobustEx.pdf" alt="Dot plots of the original character count data and two modified data sets."  />
+<p class="caption">
+Figure 1.20: Dot plots of the original character count data and two modified data sets.
+</p>
+</div>
+<p><span>l c cc c cc</span> &amp;</p>
+<p>&amp; &amp;</p>
+<p>&amp;<br />
+scenario &amp;&amp; median &amp; IQR &amp;&amp; <span class="math inline">\(\bar{x}\)</span> &amp; <span class="math inline">\(s\)</span><br />
+original data &amp;&amp; 6,890 &amp; 12,875 &amp;&amp; 11,600 &amp; 13,130<br />
+drop 66,924 observation &amp;&amp; 6,768 &amp; 11,702 &amp;&amp; 10,521 &amp; 10,798<br />
+move 66,924 to 150,000 &amp;&amp; 6,890 &amp; 12,875 &amp;&amp; 13,310 &amp; 22,434<br />
+[robustOrNotTable]</p>
+<div class="marginnote">
+<p>Guided Practice 1.33</p>
+<p>Which is more affected by extreme observations, the mean or median? Table <a href="#tab:robustOrNotTable"><strong>??</strong></a> may be helpful. Is the standard deviation or IQR more affected by extreme observations?<a href="#fn38" class="footnoteRef" id="fnref38"><sup>38</sup></a></p>
+</div>
+<p>The median and IQR are called <em>robust estimates</em> because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations.</p>
+<blockquote>
+<p><strong>Example 1.34</strong> The median and IQR do not change much under the three scenarios in Table <a href="#tab:robustOrNotTable"><strong>??</strong></a>. Why might this be the case? The median and IQR are only sensitive to numbers near <span class="math inline">\(Q_1\)</span>, the median, and <span class="math inline">\(Q_3\)</span>. Since values in these regions are relatively stable – there aren’t large jumps between observations – the median and IQR estimates are also quite stable.</p>
+</blockquote>
+<div class="marginnote">
+<p>Guided Practice 1.34</p>
+<p>The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?<a href="#fn39" class="footnoteRef" id="fnref39"><sup>39</sup></a></p>
+</div>
+</div>
+<div id="transformingDataSubsection" class="section level3">
+<h3><span class="header-section-number">1.6.7</span> Transforming data (special topic)</h3>
+<p>When data are very strongly skewed, we sometimes transform them so they are easier to model. Consider the histogram of salaries for Major League Baseball players’ salaries from 2010, which is shown in Figure <a href="introductionToData.html#fig:histMLBSalariesReg">1.21</a>.</p>
+<div class="figure"><span id="fig:histMLBSalariesReg"></span>
+<img src="figures01/histMLBSalaries/histMLBSalariesReg.pdf" alt="Histogram of MLB player salaries for 2010, in millions of dollars."  />
+<p class="caption">
+Figure 1.21: Histogram of MLB player salaries for 2010, in millions of dollars.
+</p>
+</div>
+<div class="figure"><span id="fig:histMLBSalariesLog"></span>
+<img src="figures01/histMLBSalaries/histMLBSalariesLog.pdf" alt="Histogram of the log-transformed MLB player salaries for 2010."  />
+<p class="caption">
+Figure 1.22: Histogram of the log-transformed MLB player salaries for 2010.
+</p>
+</div>
+<blockquote>
+<p><strong>Example 1.36</strong> The histogram of MLB player salaries is useful in that we can see the data are extremely skewed and centered (as gauged by the median) at about $1 million. What isn’t useful about this plot?</p>
+</blockquote>
+<blockquote>
+<p>Most of the data are collected into one bin in the histogram and the data are so strongly skewed that many details in the data are obscured.</p>
+</blockquote>
+<p>There are some standard transformations that are often applied when much of the data cluster near zero (relative to the larger values in the data set) and all observations are positive. A <em>transformation</em> is a rescaling of the data using a function. For instance, a plot of the natural logarithm<a href="#fn40" class="footnoteRef" id="fnref40"><sup>40</sup></a> of player salaries results in a new histogram in Figure <a href="introductionToData.html#fig:histMLBSalariesLog">1.22</a>. Transformed data are sometimes easier to work with when applying statistical models because the transformed data are much less skewed and outliers are usually less extreme.</p>
+<p>Transformations can also be applied to one or both variables in a scatterplot. A scatterplot of the and variables is shown in Figure <a href="introductionToData.html#fig:email50LinesCharactersMod">1.23</a>, which was earlier shown in Figure <a href="introductionToData.html#fig:email50LinesCharacters">1.11</a>. We can see a positive association between the variables and that many observations are clustered near zero. In Chapter 5], we might want to use a straight line to model the data. However, we’ll find that the data in their current state cannot be modeled very well. Figure <a href="introductionToData.html#fig:email50LinesCharactersModLog">1.24</a> shows a scatterplot where both the and variables have been transformed using a log (base <span class="math inline">\(e\)</span>) transformation. While there is a positive association in each plot, the transformed data show a steadier trend, which is easier to model than the untransformed data.</p>
+<div class="figure"><span id="fig:email50LinesCharactersMod"></span>
+<img src="figures01/email50LinesCharactersMod/email50LinesCharactersMod.pdf" alt="Scatterplot of line breaks against num char for 50 emails."  />
+<p class="caption">
+Figure 1.23: Scatterplot of line breaks against num char for 50 emails.
+</p>
+</div>
+<div class="figure"><span id="fig:email50LinesCharactersModLog"></span>
+<img src="figures01/email50LinesCharactersMod/email50LinesCharactersModLog.pdf" alt="A scatterplot of the same data but where each variable has been log- transformed."  />
+<p class="caption">
+Figure 1.24: A scatterplot of the same data but where each variable has been log- transformed.
+</p>
+</div>
+<p>Transformations other than the logarithm can be useful, too. For instance, the square root (<span class="math inline">\(\sqrt{\text{original observation}}\)</span>) and inverse (<span class="math inline">\(\frac{1}{\text{original observation}}\)</span>) are used by statisticians. Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.</p>
+</div>
+<div id="mapping-data-special-topic" class="section level3">
+<h3><span class="header-section-number">1.6.8</span> Mapping data (special topic)</h3>
+<p>The data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data. Rather, when we encounter geographic data, we should map it using an <em>intensity map</em>, where colors are used to show higher and lower values of a variable. Figures <a href="introductionToData.html#fig:countyIntensityMaps1">1.25</a> and <a href="introductionToData.html#fig:countyIntensityMaps2">1.26</a> shows intensity maps for federal spending per capita (fed_spend), poverty rate in percent (poverty), homeownership rate in percent (homeownership), and median household income (med_income). The color key indicates which colors correspond to which values. Note that the intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions.</p>
+<div class="figure"><span id="fig:countyIntensityMaps1"></span>
+<img src="figures01/countyIntensityMaps/countyFedSpendMap.pdf" alt="Map of federal spending (dollars per capita)."  />
+<p class="caption">
+Figure 1.25: Map of federal spending (dollars per capita).
+</p>
+</div>
+<div class="figure"><span id="fig:countyIntensityMaps2"></span>
+<img src="figures01/countyIntensityMaps/countyPovertyMap.pdf" alt="Intensity map of poverty rate"  />
+<p class="caption">
+Figure 1.26: Intensity map of poverty rate
+</p>
+</div>
+<div class="figure"><span id="fig:countyHomeownershipMap"></span>
+<img src="figures01/countyIntensityMaps/countyHomeownershipMap.pdf" alt="Intensity map of homeownership rate (percent)"  />
+<p class="caption">
+Figure 1.27: Intensity map of homeownership rate (percent)
+</p>
+</div>
+<div class="figure"><span id="fig:countyMedIncomeMap"></span>
+<img src="figures01/countyIntensityMaps/countyMedIncomeMap.pdf" alt="Intensity map of median household income ($1000s)."  />
+<p class="caption">
+Figure 1.28: Intensity map of median household income ($1000s).
+</p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.38</p>
+<p>What interesting features are evident in the intensity map?<a href="#fn41" class="footnoteRef" id="fnref41"><sup>41</sup></a></p>
+</div>
+<blockquote>
+<p><strong>Example 1.37</strong> What interesting features are evident in the fed_spend and poverty intensity maps?</p>
+</blockquote>
+<blockquote>
+<p>The federal spending intensity map shows substantial spending in the Dakotas and along the central-to-western part of the Canadian border, which may be related to the oil boom in this region. There are several other patches of federal spending, such as a vertical strip in eastern Utah and Arizona and the area where Colorado, Nebraska, and Kansas meet. There are also seemingly random counties with very high federal spending relative to their neighbors. If we did not cap the federal spending range at $18 per capita, we would actually find that some counties have extremely high federal spending while there is almost no federal spending in the neighboring counties. These high-spending counties might contain military bases, companies with large government contracts, or other government facilities with many employees. Poverty rates are evidently higher in a few locations. Notably, the deep south shows higher poverty rates, as does the southwest border of Texas. The vertical strip of eastern Utah and Arizona, noted above for its higher federal spending, also appears to have higher rates of poverty (though generally little correspondence is seen between the two variables). High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky and West Virginia.</p>
+</blockquote>
+</div>
+</div>
+<div id="categoricalData" class="section level2">
+<h2><span class="header-section-number">1.7</span> Considering categorical data</h2>
+<p>Like numerical data, categorical data can also be organized and analyzed. This section introduces tables and other basic tools for categorical data that are used throughout this book. The <strong>email50</strong> data set represents a sample from a larger email data set called . This larger data set contains information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.</p>
+<div id="contingency-tables-and-bar-plots" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> Contingency tables and bar plots</h3>
+<p>Table <a href="#tab:emailSpamNumberTableTotals"><strong>??</strong></a> summarizes two variables: <strong>spam</strong> and <strong>number</strong>. Recall that is a categorical variable that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). A table that summarizes data for two categorical variables in this way is called a <em>contingency table</em>. Each value in the table represents the number of times a particular combination of variable outcomes occurred. For example, the value 149 corresponds to the number of emails in the data set that are spam <em>and</em> had no number listed in the email. Row and column totals are also included. The <em>row totals</em> provide the total counts across each row (e.g. <span class="math inline">\(149 + 168 + 50 = 367\)</span>), and <em>column totals</em> are total counts down each column.</p>
+<p>A table for a single variable is called a <em>frequency table</em>. Table <a href="#tab:emailNumberTable"><strong>??</strong></a> is a frequency table for the variable. If we replaced the counts with percentages or proportions, the table would be called a <em>relative frequency table</em>.</p>
+<p><span>ll ccc rr</span> &amp; &amp; &amp;<br />
+&amp; &amp; none &amp; small &amp; big &amp; Total &amp;</p>
+<p> <br />
+&amp; spam &amp; 149 &amp; 168 &amp; 50 &amp; 367<br />
+[0pt] &amp; not spam &amp; 400 &amp; 2659 &amp; 495 &amp; 3554<br />
+&amp; Total &amp; 549 &amp; 2827 &amp; 545 &amp; 3921<br />
+[emailSpamNumberTableTotals]</p>
+<table>
+<caption>A frequency table for the variable.</caption>
+<tbody>
+<tr class="odd">
+<td align="center">none</td>
+<td align="center">small</td>
+<td align="center">big</td>
+<td align="center">Total</td>
+</tr>
+<tr class="even">
+<td align="center">549</td>
+<td align="center">2827</td>
+<td align="center">545</td>
+<td align="center">3921</td>
+</tr>
+</tbody>
+</table>
+<p>[emailNumberTable]</p>
+<p>A bar plot is a common way to display a single categorical variable. The left panel of Figure <a href="introductionToData.html#fig:emailNumberBarPlot">1.29</a> shows a <em>bar plot</em> for the variable. In the right panel, the counts are converted into proportions (e.g. <span class="math inline">\(549/3921=0.140\)</span> for ).</p>
+<div class="figure"><span id="fig:emailNumberBarPlot"></span>
+<img src="figures01/emailNumberBarPlot/emailNumberBarPlot.pdf" alt="Two bar plots of *number*. The left panel shows the counts, and the right panel shows the proportions in each group."  />
+<p class="caption">
+Figure 1.29: Two bar plots of <em>number</em>. The left panel shows the counts, and the right panel shows the proportions in each group.
+</p>
+</div>
+</div>
+<div id="row-and-column-proportions" class="section level3">
+<h3><span class="header-section-number">1.7.2</span> Row and column proportions</h3>
+<p>Table <a href="#tab:rowPropSpamNumber"><strong>??</strong></a> shows the row proportions for Table <a href="#tab:emailSpamNumberTableTotals"><strong>??</strong></a>. The are computed as the counts divided by their row totals. The value 149 at the intersection of and is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not have any numbers.</p>
+<table>
+<caption>A contingency table with row proportions for the and variables.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">none</th>
+<th align="right">small</th>
+<th align="right">big</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>spam</td>
+<td align="right"><span class="math inline">\(149/367 = 0.406\)</span></td>
+<td align="right"><span class="math inline">\(168/367 = 0.458\)</span></td>
+<td align="right"><span class="math inline">\(50/367 = 0.136\)</span></td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td>not spam</td>
+<td align="right"><span class="math inline">\(400/3554 = 0.113\)</span></td>
+<td align="right"><span class="math inline">\(2657/3554 = 0.748\)</span></td>
+<td align="right"><span class="math inline">\(495/3554 = 0.139\)</span></td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right"><span class="math inline">\(549/3921 = 0.140\)</span></td>
+<td align="right"><span class="math inline">\(2827/3921 = 0.721\)</span></td>
+<td align="right"><span class="math inline">\(545/3921 = 0.139\)</span></td>
+<td align="right">1.000</td>
+</tr>
+</tbody>
+</table>
+<p>[rowPropSpamNumber]</p>
+<p>A contingency table of the column proportions is computed in a similar way, where each is computed as the count divided by the corresponding column total. Table <a href="#tab:colPropSpamNumber"><strong>??</strong></a> shows such a table, and here the value 0.271 indicates that 27.1% of emails with no numbers were spam. This rate of spam is much higher than emails with only small numbers (5.9%) or big numbers (9.2%). Because these spam rates vary between the three levels of <strong>number</strong> (none, small ,big ), this provides evidence that the and variables are associated.</p>
+<table>
+<caption>A contingency table with column proportions for the spam and number variables.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">none</th>
+<th align="right">small</th>
+<th align="right">big</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>spam</td>
+<td align="right"><span class="math inline">\(149/549 = 0.271\)</span></td>
+<td align="right"><span class="math inline">\(168/2827 = 0.059\)</span></td>
+<td align="right"><span class="math inline">\(50/545 = 0.092\)</span></td>
+<td align="right"><span class="math inline">\(367/3921 = 0.094\)</span></td>
+</tr>
+<tr class="even">
+<td>not spam</td>
+<td align="right"><span class="math inline">\(400/549 = 0.729\)</span></td>
+<td align="right"><span class="math inline">\(2659/2827 = 0.941\)</span></td>
+<td align="right"><span class="math inline">\(495/545 = 0.908\)</span></td>
+<td align="right"><span class="math inline">\(3684/3921 = 0.906\)</span></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+</tr>
+</tbody>
+</table>
+<p>[colPropSpamNumber]</p>
+<p>We could also have checked for an association between <strong>spam</strong> and <strong>number</strong> in Table <a href="#tab:rowPropSpamNumber"><strong>??</strong></a> using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of emails with no numbers, small numbers, and big numbers varied from to .</p>
+<div class="marginnote">
+<p>Guided Practice 1.39</p>
+<p>What does 0.458 represent in Table <a href="#tab:rowPropSpamNumber"><strong>??</strong></a>? What does 0.059 represent in Table <a href="#tab:colPropSpamNumber"><strong>??</strong></a>?<a href="#fn42" class="footnoteRef" id="fnref42"><sup>42</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.40</p>
+<p>What does 0.139 at the intersection of and represent in Table <a href="#tab:rowPropSpamNumber"><strong>??</strong></a>? What does 0.908 represent in the Table <a href="#tab:colPropSpamNumber"><strong>??</strong></a>?<a href="#fn43" class="footnoteRef" id="fnref43"><sup>43</sup></a></p>
+</div>
+<blockquote>
+<p><strong>Example 1.41</strong> Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy. One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table for the and variables from the data set are shown in Table <a href="#tab:emailSpamHTMLTableTotals"><strong>??</strong></a>. Recall that an HTML email is an email with the capacity for special formatting, e.g. bold text. In Table <a href="#tab:emailSpamHTMLTableTotals"><strong>??</strong></a>, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?</p>
+</blockquote>
+<blockquote>
+<p>Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails. If we generate the column proportions, we can see that a higher fraction of plain text emails are spam (<span class="math inline">\(209/1195 = 17.5\%\)</span>) than compared to HTML emails (<span class="math inline">\(158/2726 = 5.8\%\)</span>). This information on its own is insufficient to classify an email as spam or not spam, as over 80% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam.</p>
+</blockquote>
+<table>
+<caption>A contingency table for and .</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">text</th>
+<th align="center">HTML</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>spam</td>
+<td align="center">209</td>
+<td align="center">158</td>
+<td align="right">367</td>
+</tr>
+<tr class="even">
+<td>not spam</td>
+<td align="center">986</td>
+<td align="center">2568</td>
+<td align="right">3554</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="center">1195</td>
+<td align="center">2726</td>
+<td align="right">3921</td>
+</tr>
+</tbody>
+</table>
+<p>[emailSpamHTMLTableTotals]</p>
+<p>The example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.</p>
+<div class="marginnote">
+<p>Guided Practice 1.27</p>
+<p>Look back to Tables <a href="#tab:rowPropSpamNumber"><strong>??</strong></a> and <a href="#tab:colPropSpamNumber"><strong>??</strong></a>. Which would be more useful to someone hoping to identify spam emails using the variable?<a href="#fn44" class="footnoteRef" id="fnref44"><sup>44</sup></a></p>
+</div>
+</div>
+<div id="segmentedBarPlotsAndIndependence" class="section level3">
+<h3><span class="header-section-number">1.7.3</span> Segmented bar and mosaic plots</h3>
+<p>Contingency tables using row or column proportions are especially useful for examining how two categorical variables are related. Segmented bar and mosaic plots provide a way to visualize the information in these tables.</p>
+<p>A <strong>segmented bar plot</strong> is a graphical display of contingency table information. For example, a segmented bar plot representing Table <a href="#tab:colPropSpamNumber"><strong>??</strong></a> is shown in Figure <a href="introductionToData.html#fig:emailSpamNumberSegBar">1.30</a>, where we have first created a bar plot using the <strong>number</strong> variable and then separated each group by the levels of <strong>spam</strong>. The column proportions of Table <a href="#tab:colPropSpamNumber"><strong>??</strong></a> have been translated into a standardized segmented bar plot in Figure <a href="introductionToData.html#fig:emailSpamNumberSegBarSta">1.31</a>, which is a helpful visualization of the fraction of spam emails in each level of <strong>number</strong>.</p>
+<div class="figure"><span id="fig:emailSpamNumberSegBar"></span>
+<img src="figures01/emailSpamNumberSegBar/emailSpamNumberSegBar.pdf" alt="Segmented bar plot for numbers found in emails, where the counts have been further broken down by spam"  />
+<p class="caption">
+Figure 1.30: Segmented bar plot for numbers found in emails, where the counts have been further broken down by spam
+</p>
+</div>
+<div class="figure"><span id="fig:emailSpamNumberSegBarSta"></span>
+<img src="figures01/emailSpamNumberSegBar/emailSpamNumberSegBarSta.pdf" alt="Standardized version."  />
+<p class="caption">
+Figure 1.31: Standardized version.
+</p>
+</div>
+<blockquote>
+<p><strong>Example 1.43</strong> Examine both of the segmented bar plots. Which is more useful?</p>
+</blockquote>
+<blockquote>
+<p>Figure <a href="introductionToData.html#fig:emailSpamNumberSegBar">1.30</a> contains more information, but Figure <a href="introductionToData.html#fig:emailSpamNumberSegBarSta">1.31</a> presents the information more clearly. This second plot makes it clear that emails with no number have a relatively high rate of spam email – about 27%! On the other hand, less than 10% of email with small or big numbers are spam.</p>
+</blockquote>
+<p>Since the proportion of spam changes across the groups in Figure [emailSpamNumberSegBarSta], we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the and groups have relatively few observations compared to the group, the association is more difficult to see in Figure [emailSpamNumberSegBar].</p>
+<p>In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.</p>
+<p>[emailSpamNumberMosaicPlot]</p>
+<p>A <em>mosaic plot</em> is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure [emailNumberMosaic] shows a mosaic plot for the variable. Each column represents a level of , and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box <em>areas</em> to represent the number of observations.</p>
+<div class="figure"><span id="fig:emailSpamNumberMosaicRev"></span>
+<img src="figures01/emailSpamNumberMosaicPlot/emailSpamNumberMosaicRev.pdf" alt="Mosaic plot where emails are grouped by the variable after they’ve been divided into and ."  />
+<p class="caption">
+Figure 1.32: Mosaic plot where emails are grouped by the variable after they’ve been divided into and .
+</p>
+</div>
+<p>This one-variable mosaic plot is further divided into pieces in Figure [emailSpamNumberMosaic] using the variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the and variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.</p>
+<p>In a similar way, a mosaic plot representing row proportions of Table [emailSpamNumberTableTotals] could be constructed, as shown in Figure [emailSpamNumberMosaicRev]. However, because it is more insightful for this application to consider the fraction of spam in each category of the variable, we prefer Figure [emailSpamNumberMosaic].</p>
+</div>
+<div id="the-only-pie-chart-you-will-see-in-this-book" class="section level3">
+<h3><span class="header-section-number">1.7.4</span> The only pie chart you will see in this book</h3>
+<p>While pie charts are well known, they are not typically as useful as other charts in a data analysis. A <em>pie chart</em> is shown in Figure  alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart than in a bar plot, especially when categories have nearly identical counts or proportions. In the case of the and categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!</p>
+<div class="figure"><span id="fig:emailNumberPieChart"></span>
+<img src="figures01/emailNumberPieChart/emailNumberPieChart.pdf" alt="A pie chart and bar plot of for the data set."  />
+<p class="caption">
+Figure 1.33: A pie chart and bar plot of for the data set.
+</p>
+</div>
+</div>
+<div id="comparingAcrossGroups" class="section level3">
+<h3><span class="header-section-number">1.7.5</span> Comparing numerical data across groups</h3>
+<p>Some of the more interesting investigations can be considered by examining numerical data across groups. The methods required here aren’t really new. All that is required is to make a numerical plot for each group. Here two convenient methods are introduced: side-by-side box plots and hollow histograms.</p>
+<p>We will take a look again at the data set and compare the median household income for counties that gained population from 2000 to 2010 versus counties that had no gain. While we might like to make a causal connection here, remember that these are observational data and so such an interpretation would be unjustified.</p>
+<p>There were 2,041 counties where the population increased from 2000 to 2010, and there were 1,099 counties with no gain (all but one were a loss). A random sample of 100 counties from the first group and 50 from the second group are shown in Table [countyIncomeSplitByPopGainTable] to give a better sense of some of the raw data.</p>
+<p><span> ccc ccc c ccc </span> &amp;&amp;<br />
+41.2 &amp; 33.1 &amp; 30.4 &amp; 37.3 &amp; 79.1 &amp; 34.5 &amp;</p>
+<p> &amp; 40.3 &amp; 33.5 &amp; 34.8<br />
+22.9 &amp; 39.9 &amp; 31.4 &amp; 45.1 &amp; 50.6 &amp; 59.4 &amp;&amp; 29.5 &amp; 31.8 &amp; 41.3<br />
+47.9 &amp; 36.4 &amp; 42.2 &amp; 43.2 &amp; 31.8 &amp; 36.9 &amp;&amp; 28 &amp; 39.1 &amp; 42.8<br />
+50.1 &amp; 27.3 &amp; 37.5 &amp; 53.5 &amp; 26.1 &amp; 57.2 &amp;&amp; 38.1 &amp; 39.5 &amp; 22.3<br />
+57.4 &amp; 42.6 &amp; 40.6 &amp; 48.8 &amp; 28.1 &amp; 29.4 &amp;&amp; 43.3 &amp; 37.5 &amp; 47.1<br />
+43.8 &amp; 26 &amp; 33.8 &amp; 35.7 &amp; 38.5 &amp; 42.3 &amp;&amp; 43.7 &amp; 36.7 &amp; 36<br />
+41.3 &amp; 40.5 &amp; 68.3 &amp; 31 &amp; 46.7 &amp; 30.5 &amp;&amp; 35.8 &amp; 38.7 &amp; 39.8<br />
+68.3 &amp; 48.3 &amp; 38.7 &amp; 62 &amp; 37.6 &amp; 32.2 &amp;&amp; 46 &amp; 42.3 &amp; 48.2<br />
+42.6 &amp; 53.6 &amp; 50.7 &amp; 35.1 &amp; 30.6 &amp; 56.8 &amp;&amp; 38.6 &amp; 31.9 &amp; 31.1<br />
+66.4 &amp; 41.4 &amp; 34.3 &amp; 38.9 &amp; 37.3 &amp; 41.7 &amp;&amp; 37.6 &amp; 29.3 &amp; 30.1<br />
+51.9 &amp; 83.3 &amp; 46.3 &amp; 48.4 &amp; 40.8 &amp; 42.6 &amp;&amp; 57.5 &amp; 32.6 &amp; 31.1<br />
+44.5 &amp; 34 &amp; 48.7 &amp; 45.2 &amp; 34.7 &amp; 32.2 &amp;&amp; 46.2 &amp; 26.5 &amp; 40.1<br />
+39.4 &amp; 38.6 &amp; 40 &amp; 57.3 &amp; 45.2 &amp; 33.1 &amp;&amp; 38.4 &amp; 46.7 &amp; 25.9<br />
+43.8 &amp; 71.7 &amp; 45.1 &amp; 32.2 &amp; 63.3 &amp; 54.7 &amp;&amp; 36.4 &amp; 41.5 &amp; 45.7<br />
+71.3 &amp; 36.3 &amp; 36.4 &amp; 41 &amp; 37 &amp; 66.7 &amp;&amp; 39.7 &amp; 37 &amp; 37.7<br />
+50.2 &amp; 45.8 &amp; 45.7 &amp; 60.2 &amp; 53.1 &amp; &amp;&amp; 21.4 &amp; 29.3 &amp; 50.1<br />
+35.8 &amp; 40.4 &amp; 51.5 &amp; 66.4 &amp; 36.1 &amp; &amp;&amp; 43.6 &amp; 39.8 &amp;<br />
+[countyIncomeSplitByPopGainTable]</p>
+<p>The <em>side-by-side box plot</em> is a traditional tool for comparing across groups. An example is shown in the left panel of Figure [countyIncomeSplitByPopGain], where there are two box plots, one for each group, placed into one plotting window and drawn on the same scale.</p>
+<div class="figure"><span id="fig:countyIncomeSplitByPopGain"></span>
+<img src="figures01/countyIncomeSplitByPopGain/countyIncomeSplitByPopGain.pdf" alt="A pie chart and bar plot of for the data set."  />
+<p class="caption">
+Figure 1.34: A pie chart and bar plot of for the data set.
+</p>
+</div>
+<p>Another useful plotting method uses to compare numerical data across groups. These are just the outlines of histograms of each group put on the same plot, as shown in the right panel of Figure [countyIncomeSplitByPopGain].</p>
+<div class="marginnote">
+<p>Guided Practice 1.27</p>
+<p>Use the plots in the Figure to compare the incomes for counties across the two groups. What do you notice about the approximate center of each group? What do you notice about the variability between groups? Is the shape relatively consistent between groups? How many <em>prominent</em> modes are there for each group?<a href="#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a></p>
+</div>
+<div class="marginnote">
+<p>Guided Practice 1.27</p>
+<p>What components of each plot in the Figure do you find most useful?<a href="#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a></p>
+</div>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Chimowitz MI, Lynn MJ, Derdeyn CP, et al. 2011. Stenting versus Aggressive Medical Therapy for Intracranial Arterial Stenosis. New England Journal of Medicine 365:993-1003. . NY Times article reporting on the study: .<a href="introductionToData.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>The proportion of the 224 patients who had a stroke within 365 days: <span class="math inline">\(45/224 = 0.20\)</span>.<a href="introductionToData.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Formally, a summary statistic is a value computed from the data. Some summary statistics are more useful than others.<a href="introductionToData.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>A case is also sometimes called a <em>unit of observation</em> or an <em>observational unit</em>.<a href="introductionToData.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,143 rows and 11 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="introductionToData.html#fnref5">↩</a></p></li>
+<li id="fn7"><p>Sometimes also called a <em>nominal</em> variable.<a href="introductionToData.html#fnref7">↩</a></p></li>
+<li id="fn8"><p>There are only two possible values for each variable, and in both cases they describe categories. Thus, each is a categorical variable.<a href="introductionToData.html#fnref8">↩</a></p></li>
+<li id="fn9"><p>Two sample questions: (1) Intuition suggests that if there are many line breaks in an email then there would also tend to be many characters: does this hold true? (2) Is there a connection between whether an email format is plain text (versus HTML) and whether it is a spam message?<a href="introductionToData.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>([timeToGraduationQuestionForUCLAStudents]) Notice that the first question is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergraduate students who have graduated in the last five years represent cases in the population under consideration. Each such student would represent an individual case. ([identifyPopulationOfStentStudy]) A person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="introductionToData.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. However, since our experiences may not be representative, we also keep an open mind.<a href="introductionToData.html#fnref11">↩</a></p></li>
+<li id="fn12"><p>Sometimes the explanatory variable is called the <em>independent</em> variable and the response variable is called the <em>dependent</em> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.<a href="introductionToData.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>No. See the paragraph following the exercise for an explanation.<a href="introductionToData.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>Also called a <em>lurking variable</em>, <em>confounding factor</em>, or a <em>confounder</em>.<a href="introductionToData.html#fnref14">↩</a></p></li>
+<li id="fn15"><p>Answers will vary. Population density may be important. If a county is very dense, then a larger fraction of residents may live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.<a href="introductionToData.html#fnref15">↩</a></p></li>
+<li id="fn17"><p>Anturane Reinfarction Trial Research Group. 1980. Sulfinpyrazone in the prevention of sudden death after myocardial infarction. New England Journal of Medicine 302(5):250-256.<a href="introductionToData.html#fnref17">↩</a></p></li>
+<li id="fn18"><p>Human subjects are often called <em>patients</em>, <em>volunteers</em>, or <em>study participants</em>.<a href="introductionToData.html#fnref18">↩</a></p></li>
+<li id="fn19"><p>There are always some researchers in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.<a href="introductionToData.html#fnref19">↩</a></p></li>
+<li id="fn20"><p>The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.<a href="introductionToData.html#fnref20">↩</a></p></li>
+<li id="fn21"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations between variables, whether those associations represent simple or more complex relationships.<a href="introductionToData.html#fnref21">↩</a></p></li>
+<li id="fn22"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description since water becomes toxic when consumed in excessive quantities.<a href="introductionToData.html#fnref22">↩</a></p></li>
+<li id="fn23"><p>Subset of data from<a href="introductionToData.html#fnref23">↩</a></p></li>
+<li id="fn24"><p><span class="math inline">\(x_1\)</span> corresponds to the number of characters in the first email in the sample (21.7, in thousands), <span class="math inline">\(x_2\)</span> to the number of characters in the second email (7.0, in thousands), and <span class="math inline">\(x_i\)</span> corresponds to the number of characters in the <span class="math inline">\(i^{th}\)</span> email in the data set.<a href="introductionToData.html#fnref24">↩</a></p></li>
+<li id="fn25"><p>The sample size was <span class="math inline">\(n=50\)</span>.<a href="introductionToData.html#fnref25">↩</a></p></li>
+<li id="fn26"><p>Other ways to describe data that are skewed to the right: , , or .<a href="introductionToData.html#fnref26">↩</a></p></li>
+<li id="fn27"><p>The skew is visible in all three plots, though the flat dot plot is the least useful. The stacked dot plot and histogram are helpful visualizations for identifying skew.<a href="introductionToData.html#fnref27">↩</a></p></li>
+<li id="fn28"><p>Character counts for individual emails.<a href="introductionToData.html#fnref28">↩</a></p></li>
+<li id="fn29"><p>Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have <em>no</em> observations with the same value in a data set, which makes this other definition useless for many real data sets.<a href="introductionToData.html#fnref29">↩</a></p></li>
+<li id="fn30"><p>Unimodal. Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). (We’re hoping a <em>multicycle</em> will be invented to complete this analogy.)<a href="introductionToData.html#fnref30">↩</a></p></li>
+<li id="fn31"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="introductionToData.html#fnref31">↩</a></p></li>
+<li id="fn32"><p>The only difference is that the population variance has a division by <span class="math inline">\(n\)</span> instead of <span class="math inline">\(n-1\)</span>.<a href="introductionToData.html#fnref32">↩</a></p></li>
+<li id="fn33"><p>Figure [severalDiffDistWithSdOf1] shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="introductionToData.html#fnref33">↩</a></p></li>
+<li id="fn34"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="introductionToData.html#fnref34">↩</a></p></li>
+<li id="fn35"><p>While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.<a href="introductionToData.html#fnref35">↩</a></p></li>
+<li id="fn36"><p>That occasionally there may be very long emails.<a href="introductionToData.html#fnref36">↩</a></p></li>
+<li id="fn37"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1\approx\)</span> 3,000, <span class="math inline">\(Q_3\approx\)</span> 15,000, $=Q_3 - Q_1 $ 12,000. (The true values: <span class="math inline">\(Q_1=\)</span> 2,536, <span class="math inline">\(Q_3=\)</span> 15,411, $ = $ 12,875.)<a href="introductionToData.html#fnref37">↩</a></p></li>
+<li id="fn38"><p>(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice [numCharWhichIsMoreRobust].<a href="introductionToData.html#fnref38">↩</a></p></li>
+<li id="fn39"><p>Buyers of a “regular car” should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.<a href="introductionToData.html#fnref39">↩</a></p></li>
+<li id="fn40"><p>Statisticians often write the natural logarithm as <span class="math inline">\(\log\)</span>. You might be more familiar with it being written as <span class="math inline">\(\ln\)</span>.<a href="introductionToData.html#fnref40">↩</a></p></li>
+<li id="fn41"><p>Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="introductionToData.html#fnref41">↩</a></p></li>
+<li id="fn42"><p>0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.<a href="introductionToData.html#fnref42">↩</a></p></li>
+<li id="fn43"><p>0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.<a href="introductionToData.html#fnref43">↩</a></p></li>
+<li id="fn44"><p>The column proportions in Table [colPropSpamNumber] will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.<a href="introductionToData.html#fnref44">↩</a></p></li>
+<li id="fn45"><p>Answers may vary a little. The counties with population gains tend to have higher income (median of about $45,000) versus counties without a gain (median of about $40,000). The variability is also slightly larger for the population gain group. This is evident in the IQR, which is about 50% bigger in the <em>gain</em> group. Both distributions show slight to moderate right skew and are unimodal. There is a secondary small bump at about $60,000 for the <em>no gain</em> group, visible in the hollow histogram plot, that seems out of place. (Looking into the data set, we would find that 8 of these 15 counties are in Alaska and Texas.) The box plots indicate there are many observations far above the median in each group, though we should anticipate that many observations will fall beyond the whiskers when using such a large data set.<a href="introductionToData.html#fnref45">↩</a></p></li>
+<li id="fn46"><p>Answers will vary. The side-by-side box plots are especially useful for comparing centers and spreads, while the hollow histograms are more useful for seeing distribution shape, skew, and groups of anomalies.<a href="introductionToData.html#fnref46">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="FoundationForInference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/programmingforpsych/blob/master/01-V8.Rmd",
+"text": "Edit"
+},
+"download": ["Programming_Crump.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

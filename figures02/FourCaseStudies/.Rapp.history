@@ -1,0 +1,4475 @@
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0))#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- 10^5#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[7,3],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(10^4, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="")#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- 1e4#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[7,3],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="")#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[7,3],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE)#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE)#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 5000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 0.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 1000,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 100,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- 1e4 / number.of.simulations#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 30 * m.fact,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+text(0, 30 * m.fact,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.12, 25 * m.fact, 0.12, 35 * m.fact,#
+     col = COL[7,1])#
+text(0, 30 * m.fact,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.12, 25 * m.fact, 0.12, 35 * m.fact,#
+     col = COL[7,1], border = rgb(0,0,0,0))#
+text(0, 30 * m.fact,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.12, 22 * m.fact, 0.12, 38 * m.fact,#
+     col = rgb(1,1,1,0.5), border = rgb(0,0,0,0))#
+text(0, 30 * m.fact,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.12, 22 * m.fact, 0.12, 38 * m.fact,#
+     col = rgb(1,1,1,0.5), border = rgb(0,0,0,0))#
+text(0, 30 * m.fact, cex = 1.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.18, 10 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.5), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     paste0("CPR case study"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     paste0("Simulated Difference in Proportions\n",#
+            "of Students Who Do Not Buy the DVD"))#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 100 * m.fact, cex = 1.5,#
+     paste0("CPR case study"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 200 * m.fact, cex = 1.5,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.07, 13 * m.fact, 0.07, 27 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 200 * m.fact, cex = 1.5,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.085, 14 * m.fact, 0.085, 25 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5,#
+     "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 200 * m.fact, cex = 1.5,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.085, 14 * m.fact, 0.085, 26 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 1.5, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 200 * m.fact, cex = 1.5,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.085, 14 * m.fact, 0.085, 26 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 200 * m.fact, cex = 1.5,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.18, 9 * m.fact, 0.18, 30 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 200 * m.fact, cex = 1.5,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.05, 180 * m.fact, 0.05, 280 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 150 * m.fact, 0.07, 310 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR"))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.05, 20 * m.fact, 0.15, 40 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.033, 20 * m.fact, 0.165, 40 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 20 * m.fact, 0.155, 40 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 21 * m.fact, 0.155, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of\nSimulated Scenarios")#
+axis(1)#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 21 * m.fact, 0.155, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.45, 21 * m.fact, 0.55, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 30 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 21 * m.fact, 0.155, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.45, 14 * m.fact, 0.55, 26 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 20 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 21 * m.fact, 0.155, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 14 * m.fact, 0.58, 26 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 20 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 1000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 21 * m.fact, 0.155, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11 * m.fact, 0.58, 21 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.11, 12 * m.fact, 0.11, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.043, 21 * m.fact, 0.155, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11 * m.fact, 0.58, 21 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11 * m.fact, 0.58, 21 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 12 * m.fact, 0.58, 20 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant "))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11.5 * m.fact, 0.58, 19.5 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 140 * m.fact, 0.07, 320 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant"))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11.5 * m.fact, 0.58, 19.5 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 133 * m.fact, 0.07, 327 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 230 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38.5 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant"))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11 * m.fact, 0.58, 20 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('FourCaseStudies.pdf', 12, 8,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 153 * m.fact, 0.07, 347 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 250 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38.5 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant"))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11 * m.fact, 0.58, 20 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()
+library(openintro)#
+data(COL)#
+myPDF('FourCaseStudies.pdf', 12, 7.5,#
+      mar=c(2.5, 1.5, 1, 1.5), mgp=c(3.35,0.6,0),#
+      mfrow = c(2, 2))#
+number.of.simulations <- 10000#
+m.fact <- number.of.simulations / 1e3#
+#
+# _____ Opportunity Cost _____ ##
+set.seed(2)#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+nsim  = number.of.simulations#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(diffs, breaks = breaks, axes = FALSE,#
+         col = COL[2,2], xlab = "", ylab = "")#
+axis(1)#
+rect(-0.135, 12 * m.fact, 0.135, 28 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 20 * m.fact, cex = 2, "Opportunity Cost")#
+# _____ CPR / Blood Thinner _____ ##
+set.seed(1)#
+tr <- rep(1:2, c(50, 40))#
+su <- c(rep(c("s", "d"), c(11, 39)),#
+        rep(c("s", "d"), c(14, 26)))#
+N <- number.of.simulations * 10#
+d <- rep(NA, N)#
+for(i in 1:N){#
+	trf  <- sample(tr)#
+	p1   <- sum(su[trf == 1] == "s") / 50#
+	p2   <- sum(su[trf == 2] == "s") / 40#
+	d[i] <- p2 - p1#
+}#
+sum((d) > 0.1299) / N#
+udiffs    <- sort(unique(d))#
+bin.width <- diff(udiffs)[1]#
+breaks    <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+histPlot(d, breaks = breaks, col = COL[2,2],#
+         main="", xlab="", ylab="", axes=FALSE)#
+axis(1)#
+rect(-0.07, 153 * m.fact, 0.07, 347 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0, 250 * m.fact, cex = 2,#
+     paste0("CPR "))#
+# _____ Medical Consultant _____ ##
+set.seed(2)#
+pHat <- rbinom(number.of.simulations, 62, 0.1)/62#
+M    <- max(pHat)*62#
+histPlot(pHat, breaks=(-1:(2*M)+0.75)/2/62,#
+         xlab="", ylab="", axes = FALSE, col = COL[2,2])#
+axis(1)#
+rect(0.023, 21 * m.fact, 0.168, 38.5 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.1, 30 * m.fact, cex = 2,#
+     paste0("Medical Consultant"))#
+# _____ Tappers + Listeners _____ ##
+set.seed(6)#
+nsim <- number.of.simulations#
+n    <- 120#
+p    <- 0.5#
+X    <- matrix(sample(c(0,1), nsim * n, TRUE), nsim, n)#
+p.   <- apply(X, 1, sum) / n#
+un    <- sort(unique(p.))#
+bin.width <- diff(un)[10]#
+breaks <- c(un - bin.width / 4, un + bin.width / 4)#
+histPlot(p., breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "")#
+axis(1)#
+rect(0.42, 11 * m.fact, 0.58, 20 * m.fact,#
+     col = rgb(1,1,1,0.65), border = rgb(0,0,0,0))#
+text(0.5, 15.5 * m.fact, cex = 2,#
+     paste0("Tappers + Listeners"))#
+dev.off()

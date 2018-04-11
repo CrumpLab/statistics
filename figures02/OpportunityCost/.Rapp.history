@@ -1,0 +1,3559 @@
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 100#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}
+sim
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)
+sim[1:5, ]
+sim_dist
+hist(sim_dist)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 1000#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 1000#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch='.')#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.4, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1,4], cex=0.4, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 500#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+X
+length(diffs)
+X <- c()#
+Y <- c()#
+for(i in 1:length(diffs)){#
+	x   <- diffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}
+length(X)
+length(sim_dist)
+length(x)
+i <- diffs[10]
+rec <- sum(sim_dist == x)
+length(rec)
+rec
+x
+length(diffs)
+X <- c()#
+Y <- c()#
+udiffs <- unique(diffs)#
+for(i in 1:length(udiffs)){#
+	x   <- udiffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 1000#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- unique(diffs)#
+for(i in 1:length(udiffs)){#
+	x   <- udiffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 500#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+statistic <- function(var1, group){	#
+	t1 <- var1 == success & group == levels(as.factor(group))[1]#
+	t2 <- var1 == success & group == levels(as.factor(group))[2]#
+	sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+	sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- unique(diffs)#
+for(i in 1:length(udiffs)){#
+	x   <- udiffs[i]#
+	rec <- sum(sim_dist == x)#
+	X   <- append(X, rep(x, rec))#
+	Y   <- append(Y, 1:rec)#
+}#
+myPDF('OpportunityCostDotPlot.pdf', mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+plot(X, Y, xlim=range(diffs)+c(-1,1)*sd(diffs)/4, xlab = "Simulated difference in proportions of students who do not buy the DVD", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=20)#
+axis(1, at = seq(-0.4,0.4,0.1), labels = c(-0.4,"",-0.2,"",0,"",0.2,"",0.4))#
+abline(h=0)#
+dev.off()
+24/75 - 29/75
+24/75
+29/75
+diffs[1:5]
+diff(udiffs)[1]
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]
+bin.width
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 2, tail(udiffs, 1))
+histPlot(diffs, breaks = breaks)
+breaks <- c(udiffs - bin.width / 2, tail(udiffs, 1) + bin.width / 2)
+histPlot(diffs, breaks = breaks)
+histPlot(diffs, breaks = breaks, axes = FALSE)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 5000#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 2, tail(udiffs, 1) + bin.width / 2)
+histPlot(diffs, breaks = breaks, axes = FALSE)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1])
+axis(1)
+lines(c(0.2, 0.2), 0, 100, lty = 3, lwd = 3)
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)
+breaks <- c(udiffs - 0.0025, udiffs + 0.0025)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1])#
+axis(1)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)
+breaks <- c(udiffs - 0.005, udiffs + 0.005)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1])
+axis(1)
+breaks <- c(udiffs - 0.01, udiffs + 0.01)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1])
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1])
+axis(1)
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)
+text(0.2, 100, "observed\ndifference", pos = 4)
+text(0.2, 100, "observed\ndifference", pos = 3)
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = paste0("Simulated Difference in Proportions ",#
+                       "of Students Who Do Not Buy the DVD"),#
+         ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf',#
+      mar=c(3.4, 0.5, 0.5, 0.5), mgp=c(2.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = paste0("Simulated Difference in Proportions ",#
+                       "of Students Who Do Not Buy the DVD"),#
+         ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+dev.off()
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 7, 5,#
+      mar=c(3.4, 4, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 7, 5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 7, 4.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()
+mean(diff >= 0.2)
+mean(diffs >= 0.2)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+gender  <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(21, 3)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(14, 10)))#
+#
+nsim  = 10000#
+n     = length(gender)#
+group = gender#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+warnings()
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 100), lty = 3, lwd = 3)#
+text(0.2, 100, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 600, 200) / 5000)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 600, 200), labels = seq(0, 1000, 500) / 10000)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = seq(0, 1000, 500) / 10000)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / 10000))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios        ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / 10000))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 4,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / 10000))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / 10000))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 5000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / 10000))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / num.sim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 1000, 500) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 1000, 500) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.2)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 5000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)
+56 / 120
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 500, 250), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[1],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)
+myPDF('OpportunityCostDotPlot_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 270 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.8, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDotPlot_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 270 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.8, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+myPDF('OpportunityCostDotPlot_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 260 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.8, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+myPDF('OpportunityCostDotPlot_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.8, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.9, 2.3*0.7, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.13, 0.13, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.2 / 0.078) * 2
+mean(diffs >= 0.197)
+.2 / 0.078
+pnorm(-2.56)
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)
+library(openintro)#
+data(COL)
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.9, 2.3*0.8, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)
+myPDF('OpportunityCostDotPlot_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(8535)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+mean(diffs >= 0.197)
+library(openintro)#
+data(COL)#
+#
+set.seed(1)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+mean(diffs >= 0.197)
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19 | diffs < -0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+mean(diffs >= 0.197)
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2,2],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of Simulated Scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated Difference in Proportions ",#
+             "of Students Who Do Not Buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)
+sim_dist -> x
+X <- table(x)
+X
+x <- diffs
+X <- table(x)
+X
+xlim <- range(x)#
+  X <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height), type = "n", ...)
+width <- 5
+plot(0, 0, xlim = xlim, ylim = c(0, height), type = "n") #, ...)
+height <- max(X) / width
+plot(0, 0, xlim = xlim, ylim = c(0, height), type = "n") #, ...)
+plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)
+axis(1)#
+  axis(2)
+plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)
+xlim <- range(x)#
+  X <- table(sort(x))#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)
+x. <- X[1]
+x <- sort(x)#
+  xlim <- range(x)#
+  X <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)
+i <- 1
+x    <- sort(x)#
+  xu   <- unique(x)#
+  xlim <- range(x)#
+  X    <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)
+val <- xu[i]#
+    num <- X[i]
+val
+num
+rep(1:width, round(num / width) + 1)
+pos <- pos[1:nu]
+pos <- rep(1:width, round(num / width) + 1)
+pos <- pos[1:nu]
+pos
+diff(xu)
+spread <- min(diff(xu))
+spread
+spread <- min(diff(xu)) / width / 2
+spread
+pos <- rep(1:width, round(num / width) + 1)#
+    pos <- (pos[1:nu] - width / 2) * spread
+pos
+pos <- (pos[1:num] - width / 2) * spread
+pos
+rep(width, round(num / width) + 1)
+ver.pos <- rep(1:width, rep(width, round(num / width) + 1))#
+    ver.pos <- ver.pos[1:num]
+points(val + rel.pos, ver.pos)
+rep(width, round(num / width) + 1)
+1:width
+ver.pos <- rep(1:width, rep(1:round(num / width) + 1, width))
+ver.pos
+rel.pos
+pos     <- rep(1:width, round(num / width) + 1)#
+    rel.pos <- (pos[1:num] - width / 2) * spread
+rel.pos
+ver.pos <- rep(1:width, rep(1:round(num / width) + 1, width))
+ver.pos[1:num]
+rep(width, 1:round(num / width) + 1)
+num.rep <- round(num / width) + 1#
+    pos     <- rep(1:width, num.rep)#
+    rel.pos <- (pos[1:num] - width / 2) * spread#
+    ver.pos <- rep(1:width, num.rep)#
+    ver.pos <- ver.pos[1:num]
+ver.pos
+rel.pos
+points(val + rel.pos, ver.pos)
+num.rep
+rep(5, num.rep)
+ver.pos <- rep(1:width, rep(5, num.rep))
+ver.pos <- rep(1:num.rep, rep(width, num.rep))
+ver.pos
+ver.pos <- ver.pos[1:num]
+points(val + rel.pos, ver.pos)
+x    <- sort(x)#
+  xu   <- unique(x)#
+  xlim <- range(x)#
+  X    <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)#
+  spread <- min(diff(xu)) / width / 2#
+  for (i in seq_along(X)) {#
+    val     <- xu[i]#
+    num     <- X[i]#
+    num.rep <- round(num / width) + 1#
+    pos     <- rep(1:width, num.rep)#
+    rel.pos <- (pos[1:num] - width / 2) * spread#
+    ver.pos <- rep(1:num.rep, rep(width, num.rep))#
+    ver.pos <- ver.pos[1:num]#
+    points(val + rel.pos, ver.pos)#
+  }
+points(val + rel.pos, ver.pos, pch = 1)
+x    <- sort(x)#
+  xu   <- unique(x)#
+  xlim <- range(x)#
+  X    <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)#
+  spread <- min(diff(xu)) / width / 2#
+  for (i in seq_along(X)) {#
+    val     <- xu[i]#
+    num     <- X[i]#
+    num.rep <- round(num / width) + 1#
+    pos     <- rep(1:width, num.rep)#
+    rel.pos <- (pos[1:num] - width / 2) * spread#
+    ver.pos <- rep(1:num.rep, rep(width, num.rep))#
+    ver.pos <- ver.pos[1:num]#
+    points(val + rel.pos, ver.pos, pch = 1)#
+  }
+x    <- sort(x)#
+  xu   <- unique(x)#
+  xlim <- range(x)#
+  X    <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)#
+  spread <- min(diff(xu)) / width / 2#
+  for (i in seq_along(X)) {#
+    val     <- xu[i]#
+    num     <- X[i]#
+    num.rep <- round(num / width) + 1#
+    pos     <- rep(1:width, num.rep)#
+    rel.pos <- (pos[1:num] - width / 2) * spread#
+    ver.pos <- rep(1:num.rep, rep(width, num.rep))#
+    ver.pos <- ver.pos[1:num]#
+    points(val + rel.pos, ver.pos, pch = ".")#
+  }
+x <- x[1:1000]
+library(openintro)#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)
+x <- diffs[1:1000]
+x    <- sort(x)#
+  xu   <- unique(x)#
+  xlim <- range(x)#
+  X    <- table(x)#
+  height <- max(X) / width#
+  plot(0, 0, xlim = xlim, ylim = c(0, height),#
+       type = "n", axes = FALSE) #, ...)#
+  axis(1)#
+  spread <- min(diff(xu)) / width / 2#
+  for (i in seq_along(X)) {#
+    val     <- xu[i]#
+    num     <- X[i]#
+    num.rep <- round(num / width) + 1#
+    pos     <- rep(1:width, num.rep)#
+    rel.pos <- (pos[1:num] - width / 2) * spread#
+    ver.pos <- rep(1:num.rep, rep(width, num.rep))#
+    ver.pos <- ver.pos[1:num]#
+    points(val + rel.pos, ver.pos, pch = ".")#
+  }
+COL[1]
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+DotPlotRegularized(diffs, xlab = xlab)
+abline(h = 0)
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsRightTail.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab)#
+dev.off()
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab)#
+dev.off()
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 6.5, 3.25,#
+      mar=c(3.7, 0.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+dev.off()
+myPDF('OpportunityCostDiffsDotPlot.pdf', 6.5, 3.25,#
+      mar=c(4.7, 0.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+dev.off()
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 0.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 0.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+text(0.2, 10, "observed\ndifference")#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+text(0.2, 10, "observed\ndifference")#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 1000, 500), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+text(0.2, 10, "observed\ndifference")#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 500, 250) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "")#
+text(0.2, 10, "observed\ndifference")#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 3)#
+text(0.2, 10, "observed\ndifference")#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 3)#
+text(0.2, 10, "observed\ndifference", pox = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 3)#
+text(0.2, 10, "observed\ndifference", pox = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 3)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 3.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 3, lwd = 3)#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7.5, 4.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 2, lwd = 3, col = COL[6])#
+dev.off()
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7.5, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 2, col = COL[6])#
+dev.off()
+sum(x > 0.19)
+sum(diffs > 0.19)
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 2, col = COL[6])#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7, 4.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 2, col = COL[6])#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7, 3.5,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.5,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 2, col = COL[6])#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 10, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 10), lty = 2, col = COL[6])#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 30), lty = 3, lwd = 3)#
+text(0.2, 30, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 6, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 6), lty = 2, col = COL[6])#
+dev.off()
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 5, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 5), lty = 2, col = COL[6])#
+dev.off()
+1/ 0.006
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 1000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+myPDF('OpportunityCostDiffsDotPlot.pdf', 7, 4.25,#
+      mar=c(4.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+DotPlotRegularized(diffs, xlab = xlab, ylab = "", cex = 2)#
+text(0.2, 5, "observed\ndifference", pos = 3)#
+lines(rep(0.2, 2), c(0, 5), lty = 2, col = COL[6])#
+dev.off()#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+myPDF('OpportunityCostDiffsRightTail.pdf', 7, 3.25,#
+      mar=c(3.7, 4.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = rgb(1,1,1),#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+diffs.tmp <- diffs[diffs > 0.19]#
+histPlot(diffs.tmp, breaks = breaks, col = COL[1], add = TRUE)#
+axis(1)#
+axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))#
+lines(c(0.2, 0.2), c(0, 30), lty = 3, lwd = 3)#
+text(0.2, 30, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(xlab, 1, 2.5)#
+dev.off()#
+#
+mean(diffs >= 0.197)
+library(openintro)#
+source("helper.R")#
+data(COL)#
+#
+set.seed(2)#
+#
+group   <- c(rep('control', 75), rep('treatment', 75))#
+outcome <- c(rep(c('buy DVD', 'do not buy DVD'), c(56, 19)),#
+             rep(c('buy DVD', 'do not buy DVD'), c(41, 34)))#
+#
+nsim  = 10000#
+n     = length(group)#
+group = group#
+var1  = outcome#
+success = "do not buy DVD"#
+sim   = matrix(NA, nrow = n, ncol = nsim)#
+n1    = n2 = 75#
+#
+Statistic <- function(var1, group){	#
+  t1 <- var1 == success & group == levels(as.factor(group))[1]#
+  t2 <- var1 == success & group == levels(as.factor(group))[2]#
+  sum(t1)/n1 - sum(t2)/n2 #
+}#
+#
+for(i in 1:nsim){#
+  sim[,i] = sample(group, n, replace = FALSE)#
+}#
+#
+sim_dist = apply(sim, 2, Statistic, var1 = outcome)#
+diffs    = sim_dist#
+pval     = sum(diffs >= 0.29) / nsim#
+values  <- table(sim_dist)#
+#
+xlab <- paste0("Simulated difference in proportions ",#
+               "of students who do not buy the DVD")#
+X <- c()#
+Y <- c()#
+udiffs <- sort(unique(diffs))#
+for(i in 1:length(udiffs)){#
+  x   <- udiffs[i]#
+  rec <- sum(sim_dist == x)#
+  X   <- append(X, rep(x, rec))#
+  Y   <- append(Y, 1:rec)#
+}#
+#
+bin.width <- diff(udiffs)[1]#
+breaks <- c(udiffs - bin.width / 4, udiffs + bin.width / 4)#
+diffs.tmp <- diffs[diffs > 0.19]#
+#
+mean(diffs >= 0.197)#
+myPDF('OpportunityCostDiffs_w_normal.pdf', 6.5, 3.25,#
+      mar=c(3.7, 1.5, 0.5, 0.5), mgp=c(3.35,0.6,0))#
+histPlot(diffs, breaks = breaks, axes = FALSE, col = COL[2],#
+         xlab = "", ylab = "Proportion of simulated scenarios                ")#
+axis(1)#
+x0 <- seq(-.5, .5, length.out = 1000)#
+y0 <- dnorm(x0, 0, 0.078)#
+lines(x0, 250 * y0)#
+lines(c(0.2, 0.2), c(0, 300), lty = 3, lwd = 3)#
+text(0.2, 300, "observed\ndifference", pos = 3)#
+par(las = 0)#
+mtext(paste0("Simulated difference in proportions ",#
+             "of students who do not buy the DVD"), 1, 2.5)#
+dev.off()#
+#
+myPDF('OpportunityCostDiffs_normal_only.pdf',#
+      5*0.9, 2.3, mar = c(2, 0.5, 0.2, 0.5))#
+normTail(0, 0.078, -0.2, 0.2, col = COL[1])#
+dev.off()#
+#
+pnorm(-0.197 / 0.078) * 2
