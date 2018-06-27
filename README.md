@@ -10,6 +10,8 @@ This is an in draft FREE Statistics for Undergrads in Psychology Textbook, on a 
 
 Thank you to the original author's for their fantastic work.
 
+3. We are adding our own stuff too! 
+
 ## What are our plans for Summer 2018 
 
 1. We are writing the book in Rmarkdown, using the bookdown package. Rmarkdown is super convenient for this purpose. All of the source code for compiling the book will be here.
