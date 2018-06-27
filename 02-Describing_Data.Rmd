@@ -1,5 +1,382 @@
 # Describing Data {#DescribingData}
 
+This chapter is about **descriptive statistics**. These are tools for describing data. Some things to keep in mind as we go along are:
+
+  1. There are lots of different ways to describe data
+  2. There is more than one "correct" way, and you get to choose the most "useful" way for the data that you are describing
+  3. It is possible to invent new ways of describing data, all of the ways we discuss were previously invented by other people, and they are commonly used because they are useful.
+  4. Describing data is necessary because there is usually too much of it, so it doesn't make any sense by itself.
+  
+## This is what too many numbers looks like
+
+Let's say you wanted to konw how happy people are. So, you ask thousands of people on the street how happy they are. You let them pick any number they want from negative infinity to positive infinity. Then you record all the numbers. Now what?
+
+Well, how about you look at the numbers and see if that helps you determine anything about how happy people are. What could the numbers look like. Perhaps something like this:
+
+```{r,echo=F}
+happiness<-rnorm(500,100,500)
+knitr::kable(matrix(round(happiness),ncol=10,nrow=50))
+```
+
+Now, what are you going to with that big pile of numbers? Look at it all day long?. When you deal with data, it will deal so many numbers to you that you will be overwhelmed by them. That is why we need ways to describe the data in a more manageable fashion. 
+
+The complete description on the data is always the data itself. **Descriptive statistics** and other tools for describing data go one step further to summarize aspects of the data. Summaries are a way to compress the important bits of a thing down to a useful and manageable tidbit. It's like telling your friends why they should watch a movie. When they ask what it is about, you don't replay the entire movie for them, instead you hit the highlights. Summarizing the data is just like a movie preview, only for data.
+
+## Look at the data
+
+We already tried one way of looking at the numbers, and it wasn't useful. Let's look at some other ways of looking at the numbers in graphs. Graphing data by putting them in plots or figures can help us see the data.
+
+### Stop, plotting time (o o oh) U can plot this
+
+Let's turn all of the numbers into dots, then show them in a graph. Note, when we do this we have not yet summarized anything about the data. Instead, in this step we just look at all of the data in a visual format, rather than looking at the numbers. 
+
+```{r happyPlot, echo=F, fig.cap="Pretend happiness ratings from 500 people"}
+plot(happiness)
+```
+
+Figure \@ref(fig:happyPlot) shows 500 measurements of happiness. The graph has two axes. The horizontal **x-axis**, going from left to right is labeled "Index". The vertical **y-axis**, going up and down, is labelled "happiness". Each dot represents one measurement of every person's happiness from our pretend study. Before we talk about what we can and cannot see about the data, it is worth mentioning that the way you plot the data will make some things easier to see and some things harder to see. So, what can we now see about the data?
+
+There are lots of dots everywhere. It looks like there are 500 of them because the index goes to 500. It looks like some dots go as high as 1000-1500 and as low as -1500. It looks like there are more dots in the middleish area of the plot, sort of spread about 0. 
+
+>Take home: we can see all the numbers at once by putting them in a plot, and that is much easier and more helpful than looking at the raw numbers.
+
+Ok, so if these dots represent how happy 500 people are, what can we say about those people? First, the dots are kind of all over the place, so different people have different levels of happiness. Are there any trends? Are more people happy than unhappy, or vice versa? It's hard to see that in the graph, so let's make a different one, called a **histogram**
+
+### Histograms
+
+Making a histogram will be our first act of officially summarizing something about the data. We will no longer the individual bits of data, instead we will see how the numbers group together. Let's look at a histogram of the happiness data, and then explain it.
+
+```{r happyHist, echo=F, fig.cap="A histrogram of the happiness ratings"}
+hist(happiness)
+```
+The dots have disappeared, and now we some bars. Each bar is a summary of the dots, representing the number of dots (frequency count) inside a particular range of happiness, also called **bins**. For example, how many people gave a happiness rating between 0 and 500? Well, the fifth bar, the one between 0 and 500 and the x-xaxis, tells you how many? Look how tall that bar is. How tall is it? Well, the height is shown on the y-axis, which provides a frequency count (the number of dots or data points). It looks like around 150 people sad their happiness was between 0-500.
+
+More generally, we see there are many bins on the x-axis. We have divided the data into bins of 500. Bin \#1 goes from -2000 to -1500, bin \#2 goes from -1500 to -1000, and so until the last bin. To make the histogram, we just count up the number of data points falling inside each bin, then plot those frequency counts as a function of the bins. Voila, a histogram.
+
+What does the histogram help us see about the data? First, we can see the **shape** of data. The shape of the histogram refers to how it goes up and down. The shape tells us where the data is. For example, when the bars are low we know there isn't much data there. When the bars are high, we know there is more data there. So, where is most of the data? It looks like it's mostly in the middle two bins, between -500 and 500. We can also see the **range** of the data. This tells us the minimums and the maximums of the data. Most of the data is between -1500 and +1500, so no infite sadness or infinite happiness in our dataset.
+
+## Important Ideas: Distribution, Central Tendency, and Variance
+
+Let's introduce a three important terms we will use alot, **distribution**, **central tendency**, and **variance**. These terms are similar to their everyday meanings (although I suspect most people don't say central tendency very often).
+
+**Distribution.** When you order something from Amazon, where does it come from, and how does it get to your place? That stuff comes from one of Amazon's distribution centers. They distribute all sorts of things by spreading them around to your doorstep. Distribute is spreading something. Notice, the histogram, distributes the data by spreading the numbers across the bins. We can also talk about a distribution as a noun. The histogram is a distribution of the frequency counts across the bins. Distributions are **very, very, very, very, very** important. They can have many different shapes. They can describe data, like in the histogram above. And as we will learn in later chapters, they can **produce** data. Many times we will be asking questions about where our data came from, and this usually means asking what kind of distribution could have created our data (more on that later.)
+
+**Central Tendency** is all about sameness. Is there anything similar about all of the numbers in the histogram? Yes, we can say that most of them are near 0. There is a tendency for most of the numbers to be centered near 0. Notice we are being cautious about our generalization about the numbers. We are not saying they are all 0. We are saying there is a tendency for many of them to be near zero. There are lots of ways to talk about the central tendency of some numbers. There can even be more than one kind of tendency. For example, if lots of the numbers were around -1000, and a simlar large amount of numbers were grouped around 1000, we could say there was two tendencies.
+
+**Variance** is all about differentness. Is there anything different about all of the numbers in the histogram? YES!!! The numbers are not all the same! When the numbers are not all the same, they must vary. So, the variance in the numbers refers to how the numbers are different. There are many ways to summarize the amount of variance in the numbers, and we discuss these very soon.
+
+## Measures of Central Tendency (Sameness)
+
+We've seen that we can get a sense of data by plotting dots in a graph, and by making a histogram. These tools show us what the numbers look like, approximately how big and small they are, and how similar and different they are from another. It is good to get a feeling about the numbers in this way. But, these visual sensitudes are not very precise. In addition to summarizing numbers with graphs, we can summarize numbers using numbers (NO, please not more numbers, we promise numbers can be your friend).
+
+### From many numbers to one
+
+Measures of central have one important summary goal: to reduce a pile of numbers to a single number that we can look at. We already know looking at thousands of numbers is hopeless. Wouldn't it be nice if we could just look at one number instead? We think so. It turns out there are lots of ways to do this. Then, if your friend ever asks the frightening question, "hey, what are all these numbers like?". You can say they are like this one number right here.
+
+But, just like in Indiana Jones and the Last Crusade (highly recommended movie), you must choose your measure of central tendency wisely. 
+
+### Mode
+
+The **mode** is the most frequently occuring number in your measurement. That is it. How do you find it? You have count the number of times each number appears in your measure, then whichever one occurs the most, is the mode.
+
+> Example: 1 1 1 2 3 4 5 6
+
+The mode of the above set is 1, which occurs three times. Every other number only occurs once.
+
+Ok fine. What happens here:
+
+> Example: 1 1 1 2 2 2 3 4 5 6
+
+Hmmm, now 1 and 2 both occur three times each. What do we do? We say there are two modes, and they are 1 and 2.
+
+Why is the mode a measure of central tendency? Well, when we ask, "what are my numbers like", we can say, "most of the number are, like a 1 (or whatever the mode is)".
+
+Is the mode a good measure of central tendency? Well, that depends on your numbers. For example, consider these numbers
+
+> 1 1 2 3 4 5 6 7 8 9
+
+Here, the mode is 1 again, because there are two 1s, and all of the other numbers occur once. But, are most of the numbers like, a 1. No, they are mostly not 1s.
+
+"Argh, so should I or should I not use the mode? I thought this class was supposed to tell me what to do?". There is no telling you what to do. Everytime you use a tool in statistics you have to think about what you are doing and justify why what you are doing makes sense. Sorry.
+
+### Median
+
+The **median** is the exact middle of the data. After all, we are asking about central tendency, so why not go to the center of the data and see where we are. What do you mean middle of the data? Let's look at these numbers:
+
+> 1 5 4 3 6 7 9
+
+Umm, ok. So, three is in the middle? Isn't that kind of arbitrary. Yes. Before we can compute the median, we need to order the numbers from smallest to largest.
+
+> 1 3 4 **5** 6 7 9
+
+Now, 5 is in the middle. And, by middle we mean in the middle. There are three numbers to the left of 5, and three numbers to the right. So, five is definetely in the middle.
+
+Ok fine, but what happens when there aren't an even number of numbers? Then the middle will be missing right? let's see
+
+> 1 2 3 4 5 6
+
+There is no number between 3 and 4, the middle is empty. In this case, we compute the median by figuring out the number in between 3 and 4. So, the median would be 3.5.
+
+Is the median a good measure of central tendency? Sure, it is often very useful. One property of the median is that it stays in the middle even when some of the other numbers get really weird. For example, consider these numbers:
+
+> 1 2 3 4 4 4 **5** 6 6 6 7 7 1000
+
+Most of these numbers are smallish, but the 1000 is a big old weird number, very different from the rest. The median is still 5, because it is in the middle of these ordered numbers. We can also see that five is pretty similar to most of the numbers (except for 1000). So, the median does a pretty good job of representing most of the numbers in the set, and it does so even if one or two of the numbers are very different from the others.
+
+Finally, **outlier** is a term will we use to describe numbers that appear in data that are very different from the rest. 1000 is an outlier, because it lies way out there on the number compared to the other numbers. What to do with outliers is another topic we cover later in the book.
+
+### Mean
+
+Have you noticed this is a textbook about statistics that hasn't used a formula yet? That is about to change, but for those of you with formula anxiety, don't worry, we will do our best to explain them.
+
+The **mean** is also called the average. And, we're guessing you might already now what the average of a bunch of numbers is? It's the sum of the numbers, divided by the number of number right? How do we express that idea in a formula? Just like this:
+
+$Mean = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N}$
+
+"That looks like Greek to me". Yup. The $\sum$ symbol is calleged **sigma**, and it stands for the operation of summing. The little "i" on the bottom, and the little "n" on the top refers to all of the numbers in the set, from the first number "i" to the last number "n". The letters are just arbitrary labels, called **variables** that we use for descriptive purposes. The $x_{i}$ refers to individual numbers in the set. We sum up all of the numbers, then divide the sum by $N$, which is the total number of numbers. Sometime you will see $\bar{X}$ to refer to the mean of all of the numbers inside $X_{i}$, which refers to all of our numbers.
+
+In plain english, the formula looks like:
+
+$mean = \frac{\text{Sum of my numbers}}{\text{Count of my numbers}}$
+
+"Well, why didn't you just say that?". We just did.
+
+Let's compute the mean for these five numbers:
+
+> 3 7 9 2 6
+
+Add em up:
+
+> 3+7+9+2+6 = 27
+
+Count em up:
+
+> $i_{1}$ = 3, $i_{2}$ = 7, $i_{3}$ = 9, $i_{4}$ = 2, $i_{5}$ = 6; N=5, because $i$ went from 1 to 5
+
+Divide em:
+
+> mean = 27 / 5 = 5.4
+
+Or, to put the numbers in the formula, it looks like this:
+
+$Mean = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N} = \frac{3+7+9+2+6}{5} = \frac{27}{5} = 5.4$
+
+Ok fine, that is how to compute the mean. But, like we imagined, you probably already knew that, and if you didn't that's ok, now you do. What's next?
+
+Is the mean a good measure of central tendency? You should know now the answer to this question is: it depends. 
+
+### What does the mean mean?
+
+It is not enough to know the formula for the mean, or to be able to use the formula to compute a mean for a set of numbers. We believe in your ability to add and divide numbers. What you really need to know is what the mean really "means". This requires that you know what the mean does, and not just how to do it. Puzzled? Let's explain.
+
+Can you answer this question: What happens when you divide a sum of numbers by the number of numbers? What are the consequences of doing this? What is the formula doing? What kind of properties does the result give us? FYI, the answer is not that we compute the mean.
+
+Ok, so what happens when you divide any number by another number? Of course, the key word here is divide. We literally carve the number up top in the numerator into pieces. How many times do we split the top number? That depends on the bottom number in the denominator. Watch:
+
+$\frac{12}{3} = 4$
+
+So, we know the answer is 4. But, what is really going on here is that we are slicing and dicing up 12 aren't we. The answer 4 tells us that we can slice and dice 12 up into three perfect pieces. So, now we are thinking of 12 as three different pieces $= 4 + 4 + 4$. I know this will be obvious, but what kind of properties do our pieces have? You mean the fours? Yup. Well, obviously they are all fours. Yes. The pieces are all the same size. They are all equal. So, division equalizes the numerator by the denominator...
+
+"Umm, I think I learned this in elementary school, what does this have to do with the mean?". The number on top of the formula for the mean is just another numerator being divided by a denominator isn't it. In this case, the numerator is a sum of all the values in your data. What if it was the sum of all of the happiness ratings? We saw earlier that there were 500 people gave different ratings. The sum of all of them would just be a single number adding up all the different ratings. If we split the sum up into equal parts representing one part for each person's happiness what would we get? We would get 500 identical and equal numbers for each person. It would be like taking all of the happiness in the world, then dividing it up equally, then to be fair, giving back the same equal amount of happiness to everyone in the world. This would make some people more happy than they were before, and some people less happy right. Of course, that's because it would be equalizing the distribution of happiness for everybody. This process of equalization by dividing something into equal parts is what the **mean** does. See, it's more than just a formula. It's an idea. This is just the beginning of thinking about these kinds of ideas. We will come back to this idea about the mean, and other ideas, in later chapters.
+
+> Pro tip: The mean is the one and only number that can take the place of every number in the data, such that when you add up all the equal parts, you get back the original sum of the data.
+
+## Measures of Variation (Differentness)
+
+What did you do when you wrote essay's in high school about a book you read? Probably compare and contrast something right? When you summarize data, you do the same thing. Measures of central tendency give us something like comparing does, it tells us stuff about what is the same. Measures of Variation give us something like contrasting does, it tells us stuff about what is different.
+
+First, we note that whenever you see a bunch of numbers that aren't the same, you already know there are some differences. This means the numbers vary, and there is variation in the size of the numbers.
+
+### The Range
+
+Consider these 10 numbers, that I already ordered from smallest to largest for you:
+
+> 1 5 4 3 6 5 7 8 9 24
+
+The numbers have variation, because they are not all the same. We can use the range to describe the width of the variation. The range refers to the **minimum** (smallest value) and **maximum** (largest value) in the set. So, the range would be 1 and 24.
+
+The range is a good way to quickly summarize the boundaries of your data in just two numbers. By computing the range we know that none of the data is larger or smaller than the range. And, it can alert you to outliers. For example, if you are expecting your numbers to be between 1 and 7, but you find the range is 1 - 340,500, then you know you have some big numbers that shouldn't be there, and then you can try to figure out why those numbers occured (and potentially remove them if something went wrong).
+
+### The Difference Scores
+
+It would be nice to summarize the amount of differentness in the data. Here's why. If you thought that raw data (lots of numbers) is too big to look at, then you will be frightened to contemplate how many differences there are to look at. For example, these 10 numbers are easy to look at:
+
+> 1 5 4 3 6 5 7 8 9 24
+
+But, what about the difference between the numbers, what do those look like? We can compute the difference scores between each number, then put them in a matrix like the one below:
+
+```{r,echo=F}
+numbers<-c(1, 5, 4, 3, 6, 5, 7, 8, 9, 24)
+mat<-matrix(rep(numbers,10),ncol=10)
+differences<-t(mat)-numbers
+row.names(differences)<-numbers
+colnames(differences)<-numbers
+knitr::kable(differences,row.names=T)
+
+```
+
+We are looking at all of the possible differences between each number and every other number. So, in the top left, the difference between 1 and itself is 0. One column over to the right, the difference between 5 and 1 (5-1) is 4, etc. As you can see, this is a 10x10 matrix, which means there are 100 differences to look at. Not too bad, but if we had 500 numbers, then we would have 500*500 = 250,000 differences to look at (go for it if you like looking at that sort of thing). 
+
+Pause for a simple question. What would this matrix look like if all of the 10 numbers in our data were the same number? It should look like a bunch of 0s right? Good. In that case, we could easily see that the numbers have no variation.
+
+But, when the numbers are different, we can see that there is a very large matrix of difference scores. How can we summarize that? How about we apply what we learned from the previous section on measures of central tendency. We have a lot of differences, so we could ask something like, what is the average difference that we have? So, we could just take all of our differences, and compute the mean difference right? What do you think would happen if we did that?
+
+Let's try it out on these three numbers:
+
+> 1 2 3
+
+```{r,echo=F}
+numbers<-c(1, 2,3)
+mat<-matrix(rep(numbers,3),ncol=3)
+differences<-t(mat)-numbers
+row.names(differences)<-numbers
+colnames(differences)<-numbers
+knitr::kable(differences, row.names=T)
+```
+
+You might already guess what is going to happen. Let's compute the mean:
+
+$\text{mean of difference scores} = \frac{0+1+2-1+0+1-2-1+0}{9} = \frac{0}{9} = 0$
+
+Uh oh, we get zero for the mean of the difference scores. This will always happen whenever you take the mean of the difference scores. We can see that there are some differences between the numbers, so using 0 as the summary value for the variation in the numbers doesn't make much sense.
+
+Furthermore, you might also notice that the matrices of difference scores are redundant. The diagonal is always zero, and the top numbers are the same as the bottom numbers, except their signs are reversed.
+
+These are little problems that can be solved by computing the **variance** and the **standard deviation**. For now, the standard deviation is a just a trick that we use to avoid getting a zero. But, later we will see it has properties that are important for other reasons.
+
+### The Variance
+
+Variability, variation, variance, vary, variable, varying, variety. Confused yet? Before we describe **the variance**, we want to you be ok with how this word is used. First, don't forget the big picture. We know that variability and variation refers to the big idea of differences between numbers. We can even use the word variance in the same way. When numbers are different, they have variance.
+
+The word **variance** also refers to a specific summary statistic, the sum of the squared deviations from the mean. Hold on what? Plain english please. The variance is the sum of the squared difference scores, where the difference scores are computed between each score and the mean. What are these scores? The scores are the numbers in the data set. Let's see the formula in English first:
+
+$variance = \frac{\text{Sum of squared difference scores}}{\text{Number of Scores}}$
+
+#### Deviations from the mean, Difference scores from the mean
+
+We got a little bit complicated before when we computed the difference scores between all of the numbers in the data. Let's do it again, but in more manageable way. This time, we calculate the difference between each score and the mean. The idea here is
+
+1. We can figure out how similar our scores our by computing the mean
+2. Then we can figure out how different our scores our from the mean
+
+This could tell us, 1) something about whether our scores are really all very close to the mean (which could help us know if the mean is good representative number of the data), and 2) something about how much differences there are in the numbers.
+
+Take a look at this table:
+
+```{r,echo=F, message=F,warning=F}
+library(janitor)
+library(dplyr)
+scores<-1:6
+values<-c(1,6,4,2,6,8)
+mean_scores<-mean(values)
+Difference_from_Mean<-values-mean_scores
+the_df<-data.frame(scores,values,mean=rep(mean_scores,6),Difference_from_Mean)
+
+the_df <- the_df %>%
+  rbind(c("Sums",colSums(the_df[1:6,2:4]))) %>%
+  rbind(c("Means",colMeans(the_df[1:6,2:4])))
+knitr::kable(the_df)
+
+```
+
+The first column shows we have 6 scores in the dataset, and the 'value' columns shows each score. The sum of the values, and the mean is presented on the last two rows. These values were obtained by $\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4.5$. 
+
+The third column 'mean', appears a bit silly. We are just listing the mean once for every score. If you think back to our discussion about the meaning of the mean, then you will remember that it equally distributes the total sum across each datapoint. We can see that here, if we treat each score as the mean, then every score is a 4.5. We can also see that adding up all of the means for each score gives us back 27, which is the sum of the original values. Also, we see that if we find the mean of the mean scores, we get back the mean (4.5 again).
+
+All of the action is occuring in the fourth column, 'Difference_from_Mean'. Here, we are showing the difference scores from the mean, using $X_{i}-\bar{X}$. In other words, we subtracted the mean from each score. So, the first score, 1, is -3.5 from the mean, the second score, 6, is +1.5 from the mean, and so on.
+
+Now, we can look at our original scores, and we can look at their differences from the mean. Notice, we don't have a matrix of raw difference scores, so it is much easier to look at out. But, we still have a problem. We can see that there are non-zero values in the difference scores. But, when we add them all up, we still get zero, which makes it seem like there are a total of zero differences in the data...Why does this happen...and what to do about it?
+
+#### The mean is the balancing point in the data
+
+One brief pause here to point out another wonderful property of the mean. It is the balancing point in the data. If you take a pen or pencil and try to balance it on your figure so it lays flat what are you doing. You need to find the center of mass in the pen, so that have of it is one side, and the other half is on ther other side. That's how balancing works. One side = the other side. 
+
+We can think of data as having mass or weight to it. If we put our data on our bathroom scale, we could figure out how heavy it was by summing it up. If we wanted to split the data down the middle so that half of it's weight was equal to the other half, then we could balance the data on top of a pin. The mean of the data tells you where to put the pin. It is the location in the data, where on the one side the numbers add to the same sum as the numbers on the other side.
+
+If we think this through, it means that the sum of the difference scores from the mean will always add up to zero. This is because the numbers on one side of the mean will always add up to -x (whatever the sum of those numbers is), and the numbers of the other side of the mean will always add up to +x (which will be the same value only positive). And:
+
+$-x + x = 0$, right. 
+
+Right.
+
+#### The squared deviations
+
+Some devious someone devined a solution to the fact that differences scores from the mean always add to zero. Can you think of any solutions? For example, what could you do to the difference scores so that you could add them up, and they would weigh something useful, that is they would not be zero?
+
+The devious solution is to square the numbers. Squaring numbers converts all the negative numbers to positive numbers. For example, $2^2 = 4$, and $-2^2 = 4$. Remember how squaring works, we multiply the number twice: $2^2 = 2*2 = 4$, and $-2^2 = -2*-2 = 4$. We use the term **squared deviations** to refer to differences scores that have been squared. Deviations are things that move away from something. The difference scores move away from the mean, so we also call them **deviations**.
+
+Let's look at our table again, but add the squared deviations.
+
+```{r,echo=F}
+scores<-1:6
+values<-c(1,6,4,2,6,8)
+mean_scores<-mean(values)
+Difference_from_Mean<-values-mean_scores
+Squared_Deviations <- Difference_from_Mean^2
+the_df<-data.frame(scores,values,mean=rep(mean_scores,6),Difference_from_Mean,Squared_Deviations)
+
+the_df <- the_df %>%
+  rbind(c("Sums",colSums(the_df[1:6,2:5]))) %>%
+  rbind(c("Means",colMeans(the_df[1:6,2:5])))
+knitr::kable(the_df)
+
+```
+
+Ok, now we have new column called `squared_deviations`. These are just the difference scores squared. So, $-3.5^2 = 12.25$, etc. You can confirm for yourself with your cellphone calculator.
+
+Now that all of the squared deviations are positive, we can add them up. When we do this create something very special called the sum of squares (SS), also known as the sum of the squared deviations from the mean. We will talk at length about this SS later on in the ANOVA chapter. So, when you get there, remember that you already know what it is, just some sums of some squared deviations, nothing fancy.
+
+#### Finally, the variance
+
+Guess what, we already computed the variance. It already happened, and maybe you didn't notice. "Wait, I missed that, what happened?".
+
+First, see if you can remember what we are trying to do here. Trying pausing before reading to see you if can tell yourself what problem we are trying solve.
+
+Without further ado, we are trying to get a summary of the differences in our data. There are just as many difference scores from the mean as there are data points, which can be alot, so it would be nice to have a single number to look at, something like a mean, that would tell us about the average differences in the data.
+
+If you look at the table, you can see already computed the mean of the squared deviations. First, we found the sum (SS), then below that we calcuated the mean = 5.916 repeating. This is **the variance**. The variance is the mean of the sum of the squared deviations:
+
+$variance = \frac{SS}{N}$, where SS is the sum of the squared deviations, and N is the number of observations.
+
+Ok, now what. What do I do with the variance? What does this number mean? Good question. The variance is often an unhelpful number to look at. Why? Because it is not in the same scale as the original data. This is because we sqared the difference scores before taking the mean. Squaring produces large numbers. For example, we see a 12.25 in there. That's a big difference, bigger than any difference between any two original values. What to do? How can we bring the numbers back down to their original unsquared size?
+
+If you are thinking about taking the square root, that's a ding ding ding, correct answer for you. We can always unsquare anything by taking the square root. So, let's do that to 5.916. $\sqrt{5.916} =$ `r sqrt(5.916)`.
+
+### The Standard Deviation
+
+Oops, we did it again. We already computed the standard deviation, and we didn't tell you. The standard deviation is the square root of the variance...At least, it is right now, until we complicate matters for you in the next chapter.
+
+Here is the formula for the standard deviation:
+
+$\text{standard deviation} = \sqrt{Variance} = \sqrt{\frac{SS}{N}}$.
+
+Don't let that big square root sign put you off. Now, you know what it is doing there. It is brining our measure of the variance back down to the original size of the data. Let's look at our table again:
+
+```{r,echo=F}
+scores<-1:6
+values<-c(1,6,4,2,6,8)
+mean_scores<-mean(values)
+Difference_from_Mean<-values-mean_scores
+Squared_Deviations <- Difference_from_Mean^2
+the_df<-data.frame(scores,values,mean=rep(mean_scores,6),Difference_from_Mean,Squared_Deviations)
+
+the_df <- the_df %>%
+  rbind(c("Sums",colSums(the_df[1:6,2:5]))) %>%
+  rbind(c("Means",colMeans(the_df[1:6,2:5])))
+knitr::kable(the_df)
+
+```
+
+We measured the standard deviation as `r sqrt(5.916)`. Notice this number fits right in the with differences scores from the mean. All of the scores are kind of in and around + or - `r sqrt(5.916)`. Whereas, if we looked at the variance, 5.916 is just too big, it doesn't summarize the actual differences very well.
+
+What does all this mean? Well, if someone told they had some number with a mean of 4.5 (like the values in our table), and a standard deviation of `r sqrt(5.916)`, you would get a pretty good summary of the numbers. You would know that lots of the numbers are spread about 4.5, and are + or - `r sqrt(5.916)` from 4.5. That's a good start for describing numbers. If you had loads of numbers, you could reduce them down to the mean and the standard deviation, and still be pretty well off in terms of getting a sense of those numbers.
+
+
+
+
+
+
+
 ## Examining numerical data {#numericalData}
 
 This section introduces techniques for exploring and summarizing numerical variables, and the **email50** and **county** data sets from Section \@ref(dataBasics) provide rich opportunities for examples. Recall that outcomes of numerical variables are numbers on which it is reasonable to perform basic arithmetic operations. For example, the **pop20** variable, which represents the populations of counties in 2010, is numerical since we can sensibly discuss the difference or ratio of the populations in two counties. On the other hand, area codes and zip codes are not numerical.

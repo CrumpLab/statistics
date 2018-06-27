@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An introductory statistics textbook for psychology students" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data" />
+  
+  <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anjali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+<meta name="author" content="Jeffrey Suzuki">
+
+
+<meta name="date" content="2018-06-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="introductionToData.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="why-statistics.html"><a href="why-statistics.html"><i class="fa fa-check"></i><b>1</b> Why Statistics?</a><ul>
+<li class="chapter" data-level="1.1" data-path="why-statistics.html"><a href="why-statistics.html#on-the-psychology-of-statistics"><i class="fa fa-check"></i><b>1.1</b> On the psychology of statistics</a></li>
+<li class="chapter" data-level="1.2" data-path="why-statistics.html"><a href="why-statistics.html#the-cautionary-tale-of-simpsons-paradox"><i class="fa fa-check"></i><b>1.2</b> The cautionary tale of Simpson’s paradox</a></li>
+<li class="chapter" data-level="1.3" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-psychology"><i class="fa fa-check"></i><b>1.3</b> Statistics in psychology</a></li>
+<li class="chapter" data-level="1.4" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-everyday-life"><i class="fa fa-check"></i><b>1.4</b> Statistics in everyday life</a></li>
+<li class="chapter" data-level="1.5" data-path="why-statistics.html"><a href="why-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>1.5</b> There’s more to research methods than statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introductionToData.html"><a href="introductionToData.html"><i class="fa fa-check"></i><b>2</b> Psychological Science and Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="introductionToData.html"><a href="introductionToData.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>2.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="2.2" data-path="introductionToData.html"><a href="introductionToData.html#dataBasics"><i class="fa fa-check"></i><b>2.2</b> Data basics</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introductionToData.html"><a href="introductionToData.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>2.2.1</b> Observations, variables, and data matrices</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introductionToData.html"><a href="introductionToData.html#variableTypes"><i class="fa fa-check"></i><b>2.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introductionToData.html"><a href="introductionToData.html#variableRelations"><i class="fa fa-check"></i><b>2.2.3</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introductionToData.html"><a href="introductionToData.html#overviewOfDataCollectionPrinciples"><i class="fa fa-check"></i><b>2.3</b> Overview of data collection principles</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="introductionToData.html"><a href="introductionToData.html#populationsAndSamples"><i class="fa fa-check"></i><b>2.3.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="2.3.2" data-path="introductionToData.html"><a href="introductionToData.html#anecdotalEvidenceSubsection"><i class="fa fa-check"></i><b>2.3.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="2.3.3" data-path="introductionToData.html"><a href="introductionToData.html#sampling-from-a-population"><i class="fa fa-check"></i><b>2.3.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="2.3.4" data-path="introductionToData.html"><a href="introductionToData.html#explanatoryAndResponse"><i class="fa fa-check"></i><b>2.3.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="2.3.5" data-path="introductionToData.html"><a href="introductionToData.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>2.3.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introductionToData.html"><a href="introductionToData.html#observational-studies-and-sampling-strategies"><i class="fa fa-check"></i><b>2.4</b> Observational studies and sampling strategies</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="introductionToData.html"><a href="introductionToData.html#observational-studies"><i class="fa fa-check"></i><b>2.4.1</b> Observational studies</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introductionToData.html"><a href="introductionToData.html#threeSamplingMethods"><i class="fa fa-check"></i><b>2.4.2</b> Three sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introductionToData.html"><a href="introductionToData.html#experimentsSection"><i class="fa fa-check"></i><b>2.5</b> Experiments</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="introductionToData.html"><a href="introductionToData.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>2.5.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introductionToData.html"><a href="introductionToData.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>2.5.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>3</b> Describing Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="DescribingData.html"><a href="DescribingData.html#numericalData"><i class="fa fa-check"></i><b>3.1</b> Examining numerical data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="DescribingData.html"><a href="DescribingData.html#scatterPlots"><i class="fa fa-check"></i><b>3.1.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="DescribingData.html"><a href="DescribingData.html#dotPlot"><i class="fa fa-check"></i><b>3.1.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="3.1.3" data-path="DescribingData.html"><a href="DescribingData.html#histogramsAndShape"><i class="fa fa-check"></i><b>3.1.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="3.1.4" data-path="DescribingData.html"><a href="DescribingData.html#variability"><i class="fa fa-check"></i><b>3.1.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="3.1.5" data-path="DescribingData.html"><a href="DescribingData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>3.1.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="3.1.6" data-path="DescribingData.html"><a href="DescribingData.html#robust-statistics"><i class="fa fa-check"></i><b>3.1.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="3.1.7" data-path="DescribingData.html"><a href="DescribingData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>3.1.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="3.1.8" data-path="DescribingData.html"><a href="DescribingData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>3.1.8</b> Mapping data (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="DescribingData.html"><a href="DescribingData.html#categoricalData"><i class="fa fa-check"></i><b>3.2</b> Considering categorical data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="DescribingData.html"><a href="DescribingData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>3.2.1</b> Contingency tables and bar plots</a></li>
+<li class="chapter" data-level="3.2.2" data-path="DescribingData.html"><a href="DescribingData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>3.2.2</b> Row and column proportions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="DescribingData.html"><a href="DescribingData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>3.2.3</b> Segmented bar and mosaic plots</a></li>
+<li class="chapter" data-level="3.2.4" data-path="DescribingData.html"><a href="DescribingData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>3.2.4</b> The only pie chart you will see in this book</a></li>
+<li class="chapter" data-level="3.2.5" data-path="DescribingData.html"><a href="DescribingData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>3.2.5</b> Comparing numerical data across groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>4</b> Foundation for inference</a><ul>
+<li class="chapter" data-level="4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>4.1</b> Randomization case study: gender discrimination</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>4.1.1</b> Variability within data</a></li>
+<li class="chapter" data-level="4.1.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>4.1.2</b> Simulating the study</a></li>
+<li class="chapter" data-level="4.1.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>4.1.3</b> Checking for independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>4.2</b> Randomization case study: opportunity cost</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>4.2.1</b> Exploring the data set before the analysis</a></li>
+<li class="chapter" data-level="4.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>4.2.2</b> Results from chance alone</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>4.3</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis testing in the US court system</a></li>
+<li class="chapter" data-level="4.3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>4.3.2</b> p-value and statistical significance</a></li>
+<li class="chapter" data-level="4.3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>4.3.3</b> Decision errors</a></li>
+<li class="chapter" data-level="4.3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>4.3.4</b> Choosing a significance level</a></li>
+<li class="chapter" data-level="4.3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>4.3.5</b> Introducing two-sided hypotheses</a></li>
+<li class="chapter" data-level="4.3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>4.3.6</b> Controlling the Type 1 Error rate</a></li>
+<li class="chapter" data-level="4.3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>4.3.7</b> How to use a hypothesis test</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>4.4</b> Simulation case studies</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>4.4.1</b> Medical consultant</a></li>
+<li class="chapter" data-level="4.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>4.4.2</b> Tappers and listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>4.5</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>4.5.1</b> Null distribution from the case studies</a></li>
+<li class="chapter" data-level="4.5.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>4.5.2</b> Examples of future settings we will consider</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>4.6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>4.6.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="4.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>4.6.2</b> Standardizing with Z scores</a></li>
+<li class="chapter" data-level="4.6.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>4.6.3</b> Normal probability table</a></li>
+<li class="chapter" data-level="4.6.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>4.6.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="4.6.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>4.6.5</b> 68-95-99.7 rule</a></li>
+<li class="chapter" data-level="4.6.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>4.6.6</b> Evaluating the normal approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>4.7</b> Applying the normal model</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>4.7.1</b> Standard error</a></li>
+<li class="chapter" data-level="4.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>4.7.2</b> Normal model application: opportunity cost</a></li>
+<li class="chapter" data-level="4.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>4.7.3</b> Normal model application: medical consultant</a></li>
+<li class="chapter" data-level="4.7.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>4.7.4</b> Conditions for applying the normal model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>4.8</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>4.8.1</b> Capturing the population parameter</a></li>
+<li class="chapter" data-level="4.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>4.8.2</b> Constructing a 95% confidence interval</a></li>
+<li class="chapter" data-level="4.8.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>4.8.3</b> Changing the confidence level</a></li>
+<li class="chapter" data-level="4.8.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>4.8.4</b> Interpreting confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html"><i class="fa fa-check"></i><b>5</b> Inference for numerical data: t-Tests</a><ul>
+<li class="chapter" data-level="5.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>5.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>5.1.1</b> Two examples using the normal distribution</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>5.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>5.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTTests"><i class="fa fa-check"></i><b>5.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pairedData"><i class="fa fa-check"></i><b>5.2</b> Paired data</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-observations"><i class="fa fa-check"></i><b>5.2.1</b> Paired observations</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#inference-for-paired-data"><i class="fa fa-check"></i><b>5.2.2</b> Inference for paired data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>5.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>5.3.1</b> Confidence interval for a differences of means</a></li>
+<li class="chapter" data-level="5.3.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>5.3.2</b> Hypothesis tests based on a difference in means</a></li>
+<li class="chapter" data-level="5.3.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>5.3.3</b> Case study: two versions of a course exam</a></li>
+<li class="chapter" data-level="5.3.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>5.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="5.3.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>5.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>6</b> Inference for numerical data: ANOVA</a><ul>
+<li class="chapter" data-level="6.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>6.1</b> Comparing many means with ANOVA</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>6.1.1</b> Is batting performance related to player position in MLB?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>6.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
+<li class="chapter" data-level="6.1.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>6.1.3</b> Reading an ANOVA table from software</a></li>
+<li class="chapter" data-level="6.1.4" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>6.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
+<li class="chapter" data-level="6.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>6.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>6.2</b> Bootstrapping to study the standard deviation</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>6.2.1</b> Bootstrap samples and distributions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>6.2.2</b> Inference using the bootstrap</a></li>
+<li class="chapter" data-level="6.2.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#frequently-asked-questions"><i class="fa fa-check"></i><b>6.2.3</b> Frequently asked questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>7</b> Introduction to linear regression</a><ul>
+<li class="chapter" data-level="7.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>7.1</b> Line fitting, residuals, and correlation</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>7.1.1</b> Beginning with straight lines</a></li>
+<li class="chapter" data-level="7.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>7.1.2</b> Fitting a line by eye</a></li>
+<li class="chapter" data-level="7.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>7.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="7.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>7.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>7.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>7.2.1</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="7.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>7.2.2</b> Finding the least squares line</a></li>
+<li class="chapter" data-level="7.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>7.2.3</b> Interpreting regression line parameter estimates</a></li>
+<li class="chapter" data-level="7.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>7.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="7.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>7.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
+<li class="chapter" data-level="7.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>7.2.6</b> Categorical predictors with two levels</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>7.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="7.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>7.4</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>7.4.1</b> Conditions for the least squares line</a></li>
+<li class="chapter" data-level="7.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>7.4.2</b> Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="7.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>7.4.3</b> Understanding regression output from software</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>8</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>8.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>8.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>8.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="8.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>8.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>8.2</b> Model selection</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>8.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="8.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>8.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>8.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="8.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>8.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>8.4.1</b> Email data</a></li>
+<li class="chapter" data-level="8.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>8.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="8.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>8.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="8.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>8.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="8.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>8.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>9</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="9.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>9.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>9.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="9.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>9.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="9.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>9.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="9.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>9.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>9.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>9.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="9.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>9.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="9.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>9.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>9.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>9.3.1</b> Creating a test statistic for one-way tables</a></li>
+<li class="chapter" data-level="9.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>9.3.2</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="9.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>9.3.3</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>9.3.4</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="9.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>9.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>9.4</b> Testing for independence in two-way tables (special topic)</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>9.4.1</b> Expected counts in two-way tables</a></li>
+<li class="chapter" data-level="9.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>9.4.2</b> The chi-square test for two-way tables</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="why-statistics" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Why Statistics?</h1>
+<div id="on-the-psychology-of-statistics" class="section level2">
+<h2><span class="header-section-number">1.1</span> On the psychology of statistics</h2>
+<div class="marginnote">
+<p>Section 1.1 - 1.5, adapted nearly verbatim from Navarro, D. “Learning Statistics with R.” <a href="https://compcogscisydney.org/learning-statistics-with-r/" class="uri">https://compcogscisydney.org/learning-statistics-with-r/</a></p>
+</div>
+<p>To the surprise of many students, statistics is a fairly significant part of a psychological education. To the surprise of no-one, statistics is very rarely the <em>favourite</em> part of one’s psychological education. After all, if you really loved the idea of doing statistics, you’d probably be enrolled in a statistics class right now, not a psychology class. So, not surprisingly, there’s a pretty large proportion of the student base that isn’t happy about the fact that psychology has so much statistics in it. In view of this, I thought that the right place to start might be to answer some of the more common questions that people have about stats…</p>
+<p>A big part of this issue at hand relates to the very idea of statistics. What is it? What’s it there for? And why are scientists so bloody obsessed with it? These are all good questions, when you think about it. So let’s start with the last one. As a group, scientists seem to be bizarrely fixated on running statistical tests on everything. In fact, we use statistics so often that we sometimes forget to explain to people why we do. It’s a kind of article of faith among scientists – and especially social scientists – that your findings can’t be trusted until you’ve done some stats. Undergraduate students might be forgiven for thinking that we’re all completely mad, because no-one takes the time to answer one very simple question:</p>
+<blockquote>
+<p><em>Why do you do statistics? Why don’t scientists just use ?</em></p>
+</blockquote>
+<p>It’s a naive question in some ways, but most good questions are. There’s a lot of good answers to it, but for my money, the best answer is a really simple one: we don’t trust ourselves enough. We worry that we’re human, and susceptible to all of the biases, temptations and frailties that humans suffer from. Much of statistics is basically a safeguard. Using “common sense” to evaluate evidence means trusting gut instincts, relying on verbal arguments and on using the raw power of human reason to come up with the right answer. Most scientists don’t think this approach is likely to work.</p>
+<p>In fact, come to think of it, this sounds a lot like a psychological question to me, and since I do work in a psychology department, it seems like a good idea to dig a little deeper here. Is it really plausible to think that this “common sense” approach is very trustworthy? Verbal arguments have to be constructed in language, and all languages have biases – some things are harder to say than others, and not necessarily because they’re false (e.g., quantum electrodynamics is a good theory, but hard to explain in words). The instincts of our “gut” aren’t designed to solve scientific problems, they’re designed to handle day to day inferences – and given that biological evolution is slower than cultural change, we should say that they’re designed to solve the day to day problems for a <em>different world</em> than the one we live in. Most fundamentally, reasoning sensibly requires people to engage in “induction”, making wise guesses and going beyond the immediate evidence of the senses to make generalisations about the world. If you think that you can do that without being influenced by various distractors, well, I have a bridge in Brooklyn I’d like to sell you. Heck, as the next section shows, we can’t even solve “deductive” problems (ones where no guessing is required) without being influenced by our pre-existing biases.</p>
+<p>People are mostly pretty smart. We’re certainly smarter than the other species that we share the planet with (though many people might disagree). Our minds are quite amazing things, and we seem to be capable of the most incredible feats of thought and reason. That doesn’t make us perfect though. And among the many things that psychologists have shown over the years is that we really do find it hard to be neutral, to evaluate evidence impartially and without being swayed by pre-existing biases. A good example of this is the in logical reasoning: if you ask people to decide whether a particular argument is logically valid (i.e., conclusion would be true if the premises were true), we tend to be influenced by the believability of the conclusion, even when we shouldn’t. For instance, here’s a valid argument where the conclusion is believable:</p>
+<blockquote>
+<p>No cigarettes are inexpensive (Premise 1)<br />
+Some addictive things are inexpensive (Premise 2)<br />
+Therefore, some addictive things are not cigarettes (Conclusion)</p>
+</blockquote>
+<p>And here’s a valid argument where the conclusion is not believable:</p>
+<blockquote>
+<p>No addictive things are inexpensive (Premise 1)<br />
+Some cigarettes are inexpensive (Premise 2)<br />
+Therefore, some cigarettes are not addictive (Conclusion)</p>
+</blockquote>
+<p>The logical <em>structure</em> of argument #2 is identical to the structure of argument #1, and they’re both valid. However, in the second argument, there are good reasons to think that premise 1 is incorrect, and as a result it’s probably the case that the conclusion is also incorrect. But that’s entirely irrelevant to the topic at hand: an argument is deductively valid if the conclusion is a logical consequence of the premises. That is, a valid argument doesn’t have to involve true statements.</p>
+<p>On the other hand, here’s an invalid argument that has a believable conclusion:</p>
+<blockquote>
+<p>No addictive things are inexpensive (Premise 1)<br />
+Some cigarettes are inexpensive (Premise 2)<br />
+Therefore, some addictive things are not cigarettes (Conclusion)</p>
+</blockquote>
+<p>And finally, an invalid argument with an unbelievable conclusion:</p>
+<blockquote>
+<p>No cigarettes are inexpensive (Premise 1)<br />
+Some addictive things are inexpensive (Premise 2)<br />
+Therefore, some cigarettes are not addictive (Conclusion)</p>
+</blockquote>
+<p>Now, suppose that people really are perfectly able to set aside their pre-existing biases about what is true and what isn’t, and purely evaluate an argument on its logical merits. We’d expect 100% of people to say that the valid arguments are valid, and 0% of people to say that the invalid arguments are valid. So if you ran an experiment looking at this, you’d expect to see data like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">argument is valid</td>
+<td align="center">100% say “valid”</td>
+<td align="center">100% say “valid”</td>
+</tr>
+<tr class="even">
+<td align="left">argument is invalid</td>
+<td align="center">0% say “valid”</td>
+<td align="center">0% say “valid”</td>
+</tr>
+</tbody>
+</table>
+<p>If the psychological data looked like this (or even a good approximation to this), we might feel safe in just trusting our gut instincts. That is, it’d be perfectly okay just to let scientists evaluate data based on their common sense, and not bother with all this murky statistics stuff. However, you guys have taken psych classes, and by now you probably know where this is going.</p>
+<p>In a classic study, ran an experiment looking at exactly this. What they found is that when pre-existing biases (i.e., beliefs) were in agreement with the structure of the data, everything went the way you’d hope:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">argument is valid</td>
+<td align="center">92% say “valid”</td>
+<td align="center">–</td>
+</tr>
+<tr class="even">
+<td align="left">argument is invalid</td>
+<td align="center">–</td>
+<td align="center">8% say “valid”</td>
+</tr>
+</tbody>
+</table>
+<p>Not perfect, but that’s pretty good. But look what happens when our intuitive feelings about the truth of the conclusion run against the logical structure of the argument:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">argument is valid</td>
+<td align="center">92% say “valid”</td>
+<td><strong>46% say “valid”</strong></td>
+</tr>
+<tr class="even">
+<td align="left">argument is invalid</td>
+<td align="center"><strong>92% say “valid”</strong></td>
+<td>8% say “valid”</td>
+</tr>
+</tbody>
+</table>
+<p>Oh dear, that’s not as good. Apparently, when people are presented with a strong argument that contradicts our pre-existing beliefs, we find it pretty hard to even perceive it to be a strong argument (people only did so 46% of the time). Even worse, when people are presented with a weak argument that agrees with our pre-existing biases, almost no-one can see that the argument is weak (people got that one wrong 92% of the time!)</p>
+<p>If you think about it, it’s not as if these data are horribly damning. Overall, people did do better than chance at compensating for their prior biases, since about 60% of people’s judgements were correct (you’d expect 50% by chance). Even so, if you were a professional “evaluator of evidence”, and someone came along and offered you a magic tool that improves your chances of making the right decision from 60% to (say) 95%, you’d probably jump at it, right? Of course you would. Thankfully, we actually do have a tool that can do this. But it’s not magic, it’s statistics. So that’s reason #1 why scientists love statistics. It’s just <em>too easy</em> for us to “believe what we want to believe”; so if we want to “believe in the data” instead, we’re going to need a bit of help to keep our personal biases under control. That’s what statistics does: it helps keep us honest.</p>
+</div>
+<div id="the-cautionary-tale-of-simpsons-paradox" class="section level2">
+<h2><span class="header-section-number">1.2</span> The cautionary tale of Simpson’s paradox</h2>
+<p>The following is a true story (I think…). In 1973, the University of California, Berkeley had some worries about the admissions of students into their postgraduate courses. Specifically, the thing that caused the problem was that the gender breakdown of their admissions, which looked like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="center">Number of applicants</td>
+<td align="center">Percent admitted</td>
+</tr>
+<tr class="even">
+<td>Males</td>
+<td align="center">8442</td>
+<td align="center">44%</td>
+</tr>
+<tr class="odd">
+<td>Females</td>
+<td align="center">4321</td>
+<td align="center">35%</td>
+</tr>
+</tbody>
+</table>
+<p>and they were worried about being sued. Given that there were nearly 13,000 applicants, a difference of 9% in admission rates between males and females is just way too big to be a coincidence. Pretty compelling data, right? And if I were to say to you that these data <em>actually</em> reflect a weak bias in favour of women (sort of!), you’d probably think that I was either crazy or sexist.</p>
+<div class="marginnote">
+<p>Earlier versions of these notes incorrectly suggested that they actually were sued – apparently that’s not true. There’s a nice commentary on this here: <a href="https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html" class="uri">https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html</a>. A big thank you to Wilfried Van Hirtum for pointing this out to me!</p>
+</div>
+<p>When people started looking more carefully at the admissions data <span class="citation">(<span class="citeproc-not-found" data-reference-id="Bickel1975"><strong>???</strong></span>)</span> they told a rather different story. Specifically, when they looked at it on a department by department basis, it turned out that most of the departments actually had a slightly <em>higher</em> success rate for female applicants than for male applicants. The table below shows the admission figures for the six largest departments (with the names of the departments removed for privacy reasons):</p>
+<hr />
+<p>Department Applicants Percent admitted Applicants Percent admitted A 825 62% 108 82% B 560 63% 25 68% C 325 37% 593 34% D 417 33% 375 35% E 191 28% 393 24% F 272 6% 341 7% ———— ———— —————— ———— ——————</p>
+<p>Remarkably, most departments had a <em>higher</em> rate of admissions for females than for males! Yet the overall rate of admission across the university for females was <em>lower</em> than for males. How can this be? How can both of these statements be true at the same time?</p>
+<p>Here’s what’s going on. Firstly, notice that the departments are <em>not</em> equal to one another in terms of their admission percentages: some departments (e.g., engineering, chemistry) tended to admit a high percentage of the qualified applicants, whereas others (e.g., English) tended to reject most of the candidates, even if they were high quality. So, among the six departments shown above, notice that department A is the most generous, followed by B, C, D, E and F in that order. Next, notice that males and females tended to apply to different departments. If we rank the departments in terms of the total number of male applicants, we get <strong>A</strong><span class="math inline">\(&gt;\)</span><strong>B</strong><span class="math inline">\(&gt;\)</span>D<span class="math inline">\(&gt;\)</span>C<span class="math inline">\(&gt;\)</span>F<span class="math inline">\(&gt;\)</span>E (the “easy” departments are in bold). On the whole, males tended to apply to the departments that had high admission rates. Now compare this to how the female applicants distributed themselves. Ranking the departments in terms of the total number of female applicants produces a quite different ordering C<span class="math inline">\(&gt;\)</span>E<span class="math inline">\(&gt;\)</span>D<span class="math inline">\(&gt;\)</span>F<span class="math inline">\(&gt;\)</span><strong>A</strong><span class="math inline">\(&gt;\)</span><strong>B</strong>. In other words, what these data seem to be suggesting is that the female applicants tended to apply to “harder” departments. And in fact, if we look at all Figure [fig:berkeley] we see that this trend is systematic, and quite striking. This effect is known as . It’s not common, but it does happen in real life, and most people are very surprised by it when they first encounter it, and many people refuse to even believe that it’s real. It is very real. And while there are lots of very subtle statistical lessons buried in there, I want to use it to make a much more important point …doing research is hard, and there are <em>lots</em> of subtle, counterintuitive traps lying in wait for the unwary. That’s reason #2 why scientists love statistics, and why we teach research methods. Because science is hard, and the truth is sometimes cunningly hidden in the nooks and crannies of complicated data.</p>
+<p>[fig:berkeley]</p>
+<p>Before leaving this topic entirely, I want to point out something else really critical that is often overlooked in a research methods class. Statistics only solves <em>part</em>of the problem. Remember that we started all this with the concern that Berkeley’s admissions processes might be unfairly biased against female applicants. When we looked at the “aggregated” data, it did seem like the university was discriminating against women, but when we “disaggregate” and looked at the individual behaviour of all the departments, it turned out that the actual departments were, if anything, slightly biased in favour of women. The gender bias in total admissions was caused by the fact that women tended to self-select for harder departments. From a legal perspective, that would probably put the university in the clear. Postgraduate admissions are determined at the level of the individual department (and there are good reasons to do that), and at the level of individual departments, the decisions are more or less unbiased (the weak bias in favour of females at that level is small, and not consistent across departments). Since the university can’t dictate which departments people choose to apply to, and the decision making takes place at the level of the department it can hardly be held accountable for any biases that those choices produce.</p>
+<p>That was the basis for my somewhat glib remarks earlier, but that’s not exactly the whole story, is it? After all, if we’re interested in this from a more sociological and psychological perspective, we might want to ask <em>why</em> there are such strong gender differences in applications. Why do males tend to apply to engineering more often than females, and why is this reversed for the English department? And why is it it the case that the departments that tend to have a female-application bias tend to have lower overall admission rates than those departments that have a male-application bias? Might this not still reflect a gender bias, even though every single department is itself unbiased? It might. Suppose, hypothetically, that males preferred to apply to “hard sciences” and females prefer “humanities”. And suppose further that the reason for why the humanities departments have low admission rates is because the government doesn’t want to fund the humanities (Ph.D. places, for instance, are often tied to government funded research projects). Does that constitute a gender bias? Or just an unenlightened view of the value of the humanities? What if someone at a high level in the government cut the humanities funds because they felt that the humanities are “useless chick stuff”. That seems pretty <em>blatantly</em> gender biased. None of this falls within the purview of statistics, but it matters to the research project. If you’re interested in the overall structural effects of subtle gender biases, then you probably want to look at <em>both</em> the aggregated and disaggregated data. If you’re interested in the decision making process at Berkeley itself then you’re probably only interested in the disaggregated data.</p>
+<p>In short there are a lot of critical questions that you can’t answer with statistics, but the answers to those questions will have a huge impact on how you analyse and interpret data. And this is the reason why you should always think of statistics as a <em>tool</em> to help you learn about your data, no more and no less. It’s a powerful tool to that end, but there’s no substitute for careful thought.</p>
+</div>
+<div id="statistics-in-psychology" class="section level2">
+<h2><span class="header-section-number">1.3</span> Statistics in psychology</h2>
+<p>I hope that the discussion above helped explain why science in general is so focused on statistics. But I’m guessing that you have a lot more questions about what role statistics plays in psychology, and specifically why psychology classes always devote so many lectures to stats. So here’s my attempt to answer a few of them…</p>
+<ul>
+<li><strong>Why does psychology have so much statistics?</strong></li>
+</ul>
+<p>To be perfectly honest, there’s a few different reasons, some of which are better than others. The most important reason is that psychology is a statistical science. What I mean by that is that the “things” that we study are <em>people</em>. Real, complicated, gloriously messy, infuriatingly perverse people. The “things” of physics include objects like electrons, and while there are all sorts of complexities that arise in physics, electrons don’t have minds of their own. They don’t have opinions, they don’t differ from each other in weird and arbitrary ways, they don’t get bored in the middle of an experiment, and they don’t get angry at the experimenter and then deliberately try to sabotage the data set. At a fundamental level psychology is harder than physics.</p>
+<p>Basically, we teach statistics to you as psychologists because you need to be better at stats than physicists. There’s actually a saying used sometimes in physics, to the effect that “if your experiment needs statistics, you should have done a better experiment”. They have the luxury of being able to say that because their objects of study are pathetically simple in comparison to the vast mess that confronts social scientists. It’s not just psychology, really: most social sciences are desperately reliant on statistics. Not because we’re bad experimenters, but because we’ve picked a harder problem to solve. We teach you stats because you really, really need it.</p>
+<ul>
+<li><strong>Can’t someone else do the statistics?</strong></li>
+</ul>
+<p>To some extent, but not completely. It’s true that you don’t need to become a fully trained statistician just to do psychology, but you do need to reach a certain level of statistical competence. In my view, there’s three reasons that every psychological researcher ought to be able to do basic statistics:</p>
+<ol style="list-style-type: decimal">
+<li><p>First, there’s the fundamental reason: statistics is deeply intertwined with research design. If you want to be good at designing psychological studies, you need to at least understand the basics of stats.</p></li>
+<li><p>Second, if you want to be good at the psychological side of the research, then you need to be able to understand the psychological literature, right? But almost every paper in the psychological literature reports the results of statistical analyses. So if you really want to understand the psychology, you need to be able to understand what other people did with their data. And that means understanding a certain amount of statistics.</p></li>
+<li><p>Third, there’s a big practical problem with being dependent on other people to do all your statistics: statistical analysis is <em>expensive</em>. If you ever get bored and want to look up how much the Australian government charges for university fees, you’ll notice something interesting: statistics is designated as a “national priority” category, and so the fees are much, much lower than for any other area of study. This is because there’s a massive shortage of statisticians out there. So, from your perspective as a psychological researcher, the laws of supply and demand aren’t exactly on your side here! As a result, in almost any real life situation where you want to do psychological research, the cruel facts will be that you don’t have enough money to afford a statistician. So the economics of the situation mean that you have to be pretty self-sufficient.</p></li>
+</ol>
+<p>Note that a lot of these reasons generalise beyond researchers. If you want to be a practicing psychologist and stay on top of the field, it helps to be able to read the scientific literature, which relies pretty heavily on statistics.</p>
+<ul>
+<li><strong>I don’t care about jobs, research, or clinical work. Do I need statistics?</strong></li>
+</ul>
+<p>Okay, now you’re just messing with me. Still, I think it should matter to you too. Statistics should matter to you in the same way that statistics should matter to <em>everyone</em>: we live in the 21st century, and data are <em>everywhere</em>. Frankly, given the world in which we live these days, a basic knowledge of statistics is pretty damn close to a survival tool! Which is the topic of the next section…</p>
+</div>
+<div id="statistics-in-everyday-life" class="section level2">
+<h2><span class="header-section-number">1.4</span> Statistics in everyday life</h2>
+<blockquote>
+<p><em>“We are drowning in information,<br />
+but we are starved for knowledge”</em><br />
+– Various authors, original probably John Naisbitt</p>
+</blockquote>
+<p>When I started writing up my lecture notes I took the 20 most recent news articles posted to the ABC news website. Of those 20 articles, it turned out that 8 of them involved a discussion of something that I would call a statistical topic; 6 of those made a mistake. The most common error, if you’re curious, was failing to report baseline data (e.g., the article mentions that 5% of people in situation X have some characteristic Y, but doesn’t say how common the characteristic is for everyone else!) The point I’m trying to make here isn’t that journalists are bad at statistics (though they almost always are), it’s that a basic knowledge of statistics is very helpful for trying to figure out when someone else is either making a mistake or even lying to you. In fact, one of the biggest things that a knowledge of statistics does to you is cause you to get angry at the newspaper or the internet on a far more frequent basis: you can find a good example of this in Section [sec:housingpriceexample]. In later versions of this book I’ll try to include more anecdotes along those lines.</p>
+</div>
+<div id="theres-more-to-research-methods-than-statistics" class="section level2">
+<h2><span class="header-section-number">1.5</span> There’s more to research methods than statistics</h2>
+<p>So far, most of what I’ve talked about is statistics, and so you’d be forgiven for thinking that statistics is all I care about in life. To be fair, you wouldn’t be far wrong, but research methodology is a broader concept than statistics. So most research methods courses will cover a lot of topics that relate much more to the pragmatics of research design, and in particular the issues that you encounter when trying to do research with humans. However, about 99% of student <em>fears</em> relate to the statistics part of the course, so I’ve focused on the stats in this discussion, and hopefully I’ve convinced you that statistics matters, and more importantly, that it’s not to be feared. That being said, it’s pretty typical for introductory research methods classes to be very stats-heavy. This is not (usually) because the lecturers are evil people. Quite the contrary, in fact. Introductory classes focus a lot on the statistics because you almost always find yourself needing statistics before you need the other research methods training. Why? Because almost all of your assignments in other classes will rely on statistical training, to a much greater extent than they rely on other methodological tools. It’s not common for undergraduate assignments to require you to design your own study from the ground up (in which case you would need to know a lot about research design), but it <em>is</em> common for assignments to ask you to analyse and interpret data that were collected in a study that someone else designed (in which case you need statistics). In that sense, from the perspective of allowing you to do well in all your other classes, the statistics is more urgent.</p>
+<p>But note that “urgent” is different from “important” – they both matter. I really do want to stress that research design is just as important as data analysis, and this book does spend a fair amount of time on it. However, while statistics has a kind of universality, and provides a set of core tools that are useful for most types of psychological research, the research methods side isn’t quite so universal. There are some general principles that everyone should think about, but a lot of research design is very idiosyncratic, and is specific to the area of research that you want to engage in. To the extent that it’s the details that matter, those details don’t usually show up in an introductory stats and research methods class.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introductionToData.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/statistics/blob/master/01-Science_Data.Rmd",
+"text": "Edit"
+},
+"download": ["statistics.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

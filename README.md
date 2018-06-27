@@ -1,23 +1,24 @@
-## What it this?
+## What is this?
 
-This textbook is a collection of notes for a course on programming for psychologists, taught at the Graduate Center of CUNY in 2014, by Matthew Crump. This github repo contain all of the source code to compile the book using bookdown...I hacked the together the style files for the gitbook style and the tufte style, and may have changed some .css settings in the bookdown package itself on my computer (so I apologize in advance if it doesn't compile properly).
+This is an in draft FREE Statistics for Undergrads in Psychology Textbook, on a creative commons license. Yes, there are so many existing OERs (open-educational resources) for statistics, but there is always room for one more.
 
-The textbook can be viewed as a webook here at [https://crumplab.github.io/programmingforpsych/](https://crumplab.github.io/programmingforpsych/).
+## We are remixing, editing, revising, these amazing two resources:
 
-## Contributing to the textbook while you read it
+1. Danielle Navarro's "Learning Statistics with R" [https://compcogscisydney.org/learning-statistics-with-r/](https://compcogscisydney.org/learning-statistics-with-r/)
 
-1. Use Hypothes.is, an amazing tool for annotating the web.
-  
-  a. Go to [Hypothes.is](https://web.hypothes.is/), and "get-started"
-  
-  b. Install the the add-on for chrome, or other browser
-  
-  c. That's it, turn on Hypothes.is when you are reading this textbook, and you will see all public annotations made by anyone else.
-  
-## Contribute by making push reqeusts
+2. Diaz, Barr, & Cetinkaya-Rundel's "Introductory Statistics with Randomization and Simulation"  [https://www.openintro.org/stat/textbook.php?stat_book=isrs](https://www.openintro.org/stat/textbook.php?stat_book=isrs)
 
-2. The source code for this textbook is available in this repo. 
- 
- a. Edit the .Rmd files, and then submit pull requests
-  
- b. When you are reading the textbook, the edit link in the top bar of the textbook should automatically take you to the source .Rmd file
+Thank you to the original author's for their fantastic work.
+
+## What are our plans for Summer 2018 
+
+1. We are writing the book in Rmarkdown, using the bookdown package. Rmarkdown is super convenient for this purpose. All of the source code for compiling the book will be here.
+
+2. We will integrate R shiny apps into the web-book, so that student's can play around with statistical ideas as they read about them. Very excited about this.
+
+3. We are developing a companion lab manual with weekly exercises, covering how to do things using R, Excel, JASP (or matlab possibly), and SPSS.
+
+4. We will be implementing this new curriculum in Fall 2018 at Brooklyn College of CUNY.
+
+
+
