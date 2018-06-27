@@ -1,0 +1,274 @@
+# Correlation {#Correlation}
+
+<span class="newthought">
+Correlation does not equal causation
+---Every Statistics and Research Methods Instructor Ever
+</span>
+
+<div class="marginnote">
+Chapter by Matthew Crump
+</div>
+
+In the last chapter we had some data. It was too much too look at and it didn't make sense. So, we talked about how to look at the data visually using plots and histograms, and we talked about how to summarize lots of numbers so we could determine their central tendencies (sameness) and variability (differentness). And, all was well with the world.
+
+Let's not forget the big reason why learned about descriptive statistics. The big reason is that we are interested in getting answers to questions using data. If you are looking for a thread to think about the whole way through this big, that thread is: how do we ask an answer questions using data? For every section in this book, you should be connecting your inner monologe to this question, and asking yourself: How does what I am learning about help me answer questions with data? Advance warning, we know it is easy to forget this stuff when we dive into the details, and we will try to throw you a rope to help you out along the way.
+
+We started Chapter two with some fake data on human happiness, remember? We imagined that we asked a bunch of people to tell us how happy they were, then we looked at the numbers they gave us. Let's continue with this imaginary thought experiment.
+
+What do you get when ask people to use a number to describe how happy they are? A bunch of numbers. What kind of questions can you ask about those numbers? Well, you can look at the numbers and estimate their general properties as we already did. We would expect to find what we can imagine to be true. There are different people, and different people are different amounts of happy. You've probably met some of those of really happy people, and really unhappy people, and you yourself probably have some amount of happiness. "Great, thanks captain obvious". Before moving on, you should also be skeptical of what the numbers might mean. For example, if you force people to give a number between 0-100 to rate their happiness, does this number truly reflect how happy that person is? Can a person know how happy they are? Does the question format bias how they give their answer? Is happiness even a real thing? These are all good questions about the **validity** of the construct (happiness itself) and the measure (numbers) you are using to quantify it. For now, though, we will side-step those very important questions, and assume that, happiness is a thing, and our measure of happiness measures something about how happy people are.
+
+Ok then, after we have measured some happiness, I bet you can think of some more pressing questions. For example, what causes happiness to go up or down. If you knew the causes of happiness what could you do? How about increase your own happiness, or help people who are unhappy, or better appreciate why Eeyore is unhappy, or present valid scientific arguments that argue against incorrect claims about what causes happiness. A causal theory and understanding of happiness could be used for all of those things. How can we get there?
+
+Imagine you were an alien observer. You arrived on earth and heard about this thing called happiness that people have. You want to know what causes happiness. You also discover that the planet earth has lots of other things. Which of those things, you wonder, cause happiness? How to get started on this big question.
+
+As a person who has happiness, you might already have some hunches. For example things like: weather, friends, music, money, education, drugs, books, movies, perspective, personality, color of your shoes, eyebrow length, number of cat's you see per day, frequency of subway delay, a lifetime supply of chocolate, etcetera etcetera (as Willy Wonka would say). There could be many different causes of happiness.
+
+## If something caused something else to change, what would that look like?
+
+Before we go around determining the causes of happiness, we should prepare ourselves with some analytical tools so that we could identify what causation looks like. If we don't prepare ourselves for what we might find, then we won't know how to interpret our own data. Instead, we need to anticipate what the data could look like. Specifically, we need to know what data would look like when one thing does not cause another thing, and what data would look like when one thing does cause another thing. This chapter does some of this preparation. Fair warning. We will find out some tricky things. For example, we can find patterns that look like one thing is causing another, even when that one thing DOES NOT CAUSE the other thing. Hang in there.
+
+### Charlie and the Chocolate factory
+
+Let's imagine that a person's supply of chocolate has a causal influence on their level of happiness. Let's further imagine that, like Charlie, the more chocolate you have the more happy you will be, and the less chocolate you have, the less happy you will be. Finally, because we suspect happyness is caused by lots of other things in a person's life, we anticipate that the relationship between chocolate supply and happyness won't be perfect. What do these assumptions mean for how the data should look?
+
+Our first step is to collect some imaginary data from 100 people. We walk around and ask the first 100 people we meet to answer two questions: 1) how much chocolate do you have, and 2) how happy are you. For convenvience, both the scales will go from 0 - 100. For the chocolate scale, 0 means no chocolate, 100 means lifetime supply of chocolate, and any other number is somewhere in between. For the happiness scale, 0 means no happiness, 100 means all of the happiness, and in between means some amount in between.
+
+Here is some sample data from the first 10 imaginary subjects.
+
+```{r}
+subject<-1:100
+chocolate<-round(1:100*runif(100,.5,1))
+happiness<-round(1:100*runif(100,.5,1))
+
+the_df_CC<-data.frame(subject,chocolate,happiness)
+
+
+the_df_short<-the_df_CC[1:10,]
+
+knitr::kable(the_df_short)
+```
+
+Of course, we asked each subjects two questions, so there are two scores for each subject, one for their chocolate supply, and one for their level of happiness. You might already notice some relationships between amount of chocolate and level of happiness in the table. To make those relationships even more clear, let's plot all of the data in a graph.
+
+### Scatterplots
+
+When you have two measurements worth of data, you can always turn them into dots and plot them in a scatter plot. A scatterplot has a horizontal x-axis, and a veritcal y-axis. You get to choose which measurement goes on which axis. Let's put chocolate supply on the x-axis, and happiness level on the y-axis. The plot below shows 100 dots for each subject.
+
+```{r scatter1, echo=F}
+library(ggplot2)
+ggplot(the_df_CC,aes(x=chocolate,y=happiness))+
+  geom_point()+
+  theme_classic()
+
+
+```
+
+You might be wondering, why are there only 100 dots for the data. Didn't we collect 100 measures for chocolate, and 100 measures for happiness, shouldn't there be 200 dots? Nope. Each dot is for one subject, there are 100 subjects, so there are 100 dots. 
+
+What do the dots mean? Each dot has two coordinates, an x-coordinate for chocolate, and a y-coordinate for happiness. The first dot, all the way on the bottom left is the first subject in the table, who had close to 0 chocolate and close to zero happiness. You can look at any dot, then draw a straight line down to the x-xaxis: that will tell you have much chocolate that subject has. You can draw a straight line left to the y-axis: that will tell you how much happiness the subject has.
+
+Now that we are looking at the scatterplot, we can see many things. One, the dots are scattered around a bit aren't they, hence **scatterplot**. Even when the dot's don't scatter, they're still called scatterplots, perhaps because those pesky dots in real life have so much scatter all the time. More important, the dots show a relationship between chocolate supply and happiness. Happiness is lower for people with smaller supplies of choclate, and higher for people with larger supplies of chocolate. It looks like the more chocolate you have the happier you will be, and vice versa. This kind of relationship is called a **positive correlation**. 
+
+### Positive, Negative, and No-Correlation
+
+Seeing as we are in the business of imagining data, let's imagine some more. We've already imagined what data would look like if larger chocolate supplies increase happiness. We'll show that again in a bit. What do you imagine the scatterplot would look like if the relationship was reversed, and larger chocolate supplies decreased happiness. Or, what do you imagine the scatterplot would look like if there was no relationship, and the amount of chocolate that you have doesn't do anything to your happiness. We invite your imagination to look at these graphs:
+
+```{r, echo=F}
+
+subject_x<-1:100
+chocolate_x<-round(1:100*runif(100,.5,1))
+happiness_x<-round(1:100*runif(100,.5,1))
+
+df_positive<-data.frame(subject_x,chocolate_x,happiness_x)
+
+subject_x<-1:100
+chocolate_x<-round(1:100*runif(100,.5,1))
+happiness_x<-round(100:1*runif(100,.5,1))
+
+df_negative<-data.frame(subject_x,chocolate_x,happiness_x)
+
+subject_x<-1:100
+chocolate_x<-round(runif(100,0,100))
+happiness_x<-round(runif(100,0,100))
+
+df_random<-data.frame(subject_x,chocolate_x,happiness_x)
+
+all_data<-rbind(df_positive,df_negative,df_random)
+all_data<-cbind(all_data,correlation=rep(c("positive","negative","random"),each=100))
+
+ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
+  geom_point()+
+  theme_classic()+
+  facet_wrap(~correlation)+
+  xlab("chocolate supply")+
+  ylab("happiness")
+
+```
+
+
+The first panel shows a **negative correlation**. Happiness goes down as chocolate supply increases. Negative correlation occurs when one thing goes up and the other thing goes down; or, when more of X is less of Y, and vice versa. The second panel shows a **positive correlation**. Happiness goes up as chocolate as chocolate supply increases. Postive correlation occurs when both things go up togetehr, and go down together: more of X is more of Y, and vice versa. The third panel shows **no correlation**. Here, there doesn't appear to be any obvious relationship between chocolate supply and happiness. The dots are scattered all over the place, the truest of the scatterplots. Zero correlation occurs when one thing is not related in any way to another another. Changes in X do not relate to any changes in Y, and vice-versa.
+
+## Pearson's r
+
+If Beyoncé was a statistician, she might look at these scatterplots and want to "put a number on it". We think this is a good idea too. We've already learned how to creative descriptive statistics for a single measure, like chocolate, or happiness (i.e., means, variances, etc.). Is it possible to create a descriptive statistic that summarized the relationship between two measures, all in one number? Can it be done? Karl Pearson to the rescue.
+
+There's a statistic for that, and Karl Pearson invented it. Everyone now calls it, "Pearson's r". We will find out later that Karl Pearson was a big-wig editor at Biometrika in the 1930s. He took a hating to another big-wig statisticain, Sir Ronald Fisher (who we learn about later), and they some stat fights...why can't we all just get along in statistics.
+
+How does Pearsons' r work? Let's look again at the first 10 subjects in our fake experiment:
+
+```{r,echo=F}
+library(dplyr)
+
+the_df_short <- the_df_short %>%
+  rbind(c("Sums",colSums(the_df_short[1:10,2:3]))) %>%
+  rbind(c("Means",colMeans(the_df_short[1:10,2:3])))
+knitr::kable(the_df_short)
+
+```
+
+What could we do to these numbers to produce a single, summary value, that represents the relationship between the chocolate supply and happiness?
+
+### The idea of co-variance
+
+"Oh please no, don't use the word variance again". Yes, we're doing it, we're going to use the word variance again, and again, until it starts making sense. Remember what variance means about some numbers. It means the numbers have some change in them, they are not all the same, some of them are big, some are small. We can see that there is variance in chocolate supply across the 10 subjects. We can see that there is variance in happiness across the 10 subjects. We also saw in the scatterplot, that happiness increases as chocolate supply increases; which is a positive relationship, a positive correlation. What does this have to do with variance? Well, it means there is a relationship between the variance in chocolate supply, and the variance in happiness levels. The two measures vary together don't they? When we have two measures that vary together, they are like a happy couple who share their variance. This is what co-variance refers to, the idea that the pattern of varying numbers in one measure is shared by the pattern of varying numbers in another measure. 
+
+**Co-variance** is **very, very, very ,very** important. We suspect that the word co-variance is initially confusing, especially if you are not yet fully comfortable with the meaning of variance for a single measure. Nevertheless, we must proceed and use the idea of co-variance over and over again to firmly implant into your statistical mind (we already said, but redundancy works, it's a thing). 
+
+> Pro tip: Three-legged race as a metaphor for co-variance. Two people tie one leg to each other, then try to walk. It works when they co-vary their legs together (positive relationship). They can also co-vary in an unhelpful way, when one person tries to move forward exactly when the other person tries to move backward. This is still co-variance (negative relationship). Funny random walking happens when there is no co-variance. This means one person does whatever they want, and so does the other person. There is a lot of variance, but the variance is shared randomly, so it's just a bunch of legs moving around accomplishing nothing.
+
+> Pro tip #2: Succesfully playing paddycake occurs when two people coordinate their actions so they have postively shared co-variance.
+
+## Turning the numbers into a measure of co-variance
+
+"Ok, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I'm good with that. I suppose we would need some way to measure that." Correct, back to our table...notice anything new?
+
+```{r,echo=F}
+the_df_temp<-data.frame(subject,chocolate,happiness,Chocolate_X_Happiness=chocolate*happiness)
+
+the_df_short<-the_df_temp[1:10,]
+
+the_df_short <- the_df_short %>%
+  rbind(c("Sums",colSums(the_df_short[1:10,2:4]))) %>%
+  rbind(c("Means",colMeans(the_df_short[1:10,2:4])))
+knitr::kable(the_df_short)
+
+```
+
+We've added a new column called "Chocolate_X_Happiness", which translates to Chocolate scores multiplied by Happiness scores. Each row in the new column, is the product, or multiplication of the chocolate and happiness score for that row. Yes, but why would we do this?
+
+Last chapter we took you back to Elementary school and had you think about division. Now it's time to do the same thing with multiplication. We assume you know how that works. One number times another, means taking the first number, and adding it as many times as the second says to do, $2*2= 2+2=4$, $2*6= 2+2+2+2+2+2 = 12$, or $6+6=12$, same thing. Yes, you know all that. But, can you bend multiplication to your will, and make it do your bidding when need to solve a problem like summarizing co-variance? Multiplication is the droid you are looking for.
+
+We know how to multiple numbers, and all we have to next is think about the consequences of multiplying sets of numbers together. For example, what happens when you multiply two small numbers together, compared to multiplying two big numbers together? The first product should be smaller than the second product right? How about things like multiplying a small number by a big number? Those products should be in between right?.
+
+Then next step is to think about how the products of two measures sum together, depending on how they line up. Let's look at another table:
+
+```{r}
+the_df_short<-data.frame(scores=1:10,X=1:10, Y=1:10, A=1:10, B=10:1, XY = 1:10*1:10, AB=1:10*10:1)
+
+the_df_short <- the_df_short %>%
+  rbind(c("Sums",colSums(the_df_short[1:10,2:7]))) %>%
+  rbind(c("Means",colMeans(the_df_short[1:10,2:7])))
+knitr::kable(the_df_short)
+```
+
+
+Look at the X and Y column. The scores for X and Y perfectly co-vary. When X is 1, Y is 1; when X is 2, Y is 2, etc. They are perfectly aligned. The scores for A and B also perfectly co-vary, just in the opposite manner. When A is 1, B is 10; when A is 2, B is 9, etc. B is a reversed copy of A.
+
+Now, look at the column $XY$. These are the products we get when we multiply the values of X across with the values of Y. Also, look at the column $AB$. These are the products we get when we multiply the values of A across with the values of B. So far so good.
+
+Now, look at the `Sums` for the XY and AB columns. Not the same. The sum of the XY products is 385, and the sum of the AB products is 220. For this specific set of data, the numbers 385 and 220 are very important. They represent the biggest possible sum of products (385), and the smallest possible sum of products (220). There is no way of re-ordering the numbers 1 to 10, say for X, and the numbers 1 to 10 for Y, that would ever produce larger or smaller numbers. Don't believe me? Check this out:
+
+```{r}
+simulated_sums<-length(0)
+for(sim in 1:1000){
+X<-sample(1:10)
+Y<-sample(1:10)
+simulated_sums[sim]<-sum(X*Y)
+}
+sim_df<-data.frame(sims=1:1000,simulated_sums)
+ggplot(sim_df,aes(x=sims,y=simulated_sums))+
+  geom_point()+
+  theme_classic()+
+  geom_hline(yintercept = 385)+
+  geom_hline(yintercept = 220)
+
+```
+
+The above graph shows 1000 computer simuations. I forced my computer to randomly order the numbers 1 to 10 for X, and randomly order the numbers 1 to 10 for Y. Then, I multiplied X and Y, and added the products together. I did this 1000 times. The dot's show the sum of the products for each simluation. The two black lines show the maximum possible sum (385), and the minimum possible sum (220), for this set of numbers. Notice, how all of the dots are in between the maximum and minimum possible values. Told you so.
+
+"Ok fine, you told me so...So what, who cares?". We've been looking for a way to summarize the covariance between two measures right? Well, for these numbers, we have found one, haven't we. It's the sum of the products. We know that when the sum of the products is 385, we have found a perfect, positive correlation. We know, that when the sum of the products is 220, we have found a perfect negative correlation. What about the numbers in between. What we could conclude about the correlation if we found the sum of the products to be 350. Well, it's going to be positive, because it's close to 385, and that's perfectly positive. If the sum of the products was  240, that's going to be negative, because it's close to the perfectly negatively correlating 220. What about no correlation? Well, that's going to be in the middle between 220 and 385 right.
+
+We have just come up with a data-specific summary measure for the correlation between the numbers 1 to 10 in X, and the numbers 1 to 10 in Y, it's the sum of the products. We know the maximum (385) and minimum values (220), so we can now interpret any product sum for this kind of data with respect to that scale.
+
+> Pro tip: When the correlation between two measures increases in the positive direction, the sum of their products increases to its maximum possible value. This is because the bigger numbers in X will tend to line up with the bigger numbers in Y, creating the biggest possible sum of products. When the correlation between two measures increases in the negative direction, the sum of their products decreases to its minimum possible value. This is because the bigger numbers in X will tend to line up with the smaller numbers in Y, creating the smallest possible sum of products. When there is no correlation, the big numbers in X will be randomly lined up with the big and small numbers in Y, making the sum of the products, somewhere in the middle.
+
+### Co-variance, the measure
+
+We took some time to see what happens when you multiply sets of numbers together. We found that $big*big = bigger$ and $small*small=\text{still small}$, and $big*small=\text{in the middle}$. The purpose of this was to give you some conceptual idea of how the covariance between two measures is reflected in the sum of their products. We did something very straightforward. We just multiplied X with Y, and looked at how the product sums get big and small, as X and Y co-vary in different ways. 
+
+Now, we can get a little bit more formal. In statistics, **co-variance** is not just the straight multiplication of values in X and Y. Instead, it's the multiplication of the deviations in X from the mean of X, and the deviation in Y from the mean of Y. Remember those difference scores from the mean we talked about last chapter? They're coming back to haunt you know, but in a good way like Casper the friendly ghost.
+
+Let's see what this look like in a table:
+
+```{r,echo=F}
+the_df<-the_df_CC
+
+the_df_short<-the_df[1:10,]
+
+the_df_short<-cbind(the_df_short,
+                    C_d = round((chocolate[1:10]-mean(chocolate[1:10])),digits=2),
+                    H_d = round((happiness[1:10]-mean(happiness[1:10])),digits=2),
+                    Cd_x_Hd = round(((chocolate[1:10]-mean(chocolate[1:10]))* (happiness[1:10]-mean(happiness[1:10]))),digits=2))
+
+the_df_short <- the_df_short %>%
+  rbind(c("Sums",round(colSums(the_df_short[1:10,2:6])),digits=2)) %>%
+  rbind(c("Means",round(colMeans(the_df_short[1:10,2:6])),digits=2))
+
+knitr::kable(the_df_short)
+
+```
+
+
+We have computed the deviations from the mean for the chocolate scores, and the deviations from the mean for the happiness scores. Then, we multiplied them together (last column). Finally, you can see the mean of the products listed in the bottom right corner of the table, the official **the covariance**.
+
+The formula for the covariance is:
+
+$cov(X,Y) = \frac{\sum_{i}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{N}$
+
+Ok, so now we have a formal single number to calculate the relationship between two variables. This is great, it's what we've been looking for. However, there is a problem. Remember when we learned how to compute just the plain old **variance**. We looked at that number, and we didn't know what to make of it. It was squared, it wasn't in the same scale as the original data. So, we square rooted the **variance** to produce the **standard deviation**, which gave us a more interpretable number in the range of our data. The **co-variance** has a similar problem. When you calculate the covariance as we just did, we don't know immediately know its scale. Is a 3 big? is as 6 big? is a 100 big? How big or small is this thing?
+
+From our prelude discussion on the idea of co-variance, we learned the sum of products between two measures ranges between a maximum and minimum value. The same is true of the co-variance. For a given set of data, there is a maximum possible positive value for the covariance (which occurs when there is perfect positive correlation). And, there is a minimum possible negative value for the covariance (which occurs when there is a perfect negative correlation). When there is zero covariation, guess what happens. Zeroes. So, at the very least, when we look at a covariation statistic, we can see if what direction it points, positive or negative. But, we don't know how big or small it is compared to the maxiumum or minimum possible value, so we don't know the relative size, which means we can't say how strong the correlation is. What to do?
+
+### Pearson's r we there yet
+
+Yes, we are here now. Wouldn't it be nice if could force our measure of covariation to be between -1 and +1. -1 would be the minimum possible value for a perfect negative correlation. +1 would be the maximum possible value for a perfect positive correlation. 0 would mean no correlation. Everything in between 0 and -1 would be increasingly large negative correlations. Everything between 0 and +1 would be increasingly large positive correlations. It would be a fantastic, sensible, easy to interpret system. If only we could force the covariation number to be between -1 and 1. Fortunately, for us, this episode is brought to you by Pearson's r, which does precisely this wonderful thing.
+
+Let's take a look at a formula for Pearson's r:
+
+$r = \frac{cov(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{cov(X,Y)}{SD_{X}SD_{Y}}$
+
+We see the symbol $\sigma$ here, that's more Greek for you. $\sigma$ is often used as a symbol for the standard deviation (SD). If we read out the formula in English, we see that r is the covariance of X and Y, divided by the product of the standard deviation of X and the standard deviation of Y. Why are we dividing the covariance by the product of the standard deviations. This operation has the effect of **normalizing** the covariance into the range -1 to 1. 
+
+<div class="marginnote">
+But, we will fill this part in as soon as we can...promisary note to explain the magic. FYI, it's not magic. Brief explanation here is that dividing each measure by its standard deviation ensures that the values in each measure are in the same range as one another. 
+</div>
+
+For now, we will call this mathematical magic. It works, but we don't have space to tell you why it works right now.
+
+
+
+It's worth saying that there are loads of different formulas for computing Pearson's r. You can find them by googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster than if you did by hand using the approach we took here. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important to.
+
+## Examples with Data
+
+Example here
+
+
+
+
+
+
+
+
+
+

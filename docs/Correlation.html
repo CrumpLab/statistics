@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An introductory statistics textbook for psychology students" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data" />
+  
+  <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anjali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+<meta name="author" content="Jeffrey Suzuki">
+
+
+<meta name="date" content="2018-06-27">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="DescribingData.html">
+<link rel="next" href="FoundationForInference.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="why-statistics.html"><a href="why-statistics.html"><i class="fa fa-check"></i><b>1</b> Why Statistics?</a><ul>
+<li class="chapter" data-level="1.1" data-path="why-statistics.html"><a href="why-statistics.html#on-the-psychology-of-statistics"><i class="fa fa-check"></i><b>1.1</b> On the psychology of statistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="why-statistics.html"><a href="why-statistics.html#the-curse-of-belief-bias"><i class="fa fa-check"></i><b>1.1.1</b> The curse of belief bias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-statistics.html"><a href="why-statistics.html#the-cautionary-tale-of-simpsons-paradox"><i class="fa fa-check"></i><b>1.2</b> The cautionary tale of Simpson’s paradox</a></li>
+<li class="chapter" data-level="1.3" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-psychology"><i class="fa fa-check"></i><b>1.3</b> Statistics in psychology</a></li>
+<li class="chapter" data-level="1.4" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-everyday-life"><i class="fa fa-check"></i><b>1.4</b> Statistics in everyday life</a></li>
+<li class="chapter" data-level="1.5" data-path="why-statistics.html"><a href="why-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>1.5</b> There’s more to research methods than statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="why-statistics.html"><a href="why-statistics.html#a-brief-introduction-to-research-designchstudydesign"><i class="fa fa-check"></i><b>1.6</b> A brief introduction to research design[ch:studydesign]</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="why-statistics.html"><a href="why-statistics.html#introduction-to-psychological-measurementsecmeasurement"><i class="fa fa-check"></i><b>1.6.1</b> Introduction to psychological measurement [sec:measurement]</a></li>
+<li class="chapter" data-level="1.6.2" data-path="why-statistics.html"><a href="why-statistics.html#scales-of-measurementsecscales"><i class="fa fa-check"></i><b>1.6.2</b> Scales of measurement[sec:scales]</a></li>
+<li class="chapter" data-level="1.6.3" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-reliability-of-a-measurementsecreliability"><i class="fa fa-check"></i><b>1.6.3</b> Assessing the reliability of a measurement [sec:reliability]</a></li>
+<li class="chapter" data-level="1.6.4" data-path="why-statistics.html"><a href="why-statistics.html#the-role-of-variables-predictors-and-outcomes-secivdv"><i class="fa fa-check"></i><b>1.6.4</b> The “role” of variables: predictors and outcomes [sec:ivdv]</a></li>
+<li class="chapter" data-level="1.6.5" data-path="why-statistics.html"><a href="why-statistics.html#experimental-and-non-experimental-researchsecresearchdesigns"><i class="fa fa-check"></i><b>1.6.5</b> Experimental and non-experimental research [sec:researchdesigns]</a></li>
+<li class="chapter" data-level="1.6.6" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-validity-of-a-studysecvalidity"><i class="fa fa-check"></i><b>1.6.6</b> Assessing the validity of a study [sec:validity]</a></li>
+<li class="chapter" data-level="1.6.7" data-path="why-statistics.html"><a href="why-statistics.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>1.6.7</b> Confounds, artifacts and other threats to validity</a></li>
+<li class="chapter" data-level="1.6.8" data-path="why-statistics.html"><a href="why-statistics.html#summary"><i class="fa fa-check"></i><b>1.6.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="why-statistics.html"><a href="why-statistics.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>1.7</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.8" data-path="why-statistics.html"><a href="why-statistics.html#dataBasics"><i class="fa fa-check"></i><b>1.8</b> Data basics</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="why-statistics.html"><a href="why-statistics.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.8.1</b> Observations, variables, and data matrices</a></li>
+<li class="chapter" data-level="1.8.2" data-path="why-statistics.html"><a href="why-statistics.html#variableTypes"><i class="fa fa-check"></i><b>1.8.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.8.3" data-path="why-statistics.html"><a href="why-statistics.html#variableRelations"><i class="fa fa-check"></i><b>1.8.3</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="why-statistics.html"><a href="why-statistics.html#overviewOfDataCollectionPrinciples"><i class="fa fa-check"></i><b>1.9</b> Overview of data collection principles</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="why-statistics.html"><a href="why-statistics.html#populationsAndSamples"><i class="fa fa-check"></i><b>1.9.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="1.9.2" data-path="why-statistics.html"><a href="why-statistics.html#anecdotalEvidenceSubsection"><i class="fa fa-check"></i><b>1.9.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="1.9.3" data-path="why-statistics.html"><a href="why-statistics.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.9.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="1.9.4" data-path="why-statistics.html"><a href="why-statistics.html#explanatoryAndResponse"><i class="fa fa-check"></i><b>1.9.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.9.5" data-path="why-statistics.html"><a href="why-statistics.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.9.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="why-statistics.html"><a href="why-statistics.html#observational-studies-and-sampling-strategies"><i class="fa fa-check"></i><b>1.10</b> Observational studies and sampling strategies</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="why-statistics.html"><a href="why-statistics.html#observational-studies"><i class="fa fa-check"></i><b>1.10.1</b> Observational studies</a></li>
+<li class="chapter" data-level="1.10.2" data-path="why-statistics.html"><a href="why-statistics.html#threeSamplingMethods"><i class="fa fa-check"></i><b>1.10.2</b> Three sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="why-statistics.html"><a href="why-statistics.html#experimentsSection"><i class="fa fa-check"></i><b>1.11</b> Experiments</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="why-statistics.html"><a href="why-statistics.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>1.11.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="1.11.2" data-path="why-statistics.html"><a href="why-statistics.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>1.11.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#this-is-what-too-many-numbers-looks-like"><i class="fa fa-check"></i><b>2.1</b> This is what too many numbers looks like</a></li>
+<li class="chapter" data-level="2.2" data-path="DescribingData.html"><a href="DescribingData.html#look-at-the-data"><i class="fa fa-check"></i><b>2.2</b> Look at the data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DescribingData.html"><a href="DescribingData.html#stop-plotting-time-o-o-oh-u-can-plot-this"><i class="fa fa-check"></i><b>2.2.1</b> Stop, plotting time (o o oh) U can plot this</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DescribingData.html"><a href="DescribingData.html#histograms"><i class="fa fa-check"></i><b>2.2.2</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="DescribingData.html"><a href="DescribingData.html#important-ideas-distribution-central-tendency-and-variance"><i class="fa fa-check"></i><b>2.3</b> Important Ideas: Distribution, Central Tendency, and Variance</a></li>
+<li class="chapter" data-level="2.4" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-central-tendency-sameness"><i class="fa fa-check"></i><b>2.4</b> Measures of Central Tendency (Sameness)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="DescribingData.html"><a href="DescribingData.html#from-many-numbers-to-one"><i class="fa fa-check"></i><b>2.4.1</b> From many numbers to one</a></li>
+<li class="chapter" data-level="2.4.2" data-path="DescribingData.html"><a href="DescribingData.html#mode"><i class="fa fa-check"></i><b>2.4.2</b> Mode</a></li>
+<li class="chapter" data-level="2.4.3" data-path="DescribingData.html"><a href="DescribingData.html#median"><i class="fa fa-check"></i><b>2.4.3</b> Median</a></li>
+<li class="chapter" data-level="2.4.4" data-path="DescribingData.html"><a href="DescribingData.html#mean"><i class="fa fa-check"></i><b>2.4.4</b> Mean</a></li>
+<li class="chapter" data-level="2.4.5" data-path="DescribingData.html"><a href="DescribingData.html#what-does-the-mean-mean"><i class="fa fa-check"></i><b>2.4.5</b> What does the mean mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-variation-differentness"><i class="fa fa-check"></i><b>2.5</b> Measures of Variation (Differentness)</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="DescribingData.html"><a href="DescribingData.html#the-range"><i class="fa fa-check"></i><b>2.5.1</b> The Range</a></li>
+<li class="chapter" data-level="2.5.2" data-path="DescribingData.html"><a href="DescribingData.html#the-difference-scores"><i class="fa fa-check"></i><b>2.5.2</b> The Difference Scores</a></li>
+<li class="chapter" data-level="2.5.3" data-path="DescribingData.html"><a href="DescribingData.html#the-variance"><i class="fa fa-check"></i><b>2.5.3</b> The Variance</a></li>
+<li class="chapter" data-level="2.5.4" data-path="DescribingData.html"><a href="DescribingData.html#the-standard-deviation"><i class="fa fa-check"></i><b>2.5.4</b> The Standard Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="DescribingData.html"><a href="DescribingData.html#using-descriptive-statistics-with-data"><i class="fa fa-check"></i><b>2.6</b> Using Descriptive Statistics with data</a></li>
+<li class="chapter" data-level="2.7" data-path="DescribingData.html"><a href="DescribingData.html#rolling-your-own-descriptive-statistics"><i class="fa fa-check"></i><b>2.7</b> Rolling your own descriptive statistics</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="DescribingData.html"><a href="DescribingData.html#absolute-deviations"><i class="fa fa-check"></i><b>2.7.1</b> Absolute deviations</a></li>
+<li class="chapter" data-level="2.7.2" data-path="DescribingData.html"><a href="DescribingData.html#other-sign-inverting-operations"><i class="fa fa-check"></i><b>2.7.2</b> Other sign-inverting operations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="DescribingData.html"><a href="DescribingData.html#numericalData"><i class="fa fa-check"></i><b>2.8</b> Examining numerical data</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="DescribingData.html"><a href="DescribingData.html#scatterPlots"><i class="fa fa-check"></i><b>2.8.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="2.8.2" data-path="DescribingData.html"><a href="DescribingData.html#dotPlot"><i class="fa fa-check"></i><b>2.8.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="2.8.3" data-path="DescribingData.html"><a href="DescribingData.html#histogramsAndShape"><i class="fa fa-check"></i><b>2.8.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="2.8.4" data-path="DescribingData.html"><a href="DescribingData.html#variability"><i class="fa fa-check"></i><b>2.8.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="2.8.5" data-path="DescribingData.html"><a href="DescribingData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.8.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="2.8.6" data-path="DescribingData.html"><a href="DescribingData.html#robust-statistics"><i class="fa fa-check"></i><b>2.8.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="2.8.7" data-path="DescribingData.html"><a href="DescribingData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>2.8.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="2.8.8" data-path="DescribingData.html"><a href="DescribingData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.8.8</b> Mapping data (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="DescribingData.html"><a href="DescribingData.html#categoricalData"><i class="fa fa-check"></i><b>2.9</b> Considering categorical data</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="DescribingData.html"><a href="DescribingData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.9.1</b> Contingency tables and bar plots</a></li>
+<li class="chapter" data-level="2.9.2" data-path="DescribingData.html"><a href="DescribingData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>2.9.2</b> Row and column proportions</a></li>
+<li class="chapter" data-level="2.9.3" data-path="DescribingData.html"><a href="DescribingData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>2.9.3</b> Segmented bar and mosaic plots</a></li>
+<li class="chapter" data-level="2.9.4" data-path="DescribingData.html"><a href="DescribingData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>2.9.4</b> The only pie chart you will see in this book</a></li>
+<li class="chapter" data-level="2.9.5" data-path="DescribingData.html"><a href="DescribingData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>2.9.5</b> Comparing numerical data across groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Correlation.html"><a href="Correlation.html"><i class="fa fa-check"></i><b>3</b> Correlation</a><ul>
+<li class="chapter" data-level="3.1" data-path="Correlation.html"><a href="Correlation.html#if-something-caused-something-else-to-change-what-would-that-look-like"><i class="fa fa-check"></i><b>3.1</b> If something caused something else to change, what would that look like?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="Correlation.html"><a href="Correlation.html#charlie-and-the-chocolate-factory"><i class="fa fa-check"></i><b>3.1.1</b> Charlie and the Chocolate factory</a></li>
+<li class="chapter" data-level="3.1.2" data-path="Correlation.html"><a href="Correlation.html#scatterplots"><i class="fa fa-check"></i><b>3.1.2</b> Scatterplots</a></li>
+<li class="chapter" data-level="3.1.3" data-path="Correlation.html"><a href="Correlation.html#positive-negative-and-no-correlation"><i class="fa fa-check"></i><b>3.1.3</b> Positive, Negative, and No-Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r"><i class="fa fa-check"></i><b>3.2</b> Pearson’s r</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="Correlation.html"><a href="Correlation.html#the-idea-of-co-variance"><i class="fa fa-check"></i><b>3.2.1</b> The idea of co-variance</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="Correlation.html"><a href="Correlation.html#turning-the-numbers-into-a-measure-of-co-variance"><i class="fa fa-check"></i><b>3.3</b> Turning the numbers into a measure of co-variance</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="Correlation.html"><a href="Correlation.html#co-variance-the-measure"><i class="fa fa-check"></i><b>3.3.1</b> Co-variance, the measure</a></li>
+<li class="chapter" data-level="3.3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r-we-there-yet"><i class="fa fa-check"></i><b>3.3.2</b> Pearson’s r we there yet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="Correlation.html"><a href="Correlation.html#examples-with-data"><i class="fa fa-check"></i><b>3.4</b> Examples with Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>4</b> Foundation for inference</a><ul>
+<li class="chapter" data-level="4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>4.1</b> Randomization case study: gender discrimination</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>4.1.1</b> Variability within data</a></li>
+<li class="chapter" data-level="4.1.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>4.1.2</b> Simulating the study</a></li>
+<li class="chapter" data-level="4.1.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>4.1.3</b> Checking for independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>4.2</b> Randomization case study: opportunity cost</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>4.2.1</b> Exploring the data set before the analysis</a></li>
+<li class="chapter" data-level="4.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>4.2.2</b> Results from chance alone</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>4.3</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>4.3.1</b> Hypothesis testing in the US court system</a></li>
+<li class="chapter" data-level="4.3.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>4.3.2</b> p-value and statistical significance</a></li>
+<li class="chapter" data-level="4.3.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>4.3.3</b> Decision errors</a></li>
+<li class="chapter" data-level="4.3.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>4.3.4</b> Choosing a significance level</a></li>
+<li class="chapter" data-level="4.3.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>4.3.5</b> Introducing two-sided hypotheses</a></li>
+<li class="chapter" data-level="4.3.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>4.3.6</b> Controlling the Type 1 Error rate</a></li>
+<li class="chapter" data-level="4.3.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>4.3.7</b> How to use a hypothesis test</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>4.4</b> Simulation case studies</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>4.4.1</b> Medical consultant</a></li>
+<li class="chapter" data-level="4.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>4.4.2</b> Tappers and listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>4.5</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>4.5.1</b> Null distribution from the case studies</a></li>
+<li class="chapter" data-level="4.5.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>4.5.2</b> Examples of future settings we will consider</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>4.6</b> Normal distribution</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>4.6.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="4.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>4.6.2</b> Standardizing with Z scores</a></li>
+<li class="chapter" data-level="4.6.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>4.6.3</b> Normal probability table</a></li>
+<li class="chapter" data-level="4.6.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>4.6.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="4.6.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>4.6.5</b> 68-95-99.7 rule</a></li>
+<li class="chapter" data-level="4.6.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>4.6.6</b> Evaluating the normal approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>4.7</b> Applying the normal model</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>4.7.1</b> Standard error</a></li>
+<li class="chapter" data-level="4.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>4.7.2</b> Normal model application: opportunity cost</a></li>
+<li class="chapter" data-level="4.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>4.7.3</b> Normal model application: medical consultant</a></li>
+<li class="chapter" data-level="4.7.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>4.7.4</b> Conditions for applying the normal model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>4.8</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>4.8.1</b> Capturing the population parameter</a></li>
+<li class="chapter" data-level="4.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>4.8.2</b> Constructing a 95% confidence interval</a></li>
+<li class="chapter" data-level="4.8.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>4.8.3</b> Changing the confidence level</a></li>
+<li class="chapter" data-level="4.8.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>4.8.4</b> Interpreting confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html"><i class="fa fa-check"></i><b>5</b> Inference for numerical data: t-Tests</a><ul>
+<li class="chapter" data-level="5.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>5.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>5.1.1</b> Two examples using the normal distribution</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>5.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>5.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTTests"><i class="fa fa-check"></i><b>5.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pairedData"><i class="fa fa-check"></i><b>5.2</b> Paired data</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-observations"><i class="fa fa-check"></i><b>5.2.1</b> Paired observations</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#inference-for-paired-data"><i class="fa fa-check"></i><b>5.2.2</b> Inference for paired data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>5.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>5.3.1</b> Confidence interval for a differences of means</a></li>
+<li class="chapter" data-level="5.3.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>5.3.2</b> Hypothesis tests based on a difference in means</a></li>
+<li class="chapter" data-level="5.3.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>5.3.3</b> Case study: two versions of a course exam</a></li>
+<li class="chapter" data-level="5.3.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>5.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="5.3.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>5.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>6</b> Inference for numerical data: ANOVA</a><ul>
+<li class="chapter" data-level="6.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>6.1</b> Comparing many means with ANOVA</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>6.1.1</b> Is batting performance related to player position in MLB?</a></li>
+<li class="chapter" data-level="6.1.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>6.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
+<li class="chapter" data-level="6.1.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>6.1.3</b> Reading an ANOVA table from software</a></li>
+<li class="chapter" data-level="6.1.4" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>6.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
+<li class="chapter" data-level="6.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>6.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>6.2</b> Bootstrapping to study the standard deviation</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>6.2.1</b> Bootstrap samples and distributions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>6.2.2</b> Inference using the bootstrap</a></li>
+<li class="chapter" data-level="6.2.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#frequently-asked-questions"><i class="fa fa-check"></i><b>6.2.3</b> Frequently asked questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>7</b> Introduction to linear regression</a><ul>
+<li class="chapter" data-level="7.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>7.1</b> Line fitting, residuals, and correlation</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>7.1.1</b> Beginning with straight lines</a></li>
+<li class="chapter" data-level="7.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>7.1.2</b> Fitting a line by eye</a></li>
+<li class="chapter" data-level="7.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>7.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="7.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>7.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>7.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>7.2.1</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="7.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>7.2.2</b> Finding the least squares line</a></li>
+<li class="chapter" data-level="7.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>7.2.3</b> Interpreting regression line parameter estimates</a></li>
+<li class="chapter" data-level="7.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>7.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="7.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>7.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
+<li class="chapter" data-level="7.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>7.2.6</b> Categorical predictors with two levels</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>7.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="7.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>7.4</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>7.4.1</b> Conditions for the least squares line</a></li>
+<li class="chapter" data-level="7.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>7.4.2</b> Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="7.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>7.4.3</b> Understanding regression output from software</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>8</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>8.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>8.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>8.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="8.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>8.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>8.2</b> Model selection</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>8.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="8.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>8.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>8.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="8.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>8.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>8.4.1</b> Email data</a></li>
+<li class="chapter" data-level="8.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>8.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="8.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>8.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="8.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>8.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="8.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>8.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>9</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="9.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>9.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>9.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="9.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>9.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="9.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>9.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="9.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>9.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>9.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>9.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="9.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>9.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="9.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>9.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>9.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>9.3.1</b> Creating a test statistic for one-way tables</a></li>
+<li class="chapter" data-level="9.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>9.3.2</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="9.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>9.3.3</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>9.3.4</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="9.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>9.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>9.4</b> Testing for independence in two-way tables (special topic)</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>9.4.1</b> Expected counts in two-way tables</a></li>
+<li class="chapter" data-level="9.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>9.4.2</b> The chi-square test for two-way tables</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Correlation" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Correlation</h1>
+<p><span class="newthought"> Correlation does not equal causation —Every Statistics and Research Methods Instructor Ever </span></p>
+<div class="marginnote">
+<p>Chapter by Matthew Crump</p>
+</div>
+<p>In the last chapter we had some data. It was too much too look at and it didn’t make sense. So, we talked about how to look at the data visually using plots and histograms, and we talked about how to summarize lots of numbers so we could determine their central tendencies (sameness) and variability (differentness). And, all was well with the world.</p>
+<p>Let’s not forget the big reason why learned about descriptive statistics. The big reason is that we are interested in getting answers to questions using data. If you are looking for a thread to think about the whole way through this big, that thread is: how do we ask an answer questions using data? For every section in this book, you should be connecting your inner monologe to this question, and asking yourself: How does what I am learning about help me answer questions with data? Advance warning, we know it is easy to forget this stuff when we dive into the details, and we will try to throw you a rope to help you out along the way.</p>
+<p>We started Chapter two with some fake data on human happiness, remember? We imagined that we asked a bunch of people to tell us how happy they were, then we looked at the numbers they gave us. Let’s continue with this imaginary thought experiment.</p>
+<p>What do you get when ask people to use a number to describe how happy they are? A bunch of numbers. What kind of questions can you ask about those numbers? Well, you can look at the numbers and estimate their general properties as we already did. We would expect to find what we can imagine to be true. There are different people, and different people are different amounts of happy. You’ve probably met some of those of really happy people, and really unhappy people, and you yourself probably have some amount of happiness. “Great, thanks captain obvious”. Before moving on, you should also be skeptical of what the numbers might mean. For example, if you force people to give a number between 0-100 to rate their happiness, does this number truly reflect how happy that person is? Can a person know how happy they are? Does the question format bias how they give their answer? Is happiness even a real thing? These are all good questions about the <strong>validity</strong> of the construct (happiness itself) and the measure (numbers) you are using to quantify it. For now, though, we will side-step those very important questions, and assume that, happiness is a thing, and our measure of happiness measures something about how happy people are.</p>
+<p>Ok then, after we have measured some happiness, I bet you can think of some more pressing questions. For example, what causes happiness to go up or down. If you knew the causes of happiness what could you do? How about increase your own happiness, or help people who are unhappy, or better appreciate why Eeyore is unhappy, or present valid scientific arguments that argue against incorrect claims about what causes happiness. A causal theory and understanding of happiness could be used for all of those things. How can we get there?</p>
+<p>Imagine you were an alien observer. You arrived on earth and heard about this thing called happiness that people have. You want to know what causes happiness. You also discover that the planet earth has lots of other things. Which of those things, you wonder, cause happiness? How to get started on this big question.</p>
+<p>As a person who has happiness, you might already have some hunches. For example things like: weather, friends, music, money, education, drugs, books, movies, perspective, personality, color of your shoes, eyebrow length, number of cat’s you see per day, frequency of subway delay, a lifetime supply of chocolate, etcetera etcetera (as Willy Wonka would say). There could be many different causes of happiness.</p>
+<div id="if-something-caused-something-else-to-change-what-would-that-look-like" class="section level2">
+<h2><span class="header-section-number">3.1</span> If something caused something else to change, what would that look like?</h2>
+<p>Before we go around determining the causes of happiness, we should prepare ourselves with some analytical tools so that we could identify what causation looks like. If we don’t prepare ourselves for what we might find, then we won’t know how to interpret our own data. Instead, we need to anticipate what the data could look like. Specifically, we need to know what data would look like when one thing does not cause another thing, and what data would look like when one thing does cause another thing. This chapter does some of this preparation. Fair warning. We will find out some tricky things. For example, we can find patterns that look like one thing is causing another, even when that one thing DOES NOT CAUSE the other thing. Hang in there.</p>
+<div id="charlie-and-the-chocolate-factory" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Charlie and the Chocolate factory</h3>
+<p>Let’s imagine that a person’s supply of chocolate has a causal influence on their level of happiness. Let’s further imagine that, like Charlie, the more chocolate you have the more happy you will be, and the less chocolate you have, the less happy you will be. Finally, because we suspect happyness is caused by lots of other things in a person’s life, we anticipate that the relationship between chocolate supply and happyness won’t be perfect. What do these assumptions mean for how the data should look?</p>
+<p>Our first step is to collect some imaginary data from 100 people. We walk around and ask the first 100 people we meet to answer two questions: 1) how much chocolate do you have, and 2) how happy are you. For convenvience, both the scales will go from 0 - 100. For the chocolate scale, 0 means no chocolate, 100 means lifetime supply of chocolate, and any other number is somewhere in between. For the happiness scale, 0 means no happiness, 100 means all of the happiness, and in between means some amount in between.</p>
+<p>Here is some sample data from the first 10 imaginary subjects.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">subject&lt;-<span class="dv">1</span>:<span class="dv">100</span>
+chocolate&lt;-<span class="kw">round</span>(<span class="dv">1</span>:<span class="dv">100</span>*<span class="kw">runif</span>(<span class="dv">100</span>,.<span class="dv">5</span>,<span class="dv">1</span>))
+happiness&lt;-<span class="kw">round</span>(<span class="dv">1</span>:<span class="dv">100</span>*<span class="kw">runif</span>(<span class="dv">100</span>,.<span class="dv">5</span>,<span class="dv">1</span>))
+
+the_df_CC&lt;-<span class="kw">data.frame</span>(subject,chocolate,happiness)
+
+
+the_df_short&lt;-the_df_CC[<span class="dv">1</span>:<span class="dv">10</span>,]
+
+knitr::<span class="kw">kable</span>(the_df_short)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">subject</th>
+<th align="right">chocolate</th>
+<th align="right">happiness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">6</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">7</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">9</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
+<p>Of course, we asked each subjects two questions, so there are two scores for each subject, one for their chocolate supply, and one for their level of happiness. You might already notice some relationships between amount of chocolate and level of happiness in the table. To make those relationships even more clear, let’s plot all of the data in a graph.</p>
+</div>
+<div id="scatterplots" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Scatterplots</h3>
+<p>When you have two measurements worth of data, you can always turn them into dots and plot them in a scatter plot. A scatterplot has a horizontal x-axis, and a veritcal y-axis. You get to choose which measurement goes on which axis. Let’s put chocolate supply on the x-axis, and happiness level on the y-axis. The plot below shows 100 dots for each subject.</p>
+<p><img src="statistics_files/figure-html/scatter1-1.png" width="672" /></p>
+<p>You might be wondering, why are there only 100 dots for the data. Didn’t we collect 100 measures for chocolate, and 100 measures for happiness, shouldn’t there be 200 dots? Nope. Each dot is for one subject, there are 100 subjects, so there are 100 dots.</p>
+<p>What do the dots mean? Each dot has two coordinates, an x-coordinate for chocolate, and a y-coordinate for happiness. The first dot, all the way on the bottom left is the first subject in the table, who had close to 0 chocolate and close to zero happiness. You can look at any dot, then draw a straight line down to the x-xaxis: that will tell you have much chocolate that subject has. You can draw a straight line left to the y-axis: that will tell you how much happiness the subject has.</p>
+<p>Now that we are looking at the scatterplot, we can see many things. One, the dots are scattered around a bit aren’t they, hence <strong>scatterplot</strong>. Even when the dot’s don’t scatter, they’re still called scatterplots, perhaps because those pesky dots in real life have so much scatter all the time. More important, the dots show a relationship between chocolate supply and happiness. Happiness is lower for people with smaller supplies of choclate, and higher for people with larger supplies of chocolate. It looks like the more chocolate you have the happier you will be, and vice versa. This kind of relationship is called a <strong>positive correlation</strong>.</p>
+</div>
+<div id="positive-negative-and-no-correlation" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Positive, Negative, and No-Correlation</h3>
+<p>Seeing as we are in the business of imagining data, let’s imagine some more. We’ve already imagined what data would look like if larger chocolate supplies increase happiness. We’ll show that again in a bit. What do you imagine the scatterplot would look like if the relationship was reversed, and larger chocolate supplies decreased happiness. Or, what do you imagine the scatterplot would look like if there was no relationship, and the amount of chocolate that you have doesn’t do anything to your happiness. We invite your imagination to look at these graphs:</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>The first panel shows a <strong>negative correlation</strong>. Happiness goes down as chocolate supply increases. Negative correlation occurs when one thing goes up and the other thing goes down; or, when more of X is less of Y, and vice versa. The second panel shows a <strong>positive correlation</strong>. Happiness goes up as chocolate as chocolate supply increases. Postive correlation occurs when both things go up togetehr, and go down together: more of X is more of Y, and vice versa. The third panel shows <strong>no correlation</strong>. Here, there doesn’t appear to be any obvious relationship between chocolate supply and happiness. The dots are scattered all over the place, the truest of the scatterplots. Zero correlation occurs when one thing is not related in any way to another another. Changes in X do not relate to any changes in Y, and vice-versa.</p>
+</div>
+</div>
+<div id="pearsons-r" class="section level2">
+<h2><span class="header-section-number">3.2</span> Pearson’s r</h2>
+<p>If Beyoncé was a statistician, she might look at these scatterplots and want to “put a number on it”. We think this is a good idea too. We’ve already learned how to creative descriptive statistics for a single measure, like chocolate, or happiness (i.e., means, variances, etc.). Is it possible to create a descriptive statistic that summarized the relationship between two measures, all in one number? Can it be done? Karl Pearson to the rescue.</p>
+<p>There’s a statistic for that, and Karl Pearson invented it. Everyone now calls it, “Pearson’s r”. We will find out later that Karl Pearson was a big-wig editor at Biometrika in the 1930s. He took a hating to another big-wig statisticain, Sir Ronald Fisher (who we learn about later), and they some stat fights…why can’t we all just get along in statistics.</p>
+<p>How does Pearsons’ r work? Let’s look again at the first 10 subjects in our fake experiment:</p>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">chocolate</th>
+<th align="left">happiness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">4</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">6</td>
+<td align="left">5</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">6</td>
+<td align="left">6</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">7</td>
+<td align="left">9</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">9</td>
+<td align="left">8</td>
+</tr>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">43</td>
+<td align="left">44</td>
+</tr>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">4.3</td>
+<td align="left">4.4</td>
+</tr>
+</tbody>
+</table>
+<p>What could we do to these numbers to produce a single, summary value, that represents the relationship between the chocolate supply and happiness?</p>
+<div id="the-idea-of-co-variance" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> The idea of co-variance</h3>
+<p>“Oh please no, don’t use the word variance again”. Yes, we’re doing it, we’re going to use the word variance again, and again, until it starts making sense. Remember what variance means about some numbers. It means the numbers have some change in them, they are not all the same, some of them are big, some are small. We can see that there is variance in chocolate supply across the 10 subjects. We can see that there is variance in happiness across the 10 subjects. We also saw in the scatterplot, that happiness increases as chocolate supply increases; which is a positive relationship, a positive correlation. What does this have to do with variance? Well, it means there is a relationship between the variance in chocolate supply, and the variance in happiness levels. The two measures vary together don’t they? When we have two measures that vary together, they are like a happy couple who share their variance. This is what co-variance refers to, the idea that the pattern of varying numbers in one measure is shared by the pattern of varying numbers in another measure.</p>
+<p><strong>Co-variance</strong> is <strong>very, very, very ,very</strong> important. We suspect that the word co-variance is initially confusing, especially if you are not yet fully comfortable with the meaning of variance for a single measure. Nevertheless, we must proceed and use the idea of co-variance over and over again to firmly implant into your statistical mind (we already said, but redundancy works, it’s a thing).</p>
+<blockquote>
+<p>Pro tip: Three-legged race as a metaphor for co-variance. Two people tie one leg to each other, then try to walk. It works when they co-vary their legs together (positive relationship). They can also co-vary in an unhelpful way, when one person tries to move forward exactly when the other person tries to move backward. This is still co-variance (negative relationship). Funny random walking happens when there is no co-variance. This means one person does whatever they want, and so does the other person. There is a lot of variance, but the variance is shared randomly, so it’s just a bunch of legs moving around accomplishing nothing.</p>
+</blockquote>
+<blockquote>
+<p>Pro tip #2: Succesfully playing paddycake occurs when two people coordinate their actions so they have postively shared co-variance.</p>
+</blockquote>
+</div>
+</div>
+<div id="turning-the-numbers-into-a-measure-of-co-variance" class="section level2">
+<h2><span class="header-section-number">3.3</span> Turning the numbers into a measure of co-variance</h2>
+<p>“Ok, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I’m good with that. I suppose we would need some way to measure that.” Correct, back to our table…notice anything new?</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">chocolate</th>
+<th align="left">happiness</th>
+<th align="left">Chocolate_X_Happiness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">9</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">5</td>
+<td align="left">15</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">12</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">36</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">7</td>
+<td align="left">9</td>
+<td align="left">63</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">9</td>
+<td align="left">8</td>
+<td align="left">72</td>
+</tr>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">43</td>
+<td align="left">44</td>
+<td align="left">246</td>
+</tr>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">4.3</td>
+<td align="left">4.4</td>
+<td align="left">24.6</td>
+</tr>
+</tbody>
+</table>
+<p>We’ve added a new column called “Chocolate_X_Happiness”, which translates to Chocolate scores multiplied by Happiness scores. Each row in the new column, is the product, or multiplication of the chocolate and happiness score for that row. Yes, but why would we do this?</p>
+<p>Last chapter we took you back to Elementary school and had you think about division. Now it’s time to do the same thing with multiplication. We assume you know how that works. One number times another, means taking the first number, and adding it as many times as the second says to do, <span class="math inline">\(2*2= 2+2=4\)</span>, <span class="math inline">\(2*6= 2+2+2+2+2+2 = 12\)</span>, or <span class="math inline">\(6+6=12\)</span>, same thing. Yes, you know all that. But, can you bend multiplication to your will, and make it do your bidding when need to solve a problem like summarizing co-variance? Multiplication is the droid you are looking for.</p>
+<p>We know how to multiple numbers, and all we have to next is think about the consequences of multiplying sets of numbers together. For example, what happens when you multiply two small numbers together, compared to multiplying two big numbers together? The first product should be smaller than the second product right? How about things like multiplying a small number by a big number? Those products should be in between right?.</p>
+<p>Then next step is to think about how the products of two measures sum together, depending on how they line up. Let’s look at another table:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">the_df_short&lt;-<span class="kw">data.frame</span>(<span class="dt">scores=</span><span class="dv">1</span>:<span class="dv">10</span>,<span class="dt">X=</span><span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">Y=</span><span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">A=</span><span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">B=</span><span class="dv">10</span>:<span class="dv">1</span>, <span class="dt">XY =</span> <span class="dv">1</span>:<span class="dv">10</span>*<span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">AB=</span><span class="dv">1</span>:<span class="dv">10</span>*<span class="dv">10</span>:<span class="dv">1</span>)
+
+the_df_short &lt;-<span class="st"> </span>the_df_short %&gt;%
+<span class="st">  </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Sums&quot;</span>,<span class="kw">colSums</span>(the_df_short[<span class="dv">1</span>:<span class="dv">10</span>,<span class="dv">2</span>:<span class="dv">7</span>]))) %&gt;%
+<span class="st">  </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Means&quot;</span>,<span class="kw">colMeans</span>(the_df_short[<span class="dv">1</span>:<span class="dv">10</span>,<span class="dv">2</span>:<span class="dv">7</span>])))
+knitr::<span class="kw">kable</span>(the_df_short)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">scores</th>
+<th align="left">X</th>
+<th align="left">Y</th>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">XY</th>
+<th align="left">AB</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">10</td>
+<td align="left">1</td>
+<td align="left">10</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">9</td>
+<td align="left">4</td>
+<td align="left">18</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">8</td>
+<td align="left">9</td>
+<td align="left">24</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">7</td>
+<td align="left">16</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">25</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">36</td>
+<td align="left">30</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">4</td>
+<td align="left">49</td>
+<td align="left">28</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">3</td>
+<td align="left">64</td>
+<td align="left">24</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">2</td>
+<td align="left">81</td>
+<td align="left">18</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">1</td>
+<td align="left">100</td>
+<td align="left">10</td>
+</tr>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">385</td>
+<td align="left">220</td>
+</tr>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">5.5</td>
+<td align="left">5.5</td>
+<td align="left">5.5</td>
+<td align="left">5.5</td>
+<td align="left">38.5</td>
+<td align="left">22</td>
+</tr>
+</tbody>
+</table>
+<p>Look at the X and Y column. The scores for X and Y perfectly co-vary. When X is 1, Y is 1; when X is 2, Y is 2, etc. They are perfectly aligned. The scores for A and B also perfectly co-vary, just in the opposite manner. When A is 1, B is 10; when A is 2, B is 9, etc. B is a reversed copy of A.</p>
+<p>Now, look at the column <span class="math inline">\(XY\)</span>. These are the products we get when we multiply the values of X across with the values of Y. Also, look at the column <span class="math inline">\(AB\)</span>. These are the products we get when we multiply the values of A across with the values of B. So far so good.</p>
+<p>Now, look at the <code>Sums</code> for the XY and AB columns. Not the same. The sum of the XY products is 385, and the sum of the AB products is 220. For this specific set of data, the numbers 385 and 220 are very important. They represent the biggest possible sum of products (385), and the smallest possible sum of products (220). There is no way of re-ordering the numbers 1 to 10, say for X, and the numbers 1 to 10 for Y, that would ever produce larger or smaller numbers. Don’t believe me? Check this out:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simulated_sums&lt;-<span class="kw">length</span>(<span class="dv">0</span>)
+for(sim in <span class="dv">1</span>:<span class="dv">1000</span>){
+X&lt;-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">10</span>)
+Y&lt;-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">10</span>)
+simulated_sums[sim]&lt;-<span class="kw">sum</span>(X*Y)
+}
+sim_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sims=</span><span class="dv">1</span>:<span class="dv">1000</span>,simulated_sums)
+<span class="kw">ggplot</span>(sim_df,<span class="kw">aes</span>(<span class="dt">x=</span>sims,<span class="dt">y=</span>simulated_sums))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">385</span>)+
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">220</span>)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The above graph shows 1000 computer simuations. I forced my computer to randomly order the numbers 1 to 10 for X, and randomly order the numbers 1 to 10 for Y. Then, I multiplied X and Y, and added the products together. I did this 1000 times. The dot’s show the sum of the products for each simluation. The two black lines show the maximum possible sum (385), and the minimum possible sum (220), for this set of numbers. Notice, how all of the dots are in between the maximum and minimum possible values. Told you so.</p>
+<p>“Ok fine, you told me so…So what, who cares?”. We’ve been looking for a way to summarize the covariance between two measures right? Well, for these numbers, we have found one, haven’t we. It’s the sum of the products. We know that when the sum of the products is 385, we have found a perfect, positive correlation. We know, that when the sum of the products is 220, we have found a perfect negative correlation. What about the numbers in between. What we could conclude about the correlation if we found the sum of the products to be 350. Well, it’s going to be positive, because it’s close to 385, and that’s perfectly positive. If the sum of the products was 240, that’s going to be negative, because it’s close to the perfectly negatively correlating 220. What about no correlation? Well, that’s going to be in the middle between 220 and 385 right.</p>
+<p>We have just come up with a data-specific summary measure for the correlation between the numbers 1 to 10 in X, and the numbers 1 to 10 in Y, it’s the sum of the products. We know the maximum (385) and minimum values (220), so we can now interpret any product sum for this kind of data with respect to that scale.</p>
+<blockquote>
+<p>Pro tip: When the correlation between two measures increases in the positive direction, the sum of their products increases to its maximum possible value. This is because the bigger numbers in X will tend to line up with the bigger numbers in Y, creating the biggest possible sum of products. When the correlation between two measures increases in the negative direction, the sum of their products decreases to its minimum possible value. This is because the bigger numbers in X will tend to line up with the smaller numbers in Y, creating the smallest possible sum of products. When there is no correlation, the big numbers in X will be randomly lined up with the big and small numbers in Y, making the sum of the products, somewhere in the middle.</p>
+</blockquote>
+<div id="co-variance-the-measure" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Co-variance, the measure</h3>
+<p>We took some time to see what happens when you multiply sets of numbers together. We found that <span class="math inline">\(big*big = bigger\)</span> and <span class="math inline">\(small*small=\text{still small}\)</span>, and <span class="math inline">\(big*small=\text{in the middle}\)</span>. The purpose of this was to give you some conceptual idea of how the covariance between two measures is reflected in the sum of their products. We did something very straightforward. We just multiplied X with Y, and looked at how the product sums get big and small, as X and Y co-vary in different ways.</p>
+<p>Now, we can get a little bit more formal. In statistics, <strong>co-variance</strong> is not just the straight multiplication of values in X and Y. Instead, it’s the multiplication of the deviations in X from the mean of X, and the deviation in Y from the mean of Y. Remember those difference scores from the mean we talked about last chapter? They’re coming back to haunt you know, but in a good way like Casper the friendly ghost.</p>
+<p>Let’s see what this look like in a table:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">chocolate</th>
+<th align="left">happiness</th>
+<th align="left">C_d</th>
+<th align="left">H_d</th>
+<th align="left">Cd_x_Hd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">-3.3</td>
+<td align="left">-3.4</td>
+<td align="left">11.22</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">-2.3</td>
+<td align="left">-2.4</td>
+<td align="left">5.52</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">-2.3</td>
+<td align="left">-2.4</td>
+<td align="left">5.52</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">-1.3</td>
+<td align="left">-1.4</td>
+<td align="left">1.82</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">5</td>
+<td align="left">-1.3</td>
+<td align="left">0.6</td>
+<td align="left">-0.78</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">-0.3</td>
+<td align="left">-1.4</td>
+<td align="left">0.42</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">1.7</td>
+<td align="left">0.6</td>
+<td align="left">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">1.7</td>
+<td align="left">1.6</td>
+<td align="left">2.72</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">7</td>
+<td align="left">9</td>
+<td align="left">2.7</td>
+<td align="left">4.6</td>
+<td align="left">12.42</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">9</td>
+<td align="left">8</td>
+<td align="left">4.7</td>
+<td align="left">3.6</td>
+<td align="left">16.92</td>
+</tr>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">43</td>
+<td align="left">44</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">57</td>
+</tr>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">6</td>
+</tr>
+</tbody>
+</table>
+<p>We have computed the deviations from the mean for the chocolate scores, and the deviations from the mean for the happiness scores. Then, we multiplied them together (last column). Finally, you can see the mean of the products listed in the bottom right corner of the table, the official <strong>the covariance</strong>.</p>
+<p>The formula for the covariance is:</p>
+<p><span class="math inline">\(cov(X,Y) = \frac{\sum_{i}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{N}\)</span></p>
+<p>Ok, so now we have a formal single number to calculate the relationship between two variables. This is great, it’s what we’ve been looking for. However, there is a problem. Remember when we learned how to compute just the plain old <strong>variance</strong>. We looked at that number, and we didn’t know what to make of it. It was squared, it wasn’t in the same scale as the original data. So, we square rooted the <strong>variance</strong> to produce the <strong>standard deviation</strong>, which gave us a more interpretable number in the range of our data. The <strong>co-variance</strong> has a similar problem. When you calculate the covariance as we just did, we don’t know immediately know its scale. Is a 3 big? is as 6 big? is a 100 big? How big or small is this thing?</p>
+<p>From our prelude discussion on the idea of co-variance, we learned the sum of products between two measures ranges between a maximum and minimum value. The same is true of the co-variance. For a given set of data, there is a maximum possible positive value for the covariance (which occurs when there is perfect positive correlation). And, there is a minimum possible negative value for the covariance (which occurs when there is a perfect negative correlation). When there is zero covariation, guess what happens. Zeroes. So, at the very least, when we look at a covariation statistic, we can see if what direction it points, positive or negative. But, we don’t know how big or small it is compared to the maxiumum or minimum possible value, so we don’t know the relative size, which means we can’t say how strong the correlation is. What to do?</p>
+</div>
+<div id="pearsons-r-we-there-yet" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Pearson’s r we there yet</h3>
+<p>Yes, we are here now. Wouldn’t it be nice if could force our measure of covariation to be between -1 and +1. -1 would be the minimum possible value for a perfect negative correlation. +1 would be the maximum possible value for a perfect positive correlation. 0 would mean no correlation. Everything in between 0 and -1 would be increasingly large negative correlations. Everything between 0 and +1 would be increasingly large positive correlations. It would be a fantastic, sensible, easy to interpret system. If only we could force the covariation number to be between -1 and 1. Fortunately, for us, this episode is brought to you by Pearson’s r, which does precisely this wonderful thing.</p>
+<p>Let’s take a look at a formula for Pearson’s r:</p>
+<p><span class="math inline">\(r = \frac{cov(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{cov(X,Y)}{SD_{X}SD_{Y}}\)</span></p>
+<p>We see the symbol <span class="math inline">\(\sigma\)</span> here, that’s more Greek for you. <span class="math inline">\(\sigma\)</span> is often used as a symbol for the standard deviation (SD). If we read out the formula in English, we see that r is the covariance of X and Y, divided by the product of the standard deviation of X and the standard deviation of Y. Why are we dividing the covariance by the product of the standard deviations. This operation has the effect of <strong>normalizing</strong> the covariance into the range -1 to 1.</p>
+<div class="marginnote">
+<p>But, we will fill this part in as soon as we can…promisary note to explain the magic. FYI, it’s not magic. Brief explanation here is that dividing each measure by its standard deviation ensures that the values in each measure are in the same range as one another.</p>
+</div>
+<p>For now, we will call this mathematical magic. It works, but we don’t have space to tell you why it works right now.</p>
+<p>It’s worth saying that there are loads of different formulas for computing Pearson’s r. You can find them by googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster than if you did by hand using the approach we took here. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important to.</p>
+</div>
+</div>
+<div id="examples-with-data" class="section level2">
+<h2><span class="header-section-number">3.4</span> Examples with Data</h2>
+<p>Example here</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="DescribingData.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="FoundationForInference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/statistics/blob/master/03-Correlation.Rmd",
+"text": "Edit"
+},
+"download": ["statistics.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
