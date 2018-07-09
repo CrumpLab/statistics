@@ -255,14 +255,185 @@ But, we will fill this part in as soon as we can...promisary note to explain the
 
 For now, we will call this mathematical magic. It works, but we don't have space to tell you why it works right now.
 
+> It's worth saying that there are loads of different formulas for computing Pearson's r. You can find them by googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster than if you did by hand using the approach we took here. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important to.
 
+Does Pearson's R really stay between -1 and 1 no matter what? It's true, take a look at the following simulation. Here I randomly ordered the numbers 1 to 10 for an X measure, and did the same for a Y measure. Then, I computed Pearson's r, and repeated this process 1000 times. As you can see all of the dots are between -1 and 1. Neat huh.
 
-It's worth saying that there are loads of different formulas for computing Pearson's r. You can find them by googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster than if you did by hand using the approach we took here. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important to.
+```{r}
+simulated_sums <- length(0)
+for(sim in 1:1000){
+  X <- sample(1:10)
+  Y <- sample(1:10)
+  simulated_sums[sim] <- cor(X,Y)
+}
+
+sim_df <- data.frame(sims=1:1000,simulated_sums)
+
+ggplot(sim_df, aes(x = sims, y = simulated_sums))+
+  geom_point()+
+  theme_classic()+
+  geom_hline(yintercept = -1)+
+  geom_hline(yintercept = 1)+
+  ggtitle("Simulation of 1000 r values")
+
+```
 
 ## Examples with Data
 
-Example here
+Examples here
 
+## Interpreting Correlations
+
+What does the presence or the absence of a correlation between two measures mean? How should correlations be interpreted? What kind of inferences can be drawn from correlations? These are all very good questions. A first piece of advice is to use caution when interpreting correlations. Here's why.
+
+### Correlation does not equal causation
+
+Perhaps you have heard that correlation does not equal causation. Why not? There are lots of reasons why not. However, before listing some of the reasons let's start with a case where we would expect a causal connection between two measurements. Consider, buying a snake plant for your home. Snake plants are supposed to be easy to take care of because you can mostly ignore them.
+
+Like most plants, snake plants need some water to stay alive. However, they also need just the right amount of water. Imagine an experiment where 1000 snake plants were grown in a house. Each snake plant is given a different amount of water per day, from zero teaspoons of water per day to 1000 teaspoons of water per day. We will assume that water is part of the causal process that allows snake plants to grow. The amount of water given to each snake plant per day can also be one of our measures. Imagine further that every week the experimenter measures snake plant growth, which will be the second measurement. Now, can you imagine for yourself what a scatter plot of weekly snake plant growth by tablespoons of water would look like?
+
+
+#### Even when there is causation, there might not be obvious correlation
+
+The first plant given no water at all would have a very hard time and eventually die. It should have the least amount of weekly growth. How about the plants given only a few teaspoons of water per day. This could be just enough water to keep the plants alive, so they will grow a little bit but not alot. If you are imagining a scatterplot, with each dot being a snake plant, then you should imagine some dots starting in the bottom left hand corner (no water & no plant growth), moving up and to the right (a bit of water, and a bit of growth). As we look at snake plants getting more and more water, we should see more and more plant growth, right? "Sure, but only up to a point". Correct, there should be a trend for a positive correlation with increasing plant growth as amount of water per day increases. But, what happens when you give snake plants too much water? From personal experience, they die. So, at some point, the dots in the scatter plot will start moving back down again. Snake plants that get way too much water will not grow very well.
+
+The imaginary scatterplot you should be envisioning could have an upside U shape. Going from left to right, the dot's go up, they reach a maximum, then they go down again reaching a minimum. Computing Pearson's r for data like this can give you $r$ values close to zero.
+
+<div class="marginnote">
+There are many ways to create a summary statistic for relationships between variables that are like Pearson's r. We discuss some of these in the chapter on Linear Regression.
+</div>
+
+This example illustrates some conundrums in interpreting correlations. We already know that water is needed for plants to grow, so we are rightly expecting there to be a relationship between measure of amount of water and plant growth. If we look at the first half of the data we see a positive correlation, if we look at the last half of the data we see a negative correlation, and if we look at all of the data we see no correlation. Yikes. So, even when there is a causal connection between two measures, we won't necessarilly clear evidence of the connection just by computing a correlation coefficient. 
+
+> Pro Tip: This is one reason why plotting your data is so important. If you see an upside U shape pattern, then a correlation analysis is probably not the best analysis for your data.
+
+#### Confounding variable, or Third variable problem
+
+Anybody can correlate any two things that can be quantified and measured. For example, we could find a hundred people, ask them all sorts of questions like:
+
+  1. how happy are you
+  2. how old are you
+  3. how tall are you
+  4. how much money do you make per year
+  5. how long are your eyelashes
+  6. how many books have you read in your life
+  7. how loud is your inner voice
+  
+Let's say we found a positive correlation between yearly salary and happiness. Note, we could have just as easily computed the same correlation between happiness and yearly salary. If we found a correlation, would you be willing to infer that yearly salary causes happiness? Perhaps it does play a small part. But, something like happiness probably has a lot of contributing causes. Money could directly cause some people to be happy. But, more likely, money buys people access to all sorts of things, and some of those things might contribute happiness. Theses "other" things are called **third** variables. For example, perhaps people living in nicer places in more expensive houses are more happy than people in worse places in cheaper houses. In this scenario, money isn't causing happiness, it's the places and houses that money buys. But, even is this were true, people can still be more or less in lots of different situations.
+
+The lesson here is that a correlation can occur between two measures because of a third variable that is not directly measured. So, just because we find a correlation, does not mean we can conlude anything about a causal connection between two measurements.
+
+### Correlation and Random chance
+
+Another very important aspect of correlations is the fact that they can be produced by random chance. This means that you can find a positive or negative correlation between two measures, even when they have absolutely nothing to do with one another. You might have hoped to find zero correlation when two measures are totally unrelated to each other. Althought this certainly happens, unrelated measures can accidentally produce **spurious** correlations, just by chance alone. 
+
+Let's demonstrate how correlations can occur by chance when there is no causal connection between two measures. Imagine two participants. One is at the North pole with a lottery machine full of balls with numbers from 1 to 10. The other is at the south pole with a different lottery machine full of balls with numbers from 1 to 10. There are an endless supply of balls in the machine, so every number could be picked for any ball. Each participant randomly chooses 10 balls, then records the number on the ball. In this situation we will assume that there is no possible way that balls chosen by the first participant could causally influence the balls chose by the second participant. They are on the other side of the world. We should assume that the balls will be chosen by chance alone. 
+
+Here is what the numbers on each ball could look like for each participant:
+
+```{r}
+
+Ball<-1:10
+North_pole<-round(round(runif(10,1,10)))
+South_pole<-round(round(runif(10,1,10)))
+
+the_df_balls<-data.frame(Ball,North_pole,South_pole)
+
+#the_df_balls <- the_df_balls %>%
+#  rbind(c("Sums",colSums(the_df_balls[1:10,2:3]))) %>%
+#  rbind(c("Means",colMeans(the_df_balls[1:10,2:3])))
+knitr::kable(the_df_balls)
+
+```
+
+In this one case, if we computed Pearons' $r$, we would find that $r =$ `r cor(North_pole,South_pole)`. But, we already know that this value does not tell us anything about the relationship between the balls chosen in the north and sout pole. We know that relationship should be completely random, because that is how we set up the game.
+
+The better question here is to ask what can random chance do? For example, if we ran our game over and over again thousands of times, each time choosing new balls, and each time computing the correlation, what would we find?First, we will find fluctuation. The r value will sometimes be positive, sometimes be negative, sometimes be big and sometimes be small. Second, we will see what the fluctuation looks like. This will give us a window into the kinds of correlations that chance alone can produce. Let's see what happens.
+
+#### Monte-carlo simulation of random correlations
+
+It is possible to use a computer to simulate our game as many times as we want. This process is often termed **monte-carlo simulation**.
+
+Below is a script written for the programming language R. We won't go into the details of the code here. However, let's briefly explain what is going on. Notice, the part that says ```for(sim in 1:1000) ```. This creates a loop that repeats our game 1000 times. Inside the loop there are variables named `North_pole` and `South_pole`. During each simulation, we sample 10 random numbers (between 1 to 10) into each variable. These random numbers stand for the numbers that would have been on the balls from the lottery machine. Once we have 10 random numbers for each, we then compute the correlation using `cor(North_pole,South_pole)`. Then, we save the correlation value and move on to the next simulation. At the end, we will have 1000 individual Pearson $r$ values.
+
+```{r}
+simulated_correlations <- length(0)
+for(sim in 1:1000){
+  North_pole <- runif(10,1,10)
+  South_pole <- runif(10,1,10)
+  simulated_correlations[sim] <- cor(North_pole,South_pole)
+}
+
+sim_df <- data.frame(sims=1:1000,simulated_correlations)
+
+ggplot(sim_df, aes(x = sims, y = simulated_correlations))+
+  geom_point()+
+  theme_classic()+
+  geom_hline(yintercept = -1)+
+  geom_hline(yintercept = 1)+
+  ggtitle("Simulation of 1000 r values")
+```
+
+Let's take a look at all of the 1000 Pearson $r$ values. Does the figure below look familiar to you? It should, we have already conducted a similar kind of simulation before. Each dot in the scatterplot shows the Pearson $r$ for each simulation from 1 to 1000. As you can see the dots are all of the place, in between the range -1 to 1. The important lesson here is that random chance produced all of these correlations. This means we can find "correlations" in the data that are completely meaningless, and do not reflect any causal relationship between one measure and another.
+
+However, all is not lost. We can look at our simulated data in another way, using a histogram. This will give us a sense of what kind of correlations chance is likely or unlikely to produce. Here is a histogram of the simulated $r$ values.
+
+```{r}
+hist(simulated_correlations,breaks=seq(-1,1,.1))
+```
+
+
+Notic that this histogram is not flat. Most of the simulated $r$ values are close to zero. Notice, also that the bars get smaller as you move away from zero in the positive or negative direction. The general take home here is that chance can produce a wide range of correlations. However, not all correlations happen very often. For example, the bars for -1 and 1 are very small. Chance does not produce nearly perfect correlations very often. The bars around -.5 and .5 are smaller than the bars around zero, as medium correlations do not occur as often as small correlations by chance alone.
+
+You can think of this histogram as the window of chance. It shows what chance often does, and what it often does not do. If you found a correlation under these very same circumstances (e.g., measured the correlation between two sets of 10 random numbers), then you could consult this window. What should you ask the window? How about, could my observed correlation (the one that you found in your data) have come from this window. Let's say you found a correlation of $r = .1$. Could a .1 have come from the histogram? Well, look at the histogram around where the .1 mark on the x-axis is. Is there a big bar there? If so, this means that chance produces this value fairly often. You might be comfortable with the inference, Yes, this .1 could have been produced by chance, because it is well inside the window of chance. How about $r = .5$? The bar is much smaller here, you might think, "well, I can see that chance does produce .5 some times, so chance could have produced my .5. Did it? Maybe, maybe not, not sure". Here, your confidence in a strong inference might start getting a bit shakier. How about an $r = .95$?. You might see that the bar for .95 is very very small, perhaps too small to see. What does this tell you? It tells you that chance does not produce .95 very often, hardly if at all, pretty much never. So, if you found a .95 in your data, what would infer? Perhaps you would be comfortable inferring that chance did not produce your .95, after .95 is not inside the window of chance.
+
+In this section we have started to build some intuitions about **inferential statistics**. We go into more detail in the next chapters. For now, the main ideas are:
+
+1. We can measure relationships in data using things like correlation
+2. The correlations we measure can be produced by numerous things, so they are hard to to intrepret
+3. Correlations can be produced by chance, so have the potential to be completely meaningless.
+4. However, we can create a model of exactly what chance can do. The model tells us whether chance is more or less likely to produce correlations of different sizes
+5. We can use the chance model to help us make decisions about our own data. We can compare the correlation we found in our data to the model, then ask whether or not chance could have or was likely to have produced our results.
+
+#### Increasing sample-size decreases opportunity for spurious correlation
+
+Before moving on, let's do one more thing with correlations. In our pretend lottery game, each participant only sampled 10 balls each. We found that this could lead to a range of correlations between the number randomly drawn from either sides of the pole. Indeed, we even found some correlations that were medium to large in size. If you were a researcher who found such correlations, you might be tempted to believe there was a relationship between your measurements. However, we know in our little game, that those correlations would be spurious, just a product of random sampling. 
+
+The good news is that, as a researcher, you get to make the rules of the game. You get to determine how chance can play. This is all a little bit metaphorical, so let's make it concrete.
+
+We will see what happens in four different scenarios. First, we will repeat what we already did. Each participant will draw 10 balls, then we compute the correlation, and do this over 1000 times and look at a histrogram. Second, we will change the game so each participant draws 50 balls each, and then repeat our simulation. Third, and fourth, we will change the game so each participant draws 100 balls each, and then 1000 balls each, and repeat etc.
+
+The graph below shows four different histograms of the Pearson $r$ values in each of the different scenarios. Each scenario involves a different sample-size, from, 10, 50, 100 to 1000.
+
+```{r}
+all_df<-data.frame()
+for(s_size in  c(10,50,100,1000)){
+  simulated_correlations <- length(0)
+  for(sim in 1:1000){
+    North_pole <- runif(s_size,1,10)
+    South_pole <- runif(s_size,1,10)
+    simulated_correlations[sim] <- cor(North_pole,South_pole)
+  }
+sim_df <- data.frame(sample_size=rep(s_size,1000),sims=1:1000,simulated_correlations)
+all_df<-rbind(all_df,sim_df)
+}
+
+
+ggplot(all_df,aes(x=simulated_correlations))+
+  geom_histogram()+
+  facet_wrap(~sample_size)+
+  theme_classic()
+
+```
+
+
+By inspecting the four histrograms you should notice a clear pattern. The width or range of each histogram shrinks as the sample-size increases. What is going on here? Well, we already know that we can think of these histograms as windows of chance. They tell us which $r$ values occur fairly often, which do not. When our sample-size is 10, lots of different $r$ values happen. That histrogram is very flat and spread out. However, as the sample-size inreases, we see that the window of chance gets pulled in. For example, by the time we get to 1000 balls each, almost all of the Pearson $r$ values are very close to 0.
+
+One take home here, is that increasing sample-size narrows the window of chance. So, for example, if you ran a study involving 1000 samples of two measures, and you found a correlation of .5, then you can clearly see in the bottom right histogram that .5 does not occur very often by chance alone. In fact, there is no bar, because it didnt happen even once in the simulation. As a result, when you have a large sample size like n = 1000, you might be more confident that your observed correlation (say of .5) was not a spurious correlation. If chance is not producing your result, then something else is.
+
+Finally, notice how your confidence about whether or not chance is mucking about with your results depends on your sample size. If you only obtained 10 samples per measurement, and found $r = .5$, you should not be as confident that your correlation reflects a real relationship. Instead, you can see that $r$'s of .5 happen fairly often by chance alone. 
+
+> Pro tip: when you run an experiment you get to decide how many samples you will collect, which means you can choose to narrow the window of chance. Then, if you find a relationship in the data you can be more confident that your finding is real, and not just something that happened by chance.
 
 
 
