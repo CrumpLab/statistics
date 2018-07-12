@@ -1,5 +1,418 @@
 # Foundation for inference {#FoundationForInference}
 
+So far we have been talking about describing data and looking possible relationships between things we measure. We began by talking about the problem of having too many numbers. So, we discussed how we could summarize big piles of numbers with descriptive statistics, and by looking at the data with graphs. We also looked at the idea of relationships between things. If one thing causes another thing, then if we measure how one thing goes up and down, we should find that other thing goes up and down, or does something at least systematically following the first thing. Finally, at the end of the last chapter on correlation, we showed how correlations, which imply a relationship between two things, are very difficult to interpret. Why? because an observed correlation can be caused by a hidden third variable, or simply be a spurious findings "caused" by random chance.
+
+Fortunately, we have many more tools at our disposal that improve our ability to make inferences about causation. So, now we begin our journey into **inferential statistics**. The tools we use to make inferences about where our data came from.
+
+In this chapter we provide some foundational ideas. We will stay mostly at a conceptual level, and use lots of simulations like we did in the last chapter. In the remaining chapters we formalize the intuitions built here to explain how some common inferential statitistics work. 
+
+## Brief review of Experiments
+
+In chapter one we talked a little bit about research methods and experiments. Experiments are a structured way of collecting data that can permit inferences about causality. If we wanted to know whether something like watching cats on youtube increases happiness we would need an experiment. We already found out that just finding a bunch of people and measuring number of hours watching cats, and level of happiness, and correlating the two will not permit inferences about causation. For one, the causal flow could be reversed. Maybe being happy causes people to watch more cat videos. We need an experiment.
+
+An experiment has two parts. A manipulation and a measurement. The manipulation is under the control of the experimenter. Manipulations are also called **independent variables**. For example, we could manipulate how many cat videos people will watch, 1 hour versus 2 hours of cat videos. The measurement is the data that is collected. We could measure how happy people are after watching cat videos on a scale from 1 to 100. Measurements are also called **dependent variables**. So, in a basic experiment like the one above, we take measurements of happiness from people in one of two experimental conditions defined by the independent variable. Let's say we ran 50 subjects. 25 subjects would be randomly assigned to watch 1 hour of cat videos, and the other 25 subjects would be randomly assigned to watch 2 hours of cat videos. We would measure happiness for each subject at the end of the videos. Then we could look at the data. What would we want to look at? Well, if watching cat videos cause change in happiness, then we would expect the measures of happiness for people watching 1 hour of cat videos to be different from the measures of happiness for people watching 2 hours of cat videos. If watching cat videos does not change happiness, then we would expect no differences in measures of happiness between conditions. Causal forces cause change, and the experiment is set up to detect the change. 
+
+Now we can state one overarching question, how do we know if the data changed between conditions? If we can be confident that there was a change between conditions, we can infer that our manipulation caused a changed in the measurement. If we cannot be confident there was a change, then we cannot infer that our manipulation caused a change in the measurement. We need to build some change detection tools so we can know a change when we find one.
+
+"Hold on, if we are just looking for a change, wouldn't that be easy to see by looking at the numbers and seeing if they are different, what's so hard about that?". Good question. Now we must take a detour. The short answer is that there will always be change in the data (remember variance). 
+
+## The data came from a distribution
+
+From now on when you see a bunch of numbers, you should wonder, "where did this numbers come from?". To elaborate, this question means wondering about the things behind the numbers, causing some kinds of numbers to happen more than other kinds of numbers. To think about this question, we will veer off into the abstract world of distributions. A **distribution** a place where numbers can come from. The distribution sets the constraints. It determines what numbers are likely to occur, and what numbers are not likely to occur. Distributions are abstract ideas. But, they can be made concrete, and we can draw them with pictures. Let's look at some.
+
+### Uniform distribution
+
+A uniform distribution is completely flat, it looks like this:
+
+```{r,echo=F}
+library(ggplot2)
+
+df<-data.frame(a=1:10,b=seq(.1,1,.1))
+df$a<-as.factor(df$a)
+
+ggplot(df,aes(x=a,y=b))+
+  geom_point(color="white")+
+  geom_hline(yintercept=.1)+
+  theme_classic()+
+  ylab("Probability")+
+  xlab("Number")+
+  ggtitle("Uniform distribution for numbers 1 to 10")
+
+
+```
+
+Ok, so that doesn't look like much. What is going on here? The y-axis is labelled `probability`, and it goes from 0 to 1. The x-xaxis is labelled `Number`, and it goes from one to 10. There is a horizontal line drawn straight through. This line tells you the probability of each number from 1 to 10. Notice the line is flat. This means all of the numbers have the same probability of occuring. More specifically, there are 10 numbers from 1 to 10 (1,2,3,4,5,6,7,8,9,10), and they all have an equal chance of occuring. 1/10 = .1, which is the probability indicated by the horizontal line. 
+
+"So what?". Imagine that this uniform distribution is a number generating machine. It spits out numbers, but it spits out each number with the probability indicated by the line. If this distribution was going to start spitting out numbers, it would spit out 10% 1s, 10% 2s, 10% 3s, and so on, up to 10% 10s. Wanna see what that would look like? Let's make it spit out 100 numbers
+
+```{r,echo=F}
+a<-matrix(round(runif(100,1,10)),ncol=10)
+knitr::kable(a)
+```
+
+We used the uniform distribution to generate these numbers. Officially, we call this **sampling** from a **distribution**. Sampling is what you do at a grocery store when there is free food. You can keep taking more. However, if you take all of the samples, then what you have is called the **population**. We'll talk more about samples and populations as we go along.
+
+Because we used the uniformat distribution to create numbers, we already know where our numbers came from. However, we can still pretend for the moment that someone showed up at your door, showed you these numbers, and then you wondered where they came from. Can you tell just by looking at these numbers that they came from a uniform distribution? What would need to look at? Perhaps you would want to know if all of the numbers occur with roughly equal frequency, after all they should have right? That is, if each number had the same chance of occuring, we should see that each number occurs roughly the same number of times. 
+
+We already know what a histogram is, so we can put our numbers into a histogram and see what the counts look like. If all of the numbers occur with equal frequency, then each number should occur 10 times, because we sampled a total of 100 numbers. The histogram looks like this:
+
+```{r, echo=F}
+hist(a)
+```
+
+Uh oh, as you can see, not all of the number occured 10 times each. All of the bars are not the same height. This shows that randomly sampling numbers from this distribution does not guarantee that our numbers will be exactly like the distribution thehy came from. We can call this sampling error, or sampling variability. 
+
+### Not all samples are the same, they are usually quite different
+
+Let's take a look at sampling error more closely. We will sample 20 numbers from the uniform. Here we should expect that each number between 1 and 10 occurs two times each. Let's take 20 sample and make a histogram. And then, let's do that 10 times. So we will be looking at 10 histograms, each showing us what the 10 different samples of twenty numbers looks like:
+
+```{r, echo=F}
+a<-round(runif(20*10,1,10))
+df<-data.frame(a,sample=rep(1:10,each=20))
+
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(1,10,1))
+
+```
+
+You might notice right away that none of the histograms are the same. Even though we are randomly taking 20 numbers from the very same uniform distribution, each sample of 20 numbers comes out different. This is sampling variability, or sampling error. 
+
+Looking at the above histograms shows us that figuring out where our numbers came from can be difficult. In the real world, our measurements are samples. We usually only have the luxury of getting one sample of measurements, rather than repeating our own measurements 10 times or more. If you look at the histograms, you will see that some of them look like they could have come from the uniform distribution: most of the bars are near two, and they all fall kind of on a flat line. But, if you happen to look at a different sample, you might see something that is very bumpy, with some numbers happening way more than others. This could suggest to you that those numbers did not come from a uniform distribution (they're just too bumpy). But let me remind you, all of these samples came from a  uniform distribution, this is what samples from that distribution look like. This is what chance does to samples, it makes the individual data points noisy.
+
+### Large samples are more like the distribution they came from
+
+Let's refresh the question. Which of these two samples do you think came from a uniform distribution?
+
+```{r, echo=F}
+a<-round(runif(20*2,1,10))
+df<-data.frame(a,sample=rep(1:2,each=20))
+
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(1,10,1))
+
+```
+
+The answer is that they both did. But, neither of them look like they did.
+
+Can we improve things, and make it easier to see if a sample came from a uniform distribution? Yes, we can. All we need to do is increase the **sample-size**. We will often use the letter `n` to refer to sample-size. N is the number of observations in the sample. 
+
+So let's increase the number of observations in each sample from 20 to 100. We will again create 10 samples (each with 100 observations), and make histrograms for each of them. All of these samples will be drawn from the very same uniform distribution. This, means we should expect each number from 1 to 10 to occur about 10 times in each sample. Here are the histograms:
+
+```{r, echo=F}
+a<-sample(1:10,100*10,replace=T)
+df<-data.frame(a,sample=rep(1:10,each=100))
+
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  ylim(0,20)+
+  scale_x_continuous(breaks=seq(1,10,1))
+
+```
+
+Again, most of these histograms don't look very flat, and all of the bars seem to be going up or down, and they are not exactly at 10 each. So, we are still dealine with sampling error. It's a pain. It's always there.
+
+Let's bump it up to 1000 observations per sample. Now we should expect every number to appear about 100 times each. What happens?
+
+```{r, echo=F}
+a<-sample(1:10,1000*10,replace=T)
+df<-data.frame(a,sample=rep(1:10,each=1000))
+
+ggplot(df,aes(x=a))+
+ geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  ylim(0,200)+
+  scale_x_continuous(breaks=seq(1,10,1))
+
+```
+
+Each of these histograms are starting to flatten out. The bars are still not perfectly at 100, because there is still sampling error (there always will be). But, if you found a histrogram that looked flat and knew that the sample contained many observations, you might be more confident that those numbers came from a uniform distribution.
+
+Just for fun let's make the samples really big. Say 100,000 observations per sample. Here, we should expect that each number occurs about 10,000 times each. What happens?
+
+```{r,echo=F}
+a<-sample(1:10,100000*10,replace=T)
+df<-data.frame(a,sample=rep(1:10,each=100000))
+
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  ylim(0,20000)+
+  scale_x_continuous(breaks=seq(1,10,1))
+
+```
+
+Now we see that all of our samples start to look the same. They all have 100,000 observations, and this gives chance enough opportunity to equally distribute the numbers, roughly making sure that they all occur very close to the same amount of times. As you can see, the bars are all very close to 10,000, where they should be if the sample came from a uniform distribution.
+
+> Pro tip: The pattern behind a sample will tend to stabilize as sample-size increases. Small samples will have all sorts of patterns because of sampling error (chance).
+
+
+Before getting back to experiments, let's ask two more questions. First, which of these two samples do you think came from a uniform distribution? I will tell you that each of these samples had 20 observations each. 
+
+```{r, echo=F}
+a<-c(sample(1:10,20,replace=T),round(rnorm(20,5,2.5)))
+df<-data.frame(a,sample=rep(1:2,each=20))
+
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(1,10,1))
+
+```
+
+If you are not confident in the answer, this is because **sampling error** (randomness) is fuzzing with the histograms.
+
+Here is the very same question, only this time we will take 1,000 observations for each sample. Which one do you think came from a uniform distribution, which one did not?
+
+```{r, echo=F}
+a<-c(sample(1:10,1000,replace=T),round(rnorm(1000,5,1.25)))
+df<-data.frame(a,sample=rep(1:2,each=1000))
+
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  facet_wrap(~sample)+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(0,10,1))
+
+```
+
+Now that we have increased N, we can see the pattern in each sample becomes more obvious. The histogram for sample 1 has bars near 100, not perfectly flat, but it resembles a uniform distribution. The histogram for sample 2 does not look flat at all. Instead, there the number five appears most of the time, and numbers on either side of five happen less and less. 
+
+Congratulations to Us! We have just made some statistical inferences without using formulas!
+
+"We did?". Yes, by looking at our two samples we have inferred that sample 2 did not come from a uniform distribution. We have also inferred that sample 1 could have come froma  uniform distribution. Fantastic. This is really all we will be doing for the rest of the course. We will be looking at some numbers, wondering where they came from, then we will arrange the numbers in such a way so that we can make an inference about where they came from. That's it.
+
+## Playing with distributions
+
+talk about a few different distribution. Embed shiny app
+
+SHINY APP here
+
+## Is there a difference?
+
+Let's get back to experiments. In an experiment we want to know if our independent variable (our manipulation) causes a change in our dependent variable (measurement). If this occurs, then we will expect to see some differences in our measurement as a function of manipulation.
+
+Consider the light switch example:
+
+---
+
+**Light Switch Experiment**: You manipulate the switch up (condition 1 of independent variable), light goes on (measurement). You manipulate the switch down (condition 2 of independent variable), light goes off (another measurement). The measurement (light) changes (goes off and on) as a function of the manipulation (moving switch up or down).
+
+You can see the change in measurement between the conditions, it is as obvious as night and day. So, when you conduct a manipulation, and can see the difference (change) in your measure, you can be pretty confident that your manipulation is causing the change. 
+
+> note: to be cautious we can say "something" about your manipulation is causing the change, it might not be what you think it is if your manipulation is very complicated and involves lots of moving parts.
+
+---
+
+### Chance can produce differences
+
+Do you think random chance can produce the appearance of differences, even when they really aren't any? I hope so. We have already shown that the process of sampling numbers from a distribution is chancy process that produces different samples. Different samples are different, so yes, chance can produce differences. This can muck up our interpretation of experiments.
+
+Let's conduct a fictitious experiment where we expect to find no differences, because we will manipulate something that shouldn't do anything. Her's the set-up:
+
+You are the experimenter standing in front of a gumball machine. It is very big, has thousands of gumballs. 50% of the gumballs are green, and 50% are red. You want to find out if picking gumballs with your right hand vs. your left hand will cause you to pick more green gumballs. Plus, you will be blindfolded the entire time. The independent variable is Hand: right hand vs. left hand. The dependent variable is the measurement of the color of each gumball. 
+
+You run the experiment as follows. 1) put on blind fold. 2) pick 10 gumballs randomly with left hand, set them aside. 3) pick 10 gumballs randomly with right hand, set them aside. 4) count the number of green and red gumballs chosen by your left hand, and count the number of green and red gumballs chosedn by your right hand. Hopefully you will agree that your hands will not be able to tell the difference between the gumballs. If you don't agree, we will further stipulate the gumballs are completely identical in every way except their color, so it would be impossible to tell them apart using your hands. So, what should happen in this experiment?
+
+"Umm, maybe you get 5 red gum balls and 5 green balls from your left hand, and also from your right hand?". Sort of yes, this is what you would usually get. But, it is not all that you can get. Here is some data showing what happened from one pretend experiment:
+
+```{r,echo=F}
+hand<-rep(c("left","right"),each=10)
+gumball<-rbinom(20,1,.5)
+df<-data.frame(hand,gumball)
+
+knitr::kable(df)
+```
+
+"What am I looking at here". This is a long-format table. Each row is one gumball. The first column tells you what hand was used. The second column tells you what kind of gumball. We will say 1s stand for green gum balls, and 0s stand for red gumballs. So, did your left hand cause you to pick more green gumballs than your right hand?
+
+It would be easier to look at the data using a bar graph. To keep things simple, we will only count green gumablls (the other gumballs must be red). So, all we need to do is sum up the 1s. The 0s won't add anything.
+
+
+```{r, echo=F}
+sum_df<-aggregate(gumball~hand,df,sum)
+ggplot(sum_df,aes(x=hand,y=gumball))+
+  geom_bar(stat="identity")+
+  theme_classic()
+  
+```
+
+
+Oh look, the bars are not the same. One hand picked more green gum balls than the other. Does this mean that one of your hands secretly knows how to find green gumballs? No, it's just another case of sampling error, that thing we call luck or chance. The difference here is caused by chance, not by the manipulation (which hand you use). **Major problem for inference alert**. We run experiments to look for differences so we can make inferences about whether our manipulations cause change in our measures. Now we know that we can find differences by chance. How can we know if a difference is real, or just caused by chance?
+
+### Differences due to chance can be simulated
+
+Remember when we showed that chance can produce correlations. We also showed that chance is restricted in its ability to produce correlations. For example, chance more often produces weak correlations than strong correlations. Remember the window of chance? We found out before that correlations falling outside the window of chance were very unlikely. We can do the same thing for differences. Let's find out just what chance can do in our experiment. Once we know what chance is capable of we will be in a better position to judge whether our manipulation caused a difference, or whether it could have been chance.
+
+The first thing to do is pretend you conduct the gumball experiment 10 times in a row. This will produce 10 different sets of results. For each of them we can make a bar graph, and look at whether the left hand chose more green gumballs than red gumballs. It looks like this:
+
+```{r,echo=F}
+hand<-rep(rep(c("left","right"),each=10),10)
+experiment<-rep(1:10,each=20)
+gumball<-rbinom(20*10,1,.5)
+df<-data.frame(experiment,hand,gumball)
+sum_df<-aggregate(gumball~experiment*hand,df,sum)
+ggplot(sum_df,aes(x=hand,y=gumball))+
+  geom_bar(stat="identity")+
+  theme_classic()+
+  facet_wrap(~experiment)
+
+```
+
+These 10 experiments give us a better look at what chance can do. It should also mesh well with your expectations. If everything is left up to chance (as we have made it so), then sometimes your left hand will choose more green balls, sometimes your right hand will choose more green gumballs, and sometimes they will choose the same amount of gumballs. Right? Right.
+
+## Chance makes some differences more likely than others
+
+Ok, we have seen that chance can produce differences here. But, we still don't have a good idea about what chance usually does and doesn't do. For example, if we could find the window of opportunity here, we would be able find out that chance usually does not produce differences of a certain large size. If we knew what the size was, then if we ran experiment and our difference was bigger than what chance can do, we could be confident that chance did not produce our difference.
+
+Let's use the word difference some more, because it will be helpful. In fact, let's think about our measure of green balls in terms of a difference. For example, in each experiment we counted the green balls for the left and right hand. What we really want to know is if there is a difference between them. So, we can calculate the **difference score**. Let's decide that difference score = # of green gumballs in left hand - # of green gumballs in right hand. Now, we can redraw the 10 bar graphs from above. But this time we will only see one bar for each experiment. This bar will show the differenced in number of green gumballs.
+
+```{r, echo=F}
+differences<-sum_df[sum_df$hand =="left",]$gumball-
+  sum_df[sum_df$hand =="right",]$gumball
+
+dif_df<-data.frame(experiment=c(1:10),differences)
+dif_df$experiment<-as.factor(dif_df$experiment)
+
+ggplot(dif_df,aes(y=differences,x=experiment))+
+  geom_bar(stat="identity")+
+  theme_classic()+
+  ylab("differences")
+```
+
+Missing bars mean that there were an equal number of green gumballs chosen by the left and righ hands (difference score is 0). A positive value means that more green gumballs were chosen by the left than right hand. A negative value means that more green gumballs were chosen by the right than left hand. Note that if we decided (and we get to decide) to calculate the difference in reverse (right hand - left hand), ths signs of the differences scores would flip around.
+
+We are starting to see more of the differences that chance can produce. The difference scores are mostly between -2 to +2. We could get an even better impression by running this pretend experiment 100 times instead of only 10 times. How about we do that.
+
+
+```{r}
+hand<-rep(rep(c("left","right"),each=10),100)
+experiment<-rep(1:100,each=20)
+gumball<-rbinom(20*100,1,.5)
+df<-data.frame(experiment,hand,gumball)
+sum_df<-aggregate(gumball~experiment*hand,df,sum)
+
+differences<-sum_df[sum_df$hand =="left",]$gumball-
+  sum_df[sum_df$hand =="right",]$gumball
+
+dif_df<-data.frame(experiment=c(1:100),differences)
+dif_df$experiment<-as.factor(dif_df$experiment)
+
+ggplot(dif_df,aes(y=differences,x=experiment))+
+  geom_bar(stat="identity")+
+  theme_classic()+
+  ylab("differences")
+```
+
+OOf, we just ran so many simulated expeirments that the x-axis is unreadable, but it goes from 1 to 100. Each bar represents the difference of number of green balls chosen randomly by the left or right hand. Beginning to notice anything? Look at the y-axis, this shows the size of the difference. Yes, there are lots of bars of different sizes, this shows us that many kinds of differences do occur by chance. However, the y-axis is also restricted. It does not go from -10 to +10. Big differences greater than 5 or -5 don't happen very often. 
+
+Now that we have a method for simulating differences due to chance, let's run 10,000 simulated experiments. But, instead of plotting the differences in a bar graph for each experiment, how about we look at the histogram of difference scores. This will give us a clearer picture about which differences happen most often, and which ones do not. This will be another window into chance. The chance window of differences.
+
+```{r}
+hand<-rep(rep(c("left","right"),each=10),10000)
+experiment<-rep(1:10000,each=20)
+gumball<-rbinom(20*10000,1,.5)
+df<-data.frame(experiment,hand,gumball)
+sum_df<-aggregate(gumball~experiment*hand,df,sum)
+
+differences<-sum_df[sum_df$hand =="left",]$gumball-
+  sum_df[sum_df$hand =="right",]$gumball
+
+hist(differences,breaks=seq(-10,10,1))
+```
+
+Our computer simulation allows us to force chance to operate hundreds of times, each time it produces a difference. We record the difference, then at the end of the simulation we plot the histogram of the differences. The histogram begins to show us the where the differences came from. Remember the idea that numbers come from a distribution, and the distribution says how often each number occurs. We are looking at one of these distributions. It is showing us that chance produces some differences more often than others. First, chance usually produces 0 differences, that's the biggest bar in the middle. Chance also produces larger differences, but as the differences get larger (positive or negative), they occur less frequently. The shape of this histogram is your chance window, it tells you what chance can do, it tells you what chance usually does, and what it usually does not do.
+
+You can use this chance window to help you make inferences. If you ran yourself in the gumball experiment and found that your left hand chose 2 more green gumballs than red gumballs, would you conclude that you left hand was special, and caused you to choose more green gumballs? Hopefully not. You could look at the chance window and see that differences of size +2 do happen fairly often by chance alone. You should not be surprised if you got a luck +2 difference. However, what if your left chose 5 more green gumballs than red gumballs. Well, chance doesn't do this very often, you might think something is up with your left hand. If you got a whopping 9 more green gumballs than red gumballs, you might really start to wonder. This is the kind of thing that could happen (it's possible), but virtually never happens. When you get things that almost never happen by chance, you can be more confident that the difference reflects a causal force that is not chance.
+
+## Sampling distribution of the sample means
+
+"Oh no, what is the sample distribution of the sample means? Is that even allowed in English?". Yes, unfortunately, this is allowed. The **sampling distribution of the sample means** is the next most important thing you will need to understand. IT IS SO IMPORTANT THAT IT IS NECESSARY TO USE ALL CAPS. It is only confusing at first because it's long and uses sampling and sample in the same phrase.
+
+Don't worry, we've ben prepping you for this. You know what a distribution is right? It's where numbers comes from. It makes some numbers occur more or less, or the same as other numbers. You know what a sample is right? It's the numbers we take from a distribution. So, what could the sampling distribution of the sample means refer to? First, what do you think the sample means refers to? Well, if you took a sample of numbers, you would have a bunch of numbers...then, you could compute the mean of those numbers. The sample mean is the mean of the numbers in the sample. That is all. So, what is this distribution you speak of? Well, what if you took a bunch of samples of, put one here, put one there, put some other ones other places. You have a lot of different samples of numbers. You could compute the mean for each them. Then you would have a bunch of means. What do those means look like? Well, if you put them in a histogram, you could find out. If you did that, you would be looking at (roughly) a distribution, AKA **the sampling distribution of the sample means**.
+
+"I'm following along sort of, why would I want to do this instead of watching netflix...". Because, the sampling distribution of the sample means gives you another window into chance. A very useful one that you can control, just like your remote control, by pressing the right design buttons.
+
+## Seeing the pieces
+
+To make a sampling distribution of the sample means, we just need the following:
+
+1. A distribution to take numbers from
+2. A bunch of different samples from the distribution
+3. The means of each of the samples
+4. Get all of the sample means, and plot them in a histogram
+
+---
+Question for yourself: What do you think the sampling distribution of the sample means will look like? Will it tend to look the shape of the distribution that the samples came from? Or not? Good question, think about it.
+--
+
+Let's do those four things. We already know about the uniform distribution. So, let's use that for fun. Remember, it looks like this if we are sampling from the set of integers from 1 to 10:
+
+```{r,echo=F}
+library(ggplot2)
+
+df<-data.frame(a=1:10,b=seq(.1,1,.1))
+df$a<-as.factor(df$a)
+
+ggplot(df,aes(x=a,y=b))+
+  geom_point(color="white")+
+  geom_hline(yintercept=.1)+
+  theme_classic()+
+  ylab("Probability")+
+  xlab("Number")+
+  ggtitle("Uniform distribution for numbers 1 to 10")
+
+
+```
+
+Ok, now let's take a bunch of samples from that distribution. We will set our sample-size to 20. Here is a histogram of 10 of from that bunch:
+
+```{r, echo=F}
+a<-round(runif(20*10,1,10))
+df<-data.frame(a,sample=rep(1:10,each=20))
+df2<-aggregate(sample~a,df,mean)
+
+ggplot() +
+  geom_histogram(data = df, aes(x = sample, y = ..density..)) +
+  geom_vline(data = df2, mapping = aes(xintercept = sample), color="red") +
+  facet_wrap(~a)+
+  scale_x_continuous(breaks=seq(1,10,1))+
+  theme_classic()
+
+```
+
+Ok, what have we got here? We have 10 different samples. Each sample has 20 observations and these are summarized in each of the 10 histograms. Each histogram has a red line. The red line shows you where the mean of each sample is located. So, we have found the sample means for the 10 different samples from a uniform distribution. 
+
+First question. Are the sample means all the same? The answer is no. They are all kind of similar to each other though, they are all around five plus or minus a few numbers. This is interesting. Although all of our samples look pretty different from one another, the means of our samples look more similar than different.
+
+Second question. What should we do with the means of our samples? Well, how about we collect them them all, and then plot a histogram of them. This would allow us to see what the distribution of the sample means looks like. The next histogram is just this. Except, rather than  taking 10 samples, we will take 10,000 samples. For each of them we will compute the means. So, we will have 10,000 means. This is the histogram of the sample means:
+
+```{r, echo=F}
+a<-round(runif(20*10000,1,10))
+df<-data.frame(a,sample=rep(1:10000,each=20))
+df2<-aggregate(a~sample,df,mean)
+
+ggplot(df2, aes(x=a))+
+  geom_histogram(color="white")+
+  theme_classic()+
+  ggtitle("Histogram of 10,000 sample means")+
+  xlab("value")
+
+
+```
+
+
+
 > **Example 2.1** Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not <span>exactly</span> equal $\hat{p}_{_R}$?
 
 > While the proportions would probably be close to each other, they are probably not exactly the same. We would probably observe a small difference due to <span>chance</span>.
