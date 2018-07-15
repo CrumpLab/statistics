@@ -356,7 +356,7 @@ It is possible to use a computer to simulate our game as many times as we want. 
 
 Below is a script written for the programming language R. We won't go into the details of the code here. However, let's briefly explain what is going on. Notice, the part that says ```for(sim in 1:1000) ```. This creates a loop that repeats our game 1000 times. Inside the loop there are variables named `North_pole` and `South_pole`. During each simulation, we sample 10 random numbers (between 1 to 10) into each variable. These random numbers stand for the numbers that would have been on the balls from the lottery machine. Once we have 10 random numbers for each, we then compute the correlation using `cor(North_pole,South_pole)`. Then, we save the correlation value and move on to the next simulation. At the end, we will have 1000 individual Pearson $r$ values.
 
-```{r}
+```{r, echo=TRUE}
 simulated_correlations <- length(0)
 for(sim in 1:1000){
   North_pole <- runif(10,1,10)
@@ -376,7 +376,77 @@ ggplot(sim_df, aes(x = sims, y = simulated_correlations))+
 
 Let's take a look at all of the 1000 Pearson $r$ values. Does the figure below look familiar to you? It should, we have already conducted a similar kind of simulation before. Each dot in the scatterplot shows the Pearson $r$ for each simulation from 1 to 1000. As you can see the dots are all of the place, in between the range -1 to 1. The important lesson here is that random chance produced all of these correlations. This means we can find "correlations" in the data that are completely meaningless, and do not reflect any causal relationship between one measure and another.
 
-However, all is not lost. We can look at our simulated data in another way, using a histogram. This will give us a sense of what kind of correlations chance is likely or unlikely to produce. Here is a histogram of the simulated $r$ values.
+Let's illustrate the idea of finding "random" correlations one more time, with a little movie. This time, we will show you a scatterplot of the random values sampled for the balls chosen from the North and South pole. If there is no relationship we should see dots going everywhere. If there happens to be a positive relationship (purely by chance), we should see the dots going from the bottom left to the top right. If there happens to be a negative relationship (purely by chance), we should see the dots going from the top left down to the bottom right.
+
+On more thing to prepare you for the movie. There are three scatterplots below, showing negative, positive, and zero correlations between two variabls. You've already seen this graph before. But, we added something. Blue lines. "Oooh blue lines, tell me more". The are helpful for seeing the correlation. We are drawing the lines straight through the dots (we'll learn more about in the chapter on linear regression), such that they do the best job of summarizing the middle of dots. Negative correlations occur when a line goes down from the top left to bottom right. Positive correlations occur when a line goes up from the bottom left to the top right. Zero correlations occur when the line is flat (doesn't go up or down).
+
+```{r, echo=F}
+
+subject_x<-1:100
+chocolate_x<-round(1:100*runif(100,.5,1))
+happiness_x<-round(1:100*runif(100,.5,1))
+
+df_positive<-data.frame(subject_x,chocolate_x,happiness_x)
+
+subject_x<-1:100
+chocolate_x<-round(1:100*runif(100,.5,1))
+happiness_x<-round(100:1*runif(100,.5,1))
+
+df_negative<-data.frame(subject_x,chocolate_x,happiness_x)
+
+subject_x<-1:100
+chocolate_x<-round(runif(100,0,100))
+happiness_x<-round(runif(100,0,100))
+
+df_random<-data.frame(subject_x,chocolate_x,happiness_x)
+
+all_data<-rbind(df_positive,df_negative,df_random)
+all_data<-cbind(all_data,correlation=rep(c("positive","negative","random"),each=100))
+
+ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
+  geom_point()+
+  geom_smooth(method=lm,se=FALSE)+
+  theme_classic()+
+  facet_wrap(~correlation)+
+  xlab("chocolate supply")+
+  ylab("happiness")
+
+```
+
+Ok, now we are ready for the movie. You are looking at the process of sampling two set of numbers randomly, one for the X variable, and one for the Y variable. Each time we sample 10 numbers for each, plot them, then draw a line through them. Remember, these numbers are all completely random, so we should expect, on average that there should be no correlation between the numbers. However, this is not what happens. You can the line going all over the place. Sometimes we find a negative correlation (line goes down), sometimes we see a positive correlation (line goes up), and sometimes it looks like zero correlation (line is more flat). 
+
+```{r,echo=F}
+library(gganimate)
+
+all_df<-data.frame()
+for(sim in 1:10){
+  North_pole <- runif(10,1,10)
+  South_pole <- runif(10,1,10)
+  t_df<-data.frame(simulation=rep(sim,10),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  ggtitle("Pseudo correlations from two random variables")+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
+
+You might be thinking this is kind of disturbing. If we know that there should be no correlation between two random variables, how come we are finding correlations? This is a big problem right? I mean, if someone showed me a correlation between two things, and then claimed one thing was related to another, how could know if it was true. After all, it could be chance! Chance can do that too.
+
+Fortunately, all is not lost. We can look at our simulated data in another way, using a histogram. Remember, just before the movie, we simulated 1000 different correlations using random numbers. By, putting all of those $r$ values into a histogram, we can get a better sense of how chance behaves. We can see  what kind of correlations chance is likely or unlikely to produce. Here is a histogram of the simulated $r$ values.
 
 ```{r}
 hist(simulated_correlations,breaks=seq(-1,1,.1))
@@ -435,7 +505,104 @@ Finally, notice how your confidence about whether or not chance is mucking about
 
 > Pro tip: when you run an experiment you get to decide how many samples you will collect, which means you can choose to narrow the window of chance. Then, if you find a relationship in the data you can be more confident that your finding is real, and not just something that happened by chance.
 
+### Some more movies
 
+Let's ingrain these idea with some more movies. When our sample-size is small (N is small), sampling error can cause all sort "patterns" in the data. This makes it possible, and indeed common, for "correlations" to occur between two sets of numbers. When we increase the sample-size, sampling error is reduced, making it less possible for "correlations" to occur just by chance alone. When is large,  chance has less of an opportunity to operate.
+
+#### Watching how correlation behaves when there is no correlation
+
+Below we randomly sample numbers for two variables, plot them, and show the correlation using a line. There are four panels, each showing the number of observations in the samples, from 10, 50, 100, to 1000 in each sample.
+
+Remember, because we are randomly sampling numbers, there should be no relationship between the X and Y variables. But, as we have been discussing, because of chance, we can sometimes observe a correlation (due to chance). The important thing to watch is how the line behaves across the four panels. The line twirls around in all directions when the sample size is 10. It is also moves around quite a bit when the sample size is 50 or 100. It still moves a bit when the sample size is 1000, but much less. In all cases we expect that the line should be flat, but every time we take new samples, sometimes the line shows us pseudo patterns.
+
+```{r}
+all_df<-data.frame()
+for(sim in 1:10){
+  for(n in c(10,50,100,1000)){
+  North_pole <- runif(n,1,10)
+  South_pole <- runif(n,1,10)
+  t_df<-data.frame(nsize=rep(n,n),
+                   simulation=rep(sim,n),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
+
+Which line should you trust? Well, hopefully you can see that the line for 1000 samples is the most stable. It tends to be very flat every time, and it does not depend so much on the particular sample. The line with 10 observations per sample goes all over the place. The take home here, is that if someone told you that they found a correlation, you should want to know how many observations they hand in their sample. If they only had 10 observations, how could you trust the claim that there was a correlation? You can't!!! Not now that you know samples that are that small can do all sorts of things by chance alone. If instead, you found out the sample was very large, then you might trust that finding a little bit more. For example, in the above movie you can see that when there are 1000 samples, we never see a strong or weak correlation; the line is always flat. This is because chance almost never produces strong correlations when the sample size is very large. 
+
+Ok, so what do things look like when there actually is a correlation between variables?
+
+#### Watching correlations behave when there really is a correlation
+
+Sometimes there really are correlations between two variables that are not caused by chance. Below, we get to watch a movie of four scatterplots. Each shows the correlation between two variables. Again, we change the sample-size in steps of 10, 50 100, and 1000. The data have programmed to contain a real positive correlation. So, we should expect that the line will be going up from the bottom left to the top right. However, there is still variability in the data. So this time, sampling error due to chance will fuzz the correlation. We know it is there, but sometimes chance will cause the correlation to be eliminated.
+
+Notice that in the top left panel (sample-size 10), the line is twirling around much more than the other panels. Every new set of samples produces different correlations. Sometimes, the line even goes flat or downward. However, as we increase sample-size, we can see that the line doesn't change very much, it is always going up showing a positive correlation.
+
+```{r}
+library(MASS)
+r<-.7
+
+proportional_permute<-function(x,prop){
+  indices<-seq(1:length(x))
+  s_indices<-sample(indices)
+  n_shuffle<-round(length(x)*prop)
+  switch<-sample(indices)
+  x[s_indices[1:n_shuffle]]<-x[switch[1:n_shuffle]]
+  return(x)
+}
+
+all_df<-data.frame()
+for(sim in 1:10){
+  for(samples in c(10,50,100,1000)){
+    #data <- mvrnorm(n=samples, mu=c(0, 0), Sigma=matrix(c(1, r, r, 1), nrow=2), empirical=TRUE)
+    #North_pole <- data[, 1]  # standard normal (mu=0, sd=1)
+    #South_pole <- data[, 2] 
+    
+    North_pole <- runif(samples,1,10)
+    South_pole <- proportional_permute(North_pole,.5)+runif(samples,-5,5)
+
+    t_df<-data.frame(nsize=rep(samples,samples),
+                   simulation=rep(sim,samples),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+  }
+}
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
+
+
+The main takeaway here is that even when there is a positive correlation between two things, you might not be able to see it if your sample size is small. For example, you might get unlucky with the one sample that you measured. Your sample could show a negative correlation, even when the actual correlation is positive! Unfortunately, in the real world we usually only have the sample that we collected, so we always have to wonder if we got lucky or unlucky. Fortunately, if you want to remove luck, all you need to do is collect larger samples. Then you will be much more likely to observe the real pattern, rather the pattern that can be introduced by chance.
 
 
 

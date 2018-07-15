@@ -1,3 +1,5 @@
+
+
 # Foundation for inference {#FoundationForInference}
 
 So far we have been talking about describing data and looking possible relationships between things we measure. We began by talking about the problem of having too many numbers. So, we discussed how we could summarize big piles of numbers with descriptive statistics, and by looking at the data with graphs. We also looked at the idea of relationships between things. If one thing causes another thing, then if we measure how one thing goes up and down, we should find that other thing goes up and down, or does something at least systematically following the first thing. Finally, at the end of the last chapter on correlation, we showed how correlations, which imply a relationship between two things, are very difficult to interpret. Why? because an observed correlation can be caused by a hidden third variable, or simply be a spurious findings "caused" by random chance.
@@ -79,6 +81,26 @@ ggplot(df,aes(x=a))+
 ```
 
 You might notice right away that none of the histograms are the same. Even though we are randomly taking 20 numbers from the very same uniform distribution, each sample of 20 numbers comes out different. This is sampling variability, or sampling error. 
+
+Here is movie version. You are watching a new histrogam for each sample of 20 observations. The horizontal line shows the shape of the uniform distribution. It crosses the y-axis at 2, because we expect that each number (from 1 to 10) should occur about 2 times each in a sample of 20. However, as you can see, this does not happen. Instead, each sample bounces around quite a bit, due to random chance.
+
+```{r,echo=F}
+library(gganimate)
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(1,10,1))+
+  geom_hline(yintercept=2)+
+  ggtitle("Small N=20 samples from a uniform distribution")+
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
 
 Looking at the above histograms shows us that figuring out where our numbers came from can be difficult. In the real world, our measurements are samples. We usually only have the luxury of getting one sample of measurements, rather than repeating our own measurements 10 times or more. If you look at the histograms, you will see that some of them look like they could have come from the uniform distribution: most of the bars are near two, and they all fall kind of on a flat line. But, if you happen to look at a different sample, you might see something that is very bumpy, with some numbers happening way more than others. This could suggest to you that those numbers did not come from a uniform distribution (they're just too bumpy). But let me remind you, all of these samples came from a  uniform distribution, this is what samples from that distribution look like. This is what chance does to samples, it makes the individual data points noisy.
 
