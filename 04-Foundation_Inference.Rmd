@@ -1,6 +1,13 @@
+# Foundations for inference {#FoundationForInference}
 
+<span class="newthought">
+Data and data sets are not objective; they are creations of human design. We give numbers their voice, draw inferences from them, and define their meaning through our interpretations.
+---Katie Crawford
+</span>
 
-# Foundation for inference {#FoundationForInference}
+<div class="marginnote">
+Chapter by Matthew Crump
+</div>
 
 So far we have been talking about describing data and looking possible relationships between things we measure. We began by talking about the problem of having too many numbers. So, we discussed how we could summarize big piles of numbers with descriptive statistics, and by looking at the data with graphs. We also looked at the idea of relationships between things. If one thing causes another thing, then if we measure how one thing goes up and down, we should find that other thing goes up and down, or does something at least systematically following the first thing. Finally, at the end of the last chapter on correlation, we showed how correlations, which imply a relationship between two things, are very difficult to interpret. Why? because an observed correlation can be caused by a hidden third variable, or simply be a spurious findings "caused" by random chance.
 
@@ -357,85 +364,157 @@ Our computer simulation allows us to force chance to operate hundreds of times, 
 
 You can use this chance window to help you make inferences. If you ran yourself in the gumball experiment and found that your left hand chose 2 more green gumballs than red gumballs, would you conclude that you left hand was special, and caused you to choose more green gumballs? Hopefully not. You could look at the chance window and see that differences of size +2 do happen fairly often by chance alone. You should not be surprised if you got a luck +2 difference. However, what if your left chose 5 more green gumballs than red gumballs. Well, chance doesn't do this very often, you might think something is up with your left hand. If you got a whopping 9 more green gumballs than red gumballs, you might really start to wonder. This is the kind of thing that could happen (it's possible), but virtually never happens. When you get things that almost never happen by chance, you can be more confident that the difference reflects a causal force that is not chance.
 
-## Sampling distribution of the sample means
+## The randomization test (permutation test)
 
-"Oh no, what is the sample distribution of the sample means? Is that even allowed in English?". Yes, unfortunately, this is allowed. The **sampling distribution of the sample means** is the next most important thing you will need to understand. IT IS SO IMPORTANT THAT IT IS NECESSARY TO USE ALL CAPS. It is only confusing at first because it's long and uses sampling and sample in the same phrase.
+Welcome to the first official inferential statistic in this textbook. Up to now we have been building some intuitions for you. Now, we will get slightly more formal and show you how we can use random chance to tell use whether our experimental finding was likely due to chance or not. We do this with something called a randomization test. The ideas behind the randomization test are the very same ideas behind the rest of the inferential statistics that we will talk about in later chapters. And, surprise, we have already talked about all of the major ideas already. Now, we will just put the ideas together, and give them the name **randomization test**.
 
-Don't worry, we've ben prepping you for this. You know what a distribution is right? It's where numbers comes from. It makes some numbers occur more or less, or the same as other numbers. You know what a sample is right? It's the numbers we take from a distribution. So, what could the sampling distribution of the sample means refer to? First, what do you think the sample means refers to? Well, if you took a sample of numbers, you would have a bunch of numbers...then, you could compute the mean of those numbers. The sample mean is the mean of the numbers in the sample. That is all. So, what is this distribution you speak of? Well, what if you took a bunch of samples of, put one here, put one there, put some other ones other places. You have a lot of different samples of numbers. You could compute the mean for each them. Then you would have a bunch of means. What do those means look like? Well, if you put them in a histogram, you could find out. If you did that, you would be looking at (roughly) a distribution, AKA **the sampling distribution of the sample means**.
+Here's the big idea. When you run an experiment and collect some data you find out what happened. But, because you ran the experiment only once, you don't get to find out what **could have happened**. The randomization test is a way of finding out what **could have happened**. And, once you know that, you can compare **what did happen** in your experiment, with **what could have happened**. 
 
-"I'm following along sort of, why would I want to do this instead of watching netflix...". Because, the sampling distribution of the sample means gives you another window into chance. A very useful one that you can control, just like your remote control, by pressing the right design buttons.
+### Pretend example does chewing gum improve your grades?
 
-## Seeing the pieces
+Let's say you run an experiment to find out if chewing gum causes students to get better grades on statistics exams. You randomly assign 20 students to the chewing gum condition, and 20 different students to the no-chewing gum condition. Then, you give everybody statistics tests and measure their grades. If chewing gum causes better grades, then the chewing gum group should have higher grades on average than the group who did not chew gum.
 
-To make a sampling distribution of the sample means, we just need the following:
+Let's say the data looked like this:
 
-1. A distribution to take numbers from
-2. A bunch of different samples from the distribution
-3. The means of each of the samples
-4. Get all of the sample means, and plot them in a histogram
+```{r}
+library(dplyr)
+gum<-round(runif(20,70,100))
+no_gum<-round(runif(20,40,90))
 
----
-Question for yourself: What do you think the sampling distribution of the sample means will look like? Will it tend to look the shape of the distribution that the samples came from? Or not? Good question, think about it.
---
+gum_df<-data.frame(student=seq(1:20),gum,no_gum)
 
-Let's do those four things. We already know about the uniform distribution. So, let's use that for fun. Remember, it looks like this if we are sampling from the set of integers from 1 to 10:
+gum_df <- gum_df %>%
+  rbind(c("Sums",colSums(gum_df[,2:3]))) %>%
+  rbind(c("Means",colMeans(gum_df[,2:3])))
+knitr::kable(gum_df)
+
+```
+
+So, did the students chewing gum do better than the students who didn't chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was `r mean(gum)`, and the mean for students who did not chew gum was `r mean(no_gum)`. Just looking at the means, it looks like chewing gum worked! 
+
+"STOP THE PRESSES, this is silly". We already know this is silly because we are making pretend data. But, even if this was real data, you might think, "Chewing gum won't do anything, this difference could have been caused by chance, I mean, maybe the better students just happened to be put into the chewing group, so because of that their grades were higher, chewing gum didn't do anything...". We agree. But, let's take a closer look. We already know how the data come out. What we want to know is how they could have come out, what are all the possibilities?
+
+For example, the data would have come out a bit different if we happened to have put some of the students from the gum group into the no gum group, and vice versa. Think of all the ways you could have assigned the 40 students into two groups, there are lots of ways. And, the means for each group would turn out differently depending on how the students are assigned to each group. 
+
+Practically speaking, it's not possible to run the experiment every possible way, that would take too long. But, we can nevertheless estimate how all of those experiments might have turned out using simulation.
+
+Here's the idea. We will take the 40 measurements (exam scores) that we found for all the students. Then we will randomly take 20 of them and pretend they were in the gum group, and we'll take the remaining 20 and pretend they were in the no gum group. Then we can compute the means again to find out what would have happened. We can keep doing this over and over again. Everytime computing what happened in that version of the experiment.
+
+#### Doing the randomization 
+
+Before we do that, let's show how the randomization part works. We'll use fewer numbers to make the process easier to look at. Here are the first 5 exam scores for students in both groups. 
+
+
+```{r}
+gum_df_small<-gum_df[1:5,]
+gum_df_small$gum<-as.numeric(gum_df_small$gum)
+gum_df_small$no_gum<-as.numeric(gum_df_small$no_gum)
+
+gum_df_small <- gum_df_small %>%
+  rbind(c("Sums",colSums(gum_df_small[,2:3]))) %>%
+  rbind(c("Means",colMeans(gum_df_small[,2:3])))
+knitr::kable(gum_df_small)
+
+```
+
+Things could have turned out differently if some of the subjects in the gum group were switched with the subjects in the no gum group. Here's how we can do some random switching. We will do this using R.
+
+```{r, echo=TRUE}
+all_scores       <- c(gum[1:5],no_gum[1:5])
+randomize_scores <- sample(all_scores)
+new_gum          <- randomize_scores[1:5]
+new_no_gum       <- randomize_scores[6:10]
+print(new_gum)
+print(new_no_gum)
+```
+We have taken the first 5 numbers from the original data, and put them all into a variable called `all_scores`. Then we use the `sample` function in R to shuffle the scores. Finally, we take the first 5 scores from the shuffled numbers and put them into a new variable called `new_gum`. Then, we put the last five scores into the variable `new_no_gum`. Then we printed them, so we can see them. 
+
+If we do this a couple of times and put them in a table, we can indeed see that the means for gum and no gum would be different if the subjects were shuffled around. Check it out:
 
 ```{r,echo=F}
-library(ggplot2)
+gum_df_small<-gum_df[1:5,]
+gum_df_small$gum<-as.numeric(gum_df_small$gum)
+gum_df_small$no_gum<-as.numeric(gum_df_small$no_gum)
 
-df<-data.frame(a=1:10,b=seq(.1,1,.1))
-df$a<-as.factor(df$a)
+all_scores       <- c(gum[1:5],no_gum[1:5])
+randomize_scores <- sample(all_scores)
+gum2          <- randomize_scores[1:5]
+no_gum2       <- randomize_scores[6:10]
 
-ggplot(df,aes(x=a,y=b))+
-  geom_point(color="white")+
-  geom_hline(yintercept=.1)+
-  theme_classic()+
-  ylab("Probability")+
-  xlab("Number")+
-  ggtitle("Uniform distribution for numbers 1 to 10")
+gum_df_small <-cbind(gum_df_small,gum2,no_gum2)
 
+all_scores       <- c(gum[1:5],no_gum[1:5])
+randomize_scores <- sample(all_scores)
+gum3          <- randomize_scores[1:5]
+no_gum3       <- randomize_scores[6:10]
 
-```
+gum_df_small <-cbind(gum_df_small,gum3,no_gum3)
 
-Ok, now let's take a bunch of samples from that distribution. We will set our sample-size to 20. Here is a histogram of 10 of from that bunch:
-
-```{r, echo=F}
-a<-round(runif(20*10,1,10))
-df<-data.frame(a,sample=rep(1:10,each=20))
-df2<-aggregate(sample~a,df,mean)
-
-ggplot() +
-  geom_histogram(data = df, aes(x = sample, y = ..density..)) +
-  geom_vline(data = df2, mapping = aes(xintercept = sample), color="red") +
-  facet_wrap(~a)+
-  scale_x_continuous(breaks=seq(1,10,1))+
-  theme_classic()
+gum_df_small <- gum_df_small %>%
+  rbind(c("Sums",colSums(gum_df_small[,2:7]))) %>%
+  rbind(c("Means",colMeans(gum_df_small[,2:7])))
+knitr::kable(gum_df_small)
 
 ```
 
-Ok, what have we got here? We have 10 different samples. Each sample has 20 observations and these are summarized in each of the 10 histograms. Each histogram has a red line. The red line shows you where the mean of each sample is located. So, we have found the sample means for the 10 different samples from a uniform distribution. 
+#### Simulating the mean differences across the different randomizations
 
-First question. Are the sample means all the same? The answer is no. They are all kind of similar to each other though, they are all around five plus or minus a few numbers. This is interesting. Although all of our samples look pretty different from one another, the means of our samples look more similar than different.
+In our pretend experiment we found that the mean for students chewing gum was `r mean(gum)`, and the mean for students who did not chew gum was `r mean(no_gum)`. The mean difference (gum - no gum) was `r mean(gum) - mean(no_gum)`. This is a pretty big difference. This is **what did happend**. But, **what could have happened**? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let's find out. This is what the randomization test is all about.
 
-Second question. What should we do with the means of our samples? Well, how about we collect them them all, and then plot a histogram of them. This would allow us to see what the distribution of the sample means looks like. The next histogram is just this. Except, rather than  taking 10 samples, we will take 10,000 samples. For each of them we will compute the means. So, we will have 10,000 means. This is the histogram of the sample means:
+When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference. Then we will have loads of mean differences to look at, which we can plot in a histogram. The histogram then gives a picture of **what could have happened**. Then, we can compare **what did happen** with **what could have happened**.
 
-```{r, echo=F}
-a<-round(runif(20*10000,1,10))
-df<-data.frame(a,sample=rep(1:10000,each=20))
-df2<-aggregate(a~sample,df,mean)
+Here's the histogram of the mean differences from the randomization test. For this simulation, we randomized the results from the original experiment 1000 times. This is what could have happened. The blue line in the figure shows us where our observed difference lies on the x-axis.
 
-ggplot(df2, aes(x=a))+
+```{r,echo=F}
+
+mean_differences<-length(10000)
+for(i in 1:10000){
+  all<-sample(c(gum,no_gum))
+  mean_differences[i]<-mean(all[1:20])-mean(all[21:40])
+}
+
+rand_df <- data.frame(sims=1:10000,mean_differences)
+
+ggplot(rand_df,aes(x=mean_differences))+
   geom_histogram(color="white")+
   theme_classic()+
-  ggtitle("Histogram of 10,000 sample means")+
-  xlab("value")
+  geom_vline(color="blue",xintercept=(mean(gum)-mean(no_gum)))
 
 
 ```
 
+We are looking at another window of chance. We are seeing a histogram of the kinds of mean differences that could have occured in our experiemnt, if we had assigned our subjects to the gum and no gum groups differently. As you can see, the mean differences range from negative to positive. The most frequent difference is 0. Also, the distribution appears to be symmetrical about zero, which shows we had roughly same the chances of getting a positive or negative difference. Also, notice that as the differences get larger (in the positive or negative direction, they become less frequent). The blue line shows us **the observed difference**, this is the one we found in our fake experiment. Where is it? It's way out to the right. It is is well outside the histogram. In other words, when we look at **what could have happened**, we see that **what did happen** doesn't occur very often. 
+
+IMPORTANT: In this case, when we speak of **what could have happened**. We are talking about what could have happended **by chance**. When we compare what did happen to what chance could have done, we can get a better idea of whether our result was caused by chance. 
+
+What do you think? Could the difference represented by the blue line have been caused by chance? My answer is probably not. The histogram shows us the window of chance. The blue line is not inside the window. This means we can be pretty confident that the difference we observed was not due to chance.
+
+Ok, let's pretend we got a much smaller mean difference when we first ran the experiment. For example, the histrogram might look something like this:
+
+```{r,echo=F}
+
+ggplot(rand_df,aes(x=mean_differences))+
+  geom_histogram(color="white")+
+  theme_classic()+
+  geom_vline(color="blue",xintercept=10)+
+  geom_vline(color="red",xintercept=5)
 
 
-> **Example 2.1** Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not <span>exactly</span> equal $\hat{p}_{_R}$?
+```
+
+Look at the blue line. If you found a mean difference of 10, would you be convinced that your difference was not caused by chance? As you can see, the blue line is inside the chance window. Notably, differences of +10 don't very often. You might infer that you difference was not likely to be due to chance (but you might be a little bit skeptical, because it could have been). How about the red line? The red line represents a difference of +5. If you found a difference of +5 here, would you be confident that your difference was not caused by chance? I wouldn't be. The red line is totally inside the chance window, this kind of difference happens fairly often. I'd need some more evidence to consider the claim the some independent variable actually caused the difference. I'd be much more comfortable assuming that sampling error probably caused the difference.
+
+### Take homes so far
+
+Have you noticed that we haven't used any formulas yet, but we have been able to accomplish inferential statistics. We will see some formulas as we progress, but these aren't really that important. What's important is the idea behind the formulas. 
+
+Inferential statistics is an attempt to solve the problem: **where did my data from?**. In the randomization test example, our question was: **where did the differences between the means in my data come from?**. We know that the differences could be produced by chance alone. We simulated what chance can due using randomization. Then we plotted what chance can do using a histogram. Then, we used to picture to help us make an inference. Did our observed difference come from the distribution, or not? When the observed difference is clearly inside the chance distribution, then we can infer that our difference **could have been produced by chance**. When the observed difference is not clearly inside the chance distribution, then we can infer that our difference was **probably not produced by chance**.
+
+In my opinion, these pictures are very, very helpful. If one of our goals is to help ourselves summarize a bunch of complicated numbers to arrive at an inference, then the pictures do a great job. We don't even need a summary number, we just need to look at the picture and see if the observed differerence is inside or outside of the window. This is what it is all about. Creating intuitive and meaningful ways to make inferences from our data. As we move forward, the main thing that we will do is formalize our process, and talk more about "standard" inferential statistics. For example, rather than looking at a picture (which is a good thing to do), we will create some helpful numbers. For example, what if you wanted to the probability that your difference could have been produced by chance? That could be a single number, like 95%. If there was a 95% probability that chance can produce the difference you observed, you might not be very confident that something like your experimental manipulation was causing the difference. If there was only 1% probability that chance could produce your difference, then you might be more confident that **chance did not** produce the difference; and, you might instead be comfortable with the possibility that your experimental manipulation actually caused the differnce. So, how can we arrive at those numbers? In order to get there we will introduce you to some more foundational tools for statistical inference.
+
+
+
+<!--  **Example 2.1** Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not <span>exactly</span> equal $\hat{p}_{_R}$?
 
 > While the proportions would probably be close to each other, they are probably not exactly the same. We would probably observe a small difference due to <span>chance</span>.
 
@@ -1608,3 +1687,5 @@ Another especially important consideration of confidence intervals is that they 
 [^3.49]: Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: $\text{point estimate}\ \pm\ 2.58 \times  SE \rightarrow (0.018, 0.162)$. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).
 
 [^3.50]: We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.65$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: the conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.
+
+-->
