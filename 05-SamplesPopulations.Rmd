@@ -249,8 +249,6 @@ For now, let's talk about about what's happening. Remember, we have been samplin
 
 What is the mean of those numbers? Well, its 1+2+3+4+5+6+7+8+9+10 = 55 / 10 = 5.5. Imagine if we took a bigger sample, say of 20 numbers, and again we got exactly 2 of each number. What would the mean be? It would be (1+2+3+4+5+6+7+8+9+10)*2 = 110 / 20 = 5.5. Still 5.5. You can see here, that the mean value of our uniform distribution is 5.5. Now that we know this, we might expect that most of our samples will have a mean near this number. We already know that every sample won'y be perfect, and it won't have exactly an equal amount of every number. So, we will expect the mean of our samples to vary a little bit. The histogram that we made shows the variation. Not surprisingly, the numbes vary around the value 5.5. 
 
-
-
 ### Sampling distributions exist for any sample statistic!
 
 One thing to keep in mind when thinking about sampling distributions is that **any** sample statistic you might care to calculate has a sampling distribution. For example, suppose that each time you sampled some numbers experiment you wrote down the largest number in the experiment. Doing this over and over again would give you a very different sampling distribution, namely the **sampling distribution of the maximum**. You could calculate the smallest number, or the mode, or the median, of the variance, or the standard deviation, or anything else from your sample. Then, you could repeat many times, and produce the sampling distribution of those statistics. Neat!
@@ -294,18 +292,191 @@ These sampling distributions are super important, and worth thinking about. What
 
 ### The central limit theorem
 
-At this point I hope you have a pretty good sense of what sampling distributions are, and in particular what the sampling distribution of the mean is. In this section I want to talk about how the sampling distribution of the mean changes as a function of sample size. Intuitively, you already know part of the answer: if you only have a few observations, the sample mean is likely to be quite inaccurate: if you replicate a small experiment and recalculate the mean you'll get a very different answer. In other words, the sampling distribution is quite wide. If you replicate a large experiment and recalculate the sample mean you'll probably get the same answer you got last time, so the sampling distribution will be very narrow. You can see this visually in Figure [fig:IQsamp]: the bigger the sample size, the narrower the sampling distribution gets. We can quantify this effect by calculating the standard deviation of the sampling distribution, which is referred to as the **standard error**. The standard error of a statistic is often denoted SE, and since we're usually interested in the standard error of the sample **mean**, we often use the acronym SEM. As you can see just by looking at the picture, as the sample size $N$ increases, the SEM decreases.
+Ok, so no you've seen lots of sampling distributions, and you know what the sampling distribution of the mean is. Here, we'll focus on **how the sampling distribution of the mean changes as a function of sample size.** 
 
-Okay, so that's one part of the story. However, there's something I've been glossing over so far. All my examples up to this point have been based on the "IQ scores" experiments, and because IQ scores are roughly normally distributed, I've assumed that the population distribution is normal. What if it isn't normal? What happens to the sampling distribution of the mean? The remarkable thing is this: no matter what shape your population distribution is, as $N$ increases the sampling distribution of the mean starts to look more like a normal distribution. To give you a sense of this, I ran some simulations using . To do this, I started with the "ramped" distribution shown in the histogram in Figure [fig:cltdemo]. As you can see by comparing the triangular shaped histogram to the bell curve plotted by the black line, the population distribution doesn't look very much like a normal distribution at all. Next, I used  to simulate the results of a large number of experiments. In each experiment I took $N=2$ samples from this distribution, and then calculated the sample mean. Figure [fig:cltdemo]b plots the histogram of these sample means (i.e., the sampling distribution of the mean for $N=2$). This time, the histogram produces a $\cap$-shaped distribution: it's still not normal, but it's a lot closer to the black line than the population distribution in Figure [fig:cltdemo]a. When I increase the sample size to $N=4$, the sampling distribution of the mean is very close to normal (Figure [fig:cltdemo]c), and by the time we reach a sample size of $N=8$ it's almost perfectly normal. In other words, as long as your sample size isn't tiny, the sampling distribution of the mean will be approximately normal no matter what your population distribution looks like!
+Intuitively, you already know part of the answer: if you only have a few observations, the sample mean is likely to be quite inaccurate (you've already seen it bounce aronud): if you replicate a small experiment and recalculate the mean you'll get a very different answer. In other words, the sampling distribution is quite wide. If you replicate a large experiment and recalculate the sample mean you'll probably get the same answer you got last time, so the sampling distribution will be very narrow. 
 
-  ----- -----
-        
-   (a)   (b)
-        
-   (c)   (d)
-  ----- -----
+Let's give ourselves a nice movie to see everything in action. We're going to sample numbers from a normal distribution. You will see four panels, each panel represents a different sample size (n), including sample-sizes of 10, 50, 100, and 1000. The red line shows the shape of the normal distribution. The grey bars show a histogram of each of the samples that we take. The red line shows the mean of an individual sample (the middle of the grey bars). As you can see, the red line moves around alot, especially when the sample size is small (10). 
 
-[fig:cltdemo]
+The new bits are the blue bars and the blue lines. The blue bars represent the sampling distribution of the sample mean. For example, in the panel for sample-size 10, we see a bunch of blue bars. This is a histogram of 10 sample means, taken from 10 samples of size 10. In the 50 panel, we see a histogram of 50 sample means, taken from 50 samples of size 50, and so on. The blue line in each panel is the mean of the sample means ("aaa, it's a mean of means", yes it is).
+
+```{r}
+
+get_sampling_means<-function(m,sd,s_size){
+  save_means<-length(s_size)
+  for(i in 1:s_size){
+    save_means[i]<-mean(rnorm(s_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+for(sims in 1:10){
+  for(n in c(10,50,100,1000)){
+    sample<-rnorm(n,0,1)
+    sample_means<-get_sampling_means(0,1,n)
+    t_df<-data.frame(sims=rep(sims,n),
+                     sample,
+                     sample_means,
+                     sample_size=rep(n,n),
+                     sample_mean=rep(mean(sample),n),
+                     sampling_mean=rep(mean(sample_means),n)
+                     )
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(y=(..density..)/max(..density..)^.8),color="white",fill="grey")+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5)+
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1), 
+                lwd = .75, 
+                col = 'red')+
+  geom_vline(aes(xintercept=sample_mean,frame=sims),color="red")+
+  geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+xlim(-3,3)+
+  theme_classic()+ggtitle("Population (red), Samples (grey), \n and Sampling distribution of the mean (blue)")+ylab("Rough likelihoods")+
+  xlab("value")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+```
+
+What should you notice? Notice that the width of the blue bars shrink as sample size increases. The sampling distribution of the mean is qutie wide when the sample-size is 10, it narrows as sample-size increases to 50 and 100, and it's just one bar, right in the middle when sample-size goes to 1000. What we are seeing is that the mean of the sampling distribution approaches the mean of the population as sample-size increases.
+
+So, the sampling distribution of the mean is another distribution, and it has some variance. It varies more when sample-size is small, and varies less when sample-size is large. We can quantify this effect by calculating the standard deviation of the sampling distribution, which is referred to as the **standard error**. The standard error of a statistic is often denoted SE, and since we're usually interested in the standard error of the sample **mean**, we often use the acronym SEM. As you can see just by looking at the movie, as the sample size $N$ increases, the SEM decreases.
+
+Okay, so that's one part of the story. However, there's something we've been glossing over a little bit. We've seen it already, but it's worth looking at it one more time. Here's the thing: **no matter what shape your population distribution is, as $N$ increases the sampling distribution of the mean starts to look more like a normal distribution**. This is the central limit theorem.
+
+To see the central limit theoreom in action, we are going to look at some histrograms of sample means different kinds of distributions. It is very important to recognize that you are looking at distributions of sample means, not distributions of individual samples! Here we go, starting with sampling from a normal distribution. The red line is the distribution, the blue bars are the histogram for the sample means. They both look normal!
+
+```{r}
+
+get_sampling_means<-function(m,sd,s_size,iter){
+  save_means<-length(iter)
+  for(i in 1:iter){
+    save_means[i]<-mean(rnorm(s_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+sims<-1
+n<-50
+
+for(n in c(10,50)){
+    sample<-rnorm(n,0,1)
+    sample_means<-get_sampling_means(0,1,n,1000)
+    t_df<-data.frame(sims=rep(sims,1000),
+                     sample,
+                     sample_means,
+                     sample_size=rep(n,1000),
+                     sample_mean=rep(mean(sample),1000),
+                     sampling_mean=rep(mean(sample_means),1000)
+                     )
+    all_df<-rbind(all_df,t_df)
+}
+
+ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5,bins=75)+
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1), 
+                lwd = .75, 
+                col = 'red')+
+  #geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+xlim(-3,3)+
+  theme_classic()+ggtitle("Sampling distribution of mean \n for Normal Distribution")+ylab("Rough likelihoods")+
+  xlab("value")
+
+```
+
+Let's do it again. This time we sample from a flat uniform distribution. Again, we see that the distribution of the sample means is not flat, it looks like a normal distribution.
+
+```{r}
+
+get_sampling_means<-function(mn,mx,s_size,iter){
+  save_means<-length(iter)
+  for(i in 1:iter){
+    save_means[i]<-mean(runif(s_size,mn,mx))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+sims<-1
+n<-50
+
+for(n in c(10,50)){
+    sample<-rnorm(n,0,1)
+    sample_means<-get_sampling_means(0,1,n,1000)
+    t_df<-data.frame(sims=rep(sims,1000),
+                     sample,
+                     sample_means,
+                     sample_size=rep(n,1000),
+                     sample_mean=rep(mean(sample),1000),
+                     sampling_mean=rep(mean(sample_means),1000)
+                     )
+    all_df<-rbind(all_df,t_df)
+}
+
+ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5,bins=75)+
+  geom_hline(yintercept=.1,color="red")+
+  facet_wrap(~sample_size)+xlim(0,1)+
+  theme_classic()+ggtitle("Sampling distribution of mean \n for Normal Distribution")+ylab("Rough likelihoods")+
+  xlab("value")
+
+```
+
+One more time with an exponential distribution. Even though way more of the numbers should be smaller than bigger, then sapmling distribution of the mean again does not look the red line. Instead, it looks more normalish. That's the central limit theorem. It just works like that.
+
+```{r}
+
+get_sampling_means<-function(s_size,r,iter){
+  save_means<-length(iter)
+  for(i in 1:iter){
+    save_means[i]<-mean(rexp(s_size,r))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+sims<-1
+n<-50
+
+for(n in c(10,50)){
+    sample<-rnorm(n,0,1)
+    sample_means<-get_sampling_means(n,2,1000)
+    t_df<-data.frame(sims=rep(sims,1000),
+                     sample,
+                     sample_means,
+                     sample_size=rep(n,1000),
+                     sample_mean=rep(mean(sample),1000),
+                     sampling_mean=rep(mean(sample_means),1000)
+                     )
+    all_df<-rbind(all_df,t_df)
+}
+
+ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5,bins=75)+
+  stat_function(fun = dexp, 
+                args = list(rate=2), 
+                lwd = .75, 
+                col = 'red')+
+  #geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+xlim(0,1)+
+  theme_classic()+ggtitle("Sampling distribution of mean \n for Normal Distribution")+ylab("Rough likelihoods")+
+  xlab("value")
+
+```
+
 
 On the basis of these figures, it seems like we have evidence for all of the following claims about the sampling distribution of the mean:
 
