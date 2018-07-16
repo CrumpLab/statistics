@@ -192,19 +192,30 @@ ggplot(df,aes(x=a,y=b))+
 
 ```
 
-Ok, now let's take a bunch of samples from that distribution. We will set our sample-size to 20. Here is a histogram of 10 of from that bunch:
+Ok, now let's take a bunch of samples from that distribution. We will set our sample-size to 20. It's easier to see how the sample mean behaves in a movie. Each histogram shows a new sample. The red line shows where the mean of the sample is. The samples are all very different from each other, but the red line doesn't move around very much, it always stays near the middle. However, the red line does move around a little bit, and this variance is what we call the sampling distribution of the sample mean.
+
 
 ```{r, echo=F}
 a<-round(runif(20*10,1,10))
 df<-data.frame(a,sample=rep(1:10,each=20))
-df2<-aggregate(sample~a,df,mean)
+df2<-aggregate(a~sample,df,mean)
+df<-cbind(df,mean_loc=rep(df2$a,each=20))
 
-ggplot() +
-  geom_histogram(data = df, aes(x = sample, y = ..density..)) +
-  geom_vline(data = df2, mapping = aes(xintercept = sample), color="red") +
-  facet_wrap(~a)+
+library(gganimate)
+
+ggplot(df,aes(x=a, group=sample,frame=sample)) +
+  geom_histogram() +
+  geom_vline(aes(xintercept=mean_loc,frame = sample),color="red")+
+  #geom_vline(aes(xintercept=..count../sum(..count..),frame = sample),color="red")+
   scale_x_continuous(breaks=seq(1,10,1))+
-  theme_classic()
+  theme_classic()+
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
 
 ```
 
@@ -238,31 +249,7 @@ For now, let's talk about about what's happening. Remember, we have been samplin
 
 What is the mean of those numbers? Well, its 1+2+3+4+5+6+7+8+9+10 = 55 / 10 = 5.5. Imagine if we took a bigger sample, say of 20 numbers, and again we got exactly 2 of each number. What would the mean be? It would be (1+2+3+4+5+6+7+8+9+10)*2 = 110 / 20 = 5.5. Still 5.5. You can see here, that the mean value of our uniform distribution is 5.5. Now that we know this, we might expect that most of our samples will have a mean near this number. We already know that every sample won'y be perfect, and it won't have exactly an equal amount of every number. So, we will expect the mean of our samples to vary a little bit. The histogram that we made shows the variation. Not surprisingly, the numbes vary around the value 5.5. 
 
-We can watch a movie to see how the sample mean behaves across many different samples. It's the same as what we already saw but more fun. Each histogram shows a new sample. The red line shows where the mean of the sample is. The samples are all very different from each other, but the red line doesn't move around very much, it always stays near the middle. However, the red line does move around a little bit, and this variance is what we call the sampling distribution of the sample mean.
 
-
-```{r, echo=F}
-a<-round(runif(20*10,1,10))
-df<-data.frame(a,sample=rep(1:10,each=20))
-df2<-aggregate(sample~a,df,mean)
-df<-cbind(df,mean_loc=rep(df2$sample,each=20))
-
-library(gganimate)
-
-ggplot(df,aes(x=a, group=sample,frame=sample)) +
-  geom_histogram() +
-  geom_vline(aes(xintercept=mean_loc,frame = sample),color="red")+
-  scale_x_continuous(breaks=seq(1,10,1))+
-  theme_classic()+
-  transition_states(
-    sample,
-    transition_length = 2,
-    state_length = 1
-  )+enter_fade() + 
-  exit_shrink() +
-  ease_aes('sine-in-out')
-
-```
 
 ### Sampling distributions exist for any sample statistic!
 
