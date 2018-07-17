@@ -171,4 +171,63 @@ a<-ggplot(rand_df,aes(x=IV,y=means,size=3))+
 
 animate(a,nframes=50,fps=10)
 
+all_df<-data.frame()
+for(s_size in c(10,50,100,1000)){
+  save_p<-length(10000)
+  save_r<-length(10000)
+  for(i in 1:10000){
+    t<-cor.test(round(runif(s_size,1,10)),round(runif(s_size,1,10)))
+    save_p[i]<-t$p.value
+    save_r[i]<-t$estimate
+  }
+  t_df<-data.frame(sim=1:10000,sample_size=rep(s_size,10000),save_r,save_p)
+  all_df<-rbind(all_df,t_df)
+}
+
+# concepts for inference
+
+all_df<-data.frame()
+for(i in 1:10){
+  for(n in c(10,20,50,100)){
+    population<-rnorm(1000,100,50)
+    A<-rnorm(n,100,50)
+    B<-rnorm(n,120,50)
+    
+    t_df<-data.frame(sim=rep(i,(1000+n+n)),
+                     sample_size=rep(n,(1000+n+n)),
+                     group=c(rep("population",1000),rep("A",n),rep("B",n)),
+                     scores=c(population,A,B))
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+population<-rnorm(1000,100,50)
+A<-rnorm(n,100,50)
+B<-rnorm(n,120,50)
+
+t_df<-data.frame(sim=rep(i,(1000+n+n)),
+                 sample_size=rep(n,(1000+n+n)),
+                 group=c(rep(1:100,each=10),rep("A",n),rep("B",n)),
+                 scores=c(population,A,B))
+all_df<-rbind(all_df,t_df)
+
+
+
+ggplot(all_df[all_df$sim==1,], aes(x=group,y=scores,color=group))+
+  geom_point(alpha=.5)+
+  theme_classic()+
+  facet_wrap(~sample_size)+
+  theme(legend.position="none")
+
+
+# unrelated
+ggplot(all_df[all_df$save_p<.05,],aes(x=save_r))+
+  geom_histogram(bins=50,color="white")+
+  facet_wrap(~sample_size)+theme_classic()+
+  xlab("Pearson's r")+
+  ggtitle("Histograms of Pearson's r for type I errors by N")
+
+
+
+
 
