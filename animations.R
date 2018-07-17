@@ -171,6 +171,60 @@ a<-ggplot(rand_df,aes(x=IV,y=means,size=3))+
 
 animate(a,nframes=50,fps=10)
 
+## Randomization test  better-------
+
+study<-round(runif(10,70,100))
+no_study<-round(runif(10,40,90))
+
+study_df<-data.frame(student=seq(1:10),study,no_study)
+mean_original<-data.frame(IV=c("studied","didnt_study"),
+                          means=c(mean(study),mean(no_study)))
+t_df<-data.frame(sims=rep(1,20),
+                 IV=rep(c("studied","didnt_study"),each=10),
+                 values=c(study,no_study),
+                 rand_order=rep(c(0,1),each=10))
+
+raw_df<-t_df
+for(i in 2:10){
+  #all<-sample(c(study,no_study))
+  #mean_study[i]<-mean(all[1:20])
+  #mean_no_study[i]<-mean(all[21:40])
+  #t_df<-data.frame(sims=rep(i,20),
+  #                 IV=rep(c("studied","didnt_study"),each=10),
+  #                 values=c(all[1:20],all[21:40]))
+  new_index<-sample(1:20)
+  t_df$values<-t_df$values[new_index]
+  t_df$rand_order<-t_df$rand_order[new_index]
+  t_df$sims<-rep(i,20)
+  raw_df<-rbind(raw_df,t_df)
+}
+
+raw_df$rand_order<-as.factor(raw_df$rand_order)
+
+rand_df <- data.frame(sims=rep(1:10,2),means=c(mean_study,mean_no_study),
+                      IV=rep(c("studied","didnt_study"),each=10))
+
+a<-ggplot(raw_df,aes(x=IV,y=values,color=rand_order,size=3))+
+  geom_point(stat="identity",alpha=.5)+
+  geom_point(data=mean_original,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="mediumorchid2")+
+  geom_point(data=rand_df,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="gold")+
+  theme_classic(base_size = 15)+
+  coord_cartesian(ylim=c(50, 100))+
+  theme(legend.position="none") +
+  ggtitle("Randomization test: Original Means (purple), 
+          \n Randomized means (yellow)
+          \n Original scores (red,greenish)")+
+  transition_states(
+    sims,
+    transition_length = 1,
+    state_length = 2
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+animate(a,nframes=100,fps=5)
+
+
 all_df<-data.frame()
 for(s_size in c(10,50,100,1000)){
   save_p<-length(10000)
@@ -227,6 +281,65 @@ ggplot(all_df[all_df$save_p<.05,],aes(x=save_r))+
   xlab("Pearson's r")+
   ggtitle("Histograms of Pearson's r for type I errors by N")
 
+
+## -- correlation uniform
+
+all_df<-data.frame()
+for(sim in 1:10){
+  for(n in c(10,50,100,1000)){
+    North_pole <- runif(n,1,10)
+    South_pole <- runif(n,1,10)
+    t_df<-data.frame(nsize=rep(n,n),
+                     simulation=rep(sim,n),
+                     North_pole,
+                     South_pole)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+## -- correlation rnorm
+
+all_df<-data.frame()
+for(sim in 1:10){
+  for(n in c(10,50,100,1000)){
+    North_pole <- rnorm(n,0,1)
+    South_pole <- rnorm(n,0,1)
+    t_df<-data.frame(nsize=rep(n,n),
+                     simulation=rep(sim,n),
+                     North_pole,
+                     South_pole)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
 
 
 

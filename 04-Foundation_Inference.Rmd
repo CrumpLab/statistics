@@ -461,7 +461,69 @@ knitr::kable(gum_df_small)
 
 In our pretend experiment we found that the mean for students chewing gum was `r mean(gum)`, and the mean for students who did not chew gum was `r mean(no_gum)`. The mean difference (gum - no gum) was `r mean(gum) - mean(no_gum)`. This is a pretty big difference. This is **what did happend**. But, **what could have happened**? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let's find out. This is what the randomization test is all about.
 
-When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference. Then we will have loads of mean differences to look at, which we can plot in a histogram. The histogram then gives a picture of **what could have happened**. Then, we can compare **what did happen** with **what could have happened**.
+When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference. 
+
+Let's look at a short animation of what is happenining in the randomization test. Note, what you are about to see is data from a different fake experiment, but the principles are the same. We'll return to the gum no gum experiment after the animiation. The animation is showing you three important things. First, the purple dots show you the mean scores in two groups (didn't study vs study). It looks like there is a difference, as 1 dot is lower than the other. We want to know if chance could produce a difference this big. At the beginning of the animiation, the light green and red dots show the individual scores from each of 10 subjects in the design (the purple dots are the means of these original scores). Now, during the randomizations, we randomly shuffle the original scores between the groups. You can see this happening throughout the animation, as the green and red dots appear in different random combinations. The moving yellow dots show you the new means for each group after the randomization. The differences between the yellow dots show you the range of differences that chance could produce. 
+
+```{r rtestGif}
+study<-round(runif(10,80,100))
+no_study<-round(runif(10,40,90))
+
+study_df<-data.frame(student=seq(1:10),study,no_study)
+mean_original<-data.frame(IV=c("studied","didnt_study"),
+                          means=c(mean(study),mean(no_study)))
+t_df<-data.frame(sims=rep(1,20),
+                 IV=rep(c("studied","didnt_study"),each=10),
+                 values=c(study,no_study),
+                 rand_order=rep(c(0,1),each=10))
+
+raw_df<-t_df
+for(i in 2:10){
+  #all<-sample(c(study,no_study))
+  #mean_study[i]<-mean(all[1:20])
+  #mean_no_study[i]<-mean(all[21:40])
+  #t_df<-data.frame(sims=rep(i,20),
+  #                 IV=rep(c("studied","didnt_study"),each=10),
+  #                 values=c(all[1:20],all[21:40]))
+  new_index<-sample(1:20)
+  t_df$values<-t_df$values[new_index]
+  t_df$rand_order<-t_df$rand_order[new_index]
+  t_df$sims<-rep(i,20)
+  raw_df<-rbind(raw_df,t_df)
+}
+
+raw_df$rand_order<-as.factor(raw_df$rand_order)
+rand_df<-aggregate(values~sims*IV,raw_df,mean)
+names(rand_df)<-c("sims","IV","means")
+
+#rand_df <- data.frame(sims=rep(1:10,2),means=c(mean_study,mean_no_study),
+                    #  IV=rep(c("studied","didnt_study"),each=10))
+
+a<-ggplot(raw_df,aes(x=IV,y=values,color=rand_order,size=3))+
+  geom_point(stat="identity",alpha=.5)+
+  geom_point(data=mean_original,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="mediumorchid2")+
+  geom_point(data=rand_df,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="gold")+
+  theme_classic(base_size = 15)+
+  coord_cartesian(ylim=c(40, 100))+
+  theme(legend.position="none") +
+  ggtitle("Randomization test: Original Means (purple), 
+          \n Randomized means (yellow)
+          \n Original scores (red,greenish)")+
+  transition_states(
+    sims,
+    transition_length = 1,
+    state_length = 2
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+animate(a,nframes=100,fps=5)
+
+```
+
+What can we learn from this animation? Well, we are engaging in some visual statistical inference. By looking the range of motion of the yellow dots, we are watching what kind of differences chance can produce. In this animiation, the purple dots, representing the original difference, are outside of the range of chance. The yellow dots move past the purple dots. This is a way of showing that the random chance is very unlikely to produce the original difference. If the purple dots were inside the range of the yellow dots, then when would know that chance is capable of producing the difference we observed, and that it does so fairly often. As a result, we should not conclude the manipulation caused the difference, because it could have easily occured by chance.
+
+Let's return to the gum example. After we randomized our scores many times, and computed the new means, and the mean differences, we will have loads of mean differences to look at, which we can plot in a histogram. The histogram gives a picture of **what could have happened**. Then, we can compare **what did happen** with **what could have happened**.
 
 Here's the histogram of the mean differences from the randomization test. For this simulation, we randomized the results from the original experiment 1000 times. This is what could have happened. The blue line in the figure shows us where our observed difference lies on the x-axis.
 

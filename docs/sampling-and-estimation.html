@@ -29,7 +29,7 @@
 <meta name="author" content="Jeffrey Suzuki">
 
 
-<meta name="date" content="2018-07-16">
+<meta name="date" content="2018-07-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -441,12 +441,12 @@ Figure 5.4: The population distribution of IQ scores (panel a) and two samples d
 IQ &lt;-<span class="st"> </span><span class="kw">round</span>(IQ) <span class="co"># make round numbers</span></code></pre></div>
 <p>Cool, we just generated 10,000 fake IQ scores. Where did they go? Well, they went into the variable IQ on my computer. You can do the same on your computer too by copying the above code. 10,000 numbers is too many numbers to look at. We can look at the first 100 like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(IQ[<span class="dv">1</span>:<span class="dv">100</span>])</code></pre></div>
-<pre><code>##   [1] 114 139  95 118  68  84  82 104  97 119 110  97  97 103 121  76 118
-##  [18]  54  75 110  90  96  87 121 117  86 118  81  93 110  99 104 129  98
-##  [35] 104  90  95  80 115  96  95 105  97  82  93  86  97  98 104  97  89
-##  [52]  81 108 110 105  96 115 115  83 107  89  97  99 100  91 126  74 103
-##  [69] 108 110 107  98  96 110 104 122  87  80  92  75 113  94 140  80  80
-##  [86] 102 103 103  99  99  90  84  83  94 112  90 127 115  93  86</code></pre>
+<pre><code>##   [1] 100 104  95 110  83 112  75 118  78 112  91 122 109 130 105 135 115
+##  [18] 113 109  72 109 104  86 104  88  91  84  96  70  94  94 103 120 140
+##  [35] 128 109 107  86 108  75  87 113 109 124 124 107  90 104  85  94  92
+##  [52] 113  84  90 119 104  83  77  90  69  97  90  92 120 102  64 112  88
+##  [69]  94  98 100 102 101 122  99  92 118  89 104 126 113  86  74  94  98
+##  [86]  96 112  82  98 101 101  87  94  79 106  70 120  87 102  97</code></pre>
 <p>We can compute the mean IQ using the command <strong>mean(IQ)</strong> and the standard deviation using the command <strong>sd(IQ)</strong>, and draw a histgram using <strong>hist()</strong>. The histogram of this much larger sample is shown in Figure <a href="sampling-and-estimation.html#fig:IQdist">5.4</a>c. Even a moment’s inspections makes clear that the larger sample is a much better approximation to the true population distribution than the smaller one. This is reflected in the sample statistics: the mean IQ for the larger sample turns out to be 99.9, and the standard deviation is 15.1. These values are now very close to the true population.</p>
 <p>I feel a bit silly saying this, but the thing I want you to take away from this is that large samples generally give you better information. I feel silly saying it because it’s so bloody obvious that it shouldn’t need to be said. In fact, it’s such an obvious point that when Jacob Bernoulli – one of the founders of probability theory – formalised this idea back in 1713, he was kind of a jerk about it. Here’s how he described the fact that we all share this intuition:</p>
 <blockquote>
