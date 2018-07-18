@@ -1,6 +1,8 @@
 # GIFs
 
-This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alonside each gif. The animiations are made possible by the **gganimate** package. 
+This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book [https://github.com/CrumpLab/statistics/tree/master/gifs](https://github.com/CrumpLab/statistics/tree/master/gifs). Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alonside each gif. The animiations are made possible by the **gganimate** package. 
+
+**This is a work in progress, subject to change and addition**
 
 ```{r,message=F, warning=F}
 library(ggplot2)
@@ -9,6 +11,8 @@ library(gganimate)
 
 ## Correlation GIFs
 
+Note regression lines and confidence bands can be added using `geom_smooth(method=lm, se=T)`
+
 ### N=10, both variables drawn from a uniform distribution
 
 ```{r, echo=F}
@@ -16,8 +20,6 @@ knitr::include_graphics(path="gifs/corUnifn10-1.gif")
 ```
 
 ```{r corUnifn10,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
-library(gganimate)
-
 all_df<-data.frame()
 for(sim in 1:10){
   North_pole <- runif(10,1,10)
@@ -80,4 +82,248 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
   )+enter_fade() + 
   exit_shrink() +
   ease_aes('sine-in-out')
+```
+
+
+
+### Correlation between random deviates from normal distribution across four sample sizes
+
+N= 10,50,100,1000
+All values sampled from the same normal distribution (mean=0, sd=1)
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/corNormFourNs-1.gif")
+```
+
+```{r corNormFourNs,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+all_df<-data.frame()
+for(sim in 1:10){
+  for(n in c(10,50,100,1000)){
+  North_pole <- rnorm(n,0,1)
+  South_pole <- rnorm(n,0,1)
+  t_df<-data.frame(nsize=rep(n,n),
+                   simulation=rep(sim,n),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```
+
+
+### Type I errors, sampling random deviates from normal distribution with regression lines
+
+These scatterplots only show what would be type I errors (assuming alpha=.05). The X and Y values were both sampled from the same normal distribution (mean = 0, sd=1). 1000 simulations were conducted for each sample size (10,50,100,1000). For each, the animiation shows 10 scatterplots where the observed "correlation" would have passed a significance test. According to definition, these correlations only arise from random normal deviates 5% of the time, but when they do arise for small sample sizes, they look fairly convincing.
+
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/corNormFourNsTypeI-1.gif")
+```
+
+```{r corNormFourNsTypeI,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+all_df<-data.frame()
+for(n in c(10,50,100,1000)){
+  count_sims<-0
+  for(sim in 1:1000){
+    North_pole <- rnorm(n,0,1)
+    South_pole <- rnorm(n,0,1)
+    if(cor.test(North_pole,South_pole)$p.value<.05){
+      count_sims<-count_sims+1
+    t_df<-data.frame(nsize=rep(n,n),
+                     simulation=rep(count_sims,n),
+                     North_pole,
+                     South_pole)
+    all_df<-rbind(all_df,t_df)
+    
+    if(count_sims==10){
+      break
+    }
+    }
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=TRUE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+```
+
+## Sampling distributions
+
+### Sampling from a uniform distribution
+
+Animation shows histograms for N=20, sampled from a uniform distribution, along with mean (red line). Uniform distribution in this case is integer values from 1 to 10.
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/sampleHistUnif-1.gif")
+```
+
+```{r sampleHistUnif,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+a<-round(runif(20*10,1,10))
+df<-data.frame(a,sample=rep(1:10,each=20))
+df2<-aggregate(a~sample,df,mean)
+df<-cbind(df,mean_loc=rep(df2$a,each=20))
+
+library(gganimate)
+
+ggplot(df,aes(x=a, group=sample,frame=sample)) +
+  geom_histogram() +
+  geom_vline(aes(xintercept=mean_loc,frame = sample),color="red")+
+  scale_x_continuous(breaks=seq(1,10,1))+
+  theme_classic()+
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```
+
+
+
+### Sampling distribution of the mean, Normal population distribution and sample histograms 
+
+This animiation illustrates the relationship between a distribution (population), samples from the distribution, and the sampling distribution of the sample means, all as a function of n
+
+Normal distribution in red. Individual sample histograms in grey. Vertical red line is mean of individual sample. Histograms for sampling distribution of the sample mean in blue. Vertical blue line is mean of the sampling distribution of the sample mean.
+
+Note: for purposes of the animation (and because it was easier to do this way), the histograms for the sampling distribution of the sample means have different sizes. When sample-size = 10, the histogram shows 10 sample means. When sample size=100, the histogram shows 100 sample means. I could have simulated many more sample means (say 10000) for each, but then the histograms for the sample means would be static.
+
+The y-axis is very rough. The heights of the histrograms and distributions were scaled to be in the same range for the animation.
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/sampleDistNormal-1.gif")
+```
+
+```{r sampleDistNormal,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+
+get_sampling_means<-function(m,sd,s_size){
+  save_means<-length(s_size)
+  for(i in 1:s_size){
+    save_means[i]<-mean(rnorm(s_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+for(sims in 1:10){
+  for(n in c(10,50,100,1000)){
+    sample<-rnorm(n,0,1)
+    sample_means<-get_sampling_means(0,1,n)
+    t_df<-data.frame(sims=rep(sims,n),
+                     sample,
+                     sample_means,
+                     sample_size=rep(n,n),
+                     sample_mean=rep(mean(sample),n),
+                     sampling_mean=rep(mean(sample_means),n)
+                     )
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(y=(..density..)/max(..density..)^.8),color="white",fill="grey")+
+  geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5)+
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1), 
+                lwd = .75, 
+                col = 'red')+
+  geom_vline(aes(xintercept=sample_mean,frame=sims),color="red")+
+  geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+xlim(-3,3)+
+  theme_classic()+ggtitle("Population (red), Samples (grey), \n and Sampling distribution of the mean (blue)")+ylab("Rough likelihoods")+
+  xlab("value")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```
+
+## Statistical Inference
+
+### Randomization Test
+
+This is an attempt at visualizing a randomization test. Samples are taken under two conditions of the IV (A and B). At the beginning of the animation, the original scores in the first condition are shown as green dots on the left, and the original scores in the second condition are the red dots on the right. The means for each group are the purple dots. During the randomization, the original scores are shuffled randomly between the two conditions. After each shuffle, two new means are computed and displayed as the yellow dots. This occurs either for all permutations, or for a large random sample of them. The animation shows the original scores being shuffled around across the randomizations (the colored dots switch their original condition, appearing from side to side).
+
+For intuitive inference, one might look at the range of motion of the yellow dots. This is how the mean difference between group 1 and group 2 behaves under randomization. It's what chance can do. If the difference between the purple dots is well outside the range of motion of the yellow dots, then the mean difference observed in the beginning is not likely produced by chance. 
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/randomizationTest-1.gif")
+```
+
+```{r randomizationTest,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+study<-round(runif(10,80,100))
+no_study<-round(runif(10,40,90))
+
+study_df<-data.frame(student=seq(1:10),study,no_study)
+mean_original<-data.frame(IV=c("studied","didnt_study"),
+                          means=c(mean(study),mean(no_study)))
+t_df<-data.frame(sims=rep(1,20),
+                 IV=rep(c("studied","didnt_study"),each=10),
+                 values=c(study,no_study),
+                 rand_order=rep(c(0,1),each=10))
+
+raw_df<-t_df
+for(i in 2:10){
+  new_index<-sample(1:20)
+  t_df$values<-t_df$values[new_index]
+  t_df$rand_order<-t_df$rand_order[new_index]
+  t_df$sims<-rep(i,20)
+  raw_df<-rbind(raw_df,t_df)
+}
+
+raw_df$rand_order<-as.factor(raw_df$rand_order)
+rand_df<-aggregate(values~sims*IV,raw_df,mean)
+names(rand_df)<-c("sims","IV","means")
+
+
+a<-ggplot(raw_df,aes(x=IV,y=values,color=rand_order,size=3))+
+  geom_point(stat="identity",alpha=.5)+
+  geom_point(data=mean_original,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="mediumorchid2")+
+  geom_point(data=rand_df,aes(x=IV,y=means),stat="identity",shape=21,size=6,color="black",fill="gold")+
+  theme_classic(base_size = 15)+
+  coord_cartesian(ylim=c(40, 100))+
+  theme(legend.position="none") +
+  ggtitle("Randomization test: Original Means (purple), 
+          \n Randomized means (yellow)
+          \n Original scores (red,greenish)")+
+  transition_states(
+    sims,
+    transition_length = 1,
+    state_length = 2
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+animate(a,nframes=100,fps=5)
+
 ```
