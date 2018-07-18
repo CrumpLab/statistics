@@ -3,15 +3,21 @@
 # small sample size, type I error, and effect-size
 
 all_df<-data.frame()
-for(sim in 1:1000){
+for(i in 1:1000){
   for(n in c(10,20,50,100,1000)){
     some_data<-rnorm(n,0,1)
     p_value<-t.test(some_data)$p.value
     effect_size<-mean(some_data)/sd(some_data)
-    t_df<-data.frame(sim=i,sample_size=n,p_value,effect_size)
+    mean_scores<-mean(some_data)
+    standard_error<-sd(some_data)/sqrt(length(some_data))
+    t_df<-data.frame(sim=i,sample_size=n,p_value,effect_size,mean_scores,standard_error)
     all_df<-rbind(all_df,t_df)
   }
 }
+
+plot(all_df[all_df$sample_size==10,]$mean_scores,all_df[all_df$sample_size==10,]$standard_error)
+hist(all_df[all_df$sample_size==10,]$mean_scores)
+hist(all_df[all_df$sample_size==10,]$standard_error)
 
 type_I_error <-all_df[all_df$p_value<.05,]
 type_I_error$sample_size<-as.factor(type_I_error$sample_size)
@@ -100,3 +106,26 @@ ggplot(t_df,aes(x=mean_difference))+
   geom_histogram(bins=50,color="white")+
   geom_vline(xintercept=lower)+
   geom_vline(xintercept=upper)
+
+## why is p-distribution flat
+
+all_df<-data.frame()
+for(i in 1:1000){
+  for(diff in c(0,.1,.2,.3,.4,.5)){
+    some_data<-rnorm(n,diff,1)
+    p_value<-t.test(some_data)$p.value
+    effect_size<-mean(some_data)/sd(some_data)
+    mean_scores<-mean(some_data)
+    standard_error<-sd(some_data)/sqrt(length(some_data))
+    t_df<-data.frame(sim=i,difference=diff,p_value,effect_size,mean_scores,standard_error)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+ggplot(all_df,aes(x=p_value, group=difference, color=difference))+
+  geom_histogram(stat='density')+
+  theme_classic()+facet_wrap(~difference)
+
+plot(all_df[all_df$sample_size==10,]$mean_scores,all_df[all_df$sample_size==10,]$standard_error)
+hist(all_df[all_df$sample_size==10,]$mean_scores)
+hist(all_df[all_df$sample_size==10,]$standard_error)

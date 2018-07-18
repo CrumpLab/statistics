@@ -7,6 +7,7 @@ This is the place where I put the stats gifs as I make them. The gifs can downlo
 ```{r,message=F, warning=F}
 library(ggplot2)
 library(gganimate)
+library(dplyr)
 ```
 
 ## Correlation GIFs
@@ -171,6 +172,64 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
   ease_aes('sine-in-out')
 
 ```
+
+### Regression
+
+We look at how the residuals (error from points to line) behave as the regression lines moves above and below it's true value. The total error associated with all of the red lines is represents by the grey area. This total error is smallest (minimized) when the black line overlaps with the blue regression line (the best fit line). The total error expands as the black line moves away from the regression. That's why the regression line is the least wrong (best fit) line to skewer the data (according to least squares definition)
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/regression-1.gif")
+```
+
+```{r regression,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+
+d <- mtcars
+fit <- lm(mpg ~ hp, data = d)
+d$predicted <- predict(fit)   # Save the predicted values
+d$residuals <- residuals(fit) # Save the residual values
+
+coefs<-coef(lm(mpg ~ hp, data = mtcars))
+coefs[1]
+coefs[2]
+
+x<-d$hp
+move_line<-c(seq(-6,6,.5),seq(6,-6,-.5))
+total_error<-length(length(move_line))
+cnt<-0
+for(i in move_line){
+  cnt<-cnt+1
+  predicted_y <- coefs[2]*x + coefs[1]+i
+  error_y <- (predicted_y-d$mpg)^2
+  total_error[cnt]<-sqrt(sum(error_y)/32)
+}
+
+move_line_sims<-rep(move_line,each=32)
+total_error_sims<-rep(total_error,each=32)
+sims<-rep(1:50,each=32)
+
+d<-d %>% slice(rep(row_number(), 50))
+
+d<-cbind(d,sims,move_line_sims,total_error_sims)
+
+
+anim<-ggplot(d, aes(x = hp, y = mpg, frame=sims)) +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  
+  geom_abline(intercept = 30.09886+move_line_sims, slope = -0.06822828)+
+  lims(x = c(0,400), y = c(-10,40))+
+  geom_segment(aes(xend = hp, yend = predicted+move_line_sims, color="red"), alpha = .5) + 
+  geom_point() +
+  geom_ribbon(aes(ymin = predicted+move_line_sims - total_error_sims, ymax = predicted+move_line_sims + total_error_sims), fill = "lightgrey", alpha=.2)+ 
+  theme_classic()+
+  theme(legend.position="none")+
+  xlab("X")+ylab("Y")+
+  transition_manual(frames=sims)+
+  enter_fade() + 
+  exit_fade()+
+  ease_aes('sine-in-out')
+
+animate(anim,fps=5)
+```
+
 
 ## Sampling distributions
 

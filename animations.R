@@ -341,7 +341,7 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
   exit_shrink() +
   ease_aes('sine-in-out')
 
-## correltions with confidence----
+## correlations with confidence----
 
 all_df<-data.frame()
 for(n in c(10,50,100,1000)){
@@ -386,46 +386,124 @@ fit <- lm(mpg ~ hp, data = d)
 d$predicted <- predict(fit)   # Save the predicted values
 d$residuals <- residuals(fit) # Save the residual values
 
-ggplot(d, aes(x = hp, y = mpg)) +
-  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  # Plot regression slope
-  geom_segment(aes(xend = hp, yend = predicted, color="red"), alpha = .5) +  # alpha to fade lines
-  geom_point() +
-  geom_point(aes(y = predicted), shape = 1) +
-  theme_classic()+
-  theme(legend.position="none")+
-  xlab("X")+ylab("Y")
+#ggplot(d, aes(x = hp, y = mpg)) +
+#  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  # Plot regression slope
+#  geom_segment(aes(xend = hp, yend = predicted, color="red"), alpha = .5) +  # alpha to fade lines
+#  geom_point() +
+#  geom_point(aes(y = predicted), shape = 1) +
+#  theme_classic()+
+#  theme(legend.position="none")+
+#  xlab("X")+ylab("Y")
+
 
 coefs<-coef(lm(mpg ~ hp, data = mtcars))
 coefs[1]
 coefs[2]
 
-ggplot(d, aes(x = hp, y = mpg)) +
-  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  
-  geom_abline(intercept = coefs[1]+3, slope = coefs[2])+
-  lims(x = c(0,400), y = c(0,35))+
-  geom_segment(aes(xend = hp, yend = predicted+3, color="red"), alpha = .5) + 
-  geom_point() +
-  geom_point(aes(y = predicted), shape = 1) +
-  theme_classic()+
-  theme(legend.position="none")+
-  xlab("X")+ylab("Y")
-
-y=mx+b
-
 x<-d$hp
-#best fie
-move_line<-seq(-5,5,.5)
-total_error<-c(length(move_line))
+move_line<-c(seq(-6,6,.5),seq(6,-6,-.5))
+total_error<-length(length(move_line))
 cnt<-0
 for(i in move_line){
   cnt<-cnt+1
   predicted_y <- coefs[2]*x + coefs[1]+i
   error_y <- (predicted_y-d$mpg)^2
-  total_error[cnt]<-sum(error_y)
+  total_error[cnt]<-sqrt(sum(error_y)/32)
 }
+
+move_line_sims<-rep(move_line,each=32)
+total_error_sims<-rep(total_error,each=32)
+sims<-rep(1:50,each=32)
+
+d<-d %>% slice(rep(row_number(), 50))
+
+d<-cbind(d,sims,move_line_sims,total_error_sims)
+
+
+anim<-ggplot(d, aes(x = hp, y = mpg, frame=sims)) +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  
+  geom_abline(intercept = 30.09886+move_line_sims, slope = -0.06822828)+
+  lims(x = c(0,400), y = c(-10,40))+
+  geom_segment(aes(xend = hp, yend = predicted+move_line_sims, color="red"), alpha = .5) + 
+  geom_point() +
+  geom_ribbon(aes(ymin = predicted+move_line_sims - total_error_sims, ymax = predicted+move_line_sims + total_error_sims), fill = "lightgrey", alpha=.2)+ 
+  #geom_point(aes(y = predicted), shape = 1) +
+  theme_classic()+
+  theme(legend.position="none")+
+  xlab("X")+ylab("Y")+
+  #transition_states(
+  #  sims,
+  #  transition_length = .5,
+  #  state_length = 1
+  #)+
+  transition_manual(frames=sims)+
+  enter_fade() + 
+  #exit_shrink() +
+  #exit_disappear(early=F)+
+  exit_fade()+
+  ease_aes('sine-in-out')
+
+animate(anim,fps=5)
+
+y=mx+b
+
+
+
+x<-d$hp
+predicted_y <- coefs[2]*x + coefs[1]+3
+error_y <- (predicted_y-d$mpg)^2
+total_error<-sqrt(sum(error_y)/32)
+
+d<-cbind(d,new_error=rep(total_error,32))
 plot(move_line,total_error)
 
 y
 x
+
+
+## test ggpubr ----
+
+
+all_df<-data.frame()
+for(sims in 1:10){
+  for(n in c(10,50,100,1000)){
+    sample<-rnorm(n,0,1)
+    t_df<-data.frame(sims=rep(sims,n),
+                     sample_size=rep(n,n),
+                     sample_mean=rep(mean(sample),n),
+                     sample)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+a<-ggplot(all_df, aes(x=sample))+
+  geom_histogram(aes(y=..density..),color="white")+
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1), 
+                lwd = .5, 
+                col = 'red')+
+  geom_vline(aes(xintercept=sample_mean,frame=sims),color="blue")+
+  facet_wrap(~sample_size)+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+b<-a
+
+c<-ggarrange(a,b,
+             ncol=2,nrow=1)
+animate(ggarrange(a,b,
+                  ncol=2,nrow=1),fps=5)
+
+
+
+
+
+
 
 

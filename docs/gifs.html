@@ -418,6 +418,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.1.2" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>11.1.2</b> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
 <li class="chapter" data-level="11.1.3" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>11.1.3</b> Correlation between random deviates from normal distribution across four sample sizes</a></li>
 <li class="chapter" data-level="11.1.4" data-path="gifs.html"><a href="gifs.html#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines"><i class="fa fa-check"></i><b>11.1.4</b> Type I errors, sampling random deviates from normal distribution with regression lines</a></li>
+<li class="chapter" data-level="11.1.5" data-path="gifs.html"><a href="gifs.html#regression"><i class="fa fa-check"></i><b>11.1.5</b> Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="gifs.html"><a href="gifs.html#sampling-distributions"><i class="fa fa-check"></i><b>11.2</b> Sampling distributions</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="gifs.html"><a href="gifs.html#sampling-from-a-uniform-distribution"><i class="fa fa-check"></i><b>11.2.1</b> Sampling from a uniform distribution</a></li>
@@ -452,7 +453,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book <a href="https://github.com/CrumpLab/statistics/tree/master/gifs" class="uri">https://github.com/CrumpLab/statistics/tree/master/gifs</a>. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alonside each gif. The animiations are made possible by the <strong>gganimate</strong> package.</p>
 <p><strong>This is a work in progress, subject to change and addition</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(gganimate)</code></pre></div>
+<span class="kw">library</span>(gganimate)
+<span class="kw">library</span>(dplyr)</code></pre></div>
 <div id="correlation-gifs" class="section level2">
 <h2><span class="header-section-number">11.1</span> Correlation GIFs</h2>
 <p>Note regression lines and confidence bands can be added using <code>geom_smooth(method=lm, se=T)</code></p>
@@ -582,6 +584,56 @@ for(n in <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">5
   )+<span class="kw">enter_fade</span>() +<span class="st"> </span>
 <span class="st">  </span><span class="kw">exit_shrink</span>() +
 <span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)</code></pre></div>
+</div>
+<div id="regression" class="section level3">
+<h3><span class="header-section-number">11.1.5</span> Regression</h3>
+<p>We look at how the residuals (error from points to line) behave as the regression lines moves above and below it’s true value. The total error associated with all of the red lines is represents by the grey area. This total error is smallest (minimized) when the black line overlaps with the blue regression line (the best fit line). The total error expands as the black line moves away from the regression. That’s why the regression line is the least wrong (best fit) line to skewer the data (according to least squares definition)</p>
+<p><img src="gifs/regression-1.gif" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span>mtcars
+fit &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg ~<span class="st"> </span>hp, <span class="dt">data =</span> d)
+d$predicted &lt;-<span class="st"> </span><span class="kw">predict</span>(fit)   <span class="co"># Save the predicted values</span>
+d$residuals &lt;-<span class="st"> </span><span class="kw">residuals</span>(fit) <span class="co"># Save the residual values</span>
+
+coefs&lt;-<span class="kw">coef</span>(<span class="kw">lm</span>(mpg ~<span class="st"> </span>hp, <span class="dt">data =</span> mtcars))
+coefs[<span class="dv">1</span>]
+coefs[<span class="dv">2</span>]
+
+x&lt;-d$hp
+move_line&lt;-<span class="kw">c</span>(<span class="kw">seq</span>(-<span class="dv">6</span>,<span class="dv">6</span>,.<span class="dv">5</span>),<span class="kw">seq</span>(<span class="dv">6</span>,-<span class="dv">6</span>,-.<span class="dv">5</span>))
+total_error&lt;-<span class="kw">length</span>(<span class="kw">length</span>(move_line))
+cnt&lt;-<span class="dv">0</span>
+for(i in move_line){
+  cnt&lt;-cnt<span class="dv">+1</span>
+  predicted_y &lt;-<span class="st"> </span>coefs[<span class="dv">2</span>]*x +<span class="st"> </span>coefs[<span class="dv">1</span>]+i
+  error_y &lt;-<span class="st"> </span>(predicted_y-d$mpg)^<span class="dv">2</span>
+  total_error[cnt]&lt;-<span class="kw">sqrt</span>(<span class="kw">sum</span>(error_y)/<span class="dv">32</span>)
+}
+
+move_line_sims&lt;-<span class="kw">rep</span>(move_line,<span class="dt">each=</span><span class="dv">32</span>)
+total_error_sims&lt;-<span class="kw">rep</span>(total_error,<span class="dt">each=</span><span class="dv">32</span>)
+sims&lt;-<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">50</span>,<span class="dt">each=</span><span class="dv">32</span>)
+
+d&lt;-d %&gt;%<span class="st"> </span><span class="kw">slice</span>(<span class="kw">rep</span>(<span class="kw">row_number</span>(), <span class="dv">50</span>))
+
+d&lt;-<span class="kw">cbind</span>(d,sims,move_line_sims,total_error_sims)
+
+
+anim&lt;-<span class="kw">ggplot</span>(d, <span class="kw">aes</span>(<span class="dt">x =</span> hp, <span class="dt">y =</span> mpg, <span class="dt">frame=</span>sims)) +
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;lightblue&quot;</span>) +<span class="st">  </span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> <span class="fl">30.09886</span>+move_line_sims, <span class="dt">slope =</span> -<span class="fl">0.06822828</span>)+
+<span class="st">  </span><span class="kw">lims</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">400</span>), <span class="dt">y =</span> <span class="kw">c</span>(-<span class="dv">10</span>,<span class="dv">40</span>))+
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">xend =</span> hp, <span class="dt">yend =</span> predicted+move_line_sims, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>), <span class="dt">alpha =</span> .<span class="dv">5</span>) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() +
+<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> predicted+move_line_sims -<span class="st"> </span>total_error_sims, <span class="dt">ymax =</span> predicted+move_line_sims +<span class="st"> </span>total_error_sims), <span class="dt">fill =</span> <span class="st">&quot;lightgrey&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">2</span>)+<span class="st"> </span>
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)+
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;X&quot;</span>)+<span class="kw">ylab</span>(<span class="st">&quot;Y&quot;</span>)+
+<span class="st">  </span><span class="kw">transition_manual</span>(<span class="dt">frames=</span>sims)+
+<span class="st">  </span><span class="kw">enter_fade</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">exit_fade</span>()+
+<span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)
+
+<span class="kw">animate</span>(anim,<span class="dt">fps=</span><span class="dv">5</span>)</code></pre></div>
 </div>
 </div>
 <div id="sampling-distributions" class="section level2">

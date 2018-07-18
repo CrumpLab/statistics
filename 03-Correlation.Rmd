@@ -467,11 +467,11 @@ We'll show you the formulas. And, work through one example by hand. It's the wor
 
 Here are two formulas we can use to calculate the slope and the intercept, straight from the data. We won't go into why these formulas do what they do. These ones are for "easy" calculation.
 
-$slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}$
+$slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}$
 
-$intercept = b = \frac{\sum{y}-m\sum{x}}{n}$
+$intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}$
 
-Notice we have defined b in terms of m, so we first solve for m, then we can put it into the formula for b. In these formulas, the $x$ and the $y$ refer to the individual scores. Here's a table showing you how everything fits together. 
+In these formulas, the $x$ and the $y$ refer to the individual scores. Here's a table showing you how everything fits together.
 
 ```{r}
 scores<-c(1,2,3,4,5,6,7)
@@ -486,8 +486,8 @@ all_df<-data.frame(scores,x,y,x_squared,y_squared,xy)
 all_df <- all_df %>%
   rbind(c("Sums",colSums(all_df[1:7,2:6]))) 
 
-slope<-((7*sum(xy))-(sum(x)*sum(y)))/((7*sum(x_squared))-(sum(x)^2))
-intercept<-(sum(y)-(slope*sum(x)))/7
+slope=((sum(y)*sum(x_squared))-(sum(x)*sum(xy)))/((7*sum(x_squared))-sum(x)^2)
+intercept=(7*sum(xy)-sum(x)*sum(y))/(7*sum(x_squared)-sum(x)^2)
 
 knitr::kable(all_df)
 
@@ -495,12 +495,11 @@ knitr::kable(all_df)
 
 We see 7 sets of scores for the x and y variable. We calculated $x^2$ by squaring each value of x, and putting it in a column. We calculated $y^2$ by squareing each value of y, and putting it in a column. Then we calculated $xy$, by multiplying each $x$ score with each $y$ score, and put that in a column. Then we added all the columns up, and put the sums at the bottom. These are all the number we need for the formulas to find the best fit line. Here's what the formulas look like when we put numbers in them:
 
-$slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{7*231-34*39}{7*200-34^2} = 1.19$
+$slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 275 - 34*231}{7*200-34^2} = -1.23 $
 
-$intercept = b = \frac{\sum{y}-m\sum{x}}{n} = \frac{39 - 1.19*34}{7} = -.22 $
+$intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{6*231-34*39}{6*275-34^2} = 1.36$
 
-
-Great, now we can check our work, let's plot the scores in a scatterplot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots. Yup, they do!
+Great, now we can check our work, let's plot the scores in a scatterplot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots.
 
 ```{r}
 plot_df<-data.frame(x,y)
@@ -510,7 +509,11 @@ ggplot(plot_df,aes(x=x,y=y))+
   geom_smooth(method="lm")+
   theme_classic()
 
+coef(lm(x~y,plot_df))
+
 ```
+
+
 
 
 ## Interpreting Correlations
