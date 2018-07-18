@@ -341,6 +341,91 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
   exit_shrink() +
   ease_aes('sine-in-out')
 
+## correltions with confidence----
 
+all_df<-data.frame()
+for(n in c(10,50,100,1000)){
+  count_sims<-0
+  for(sim in 1:1000){
+    North_pole <- rnorm(n,0,1)
+    South_pole <- rnorm(n,0,1)
+    if(cor.test(North_pole,South_pole)$p.value<.05){
+      count_sims<-count_sims+1
+    t_df<-data.frame(nsize=rep(n,n),
+                     simulation=rep(count_sims,n),
+                     North_pole,
+                     South_pole)
+    all_df<-rbind(all_df,t_df)
+    
+    if(count_sims==10){
+      break
+    }
+    }
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=TRUE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+#### regression ----
+
+d <- mtcars
+fit <- lm(mpg ~ hp, data = d)
+d$predicted <- predict(fit)   # Save the predicted values
+d$residuals <- residuals(fit) # Save the residual values
+
+ggplot(d, aes(x = hp, y = mpg)) +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  # Plot regression slope
+  geom_segment(aes(xend = hp, yend = predicted, color="red"), alpha = .5) +  # alpha to fade lines
+  geom_point() +
+  geom_point(aes(y = predicted), shape = 1) +
+  theme_classic()+
+  theme(legend.position="none")+
+  xlab("X")+ylab("Y")
+
+coefs<-coef(lm(mpg ~ hp, data = mtcars))
+coefs[1]
+coefs[2]
+
+ggplot(d, aes(x = hp, y = mpg)) +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  
+  geom_abline(intercept = coefs[1]+3, slope = coefs[2])+
+  lims(x = c(0,400), y = c(0,35))+
+  geom_segment(aes(xend = hp, yend = predicted+3, color="red"), alpha = .5) + 
+  geom_point() +
+  geom_point(aes(y = predicted), shape = 1) +
+  theme_classic()+
+  theme(legend.position="none")+
+  xlab("X")+ylab("Y")
+
+y=mx+b
+
+x<-d$hp
+#best fie
+move_line<-seq(-5,5,.5)
+total_error<-c(length(move_line))
+cnt<-0
+for(i in move_line){
+  cnt<-cnt+1
+  predicted_y <- coefs[2]*x + coefs[1]+i
+  error_y <- (predicted_y-d$mpg)^2
+  total_error[cnt]<-sum(error_y)
+}
+plot(move_line,total_error)
+
+y
+x
 
 

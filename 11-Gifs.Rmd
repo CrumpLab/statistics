@@ -1,0 +1,83 @@
+# GIFs
+
+This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alonside each gif. The animiations are made possible by the **gganimate** package. 
+
+```{r,message=F, warning=F}
+library(ggplot2)
+library(gganimate)
+```
+
+## Correlation GIFs
+
+### N=10, both variables drawn from a uniform distribution
+
+```{r, echo=F}
+knitr::include_graphics(path="gifs/corUnifn10-1.gif")
+```
+
+```{r corUnifn10,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+library(gganimate)
+
+all_df<-data.frame()
+for(sim in 1:10){
+  North_pole <- runif(10,1,10)
+  South_pole <- runif(10,1,10)
+  t_df<-data.frame(simulation=rep(sim,10),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
+
+
+### Correlation between random deviates from uniform distribution across four sample sizes
+
+N= 10,50,100,1000
+All values sampled from a uniform distribution
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/corUnifFourNs-1.gif")
+```
+
+```{r corUnifFourNs,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+all_df<-data.frame()
+for(sim in 1:10){
+  for(n in c(10,50,100,1000)){
+  North_pole <- runif(n,1,10)
+  South_pole <- runif(n,1,10)
+  t_df<-data.frame(nsize=rep(n,n),
+                   simulation=rep(sim,n),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```

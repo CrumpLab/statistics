@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Answering questions with data</title>
+  <meta name="description" content="An introductory statistics textbook for psychology students">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An introductory statistics textbook for psychology students" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Answering questions with data" />
+  
+  <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
+  
+
+<meta name="author" content="Matthew J. C. Crump">
+<meta name="author" content="Anjali Krishnan">
+<meta name="author" content="Stephen Volz">
+<meta name="author" content="Alla Chavarga">
+<meta name="author" content="Jeffrey Suzuki">
+
+
+<meta name="date" content="2018-07-18">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="inferenceForCategoricalData.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script type="text/javascript">
+mattcrump=1;
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="tufte.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="why-statistics.html"><a href="why-statistics.html"><i class="fa fa-check"></i><b>1</b> Why Statistics?</a><ul>
+<li class="chapter" data-level="1.1" data-path="why-statistics.html"><a href="why-statistics.html#on-the-psychology-of-statistics"><i class="fa fa-check"></i><b>1.1</b> On the psychology of statistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="why-statistics.html"><a href="why-statistics.html#the-curse-of-belief-bias"><i class="fa fa-check"></i><b>1.1.1</b> The curse of belief bias</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="why-statistics.html"><a href="why-statistics.html#the-cautionary-tale-of-simpsons-paradox"><i class="fa fa-check"></i><b>1.2</b> The cautionary tale of Simpson’s paradox</a></li>
+<li class="chapter" data-level="1.3" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-psychology"><i class="fa fa-check"></i><b>1.3</b> Statistics in psychology</a></li>
+<li class="chapter" data-level="1.4" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-everyday-life"><i class="fa fa-check"></i><b>1.4</b> Statistics in everyday life</a></li>
+<li class="chapter" data-level="1.5" data-path="why-statistics.html"><a href="why-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>1.5</b> There’s more to research methods than statistics</a></li>
+<li class="chapter" data-level="1.6" data-path="why-statistics.html"><a href="why-statistics.html#a-brief-introduction-to-research-designchstudydesign"><i class="fa fa-check"></i><b>1.6</b> A brief introduction to research design[ch:studydesign]</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="why-statistics.html"><a href="why-statistics.html#introduction-to-psychological-measurementsecmeasurement"><i class="fa fa-check"></i><b>1.6.1</b> Introduction to psychological measurement [sec:measurement]</a></li>
+<li class="chapter" data-level="1.6.2" data-path="why-statistics.html"><a href="why-statistics.html#scales-of-measurementsecscales"><i class="fa fa-check"></i><b>1.6.2</b> Scales of measurement[sec:scales]</a></li>
+<li class="chapter" data-level="1.6.3" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-reliability-of-a-measurementsecreliability"><i class="fa fa-check"></i><b>1.6.3</b> Assessing the reliability of a measurement [sec:reliability]</a></li>
+<li class="chapter" data-level="1.6.4" data-path="why-statistics.html"><a href="why-statistics.html#the-role-of-variables-predictors-and-outcomes-secivdv"><i class="fa fa-check"></i><b>1.6.4</b> The “role” of variables: predictors and outcomes [sec:ivdv]</a></li>
+<li class="chapter" data-level="1.6.5" data-path="why-statistics.html"><a href="why-statistics.html#experimental-and-non-experimental-researchsecresearchdesigns"><i class="fa fa-check"></i><b>1.6.5</b> Experimental and non-experimental research [sec:researchdesigns]</a></li>
+<li class="chapter" data-level="1.6.6" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-validity-of-a-studysecvalidity"><i class="fa fa-check"></i><b>1.6.6</b> Assessing the validity of a study [sec:validity]</a></li>
+<li class="chapter" data-level="1.6.7" data-path="why-statistics.html"><a href="why-statistics.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>1.6.7</b> Confounds, artifacts and other threats to validity</a></li>
+<li class="chapter" data-level="1.6.8" data-path="why-statistics.html"><a href="why-statistics.html#summary"><i class="fa fa-check"></i><b>1.6.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="why-statistics.html"><a href="why-statistics.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>1.7</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.8" data-path="why-statistics.html"><a href="why-statistics.html#dataBasics"><i class="fa fa-check"></i><b>1.8</b> Data basics</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="why-statistics.html"><a href="why-statistics.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.8.1</b> Observations, variables, and data matrices</a></li>
+<li class="chapter" data-level="1.8.2" data-path="why-statistics.html"><a href="why-statistics.html#variableTypes"><i class="fa fa-check"></i><b>1.8.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.8.3" data-path="why-statistics.html"><a href="why-statistics.html#variableRelations"><i class="fa fa-check"></i><b>1.8.3</b> Relationships between variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="why-statistics.html"><a href="why-statistics.html#overviewOfDataCollectionPrinciples"><i class="fa fa-check"></i><b>1.9</b> Overview of data collection principles</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="why-statistics.html"><a href="why-statistics.html#populationsAndSamples"><i class="fa fa-check"></i><b>1.9.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="1.9.2" data-path="why-statistics.html"><a href="why-statistics.html#anecdotalEvidenceSubsection"><i class="fa fa-check"></i><b>1.9.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="1.9.3" data-path="why-statistics.html"><a href="why-statistics.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.9.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="1.9.4" data-path="why-statistics.html"><a href="why-statistics.html#explanatoryAndResponse"><i class="fa fa-check"></i><b>1.9.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.9.5" data-path="why-statistics.html"><a href="why-statistics.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.9.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="why-statistics.html"><a href="why-statistics.html#observational-studies-and-sampling-strategies"><i class="fa fa-check"></i><b>1.10</b> Observational studies and sampling strategies</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="why-statistics.html"><a href="why-statistics.html#observational-studies"><i class="fa fa-check"></i><b>1.10.1</b> Observational studies</a></li>
+<li class="chapter" data-level="1.10.2" data-path="why-statistics.html"><a href="why-statistics.html#threeSamplingMethods"><i class="fa fa-check"></i><b>1.10.2</b> Three sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="why-statistics.html"><a href="why-statistics.html#experimentsSection"><i class="fa fa-check"></i><b>1.11</b> Experiments</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="why-statistics.html"><a href="why-statistics.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>1.11.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="1.11.2" data-path="why-statistics.html"><a href="why-statistics.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>1.11.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#this-is-what-too-many-numbers-looks-like"><i class="fa fa-check"></i><b>2.1</b> This is what too many numbers looks like</a></li>
+<li class="chapter" data-level="2.2" data-path="DescribingData.html"><a href="DescribingData.html#look-at-the-data"><i class="fa fa-check"></i><b>2.2</b> Look at the data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="DescribingData.html"><a href="DescribingData.html#stop-plotting-time-o-o-oh-u-can-plot-this"><i class="fa fa-check"></i><b>2.2.1</b> Stop, plotting time (o o oh) U can plot this</a></li>
+<li class="chapter" data-level="2.2.2" data-path="DescribingData.html"><a href="DescribingData.html#histograms"><i class="fa fa-check"></i><b>2.2.2</b> Histograms</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="DescribingData.html"><a href="DescribingData.html#important-ideas-distribution-central-tendency-and-variance"><i class="fa fa-check"></i><b>2.3</b> Important Ideas: Distribution, Central Tendency, and Variance</a></li>
+<li class="chapter" data-level="2.4" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-central-tendency-sameness"><i class="fa fa-check"></i><b>2.4</b> Measures of Central Tendency (Sameness)</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="DescribingData.html"><a href="DescribingData.html#from-many-numbers-to-one"><i class="fa fa-check"></i><b>2.4.1</b> From many numbers to one</a></li>
+<li class="chapter" data-level="2.4.2" data-path="DescribingData.html"><a href="DescribingData.html#mode"><i class="fa fa-check"></i><b>2.4.2</b> Mode</a></li>
+<li class="chapter" data-level="2.4.3" data-path="DescribingData.html"><a href="DescribingData.html#median"><i class="fa fa-check"></i><b>2.4.3</b> Median</a></li>
+<li class="chapter" data-level="2.4.4" data-path="DescribingData.html"><a href="DescribingData.html#mean"><i class="fa fa-check"></i><b>2.4.4</b> Mean</a></li>
+<li class="chapter" data-level="2.4.5" data-path="DescribingData.html"><a href="DescribingData.html#what-does-the-mean-mean"><i class="fa fa-check"></i><b>2.4.5</b> What does the mean mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-variation-differentness"><i class="fa fa-check"></i><b>2.5</b> Measures of Variation (Differentness)</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="DescribingData.html"><a href="DescribingData.html#the-range"><i class="fa fa-check"></i><b>2.5.1</b> The Range</a></li>
+<li class="chapter" data-level="2.5.2" data-path="DescribingData.html"><a href="DescribingData.html#the-difference-scores"><i class="fa fa-check"></i><b>2.5.2</b> The Difference Scores</a></li>
+<li class="chapter" data-level="2.5.3" data-path="DescribingData.html"><a href="DescribingData.html#the-variance"><i class="fa fa-check"></i><b>2.5.3</b> The Variance</a></li>
+<li class="chapter" data-level="2.5.4" data-path="DescribingData.html"><a href="DescribingData.html#the-standard-deviation"><i class="fa fa-check"></i><b>2.5.4</b> The Standard Deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="DescribingData.html"><a href="DescribingData.html#using-descriptive-statistics-with-data"><i class="fa fa-check"></i><b>2.6</b> Using Descriptive Statistics with data</a></li>
+<li class="chapter" data-level="2.7" data-path="DescribingData.html"><a href="DescribingData.html#rolling-your-own-descriptive-statistics"><i class="fa fa-check"></i><b>2.7</b> Rolling your own descriptive statistics</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="DescribingData.html"><a href="DescribingData.html#absolute-deviations"><i class="fa fa-check"></i><b>2.7.1</b> Absolute deviations</a></li>
+<li class="chapter" data-level="2.7.2" data-path="DescribingData.html"><a href="DescribingData.html#other-sign-inverting-operations"><i class="fa fa-check"></i><b>2.7.2</b> Other sign-inverting operations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="DescribingData.html"><a href="DescribingData.html#numericalData"><i class="fa fa-check"></i><b>2.8</b> Examining numerical data</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="DescribingData.html"><a href="DescribingData.html#scatterPlots"><i class="fa fa-check"></i><b>2.8.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="2.8.2" data-path="DescribingData.html"><a href="DescribingData.html#dotPlot"><i class="fa fa-check"></i><b>2.8.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="2.8.3" data-path="DescribingData.html"><a href="DescribingData.html#histogramsAndShape"><i class="fa fa-check"></i><b>2.8.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="2.8.4" data-path="DescribingData.html"><a href="DescribingData.html#variability"><i class="fa fa-check"></i><b>2.8.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="2.8.5" data-path="DescribingData.html"><a href="DescribingData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.8.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="2.8.6" data-path="DescribingData.html"><a href="DescribingData.html#robust-statistics"><i class="fa fa-check"></i><b>2.8.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="2.8.7" data-path="DescribingData.html"><a href="DescribingData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>2.8.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="2.8.8" data-path="DescribingData.html"><a href="DescribingData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.8.8</b> Mapping data (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="DescribingData.html"><a href="DescribingData.html#categoricalData"><i class="fa fa-check"></i><b>2.9</b> Considering categorical data</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="DescribingData.html"><a href="DescribingData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.9.1</b> Contingency tables and bar plots</a></li>
+<li class="chapter" data-level="2.9.2" data-path="DescribingData.html"><a href="DescribingData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>2.9.2</b> Row and column proportions</a></li>
+<li class="chapter" data-level="2.9.3" data-path="DescribingData.html"><a href="DescribingData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>2.9.3</b> Segmented bar and mosaic plots</a></li>
+<li class="chapter" data-level="2.9.4" data-path="DescribingData.html"><a href="DescribingData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>2.9.4</b> The only pie chart you will see in this book</a></li>
+<li class="chapter" data-level="2.9.5" data-path="DescribingData.html"><a href="DescribingData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>2.9.5</b> Comparing numerical data across groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Correlation.html"><a href="Correlation.html"><i class="fa fa-check"></i><b>3</b> Correlation</a><ul>
+<li class="chapter" data-level="3.1" data-path="Correlation.html"><a href="Correlation.html#if-something-caused-something-else-to-change-what-would-that-look-like"><i class="fa fa-check"></i><b>3.1</b> If something caused something else to change, what would that look like?</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="Correlation.html"><a href="Correlation.html#charlie-and-the-chocolate-factory"><i class="fa fa-check"></i><b>3.1.1</b> Charlie and the Chocolate factory</a></li>
+<li class="chapter" data-level="3.1.2" data-path="Correlation.html"><a href="Correlation.html#scatterplots"><i class="fa fa-check"></i><b>3.1.2</b> Scatterplots</a></li>
+<li class="chapter" data-level="3.1.3" data-path="Correlation.html"><a href="Correlation.html#positive-negative-and-no-correlation"><i class="fa fa-check"></i><b>3.1.3</b> Positive, Negative, and No-Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r"><i class="fa fa-check"></i><b>3.2</b> Pearson’s r</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="Correlation.html"><a href="Correlation.html#the-idea-of-co-variance"><i class="fa fa-check"></i><b>3.2.1</b> The idea of co-variance</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="Correlation.html"><a href="Correlation.html#turning-the-numbers-into-a-measure-of-co-variance"><i class="fa fa-check"></i><b>3.3</b> Turning the numbers into a measure of co-variance</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="Correlation.html"><a href="Correlation.html#co-variance-the-measure"><i class="fa fa-check"></i><b>3.3.1</b> Co-variance, the measure</a></li>
+<li class="chapter" data-level="3.3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r-we-there-yet"><i class="fa fa-check"></i><b>3.3.2</b> Pearson’s r we there yet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="Correlation.html"><a href="Correlation.html#examples-with-data"><i class="fa fa-check"></i><b>3.4</b> Examples with Data</a></li>
+<li class="chapter" data-level="3.5" data-path="Correlation.html"><a href="Correlation.html#regression-a-mini-intro"><i class="fa fa-check"></i><b>3.5</b> Regression: A mini intro</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="Correlation.html"><a href="Correlation.html#the-best-fit-line"><i class="fa fa-check"></i><b>3.5.1</b> The best fit line</a></li>
+<li class="chapter" data-level="3.5.2" data-path="Correlation.html"><a href="Correlation.html#lines"><i class="fa fa-check"></i><b>3.5.2</b> Lines</a></li>
+<li class="chapter" data-level="3.5.3" data-path="Correlation.html"><a href="Correlation.html#computing-the-best-fit-line"><i class="fa fa-check"></i><b>3.5.3</b> Computing the best fit line</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="Correlation.html"><a href="Correlation.html#interpreting-correlations"><i class="fa fa-check"></i><b>3.6</b> Interpreting Correlations</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="Correlation.html"><a href="Correlation.html#correlation-does-not-equal-causation"><i class="fa fa-check"></i><b>3.6.1</b> Correlation does not equal causation</a></li>
+<li class="chapter" data-level="3.6.2" data-path="Correlation.html"><a href="Correlation.html#correlation-and-random-chance"><i class="fa fa-check"></i><b>3.6.2</b> Correlation and Random chance</a></li>
+<li class="chapter" data-level="3.6.3" data-path="Correlation.html"><a href="Correlation.html#some-more-movies"><i class="fa fa-check"></i><b>3.6.3</b> Some more movies</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>4</b> Foundations for inference</a><ul>
+<li class="chapter" data-level="4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#brief-review-of-experiments"><i class="fa fa-check"></i><b>4.1</b> Brief review of Experiments</a></li>
+<li class="chapter" data-level="4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#the-data-came-from-a-distribution"><i class="fa fa-check"></i><b>4.2</b> The data came from a distribution</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#uniform-distribution"><i class="fa fa-check"></i><b>4.2.1</b> Uniform distribution</a></li>
+<li class="chapter" data-level="4.2.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#not-all-samples-are-the-same-they-are-usually-quite-different"><i class="fa fa-check"></i><b>4.2.2</b> Not all samples are the same, they are usually quite different</a></li>
+<li class="chapter" data-level="4.2.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#large-samples-are-more-like-the-distribution-they-came-from"><i class="fa fa-check"></i><b>4.2.3</b> Large samples are more like the distribution they came from</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#playing-with-distributions"><i class="fa fa-check"></i><b>4.3</b> Playing with distributions</a></li>
+<li class="chapter" data-level="4.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#is-there-a-difference"><i class="fa fa-check"></i><b>4.4</b> Is there a difference?</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#chance-can-produce-differences"><i class="fa fa-check"></i><b>4.4.1</b> Chance can produce differences</a></li>
+<li class="chapter" data-level="4.4.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#differences-due-to-chance-can-be-simulated"><i class="fa fa-check"></i><b>4.4.2</b> Differences due to chance can be simulated</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#chance-makes-some-differences-more-likely-than-others"><i class="fa fa-check"></i><b>4.5</b> Chance makes some differences more likely than others</a></li>
+<li class="chapter" data-level="4.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#the-randomization-test-permutation-test"><i class="fa fa-check"></i><b>4.6</b> The randomization test (permutation test)</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#pretend-example-does-chewing-gum-improve-your-grades"><i class="fa fa-check"></i><b>4.6.1</b> Pretend example does chewing gum improve your grades?</a></li>
+<li class="chapter" data-level="4.6.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#take-homes-so-far"><i class="fa fa-check"></i><b>4.6.2</b> Take homes so far</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>4.7</b> Randomization case study: gender discrimination</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#variabilityWithinData"><i class="fa fa-check"></i><b>4.7.1</b> Variability within data</a></li>
+<li class="chapter" data-level="4.7.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#simulatingTheStudy"><i class="fa fa-check"></i><b>4.7.2</b> Simulating the study</a></li>
+<li class="chapter" data-level="4.7.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#checking-for-independence"><i class="fa fa-check"></i><b>4.7.3</b> Checking for independence</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="FoundationForInference.html"><a href="FoundationForInference.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>4.8</b> Randomization case study: opportunity cost</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#exploring-the-data-set-before-the-analysis"><i class="fa fa-check"></i><b>4.8.1</b> Exploring the data set before the analysis</a></li>
+<li class="chapter" data-level="4.8.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#results-from-chance-alone"><i class="fa fa-check"></i><b>4.8.2</b> Results from chance alone</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="FoundationForInference.html"><a href="FoundationForInference.html#HypothesisTesting"><i class="fa fa-check"></i><b>4.9</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#hypothesis-testing-in-the-us-court-system"><i class="fa fa-check"></i><b>4.9.1</b> Hypothesis testing in the US court system</a></li>
+<li class="chapter" data-level="4.9.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#p-value-and-statistical-significance"><i class="fa fa-check"></i><b>4.9.2</b> p-value and statistical significance</a></li>
+<li class="chapter" data-level="4.9.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#decision-errors"><i class="fa fa-check"></i><b>4.9.3</b> Decision errors</a></li>
+<li class="chapter" data-level="4.9.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#significanceLevel"><i class="fa fa-check"></i><b>4.9.4</b> Choosing a significance level</a></li>
+<li class="chapter" data-level="4.9.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#IntroducingTwoSidedHypotheses"><i class="fa fa-check"></i><b>4.9.5</b> Introducing two-sided hypotheses</a></li>
+<li class="chapter" data-level="4.9.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#InflatingType1ErrorRate"><i class="fa fa-check"></i><b>4.9.6</b> Controlling the Type 1 Error rate</a></li>
+<li class="chapter" data-level="4.9.7" data-path="FoundationForInference.html"><a href="FoundationForInference.html#how-to-use-a-hypothesis-test"><i class="fa fa-check"></i><b>4.9.7</b> How to use a hypothesis test</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="FoundationForInference.html"><a href="FoundationForInference.html#SimulationCaseStudies"><i class="fa fa-check"></i><b>4.10</b> Simulation case studies</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#medical-consultant"><i class="fa fa-check"></i><b>4.10.1</b> Medical consultant</a></li>
+<li class="chapter" data-level="4.10.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#tappers-and-listeners"><i class="fa fa-check"></i><b>4.10.2</b> Tappers and listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="FoundationForInference.html"><a href="FoundationForInference.html#CLTsection"><i class="fa fa-check"></i><b>4.11</b> Central Limit Theorem</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#null-distribution-from-the-case-studies"><i class="fa fa-check"></i><b>4.11.1</b> Null distribution from the case studies</a></li>
+<li class="chapter" data-level="4.11.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#examples-of-future-settings-we-will-consider"><i class="fa fa-check"></i><b>4.11.2</b> Examples of future settings we will consider</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normalDist"><i class="fa fa-check"></i><b>4.12</b> Normal distribution</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#NormalDistributionModelSubsection"><i class="fa fa-check"></i><b>4.12.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="4.12.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>4.12.2</b> Standardizing with Z scores</a></li>
+<li class="chapter" data-level="4.12.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-table"><i class="fa fa-check"></i><b>4.12.3</b> Normal probability table</a></li>
+<li class="chapter" data-level="4.12.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-probability-examples"><i class="fa fa-check"></i><b>4.12.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="4.12.5" data-path="FoundationForInference.html"><a href="FoundationForInference.html#rule"><i class="fa fa-check"></i><b>4.12.5</b> 68-95-99.7 rule</a></li>
+<li class="chapter" data-level="4.12.6" data-path="FoundationForInference.html"><a href="FoundationForInference.html#assessingNormal"><i class="fa fa-check"></i><b>4.12.6</b> Evaluating the normal approximation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>4.13</b> Applying the normal model</a><ul>
+<li class="chapter" data-level="4.13.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#standard-error"><i class="fa fa-check"></i><b>4.13.1</b> Standard error</a></li>
+<li class="chapter" data-level="4.13.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-opportunity-cost"><i class="fa fa-check"></i><b>4.13.2</b> Normal model application: opportunity cost</a></li>
+<li class="chapter" data-level="4.13.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#normal-model-application-medical-consultant"><i class="fa fa-check"></i><b>4.13.3</b> Normal model application: medical consultant</a></li>
+<li class="chapter" data-level="4.13.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#conditions-for-applying-the-normal-model"><i class="fa fa-check"></i><b>4.13.4</b> Conditions for applying the normal model</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="FoundationForInference.html"><a href="FoundationForInference.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>4.14</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="4.14.1" data-path="FoundationForInference.html"><a href="FoundationForInference.html#capturing-the-population-parameter"><i class="fa fa-check"></i><b>4.14.1</b> Capturing the population parameter</a></li>
+<li class="chapter" data-level="4.14.2" data-path="FoundationForInference.html"><a href="FoundationForInference.html#constructing-a-95-confidence-interval"><i class="fa fa-check"></i><b>4.14.2</b> Constructing a 95% confidence interval</a></li>
+<li class="chapter" data-level="4.14.3" data-path="FoundationForInference.html"><a href="FoundationForInference.html#changingTheConfidenceLevelSection"><i class="fa fa-check"></i><b>4.14.3</b> Changing the confidence level</a></li>
+<li class="chapter" data-level="4.14.4" data-path="FoundationForInference.html"><a href="FoundationForInference.html#interpretingCIs"><i class="fa fa-check"></i><b>4.14.4</b> Interpreting confidence intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html"><i class="fa fa-check"></i><b>5</b> Sampling and estimation</a><ul>
+<li class="chapter" data-level="5.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#samples-populations-and-sampling"><i class="fa fa-check"></i><b>5.1</b> Samples, populations and sampling</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#defining-a-population"><i class="fa fa-check"></i><b>5.1.1</b> Defining a population</a></li>
+<li class="chapter" data-level="5.1.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#simple-random-samples"><i class="fa fa-check"></i><b>5.1.2</b> Simple random samples</a></li>
+<li class="chapter" data-level="5.1.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#most-samples-are-not-simple-random-samples"><i class="fa fa-check"></i><b>5.1.3</b> Most samples are not simple random samples</a></li>
+<li class="chapter" data-level="5.1.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#how-much-does-it-matter-if-you-dont-have-a-simple-random-sample"><i class="fa fa-check"></i><b>5.1.4</b> How much does it matter if you don’t have a simple random sample?</a></li>
+<li class="chapter" data-level="5.1.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#population-parameters-and-sample-statistics"><i class="fa fa-check"></i><b>5.1.5</b> Population parameters and sample statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#the-law-of-large-numbers"><i class="fa fa-check"></i><b>5.2</b> The law of large numbers</a></li>
+<li class="chapter" data-level="5.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>5.3</b> Sampling distributions and the central limit theorem</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#sampling-distribution-of-the-sample-means"><i class="fa fa-check"></i><b>5.3.1</b> Sampling distribution of the sample means</a></li>
+<li class="chapter" data-level="5.3.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#sampling-distributions-exist-for-any-sample-statistic"><i class="fa fa-check"></i><b>5.3.2</b> Sampling distributions exist for any sample statistic!</a></li>
+<li class="chapter" data-level="5.3.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>5.3.3</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-population-parameters"><i class="fa fa-check"></i><b>5.4</b> Estimating population parameters</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#concrete-popopulation-parameters"><i class="fa fa-check"></i><b>5.4.1</b> Concrete popopulation parameters</a></li>
+<li class="chapter" data-level="5.4.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#abstract-population-parameters"><i class="fa fa-check"></i><b>5.4.2</b> Abstract population parameters</a></li>
+<li class="chapter" data-level="5.4.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#experiments-and-population-parameters"><i class="fa fa-check"></i><b>5.4.3</b> Experiments and Population parameters</a></li>
+<li class="chapter" data-level="5.4.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#interim-summary"><i class="fa fa-check"></i><b>5.4.4</b> Interim summary</a></li>
+<li class="chapter" data-level="5.4.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-the-population-mean"><i class="fa fa-check"></i><b>5.4.5</b> Estimating the population mean</a></li>
+<li class="chapter" data-level="5.4.6" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-the-population-standard-deviation"><i class="fa fa-check"></i><b>5.4.6</b> Estimating the population standard deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-a-confidence-intervalsecci"><i class="fa fa-check"></i><b>5.5</b> Estimating a confidence interval[sec:ci]</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#a-slight-mistake-in-the-formula"><i class="fa fa-check"></i><b>5.5.1</b> A slight mistake in the formula</a></li>
+<li class="chapter" data-level="5.5.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#looking-at-confidence-intervals"><i class="fa fa-check"></i><b>5.5.2</b> Looking at confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#summary-1"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html"><i class="fa fa-check"></i><b>6</b> Inference for numerical data: t-Tests</a><ul>
+<li class="chapter" data-level="6.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>6.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>6.1.1</b> Two examples using the normal distribution</a></li>
+<li class="chapter" data-level="6.1.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>6.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="6.1.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>6.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
+<li class="chapter" data-level="6.1.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>6.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
+<li class="chapter" data-level="6.1.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTTests"><i class="fa fa-check"></i><b>6.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pairedData"><i class="fa fa-check"></i><b>6.2</b> Paired data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-observations"><i class="fa fa-check"></i><b>6.2.1</b> Paired observations</a></li>
+<li class="chapter" data-level="6.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#inference-for-paired-data"><i class="fa fa-check"></i><b>6.2.2</b> Inference for paired data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>6.3.1</b> Confidence interval for a differences of means</a></li>
+<li class="chapter" data-level="6.3.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>6.3.2</b> Hypothesis tests based on a difference in means</a></li>
+<li class="chapter" data-level="6.3.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>6.3.3</b> Case study: two versions of a course exam</a></li>
+<li class="chapter" data-level="6.3.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>6.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="6.3.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>6.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>7</b> Inference for numerical data: ANOVA</a><ul>
+<li class="chapter" data-level="7.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>7.1</b> Comparing many means with ANOVA</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>7.1.1</b> Is batting performance related to player position in MLB?</a></li>
+<li class="chapter" data-level="7.1.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>7.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
+<li class="chapter" data-level="7.1.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>7.1.3</b> Reading an ANOVA table from software</a></li>
+<li class="chapter" data-level="7.1.4" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>7.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
+<li class="chapter" data-level="7.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>7.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>7.2</b> Bootstrapping to study the standard deviation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>7.2.1</b> Bootstrap samples and distributions</a></li>
+<li class="chapter" data-level="7.2.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>7.2.2</b> Inference using the bootstrap</a></li>
+<li class="chapter" data-level="7.2.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#frequently-asked-questions"><i class="fa fa-check"></i><b>7.2.3</b> Frequently asked questions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>8</b> Introduction to linear regression</a><ul>
+<li class="chapter" data-level="8.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>8.1</b> Line fitting, residuals, and correlation</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>8.1.1</b> Beginning with straight lines</a></li>
+<li class="chapter" data-level="8.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>8.1.2</b> Fitting a line by eye</a></li>
+<li class="chapter" data-level="8.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>8.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="8.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>8.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>8.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>8.2.1</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="8.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>8.2.2</b> Finding the least squares line</a></li>
+<li class="chapter" data-level="8.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>8.2.3</b> Interpreting regression line parameter estimates</a></li>
+<li class="chapter" data-level="8.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>8.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="8.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>8.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
+<li class="chapter" data-level="8.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>8.2.6</b> Categorical predictors with two levels</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>8.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="8.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>8.4</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>8.4.1</b> Conditions for the least squares line</a></li>
+<li class="chapter" data-level="8.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>8.4.2</b> Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="8.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>8.4.3</b> Understanding regression output from software</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>9</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="9.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>9.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>9.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>9.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="9.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>9.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>9.2</b> Model selection</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>9.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="9.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>9.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>9.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="9.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>9.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>9.4.1</b> Email data</a></li>
+<li class="chapter" data-level="9.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>9.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="9.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>9.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="9.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>9.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="9.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>9.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>10</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="10.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>10.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>10.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="10.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>10.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="10.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>10.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="10.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>10.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>10.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>10.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="10.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>10.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="10.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>10.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>10.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>10.3.1</b> Creating a test statistic for one-way tables</a></li>
+<li class="chapter" data-level="10.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>10.3.2</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="10.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>10.3.3</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="10.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>10.3.4</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="10.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>10.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>10.4</b> Testing for independence in two-way tables (special topic)</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>10.4.1</b> Expected counts in two-way tables</a></li>
+<li class="chapter" data-level="10.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>10.4.2</b> The chi-square test for two-way tables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gifs.html"><a href="gifs.html"><i class="fa fa-check"></i><b>11</b> GIFs</a><ul>
+<li class="chapter" data-level="11.1" data-path="gifs.html"><a href="gifs.html#correlation-gifs"><i class="fa fa-check"></i><b>11.1</b> Correlation GIFs</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="gifs.html"><a href="gifs.html#n10-both-variables-drawn-from-a-uniform-distribution"><i class="fa fa-check"></i><b>11.1.1</b> N=10, both variables drawn from a uniform distribution</a></li>
+<li class="chapter" data-level="11.1.2" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>11.1.2</b> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Answering questions with data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gifs" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> GIFs</h1>
+<p>This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alonside each gif. The animiations are made possible by the <strong>gganimate</strong> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(gganimate)</code></pre></div>
+<div id="correlation-gifs" class="section level2">
+<h2><span class="header-section-number">11.1</span> Correlation GIFs</h2>
+<div id="n10-both-variables-drawn-from-a-uniform-distribution" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> N=10, both variables drawn from a uniform distribution</h3>
+<p><img src="gifs/corUnifn10-1.gif" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gganimate)
+
+all_df&lt;-<span class="kw">data.frame</span>()
+for(sim in <span class="dv">1</span>:<span class="dv">10</span>){
+  North_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)
+  South_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)
+  t_df&lt;-<span class="kw">data.frame</span>(<span class="dt">simulation=</span><span class="kw">rep</span>(sim,<span class="dv">10</span>),
+                                  North_pole,
+                                  South_pole)
+  all_df&lt;-<span class="kw">rbind</span>(all_df,t_df)
+}
+
+
+<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>North_pole,<span class="dt">y=</span>South_pole))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">transition_states</span>(
+    simulation,
+    <span class="dt">transition_length =</span> <span class="dv">2</span>,
+    <span class="dt">state_length =</span> <span class="dv">1</span>
+  )+<span class="kw">enter_fade</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">exit_shrink</span>() +
+<span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)</code></pre></div>
+</div>
+<div id="correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Correlation between random deviates from uniform distribution across four sample sizes</h3>
+<p>N= 10,50,100,1000 All values sampled from a uniform distribution</p>
+<p><img src="gifs/corUnifFourNs-1.gif" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_df&lt;-<span class="kw">data.frame</span>()
+for(sim in <span class="dv">1</span>:<span class="dv">10</span>){
+  for(n in <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">1000</span>)){
+  North_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(n,<span class="dv">1</span>,<span class="dv">10</span>)
+  South_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(n,<span class="dv">1</span>,<span class="dv">10</span>)
+  t_df&lt;-<span class="kw">data.frame</span>(<span class="dt">nsize=</span><span class="kw">rep</span>(n,n),
+                   <span class="dt">simulation=</span><span class="kw">rep</span>(sim,n),
+                                  North_pole,
+                                  South_pole)
+  all_df&lt;-<span class="kw">rbind</span>(all_df,t_df)
+  }
+}
+
+
+<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>North_pole,<span class="dt">y=</span>South_pole))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span><span class="ot">FALSE</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">facet_wrap</span>(~nsize)+
+<span class="st">  </span><span class="kw">transition_states</span>(
+    simulation,
+    <span class="dt">transition_length =</span> <span class="dv">2</span>,
+    <span class="dt">state_length =</span> <span class="dv">1</span>
+  )+<span class="kw">enter_fade</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">exit_shrink</span>() +
+<span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)</code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inferenceForCategoricalData.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/CrumpLab/statistics/blob/master/11-Gifs.Rmd",
+"text": "Edit"
+},
+"download": ["statistics.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
