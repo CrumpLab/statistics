@@ -29,7 +29,7 @@
 <meta name="author" content="Jeffrey Suzuki">
 
 
-<meta name="date" content="2018-07-17">
+<meta name="date" content="2018-07-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -172,10 +172,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r-we-there-yet"><i class="fa fa-check"></i><b>3.3.2</b> Pearson’s r we there yet</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="Correlation.html"><a href="Correlation.html#examples-with-data"><i class="fa fa-check"></i><b>3.4</b> Examples with Data</a></li>
-<li class="chapter" data-level="3.5" data-path="Correlation.html"><a href="Correlation.html#interpreting-correlations"><i class="fa fa-check"></i><b>3.5</b> Interpreting Correlations</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="Correlation.html"><a href="Correlation.html#correlation-does-not-equal-causation"><i class="fa fa-check"></i><b>3.5.1</b> Correlation does not equal causation</a></li>
-<li class="chapter" data-level="3.5.2" data-path="Correlation.html"><a href="Correlation.html#correlation-and-random-chance"><i class="fa fa-check"></i><b>3.5.2</b> Correlation and Random chance</a></li>
-<li class="chapter" data-level="3.5.3" data-path="Correlation.html"><a href="Correlation.html#some-more-movies"><i class="fa fa-check"></i><b>3.5.3</b> Some more movies</a></li>
+<li class="chapter" data-level="3.5" data-path="Correlation.html"><a href="Correlation.html#regression-a-mini-intro"><i class="fa fa-check"></i><b>3.5</b> Regression: A mini intro</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="Correlation.html"><a href="Correlation.html#the-best-fit-line"><i class="fa fa-check"></i><b>3.5.1</b> The best fit line</a></li>
+<li class="chapter" data-level="3.5.2" data-path="Correlation.html"><a href="Correlation.html#lines"><i class="fa fa-check"></i><b>3.5.2</b> Lines</a></li>
+<li class="chapter" data-level="3.5.3" data-path="Correlation.html"><a href="Correlation.html#computing-the-best-fit-line"><i class="fa fa-check"></i><b>3.5.3</b> Computing the best fit line</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="Correlation.html"><a href="Correlation.html#interpreting-correlations"><i class="fa fa-check"></i><b>3.6</b> Interpreting Correlations</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="Correlation.html"><a href="Correlation.html#correlation-does-not-equal-causation"><i class="fa fa-check"></i><b>3.6.1</b> Correlation does not equal causation</a></li>
+<li class="chapter" data-level="3.6.2" data-path="Correlation.html"><a href="Correlation.html#correlation-and-random-chance"><i class="fa fa-check"></i><b>3.6.2</b> Correlation and Random chance</a></li>
+<li class="chapter" data-level="3.6.3" data-path="Correlation.html"><a href="Correlation.html#some-more-movies"><i class="fa fa-check"></i><b>3.6.3</b> Some more movies</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="FoundationForInference.html"><a href="FoundationForInference.html"><i class="fa fa-check"></i><b>4</b> Foundations for inference</a><ul>
@@ -323,6 +328,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>10.4.2</b> The chi-square test for two-way tables</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="gifs.html"><a href="gifs.html"><i class="fa fa-check"></i><b>11</b> GIFs</a><ul>
+<li class="chapter" data-level="11.1" data-path="gifs.html"><a href="gifs.html#correlation-gifs"><i class="fa fa-check"></i><b>11.1</b> Correlation GIFs</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="gifs.html"><a href="gifs.html#n10-both-variables-drawn-from-a-uniform-distribution"><i class="fa fa-check"></i><b>11.1.1</b> N=10, both variables drawn from a uniform distribution</a></li>
+<li class="chapter" data-level="11.1.2" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>11.1.2</b> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -441,12 +452,12 @@ Figure 5.4: The population distribution of IQ scores (panel a) and two samples d
 IQ &lt;-<span class="st"> </span><span class="kw">round</span>(IQ) <span class="co"># make round numbers</span></code></pre></div>
 <p>Cool, we just generated 10,000 fake IQ scores. Where did they go? Well, they went into the variable IQ on my computer. You can do the same on your computer too by copying the above code. 10,000 numbers is too many numbers to look at. We can look at the first 100 like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(IQ[<span class="dv">1</span>:<span class="dv">100</span>])</code></pre></div>
-<pre><code>##   [1] 100 104  95 110  83 112  75 118  78 112  91 122 109 130 105 135 115
-##  [18] 113 109  72 109 104  86 104  88  91  84  96  70  94  94 103 120 140
-##  [35] 128 109 107  86 108  75  87 113 109 124 124 107  90 104  85  94  92
-##  [52] 113  84  90 119 104  83  77  90  69  97  90  92 120 102  64 112  88
-##  [69]  94  98 100 102 101 122  99  92 118  89 104 126 113  86  74  94  98
-##  [86]  96 112  82  98 101 101  87  94  79 106  70 120  87 102  97</code></pre>
+<pre><code>##   [1]  97 123 108  96 110  90  63 105 112 110  95  95  74  73  73  94 128
+##  [18]  98 108  85  88 101  74  99  75  88 118  82 133 110 133  89 112  75
+##  [35] 137 122  77  93 104  89  97 110 121  98  98 113 113  93  85  97 117
+##  [52] 115  96  63 104  85 108 103  75 117 107 121  81 103  84  91  79  69
+##  [69] 103 111  87 130  88 113 108 105  94 112  80  78  86  74  83  68 108
+##  [86]  91 115 110  94  98  79 105  93  97 115  73 123  75 103 106</code></pre>
 <p>We can compute the mean IQ using the command <strong>mean(IQ)</strong> and the standard deviation using the command <strong>sd(IQ)</strong>, and draw a histgram using <strong>hist()</strong>. The histogram of this much larger sample is shown in Figure <a href="sampling-and-estimation.html#fig:IQdist">5.4</a>c. Even a moment’s inspections makes clear that the larger sample is a much better approximation to the true population distribution than the smaller one. This is reflected in the sample statistics: the mean IQ for the larger sample turns out to be 99.9, and the standard deviation is 15.1. These values are now very close to the true population.</p>
 <p>I feel a bit silly saying this, but the thing I want you to take away from this is that large samples generally give you better information. I feel silly saying it because it’s so bloody obvious that it shouldn’t need to be said. In fact, it’s such an obvious point that when Jacob Bernoulli – one of the founders of probability theory – formalised this idea back in 1713, he was kind of a jerk about it. Here’s how he described the fact that we all share this intuition:</p>
 <blockquote>
@@ -485,13 +496,13 @@ IQ &lt;-<span class="st"> </span><span class="kw">round</span>(IQ) <span class="
 </tbody>
 </table>
 <p>Let’s do those four things. We already know about the uniform distribution. So, let’s use that for fun. Remember, it looks like this if we are sampling from the set of integers from 1 to 10:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>Ok, now let’s take a bunch of samples from that distribution. We will set our sample-size to 20. It’s easier to see how the sample mean behaves in a movie. Each histogram shows a new sample. The red line shows where the mean of the sample is. The samples are all very different from each other, but the red line doesn’t move around very much, it always stays near the middle. However, the red line does move around a little bit, and this variance is what we call the sampling distribution of the sample mean.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-50-1.gif" /><!-- --></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-57-1.gif" /><!-- --></p>
 <p>Ok, what have we got here? We have 10 different samples. Each sample has 20 observations and these are summarized in each of the 10 histograms. Each histogram has a red line. The red line shows you where the mean of each sample is located. So, we have found the sample means for the 10 different samples from a uniform distribution.</p>
 <p>First question. Are the sample means all the same? The answer is no. They are all kind of similar to each other though, they are all around five plus or minus a few numbers. This is interesting. Although all of our samples look pretty different from one another, the means of our samples look more similar than different.</p>
 <p>Second question. What should we do with the means of our samples? Well, how about we collect them them all, and then plot a histogram of them. This would allow us to see what the distribution of the sample means looks like. The next histogram is just this. Except, rather than taking 10 samples, we will take 10,000 samples. For each of them we will compute the means. So, we will have 10,000 means. This is the histogram of the sample means:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>“Wait what? This doesn’t look right. I thought we were taking samples from a uniform distribution. Uniform distributions are flat. I thought you said that when you take lots and lots of sample, which is what you did, that the more you have, the more they will look the distribution they came from…THIS DOES NOT LOOK LIKE A FLAT DISTRIBTUION, WHAT IS GOING ON, AAAAAGGGHH.”. We feel your pain.</p>
 <p>Remember, we are looking at the distribution of sample means. It is indeed true that the distribution of sample means does not look the same as the distribution we took the samples from. Our distribution of sample means goes up and down. In fact, this will almost always be the case for distributions of sample means. This fact is called the <strong>central limit theorem</strong>, which we talk about later.</p>
 <p>For now, let’s talk about about what’s happening. Remember, we have been sampling numbers between the range 1 to 10. We are supposed to get each number with roughly equal frequency, because we are sampling from a uniform distribution. So, let’s say we took a sample of 10 numbers, and happened to get one of each from 1 to 10.</p>
@@ -503,7 +514,7 @@ IQ &lt;-<span class="st"> </span><span class="kw">round</span>(IQ) <span class="
 <h3><span class="header-section-number">5.3.2</span> Sampling distributions exist for any sample statistic!</h3>
 <p>One thing to keep in mind when thinking about sampling distributions is that <strong>any</strong> sample statistic you might care to calculate has a sampling distribution. For example, suppose that each time you sampled some numbers experiment you wrote down the largest number in the experiment. Doing this over and over again would give you a very different sampling distribution, namely the <strong>sampling distribution of the maximum</strong>. You could calculate the smallest number, or the mode, or the median, of the variance, or the standard deviation, or anything else from your sample. Then, you could repeat many times, and produce the sampling distribution of those statistics. Neat!</p>
 <p>Just for fun here are some different sampling distributions for different statistics. We will take a normal distribution with mean = 100, and standard deviation =20. Then, we’ll take lots of sample with n = 50 (50 observations per sample). We’l save all of the sample statistics, then plot their histograms. Let’s do it:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>We just computed 4 different sampling distributions, for the mean, standard deviation, maximum value, and the median. If you just look quickly at these histograms you might think they all basically look the same. Hold up now. It’s very important to look at the x-axes. They are different. For example, the sample mean goes from about 90 to 110, whereas the standard deviation goes from 15 to 25. Finally, while it is true that these histograms all look like normal distributions, notice that the distribution for the sample max is kind of skewed, not totally symmetrical.</p>
 <p>These sampling distributions are super important, and worth thinking about. What should you think about? Well, here’s a clue. These distributions are telling you what to expect from your sample. Critically, they are telling you what you should expect from a sample, when you take one from the specific distribution that we used (normal distribution with mean =100 and sd = 20). What have we learned. We’ve leard a tonne. We’ve learned that we can expect our sample to have a mean somewhere between 90 and 108ish. Notice, the sample means are never more extreme. We’ve learned that our sample with usually have some variance, and that the the standard deviation will be somewhere between 15 and 25 (never much more extreme than that). We can see that sometime we get some big numbers, say between 120 and 180, but not much bigger than tha. And, we can see that the median is pretty similar to the mean. If you ever took a sample of 50 numbers, and your descriptive statistics were inside these windows, then perhaps they came from this kind of normal distribution. If your sample statistics are very different, then your sample probably did not come this distribution. By using simulation, we can find out what samples look like when they come from distributions, and we can use this information to make inferences about whether our sample came from particular distributions.</p>
 </div>
@@ -513,16 +524,16 @@ IQ &lt;-<span class="st"> </span><span class="kw">round</span>(IQ) <span class="
 <p>Intuitively, you already know part of the answer: if you only have a few observations, the sample mean is likely to be quite inaccurate (you’ve already seen it bounce aronud): if you replicate a small experiment and recalculate the mean you’ll get a very different answer. In other words, the sampling distribution is quite wide. If you replicate a large experiment and recalculate the sample mean you’ll probably get the same answer you got last time, so the sampling distribution will be very narrow.</p>
 <p>Let’s give ourselves a nice movie to see everything in action. We’re going to sample numbers from a normal distribution. You will see four panels, each panel represents a different sample size (n), including sample-sizes of 10, 50, 100, and 1000. The red line shows the shape of the normal distribution. The grey bars show a histogram of each of the samples that we take. The red line shows the mean of an individual sample (the middle of the grey bars). As you can see, the red line moves around alot, especially when the sample size is small (10).</p>
 <p>The new bits are the blue bars and the blue lines. The blue bars represent the sampling distribution of the sample mean. For example, in the panel for sample-size 10, we see a bunch of blue bars. This is a histogram of 10 sample means, taken from 10 samples of size 10. In the 50 panel, we see a histogram of 50 sample means, taken from 50 samples of size 50, and so on. The blue line in each panel is the mean of the sample means (“aaa, it’s a mean of means”, yes it is).</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-53-1.gif" /><!-- --></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-60-1.gif" /><!-- --></p>
 <p>What should you notice? Notice that the width of the blue bars shrink as sample size increases. The sampling distribution of the mean is qutie wide when the sample-size is 10, it narrows as sample-size increases to 50 and 100, and it’s just one bar, right in the middle when sample-size goes to 1000. What we are seeing is that the mean of the sampling distribution approaches the mean of the population as sample-size increases.</p>
 <p>So, the sampling distribution of the mean is another distribution, and it has some variance. It varies more when sample-size is small, and varies less when sample-size is large. We can quantify this effect by calculating the standard deviation of the sampling distribution, which is referred to as the <strong>standard error</strong>. The standard error of a statistic is often denoted SE, and since we’re usually interested in the standard error of the sample <strong>mean</strong>, we often use the acronym SEM. As you can see just by looking at the movie, as the sample size <span class="math inline">\(N\)</span> increases, the SEM decreases.</p>
 <p>Okay, so that’s one part of the story. However, there’s something we’ve been glossing over a little bit. We’ve seen it already, but it’s worth looking at it one more time. Here’s the thing: <strong>no matter what shape your population distribution is, as <span class="math inline">\(N\)</span> increases the sampling distribution of the mean starts to look more like a normal distribution</strong>. This is the central limit theorem.</p>
 <p>To see the central limit theoreom in action, we are going to look at some histrograms of sample means different kinds of distributions. It is very important to recognize that you are looking at distributions of sample means, not distributions of individual samples! Here we go, starting with sampling from a normal distribution. The red line is the distribution, the blue bars are the histogram for the sample means. They both look normal!</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>Let’s do it again. This time we sample from a flat uniform distribution. Again, we see that the distribution of the sample means is not flat, it looks like a normal distribution.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>One more time with an exponential distribution. Even though way more of the numbers should be smaller than bigger, then sapmling distribution of the mean again does not look the red line. Instead, it looks more normalish. That’s the central limit theorem. It just works like that.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <p>On the basis of these figures, it seems like we have evidence for all of the following claims about the sampling distribution of the mean:</p>
 <ul>
 <li><p>The mean of the sampling distribution is the same as the mean of the population</p></li>
