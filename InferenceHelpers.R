@@ -5,7 +5,7 @@
 all_df<-data.frame()
 for(i in 1:1000){
   for(n in c(10,20,50,100,1000)){
-    some_data<-rnorm(n,0,1)
+    some_data<-rnorm(n,0.1,3)
     p_value<-t.test(some_data)$p.value
     effect_size<-mean(some_data)/sd(some_data)
     mean_scores<-mean(some_data)
@@ -14,10 +14,6 @@ for(i in 1:1000){
     all_df<-rbind(all_df,t_df)
   }
 }
-
-plot(all_df[all_df$sample_size==10,]$mean_scores,all_df[all_df$sample_size==10,]$standard_error)
-hist(all_df[all_df$sample_size==10,]$mean_scores)
-hist(all_df[all_df$sample_size==10,]$standard_error)
 
 type_I_error <-all_df[all_df$p_value<.05,]
 type_I_error$sample_size<-as.factor(type_I_error$sample_size)
@@ -108,12 +104,12 @@ ggplot(t_df,aes(x=mean_difference))+
   geom_vline(xintercept=upper)
 
 ## why is p-distribution flat
-
+n=20
 all_df<-data.frame()
 for(i in 1:1000){
   for(diff in c(0,.1,.2,.3,.4,.5)){
     some_data<-rnorm(n,diff,1)
-    p_value<-t.test(some_data)$p.value
+    p_value<-t.test(some_data,mu=0)$p.value
     effect_size<-mean(some_data)/sd(some_data)
     mean_scores<-mean(some_data)
     standard_error<-sd(some_data)/sqrt(length(some_data))
@@ -122,10 +118,28 @@ for(i in 1:1000){
   }
 }
 
-ggplot(all_df,aes(x=p_value, group=difference, color=difference))+
-  geom_histogram(stat='density')+
-  theme_classic()+facet_wrap(~difference)
+ggplot(all_df,aes(x=p_value, group=difference, fill=difference))+
+  geom_histogram(bins=20, color="white")+
+  theme_classic()+facet_wrap(~difference)+
+  ggtitle("Histograms of p as true effect increases")
 
 plot(all_df[all_df$sample_size==10,]$mean_scores,all_df[all_df$sample_size==10,]$standard_error)
 hist(all_df[all_df$sample_size==10,]$mean_scores)
 hist(all_df[all_df$sample_size==10,]$standard_error)
+
+some_data<-length()
+for(i in 1:100000){
+  some_data[i]<-t.test(rnorm(20,0,1))$statistic
+}
+
+length(some_data[some_data>0 & some_data<0.000001])
+length(some_data[some_data>0 & some_data<0.00001])
+length(some_data[some_data>0 & some_data<0.0001])
+length(some_data[some_data>0 & some_data<0.001])
+length(some_data[some_data>0 & some_data<0.01])
+
+length(some_data[some_data>1 & some_data<1.000001])
+length(some_data[some_data>1 & some_data<1.00001])
+length(some_data[some_data>1 & some_data<1.0001])
+length(some_data[some_data>1 & some_data<1.001])
+length(some_data[some_data>1 & some_data<1.01])

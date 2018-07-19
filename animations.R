@@ -343,6 +343,8 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 ## correlations with confidence----
 
+
+
 all_df<-data.frame()
 for(n in c(10,50,100,1000)){
   count_sims<-0
@@ -500,6 +502,109 @@ c<-ggarrange(a,b,
 animate(ggarrange(a,b,
                   ncol=2,nrow=1),fps=5)
 
+## correlation and effect size
+
+## -- correlation rnorm
+
+all_df<-data.frame()
+for(sim in 1:100){
+  for(n in c(10,50,100,1000)){
+    North_pole <- rnorm(n,0,1)
+    South_pole <- rnorm(n,0,1)
+    t_df<-data.frame(nsize=n,
+                     simulation=sim,
+                     r= cor(North_pole,South_pole)^2,
+                     p=cor.test(North_pole,South_pole)$p.value)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+ggplot(all_df, aes(x=p,y=r))+
+  geom_point()+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  ggtitle("r^2 as a function of p for correlations \n
+          between two random normal variables (u=0, sd=1)")+
+  ylab("r^2")
+
+cor.test(North_pole,South_pole)
+
+## correlation with cell size ----
+
+
+get_sampling_means<-function(m,sd,cell_size,s_size){
+  save_means<-length(s_size)
+  for(i in 1:s_size){
+    save_means[i]<-mean(rnorm(cell_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+for(n in c(1,5,10,100)){
+  count_sims<-0
+  for(sim in 1:10){
+    North_pole <- get_sampling_means(0,1,n,10)
+    South_pole <- get_sampling_means(0,1,n,10)
+      count_sims<-count_sims+1
+      t_df<-data.frame(nsize=rep(n,10),
+                       simulation=rep(count_sims,10),
+                       North_pole,
+                       South_pole)
+      all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=TRUE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  ggtitle("Random scatterplots, N=10, Cell-size = 1,5,10,100")+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+
+###### cell-size correlation p r plot -----
+
+get_sampling_means<-function(m,sd,cell_size,s_size){
+  save_means<-length(s_size)
+  for(i in 1:s_size){
+    save_means[i]<-mean(rnorm(cell_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+for(n in c(1,5,10,100)){
+  count_sims<-0
+  for(sim in 1:100){
+    North_pole <- get_sampling_means(0,1,n,10)
+    South_pole <- get_sampling_means(0,1,n,10)
+    count_sims<-count_sims+1
+    t_df<-data.frame(cell_size=n,
+                     simulation=sim,
+                     r=cor(North_pole,South_pole)^2,
+                     p=cor.test(North_pole,South_pole)$p.value)
+    all_df<-rbind(all_df,t_df)
+  }
+}
+
+all_df$cell_size<-as.factor(all_df$cell_size)
+ggplot(all_df, aes(x=p,y=r, color=cell_size))+
+  geom_point()+
+  theme_classic()+
+  ylab("r^2")+
+  ggtitle("r^2 by p for correlations between random normal deviates \n
+          (u=0, sd =1, N=10) as a function of cell size")
+  
 
 
 

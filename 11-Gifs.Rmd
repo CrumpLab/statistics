@@ -173,6 +173,58 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 ```
 
+### Cell-size and correlation
+
+This simulation illustrates how the behavior of correlating two random normal samples as a function of cell-size. The sample-size is always set at N=10. For each panel, the simulation uses an increasing cell-size to estimate the mean for X and Y. When cell-size is 1, 10 X and Y values are drawn from the same normal (u=0, sd=1). When cell-size is 5, for each X,Y score in the plot, 5 samples were drawn from the same normal, and then the mean of the samples is plotted. The effect of cell-size shrinks the dot cloud, as both X and Y scores provide better estimates of the population mean = 0. Cell-size has no effect on the behavior of r, which swings around because sample-size N is small. These are all random, so there is always a 5% type I error rate (alpha =.05).
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/cellsizeCor-1.gif")
+```
+
+```{r cellsizeCor,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+
+
+get_sampling_means<-function(m,sd,cell_size,s_size){
+  save_means<-length(s_size)
+  for(i in 1:s_size){
+    save_means[i]<-mean(rnorm(cell_size,m,sd))
+  }
+  return(save_means)
+}
+
+all_df<-data.frame()
+for(n in c(1,5,10,100)){
+  count_sims<-0
+  for(sim in 1:10){
+    North_pole <- get_sampling_means(0,1,n,10)
+    South_pole <- get_sampling_means(0,1,n,10)
+      count_sims<-count_sims+1
+      t_df<-data.frame(nsize=rep(n,10),
+                       simulation=rep(count_sims,10),
+                       North_pole,
+                       South_pole)
+      all_df<-rbind(all_df,t_df)
+  }
+}
+
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=TRUE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  ggtitle("Random scatterplots, N=10, Cell-size = 1,5,10,100")+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
+
+
 ### Regression
 
 We look at how the residuals (error from points to line) behave as the regression lines moves above and below it's true value. The total error associated with all of the red lines is represents by the grey area. This total error is smallest (minimized) when the black line overlaps with the blue regression line (the best fit line). The total error expands as the black line moves away from the regression. That's why the regression line is the least wrong (best fit) line to skewer the data (according to least squares definition)
