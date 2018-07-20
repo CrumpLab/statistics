@@ -29,7 +29,7 @@
 <meta name="author" content="Jeffrey Suzuki">
 
 
-<meta name="date" content="2018-07-19">
+<meta name="date" content="2018-07-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -433,6 +433,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2" data-path="gifs.html"><a href="gifs.html#sampling-distributions"><i class="fa fa-check"></i><b>11.2</b> Sampling distributions</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="gifs.html"><a href="gifs.html#sampling-from-a-uniform-distribution"><i class="fa fa-check"></i><b>11.2.1</b> Sampling from a uniform distribution</a></li>
 <li class="chapter" data-level="11.2.2" data-path="gifs.html"><a href="gifs.html#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms"><i class="fa fa-check"></i><b>11.2.2</b> Sampling distribution of the mean, Normal population distribution and sample histograms</a></li>
+<li class="chapter" data-level="11.2.3" data-path="gifs.html"><a href="gifs.html#null-and-true-effect-samples-and-sampling-means"><i class="fa fa-check"></i><b>11.2.3</b> Null and True effect samples and sampling means</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="gifs.html"><a href="gifs.html#statistical-inference"><i class="fa fa-check"></i><b>11.3</b> Statistical Inference</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="gifs.html"><a href="gifs.html#randomization-test"><i class="fa fa-check"></i><b>11.3.1</b> Randomization Test</a></li>
@@ -758,6 +759,41 @@ for(sims in <span class="dv">1</span>:<span class="dv">10</span>){
 <span class="st">  </span><span class="kw">facet_wrap</span>(~sample_size)+<span class="kw">xlim</span>(-<span class="dv">3</span>,<span class="dv">3</span>)+
 <span class="st">  </span><span class="kw">theme_classic</span>()+<span class="kw">ggtitle</span>(<span class="st">&quot;Population (red), Samples (grey), </span><span class="ch">\n</span><span class="st"> and Sampling distribution of the mean (blue)&quot;</span>)+<span class="kw">ylab</span>(<span class="st">&quot;Rough likelihoods&quot;</span>)+
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;value&quot;</span>)+
+<span class="st">  </span><span class="kw">transition_states</span>(
+    sims,
+    <span class="dt">transition_length =</span> <span class="dv">2</span>,
+    <span class="dt">state_length =</span> <span class="dv">1</span>
+  )+<span class="kw">enter_fade</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">exit_shrink</span>() +
+<span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)</code></pre></div>
+</div>
+<div id="null-and-true-effect-samples-and-sampling-means" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> Null and True effect samples and sampling means</h3>
+<p>The null dots show 50 different samples, with the red dot as the mean for each sample. Null dots are all sampled from normal (u=0, sd=1). The true dots show 50 more samples, with red dots for their means. However, the mean of the true shifts between -1.5 and +1.5 standard deviations of 0. This illustrates how a true effect moves in and out of the null range.</p>
+<p><img src="gifs/sampleNullTrue-1.gif" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_df&lt;-<span class="kw">data.frame</span>()
+all_df_means&lt;-<span class="kw">data.frame</span>()
+dif_sim&lt;-<span class="kw">seq</span>(-<span class="fl">1.5</span>,<span class="fl">1.5</span>,.<span class="dv">25</span>)
+for(sim in <span class="dv">1</span>:<span class="dv">13</span>){
+  values&lt;-<span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">25</span>*<span class="dv">25</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">rnorm</span>(<span class="dv">25</span>*<span class="dv">25</span>,dif_sim[sim],<span class="dv">1</span>))
+  samples&lt;-<span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span>:<span class="dv">25</span>),<span class="dt">each=</span><span class="dv">25</span>),<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span>:<span class="dv">25</span>),<span class="dt">each=</span><span class="dv">25</span>))
+  df&lt;-<span class="kw">data.frame</span>(samples,values,<span class="dt">sims=</span><span class="kw">rep</span>(sim,<span class="dv">50</span>*<span class="dv">25</span>),<span class="dt">type=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;null&quot;</span>,<span class="st">&quot;true&quot;</span>),<span class="dt">each=</span><span class="dv">625</span>))
+  df_means&lt;-<span class="kw">aggregate</span>(values~samples*type,df,mean, <span class="dt">sims=</span><span class="kw">rep</span>(sim,<span class="dv">50</span>))
+  all_df&lt;-<span class="kw">rbind</span>(all_df,df)
+  all_df_means&lt;-<span class="kw">rbind</span>(all_df_means,df_means)
+}
+
+all_df&lt;-<span class="kw">cbind</span>(all_df,<span class="dt">means=</span><span class="kw">rep</span>(all_df_means$values,<span class="dt">each=</span><span class="dv">25</span>))
+
+<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">y=</span>values,<span class="dt">x=</span>samples))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span><span class="kw">abs</span>(values)), <span class="dt">alpha=</span>.<span class="dv">25</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y=</span>means,<span class="dt">x=</span>samples),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="fl">25.5</span>)+
+<span class="st">  </span><span class="kw">facet_wrap</span>(~type)+
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) +
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;null=0, True effect moves from -1.5 sd to 1.5 sd&quot;</span>)+
 <span class="st">  </span><span class="kw">transition_states</span>(
     sims,
     <span class="dt">transition_length =</span> <span class="dv">2</span>,

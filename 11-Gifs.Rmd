@@ -379,6 +379,49 @@ ggplot(all_df, aes(x=sample))+
   ease_aes('sine-in-out')
 ```
 
+### Null and True effect samples and sampling means
+
+The null dots show 50 different samples, with the red dot as the mean for each sample. Null dots are all sampled from normal (u=0, sd=1). The true dots show 50 more samples, with red dots for their means. However, the mean of the true shifts between -1.5 and +1.5 standard deviations of 0. This illustrates how a true effect moves in and out of the null range.
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/sampleNullTrue-1.gif")
+```
+
+```{r sampleNullTrue,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+all_df<-data.frame()
+all_df_means<-data.frame()
+dif_sim<-seq(-1.5,1.5,.25)
+for(sim in 1:13){
+  values<-c(rnorm(25*25,0,1),rnorm(25*25,dif_sim[sim],1))
+  samples<-c(rep(seq(1:25),each=25),rep(seq(1:25),each=25))
+  df<-data.frame(samples,values,sims=rep(sim,50*25),type=rep(c("null","true"),each=625))
+  df_means<-aggregate(values~samples*type,df,mean, sims=rep(sim,50))
+  all_df<-rbind(all_df,df)
+  all_df_means<-rbind(all_df_means,df_means)
+}
+
+all_df<-cbind(all_df,means=rep(all_df_means$values,each=25))
+
+ggplot(all_df,aes(y=values,x=samples))+
+  geom_point(aes(color=abs(values)), alpha=.25)+
+  geom_point(aes(y=means,x=samples),color="red")+
+  theme_classic()+
+  geom_vline(xintercept=25.5)+
+  facet_wrap(~type)+
+  geom_hline(yintercept=0)+
+  theme(legend.position="none") +
+  ggtitle("null=0, True effect moves from -1.5 sd to 1.5 sd")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+```
+
+
+
 ## Statistical Inference
 
 ### Randomization Test

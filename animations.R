@@ -604,6 +604,100 @@ ggplot(all_df, aes(x=p,y=r, color=cell_size))+
   ylab("r^2")+
   ggtitle("r^2 by p for correlations between random normal deviates \n
           (u=0, sd =1, N=10) as a function of cell size")
+
+
+### samples and means
+
+all_df<-data.frame()
+all_df_means<-data.frame()
+for(sim in 1:10){
+  values<-rnorm(50*25,0,1)
+  samples<-rep(seq(1:50),each=25)
+  df<-data.frame(samples,values,sims=rep(sim,50*25))
+  df_means<-aggregate(values~samples,df,mean, sims=rep(sim,50))
+  all_df<-rbind(all_df,df)
+  all_df_means<-rbind(all_df_means,df_means)
+}
+
+all_df<-cbind(all_df,means=rep(all_df_means$values,each=25))
+
+ggplot(all_df,aes(y=values,x=samples))+
+  geom_point(aes(color=abs(values)), alpha=.25)+
+  geom_point(aes(y=means,x=samples),color="red")+
+  theme_classic()+
+  theme(legend.position="none") +
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+### samples and means some differences
+
+all_df<-data.frame()
+all_df_means<-data.frame()
+for(sim in 1:10){
+  values<-c(rnorm(50*25,0,1),rnorm(25*25,0,1),rnorm(25*25,.5,1))
+  samples<-c(rep(seq(1:50),each=25),rep(seq(1:50),each=25))
+  df<-data.frame(samples,values,sims=rep(sim,50*25*2),type=rep(c("null","true"),each=50*25))
+  df_means<-aggregate(values~samples*type,df,mean, sims=rep(sim,50))
+  all_df<-rbind(all_df,df)
+  all_df_means<-rbind(all_df_means,df_means)
+}
+
+all_df<-cbind(all_df,means=rep(all_df_means$values,each=25))
+
+ggplot(all_df,aes(y=values,x=samples))+
+  geom_point(aes(color=abs(values)), alpha=.25)+
+  geom_point(aes(y=means,x=samples),color="red")+
+  theme_classic()+
+  geom_vline(xintercept=25.5)+
+  theme(legend.position="none") +
+  facet_wrap(~type,ncol=1,nrow=2)+
+  ggtitle("true samples (26-50) have .5 mean difference from 0 \n
+          samples(1-25) have mean 0")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+### samples and means some  moving differences
+
+all_df<-data.frame()
+all_df_means<-data.frame()
+dif_sim<-seq(-1.5,1.5,.25)
+for(sim in 1:13){
+  values<-c(rnorm(25*25,0,1),rnorm(25*25,dif_sim[sim],1))
+  samples<-c(rep(seq(1:25),each=25),rep(seq(1:25),each=25))
+  df<-data.frame(samples,values,sims=rep(sim,50*25),type=rep(c("null","true"),each=25))
+  df_means<-aggregate(values~samples*type,df,mean, sims=rep(sim,50))
+  all_df<-rbind(all_df,df)
+  all_df_means<-rbind(all_df_means,df_means)
+}
+
+all_df<-cbind(all_df,means=rep(all_df_means$values,each=25))
+
+ggplot(all_df,aes(y=values,x=samples))+
+  geom_point(aes(color=abs(values)), alpha=.25)+
+  geom_point(aes(y=means,x=samples),color="red")+
+  theme_classic()+
+  geom_vline(xintercept=25.5)+
+  facet_wrap(~type)+
+  geom_hline(yintercept=0)+
+  theme(legend.position="none") +
+  ggtitle("null=0, True effect moves from -1.5 sd to 1.5 sd")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
   
 
 
