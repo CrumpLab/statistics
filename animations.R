@@ -698,6 +698,50 @@ ggplot(all_df,aes(y=values,x=samples))+
   )+enter_fade() + 
   exit_shrink() +
   ease_aes('sine-in-out')
+
+### Null and True effect samples and sampling means violin
+
+The null dots show 50 different samples, with the red dot as the mean for each sample. Null dots are all sampled from normal (u=0, sd=1). The true dots show 50 more samples, with red dots for their means. However, the mean of the true shifts between -1.5 and +1.5 standard deviations of 0. This illustrates how a true effect moves in and out of the null range.
+
+#```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/sampleNullTrue-1.gif")
+#```
+
+#```{r sampleNullTrue,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+n_samp<-10
+all_df<-data.frame()
+all_df_means<-data.frame()
+dif_sim<-seq(-1.5,1.5,.25)
+for(sim in 1:13){
+  values<-c(rnorm(25*n_samp,0,1),rnorm(25*n_samp,dif_sim[sim],1))
+  samples<-c(rep(seq(1:n_samp),each=25),rep(seq(1:n_samp),each=25))
+  df<-data.frame(samples,values,sims=rep(sim,n_samp*2*25),type=rep(c("null","true"),each=25*n_samp))
+  df_means<-aggregate(values~samples*type,df,mean, sims=rep(sim,n_samp*2))
+  all_df<-rbind(all_df,df)
+  all_df_means<-rbind(all_df_means,df_means)
+}
+
+all_df<-cbind(all_df,means=rep(all_df_means$values,each=25))
+
+ggplot(all_df,aes(y=values,x=samples, group=samples))+
+  geom_hline(yintercept=0)+
+  scale_fill_gradientn(colours = rainbow(5))+
+  scale_color_gradientn(colours = rainbow(10))+
+  geom_violin(aes(fill=abs(means)),scale="width", alpha=.5)+
+  geom_point(aes(color=abs(values)), alpha=.5)+
+  geom_point(aes(y=means,x=samples),color="red")+
+  theme_classic()+
+  facet_wrap(~type, nrow=2)+
+  theme(legend.position="none") +
+  ggtitle("Flight of the dots played by Violin Orchestra")+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
   
 
 

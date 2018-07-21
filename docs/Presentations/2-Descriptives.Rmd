@@ -1,0 +1,297 @@
+---
+title: "Descriptive Statistics"
+subtitle: "What to do with lots of numbers"
+author: "Matthew Crump"
+date: "2018/07/20 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: ["defaultb.css", "metropolisb.css", "metropolis-fontsb.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE, cache = TRUE)
+```
+
+class: pink, center, middle, clear
+
+# What do lots of number look like?
+
+---
+
+# Lots of Numbers look like this
+
+Like this
+
+<div class=rtable>
+```{r}
+a<-matrix(round(runif(200,-100,100)),ncol=20)
+knitr::kable(a, 'html')
+```
+</div>
+
+---
+
+
+# What can we say about them?
+
+We can see they aren't all the same. Not much else really. Looking at a bunch of numbers is hard work.
+
+<div class=rtable>
+```{r}
+knitr::kable(a, 'html')
+```
+</div>
+
+---
+
+
+# Summary numbers
+
+It would be nice to reduce the big set of numbers down to a few numbers that we can look at and make sense of.
+
+## Sameness (Central Tendency)
+
+- What are all the numbers close to?
+
+## Differentness (Variance)
+
+- How different are the numbers?
+
+---
+
+
+# Descriptive Statistics 
+
+- Give us summaries of big sets of numbers
+
+- Useful single numbers to look at
+
+- They tell us about patterns of sameness and differentness
+
+
+---
+
+
+class: pink, center, middle, clear
+
+# Graph the numbers to get a better look
+
+---
+
+
+# Dot plot (unordered)
+
+Graphing the numbers gives a quick and dirty sense of what they are like. Here's 200 numbers presented as dots
+
+```{r, fig.align='center', fig.height=6}
+library(ggplot2)
+qplot(y=rnorm(200,0,1))+
+  geom_point()+
+  theme_classic(base_size = 30)+
+  ylab("value")
+```
+
+---
+
+
+
+# Dot plot (ordered)
+
+Sorting the numbers from smallest to largest
+
+```{r, fig.align='center'}
+a<-sort(rnorm(200,0,1))
+qplot(y=a)+
+  geom_point()+
+  theme_classic(base_size = 30)+
+  ylab("value")
+```
+
+---
+
+
+
+# Histograms
+
+Histograms count up the numbers inside specific ranges
+
+```{r, fig.align='center', fig.height=5}
+qplot(x=a)+
+  geom_histogram(color="white")+
+  theme_classic(base_size = 30)+
+  ylab("count")+
+  xlab("value")
+```
+
+---
+
+# Histograms
+
+Bars show you which bins have more or less numbers in the range
+
+```{r, fig.align='center', fig.height=5}
+qplot(x=a)+
+  geom_histogram(color="white")+
+  theme_classic(base_size = 30)+
+  ylab("count")+
+  xlab("value")
+```
+
+
+---
+
+
+
+# So what are these numbers like?
+
+What single number would you say best describes most of these numbers?
+
+```{r, fig.align='center', fig.height=6}
+qplot(x=a)+
+  geom_histogram(color="white")+
+  theme_classic(base_size = 30)+
+  ylab("count")+
+  xlab("value")
+```
+
+
+---
+
+
+
+
+# Question
+
+Is the red or blue value a better summary of all the numbers?
+
+```{r, fig.align='center', fig.height=6}
+qplot(x=a)+
+  geom_histogram(color="white")+
+  theme_classic(base_size = 30)+
+  ylab("count")+
+  geom_vline(xintercept=mean(a),size=3, color="red")+
+  geom_vline(xintercept=mean(a)-2,size=3, color="blue")+
+  xlab("value")
+```
+
+---
+
+
+class: pink, center, middle, clear
+
+# Measures of Central Tendency
+
+---
+
+# Central Tendency
+
+1. **Central tendency** should describe what most of the data is like
+
+--
+
+2. We want our summary number to be most like the other numbers. We want it to be a **representative value**
+
+--
+
+3. There are **multiple measures** of central tendency
+
+--
+
+4. They have **different properties**
+
+--
+
+5. Some work better than others depending on the data
+
+---
+
+
+
+# Mode
+
+The mode is the single most frequently occuring number 
+
+> 1 1 2 2 3 4 5 6 7 7 7 7 7
+
+- The mode is 7 because 7 happens the most
+
+- Find the mode by counting the occurence of each number, the mode is the most frequently occuring number
+
+- If there is a tie, then you have two or three or more modes (depends on how many differen numbers tie)
+
+---
+
+
+
+
+# Finding the Mode in R
+
+We make 25 numbers, how do we get R to find the mode?
+
+```{r, echo=TRUE, eval=TRUE}
+#make some numbers
+a <- round(rnorm(n=25, mean=24, sd=5)) 
+```
+
+
+```{r, class.output='font50', cache=TRUE, eval=TRUE}
+knitr::kable(matrix(a,ncol=5))
+```
+
+---
+
+
+
+
+# Finding the Mode in R
+
+`table` function automatically counts the occurence of each number
+
+```{r, echo=TRUE, results='markup'}
+table(a)
+```
+
+We can see that 29 occurs the most
+
+---
+
+
+# Custom function for the mode in R
+
+You can always write your own function for the mode. This one is called `my_mode`
+
+```{r, echo=TRUE}
+my_mode <- function(x) {
+     ux <- unique(x)
+     ux[which.max(tabulate(match(x, ux)))]
+ }
+```
+
+```{r, echo=TRUE, cache=FALSE}
+my_mode(a)
+```
+
+---
+
+# Thinking about the mode
+
+1. Tells us the most frequent number(s)
+
+--
+
+2. Is it representative of all the numbers?
+
+--
+
+3. When would the mode be a good thing to know?
+
+---
+
+
+
