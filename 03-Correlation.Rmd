@@ -749,7 +749,11 @@ Below we randomly sample numbers for two variables, plot them, and show the corr
 
 Remember, because we are randomly sampling numbers, there should be no relationship between the X and Y variables. But, as we have been discussing, because of chance, we can sometimes observe a correlation (due to chance). The important thing to watch is how the line behaves across the four panels. The line twirls around in all directions when the sample size is 10. It is also moves around quite a bit when the sample size is 50 or 100. It still moves a bit when the sample size is 1000, but much less. In all cases we expect that the line should be flat, but every time we take new samples, sometimes the line shows us pseudo patterns.
 
-```{r}
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/corUnifFourNs-1.gif")
+```
+
+```{r, eval=F}
 all_df<-data.frame()
 for(sim in 1:10){
   for(n in c(10,50,100,1000)){
@@ -780,6 +784,12 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
 ```
 
 Which line should you trust? Well, hopefully you can see that the line for 1000 samples is the most stable. It tends to be very flat every time, and it does not depend so much on the particular sample. The line with 10 observations per sample goes all over the place. The take home here, is that if someone told you that they found a correlation, you should want to know how many observations they hand in their sample. If they only had 10 observations, how could you trust the claim that there was a correlation? You can't!!! Not now that you know samples that are that small can do all sorts of things by chance alone. If instead, you found out the sample was very large, then you might trust that finding a little bit more. For example, in the above movie you can see that when there are 1000 samples, we never see a strong or weak correlation; the line is always flat. This is because chance almost never produces strong correlations when the sample size is very large. 
+
+In the above example, we sampled numbers random numbers from a uniform distribution. Many examples of real-world data will come from a normal or approximately normal distibribution. We can repeat the above, but sample random numbers from the same normal distribution. There will still be zero actual correlation between the X and Y variables, because everything is sampled randomly. But, we still see the same behavior as above. The computed correlation for small sample-sizes flucuate wildly, and large sample sizes do not.
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/corNormFourNs-1.gif")
+```
 
 Ok, so what do things look like when there actually is a correlation between variables?
 
