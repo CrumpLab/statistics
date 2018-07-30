@@ -863,7 +863,7 @@ Here are the steps you might follow to simulate data for a one sample-test.
 Let's do this a couple different times. First,t's simulate samples with N = 30, taken from a normal (mean= 50, sd =25). We'll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences
 
 
-```{r}
+```{r, echo=TRUE}
 # steps to create fake data from a distribution 
 # and conduct t-tests on the simulated data
 save_ps <- length(1000)
@@ -885,7 +885,7 @@ hist(save_ps)
 Neat. We see both a $t$ distribution, that looks like $t$ distribution as it should. And we see the $p$ distribution. This shows us how often we get $t$ values of particular sizes. You may find it interesting that the $p$-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a $t$ with a p-value betwen 0 and 0.05, as you would for getting a $t$ with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of $t$ values in them by definition. 
 
 Here's another way to do the same simulation in R, using the replicate function, instead a for loop:
-```{r}
+```{r, echo=TRUE}
 simulated_ts <- replicate(1000,
                           t.test(rnorm(30,50,25))$statistic)
 hist(simulated_ts)
@@ -900,7 +900,7 @@ hist(simulated_ts)
 
 The code below is set-up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the $t$s and $p$s are saved and plotted for each.
 
-```{r}
+```{r, echo=TRUE}
 
 save_ps <- length(1000)
 save_ts <- length(1000)
@@ -923,7 +923,7 @@ According to the simulation. When there are no differences between the condition
 
 For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to $\alpha = .05$, we can ask how many type I errors were made in these 1000 simulations. The answer is:
 
-```{r}
+```{r, echo=TRUE}
 length(save_ps[save_ps<.05])
 length(save_ps[save_ps<.05])/1000
 ```
@@ -932,7 +932,7 @@ We happened to make `r length(save_ps[save_ps<.05])`. The expectation over the l
 
 What happns if there actually is a difference in the simulated data, let's set one condition to have larger mean than the other:
 
-```{r}
+```{r, echo=TRUE}
 
 save_ps <- length(1000)
 save_ts <- length(1000)
@@ -955,7 +955,7 @@ Now you can see that the p-value distribution is skewed to the left. This is bec
 
 In this case, we wouldn't be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?
 
-```{r}
+```{r, echo=TRUE}
 length(save_ps[save_ps<.05])
 length(save_ps[save_ps<.05])/1000
 ```
@@ -964,7 +964,7 @@ We happened to get `r length(save_ps[save_ps<.05])` simulations where p was less
 
 How would you run a better simulated experiment? Well, you could increase n, the number of subjects in the experiment. Let's increase n from 10 to 100, and see what happens to the number of "significant" simulated experiments.
 
-```{r}
+```{r, echo=TRUE}
 
 save_ps <- length(1000)
 save_ts <- length(1000)
@@ -991,7 +991,7 @@ Cool, now almost all of the experiments show a p-value of less than .05 (using a
 
 Just change the t.test function like so... this is for the null, assuming no difference between groups.
 
-```{r}
+```{r, echo=TRUE}
 
 save_ps <- length(1000)
 save_ts <- length(1000)

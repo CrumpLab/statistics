@@ -1148,37 +1148,119 @@ t <span class="co"># print results</span></code></pre></div>
 <li><p>sample simulated numbers from the distribution, then conduct a t.test on the simulated numbers. Save the statistics you want (such as ts and ps), and then see how things behave.</p></li>
 </ol>
 <p>Let’s do this a couple different times. First,t’s simulate samples with N = 30, taken from a normal (mean= 50, sd =25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-98-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># steps to create fake data from a distribution </span>
+<span class="co"># and conduct t-tests on the simulated data</span>
+save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+  my_sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">30</span>, <span class="dt">mean =</span><span class="dv">50</span>, <span class="dt">sd =</span><span class="dv">25</span>)
+  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span> (my_sample, <span class="dt">mu =</span> <span class="dv">50</span>)
+  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
+}
+
+<span class="co">#plot histograms of t and p values for 1000 simulations</span>
+<span class="kw">hist</span>(save_ts)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ps)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
 <p>Neat. We see both a <span class="math inline">\(t\)</span> distribution, that looks like <span class="math inline">\(t\)</span> distribution as it should. And we see the <span class="math inline">\(p\)</span> distribution. This shows us how often we get <span class="math inline">\(t\)</span> values of particular sizes. You may find it interesting that the <span class="math inline">\(p\)</span>-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a <span class="math inline">\(t\)</span> with a p-value betwen 0 and 0.05, as you would for getting a <span class="math inline">\(t\)</span> with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of <span class="math inline">\(t\)</span> values in them by definition.</p>
-<p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop: <img src="statistics_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simulated_ts &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
+                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))$statistic)
+<span class="kw">hist</span>(simulated_ts)
+
+simulated_ps &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
+                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))$p.value)
+<span class="kw">hist</span>(simulated_ts)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 </div>
 <div id="simulating-a-paired-samples-test" class="section level3">
 <h3><span class="header-section-number">5.6.2</span> Simulating a paired samples test</h3>
 <p>The code below is set-up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-100-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-100-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
+  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
+  differences &lt;-<span class="st"> </span>condition_A -<span class="st"> </span>condition_B
+  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
+  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
+}
+<span class="kw">hist</span>(save_ps)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ts)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-100-2.png" width="672" /></p>
 <p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for t and p. These again show how the null distribution of no differences behaves.</p>
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
 <pre><code>## [1] 57</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
 <pre><code>## [1] 0.057</code></pre>
 <p>We happened to make 57. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happns if there actually is a difference in the simulated data, let’s set one condition to have larger mean than the other:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-102-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
+  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">5</span>)
+  differences &lt;-<span class="st"> </span>condition_A -<span class="st"> </span>condition_B
+  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
+  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
+}
+<span class="kw">hist</span>(save_ps)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ts)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
 <p>Now you can see that the p-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
 <pre><code>## [1] 224</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
 <pre><code>## [1] 0.224</code></pre>
 <p>We happened to get 224 simulations where p was less than .05, that’s only 0.224 experiments. If you were the researcher, would you want to run an experiment that would be succesful only 0.224 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase n, the number of subjects in the experiment. Let’s increase n from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-104-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-104-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)
+  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">13</span>,<span class="dv">5</span>)
+  differences &lt;-<span class="st"> </span>condition_A -<span class="st"> </span>condition_B
+  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
+  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
+}
+<span class="kw">hist</span>(save_ps)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ts)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-104-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
 <pre><code>## [1] 985</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
 <pre><code>## [1] 0.985</code></pre>
 <p>Cool, now almost all of the experiments show a p-value of less than .05 (using a two-tailed test, that’s the default in R). See, you could use this simulation process to determine how many subjects you need to reliably find your effect.</p>
 </div>
 <div id="simulating-an-independent-samples-t.test" class="section level3">
 <h3><span class="header-section-number">5.6.3</span> Simulating an independent samples t.test</h3>
 <p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-105-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+  group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
+  group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
+  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A, group_B, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)
+  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
+}
+<span class="kw">hist</span>(save_ps)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ts)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
 <pre><code>## [1] 55</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
 <pre><code>## [1] 0.055</code></pre>
 <!--
 
