@@ -338,7 +338,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#what-does-t-represent"><i class="fa fa-check"></i><b>6.2.2</b> What does t represent?</a></li>
 <li class="chapter" data-level="6.2.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#calculating-t-from-data"><i class="fa fa-check"></i><b>6.2.3</b> Calculating t from data</a></li>
 <li class="chapter" data-level="6.2.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#how-does-t-behave"><i class="fa fa-check"></i><b>6.2.4</b> How does <span class="math inline">\(t\)</span> behave?</a></li>
+<li class="chapter" data-level="6.2.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#making-a-decision"><i class="fa fa-check"></i><b>6.2.5</b> Making a decision</a></li>
 </ul></li>
+<li class="chapter" data-level="6.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples <span class="math inline">\(t\)</span>-test</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
 <li class="chapter" data-level="7.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>7.1</b> Comparing many means with ANOVA</a><ul>
@@ -501,6 +503,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="inferenceForNumericalDatattest" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> t-Tests</h1>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.4</code></pre>
 <p>One day, many moons ago, William Sealy Gosset got a job working for Guinness Breweries. They make that really dark and famous Irish beer called Guinness. What happens next went something like this (total fabrication, but mostly on point).</p>
 <p>Guinness wanted all of its beers to the best beers. No mistakes, No bad beers. They wanted to improve their quality control, so that wherever you pour a Guiness, anywhere in the world, it always comes out just fantastic, let’s say 5 stars out of 5 every time. They want to be the best.</p>
 <p>Guiness had some beer tasters, who were super-experts. Everytime they tasted a Guiness from the factor that wasn’t 5 out of 5, they knew right away.</p>
@@ -558,7 +561,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="what-does-t-represent" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> What does t represent?</h3>
 <p><span class="math inline">\(t\)</span> gives us a measure of confidence, just like our previous ratio for dividing the mean by a standard deviations.</p>
-<p><span class="math inline">\(t\)</span> is a property of the data that you collect. You compute it with a sample mean, and a sample standard error (there’s one more thing in the one-sample formula, the population mean, which we get to in a moment).</p>
+<div class="marginnote">
+<p>What does the t in t-test stand for? Apparently nothing. Gosset originally labelled it z. And, Fisher later called it t, perhaps because t comes after s, which is often used for the sample standard deviation.</p>
+</div>
+<p><span class="math inline">\(t\)</span> is a property of the data that you collect. You compute it with a sample mean, and a sample standard error (there’s one more thing in the one-sample formula, the population mean, which we get to in a moment). This is why we call <span class="math inline">\(t\)</span>, a sample-statistic. It’s a statistic we compute from the sample.</p>
 <p>What kinds of numbers should we expect to find for these <span class="math inline">\(ts\)</span>? Well, wouldn’t that depend on a lot of things, how could we know that?</p>
 <p>Let’s start small, and work through some examples. Imagine your sample mean is 5. You want to know if it came from a population that also has a mean of 5. In this case, what would t be? It would be zero, because we first subtract sample mean from the population mean, 5-5=0. So, t can be zero, when there is no difference.</p>
 <p>Let’s say you take another sample, do you think the mean will be 5 every time, probably not. Let’s say the mean is 6. So, what can t be here? It will be a positive number, because 6-5= +1. But, will t be +1? That depends on the standard error of the sample. If the standard error of the sample is 1, then t could be 1, because 1/1 = 1.</p>
@@ -720,6 +726,104 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="how-does-t-behave" class="section level3">
 <h3><span class="header-section-number">6.2.4</span> How does <span class="math inline">\(t\)</span> behave?</h3>
+<p>If <span class="math inline">\(t\)</span> is just a number that we can from our sample (it is), what can we do with it? How can we use <span class="math inline">\(t\)</span> for statistical inference?</p>
+<p>Remember back to the chapter on sampling and distributions, that’s where we discussed the sampling distribution of the sample mean. Remember, we made a lot of samples, then computed the mean for each sample, then we plotted a histogram of the sample means. Later, in that same section, we mentioned that we could generate sampling distributions for any statistic. That, for each sample, we could compute the mean, the standard deviation, the standard error, and now even <span class="math inline">\(t\)</span>, if we wanted to. We could generate 10,000 samples, and draw four histograms, one for each sampling distribution for each statistic.</p>
+<p>This is exactly what I did, and the results are shown in the four figures below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let’s look at the sampling distributions for each of the statistics. <span class="math inline">\(t\)</span> was computed assuming with the population mean assumed to be 0.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_df&lt;-<span class="kw">data.frame</span>()
+for(i in <span class="dv">1</span>:<span class="dv">10000</span>){
+  sample&lt;-<span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)
+  sample_mean&lt;-<span class="kw">mean</span>(sample)
+  sample_sd&lt;-<span class="kw">sd</span>(sample)
+  sample_se&lt;-<span class="kw">sd</span>(sample)/<span class="kw">sqrt</span>(<span class="kw">length</span>(sample))
+  sample_t&lt;-<span class="kw">as.numeric</span>(<span class="kw">t.test</span>(sample, <span class="dt">mu=</span><span class="dv">0</span>)$statistic)
+  t_df&lt;-<span class="kw">data.frame</span>(i,sample_mean,sample_sd,sample_se,sample_t)
+  all_df&lt;-<span class="kw">rbind</span>(all_df,t_df)
+}
+
+<span class="kw">library</span>(ggpubr)
+a&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_mean))+
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()
+b&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_sd))+
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()
+c&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_se))+
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()
+d&lt;-<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_t))+
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()
+
+<span class="kw">ggarrange</span>(a,b,c,d,
+          <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="statistics_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>We see four sampling distributions. This is how statistical summaries of these summaries behave. We have used the word chance windows before. These are four chance windows, measuring different aspects of the sample. In this case, all of the samples came from the same normal distribution. Because of sampling error, each sample is not identical. The means are not identical, the standard deviations are not identical, sample standard error of the means are not identical, and the <span class="math inline">\(t\)</span>s of the samples are not identical. They all have some variation, as shown by the histograms. This is how samples, of size 20 behave.</p>
+<p>We can see straight away, that in this case, we are unlikely to get a sample mean of 2. That’s way outside the window. The range for the sampling distribution of the mean is around -.5 to +.5, and is centered on 0 (the population mean, would you believe!).</p>
+<p>We are unlikely to get sample standard deviations of between .6 and 1.5, that is a different range, specific to the sample standard deviation.</p>
+<p>Same thing with the sample standard error of the mean, the range here is even smaller, mostly between .1, and .3. You would rarely find a sample with a standard error of the mean greater than .3. Virtually never would you find one of say 1 (for this situation).</p>
+<p>Now, look at <span class="math inline">\(t\)</span>. It’s range is basically between -3 and +3 here. 3s barely happen at all. you pretty much never see a 5 or -5 in this situation.</p>
+<p>All of these sampling windows are chance windows, and they can all be used in the same way as we have used similar sampling distributions before (e.g., Crump Test, and Randomization Test) for statistical inference. For all of them we would follow the same process:</p>
+<ol style="list-style-type: decimal">
+<li>Generate these distributions</li>
+<li>Look at your sample statistics for the dat you have (mean, sd, sem, and <span class="math inline">\(t\)</span>)</li>
+<li>Find out how likely each value (or greater than that value) is</li>
+<li>Obtain that probability</li>
+<li>See if you think your sample statistics were probable or improbable.</li>
+</ol>
+<p>We’ll formalize this in a second. I just want you to know that what you will be doing is something that you have already done before. For example, in the Crump test and the Randomization test we focused on the distribution of mean differences. We could do that again here, but instead, we will focus on the distribution of <span class="math inline">\(t\)</span> values. We then apply the same kinds of decision rules to the <span class="math inline">\(t\)</span> distribution, as we did for the other distributions. Below you will see a graph you have already seen, except this time it is a distribution of <span class="math inline">\(t\)</span>s, not mean differences:</p>
+<p>Remember, if we obtained a single <span class="math inline">\(t\)</span> from one sample we collected, we could consult this chance window below to find out the <span class="math inline">\(t\)</span> we obtained from the sample was likely or unlikely to occur by chance.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_t&lt;-all_df$sample_t
+
+<span class="kw">ggplot</span>(all_df,<span class="kw">aes</span>(<span class="dt">x=</span>sample_t))+
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">min</span>(sample_t), <span class="dt">xmax=</span><span class="kw">max</span>(sample_t), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">min</span>(sample_t), <span class="dt">xmax=</span>-<span class="fl">1.94</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>, <span class="dt">fill=</span><span class="st">&quot;light grey&quot;</span>) +
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="fl">1.94</span>, <span class="dt">xmax=</span><span class="kw">max</span>(sample_t), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>, <span class="dt">fill=</span><span class="st">&quot;light grey&quot;</span>) +
+<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span>-<span class="ot">Inf</span>, <span class="dt">xmax=</span><span class="kw">min</span>(sample_t), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span><span class="kw">max</span>(sample_t), <span class="dt">xmax=</span><span class="ot">Inf</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">min</span>(sample_t))+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">max</span>(sample_t))+
+<span class="st">   </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> -<span class="fl">1.94</span>)+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="fl">1.94</span>)+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean sample_ts between two samples (n=20) </span><span class="ch">\n</span>
+<span class="st">          both drawn from the same normal distribution (u=0, sd=1)&quot;</span>)+
+<span class="st">   </span><span class="kw">xlim</span>(-<span class="dv">8</span>,<span class="dv">8</span>)+
+<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
+<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">7</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
+<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">7</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
+<span class="co">#  geom_label(data = data.frame(x = min(sample_t), y = 600,</span>
+<span class="st"> </span><span class="co">#                              label = paste0(&quot;min \n&quot;,round(min(sample_t)))),</span>
+<span class="st">  </span><span class="co">#                             aes(x = x, y = y, label = label))+</span>
+<span class="st">   </span><span class="co">#geom_label(data = data.frame(x = max(sample_t), y = 600,</span>
+<span class="st">   </span><span class="co">#                            label = paste0(&quot;max \n&quot;,round(max(sample_t)))),</span>
+<span class="st">    </span><span class="co">#                           aes(x = x, y = y, label = label))+</span>
+<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">4</span>, <span class="dt">y =</span> <span class="dv">250</span>,
+                               <span class="dt">label =</span> <span class="st">&quot;?&quot;</span>),
+                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
+<span class="st">   </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">4</span>, <span class="dt">y =</span> <span class="dv">250</span>,
+                               <span class="dt">label =</span> <span class="st">&quot;?&quot;</span>),
+                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean sample_t&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_bar).</code></pre>
+<p><img src="statistics_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="making-a-decision" class="section level3">
+<h3><span class="header-section-number">6.2.5</span> Making a decision</h3>
+<p>From our early example involving the TRUE/FALSE quizzes, we are not ready to make some kind of decision about what happended there. We found a mean difference of 11. We found a <span class="math inline">\(t\)</span> = 1.9411765. The probability of this <span class="math inline">\(t\)</span> or larger occuring is <span class="math inline">\(p\)</span> = 0.0841503. We were testing the idea that our sample mean of 61 could have come from a normal distribution with mean = 50. The <span class="math inline">\(t\)</span> test tells us that the <span class="math inline">\(t\)</span> for our sample, or a larger one, would happen with p = 0.0841503. In other words, chance can do it a kind of small amount of time, but not often. In english, this means that all of the students could have been, guessing, but it wasn’t that likely that were just guessing.</p>
+<p>We’re guessing that you are still a little bit confused about <span class="math inline">\(t\)</span> values, and what we are doing here. We are going to skip ahead to the next <span class="math inline">\(t\)</span>-test, called a <strong>paired samples t-test</strong>. We will also fill in some more things about <span class="math inline">\(t\)</span>-tests that are more obvious when discussing paired samples t-test. In fact, spoiler alert, we will find out that paired samples t-test is actually a one-sample t-test in disguise (WHAT!), yes it is. If the one-sample <span class="math inline">\(t\)</span>-test didn’t make sense to you, read the next section.</p>
+</div>
+</div>
+<div id="paired-samples-t-test" class="section level2">
+<h2><span class="header-section-number">6.3</span> Paired-samples <span class="math inline">\(t\)</span>-test</h2>
+<p>For me (Crump), everything often comes down to a paired samples t-test. It just happens that many things I do reduce down to a test like this.</p>
+<p>I am a cognitive psychologist, I conduct research on people to learn how they do things like remember, pay attention, and learn skills. There are lots of Psychologists like me, who do very similar things.</p>
+<p>We all often conduct the same kinds of experiments. They go like this, and they are called <strong>repeated measures</strong> designs. They are called <strong>repeated measures</strong> designs, because we measure how one person does something more than once, we <strong>repeat</strong> the measure.</p>
+<p>So, I might measure somebody doing something in condition A, and measure somebody doing something in Condition B, and then I see that same person does different things in the two conditions. I <strong>repeatedly measure</strong> the same person in both conditions. I am interested in whether the experimental manipulation changes something about how people perform the task in question.</p>
 <!--
 
 Chapters [FoundationForInference] and [inferenceForCategoricalData] introduced us to inference for proportions using the normal model, and in Section [oneWayChiSquare], we encountered the chi-square distribution, which is useful for working with categorical data with many levels. In this chapter, our focus will be on numerical data, where we will encounter two more distributions: the $t$ distribution (looks a lot like the normal distribution) and the $F$ distribution. Our general approach will be:
@@ -1324,7 +1428,6 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 -->
 
-</div>
 </div>
 </div>
             </section>
