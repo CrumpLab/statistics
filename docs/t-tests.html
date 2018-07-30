@@ -245,6 +245,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="t-tests.html"><a href="t-tests.html#the-paired-samples-t-test-strikes-back"><i class="fa fa-check"></i><b>5.4</b> The paired samples t-test strikes back</a></li>
 <li class="chapter" data-level="5.5" data-path="t-tests.html"><a href="t-tests.html#independent-samples-t-test-the-return-of-the-t-test"><i class="fa fa-check"></i><b>5.5</b> Independent samples t-test: The return of the t-test?</a></li>
+<li class="chapter" data-level="5.6" data-path="t-tests.html"><a href="t-tests.html#simulating-data-for-t-tests"><i class="fa fa-check"></i><b>5.6</b> Simulating data for t-tests</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="t-tests.html"><a href="t-tests.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>5.6.1</b> Simulating a one-sample t-test</a></li>
+<li class="chapter" data-level="5.6.2" data-path="t-tests.html"><a href="t-tests.html#simulating-a-paired-samples-test"><i class="fa fa-check"></i><b>5.6.2</b> Simulating a paired samples test</a></li>
+<li class="chapter" data-level="5.6.3" data-path="t-tests.html"><a href="t-tests.html#simulating-an-independent-samples-t.test"><i class="fa fa-check"></i><b>5.6.3</b> Simulating an independent samples t.test</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>6</b> ANOVA</a></li>
 <li class="chapter" data-level="7" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>7</b> Repeated Measures ANOVA</a></li>
@@ -1129,6 +1134,52 @@ t <span class="co"># print results</span></code></pre></div>
 ## sample estimates:
 ## mean of x mean of y 
 ##       3.0       5.6</code></pre>
+</div>
+<div id="simulating-data-for-t-tests" class="section level2">
+<h2><span class="header-section-number">5.6</span> Simulating data for t-tests</h2>
+<p>An “advanced” topic for t-tests is the idea of using R to simulations for t-tests.</p>
+<p>If you recall, <span class="math inline">\(t\)</span> is a property of a sample. We calculate <span class="math inline">\(t\)</span> from our sample. The <span class="math inline">\(t\)</span> distribution is the hypothetical behavior of our sample. That is, if we had taken thousands upon thousands of samples, and calculated <span class="math inline">\(t\)</span> for each one, and then looked at the distribution of those <span class="math inline">\(t\)</span>’s, we would have the sampling distribution of <span class="math inline">\(t\)</span>!</p>
+<p>It can be very useful to get in the habit of using R to simulate data under certain conditions, to see how your sample data, and things like <span class="math inline">\(t\)</span> behave. Why is this useful? It mainly prepares you with some intuitions about how sampling error (random chance) can influence your results, given specific parameters of your design, such as sample-size, the size of the mean difference you expect to find in your data, and the amount of variation you might find. These methods can be used formally to conduct power-analyses. Or more informally for data sense.</p>
+<div id="simulating-a-one-sample-t-test" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Simulating a one-sample t-test</h3>
+<p>Here are the steps you might follow to simulate data for a one sample-test.</p>
+<ol style="list-style-type: decimal">
+<li><p>Make some assumptions about what your sample (that you might be planning to collect) might look like. For example, you might be planning to collect 30 subjects worth of data. The scores of those data points might come from a normal distribution (mean = 50, sd = 10).</p></li>
+<li><p>sample simulated numbers from the distribution, then conduct a t.test on the simulated numbers. Save the statistics you want (such as ts and ps), and then see how things behave.</p></li>
+</ol>
+<p>Let’s do this a couple different times. First,t’s simulate samples with N = 30, taken from a normal (mean= 50, sd =25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-98-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
+<p>Neat. We see both a <span class="math inline">\(t\)</span> distribution, that looks like <span class="math inline">\(t\)</span> distribution as it should. And we see the <span class="math inline">\(p\)</span> distribution. This shows us how often we get <span class="math inline">\(t\)</span> values of particular sizes. You may find it interesting that the <span class="math inline">\(p\)</span>-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a <span class="math inline">\(t\)</span> with a p-value betwen 0 and 0.05, as you would for getting a <span class="math inline">\(t\)</span> with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of <span class="math inline">\(t\)</span> values in them by definition.</p>
+<p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop: <img src="statistics_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+</div>
+<div id="simulating-a-paired-samples-test" class="section level3">
+<h3><span class="header-section-number">5.6.2</span> Simulating a paired samples test</h3>
+<p>The code below is set-up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-100-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-100-2.png" width="672" /></p>
+<p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for t and p. These again show how the null distribution of no differences behaves.</p>
+<p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
+<pre><code>## [1] 57</code></pre>
+<pre><code>## [1] 0.057</code></pre>
+<p>We happened to make 57. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
+<p>What happns if there actually is a difference in the simulated data, let’s set one condition to have larger mean than the other:</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-102-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
+<p>Now you can see that the p-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
+<p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
+<pre><code>## [1] 224</code></pre>
+<pre><code>## [1] 0.224</code></pre>
+<p>We happened to get 224 simulations where p was less than .05, that’s only 0.224 experiments. If you were the researcher, would you want to run an experiment that would be succesful only 0.224 of the time? I wouldn’t. I would run a better experiment.</p>
+<p>How would you run a better simulated experiment? Well, you could increase n, the number of subjects in the experiment. Let’s increase n from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-104-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-104-2.png" width="672" /></p>
+<pre><code>## [1] 985</code></pre>
+<pre><code>## [1] 0.985</code></pre>
+<p>Cool, now almost all of the experiments show a p-value of less than .05 (using a two-tailed test, that’s the default in R). See, you could use this simulation process to determine how many subjects you need to reliably find your effect.</p>
+</div>
+<div id="simulating-an-independent-samples-t.test" class="section level3">
+<h3><span class="header-section-number">5.6.3</span> Simulating an independent samples t.test</h3>
+<p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-105-1.png" width="672" /><img src="statistics_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
+<pre><code>## [1] 55</code></pre>
+<pre><code>## [1] 0.055</code></pre>
 <!--
 
 Chapters [FoundationForInference] and [inferenceForCategoricalData] introduced us to inference for proportions using the normal model, and in Section [oneWayChiSquare], we encountered the chi-square distribution, which is useful for working with categorical data with many levels. In this chapter, our focus will be on numerical data, where we will encounter two more distributions: the $t$ distribution (looks a lot like the normal distribution) and the $F$ distribution. Our general approach will be:
@@ -1733,6 +1784,7 @@ The benefits of pooling the standard deviation are realized through obtaining a 
 
 -->
 
+</div>
 </div>
 </div>
             </section>
