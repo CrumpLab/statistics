@@ -35,7 +35,7 @@
   
   
 <link rel="prev" href="sampling-and-estimation.html">
-<link rel="next" href="inferenceForNumericalDatattest.html">
+<link rel="next" href="t-tests.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -140,27 +140,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.6.7" data-path="why-statistics.html"><a href="why-statistics.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>1.6.7</b> Confounds, artifacts and other threats to validity</a></li>
 <li class="chapter" data-level="1.6.8" data-path="why-statistics.html"><a href="why-statistics.html#summary"><i class="fa fa-check"></i><b>1.6.8</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="why-statistics.html"><a href="why-statistics.html#basicExampleOfStentsAndStrokes"><i class="fa fa-check"></i><b>1.7</b> Case study: using stents to prevent strokes</a></li>
-<li class="chapter" data-level="1.8" data-path="why-statistics.html"><a href="why-statistics.html#dataBasics"><i class="fa fa-check"></i><b>1.8</b> Data basics</a><ul>
-<li class="chapter" data-level="1.8.1" data-path="why-statistics.html"><a href="why-statistics.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.8.1</b> Observations, variables, and data matrices</a></li>
-<li class="chapter" data-level="1.8.2" data-path="why-statistics.html"><a href="why-statistics.html#variableTypes"><i class="fa fa-check"></i><b>1.8.2</b> Types of variables</a></li>
-<li class="chapter" data-level="1.8.3" data-path="why-statistics.html"><a href="why-statistics.html#variableRelations"><i class="fa fa-check"></i><b>1.8.3</b> Relationships between variables</a></li>
-</ul></li>
-<li class="chapter" data-level="1.9" data-path="why-statistics.html"><a href="why-statistics.html#overviewOfDataCollectionPrinciples"><i class="fa fa-check"></i><b>1.9</b> Overview of data collection principles</a><ul>
-<li class="chapter" data-level="1.9.1" data-path="why-statistics.html"><a href="why-statistics.html#populationsAndSamples"><i class="fa fa-check"></i><b>1.9.1</b> Populations and samples</a></li>
-<li class="chapter" data-level="1.9.2" data-path="why-statistics.html"><a href="why-statistics.html#anecdotalEvidenceSubsection"><i class="fa fa-check"></i><b>1.9.2</b> Anecdotal evidence</a></li>
-<li class="chapter" data-level="1.9.3" data-path="why-statistics.html"><a href="why-statistics.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.9.3</b> Sampling from a population</a></li>
-<li class="chapter" data-level="1.9.4" data-path="why-statistics.html"><a href="why-statistics.html#explanatoryAndResponse"><i class="fa fa-check"></i><b>1.9.4</b> Explanatory and response variables</a></li>
-<li class="chapter" data-level="1.9.5" data-path="why-statistics.html"><a href="why-statistics.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.9.5</b> Introducing observational studies and experiments</a></li>
-</ul></li>
-<li class="chapter" data-level="1.10" data-path="why-statistics.html"><a href="why-statistics.html#observational-studies-and-sampling-strategies"><i class="fa fa-check"></i><b>1.10</b> Observational studies and sampling strategies</a><ul>
-<li class="chapter" data-level="1.10.1" data-path="why-statistics.html"><a href="why-statistics.html#observational-studies"><i class="fa fa-check"></i><b>1.10.1</b> Observational studies</a></li>
-<li class="chapter" data-level="1.10.2" data-path="why-statistics.html"><a href="why-statistics.html#threeSamplingMethods"><i class="fa fa-check"></i><b>1.10.2</b> Three sampling methods (special topic)</a></li>
-</ul></li>
-<li class="chapter" data-level="1.11" data-path="why-statistics.html"><a href="why-statistics.html#experimentsSection"><i class="fa fa-check"></i><b>1.11</b> Experiments</a><ul>
-<li class="chapter" data-level="1.11.1" data-path="why-statistics.html"><a href="why-statistics.html#experimentalDesignPrinciples"><i class="fa fa-check"></i><b>1.11.1</b> Principles of experimental design</a></li>
-<li class="chapter" data-level="1.11.2" data-path="why-statistics.html"><a href="why-statistics.html#biasInHumanExperiments"><i class="fa fa-check"></i><b>1.11.2</b> Reducing bias in human experiments</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
 <li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#this-is-what-too-many-numbers-looks-like"><i class="fa fa-check"></i><b>2.1</b> This is what too many numbers looks like</a></li>
@@ -186,23 +165,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.7" data-path="DescribingData.html"><a href="DescribingData.html#rolling-your-own-descriptive-statistics"><i class="fa fa-check"></i><b>2.7</b> Rolling your own descriptive statistics</a><ul>
 <li class="chapter" data-level="2.7.1" data-path="DescribingData.html"><a href="DescribingData.html#absolute-deviations"><i class="fa fa-check"></i><b>2.7.1</b> Absolute deviations</a></li>
 <li class="chapter" data-level="2.7.2" data-path="DescribingData.html"><a href="DescribingData.html#other-sign-inverting-operations"><i class="fa fa-check"></i><b>2.7.2</b> Other sign-inverting operations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="DescribingData.html"><a href="DescribingData.html#numericalData"><i class="fa fa-check"></i><b>2.8</b> Examining numerical data</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="DescribingData.html"><a href="DescribingData.html#scatterPlots"><i class="fa fa-check"></i><b>2.8.1</b> Scatterplots for paired data</a></li>
-<li class="chapter" data-level="2.8.2" data-path="DescribingData.html"><a href="DescribingData.html#dotPlot"><i class="fa fa-check"></i><b>2.8.2</b> Dot plots and the mean</a></li>
-<li class="chapter" data-level="2.8.3" data-path="DescribingData.html"><a href="DescribingData.html#histogramsAndShape"><i class="fa fa-check"></i><b>2.8.3</b> Histograms and shape</a></li>
-<li class="chapter" data-level="2.8.4" data-path="DescribingData.html"><a href="DescribingData.html#variability"><i class="fa fa-check"></i><b>2.8.4</b> Variance and standard deviation</a></li>
-<li class="chapter" data-level="2.8.5" data-path="DescribingData.html"><a href="DescribingData.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.8.5</b> Box plots, quartiles, and the median</a></li>
-<li class="chapter" data-level="2.8.6" data-path="DescribingData.html"><a href="DescribingData.html#robust-statistics"><i class="fa fa-check"></i><b>2.8.6</b> Robust statistics</a></li>
-<li class="chapter" data-level="2.8.7" data-path="DescribingData.html"><a href="DescribingData.html#transformingDataSubsection"><i class="fa fa-check"></i><b>2.8.7</b> Transforming data (special topic)</a></li>
-<li class="chapter" data-level="2.8.8" data-path="DescribingData.html"><a href="DescribingData.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.8.8</b> Mapping data (special topic)</a></li>
-</ul></li>
-<li class="chapter" data-level="2.9" data-path="DescribingData.html"><a href="DescribingData.html#categoricalData"><i class="fa fa-check"></i><b>2.9</b> Considering categorical data</a><ul>
-<li class="chapter" data-level="2.9.1" data-path="DescribingData.html"><a href="DescribingData.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.9.1</b> Contingency tables and bar plots</a></li>
-<li class="chapter" data-level="2.9.2" data-path="DescribingData.html"><a href="DescribingData.html#row-and-column-proportions"><i class="fa fa-check"></i><b>2.9.2</b> Row and column proportions</a></li>
-<li class="chapter" data-level="2.9.3" data-path="DescribingData.html"><a href="DescribingData.html#segmentedBarPlotsAndIndependence"><i class="fa fa-check"></i><b>2.9.3</b> Segmented bar and mosaic plots</a></li>
-<li class="chapter" data-level="2.9.4" data-path="DescribingData.html"><a href="DescribingData.html#the-only-pie-chart-you-will-see-in-this-book"><i class="fa fa-check"></i><b>2.9.4</b> The only pie chart you will see in this book</a></li>
-<li class="chapter" data-level="2.9.5" data-path="DescribingData.html"><a href="DescribingData.html#comparingAcrossGroups"><i class="fa fa-check"></i><b>2.9.5</b> Comparing numerical data across groups</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Correlation.html"><a href="Correlation.html"><i class="fa fa-check"></i><b>3</b> Correlation</a><ul>
@@ -285,104 +247,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.7.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#take-homes-so-far"><i class="fa fa-check"></i><b>5.7.2</b> Take homes so far</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html"><i class="fa fa-check"></i><b>6</b> t-Tests</a><ul>
-<li class="chapter" data-level="6.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleMeansWithTDistribution"><i class="fa fa-check"></i><b>6.1</b> One-sample means with the <span class="math inline">\(t\)</span> distribution</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#two-examples-using-the-normal-distribution"><i class="fa fa-check"></i><b>6.1.1</b> Two examples using the normal distribution</a></li>
-<li class="chapter" data-level="6.1.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#introducingTheTDistribution"><i class="fa fa-check"></i><b>6.1.2</b> Introducing the <span class="math inline">\(t\)</span> distribution</a></li>
-<li class="chapter" data-level="6.1.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#tDistSolutionToSEProblem"><i class="fa fa-check"></i><b>6.1.3</b> Applying the <span class="math inline">\(t\)</span> distribution to the single-mean situation</a></li>
-<li class="chapter" data-level="6.1.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTConfidenceIntervals"><i class="fa fa-check"></i><b>6.1.4</b> One sample <span class="math inline">\(t\)</span> confidence intervals</a></li>
-<li class="chapter" data-level="6.1.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#oneSampleTTests"><i class="fa fa-check"></i><b>6.1.5</b> One sample <span class="math inline">\(t\)</span> tests</a></li>
+<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-Tests</a><ul>
+<li class="chapter" data-level="6.1" data-path="t-tests.html"><a href="t-tests.html#check-your-confidence-in-your-mean"><i class="fa fa-check"></i><b>6.1</b> Check your confidence in your mean</a></li>
+<li class="chapter" data-level="6.2" data-path="t-tests.html"><a href="t-tests.html#one-sample-t-test-a-new-t-test"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test: A new t-test</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="t-tests.html"><a href="t-tests.html#formulas-for-one-sample-t-test"><i class="fa fa-check"></i><b>6.2.1</b> Formulas for one-sample t-test</a></li>
+<li class="chapter" data-level="6.2.2" data-path="t-tests.html"><a href="t-tests.html#what-does-t-represent"><i class="fa fa-check"></i><b>6.2.2</b> What does t represent?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="t-tests.html"><a href="t-tests.html#calculating-t-from-data"><i class="fa fa-check"></i><b>6.2.3</b> Calculating t from data</a></li>
+<li class="chapter" data-level="6.2.4" data-path="t-tests.html"><a href="t-tests.html#how-does-t-behave"><i class="fa fa-check"></i><b>6.2.4</b> How does <span class="math inline">\(t\)</span> behave?</a></li>
+<li class="chapter" data-level="6.2.5" data-path="t-tests.html"><a href="t-tests.html#making-a-decision"><i class="fa fa-check"></i><b>6.2.5</b> Making a decision</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pairedData"><i class="fa fa-check"></i><b>6.2</b> Paired data</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#paired-observations"><i class="fa fa-check"></i><b>6.2.1</b> Paired observations</a></li>
-<li class="chapter" data-level="6.2.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#inference-for-paired-data"><i class="fa fa-check"></i><b>6.2.2</b> Inference for paired data</a></li>
+<li class="chapter" data-level="6.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples <span class="math inline">\(t\)</span>-test</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="t-tests.html"><a href="t-tests.html#mehr-song-and-spelke-2016"><i class="fa fa-check"></i><b>6.3.1</b> Mehr, Song, and Spelke (2016)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="t-tests.html"><a href="t-tests.html#the-data"><i class="fa fa-check"></i><b>6.3.2</b> The data</a></li>
+<li class="chapter" data-level="6.3.3" data-path="t-tests.html"><a href="t-tests.html#the-difference-scores-1"><i class="fa fa-check"></i><b>6.3.3</b> The difference scores</a></li>
+<li class="chapter" data-level="6.3.4" data-path="t-tests.html"><a href="t-tests.html#the-mean-difference"><i class="fa fa-check"></i><b>6.3.4</b> The mean difference</a></li>
+<li class="chapter" data-level="6.3.5" data-path="t-tests.html"><a href="t-tests.html#calculate-t"><i class="fa fa-check"></i><b>6.3.5</b> Calculate <span class="math inline">\(t\)</span></a></li>
+<li class="chapter" data-level="6.3.6" data-path="t-tests.html"><a href="t-tests.html#interpreting-ts"><i class="fa fa-check"></i><b>6.3.6</b> Interpreting <span class="math inline">\(t\)</span>s</a></li>
+<li class="chapter" data-level="6.3.7" data-path="t-tests.html"><a href="t-tests.html#getting-the-p-values-for-t-values"><i class="fa fa-check"></i><b>6.3.7</b> Getting the p-values for t-values</a></li>
+<li class="chapter" data-level="6.3.8" data-path="t-tests.html"><a href="t-tests.html#one-tailed-tests"><i class="fa fa-check"></i><b>6.3.8</b> One-tailed tests</a></li>
+<li class="chapter" data-level="6.3.9" data-path="t-tests.html"><a href="t-tests.html#two-tailed-tests"><i class="fa fa-check"></i><b>6.3.9</b> Two-tailed tests</a></li>
+<li class="chapter" data-level="6.3.10" data-path="t-tests.html"><a href="t-tests.html#one-or-two-tailed-which-one"><i class="fa fa-check"></i><b>6.3.10</b> One or two tailed, which one?</a></li>
+<li class="chapter" data-level="6.3.11" data-path="t-tests.html"><a href="t-tests.html#degrees-of-freedom"><i class="fa fa-check"></i><b>6.3.11</b> Degrees of freedom</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#confidence-interval-for-a-differences-of-means"><i class="fa fa-check"></i><b>6.3.1</b> Confidence interval for a differences of means</a></li>
-<li class="chapter" data-level="6.3.2" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#hypothesis-tests-based-on-a-difference-in-means"><i class="fa fa-check"></i><b>6.3.2</b> Hypothesis tests based on a difference in means</a></li>
-<li class="chapter" data-level="6.3.3" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#case-study-two-versions-of-a-course-exam"><i class="fa fa-check"></i><b>6.3.3</b> Case study: two versions of a course exam</a></li>
-<li class="chapter" data-level="6.3.4" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#summary-for-inference-using-the-t-distribution"><i class="fa fa-check"></i><b>6.3.4</b> Summary for inference using the <span class="math inline">\(t\)</span> distribution</a></li>
-<li class="chapter" data-level="6.3.5" data-path="inferenceForNumericalDatattest.html"><a href="inferenceForNumericalDatattest.html#pooledStandardDeviations"><i class="fa fa-check"></i><b>6.3.5</b> Pooled standard deviation estimate (special topic)</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
-<li class="chapter" data-level="7.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>7.1</b> Comparing many means with ANOVA</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#is-batting-performance-related-to-player-position-in-mlb"><i class="fa fa-check"></i><b>7.1.1</b> Is batting performance related to player position in MLB?</a></li>
-<li class="chapter" data-level="7.1.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#analysis-of-variance-anova-and-the-f-test"><i class="fa fa-check"></i><b>7.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
-<li class="chapter" data-level="7.1.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#reading-an-anova-table-from-software"><i class="fa fa-check"></i><b>7.1.3</b> Reading an ANOVA table from software</a></li>
-<li class="chapter" data-level="7.1.4" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#graphical-diagnostics-for-an-anova-analysis"><i class="fa fa-check"></i><b>7.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
-<li class="chapter" data-level="7.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>7.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrapping-to-study-the-standard-deviation"><i class="fa fa-check"></i><b>7.2</b> Bootstrapping to study the standard deviation</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#bootstrap-samples-and-distributions"><i class="fa fa-check"></i><b>7.2.1</b> Bootstrap samples and distributions</a></li>
-<li class="chapter" data-level="7.2.2" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#inference-using-the-bootstrap"><i class="fa fa-check"></i><b>7.2.2</b> Inference using the bootstrap</a></li>
-<li class="chapter" data-level="7.2.3" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#frequently-asked-questions"><i class="fa fa-check"></i><b>7.2.3</b> Frequently asked questions</a></li>
+<li class="chapter" data-level="6.4" data-path="t-tests.html"><a href="t-tests.html#the-paired-samples-t-test-strikes-back"><i class="fa fa-check"></i><b>6.4</b> The paired samples t-test strikes back</a></li>
+<li class="chapter" data-level="6.5" data-path="t-tests.html"><a href="t-tests.html#independent-samples-t-test-the-return-of-the-t-test"><i class="fa fa-check"></i><b>6.5</b> Independent samples t-test: The return of the t-test?</a></li>
+<li class="chapter" data-level="6.6" data-path="t-tests.html"><a href="t-tests.html#simulating-data-for-t-tests"><i class="fa fa-check"></i><b>6.6</b> Simulating data for t-tests</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="t-tests.html"><a href="t-tests.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.6.1</b> Simulating a one-sample t-test</a></li>
+<li class="chapter" data-level="6.6.2" data-path="t-tests.html"><a href="t-tests.html#simulating-a-paired-samples-test"><i class="fa fa-check"></i><b>6.6.2</b> Simulating a paired samples test</a></li>
+<li class="chapter" data-level="6.6.3" data-path="t-tests.html"><a href="t-tests.html#simulating-an-independent-samples-t.test"><i class="fa fa-check"></i><b>6.6.3</b> Simulating an independent samples t.test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>8</b> Repeated Measures ANOVA</a><ul>
-<li class="chapter" data-level="8.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>8.1</b> Comparing many means with ANOVA</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#is-batting-performance-related-to-player-position-in-mlb-1"><i class="fa fa-check"></i><b>8.1.1</b> Is batting performance related to player position in MLB?</a></li>
-<li class="chapter" data-level="8.1.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#analysis-of-variance-anova-and-the-f-test-1"><i class="fa fa-check"></i><b>8.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
-<li class="chapter" data-level="8.1.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#reading-an-anova-table-from-software-1"><i class="fa fa-check"></i><b>8.1.3</b> Reading an ANOVA table from software</a></li>
-<li class="chapter" data-level="8.1.4" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#graphical-diagnostics-for-an-anova-analysis-1"><i class="fa fa-check"></i><b>8.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
-<li class="chapter" data-level="8.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>8.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="anova.html"><a href="anova.html#anova-is-analysis-of-variance"><i class="fa fa-check"></i><b>7.0.1</b> ANOVA is Analysis of Variance</a></li>
+<li class="chapter" data-level="7.1" data-path="anova.html"><a href="anova.html#one-factor-anova"><i class="fa fa-check"></i><b>7.1</b> One-factor ANOVA</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="anova.html"><a href="anova.html#computing-the-f-value"><i class="fa fa-check"></i><b>7.1.1</b> Computing the F-value</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anova.html"><a href="anova.html#ss-total"><i class="fa fa-check"></i><b>7.1.2</b> SS Total</a></li>
+<li class="chapter" data-level="7.1.3" data-path="anova.html"><a href="anova.html#ss-effect"><i class="fa fa-check"></i><b>7.1.3</b> SS Effect</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#bootstrapping-to-study-the-standard-deviation-1"><i class="fa fa-check"></i><b>8.2</b> Bootstrapping to study the standard deviation</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#bootstrap-samples-and-distributions-1"><i class="fa fa-check"></i><b>8.2.1</b> Bootstrap samples and distributions</a></li>
-<li class="chapter" data-level="8.2.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#inference-using-the-bootstrap-1"><i class="fa fa-check"></i><b>8.2.2</b> Inference using the bootstrap</a></li>
-<li class="chapter" data-level="8.2.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#frequently-asked-questions-1"><i class="fa fa-check"></i><b>8.2.3</b> Frequently asked questions</a></li>
+<li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#ss-error"><i class="fa fa-check"></i><b>7.2</b> SS Error</a></li>
+<li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#degrees-of-freedom-1"><i class="fa fa-check"></i><b>7.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#mean-squared-error"><i class="fa fa-check"></i><b>7.4</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#calculate-f"><i class="fa fa-check"></i><b>7.5</b> Calculate F</a></li>
+<li class="chapter" data-level="7.6" data-path="anova.html"><a href="anova.html#the-anova-table"><i class="fa fa-check"></i><b>7.6</b> The ANOVA TABLE</a></li>
+<li class="chapter" data-level="7.7" data-path="anova.html"><a href="anova.html#what-does-f-mean"><i class="fa fa-check"></i><b>7.7</b> What does F mean?</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="anova.html"><a href="anova.html#making-decisions"><i class="fa fa-check"></i><b>7.7.1</b> Making Decisions</a></li>
+<li class="chapter" data-level="7.7.2" data-path="anova.html"><a href="anova.html#fs-and-means"><i class="fa fa-check"></i><b>7.7.2</b> Fs and means</a></li>
 </ul></li>
+<li class="chapter" data-level="7.8" data-path="anova.html"><a href="anova.html#anova-on-real-data"><i class="fa fa-check"></i><b>7.8</b> ANOVA on Real Data</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="anova.html"><a href="anova.html#tetris-and-bad-memories"><i class="fa fa-check"></i><b>7.8.1</b> Tetris and bad memories</a></li>
+<li class="chapter" data-level="7.8.2" data-path="anova.html"><a href="anova.html#comparing-means-after-the-anova"><i class="fa fa-check"></i><b>7.8.2</b> Comparing means after the ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVA</a><ul>
-<li class="chapter" data-level="9.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>9.1</b> Comparing many means with ANOVA</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="factorial-anova.html"><a href="factorial-anova.html#is-batting-performance-related-to-player-position-in-mlb-2"><i class="fa fa-check"></i><b>9.1.1</b> Is batting performance related to player position in MLB?</a></li>
-<li class="chapter" data-level="9.1.2" data-path="factorial-anova.html"><a href="factorial-anova.html#analysis-of-variance-anova-and-the-f-test-2"><i class="fa fa-check"></i><b>9.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
-<li class="chapter" data-level="9.1.3" data-path="factorial-anova.html"><a href="factorial-anova.html#reading-an-anova-table-from-software-2"><i class="fa fa-check"></i><b>9.1.3</b> Reading an ANOVA table from software</a></li>
-<li class="chapter" data-level="9.1.4" data-path="factorial-anova.html"><a href="factorial-anova.html#graphical-diagnostics-for-an-anova-analysis-2"><i class="fa fa-check"></i><b>9.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
-<li class="chapter" data-level="9.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>9.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
+<li class="chapter" data-level="7.9" data-path="anova.html"><a href="anova.html#anova-summmary"><i class="fa fa-check"></i><b>7.9</b> ANOVA Summmary</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="factorial-anova.html"><a href="factorial-anova.html#bootstrapping-to-study-the-standard-deviation-2"><i class="fa fa-check"></i><b>9.2</b> Bootstrapping to study the standard deviation</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="factorial-anova.html"><a href="factorial-anova.html#bootstrap-samples-and-distributions-2"><i class="fa fa-check"></i><b>9.2.1</b> Bootstrap samples and distributions</a></li>
-<li class="chapter" data-level="9.2.2" data-path="factorial-anova.html"><a href="factorial-anova.html#inference-using-the-bootstrap-2"><i class="fa fa-check"></i><b>9.2.2</b> Inference using the bootstrap</a></li>
-<li class="chapter" data-level="9.2.3" data-path="factorial-anova.html"><a href="factorial-anova.html#frequently-asked-questions-2"><i class="fa fa-check"></i><b>9.2.3</b> Frequently asked questions</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a><ul>
-<li class="chapter" data-level="10.1" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>10.1</b> Comparing many means with ANOVA</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#is-batting-performance-related-to-player-position-in-mlb-3"><i class="fa fa-check"></i><b>10.1.1</b> Is batting performance related to player position in MLB?</a></li>
-<li class="chapter" data-level="10.1.2" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#analysis-of-variance-anova-and-the-f-test-3"><i class="fa fa-check"></i><b>10.1.2</b> Analysis of variance (ANOVA) and the F test</a></li>
-<li class="chapter" data-level="10.1.3" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#reading-an-anova-table-from-software-3"><i class="fa fa-check"></i><b>10.1.3</b> Reading an ANOVA table from software</a></li>
-<li class="chapter" data-level="10.1.4" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#graphical-diagnostics-for-an-anova-analysis-3"><i class="fa fa-check"></i><b>10.1.4</b> Graphical diagnostics for an ANOVA analysis</a></li>
-<li class="chapter" data-level="10.1.5" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html#multipleComparisonsAndControllingTheType1ErrorRate"><i class="fa fa-check"></i><b>10.1.5</b> Multiple comparisons and controlling Type 1 Error rate</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#bootstrapping-to-study-the-standard-deviation-3"><i class="fa fa-check"></i><b>10.2</b> Bootstrapping to study the standard deviation</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#bootstrap-samples-and-distributions-3"><i class="fa fa-check"></i><b>10.2.1</b> Bootstrap samples and distributions</a></li>
-<li class="chapter" data-level="10.2.2" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#inference-using-the-bootstrap-3"><i class="fa fa-check"></i><b>10.2.2</b> Inference using the bootstrap</a></li>
-<li class="chapter" data-level="10.2.3" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#frequently-asked-questions-3"><i class="fa fa-check"></i><b>10.2.3</b> Frequently asked questions</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>11</b> Introduction to linear regression</a><ul>
-<li class="chapter" data-level="11.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>11.1</b> Line fitting, residuals, and correlation</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#beginning-with-straight-lines"><i class="fa fa-check"></i><b>11.1.1</b> Beginning with straight lines</a></li>
-<li class="chapter" data-level="11.1.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fitting-a-line-by-eye"><i class="fa fa-check"></i><b>11.1.2</b> Fitting a line by eye</a></li>
-<li class="chapter" data-level="11.1.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#residuals"><i class="fa fa-check"></i><b>11.1.3</b> Residuals</a></li>
-<li class="chapter" data-level="11.1.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>11.1.4</b> Describing linear relationships with correlation</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#fittingALineByLSR"><i class="fa fa-check"></i><b>11.2</b> Fitting a line by least squares regression</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>11.2.1</b> An objective measure for finding the best line</a></li>
-<li class="chapter" data-level="11.2.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#findingTheLeastSquaresLineSection"><i class="fa fa-check"></i><b>11.2.2</b> Finding the least squares line</a></li>
-<li class="chapter" data-level="11.2.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#interpreting-regression-line-parameter-estimates"><i class="fa fa-check"></i><b>11.2.3</b> Interpreting regression line parameter estimates</a></li>
-<li class="chapter" data-level="11.2.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>11.2.4</b> Extrapolation is treacherous</a></li>
-<li class="chapter" data-level="11.2.5" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#using-r2-to-describe-the-strength-of-a-fit"><i class="fa fa-check"></i><b>11.2.5</b> Using <span class="math inline">\(R^2\)</span> to describe the strength of a fit</a></li>
-<li class="chapter" data-level="11.2.6" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#categoricalPredictorsWithTwoLevels"><i class="fa fa-check"></i><b>11.2.6</b> Categorical predictors with two levels</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#typesOfOutliersInLinearRegression"><i class="fa fa-check"></i><b>11.3</b> Types of outliers in linear regression</a></li>
-<li class="chapter" data-level="11.4" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>11.4</b> Inference for linear regression</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#conditions-for-the-least-squares-line"><i class="fa fa-check"></i><b>11.4.1</b> Conditions for the least squares line</a></li>
-<li class="chapter" data-level="11.4.2" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>11.4.2</b> Midterm elections and unemployment</a></li>
-<li class="chapter" data-level="11.4.3" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#testStatisticForTheSlope"><i class="fa fa-check"></i><b>11.4.3</b> Understanding regression output from software</a></li>
-</ul></li>
-</ul></li>
+<li class="chapter" data-level="8" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>8</b> Repeated Measures ANOVA</a></li>
+<li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVA</a></li>
+<li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a></li>
+<li class="chapter" data-level="11" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>11</b> Introduction to linear regression</a></li>
 <li class="chapter" data-level="12" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>12</b> Multiple and logistic regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>12.1</b> Introduction to multiple regression</a><ul>
 <li class="chapter" data-level="12.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>12.1.1</b> A single-variable model for the Mario Kart data</a></li>
@@ -486,174 +406,171 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="uniform-distribution" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Uniform distribution</h3>
 <p>A uniform distribution is completely flat, it looks like this:</p>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.4</code></pre>
-<p><img src="statistics_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>Ok, so that doesn’t look like much. What is going on here? The y-axis is labelled <code>probability</code>, and it goes from 0 to 1. The x-xaxis is labelled <code>Number</code>, and it goes from one to 10. There is a horizontal line drawn straight through. This line tells you the probability of each number from 1 to 10. Notice the line is flat. This means all of the numbers have the same probability of occuring. More specifically, there are 10 numbers from 1 to 10 (1,2,3,4,5,6,7,8,9,10), and they all have an equal chance of occuring. 1/10 = .1, which is the probability indicated by the horizontal line.</p>
 <p>“So what?”. Imagine that this uniform distribution is a number generating machine. It spits out numbers, but it spits out each number with the probability indicated by the line. If this distribution was going to start spitting out numbers, it would spit out 10% 1s, 10% 2s, 10% 3s, and so on, up to 10% 10s. Wanna see what that would look like? Let’s make it spit out 100 numbers</p>
 <table>
 <tbody>
 <tr class="odd">
+<td align="right">7</td>
+<td align="right">7</td>
 <td align="right">8</td>
-<td align="right">9</td>
-<td align="right">9</td>
+<td align="right">6</td>
+<td align="right">8</td>
 <td align="right">2</td>
-<td align="right">10</td>
 <td align="right">7</td>
-<td align="right">6</td>
-<td align="right">8</td>
-<td align="right">6</td>
-<td align="right">7</td>
-</tr>
-<tr class="even">
 <td align="right">3</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">8</td>
-<td align="right">6</td>
-<td align="right">5</td>
-<td align="right">7</td>
-<td align="right">9</td>
-<td align="right">8</td>
-<td align="right">10</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="right">9</td>
-<td align="right">2</td>
-<td align="right">9</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">10</td>
-<td align="right">7</td>
-<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
 </tr>
 <tr class="even">
 <td align="right">7</td>
-<td align="right">6</td>
-<td align="right">9</td>
-<td align="right">10</td>
-<td align="right">6</td>
-<td align="right">9</td>
+<td align="right">8</td>
 <td align="right">3</td>
-<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
 <td align="right">9</td>
-<td align="right">6</td>
+<td align="right">5</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="right">4</td>
-<td align="right">10</td>
-<td align="right">9</td>
-<td align="right">5</td>
+<td align="right">7</td>
+<td align="right">8</td>
 <td align="right">4</td>
+<td align="right">5</td>
 <td align="right">3</td>
+<td align="right">8</td>
 <td align="right">10</td>
-<td align="right">9</td>
 <td align="right">7</td>
 </tr>
 <tr class="even">
-<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">2</td>
 <td align="right">5</td>
+<td align="right">4</td>
+<td align="right">1</td>
 <td align="right">10</td>
-<td align="right">7</td>
-<td align="right">2</td>
-<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">4</td>
 <td align="right">6</td>
 <td align="right">4</td>
-<td align="right">5</td>
-<td align="right">6</td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
-<td align="right">4</td>
-<td align="right">6</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">9</td>
 <td align="right">2</td>
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="right">3</td>
+<td align="right">9</td>
 <td align="right">8</td>
 <td align="right">5</td>
+<td align="right">7</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">9</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">3</td>
 <td align="right">2</td>
 </tr>
 <tr class="even">
 <td align="right">9</td>
 <td align="right">8</td>
-<td align="right">8</td>
-<td align="right">2</td>
-<td align="right">7</td>
-<td align="right">9</td>
 <td align="right">6</td>
-<td align="right">7</td>
 <td align="right">1</td>
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">9</td>
+<td align="right">4</td>
 <td align="right">4</td>
 </tr>
 <tr class="odd">
-<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">9</td>
+<td align="right">10</td>
 <td align="right">4</td>
-<td align="right">6</td>
-<td align="right">7</td>
-<td align="right">7</td>
+<td align="right">2</td>
 <td align="right">8</td>
-<td align="right">6</td>
-<td align="right">6</td>
-<td align="right">5</td>
+<td align="right">7</td>
+<td align="right">10</td>
+<td align="right">2</td>
 <td align="right">5</td>
 </tr>
 <tr class="even">
-<td align="right">1</td>
-<td align="right">3</td>
 <td align="right">9</td>
-<td align="right">3</td>
 <td align="right">10</td>
-<td align="right">10</td>
+<td align="right">9</td>
+<td align="right">1</td>
 <td align="right">4</td>
-<td align="right">6</td>
-<td align="right">2</td>
-<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">9</td>
+<td align="right">4</td>
 </tr>
 </tbody>
 </table>
 <p>We used the uniform distribution to generate these numbers. Officially, we call this <strong>sampling</strong> from a <strong>distribution</strong>. Sampling is what you do at a grocery store when there is free food. You can keep taking more. However, if you take all of the samples, then what you have is called the <strong>population</strong>. We’ll talk more about samples and populations as we go along.</p>
 <p>Because we used the uniformat distribution to create numbers, we already know where our numbers came from. However, we can still pretend for the moment that someone showed up at your door, showed you these numbers, and then you wondered where they came from. Can you tell just by looking at these numbers that they came from a uniform distribution? What would need to look at? Perhaps you would want to know if all of the numbers occur with roughly equal frequency, after all they should have right? That is, if each number had the same chance of occuring, we should see that each number occurs roughly the same number of times.</p>
 <p>We already know what a histogram is, so we can put our numbers into a histogram and see what the counts look like. If all of the numbers occur with equal frequency, then each number should occur 10 times, because we sampled a total of 100 numbers. The histogram looks like this:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Uh oh, as you can see, not all of the number occured 10 times each. All of the bars are not the same height. This shows that randomly sampling numbers from this distribution does not guarantee that our numbers will be exactly like the distribution thehy came from. We can call this sampling error, or sampling variability.</p>
 </div>
 <div id="not-all-samples-are-the-same-they-are-usually-quite-different" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Not all samples are the same, they are usually quite different</h3>
 <p>Let’s take a look at sampling error more closely. We will sample 20 numbers from the uniform. Here we should expect that each number between 1 and 10 occurs two times each. Let’s take 20 sample and make a histogram. And then, let’s do that 10 times. So we will be looking at 10 histograms, each showing us what the 10 different samples of twenty numbers looks like:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>You might notice right away that none of the histograms are the same. Even though we are randomly taking 20 numbers from the very same uniform distribution, each sample of 20 numbers comes out different. This is sampling variability, or sampling error.</p>
 <p>Here is movie version. You are watching a new histogram for each sample of 20 observations. The horizontal line shows the shape of the uniform distribution. It crosses the y-axis at 2, because we expect that each number (from 1 to 10) should occur about 2 times each in a sample of 20. However, as you can see, this does not happen. Instead, each sample bounces around quite a bit, due to random chance.</p>
-<pre><code>## Warning in min(best[best != 0]): no non-missing arguments to min; returning
-## Inf</code></pre>
-<p><img src="statistics_files/figure-html/unnamed-chunk-5-1.gif" /><!-- --></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-50-1.gif" /><!-- --></p>
 <p>Looking at the above histograms shows us that figuring out where our numbers came from can be difficult. In the real world, our measurements are samples. We usually only have the luxury of getting one sample of measurements, rather than repeating our own measurements 10 times or more. If you look at the histograms, you will see that some of them look like they could have come from the uniform distribution: most of the bars are near two, and they all fall kind of on a flat line. But, if you happen to look at a different sample, you might see something that is very bumpy, with some numbers happening way more than others. This could suggest to you that those numbers did not come from a uniform distribution (they’re just too bumpy). But let me remind you, all of these samples came from a uniform distribution, this is what samples from that distribution look like. This is what chance does to samples, it makes the individual data points noisy.</p>
 </div>
 <div id="large-samples-are-more-like-the-distribution-they-came-from" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Large samples are more like the distribution they came from</h3>
 <p>Let’s refresh the question. Which of these two samples do you think came from a uniform distribution?</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>The answer is that they both did. But, neither of them look like they did.</p>
 <p>Can we improve things, and make it easier to see if a sample came from a uniform distribution? Yes, we can. All we need to do is increase the <strong>sample-size</strong>. We will often use the letter <code>n</code> to refer to sample-size. N is the number of observations in the sample.</p>
 <p>So let’s increase the number of observations in each sample from 20 to 100. We will again create 10 samples (each with 100 observations), and make histrograms for each of them. All of these samples will be drawn from the very same uniform distribution. This, means we should expect each number from 1 to 10 to occur about 10 times in each sample. Here are the histograms:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>Again, most of these histograms don’t look very flat, and all of the bars seem to be going up or down, and they are not exactly at 10 each. So, we are still dealine with sampling error. It’s a pain. It’s always there.</p>
 <p>Let’s bump it up to 1000 observations per sample. Now we should expect every number to appear about 100 times each. What happens?</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>Each of these histograms are starting to flatten out. The bars are still not perfectly at 100, because there is still sampling error (there always will be). But, if you found a histrogram that looked flat and knew that the sample contained many observations, you might be more confident that those numbers came from a uniform distribution.</p>
 <p>Just for fun let’s make the samples really big. Say 100,000 observations per sample. Here, we should expect that each number occurs about 10,000 times each. What happens?</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>Now we see that all of our samples start to look the same. They all have 100,000 observations, and this gives chance enough opportunity to equally distribute the numbers, roughly making sure that they all occur very close to the same amount of times. As you can see, the bars are all very close to 10,000, where they should be if the sample came from a uniform distribution.</p>
 <blockquote>
 <p>Pro tip: The pattern behind a sample will tend to stabilize as sample-size increases. Small samples will have all sorts of patterns because of sampling error (chance).</p>
 </blockquote>
 <p>Before getting back to experiments, let’s ask two more questions. First, which of these two samples do you think came from a uniform distribution? I will tell you that each of these samples had 20 observations each.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>If you are not confident in the answer, this is because <strong>sampling error</strong> (randomness) is fuzzing with the histograms.</p>
 <p>Here is the very same question, only this time we will take 1,000 observations for each sample. Which one do you think came from a uniform distribution, which one did not?</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>Now that we have increased N, we can see the pattern in each sample becomes more obvious. The histogram for sample 1 has bars near 100, not perfectly flat, but it resembles a uniform distribution. The histogram for sample 2 does not look flat at all. Instead, there the number five appears most of the time, and numbers on either side of five happen less and less.</p>
 <p>Congratulations to Us! We have just made some statistical inferences without using formulas!</p>
 <p>“We did?”. Yes, by looking at our two samples we have inferred that sample 2 did not come from a uniform distribution. We have also inferred that sample 1 could have come froma uniform distribution. Fantastic. This is really all we will be doing for the rest of the course. We will be looking at some numbers, wondering where they came from, then we will arrange the numbers in such a way so that we can make an inference about where they came from. That’s it.</p>
@@ -700,7 +617,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="odd">
 <td align="left">left</td>
-<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">left</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="left">left</td>
@@ -712,30 +637,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="even">
 <td align="left">left</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">left</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">left</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">left</td>
 <td align="right">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">left</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
-<td align="left">right</td>
-<td align="right">0</td>
-</tr>
 <tr class="even">
-<td align="left">right</td>
+<td align="left">left</td>
 <td align="right">1</td>
 </tr>
 <tr class="odd">
@@ -744,7 +653,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 <tr class="even">
 <td align="left">right</td>
-<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="left">right</td>
@@ -753,6 +662,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <tr class="even">
 <td align="left">right</td>
 <td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">right</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">right</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="left">right</td>
@@ -774,14 +691,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </table>
 <p>“What am I looking at here”. This is a long-format table. Each row is one gumball. The first column tells you what hand was used. The second column tells you what kind of gumball. We will say 1s stand for green gum balls, and 0s stand for red gumballs. So, did your left hand cause you to pick more green gumballs than your right hand?</p>
 <p>It would be easier to look at the data using a bar graph. To keep things simple, we will only count green gumablls (the other gumballs must be red). So, all we need to do is sum up the 1s. The 0s won’t add anything.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Oh look, the bars are not the same. One hand picked more green gum balls than the other. Does this mean that one of your hands secretly knows how to find green gumballs? No, it’s just another case of sampling error, that thing we call luck or chance. The difference here is caused by chance, not by the manipulation (which hand you use). <strong>Major problem for inference alert</strong>. We run experiments to look for differences so we can make inferences about whether our manipulations cause change in our measures. Now we know that we can find differences by chance. How can we know if a difference is real, or just caused by chance?</p>
 </div>
 <div id="differences-due-to-chance-can-be-simulated" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Differences due to chance can be simulated</h3>
 <p>Remember when we showed that chance can produce correlations. We also showed that chance is restricted in its ability to produce correlations. For example, chance more often produces weak correlations than strong correlations. Remember the window of chance? We found out before that correlations falling outside the window of chance were very unlikely. We can do the same thing for differences. Let’s find out just what chance can do in our experiment. Once we know what chance is capable of we will be in a better position to judge whether our manipulation caused a difference, or whether it could have been chance.</p>
 <p>The first thing to do is pretend you conduct the gumball experiment 10 times in a row. This will produce 10 different sets of results. For each of them we can make a bar graph, and look at whether the left hand chose more green gumballs than red gumballs. It looks like this:</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>These 10 experiments give us a better look at what chance can do. It should also mesh well with your expectations. If everything is left up to chance (as we have made it so), then sometimes your left hand will choose more green balls, sometimes your right hand will choose more green gumballs, and sometimes they will choose the same amount of gumballs. Right? Right.</p>
 </div>
 </div>
@@ -789,39 +706,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">5.5</span> Chance makes some differences more likely than others</h2>
 <p>Ok, we have seen that chance can produce differences here. But, we still don’t have a good idea about what chance usually does and doesn’t do. For example, if we could find the window of opportunity here, we would be able find out that chance usually does not produce differences of a certain large size. If we knew what the size was, then if we ran experiment and our difference was bigger than what chance can do, we could be confident that chance did not produce our difference.</p>
 <p>Let’s use the word difference some more, because it will be helpful. In fact, let’s think about our measure of green balls in terms of a difference. For example, in each experiment we counted the green balls for the left and right hand. What we really want to know is if there is a difference between them. So, we can calculate the <strong>difference score</strong>. Let’s decide that difference score = # of green gumballs in left hand - # of green gumballs in right hand. Now, we can redraw the 10 bar graphs from above. But this time we will only see one bar for each experiment. This bar will show the differenced in number of green gumballs.</p>
-<p><img src="statistics_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>Missing bars mean that there were an equal number of green gumballs chosen by the left and righ hands (difference score is 0). A positive value means that more green gumballs were chosen by the left than right hand. A negative value means that more green gumballs were chosen by the right than left hand. Note that if we decided (and we get to decide) to calculate the difference in reverse (right hand - left hand), ths signs of the differences scores would flip around.</p>
 <p>We are starting to see more of the differences that chance can produce. The difference scores are mostly between -2 to +2. We could get an even better impression by running this pretend experiment 100 times instead of only 10 times. How about we do that.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hand&lt;-<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;right&quot;</span>),<span class="dt">each=</span><span class="dv">10</span>),<span class="dv">100</span>)
-experiment&lt;-<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">100</span>,<span class="dt">each=</span><span class="dv">20</span>)
-gumball&lt;-<span class="kw">rbinom</span>(<span class="dv">20</span>*<span class="dv">100</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
-df&lt;-<span class="kw">data.frame</span>(experiment,hand,gumball)
-sum_df&lt;-<span class="kw">aggregate</span>(gumball~experiment*hand,df,sum)
-
-differences&lt;-sum_df[sum_df$hand ==<span class="st">&quot;left&quot;</span>,]$gumball-
-<span class="st">  </span>sum_df[sum_df$hand ==<span class="st">&quot;right&quot;</span>,]$gumball
-
-dif_df&lt;-<span class="kw">data.frame</span>(<span class="dt">experiment=</span><span class="kw">c</span>(<span class="dv">1</span>:<span class="dv">100</span>),differences)
-dif_df$experiment&lt;-<span class="kw">as.factor</span>(dif_df$experiment)
-
-<span class="kw">ggplot</span>(dif_df,<span class="kw">aes</span>(<span class="dt">y=</span>differences,<span class="dt">x=</span>experiment))+
-<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;differences&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>OOf, we just ran so many simulated expeirments that the x-axis is unreadable, but it goes from 1 to 100. Each bar represents the difference of number of green balls chosen randomly by the left or right hand. Beginning to notice anything? Look at the y-axis, this shows the size of the difference. Yes, there are lots of bars of different sizes, this shows us that many kinds of differences do occur by chance. However, the y-axis is also restricted. It does not go from -10 to +10. Big differences greater than 5 or -5 don’t happen very often.</p>
 <p>Now that we have a method for simulating differences due to chance, let’s run 10,000 simulated experiments. But, instead of plotting the differences in a bar graph for each experiment, how about we look at the histogram of difference scores. This will give us a clearer picture about which differences happen most often, and which ones do not. This will be another window into chance. The chance window of differences.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hand&lt;-<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;right&quot;</span>),<span class="dt">each=</span><span class="dv">10</span>),<span class="dv">10000</span>)
-experiment&lt;-<span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">10000</span>,<span class="dt">each=</span><span class="dv">20</span>)
-gumball&lt;-<span class="kw">rbinom</span>(<span class="dv">20</span>*<span class="dv">10000</span>,<span class="dv">1</span>,.<span class="dv">5</span>)
-df&lt;-<span class="kw">data.frame</span>(experiment,hand,gumball)
-sum_df&lt;-<span class="kw">aggregate</span>(gumball~experiment*hand,df,sum)
-
-differences&lt;-sum_df[sum_df$hand ==<span class="st">&quot;left&quot;</span>,]$gumball-
-<span class="st">  </span>sum_df[sum_df$hand ==<span class="st">&quot;right&quot;</span>,]$gumball
-
-<span class="kw">hist</span>(differences,<span class="dt">breaks=</span><span class="kw">seq</span>(-<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>Our computer simulation allows us to force chance to operate hundreds of times, each time it produces a difference. We record the difference, then at the end of the simulation we plot the histogram of the differences. The histogram begins to show us the where the differences came from. Remember the idea that numbers come from a distribution, and the distribution says how often each number occurs. We are looking at one of these distributions. It is showing us that chance produces some differences more often than others. First, chance usually produces 0 differences, that’s the biggest bar in the middle. Chance also produces larger differences, but as the differences get larger (positive or negative), they occur less frequently. The shape of this histogram is your chance window, it tells you what chance can do, it tells you what chance usually does, and what it usually does not do.</p>
 <p>You can use this chance window to help you make inferences. If you ran yourself in the gumball experiment and found that your left hand chose 2 more green gumballs than red gumballs, would you conclude that you left hand was special, and caused you to choose more green gumballs? Hopefully not. You could look at the chance window and see that differences of size +2 do happen fairly often by chance alone. You should not be surprised if you got a luck +2 difference. However, what if your left chose 5 more green gumballs than red gumballs. Well, chance doesn’t do this very often, you might think something is up with your left hand. If you got a whopping 9 more green gumballs than red gumballs, you might really start to wonder. This is the kind of thing that could happen (it’s possible), but virtually never happens. When you get things that almost never happen by chance, you can be more confident that the difference reflects a causal force that is not chance.</p>
 </div>
@@ -862,18 +753,7 @@ differences&lt;-sum_df[sum_df$hand ==<span class="st">&quot;left&quot;</span>,]$
 <p>Before we do the simulation, we need to answer one question. How much is alot? We could pick any number for alot. I’m going to pick 10,000. That is alot. If something happens only 1 times out 10,000, I am willing to say that is not alot.</p>
 <p>Ok, now we have our number, we are going to simulate the possible mean differences between group A and group B that could arise by chance. We do this 10,000 times. This gives chance alot of opportunity to show us what it does do, and what it does not do.</p>
 <p>This is what I did: I sampled 20 numbers into group A, and 20 into group B. The numbers both came from the same normal distribution, with mean = 100, and standard deviation = 15. Because the samples are coming from the same distribution, we expect that on average they will be similar (but we already know that samples differ from one another). Then, I compute the mean for each sample, and compute the difference between the means. I save the <strong>mean difference score</strong>, and end up with 10,000 of them. Then I draw a histogram. It looks like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference&lt;-<span class="kw">length</span>(<span class="dv">10000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">10000</span>){
-  difference[i]&lt;-<span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">15</span>)-<span class="kw">rnorm</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="dv">15</span>))
-}
-plot_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sim=</span><span class="dv">1</span>:<span class="dv">10000</span>,difference)
-<span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>difference))+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">100</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=10) </span><span class="ch">\n</span>
-<span class="st">          both drawn from the same normal distribution (u=100, sd=20&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <div class="marginnote">
 <p>Sidenote: Of course, we might recognize that chance could do a difference greater than 15. We just didn’t give it the opportunity. We only ran the simulation 10,000 times. If we ran it on million times, maybe a difference greater than 20 would happen a couple times. If we ran it a bazillion gazillion times, maybe a difference greater than 30 would happen a couple times. If we go out to infinity, then chance might produce all sorts of bigger differences once in a while. But, we’ve already decided that 1/10,000 is not alot. So things that happen 0/10,000 times, like differences greater than 15, just don’t happen very much.</p>
 </div>
@@ -882,10 +762,10 @@ plot_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sim=</span><span
 <p>So, differences near zero happen the most, that’s good, that’s what we expect. Bigger or smaller differences happen increasingly less often. Differences greater than 15 or -15 never happen at all. For our purposes, it looks like chance only produces differences between -15 to 15.</p>
 <p>Ok, let’s ask a couple simple questions. What was the biggest negative number that occured in the simulation? We’ll use R for this. All of the 10,000 difference scores are stored in a variable I made called <code>difference</code>. If we want to find the minimum value, we use the <code>min</code> function. Here’s the result.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(difference)</code></pre></div>
-<pre><code>## [1] -16.72739</code></pre>
+<pre><code>## [1] -20.32968</code></pre>
 <p>Ok, so what was the biggest positive number that occurred? Let’s use the <code>max</code> function to find out. It finds the biggest (maximum) value in the variable. FYI, we’ve just computed the range, the minimum and maximum numbers in the data. Remember we learned that before. Anyway, here’s the max.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(difference)</code></pre></div>
-<pre><code>## [1] 17.89102</code></pre>
+<pre><code>## [1] 19.35525</code></pre>
 <p>Both of these extreme values only occurred once. Because of the scale of the histogram, we couldn’t even see them on there, the bar was so small. The biggest negative and postive numbers are pretty much the same if you ignore their sign. What can we say about these numbers. Well since they are the most extreme values, we can say something like a number this big (ignoring sign) happens about 2 times out of 10,000. Is that alot. Not to me. It’s not alot. So, how often does a difference of 20 occur out of 10,000. Well, we don’t really know, but it didn’t occur here, so going with what we got, we say 0 out of 10,000. That’s never.</p>
 <p>We’re about to move into part three, which involves drawing lines and talking about them. The really important part about part 3 is this. What would you say if you ran this experiment once, and found a mean difference of 30? I would say it happens 0 times of out 10,000 by chance. I would say chance did not produce my difference of 30. That’s what I would say. We’re going to expand upon this right now.</p>
 </div>
@@ -901,28 +781,7 @@ plot_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sim=</span><span
 <li>Region of not chance. Chance didn’t do it. Chance couldn’t have done it.</li>
 </ol>
 <p>The regions are defined by the minimum value and the maximum value. Chance never produced a smaller or bigger number. The region inside the range is what chance did do, and the the region outside the range on both sides is what chance never did. It looks like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>difference))+
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">min</span>(difference), <span class="dt">xmax=</span><span class="kw">max</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>) +
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span>-<span class="ot">Inf</span>, <span class="dt">xmax=</span><span class="kw">min</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span><span class="kw">max</span>(difference), <span class="dt">xmax=</span><span class="ot">Inf</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">min</span>(difference))+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">max</span>(difference))+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=10) </span><span class="ch">\n</span>
-<span class="st">          both drawn from the same normal distribution (u=100, sd=20)&quot;</span>)+
-<span class="st">  </span><span class="kw">xlim</span>(-<span class="dv">30</span>,<span class="dv">30</span>)+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">min</span>(difference), <span class="dt">y =</span> <span class="dv">750</span>, 
-                               <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;min </span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">round</span>(<span class="kw">min</span>(difference)))), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">   </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">max</span>(difference), <span class="dt">y =</span> <span class="dv">750</span>, 
-                               <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;max </span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">round</span>(<span class="kw">max</span>(difference)))), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>We have just drawn some lines, and shaded some regions, and made one plan we could use to make decisions. How would the decisions work. Let’s say you ran the experiment and found a mean difference between groups A and B of 25. Where is 25 in the figure? It’s in the green part. What does the green part say? NOT CHANCE. What does this mean. It means chance never made a difference of 25. It did that 0 out of 10,000 times. If we found a difference of 25, perhaps we could confidently conclude that chance did not cause the difference. If I found a difference of 25 with this kind of data, I’d be pretty confident that my experimental manipulation caused the difference, because obviously chance never does.</p>
 <p>What about a difference of +10? That’s in the red part, where chance lives. Chance could have done a difference of because we can see that it did do that. The red part is the window of what chance did in our simulation. Anything inside the window could have been a difference caused by chance. If I found a difference of +10, I’d say, coulda been been chance. I would not be very confident that my experimental manipulation caused the difference.</p>
 <p>Statistical inference could be this easy. The number you get from your experiment could be in the chance window (then you can’t rule out chance as a cause), or it could be outside the chance window (then you can rule out chance). Case closed. Let’s all go home.</p>
@@ -930,75 +789,13 @@ plot_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sim=</span><span
 <h4><span class="header-section-number">5.6.4.1</span> Grey areas</h4>
 <p>So what’s the problem? Depending on who you are, and what kinds of risks you’re willing to take, there might not be a problem. But, if you are just even a little bit risky then there is a problem that makes clear judgments about the role of chance difficult. We would like to say chance did or did not cause our difference. But, we’re really always in the position of admitting that it could have sometimes, or wouldn’t have most times. These are wishy washy statements, they are in between yes or no. That’s ok. Grey is a color too, let’s give grey some respect.</p>
 <p>“What grey areas are you talking about?, I only see red or green, am I grey blind?”. Let’s look at where some grey areas might be. I say might be, because people disagree about where the grey is. People have different comfort levels with grey. Here’s my opinion on some clear grey areas.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>difference))+
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">min</span>(difference), <span class="dt">xmax=</span><span class="kw">max</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>) +
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">min</span>(difference), <span class="dt">xmax=</span><span class="kw">min</span>(difference)+<span class="dv">10</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>, <span class="dt">fill=</span><span class="st">&quot;light grey&quot;</span>) +
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">max</span>(difference)-<span class="dv">10</span>, <span class="dt">xmax=</span><span class="kw">max</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>, <span class="dt">fill=</span><span class="st">&quot;light grey&quot;</span>) +
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span>-<span class="ot">Inf</span>, <span class="dt">xmax=</span><span class="kw">min</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span><span class="kw">max</span>(difference), <span class="dt">xmax=</span><span class="ot">Inf</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">min</span>(difference))+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">max</span>(difference))+
-<span class="st">   </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">min</span>(difference)+<span class="dv">10</span>)+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">max</span>(difference)-<span class="dv">10</span>)+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=10) </span><span class="ch">\n</span>
-<span class="st">          both drawn from the same normal distribution (u=100, sd=20)&quot;</span>)+
-<span class="st">  </span><span class="kw">xlim</span>(-<span class="dv">30</span>,<span class="dv">30</span>)+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">min</span>(difference), <span class="dt">y =</span> <span class="dv">750</span>, 
-                               <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;min </span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">round</span>(<span class="kw">min</span>(difference)))), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">   </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">max</span>(difference), <span class="dt">y =</span> <span class="dv">750</span>, 
-                               <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;max </span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">round</span>(<span class="kw">max</span>(difference)))), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">15</span>, <span class="dt">y =</span> <span class="dv">250</span>, 
-                               <span class="dt">label =</span> <span class="st">&quot;?&quot;</span>), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">   </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">15</span>, <span class="dt">y =</span> <span class="dv">250</span>, 
-                               <span class="dt">label =</span> <span class="st">&quot;?&quot;</span>), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>I made two grey areas, and they are reddish gray, because we are still in the chance window. There are question marks (?) in the grey areas. Why? The question marks reflect some uncertainty that we have about thos particular differences. For example, if you found a difference that was in a grey area, say a 15. 15 is less than the maximum, which means chance did create differences of around 15. But, difference of 15 don’t happen very often. What can you conclude or say about this 15 you found?</p>
 <p>Can you say without a doubt that chance did not produce the difference? Of course not, you know that chance could have. Can you say without a doubt that chance did produce the difference? Well, no not really. Chance doesn’t do this very often. It’s one of those things that doesn’t happen alot. That makes chance a not very plausible explanation. Instead, you might be willing to take the risk, and say that your experimental manipulation caused the difference. You’d be making a bet that it wasn’t chance. But, could be a safe bet, since you know the odds are in your favor.</p>
 <p>You might be thinking that your grey areas aren’t the same as the ones I’ve drawn. Maybe you want to be more conservative, and make them smaller. Or, maybe you’re more risky, and would make them bigger. Or, maybe you’d add some grey area going in a little bit to the green area (after all, chance could probably produce some bigger sometimes, and to avoid those you would have to make the grey area go a bit into the green area).</p>
 <p>Another thing to think about is your decision policy. What will you do, when your observed difference is in your grey area? Will you always make the ame decision about the role of chance? Or, will you sometimes flip-flop depending on how you feel. Perhaps, you think that there shouldn’e be a strict policy, and that you should accept some level of uncertainty. The difference you found be a real one, or it might not. There’s uncertainty, hard to avoid that.</p>
 <p>So let’s illustrate one more kind of strategy for making decisions. We just talked about one that had some lines, and some regions. This makes it seem like we can either rule out, or not rule out the role of chance. Another way of looking at things is that everything is a different shade of grey. It looks like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(plot_df,<span class="kw">aes</span>(<span class="dt">x=</span>difference))+
-<span class="st"> </span><span class="co"># annotate(&quot;rect&quot;, xmin=min(difference), xmax=max(difference), ymin=0, ymax=Inf, alpha=0.5, fill=&quot;red&quot;) +</span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">min</span>(difference), <span class="dt">xmax=</span><span class="kw">min</span>(difference)+<span class="dv">10</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>, <span class="dt">fill=</span><span class="st">&quot;light grey&quot;</span>) +
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="kw">max</span>(difference)-<span class="dv">10</span>, <span class="dt">xmax=</span><span class="kw">max</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>, <span class="dt">alpha=</span><span class="fl">0.7</span>, <span class="dt">fill=</span><span class="st">&quot;light grey&quot;</span>) +
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span>-<span class="ot">Inf</span>, <span class="dt">xmax=</span><span class="kw">min</span>(difference), <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_rect</span>(<span class="kw">aes</span>(<span class="dt">xmin=</span><span class="kw">max</span>(difference), <span class="dt">xmax=</span><span class="ot">Inf</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="ot">Inf</span>), <span class="dt">alpha=</span>.<span class="dv">5</span>, <span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>, <span class="dt">color=</span><span class="st">&quot;white&quot;</span>, <span class="kw">aes</span>(<span class="dt">fill=</span>..count..))+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">min</span>(difference))+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">max</span>(difference))+
-<span class="st">   </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">min</span>(difference)+<span class="dv">10</span>)+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="kw">max</span>(difference)-<span class="dv">10</span>)+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Histogram of mean differences between two samples (n=10) </span><span class="ch">\n</span>
-<span class="st">          both drawn from the same normal distribution (u=100, sd=20)&quot;</span>)+
-<span class="st">  </span><span class="kw">xlim</span>(-<span class="dv">30</span>,<span class="dv">30</span>)+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">25</span>, <span class="dt">y =</span> <span class="dv">250</span>, <span class="dt">label =</span> <span class="st">&quot;NOT </span><span class="ch">\n</span><span class="st"> CHANCE&quot;</span>), <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">min</span>(difference), <span class="dt">y =</span> <span class="dv">750</span>, 
-                               <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;min </span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">round</span>(<span class="kw">min</span>(difference)))), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">   </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">max</span>(difference), <span class="dt">y =</span> <span class="dv">750</span>, 
-                               <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;max </span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">round</span>(<span class="kw">max</span>(difference)))), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> -<span class="dv">15</span>, <span class="dt">y =</span> <span class="dv">250</span>, 
-                               <span class="dt">label =</span> <span class="st">&quot;?&quot;</span>), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">   </span><span class="kw">geom_label</span>(<span class="dt">data =</span> <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">15</span>, <span class="dt">y =</span> <span class="dv">250</span>, 
-                               <span class="dt">label =</span> <span class="st">&quot;?&quot;</span>), 
-                               <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label))+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;mean difference&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>Ok, so I made it shades of blue (because it was easier in R). Now we can see two decision plans at the same time. Notice that as the bars get shorter, they also get become a darker stronger blue. The color can be used as a guide to how confident you should be about your manipulation causing the difference rather than chance. If you found a difference near a really dark bar, those don’t happen often by chance, so you might be really confident that chance didn’t do it. If you find a difference near a slightly lighter blue bar, you might be slightly less confident. That is all. You run your experiment, you get your data, then you have some amount of confidence that it wasn’t produced by chance. This way of thinking is elaborated to very interesting degrees in the Bayesian world of statistics. We don’t wade too much into that, but mention it a little bit here and there. It’s worth knowing it’s out there.</p>
 </div>
 <div id="making-bad-decisions" class="section level4">
@@ -1017,10 +814,6 @@ plot_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sim=</span><span
 <p>Check out this next set of histograms. All we are doing is the very same simulation as before, but this time we do it for different sample-sizes: 20, 40, 80, 160. We are doubling our sample-size across each simulation just to see what happens to the width of the chance window.</p>
 <p><img src="statistics_files/figure-html/sampleDistNormal-1.png" width="672" /></p>
 <p>There you have it. The <strong>sampling distribution of the mean differences</strong> shrinks toward 0 as sample-size increases. This means if you run an experiment with a larger sample-size, you will be able to detect smaller mean differences, and be confident they aren’t due to chance. Let’s look at a table of the minimum and maximum values that chance produced across these four sample-sizes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)
-the_range&lt;-<span class="kw">ddply</span>(all_df,.(sample_size), summarize, <span class="dt">smallest=</span><span class="kw">min</span>(sample),
-                                                  <span class="dt">biggest=</span><span class="kw">max</span>(sample))
-knitr::<span class="kw">kable</span>(the_range)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1032,23 +825,23 @@ knitr::<span class="kw">kable</span>(the_range)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td align="right">20</td>
-<td align="right">-25.793248</td>
-<td align="right">26.43918</td>
+<td align="right">-23.530921</td>
+<td align="right">24.76306</td>
 </tr>
 <tr class="even">
 <td align="right">40</td>
-<td align="right">-15.597064</td>
-<td align="right">17.86077</td>
+<td align="right">-17.835122</td>
+<td align="right">17.65081</td>
 </tr>
 <tr class="odd">
 <td align="right">80</td>
-<td align="right">-13.830885</td>
-<td align="right">12.97963</td>
+<td align="right">-13.314600</td>
+<td align="right">12.11520</td>
 </tr>
 <tr class="even">
 <td align="right">160</td>
-<td align="right">-9.284729</td>
-<td align="right">10.19612</td>
+<td align="right">-8.387004</td>
+<td align="right">10.54134</td>
 </tr>
 <tr class="odd">
 <td align="right">The table is</td>
@@ -1066,48 +859,10 @@ knitr::<span class="kw">kable</span>(the_range)</code></pre></div>
 </blockquote>
 <p>The last thing we’ll talk about here is something called power. In fact, we are going to talk about the concept of power, not actual power. It’s confusing now, but later we will define power in terms of some particular ideas about statistical inference. Here, we will just talk about the idea. And, we’ll show how to make sure your design has 100% power. Because, why not. Why run a design that doesn’t have the power?</p>
 <p>The big idea behind power is the concept of sensitivity. The concept of sensitivity assumes that there is something to be sensitive to. That is, there is some real difference that can be measured. So, the question is, how sensitive is your experiment? We’ve already seen that the number of subjects (sample-size), changes the sensitivity of the design. More subjects, more sensitivity to smaller effects. Let’s take a look at one more plot. What we will do is simulate a measure of sensitivity across a whole bunch of sample sizes, from 10 to 300. We’ll do this in steps of 10. For each simluation, we’ll compute the mean differences as we have done. But, rather than showing the histogram, we’ll just compute the smallest value and the largest value. This is a pretty good measure of the outer reach of chance. Then we’ll just plot those values as a function of sample size and see what we’ve got.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">all_df&lt;-<span class="kw">data.frame</span>()
-for(sims in <span class="dv">1</span>:<span class="dv">1000</span>){
-  for(n in <span class="kw">seq</span>(<span class="dv">10</span>,<span class="dv">300</span>,<span class="dv">10</span>)){
-    sample&lt;-<span class="kw">mean</span>(<span class="kw">rnorm</span>(n,<span class="dv">100</span>,<span class="dv">20</span>)-<span class="kw">rnorm</span>(n,<span class="dv">100</span>,<span class="dv">20</span>))
-    t_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sims=</span>sims,
-                     sample,
-                     <span class="dt">sample_size=</span>n
-                     )
-    all_df&lt;-<span class="kw">rbind</span>(all_df,t_df)
-  }
-}
-
-the_range&lt;-<span class="kw">ddply</span>(all_df,.(sample_size), summarize, <span class="dt">smallest=</span><span class="kw">min</span>(sample),
-                                                  <span class="dt">biggest=</span><span class="kw">max</span>(sample))
-
-
-<span class="kw">ggplot</span>(the_range, <span class="kw">aes</span>(<span class="dt">x=</span>sample_size,<span class="dt">y=</span>smallest))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_line</span>()+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>sample_size,<span class="dt">y=</span>biggest))+
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>sample_size,<span class="dt">y=</span>biggest))+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+<span class="kw">ggtitle</span>(<span class="st">&quot;Maximum and minimum mean differences </span><span class="ch">\n</span>
-<span class="st">                          as a function of sample_size&quot;</span>)+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Most extreme mean difference&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Sample Size&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <p>What we have here is a reasonably precise window of sensitivity as a function of sample size. For each sample size, we can see the maximum difference that chance produced, and the minimum difference. In those simulations, chance never produced bigger or smaller differences. So, each design is sensitive to any difference that is underneath the bottom line, or above the top line. It’s really that simple.</p>
 <p>Here’s another way of putting it. Which of the sample sizes will be sensitive to a difference of +10 or -10. That is, if a difference of +10 or -10 was observed, then we could very confidently say that the difference was not due to chance, because according to these simulations, chance never produced differences that big. To help us see which ones are sensitive, let’s draw some horizontal lines at -10 and +10.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(the_range, <span class="kw">aes</span>(<span class="dt">x=</span>sample_size,<span class="dt">y=</span>smallest))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_line</span>()+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>sample_size,<span class="dt">y=</span>biggest))+
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x=</span>sample_size,<span class="dt">y=</span>biggest))+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">0</span>)+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span><span class="dv">10</span>, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span>-<span class="dv">10</span>, <span class="dt">color=</span><span class="st">&quot;red&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>()+<span class="kw">ggtitle</span>(<span class="st">&quot;Maximum and minimum mean differences </span><span class="ch">\n</span>
-<span class="st">                          as a function of sample_size&quot;</span>)+
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Most extreme mean difference&quot;</span>)+
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Sample Size&quot;</span>)</code></pre></div>
-<p><img src="statistics_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 <p>I would say all of the designs with sample size = 100 or greater are all perfectly sensitive to real differences of 10 (if they exist). We can see that all of the dots after sample size 100 are underneath the red line. So effects that are as big as the red line, or bigger will almost never occur due to chance. But, if they do occur in nature, those experiments will detect them straight away. That is sensitivity. And, designing your experiment so that you know it is sensitive to the thing you are looking for is the big idea behind power. It’s worth this kind of thing before you run your experiment. Why waste your own time and run an experiment that doesn’t have a chance of detecting the thing you are looking for.</p>
 </div>
 <div id="summary-of-crump-test" class="section level3">
@@ -1123,28 +878,6 @@ the_range&lt;-<span class="kw">ddply</span>(all_df,.(sample_size), summarize, <s
 <h3><span class="header-section-number">5.7.1</span> Pretend example does chewing gum improve your grades?</h3>
 <p>Let’s say you run an experiment to find out if chewing gum causes students to get better grades on statistics exams. You randomly assign 20 students to the chewing gum condition, and 20 different students to the no-chewing gum condition. Then, you give everybody statistics tests and measure their grades. If chewing gum causes better grades, then the chewing gum group should have higher grades on average than the group who did not chew gum.</p>
 <p>Let’s say the data looked like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:plyr&#39;:
-## 
-##     arrange, count, desc, failwith, id, mutate, rename, summarise,
-##     summarize</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gum&lt;-<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">20</span>,<span class="dv">70</span>,<span class="dv">100</span>))
-no_gum&lt;-<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">90</span>))
-
-gum_df&lt;-<span class="kw">data.frame</span>(<span class="dt">student=</span><span class="kw">seq</span>(<span class="dv">1</span>:<span class="dv">20</span>),gum,no_gum)
-
-gum_df &lt;-<span class="st"> </span>gum_df %&gt;%
-<span class="st">  </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Sums&quot;</span>,<span class="kw">colSums</span>(gum_df[,<span class="dv">2</span>:<span class="dv">3</span>]))) %&gt;%
-<span class="st">  </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Means&quot;</span>,<span class="kw">colMeans</span>(gum_df[,<span class="dv">2</span>:<span class="dv">3</span>])))
-knitr::<span class="kw">kable</span>(gum_df)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1156,117 +889,117 @@ knitr::<span class="kw">kable</span>(gum_df)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">76</td>
-<td align="left">46</td>
+<td align="left">85</td>
+<td align="left">48</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
+<td align="left">75</td>
 <td align="left">85</td>
-<td align="left">50</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">74</td>
-<td align="left">54</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="left">89</td>
-<td align="left">46</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="left">85</td>
-<td align="left">46</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="left">88</td>
-<td align="left">57</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="left">95</td>
-<td align="left">41</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="left">70</td>
-<td align="left">70</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="left">77</td>
-<td align="left">46</td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="left">93</td>
-<td align="left">86</td>
-</tr>
-<tr class="odd">
-<td align="left">11</td>
-<td align="left">75</td>
-<td align="left">54</td>
-</tr>
-<tr class="even">
-<td align="left">12</td>
-<td align="left">91</td>
-<td align="left">54</td>
-</tr>
-<tr class="odd">
-<td align="left">13</td>
-<td align="left">89</td>
-<td align="left">79</td>
-</tr>
-<tr class="even">
-<td align="left">14</td>
-<td align="left">77</td>
-<td align="left">52</td>
-</tr>
-<tr class="odd">
-<td align="left">15</td>
-<td align="left">71</td>
-<td align="left">87</td>
-</tr>
-<tr class="even">
-<td align="left">16</td>
-<td align="left">90</td>
-<td align="left">87</td>
-</tr>
-<tr class="odd">
-<td align="left">17</td>
-<td align="left">94</td>
 <td align="left">43</td>
 </tr>
 <tr class="even">
-<td align="left">18</td>
-<td align="left">73</td>
-<td align="left">62</td>
-</tr>
-<tr class="odd">
-<td align="left">19</td>
-<td align="left">90</td>
-<td align="left">58</td>
-</tr>
-<tr class="even">
-<td align="left">20</td>
-<td align="left">93</td>
+<td align="left">4</td>
+<td align="left">96</td>
 <td align="left">74</td>
 </tr>
 <tr class="odd">
+<td align="left">5</td>
+<td align="left">83</td>
+<td align="left">45</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">95</td>
+<td align="left">83</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">90</td>
+<td align="left">60</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">82</td>
+<td align="left">48</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">81</td>
+<td align="left">75</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">94</td>
+<td align="left">85</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">76</td>
+<td align="left">78</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">79</td>
+<td align="left">77</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="left">95</td>
+<td align="left">50</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">84</td>
+<td align="left">49</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">89</td>
+<td align="left">70</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">88</td>
+<td align="left">79</td>
+</tr>
+<tr class="odd">
+<td align="left">17</td>
+<td align="left">96</td>
+<td align="left">45</td>
+</tr>
+<tr class="even">
+<td align="left">18</td>
+<td align="left">86</td>
+<td align="left">56</td>
+</tr>
+<tr class="odd">
+<td align="left">19</td>
+<td align="left">72</td>
+<td align="left">45</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="left">83</td>
+<td align="left">59</td>
+</tr>
+<tr class="odd">
 <td align="left">Sums</td>
-<td align="left">1675</td>
-<td align="left">1192</td>
+<td align="left">1703</td>
+<td align="left">1254</td>
 </tr>
 <tr class="even">
 <td align="left">Means</td>
-<td align="left">83.75</td>
-<td align="left">59.6</td>
+<td align="left">85.15</td>
+<td align="left">62.7</td>
 </tr>
 </tbody>
 </table>
-<p>So, did the students chewing gum do better than the students who didn’t chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was 83.75, and the mean for students who did not chew gum was 59.6. Just looking at the means, it looks like chewing gum worked!</p>
+<p>So, did the students chewing gum do better than the students who didn’t chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was 85.15, and the mean for students who did not chew gum was 62.7. Just looking at the means, it looks like chewing gum worked!</p>
 <p>“STOP THE PRESSES, this is silly”. We already know this is silly because we are making pretend data. But, even if this was real data, you might think, “Chewing gum won’t do anything, this difference could have been caused by chance, I mean, maybe the better students just happened to be put into the chewing group, so because of that their grades were higher, chewing gum didn’t do anything…”. We agree. But, let’s take a closer look. We already know how the data come out. What we want to know is how they could have come out, what are all the possibilities?</p>
 <p>For example, the data would have come out a bit different if we happened to have put some of the students from the gum group into the no gum group, and vice versa. Think of all the ways you could have assigned the 40 students into two groups, there are lots of ways. And, the means for each group would turn out differently depending on how the students are assigned to each group.</p>
 <p>Practically speaking, it’s not possible to run the experiment every possible way, that would take too long. But, we can nevertheless estimate how all of those experiments might have turned out using simulation.</p>
@@ -1274,14 +1007,6 @@ knitr::<span class="kw">kable</span>(gum_df)</code></pre></div>
 <div id="doing-the-randomization" class="section level4">
 <h4><span class="header-section-number">5.7.1.1</span> Doing the randomization</h4>
 <p>Before we do that, let’s show how the randomization part works. We’ll use fewer numbers to make the process easier to look at. Here are the first 5 exam scores for students in both groups.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gum_df_small&lt;-gum_df[<span class="dv">1</span>:<span class="dv">5</span>,]
-gum_df_small$gum&lt;-<span class="kw">as.numeric</span>(gum_df_small$gum)
-gum_df_small$no_gum&lt;-<span class="kw">as.numeric</span>(gum_df_small$no_gum)
-
-gum_df_small &lt;-<span class="st"> </span>gum_df_small %&gt;%
-<span class="st">  </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Sums&quot;</span>,<span class="kw">colSums</span>(gum_df_small[,<span class="dv">2</span>:<span class="dv">3</span>]))) %&gt;%
-<span class="st">  </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="st">&quot;Means&quot;</span>,<span class="kw">colMeans</span>(gum_df_small[,<span class="dv">2</span>:<span class="dv">3</span>])))
-knitr::<span class="kw">kable</span>(gum_df_small)</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1293,38 +1018,38 @@ knitr::<span class="kw">kable</span>(gum_df_small)</code></pre></div>
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">76</td>
-<td align="left">46</td>
+<td align="left">85</td>
+<td align="left">48</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
+<td align="left">75</td>
 <td align="left">85</td>
-<td align="left">50</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">74</td>
-<td align="left">54</td>
+<td align="left">43</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="left">89</td>
-<td align="left">46</td>
+<td align="left">96</td>
+<td align="left">74</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="left">85</td>
-<td align="left">46</td>
+<td align="left">83</td>
+<td align="left">45</td>
 </tr>
 <tr class="even">
 <td align="left">Sums</td>
-<td align="left">409</td>
-<td align="left">242</td>
+<td align="left">413</td>
+<td align="left">295</td>
 </tr>
 <tr class="odd">
 <td align="left">Means</td>
-<td align="left">81.8</td>
-<td align="left">48.4</td>
+<td align="left">82.6</td>
+<td align="left">59</td>
 </tr>
 </tbody>
 </table>
@@ -1334,9 +1059,9 @@ randomize_scores &lt;-<span class="st"> </span><span class="kw">sample</span>(al
 new_gum          &lt;-<span class="st"> </span>randomize_scores[<span class="dv">1</span>:<span class="dv">5</span>]
 new_no_gum       &lt;-<span class="st"> </span>randomize_scores[<span class="dv">6</span>:<span class="dv">10</span>]
 <span class="kw">print</span>(new_gum)</code></pre></div>
-<pre><code>## [1] 46 50 85 74 89</code></pre>
+<pre><code>## [1] 74 48 74 85 45</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(new_no_gum)</code></pre></div>
-<pre><code>## [1] 76 46 46 54 85</code></pre>
+<pre><code>## [1] 96 75 83 85 43</code></pre>
 <p>We have taken the first 5 numbers from the original data, and put them all into a variable called <code>all_scores</code>. Then we use the <code>sample</code> function in R to shuffle the scores. Finally, we take the first 5 scores from the shuffled numbers and put them into a new variable called <code>new_gum</code>. Then, we put the last five scores into the variable <code>new_no_gum</code>. Then we printed them, so we can see them.</p>
 <p>If we do this a couple of times and put them in a table, we can indeed see that the means for gum and no gum would be different if the subjects were shuffled around. Check it out:</p>
 <table>
@@ -1354,139 +1079,85 @@ new_no_gum       &lt;-<span class="st"> </span>randomize_scores[<span class="dv"
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">76</td>
-<td align="left">46</td>
 <td align="left">85</td>
-<td align="left">89</td>
-<td align="left">50</td>
-<td align="left">74</td>
+<td align="left">48</td>
+<td align="left">43</td>
+<td align="left">85</td>
+<td align="left">43</td>
+<td align="left">85</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
+<td align="left">75</td>
 <td align="left">85</td>
-<td align="left">50</td>
-<td align="left">46</td>
+<td align="left">45</td>
 <td align="left">74</td>
 <td align="left">85</td>
-<td align="left">46</td>
+<td align="left">83</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
 <td align="left">74</td>
-<td align="left">54</td>
-<td align="left">54</td>
-<td align="left">76</td>
-<td align="left">54</td>
-<td align="left">89</td>
+<td align="left">43</td>
+<td align="left">96</td>
+<td align="left">48</td>
+<td align="left">75</td>
+<td align="left">45</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="left">89</td>
-<td align="left">46</td>
+<td align="left">96</td>
+<td align="left">74</td>
+<td align="left">74</td>
 <td align="left">85</td>
-<td align="left">46</td>
-<td align="left">46</td>
-<td align="left">76</td>
+<td align="left">74</td>
+<td align="left">48</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="left">85</td>
-<td align="left">46</td>
-<td align="left">46</td>
-<td align="left">50</td>
-<td align="left">46</td>
-<td align="left">85</td>
+<td align="left">83</td>
+<td align="left">45</td>
+<td align="left">83</td>
+<td align="left">75</td>
+<td align="left">74</td>
+<td align="left">96</td>
 </tr>
 <tr class="even">
 <td align="left">Sums</td>
-<td align="left">409</td>
-<td align="left">242</td>
-<td align="left">316</td>
-<td align="left">335</td>
-<td align="left">281</td>
-<td align="left">370</td>
+<td align="left">413</td>
+<td align="left">295</td>
+<td align="left">341</td>
+<td align="left">367</td>
+<td align="left">351</td>
+<td align="left">357</td>
 </tr>
 <tr class="odd">
 <td align="left">Means</td>
-<td align="left">81.8</td>
-<td align="left">48.4</td>
-<td align="left">63.2</td>
-<td align="left">67</td>
-<td align="left">56.2</td>
-<td align="left">74</td>
+<td align="left">82.6</td>
+<td align="left">59</td>
+<td align="left">68.2</td>
+<td align="left">73.4</td>
+<td align="left">70.2</td>
+<td align="left">71.4</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="simulating-the-mean-differences-across-the-different-randomizations" class="section level4">
 <h4><span class="header-section-number">5.7.1.2</span> Simulating the mean differences across the different randomizations</h4>
-<p>In our pretend experiment we found that the mean for students chewing gum was 83.75, and the mean for students who did not chew gum was 59.6. The mean difference (gum - no gum) was 24.15. This is a pretty big difference. This is <strong>what did happend</strong>. But, <strong>what could have happened</strong>? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let’s find out. This is what the randomization test is all about.</p>
+<p>In our pretend experiment we found that the mean for students chewing gum was 85.15, and the mean for students who did not chew gum was 62.7. The mean difference (gum - no gum) was 22.45. This is a pretty big difference. This is <strong>what did happend</strong>. But, <strong>what could have happened</strong>? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let’s find out. This is what the randomization test is all about.</p>
 <p>When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference.</p>
 <p>Let’s look at a short animation of what is happenining in the randomization test. Note, what you are about to see is data from a different fake experiment, but the principles are the same. We’ll return to the gum no gum experiment after the animiation. The animation is showing you three important things. First, the purple dots show you the mean scores in two groups (didn’t study vs study). It looks like there is a difference, as 1 dot is lower than the other. We want to know if chance could produce a difference this big. At the beginning of the animiation, the light green and red dots show the individual scores from each of 10 subjects in the design (the purple dots are the means of these original scores). Now, during the randomizations, we randomly shuffle the original scores between the groups. You can see this happening throughout the animation, as the green and red dots appear in different random combinations. The moving yellow dots show you the new means for each group after the randomization. The differences between the yellow dots show you the range of differences that chance could produce.</p>
 <p><img src="gifs/randomizationTest-1.gif" /><!-- --></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">study&lt;-<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">80</span>,<span class="dv">100</span>))
-no_study&lt;-<span class="kw">round</span>(<span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">40</span>,<span class="dv">90</span>))
-
-study_df&lt;-<span class="kw">data.frame</span>(<span class="dt">student=</span><span class="kw">seq</span>(<span class="dv">1</span>:<span class="dv">10</span>),study,no_study)
-mean_original&lt;-<span class="kw">data.frame</span>(<span class="dt">IV=</span><span class="kw">c</span>(<span class="st">&quot;studied&quot;</span>,<span class="st">&quot;didnt_study&quot;</span>),
-                          <span class="dt">means=</span><span class="kw">c</span>(<span class="kw">mean</span>(study),<span class="kw">mean</span>(no_study)))
-t_df&lt;-<span class="kw">data.frame</span>(<span class="dt">sims=</span><span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">20</span>),
-                 <span class="dt">IV=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;studied&quot;</span>,<span class="st">&quot;didnt_study&quot;</span>),<span class="dt">each=</span><span class="dv">10</span>),
-                 <span class="dt">values=</span><span class="kw">c</span>(study,no_study),
-                 <span class="dt">rand_order=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">each=</span><span class="dv">10</span>))
-
-raw_df&lt;-t_df
-for(i in <span class="dv">2</span>:<span class="dv">10</span>){
-  <span class="co">#all&lt;-sample(c(study,no_study))</span>
-  <span class="co">#mean_study[i]&lt;-mean(all[1:20])</span>
-  <span class="co">#mean_no_study[i]&lt;-mean(all[21:40])</span>
-  <span class="co">#t_df&lt;-data.frame(sims=rep(i,20),</span>
-  <span class="co">#                 IV=rep(c(&quot;studied&quot;,&quot;didnt_study&quot;),each=10),</span>
-  <span class="co">#                 values=c(all[1:20],all[21:40]))</span>
-  new_index&lt;-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">20</span>)
-  t_df$values&lt;-t_df$values[new_index]
-  t_df$rand_order&lt;-t_df$rand_order[new_index]
-  t_df$sims&lt;-<span class="kw">rep</span>(i,<span class="dv">20</span>)
-  raw_df&lt;-<span class="kw">rbind</span>(raw_df,t_df)
-}
-
-raw_df$rand_order&lt;-<span class="kw">as.factor</span>(raw_df$rand_order)
-rand_df&lt;-<span class="kw">aggregate</span>(values~sims*IV,raw_df,mean)
-<span class="kw">names</span>(rand_df)&lt;-<span class="kw">c</span>(<span class="st">&quot;sims&quot;</span>,<span class="st">&quot;IV&quot;</span>,<span class="st">&quot;means&quot;</span>)
-
-<span class="co">#rand_df &lt;- data.frame(sims=rep(1:10,2),means=c(mean_study,mean_no_study),</span>
-                    <span class="co">#  IV=rep(c(&quot;studied&quot;,&quot;didnt_study&quot;),each=10))</span>
-
-a&lt;-<span class="kw">ggplot</span>(raw_df,<span class="kw">aes</span>(<span class="dt">x=</span>IV,<span class="dt">y=</span>values,<span class="dt">color=</span>rand_order,<span class="dt">size=</span><span class="dv">3</span>))+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="dt">alpha=</span>.<span class="dv">5</span>)+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>mean_original,<span class="kw">aes</span>(<span class="dt">x=</span>IV,<span class="dt">y=</span>means),<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="dt">shape=</span><span class="dv">21</span>,<span class="dt">size=</span><span class="dv">6</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">fill=</span><span class="st">&quot;mediumorchid2&quot;</span>)+
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>rand_df,<span class="kw">aes</span>(<span class="dt">x=</span>IV,<span class="dt">y=</span>means),<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="dt">shape=</span><span class="dv">21</span>,<span class="dt">size=</span><span class="dv">6</span>,<span class="dt">color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">fill=</span><span class="st">&quot;gold&quot;</span>)+
-<span class="st">  </span><span class="kw">theme_classic</span>(<span class="dt">base_size =</span> <span class="dv">15</span>)+
-<span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>))+
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) +
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Randomization test: Original Means (purple), </span>
-<span class="st">          </span><span class="ch">\n</span><span class="st"> Randomized means (yellow)</span>
-<span class="st">          </span><span class="ch">\n</span><span class="st"> Original scores (red,greenish)&quot;</span>)+
-<span class="st">  </span><span class="kw">transition_states</span>(
-    sims,
-    <span class="dt">transition_length =</span> <span class="dv">1</span>,
-    <span class="dt">state_length =</span> <span class="dv">2</span>
-  )+<span class="kw">enter_fade</span>() +<span class="st"> </span>
-<span class="st">  </span><span class="kw">exit_shrink</span>() +
-<span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)
-
-<span class="kw">animate</span>(a,<span class="dt">nframes=</span><span class="dv">100</span>,<span class="dt">fps=</span><span class="dv">5</span>)</code></pre></div>
 <p>What can we learn from this animation? Well, we are engaging in some visual statistical inference. By looking the range of motion of the yellow dots, we are watching what kind of differences chance can produce. In this animiation, the purple dots, representing the original difference, are outside of the range of chance. The yellow dots move past the purple dots. This is a way of showing that the random chance is very unlikely to produce the original difference. If the purple dots were inside the range of the yellow dots, then when would know that chance is capable of producing the difference we observed, and that it does so fairly often. As a result, we should not conclude the manipulation caused the difference, because it could have easily occured by chance.</p>
 <p>Let’s return to the gum example. After we randomized our scores many times, and computed the new means, and the mean differences, we will have loads of mean differences to look at, which we can plot in a histogram. The histogram gives a picture of <strong>what could have happened</strong>. Then, we can compare <strong>what did happen</strong> with <strong>what could have happened</strong>.</p>
 <p>Here’s the histogram of the mean differences from the randomization test. For this simulation, we randomized the results from the original experiment 1000 times. This is what could have happened. The blue line in the figure shows us where our observed difference lies on the x-axis.</p>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="statistics_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <p>We are looking at another window of chance. We are seeing a histogram of the kinds of mean differences that could have occured in our experiemnt, if we had assigned our subjects to the gum and no gum groups differently. As you can see, the mean differences range from negative to positive. The most frequent difference is 0. Also, the distribution appears to be symmetrical about zero, which shows we had roughly same the chances of getting a positive or negative difference. Also, notice that as the differences get larger (in the positive or negative direction, they become less frequent). The blue line shows us <strong>the observed difference</strong>, this is the one we found in our fake experiment. Where is it? It’s way out to the right. It is is well outside the histogram. In other words, when we look at <strong>what could have happened</strong>, we see that <strong>what did happen</strong> doesn’t occur very often.</p>
 <p>IMPORTANT: In this case, when we speak of <strong>what could have happened</strong>. We are talking about what could have happended <strong>by chance</strong>. When we compare what did happen to what chance could have done, we can get a better idea of whether our result was caused by chance.</p>
 <p>What do you think? Could the difference represented by the blue line have been caused by chance? My answer is probably not. The histogram shows us the window of chance. The blue line is not inside the window. This means we can be pretty confident that the difference we observed was not due to chance.</p>
 <p>Ok, let’s pretend we got a much smaller mean difference when we first ran the experiment. For example, the histrogram might look something like this:</p>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="statistics_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 <p>Look at the blue line. If you found a mean difference of 10, would you be convinced that your difference was not caused by chance? As you can see, the blue line is inside the chance window. Notably, differences of +10 don’t very often. You might infer that you difference was not likely to be due to chance (but you might be a little bit skeptical, because it could have been). How about the red line? The red line represents a difference of +5. If you found a difference of +5 here, would you be confident that your difference was not caused by chance? I wouldn’t be. The red line is totally inside the chance window, this kind of difference happens fairly often. I’d need some more evidence to consider the claim the some independent variable actually caused the difference. I’d be much more comfortable assuming that sampling error probably caused the difference.</p>
 </div>
 </div>
@@ -2685,7 +2356,7 @@ Another especially important consideration of confidence intervals is that they 
         </div>
       </div>
 <a href="sampling-and-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="inferenceForNumericalDatattest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="t-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

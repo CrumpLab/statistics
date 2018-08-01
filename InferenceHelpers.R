@@ -143,3 +143,113 @@ length(some_data[some_data>1 & some_data<1.00001])
 length(some_data[some_data>1 & some_data<1.0001])
 length(some_data[some_data>1 & some_data<1.001])
 length(some_data[some_data>1 & some_data<1.01])
+
+
+##### visual anova
+
+ss<- function(x){
+  mean_x<-mean(x)
+  differences<-mean_x-x
+  return(sum(differences^2))
+}
+
+scores<-rnorm(9, 0, 1)
+SSs<-abs(mean(scores)-scores)
+rect_SS_xmin <- scores-(SSs/2)
+rect_SS_xmax <- scores+(SSs/2)
+rect_SS_ymin <- 0-(SSs/2)
+rect_SS_ymax <- 0+(SSs/2)
+
+groups<-rep(c("A","B","C"), each = 3)
+df<-data.frame(groups,
+               scores,
+               SSs,
+               rect_SS_xmin,
+               rect_SS_xmax,
+               rect_SS_ymin,
+               rect_SS_ymax)
+
+ggplot(df, aes(x=scores, y=0))+
+  geom_rect(mapping=aes(xmin=mean(scores)-sum(SSs)/2, 
+                        xmax=mean(scores)+sum(SSs)/2, 
+                        ymin=mean(scores)-sum(SSs)/2, 
+                        ymax=mean(scores)+sum(SSs)/2),fill="grey", alpha=.15)+
+  geom_rect(mapping=aes(xmin=rect_SS_xmin, 
+                        xmax=rect_SS_xmax, 
+                        ymin=rect_SS_ymin, 
+                        ymax=rect_SS_ymax, fill=groups), alpha=.25)+
+  geom_point(aes(color=groups))+
+  geom_point(shape="square",aes(x=mean(scores), y=0))+
+  theme_classic()
+
+### visual anova animation
+
+
+all_df<-data.frame()
+for (i in 1:10 ) {
+
+scores<-rnorm(9, 0, 1)
+SSs<-abs(mean(scores)-scores)
+rect_SS_xmin <- scores-(SSs/2)
+rect_SS_xmax <- scores+(SSs/2)
+rect_SS_ymin <- 0-(SSs/2)
+rect_SS_ymax <- 0+(SSs/2)
+
+groups<-rep(c("A","B","C"), each = 3)
+df<-data.frame(sims=rep(i,9),
+               groups,
+               scores,
+               SSs,
+               rect_SS_xmin,
+               rect_SS_xmax,
+               rect_SS_ymin,
+               rect_SS_ymax)
+all_df<-rbind(all_df,df)
+}
+  
+library(gganimate)  
+
+ggplot(all_df,aes(x=scores, y=0, frame=sims))+
+  geom_rect( mapping=aes(xmin=mean(scores)-sum(SSs)/2, 
+                        xmax=mean(scores)+sum(SSs)/2, 
+                        ymin=mean(scores)-sum(SSs)/2, 
+                        ymax=mean(scores)+sum(SSs)/2),fill="grey", alpha=.15)+
+  geom_rect(mapping=aes(xmin=rect_SS_xmin, 
+                        xmax=rect_SS_xmax, 
+                        ymin=rect_SS_ymin, 
+                        ymax=rect_SS_ymax, fill=groups), alpha=.25)+
+  geom_point(aes(color=groups))+
+  geom_point(shape="square",aes(x=mean(scores), y=0))+
+  theme_classic()+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+scores<-c(6,2, -3, -5)
+group<-c("A","A","B","B")
+SSs<-abs(mean(scores)-scores)
+rect_SS_xmin <- c(0,0,-3,-5)
+rect_SS_xmax <- c(6,2,0,0)
+rect_SS_ymin <- 0
+rect_SS_ymax <- abs(scores)
+all_df<-data.frame(group,scores,
+                   rect_SS_xmin,
+                   rect_SS_xmax,
+                   rect_SS_ymin,
+                   rect_SS_ymax)
+
+ggplot(all_df,aes(x=scores, y=0, shape=group))+
+  geom_rect(mapping=aes(xmin=rect_SS_xmin, 
+                        xmax=rect_SS_xmax, 
+                        ymin=rect_SS_ymin, 
+                        ymax=rect_SS_ymax, color="black"), alpha=.25)+
+  geom_point()+
+  geom_point(shape="square",aes(x=0, y=0))
+  
+
+

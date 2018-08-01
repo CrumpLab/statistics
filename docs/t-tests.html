@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sampling-and-estimation.html">
-<link rel="next" href="inferenceForNumericalDataANOVA.html">
+<link rel="prev" href="foundations-for-inference.html">
+<link rel="next" href="anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -203,118 +203,165 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#the-law-of-large-numbers"><i class="fa fa-check"></i><b>4.2</b> The law of large numbers</a></li>
 <li class="chapter" data-level="4.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>4.3</b> Sampling distributions and the central limit theorem</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#sampling-distribution-of-the-sample-means"><i class="fa fa-check"></i><b>4.3.1</b> Sampling distribution of the sample means</a></li>
-<li class="chapter" data-level="4.3.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#chance-can-produce-differences"><i class="fa fa-check"></i><b>4.3.2</b> Chance can produce differences</a></li>
-<li class="chapter" data-level="4.3.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#differences-due-to-chance-can-be-simulated"><i class="fa fa-check"></i><b>4.3.3</b> Differences due to chance can be simulated</a></li>
+<li class="chapter" data-level="4.3.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#sampling-distributions-exist-for-any-sample-statistic"><i class="fa fa-check"></i><b>4.3.2</b> Sampling distributions exist for any sample statistic!</a></li>
+<li class="chapter" data-level="4.3.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>4.3.3</b> The central limit theorem</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#chance-makes-some-differences-more-likely-than-others"><i class="fa fa-check"></i><b>4.4</b> Chance makes some differences more likely than others</a></li>
-<li class="chapter" data-level="4.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#the-crump-test"><i class="fa fa-check"></i><b>4.5</b> The Crump Test</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#intuitive-methods"><i class="fa fa-check"></i><b>4.5.1</b> Intuitive methods</a></li>
-<li class="chapter" data-level="4.5.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#part-1-frequency-based-intuition-about-occurence"><i class="fa fa-check"></i><b>4.5.2</b> Part 1: Frequency based intuition about occurence</a></li>
-<li class="chapter" data-level="4.5.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#part-2-simulating-chance"><i class="fa fa-check"></i><b>4.5.3</b> Part 2: Simulating chance</a></li>
-<li class="chapter" data-level="4.5.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#part-3-judgment-and-decision-making"><i class="fa fa-check"></i><b>4.5.4</b> Part 3: Judgment and Decision-making</a></li>
-<li class="chapter" data-level="4.5.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#part-4-experiment-design"><i class="fa fa-check"></i><b>4.5.5</b> Part 4: Experiment Design</a></li>
-<li class="chapter" data-level="4.5.6" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#part-5-i-have-the-power"><i class="fa fa-check"></i><b>4.5.6</b> Part 5: I have the power</a></li>
-<li class="chapter" data-level="4.5.7" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#summary-of-crump-test"><i class="fa fa-check"></i><b>4.5.7</b> Summary of Crump Test</a></li>
+<li class="chapter" data-level="4.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-population-parameters"><i class="fa fa-check"></i><b>4.4</b> Estimating population parameters</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#concrete-popopulation-parameters"><i class="fa fa-check"></i><b>4.4.1</b> Concrete popopulation parameters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#abstract-population-parameters"><i class="fa fa-check"></i><b>4.4.2</b> Abstract population parameters</a></li>
+<li class="chapter" data-level="4.4.3" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#experiments-and-population-parameters"><i class="fa fa-check"></i><b>4.4.3</b> Experiments and Population parameters</a></li>
+<li class="chapter" data-level="4.4.4" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#interim-summary"><i class="fa fa-check"></i><b>4.4.4</b> Interim summary</a></li>
+<li class="chapter" data-level="4.4.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-the-population-mean"><i class="fa fa-check"></i><b>4.4.5</b> Estimating the population mean</a></li>
+<li class="chapter" data-level="4.4.6" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-the-population-standard-deviation"><i class="fa fa-check"></i><b>4.4.6</b> Estimating the population standard deviation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#the-randomization-test-permutation-test"><i class="fa fa-check"></i><b>4.6</b> The randomization test (permutation test)</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#pretend-example-does-chewing-gum-improve-your-grades"><i class="fa fa-check"></i><b>4.6.1</b> Pretend example does chewing gum improve your grades?</a></li>
-<li class="chapter" data-level="4.6.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#take-homes-so-far"><i class="fa fa-check"></i><b>4.6.2</b> Take homes so far</a></li>
+<li class="chapter" data-level="4.5" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#estimating-a-confidence-intervalsecci"><i class="fa fa-check"></i><b>4.5</b> Estimating a confidence interval[sec:ci]</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#a-slight-mistake-in-the-formula"><i class="fa fa-check"></i><b>4.5.1</b> A slight mistake in the formula</a></li>
+<li class="chapter" data-level="4.5.2" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#looking-at-confidence-intervals"><i class="fa fa-check"></i><b>4.5.2</b> Looking at confidence intervals</a></li>
 </ul></li>
+<li class="chapter" data-level="4.6" data-path="sampling-and-estimation.html"><a href="sampling-and-estimation.html#summary-1"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>5</b> t-Tests</a><ul>
-<li class="chapter" data-level="5.1" data-path="t-tests.html"><a href="t-tests.html#check-your-confidence-in-your-mean"><i class="fa fa-check"></i><b>5.1</b> Check your confidence in your mean</a></li>
-<li class="chapter" data-level="5.2" data-path="t-tests.html"><a href="t-tests.html#one-sample-t-test-a-new-t-test"><i class="fa fa-check"></i><b>5.2</b> One-sample t-test: A new t-test</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="t-tests.html"><a href="t-tests.html#formulas-for-one-sample-t-test"><i class="fa fa-check"></i><b>5.2.1</b> Formulas for one-sample t-test</a></li>
-<li class="chapter" data-level="5.2.2" data-path="t-tests.html"><a href="t-tests.html#what-does-t-represent"><i class="fa fa-check"></i><b>5.2.2</b> What does t represent?</a></li>
-<li class="chapter" data-level="5.2.3" data-path="t-tests.html"><a href="t-tests.html#calculating-t-from-data"><i class="fa fa-check"></i><b>5.2.3</b> Calculating t from data</a></li>
-<li class="chapter" data-level="5.2.4" data-path="t-tests.html"><a href="t-tests.html#how-does-t-behave"><i class="fa fa-check"></i><b>5.2.4</b> How does <span class="math inline">\(t\)</span> behave?</a></li>
-<li class="chapter" data-level="5.2.5" data-path="t-tests.html"><a href="t-tests.html#making-a-decision"><i class="fa fa-check"></i><b>5.2.5</b> Making a decision</a></li>
+<li class="chapter" data-level="5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html"><i class="fa fa-check"></i><b>5</b> Foundations for inference</a><ul>
+<li class="chapter" data-level="5.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#brief-review-of-experiments"><i class="fa fa-check"></i><b>5.1</b> Brief review of Experiments</a></li>
+<li class="chapter" data-level="5.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-data-came-from-a-distribution"><i class="fa fa-check"></i><b>5.2</b> The data came from a distribution</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#uniform-distribution"><i class="fa fa-check"></i><b>5.2.1</b> Uniform distribution</a></li>
+<li class="chapter" data-level="5.2.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#not-all-samples-are-the-same-they-are-usually-quite-different"><i class="fa fa-check"></i><b>5.2.2</b> Not all samples are the same, they are usually quite different</a></li>
+<li class="chapter" data-level="5.2.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#large-samples-are-more-like-the-distribution-they-came-from"><i class="fa fa-check"></i><b>5.2.3</b> Large samples are more like the distribution they came from</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>5.3</b> Paired-samples <span class="math inline">\(t\)</span>-test</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="t-tests.html"><a href="t-tests.html#mehr-song-and-spelke-2016"><i class="fa fa-check"></i><b>5.3.1</b> Mehr, Song, and Spelke (2016)</a></li>
-<li class="chapter" data-level="5.3.2" data-path="t-tests.html"><a href="t-tests.html#the-data"><i class="fa fa-check"></i><b>5.3.2</b> The data</a></li>
-<li class="chapter" data-level="5.3.3" data-path="t-tests.html"><a href="t-tests.html#the-difference-scores-1"><i class="fa fa-check"></i><b>5.3.3</b> The difference scores</a></li>
-<li class="chapter" data-level="5.3.4" data-path="t-tests.html"><a href="t-tests.html#the-mean-difference"><i class="fa fa-check"></i><b>5.3.4</b> The mean difference</a></li>
-<li class="chapter" data-level="5.3.5" data-path="t-tests.html"><a href="t-tests.html#calculate-t"><i class="fa fa-check"></i><b>5.3.5</b> Calculate <span class="math inline">\(t\)</span></a></li>
-<li class="chapter" data-level="5.3.6" data-path="t-tests.html"><a href="t-tests.html#interpreting-ts"><i class="fa fa-check"></i><b>5.3.6</b> Interpreting <span class="math inline">\(t\)</span>s</a></li>
-<li class="chapter" data-level="5.3.7" data-path="t-tests.html"><a href="t-tests.html#getting-the-p-values-for-t-values"><i class="fa fa-check"></i><b>5.3.7</b> Getting the p-values for t-values</a></li>
-<li class="chapter" data-level="5.3.8" data-path="t-tests.html"><a href="t-tests.html#one-tailed-tests"><i class="fa fa-check"></i><b>5.3.8</b> One-tailed tests</a></li>
-<li class="chapter" data-level="5.3.9" data-path="t-tests.html"><a href="t-tests.html#two-tailed-tests"><i class="fa fa-check"></i><b>5.3.9</b> Two-tailed tests</a></li>
-<li class="chapter" data-level="5.3.10" data-path="t-tests.html"><a href="t-tests.html#one-or-two-tailed-which-one"><i class="fa fa-check"></i><b>5.3.10</b> One or two tailed, which one?</a></li>
-<li class="chapter" data-level="5.3.11" data-path="t-tests.html"><a href="t-tests.html#degrees-of-freedom"><i class="fa fa-check"></i><b>5.3.11</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="5.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#playing-with-distributions"><i class="fa fa-check"></i><b>5.3</b> Playing with distributions</a></li>
+<li class="chapter" data-level="5.4" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#is-there-a-difference"><i class="fa fa-check"></i><b>5.4</b> Is there a difference?</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#chance-can-produce-differences"><i class="fa fa-check"></i><b>5.4.1</b> Chance can produce differences</a></li>
+<li class="chapter" data-level="5.4.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#differences-due-to-chance-can-be-simulated"><i class="fa fa-check"></i><b>5.4.2</b> Differences due to chance can be simulated</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="t-tests.html"><a href="t-tests.html#the-paired-samples-t-test-strikes-back"><i class="fa fa-check"></i><b>5.4</b> The paired samples t-test strikes back</a></li>
-<li class="chapter" data-level="5.5" data-path="t-tests.html"><a href="t-tests.html#independent-samples-t-test-the-return-of-the-t-test"><i class="fa fa-check"></i><b>5.5</b> Independent samples t-test: The return of the t-test?</a></li>
-<li class="chapter" data-level="5.6" data-path="t-tests.html"><a href="t-tests.html#simulating-data-for-t-tests"><i class="fa fa-check"></i><b>5.6</b> Simulating data for t-tests</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="t-tests.html"><a href="t-tests.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>5.6.1</b> Simulating a one-sample t-test</a></li>
-<li class="chapter" data-level="5.6.2" data-path="t-tests.html"><a href="t-tests.html#simulating-a-paired-samples-test"><i class="fa fa-check"></i><b>5.6.2</b> Simulating a paired samples test</a></li>
-<li class="chapter" data-level="5.6.3" data-path="t-tests.html"><a href="t-tests.html#simulating-an-independent-samples-t.test"><i class="fa fa-check"></i><b>5.6.3</b> Simulating an independent samples t.test</a></li>
+<li class="chapter" data-level="5.5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#chance-makes-some-differences-more-likely-than-others"><i class="fa fa-check"></i><b>5.5</b> Chance makes some differences more likely than others</a></li>
+<li class="chapter" data-level="5.6" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-crump-test"><i class="fa fa-check"></i><b>5.6</b> The Crump Test</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#intuitive-methods"><i class="fa fa-check"></i><b>5.6.1</b> Intuitive methods</a></li>
+<li class="chapter" data-level="5.6.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-1-frequency-based-intuition-about-occurence"><i class="fa fa-check"></i><b>5.6.2</b> Part 1: Frequency based intuition about occurence</a></li>
+<li class="chapter" data-level="5.6.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-2-simulating-chance"><i class="fa fa-check"></i><b>5.6.3</b> Part 2: Simulating chance</a></li>
+<li class="chapter" data-level="5.6.4" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-3-judgment-and-decision-making"><i class="fa fa-check"></i><b>5.6.4</b> Part 3: Judgment and Decision-making</a></li>
+<li class="chapter" data-level="5.6.5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-4-experiment-design"><i class="fa fa-check"></i><b>5.6.5</b> Part 4: Experiment Design</a></li>
+<li class="chapter" data-level="5.6.6" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-5-i-have-the-power"><i class="fa fa-check"></i><b>5.6.6</b> Part 5: I have the power</a></li>
+<li class="chapter" data-level="5.6.7" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#summary-of-crump-test"><i class="fa fa-check"></i><b>5.6.7</b> Summary of Crump Test</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-randomization-test-permutation-test"><i class="fa fa-check"></i><b>5.7</b> The randomization test (permutation test)</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#pretend-example-does-chewing-gum-improve-your-grades"><i class="fa fa-check"></i><b>5.7.1</b> Pretend example does chewing gum improve your grades?</a></li>
+<li class="chapter" data-level="5.7.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#take-homes-so-far"><i class="fa fa-check"></i><b>5.7.2</b> Take homes so far</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inferenceForNumericalDataANOVA.html"><a href="inferenceForNumericalDataANOVA.html"><i class="fa fa-check"></i><b>6</b> ANOVA</a></li>
-<li class="chapter" data-level="7" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>7</b> Repeated Measures ANOVA</a></li>
-<li class="chapter" data-level="8" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>8</b> Factorial ANOVA</a></li>
-<li class="chapter" data-level="9" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>9</b> Mixed Design ANOVA</a></li>
-<li class="chapter" data-level="10" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>10</b> Introduction to linear regression</a></li>
-<li class="chapter" data-level="11" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>11</b> Multiple and logistic regression</a><ul>
-<li class="chapter" data-level="11.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>11.1</b> Introduction to multiple regression</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>11.1.1</b> A single-variable model for the Mario Kart data</a></li>
-<li class="chapter" data-level="11.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>11.1.2</b> Including and assessing many variables in a model</a></li>
-<li class="chapter" data-level="11.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>11.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-Tests</a><ul>
+<li class="chapter" data-level="6.1" data-path="t-tests.html"><a href="t-tests.html#check-your-confidence-in-your-mean"><i class="fa fa-check"></i><b>6.1</b> Check your confidence in your mean</a></li>
+<li class="chapter" data-level="6.2" data-path="t-tests.html"><a href="t-tests.html#one-sample-t-test-a-new-t-test"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test: A new t-test</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="t-tests.html"><a href="t-tests.html#formulas-for-one-sample-t-test"><i class="fa fa-check"></i><b>6.2.1</b> Formulas for one-sample t-test</a></li>
+<li class="chapter" data-level="6.2.2" data-path="t-tests.html"><a href="t-tests.html#what-does-t-represent"><i class="fa fa-check"></i><b>6.2.2</b> What does t represent?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="t-tests.html"><a href="t-tests.html#calculating-t-from-data"><i class="fa fa-check"></i><b>6.2.3</b> Calculating t from data</a></li>
+<li class="chapter" data-level="6.2.4" data-path="t-tests.html"><a href="t-tests.html#how-does-t-behave"><i class="fa fa-check"></i><b>6.2.4</b> How does <span class="math inline">\(t\)</span> behave?</a></li>
+<li class="chapter" data-level="6.2.5" data-path="t-tests.html"><a href="t-tests.html#making-a-decision"><i class="fa fa-check"></i><b>6.2.5</b> Making a decision</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>11.2</b> Model selection</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>11.2.1</b> Identifying variables in the model that may not be helpful</a></li>
-<li class="chapter" data-level="11.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>11.2.2</b> Two model selection strategies</a></li>
+<li class="chapter" data-level="6.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples <span class="math inline">\(t\)</span>-test</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="t-tests.html"><a href="t-tests.html#mehr-song-and-spelke-2016"><i class="fa fa-check"></i><b>6.3.1</b> Mehr, Song, and Spelke (2016)</a></li>
+<li class="chapter" data-level="6.3.2" data-path="t-tests.html"><a href="t-tests.html#the-data"><i class="fa fa-check"></i><b>6.3.2</b> The data</a></li>
+<li class="chapter" data-level="6.3.3" data-path="t-tests.html"><a href="t-tests.html#the-difference-scores-1"><i class="fa fa-check"></i><b>6.3.3</b> The difference scores</a></li>
+<li class="chapter" data-level="6.3.4" data-path="t-tests.html"><a href="t-tests.html#the-mean-difference"><i class="fa fa-check"></i><b>6.3.4</b> The mean difference</a></li>
+<li class="chapter" data-level="6.3.5" data-path="t-tests.html"><a href="t-tests.html#calculate-t"><i class="fa fa-check"></i><b>6.3.5</b> Calculate <span class="math inline">\(t\)</span></a></li>
+<li class="chapter" data-level="6.3.6" data-path="t-tests.html"><a href="t-tests.html#interpreting-ts"><i class="fa fa-check"></i><b>6.3.6</b> Interpreting <span class="math inline">\(t\)</span>s</a></li>
+<li class="chapter" data-level="6.3.7" data-path="t-tests.html"><a href="t-tests.html#getting-the-p-values-for-t-values"><i class="fa fa-check"></i><b>6.3.7</b> Getting the p-values for t-values</a></li>
+<li class="chapter" data-level="6.3.8" data-path="t-tests.html"><a href="t-tests.html#one-tailed-tests"><i class="fa fa-check"></i><b>6.3.8</b> One-tailed tests</a></li>
+<li class="chapter" data-level="6.3.9" data-path="t-tests.html"><a href="t-tests.html#two-tailed-tests"><i class="fa fa-check"></i><b>6.3.9</b> Two-tailed tests</a></li>
+<li class="chapter" data-level="6.3.10" data-path="t-tests.html"><a href="t-tests.html#one-or-two-tailed-which-one"><i class="fa fa-check"></i><b>6.3.10</b> One or two tailed, which one?</a></li>
+<li class="chapter" data-level="6.3.11" data-path="t-tests.html"><a href="t-tests.html#degrees-of-freedom"><i class="fa fa-check"></i><b>6.3.11</b> Degrees of freedom</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>11.3</b> Checking model assumptions using graphs</a></li>
-<li class="chapter" data-level="11.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>11.4</b> Logistic regression</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>11.4.1</b> Email data</a></li>
-<li class="chapter" data-level="11.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>11.4.2</b> Modeling the probability of an event</a></li>
-<li class="chapter" data-level="11.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>11.4.3</b> Practical decisions in the email application</a></li>
-<li class="chapter" data-level="11.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>11.4.4</b> Diagnostics for the email classifier</a></li>
-<li class="chapter" data-level="11.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>11.4.5</b> Improving the set of variables for a spam filter</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>12</b> Inference for categorical data</a><ul>
-<li class="chapter" data-level="12.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>12.1</b> Inference for a single proportion</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>12.1.1</b> When the sample proportion is nearly normal</a></li>
-<li class="chapter" data-level="12.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>12.1.2</b> Confidence intervals for a proportion</a></li>
-<li class="chapter" data-level="12.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>12.1.3</b> Hypothesis testing for a proportion</a></li>
-<li class="chapter" data-level="12.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>12.1.4</b> Choosing a sample size when estimating a proportion</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>12.2</b> Difference of two proportions</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>12.2.1</b> Sample distribution of the difference of two proportions</a></li>
-<li class="chapter" data-level="12.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>12.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
-<li class="chapter" data-level="12.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>12.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>12.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>12.3.1</b> Creating a test statistic for one-way tables</a></li>
-<li class="chapter" data-level="12.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>12.3.2</b> The chi-square test statistic</a></li>
-<li class="chapter" data-level="12.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>12.3.3</b> The chi-square distribution and finding areas</a></li>
-<li class="chapter" data-level="12.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>12.3.4</b> Finding a p-value for a chi-square distribution</a></li>
-<li class="chapter" data-level="12.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>12.3.5</b> Evaluating goodness of fit for a distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>12.4</b> Testing for independence in two-way tables (special topic)</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>12.4.1</b> Expected counts in two-way tables</a></li>
-<li class="chapter" data-level="12.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>12.4.2</b> The chi-square test for two-way tables</a></li>
+<li class="chapter" data-level="6.4" data-path="t-tests.html"><a href="t-tests.html#the-paired-samples-t-test-strikes-back"><i class="fa fa-check"></i><b>6.4</b> The paired samples t-test strikes back</a></li>
+<li class="chapter" data-level="6.5" data-path="t-tests.html"><a href="t-tests.html#independent-samples-t-test-the-return-of-the-t-test"><i class="fa fa-check"></i><b>6.5</b> Independent samples t-test: The return of the t-test?</a></li>
+<li class="chapter" data-level="6.6" data-path="t-tests.html"><a href="t-tests.html#simulating-data-for-t-tests"><i class="fa fa-check"></i><b>6.6</b> Simulating data for t-tests</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="t-tests.html"><a href="t-tests.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.6.1</b> Simulating a one-sample t-test</a></li>
+<li class="chapter" data-level="6.6.2" data-path="t-tests.html"><a href="t-tests.html#simulating-a-paired-samples-test"><i class="fa fa-check"></i><b>6.6.2</b> Simulating a paired samples test</a></li>
+<li class="chapter" data-level="6.6.3" data-path="t-tests.html"><a href="t-tests.html#simulating-an-independent-samples-t.test"><i class="fa fa-check"></i><b>6.6.3</b> Simulating an independent samples t.test</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="gifs.html"><a href="gifs.html"><i class="fa fa-check"></i><b>13</b> GIFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="gifs.html"><a href="gifs.html#correlation-gifs"><i class="fa fa-check"></i><b>13.1</b> Correlation GIFs</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="gifs.html"><a href="gifs.html#n10-both-variables-drawn-from-a-uniform-distribution"><i class="fa fa-check"></i><b>13.1.1</b> N=10, both variables drawn from a uniform distribution</a></li>
-<li class="chapter" data-level="13.1.2" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>13.1.2</b> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
-<li class="chapter" data-level="13.1.3" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>13.1.3</b> Correlation between random deviates from normal distribution across four sample sizes</a></li>
-<li class="chapter" data-level="13.1.4" data-path="gifs.html"><a href="gifs.html#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines"><i class="fa fa-check"></i><b>13.1.4</b> Type I errors, sampling random deviates from normal distribution with regression lines</a></li>
-<li class="chapter" data-level="13.1.5" data-path="gifs.html"><a href="gifs.html#cell-size-and-correlation"><i class="fa fa-check"></i><b>13.1.5</b> Cell-size and correlation</a></li>
-<li class="chapter" data-level="13.1.6" data-path="gifs.html"><a href="gifs.html#regression"><i class="fa fa-check"></i><b>13.1.6</b> Regression</a></li>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="anova.html"><a href="anova.html#anova-is-analysis-of-variance"><i class="fa fa-check"></i><b>7.0.1</b> ANOVA is Analysis of Variance</a></li>
+<li class="chapter" data-level="7.1" data-path="anova.html"><a href="anova.html#one-factor-anova"><i class="fa fa-check"></i><b>7.1</b> One-factor ANOVA</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="anova.html"><a href="anova.html#computing-the-f-value"><i class="fa fa-check"></i><b>7.1.1</b> Computing the F-value</a></li>
+<li class="chapter" data-level="7.1.2" data-path="anova.html"><a href="anova.html#ss-total"><i class="fa fa-check"></i><b>7.1.2</b> SS Total</a></li>
+<li class="chapter" data-level="7.1.3" data-path="anova.html"><a href="anova.html#ss-effect"><i class="fa fa-check"></i><b>7.1.3</b> SS Effect</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="gifs.html"><a href="gifs.html#sampling-distributions"><i class="fa fa-check"></i><b>13.2</b> Sampling distributions</a><ul>
-<li class="chapter" data-level="13.2.1" data-path="gifs.html"><a href="gifs.html#sampling-from-a-uniform-distribution"><i class="fa fa-check"></i><b>13.2.1</b> Sampling from a uniform distribution</a></li>
-<li class="chapter" data-level="13.2.2" data-path="gifs.html"><a href="gifs.html#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms"><i class="fa fa-check"></i><b>13.2.2</b> Sampling distribution of the mean, Normal population distribution and sample histograms</a></li>
-<li class="chapter" data-level="13.2.3" data-path="gifs.html"><a href="gifs.html#null-and-true-effect-samples-and-sampling-means"><i class="fa fa-check"></i><b>13.2.3</b> Null and True effect samples and sampling means</a></li>
+<li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#ss-error"><i class="fa fa-check"></i><b>7.2</b> SS Error</a></li>
+<li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#degrees-of-freedom-1"><i class="fa fa-check"></i><b>7.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#mean-squared-error"><i class="fa fa-check"></i><b>7.4</b> Mean Squared Error</a></li>
+<li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#calculate-f"><i class="fa fa-check"></i><b>7.5</b> Calculate F</a></li>
+<li class="chapter" data-level="7.6" data-path="anova.html"><a href="anova.html#the-anova-table"><i class="fa fa-check"></i><b>7.6</b> The ANOVA TABLE</a></li>
+<li class="chapter" data-level="7.7" data-path="anova.html"><a href="anova.html#what-does-f-mean"><i class="fa fa-check"></i><b>7.7</b> What does F mean?</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="anova.html"><a href="anova.html#making-decisions"><i class="fa fa-check"></i><b>7.7.1</b> Making Decisions</a></li>
+<li class="chapter" data-level="7.7.2" data-path="anova.html"><a href="anova.html#fs-and-means"><i class="fa fa-check"></i><b>7.7.2</b> Fs and means</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="gifs.html"><a href="gifs.html#statistical-inference"><i class="fa fa-check"></i><b>13.3</b> Statistical Inference</a><ul>
-<li class="chapter" data-level="13.3.1" data-path="gifs.html"><a href="gifs.html#randomization-test"><i class="fa fa-check"></i><b>13.3.1</b> Randomization Test</a></li>
+<li class="chapter" data-level="7.8" data-path="anova.html"><a href="anova.html#anova-on-real-data"><i class="fa fa-check"></i><b>7.8</b> ANOVA on Real Data</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="anova.html"><a href="anova.html#tetris-and-bad-memories"><i class="fa fa-check"></i><b>7.8.1</b> Tetris and bad memories</a></li>
+<li class="chapter" data-level="7.8.2" data-path="anova.html"><a href="anova.html#comparing-means-after-the-anova"><i class="fa fa-check"></i><b>7.8.2</b> Comparing means after the ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="anova.html"><a href="anova.html#anova-summmary"><i class="fa fa-check"></i><b>7.9</b> ANOVA Summmary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>8</b> Repeated Measures ANOVA</a></li>
+<li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVA</a></li>
+<li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a></li>
+<li class="chapter" data-level="11" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>11</b> Introduction to linear regression</a></li>
+<li class="chapter" data-level="12" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>12</b> Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="12.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>12.1</b> Introduction to multiple regression</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#twoSingleVariableModelsForMarioKartData"><i class="fa fa-check"></i><b>12.1.1</b> A single-variable model for the Mario Kart data</a></li>
+<li class="chapter" data-level="12.1.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#includingAndAssessingManyVariablesInAModel"><i class="fa fa-check"></i><b>12.1.2</b> Including and assessing many variables in a model</a></li>
+<li class="chapter" data-level="12.1.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#adjusted-r2-as-a-better-estimate-of-explained-variance"><i class="fa fa-check"></i><b>12.1.3</b> Adjusted <span class="math inline">\(R^2\)</span> as a better estimate of explained variance</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelSelection"><i class="fa fa-check"></i><b>12.2</b> Model selection</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#identifying-variables-in-the-model-that-may-not-be-helpful"><i class="fa fa-check"></i><b>12.2.1</b> Identifying variables in the model that may not be helpful</a></li>
+<li class="chapter" data-level="12.2.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#two-model-selection-strategies"><i class="fa fa-check"></i><b>12.2.2</b> Two model selection strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#multipleRegressionModelAssumptions"><i class="fa fa-check"></i><b>12.3</b> Checking model assumptions using graphs</a></li>
+<li class="chapter" data-level="12.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#logisticRegression"><i class="fa fa-check"></i><b>12.4</b> Logistic regression</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#email-data"><i class="fa fa-check"></i><b>12.4.1</b> Email data</a></li>
+<li class="chapter" data-level="12.4.2" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#modelingTheProbabilityOfAnEvent"><i class="fa fa-check"></i><b>12.4.2</b> Modeling the probability of an event</a></li>
+<li class="chapter" data-level="12.4.3" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#practical-decisions-in-the-email-application"><i class="fa fa-check"></i><b>12.4.3</b> Practical decisions in the email application</a></li>
+<li class="chapter" data-level="12.4.4" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#diagnostics-for-the-email-classifier"><i class="fa fa-check"></i><b>12.4.4</b> Diagnostics for the email classifier</a></li>
+<li class="chapter" data-level="12.4.5" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#improvingTheSetOfVariablesForASpamFilter"><i class="fa fa-check"></i><b>12.4.5</b> Improving the set of variables for a spam filter</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html"><i class="fa fa-check"></i><b>13</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="13.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#singleProportion"><i class="fa fa-check"></i><b>13.1</b> Inference for a single proportion</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#when-the-sample-proportion-is-nearly-normal"><i class="fa fa-check"></i><b>13.1.1</b> When the sample proportion is nearly normal</a></li>
+<li class="chapter" data-level="13.1.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#confIntForPropSection"><i class="fa fa-check"></i><b>13.1.2</b> Confidence intervals for a proportion</a></li>
+<li class="chapter" data-level="13.1.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#htForPropSection"><i class="fa fa-check"></i><b>13.1.3</b> Hypothesis testing for a proportion</a></li>
+<li class="chapter" data-level="13.1.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#choosing-a-sample-size-when-estimating-a-proportion"><i class="fa fa-check"></i><b>13.1.4</b> Choosing a sample size when estimating a proportion</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#differenceOfTwoProportions"><i class="fa fa-check"></i><b>13.2</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#SampleDistributionOfTheDiffOfTwoProportions"><i class="fa fa-check"></i><b>13.2.1</b> Sample distribution of the difference of two proportions</a></li>
+<li class="chapter" data-level="13.2.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#intervals-and-tests-for-p_1--p_2"><i class="fa fa-check"></i><b>13.2.2</b> Intervals and tests for <span class="math inline">\(p_1 -p_2\)</span></a></li>
+<li class="chapter" data-level="13.2.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pooledHTForProportionsSection"><i class="fa fa-check"></i><b>13.2.3</b> Hypothesis testing when <span class="math inline">\(H_0: p_1=p_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#oneWayChiSquare"><i class="fa fa-check"></i><b>13.3</b> Testing for goodness of fit using chi-square (special topic)</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#creating-a-test-statistic-for-one-way-tables"><i class="fa fa-check"></i><b>13.3.1</b> Creating a test statistic for one-way tables</a></li>
+<li class="chapter" data-level="13.3.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#chiSquareTestStatistic"><i class="fa fa-check"></i><b>13.3.2</b> The chi-square test statistic</a></li>
+<li class="chapter" data-level="13.3.3" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-distribution-and-finding-areas"><i class="fa fa-check"></i><b>13.3.3</b> The chi-square distribution and finding areas</a></li>
+<li class="chapter" data-level="13.3.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#pValueForAChiSquareTest"><i class="fa fa-check"></i><b>13.3.4</b> Finding a p-value for a chi-square distribution</a></li>
+<li class="chapter" data-level="13.3.5" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#evaluating-goodness-of-fit-for-a-distribution"><i class="fa fa-check"></i><b>13.3.5</b> Evaluating goodness of fit for a distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#twoWayTablesAndChiSquare"><i class="fa fa-check"></i><b>13.4</b> Testing for independence in two-way tables (special topic)</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#expected-counts-in-two-way-tables"><i class="fa fa-check"></i><b>13.4.1</b> Expected counts in two-way tables</a></li>
+<li class="chapter" data-level="13.4.2" data-path="inferenceForCategoricalData.html"><a href="inferenceForCategoricalData.html#the-chi-square-test-for-two-way-tables"><i class="fa fa-check"></i><b>13.4.2</b> The chi-square test for two-way tables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="gifs.html"><a href="gifs.html"><i class="fa fa-check"></i><b>14</b> GIFs</a><ul>
+<li class="chapter" data-level="14.1" data-path="gifs.html"><a href="gifs.html#correlation-gifs"><i class="fa fa-check"></i><b>14.1</b> Correlation GIFs</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="gifs.html"><a href="gifs.html#n10-both-variables-drawn-from-a-uniform-distribution"><i class="fa fa-check"></i><b>14.1.1</b> N=10, both variables drawn from a uniform distribution</a></li>
+<li class="chapter" data-level="14.1.2" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>14.1.2</b> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
+<li class="chapter" data-level="14.1.3" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>14.1.3</b> Correlation between random deviates from normal distribution across four sample sizes</a></li>
+<li class="chapter" data-level="14.1.4" data-path="gifs.html"><a href="gifs.html#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines"><i class="fa fa-check"></i><b>14.1.4</b> Type I errors, sampling random deviates from normal distribution with regression lines</a></li>
+<li class="chapter" data-level="14.1.5" data-path="gifs.html"><a href="gifs.html#cell-size-and-correlation"><i class="fa fa-check"></i><b>14.1.5</b> Cell-size and correlation</a></li>
+<li class="chapter" data-level="14.1.6" data-path="gifs.html"><a href="gifs.html#regression"><i class="fa fa-check"></i><b>14.1.6</b> Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="gifs.html"><a href="gifs.html#sampling-distributions"><i class="fa fa-check"></i><b>14.2</b> Sampling distributions</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="gifs.html"><a href="gifs.html#sampling-from-a-uniform-distribution"><i class="fa fa-check"></i><b>14.2.1</b> Sampling from a uniform distribution</a></li>
+<li class="chapter" data-level="14.2.2" data-path="gifs.html"><a href="gifs.html#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms"><i class="fa fa-check"></i><b>14.2.2</b> Sampling distribution of the mean, Normal population distribution and sample histograms</a></li>
+<li class="chapter" data-level="14.2.3" data-path="gifs.html"><a href="gifs.html#null-and-true-effect-samples-and-sampling-means"><i class="fa fa-check"></i><b>14.2.3</b> Null and True effect samples and sampling means</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="gifs.html"><a href="gifs.html#statistical-inference"><i class="fa fa-check"></i><b>14.3</b> Statistical Inference</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="gifs.html"><a href="gifs.html#randomization-test"><i class="fa fa-check"></i><b>14.3.1</b> Randomization Test</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -338,7 +385,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="t-tests" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> t-Tests</h1>
+<h1><span class="header-section-number">Chapter 6</span> t-Tests</h1>
 <p>One day, many moons ago, William Sealy Gosset got a job working for Guinness Breweries. They make that really dark and famous Irish beer called Guinness. What happens next went something like this (total fabrication, but mostly on point).</p>
 <p>Guinness wanted all of its beers to the best beers. No mistakes, No bad beers. They wanted to improve their quality control, so that wherever you pour a Guiness, anywhere in the world, it always comes out just fantastic, let’s say 5 stars out of 5 every time. They want to be the best.</p>
 <p>Guiness had some beer tasters, who were super-experts. Everytime they tasted a Guiness from the factor that wasn’t 5 out of 5, they knew right away.</p>
@@ -353,7 +400,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>It turns out this was a very nice thing for Gosset to have done. t-tests are used all the time, and they are useful, that’s why they are used. In this chapter we learn how they work.</p>
 <p>You’ll be surprised to learn that what we’ve already talked about, (the Crump Test, and the Randomization Test), are both very very similar to the t-test. So, in general, you have already been thinking about the things you need to think about to understand t-tests. You’re probably wondering what is this <span class="math inline">\(t\)</span>, what does <span class="math inline">\(t\)</span> mean? We will tell you. Before we tell what it means, we first tell you about one more idea.</p>
 <div id="check-your-confidence-in-your-mean" class="section level2">
-<h2><span class="header-section-number">5.1</span> Check your confidence in your mean</h2>
+<h2><span class="header-section-number">6.1</span> Check your confidence in your mean</h2>
 <p>We’ve talked about getting a sample of data. We know we can find the mean, we know can find the standard deviation. We know we can look at the data in a histogram. These are all useful things to do for us to learn something about the properties of our data.</p>
 <p>You might be thinking about these things, like mean and standard deviation, as very different things. The mean is about central tendency (where most of the data is), and the standard deviation is about variance (where most of the data isn’t). Yes, they are different things, but we can use them together to create useful new things.</p>
 <p>What if I told you my sample mean was 50, and I told you nothing else about my sample. Would you be confident that most of the numbers were near 50? Would you wonder if there was a lot of variability in the sample, and many of the numbers were very different from 50. You should wonder all of those things. The mean alone, just by itself, doesn’t tell you anything about how confident you should be that the number represents all of the numbers in the sample.</p>
@@ -378,12 +425,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In fact, this is the general formula for the t-test. Big surprise!</p>
 </div>
 <div id="one-sample-t-test-a-new-t-test" class="section level2">
-<h2><span class="header-section-number">5.2</span> One-sample t-test: A new t-test</h2>
+<h2><span class="header-section-number">6.2</span> One-sample t-test: A new t-test</h2>
 <p>Now we are ready to talk about t-test. We will talk about three of them. We start with the one-sample t-test.</p>
 <p>Commonly, the one-sample t-test is used to estimate the chances that your sample came from a particular popualtion. Specifically, you might want to know whether the mean that you found from your sample, could have come from a particular population having a particular mean.</p>
 <p>Straight away, the one-sample t-test becomes a little confusing (and I haven’t even described it yet). Offically, the uses known parameters from the population, like the mean of the population and the standard deviation of the population. However, most times you don’t know those parameters of the population! So, you have to estimate them from your sample. Remember, from the chapter on descriptive statistics, our sample mean is an unbiased estimate of the population mean. And, our sample standard deviation (the one where we divide by n-1) is an unbiased estimate of the population standard deviation. When Gosset developed the t-test, he recognized that he could use these estimates from his samples, to make the t-test. Here is the formula for the one sample t-test, we first use words, and then become more specific:</p>
 <div id="formulas-for-one-sample-t-test" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Formulas for one-sample t-test</h3>
+<h3><span class="header-section-number">6.2.1</span> Formulas for one-sample t-test</h3>
 <p><span class="math inline">\(\text{name of statistic} = \frac{\text{measure of effect}}{\text{measure of error}}\)</span></p>
 <p><span class="math inline">\(\text{t} = \frac{\text{measure of effect}}{\text{measure of error}}\)</span></p>
 <p><span class="math inline">\(\text{t} = \frac{\text{Mean difference}}{\text{standard error}}\)</span></p>
@@ -394,7 +441,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Some of you may have gone cross-eyed looking at all of this. Remember, we’ve seen it before when we divided our mean by the standard deviation in the first bit. The t-test is just a measure of a sample mean, divided by the standard error of the sample mean. That is it.</p>
 </div>
 <div id="what-does-t-represent" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> What does t represent?</h3>
+<h3><span class="header-section-number">6.2.2</span> What does t represent?</h3>
 <p><span class="math inline">\(t\)</span> gives us a measure of confidence, just like our previous ratio for dividing the mean by a standard deviations.</p>
 <div class="marginnote">
 <p>What does the t in t-test stand for? Apparently nothing. Gosset originally labelled it z. And, Fisher later called it t, perhaps because t comes after s, which is often used for the sample standard deviation.</p>
@@ -408,7 +455,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>So, that is some intutions about what the kinds of values t can take. <span class="math inline">\(t\)</span> can be positive or negative, and big or small. Fine then, what can we do with this?</p>
 </div>
 <div id="calculating-t-from-data" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Calculating t from data</h3>
+<h3><span class="header-section-number">6.2.3</span> Calculating t from data</h3>
 <p>Let’s briefly calculate a t-value from a small sample. Let’s say we had 10 students do a true/false quiz 5 questions on it. There’s a 50% chance of getting each answer correct.</p>
 <p>Every student completes the 5 questions, we grade them, and then we find their performance (mean percent correct). Want we want to know is whether the students were guessing. If they were all guessing, then the sample mean should be about 50%, it shouldn’t be different from chance, which is 50%. Let’s look at the table:</p>
 <table>
@@ -552,7 +599,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##        61</code></pre>
 </div>
 <div id="how-does-t-behave" class="section level3">
-<h3><span class="header-section-number">5.2.4</span> How does <span class="math inline">\(t\)</span> behave?</h3>
+<h3><span class="header-section-number">6.2.4</span> How does <span class="math inline">\(t\)</span> behave?</h3>
 <p>If <span class="math inline">\(t\)</span> is just a number that we can from our sample (it is), what can we do with it? How can we use <span class="math inline">\(t\)</span> for statistical inference?</p>
 <p>Remember back to the chapter on sampling and distributions, that’s where we discussed the sampling distribution of the sample mean. Remember, we made a lot of samples, then computed the mean for each sample, then we plotted a histogram of the sample means. Later, in that same section, we mentioned that we could generate sampling distributions for any statistic. That, for each sample, we could compute the mean, the standard deviation, the standard error, and now even <span class="math inline">\(t\)</span>, if we wanted to. We could generate 10,000 samples, and draw four histograms, one for each sampling distribution for each statistic.</p>
 <p>This is exactly what I did, and the results are shown in the four figures below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let’s look at the sampling distributions for each of the statistics. <span class="math inline">\(t\)</span> was computed assuming with the population mean assumed to be 0.</p>
@@ -575,19 +622,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><img src="statistics_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 </div>
 <div id="making-a-decision" class="section level3">
-<h3><span class="header-section-number">5.2.5</span> Making a decision</h3>
+<h3><span class="header-section-number">6.2.5</span> Making a decision</h3>
 <p>From our early example involving the TRUE/FALSE quizzes, we are not ready to make some kind of decision about what happended there. We found a mean difference of 11. We found a <span class="math inline">\(t\)</span> = 1.9411765. The probability of this <span class="math inline">\(t\)</span> or larger occuring is <span class="math inline">\(p\)</span> = 0.0841503. We were testing the idea that our sample mean of 61 could have come from a normal distribution with mean = 50. The <span class="math inline">\(t\)</span> test tells us that the <span class="math inline">\(t\)</span> for our sample, or a larger one, would happen with p = 0.0841503. In other words, chance can do it a kind of small amount of time, but not often. In english, this means that all of the students could have been, guessing, but it wasn’t that likely that were just guessing.</p>
 <p>We’re guessing that you are still a little bit confused about <span class="math inline">\(t\)</span> values, and what we are doing here. We are going to skip ahead to the next <span class="math inline">\(t\)</span>-test, called a <strong>paired samples t-test</strong>. We will also fill in some more things about <span class="math inline">\(t\)</span>-tests that are more obvious when discussing paired samples t-test. In fact, spoiler alert, we will find out that paired samples t-test is actually a one-sample t-test in disguise (WHAT!), yes it is. If the one-sample <span class="math inline">\(t\)</span>-test didn’t make sense to you, read the next section.</p>
 </div>
 </div>
 <div id="paired-samples-t-test" class="section level2">
-<h2><span class="header-section-number">5.3</span> Paired-samples <span class="math inline">\(t\)</span>-test</h2>
+<h2><span class="header-section-number">6.3</span> Paired-samples <span class="math inline">\(t\)</span>-test</h2>
 <p>For me (Crump), many analyses often boil down to a paired samples t-test. It just happens that many things I do reduce down to a test like this.</p>
 <p>I am a cognitive psychologist, I conduct research learn how people do things like remember, pay attention, and learn skills. There are lots of Psychologists like me, who do very similar things.</p>
 <p>We all often conduct the same kinds of experiments. They go like this, and they are called <strong>repeated measures</strong> designs. They are called <strong>repeated measures</strong> designs, because we measure how one person does something more than once, we <strong>repeat</strong> the measure.</p>
 <p>So, I might measure somebody doing something in condition A, and measure somebody doing something in Condition B, and then I see that same person does different things in the two conditions. I <strong>repeatedly measure</strong> the same person in both conditions. I am interested in whether the experimental manipulation changes something about how people perform the task in question.</p>
 <div id="mehr-song-and-spelke-2016" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> Mehr, Song, and Spelke (2016)</h3>
+<h3><span class="header-section-number">6.3.1</span> Mehr, Song, and Spelke (2016)</h3>
 <p>We will introduce the paired-samples t-test with an example using real data, from a real study. Mehr, Song, and Spelke (2016) were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people, as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song, might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did:</p>
 <p>First, parents were trained to sing a song to their infants. After many days of singing this song to the infants, the parent came into the lab with their infants. In the first session, parents sat with their infants on their knees, so the infant could watch two video presentations. There were two videos. Each video involved two unfamiliar new people the infant had never seen before. Each new person in the video (the singers) sang one song to the infant. One singer sang the “familiar” song the infant had learned from their parents. The other singer sang an “unfamiliar” song the infant had not hear before.</p>
 <p>There were two really important measurement phases, the baseline phase, and the test phase. The baseline phase occured before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).</p>
@@ -601,7 +648,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 </div>
 <div id="the-data" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> The data</h3>
+<h3><span class="header-section-number">6.3.2</span> The data</h3>
 <p>Let’s take a look at the data for the first 5 infants in the study. This will help us better understand some properties of the data before we anlayze it. We will see that the data is stuctured in a particular way, that we can take advantage of with a paired samples t-test. Note, we look at the first 5 infants to show how the computations work. The results of the paired-samples t-test change when we use all of the data from the study.</p>
 <p>Here is a table of the data:</p>
 <table>
@@ -645,7 +692,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In other words, we are interested in looking at the difference scores between the baseline and test phase for each infant. The question here is, for each infant, did their proportion looking time to the singer of the familiar song, increase during the test phase as compared to the baseline phase.</p>
 </div>
 <div id="the-difference-scores-1" class="section level3">
-<h3><span class="header-section-number">5.3.3</span> The difference scores</h3>
+<h3><span class="header-section-number">6.3.3</span> The difference scores</h3>
 <p>Let’s look add the difference scores to the table of data so it is easier to see what we are talking about. The first step in creating difference scores is to decide how you will take the difference, there are two options:</p>
 <ol style="list-style-type: decimal">
 <li>Test phase score - Baseline Phase Score</li>
@@ -697,7 +744,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>There we have it, the difference scores. The first thing we can do here is look at the difference scores, and ask how many infants showed the effect of interest. Specifically, how many infants showed a positive difference score. We can see that three of five infants showed a positive difference (they looked more at the singer of the familiar song during the test than baseline phase), and two the infants showed the opposite effect (negative difference, they looked more at the singer of the familiar song during baseline than test).</p>
 </div>
 <div id="the-mean-difference" class="section level3">
-<h3><span class="header-section-number">5.3.4</span> The mean difference</h3>
+<h3><span class="header-section-number">6.3.4</span> The mean difference</h3>
 <p>As we have been discussing, the effect of interest in this study is the mean difference between the baseline and test phase proportion looking times. We can calculate the mean difference, by finding the mean of the difference scores. Let’s do that, in fact, for fun let’s calculate the mean of the baseline scores, the test scores, and the difference scores.</p>
 <table>
 <thead>
@@ -758,7 +805,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>We will more formally evaluate whether this difference could have been caused by chance with the paired-samples t-test. But, before we do that, let’s again calculate <span class="math inline">\(t\)</span> and discuss what <span class="math inline">\(t\)</span> tells us over and above what our measure of the mean of the difference scores tells us.</p>
 </div>
 <div id="calculate-t" class="section level3">
-<h3><span class="header-section-number">5.3.5</span> Calculate <span class="math inline">\(t\)</span></h3>
+<h3><span class="header-section-number">6.3.5</span> Calculate <span class="math inline">\(t\)</span></h3>
 <p>Ok, so how do we calculate <span class="math inline">\(t\)</span> for a paired-samples <span class="math inline">\(t\)</span>-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample <span class="math inline">\(t\)</span>-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample <span class="math inline">\(t\)</span>-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distibrution with mean difference = 0. This is a special distribution we refer to as the <strong>null distribution</strong>. It is the distribution no differences. Of course, this <strong>null distribution</strong> can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.</p>
 <p>We calculate <span class="math inline">\(t\)</span> in a moment. Let’s now consider again why we want to calculate <span class="math inline">\(t\)</span>? Why don’t we just stick with the mean difference we already have?</p>
 <p>Remember, the whole concept behind <span class="math inline">\(t\)</span>, is that it gives an indication of how confident we should be in our mean. Remember, <span class="math inline">\(t\)</span> involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denonimator. The resulting <span class="math inline">\(t\)</span> value is small when the mean difference is small, or when the variation is large. So small <span class="math inline">\(t\)</span>-values tell us that we shouldn’t be that confident in the estimate of our mean difference. Large <span class="math inline">\(t\)</span>-values occur when the mean difference is large and/or when the measure of variation is small. So, large <span class="math inline">\(t\)</span>-values tell us that we can be more confident in the estimate of our mean difference. Let’s find <span class="math inline">\(t\)</span> for the mean difference scores. We use the same formulas as we did last time:</p>
@@ -872,7 +919,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>What does all of that tell us? There’s a few things we haven’t gotten into much yet. For example, the 4 represents degrees of freedom, which we discuss later. The important part, the <span class="math inline">\(t\)</span> value should start to be a little bit more meaningful. We got a kind of small t-value didn’t we. It’s .72. What can we tell from this value? First, it is positive, so we know the mean difference is positive. The sign of the <span class="math inline">\(t\)</span>-value is always the same as the sign of the mean difference (ours was +0.054). We can also see that the p-value was .509. We’ve seen p-values before. This tells us that our <span class="math inline">\(t\)</span> value or larger, occurs about 50.9% of the time… Actually it means more than this. And, to understand it, we need to talk about the concept of two-tailed and one-tailed tests.</p>
 </div>
 <div id="interpreting-ts" class="section level3">
-<h3><span class="header-section-number">5.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</h3>
+<h3><span class="header-section-number">6.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</h3>
 <p>Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of <span class="math inline">\(t\)</span>-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like by plotting it like this:</p>
 <p><img src="statistics_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 <p>The <span class="math inline">\(t\)</span>-distribution above shows us the kinds of values <span class="math inline">\(t\)</span> will will take by chance alone, when we measure the mean differences for pairs of 5 samples (like our current). <span class="math inline">\(t\)</span> is most likely to be zero, which is good, because we are looking at the distribution of no-differences, which should most often be 0! But, sometimes, due to sampling error, we can get <span class="math inline">\(t\)</span>s that are bigger than 0, either in the positive or negative direction. Notice the distribution is symmetrical, a <span class="math inline">\(t\)</span> from the null-distribution will be positive half of the time, and negative half of the time, that is what we would expect by chance.</p>
@@ -895,14 +942,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Notice, that the <span class="math inline">\(p\)</span>s are always 10%. <span class="math inline">\(t\)</span>s occur in these ranges with 10% probability.</p>
 </div>
 <div id="getting-the-p-values-for-t-values" class="section level3">
-<h3><span class="header-section-number">5.3.7</span> Getting the p-values for t-values</h3>
+<h3><span class="header-section-number">6.3.7</span> Getting the p-values for t-values</h3>
 <p>You might be wondering where I am getting some of these values from. For example, how do I know that 10% of <span class="math inline">\(t\)</span> values (for this null distribution) have a value of approximately 1.5 or greater than 1.5? The answer is I used R to tell me.</p>
 <p>In most statistics textbooks the answer would be, there is a table at the back of the book where you can look these things up…This textbook has no such table. We could make one for you. And, we might do that. But, we didn’t do that yet…</p>
 <p>So, where do these values come from, how can you figure out what they are? The complicated answer is that we are not going to explain the math behind finding these values because 1) the authors (some of) admittedly don’t know the math well enough to explain it, and 2) it would sidetrack us to much, 3) you will learn how to get these numbers in the lab with software, 4) you will learn how to get these numbers in lab without the math, just by doing a simulation, and 5) you can do it in R, or excel, or you can use an <a href="http://www.socscistatistics.com/pvalues/tdistribution.aspx">online calculator</a>.</p>
 <p>This is all to say that you can find the <span class="math inline">\(ts\)</span> and their associated <span class="math inline">\(ps\)</span> using software. But, the software won’t tell you what these values mean. That’s we are doing here. You will also see that software wants to know a few more things from you, such as the degrees of freedom for the test, and whether the test is one-tailed or two tailed. We haven’t explained any of these things yet. That’s what we are going to do now. Note, we explain degrees of freedom last. First, we start with a one-tailed test.</p>
 </div>
 <div id="one-tailed-tests" class="section level3">
-<h3><span class="header-section-number">5.3.8</span> One-tailed tests</h3>
+<h3><span class="header-section-number">6.3.8</span> One-tailed tests</h3>
 <p>A <strong>one-tailed test</strong> is sometimes also called a directional test. It is called a directional test, because a researcher might have a hypothesis in mind suggesting that the difference they observe in their means is going to have a particualr direction, either a positive difference, or a negative difference.</p>
 <p>Typically, a researcher would set an alpha criterion. The alpha criterion describes a line in the sand for the researcher. Often, the alpha criterion is set at p=.05. What does this mean? Let’s look at again at the graph of the t-distribution, and show the alpha criterion.</p>
 <p><img src="statistics_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
@@ -920,7 +967,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Following the “standard” decision making procedure, we would claim that our <span class="math inline">\(t\)</span> value was <strong>not statistically significant</strong>, because it was not large enough. If our observed value was larger than the critical <span class="math inline">\(t\)</span> (larger than 2.13), defined by our alpha criterion, then we would claim that our <span class="math inline">\(t\)</span> value was <strong>statistically signicant</strong>. This would be equivalent to saying that we believe it is unlikely that the difference we observed was due to chance. In general, for any observed <span class="math inline">\(t\)</span> value, the associated p-value tells you how likely a <span class="math inline">\(t\)</span> of the observed size or larger would be observed. The p-value <strong>always</strong> refers to a <strong>range</strong> of t-values, never to a single t-value. Researchers use the alpha criterion of .05, as a matter of convenience and convention. There are other ways to interpret these values that do not rely on a strict (significant versus not) dichotomy.</p>
 </div>
 <div id="two-tailed-tests" class="section level3">
-<h3><span class="header-section-number">5.3.9</span> Two-tailed tests</h3>
+<h3><span class="header-section-number">6.3.9</span> Two-tailed tests</h3>
 <p>Ok so that is one-tailed tests… What are two tailed tests, what is that? The p-value that we orginally calculated from our paired-samples t-test was for a 2-tailed test. Often, the default is that the p-value is for a two-tailed test.</p>
 <p>The two-tailed test, is asking a more general question about whether a difference is likely to have been produced by chance. The question is, what is probability of any difference. It is also called a <strong>non-directional</strong> test, because here we don’t care about the direction or sign of the difference (positive or negative), we just care if there is any kind of difference.</p>
 <p>The same basic things as before are involved. We define an alpha criterion (<span class="math inline">\(\alpha = 0.05\)</span>). And, we say that any observed <span class="math inline">\(t\)</span> value that has a probability of p&lt;.05 (p is less than .05) will be called <strong>statistically signficant</strong>, and ones that are more likely (p&gt;.05, p is greater than .05) will be called null-results, or not statistically significant. The only difference is how we draw the alpha range. Before it was on the right side of the <span class="math inline">\(t\)</span> distribution (we were conducting a one-sided test remember, so we were only interested in one side).</p>
@@ -930,13 +977,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>As a result, the critical <span class="math inline">\(t\)</span> value is (+/-) 2.78 for a two-tailed test. As you can see, the two-tailed test is blind to the direction or sign of the difference. Because of this, the critical <span class="math inline">\(t\)</span> value is also higher for a two-tailed test, than for the one-tailed test that we did earlier. Hopefully, now you can see why it is called a two-tailed test. There are two tails of the distribution, one on the left and right, both shaded in green.</p>
 </div>
 <div id="one-or-two-tailed-which-one" class="section level3">
-<h3><span class="header-section-number">5.3.10</span> One or two tailed, which one?</h3>
+<h3><span class="header-section-number">6.3.10</span> One or two tailed, which one?</h3>
 <p>Now that you know there are two kinds of tests, one-tailed, and two-tailed, which one should you use? There is some conventional wisdom on this, but also some debate. In the end, it is up to you to be able to justify your choice and why it is appropriate for you data. That is the real answer.</p>
 <p>The conventional answer is that you use you one-tailed test when you have a theory or hypothesis that is making a directional prediction (the theory predicts that the difference will be positive, or negative). Similarly, use a two-tailed test when you are looking for any difference, and you don’t have a theory that makes a directional prediction (it just makes the prediction that there will be a difference, either postive or negative).</p>
 <p>Also, people appear to choose a one or two-tailed test based on how risky they are as researchers. If you always ran one-tailed tests, your critical <span class="math inline">\(t\)</span> values for your set alpha criterion would always be smaller than the critical <span class="math inline">\(t\)</span>s for a two-tailed test. Over the long run, you would make more type I errors, because the criterion to detect an effect is a lower bar for one than two tailed tests. Similarly, if you always ran two-tailed tests, even when you had a directional prediction, you would make fewer type I errors over the long run, because the <span class="math inline">\(t\)</span> for a two-tailed test is higher than the <span class="math inline">\(t\)</span> for a one-tailed test. It seems quite common for researchers to use a more conservative two-tailed test, even when they are making a directional prediction based on theory. In practice, researchers tend to adopt a standard for reporting that is common in their field. Whether or not the practice is justifiable can sometimes be an open question. The important task for any researcer, or student learning statistics, is to be able to justify their choice of test.</p>
 </div>
 <div id="degrees-of-freedom" class="section level3">
-<h3><span class="header-section-number">5.3.11</span> Degrees of freedom</h3>
+<h3><span class="header-section-number">6.3.11</span> Degrees of freedom</h3>
 <p>Before we finsih up with paired-samples t-tests, we should talk about degrees of freedom. Our sense is that students don’t really understand degrees of freedom very well. If you are reading this textbook, you are probably still wondering what is degrees of freedom, seeing as we haven’t really talked about it all.</p>
 <p>For the t-test, there is a formula for degrees of freedom. For the one-sample and paired sample t-tests, the formula is:</p>
 <p><span class="math inline">\(\text{Degrees of Freedom} = \text{df} = n-1\)</span>. Where n is the number of samples in the test.</p>
@@ -948,7 +995,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To illustrate. Let’s freely pick two numbers: 51 and -3. I used my personal freedom to pick those two numbers. Now, if our three numbers are 51, -3, and x, and the mean of these three numbers is 2. There is only one solution, x has to be -42, otherwise the mean won’t be 2. This is one way to think about degrees of freedom. The degrees of freedom for these three numbers is n-1 = 3-1= 2, because 2 of the numbers can be free, but the last number has no freedom, it becomes fixed after the first two are decided.</p>
 <p>Now, statisticians often apply degrees of freedom to their calculations, especially when a second calculation relies on an estimated value. For example, when we calculate the standard deviation of a sample, we first calculate the mean of the sample right! By estimating the mean, we are fixing an aspect of our sample, and so, our sample now has n-1 degrees of freedom when we calculate the standard deviation (remember for the sample standard deviation, we divide by n-1…there’s that n-1 again.)</p>
 <div id="simulating-how-degrees-of-freedom-affects-the-t-distribution" class="section level4">
-<h4><span class="header-section-number">5.3.11.1</span> Simulating how degrees of freedom affects the t distribution</h4>
+<h4><span class="header-section-number">6.3.11.1</span> Simulating how degrees of freedom affects the t distribution</h4>
 <p>There are at least two ways to think the degrees of freedom for a t-test. For example, if you want to use math to compute aspects of the <span class="math inline">\(t\)</span> distribution, then you need the degrees of freedom to plug in to the formula… If you want to see the formulas I’m talking about, scroll down on the <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">t-test wikipedia page</a> and look for the probability density or cumulative distribution functions…We think that is quite scary for most people, and one reason why degrees of freedom are not well-understood.</p>
 <p>If we wanted to simulate the t distribution we could more easily see what influence degrees of freedom has on the shape of the distribution. Remember, <span class="math inline">\(t\)</span> is a sample statistic, it is something we measure from the sample. So, we could simulate the process of measuring <span class="math inline">\(t\)</span> from many different samples, then plot the histogram of <span class="math inline">\(t\)</span> to show us the simualted <span class="math inline">\(t\)</span> distribution.</p>
 <p><img src="statistics_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
@@ -958,7 +1005,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 </div>
 <div id="the-paired-samples-t-test-strikes-back" class="section level2">
-<h2><span class="header-section-number">5.4</span> The paired samples t-test strikes back</h2>
+<h2><span class="header-section-number">6.4</span> The paired samples t-test strikes back</h2>
 <p>You must be wondering if we will ever be finished talking about paired samples t-tests…why are we doing round 2, oh no! Don’t worry, we’re just going to 1) remind you about what we were doing with infant study, and 2) do a paired samples t-test on the entire data set and discuss.</p>
 <p>Remember, we were wondering if the infants would look longer toward the singer who sang the familiar song during the test phase compared to the baseline phase. We showed you data from 5 infants, and walked through the computations for the t-test. As a reminder, it looked like this:</p>
 <table>
@@ -1083,7 +1130,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Now we get a very different answer. We would summarise the results saying the mean difference was .073, t(31) = 2.44, p = 0.020. How many total infants were their? Well the degrees of freedrom was 31, so there must have been 32 infants in the study. Now we see a much smaller p-value. This was also a two-tailed test, so we that observing a <span class="math inline">\(t\)</span> value of 2.4 or greater (absolute value) only occurs 2% of the time. In other words, the distribution of no differences will produce the observed t-value very rarely. So, it is unlikely that the observed mean difference of .073 was due to chance (it could have been due to chance, but that is very unlikely). As a result, we can be somewhat confident in concluding that something about seeing and hearing a unfamiliar person sing a familiar song, causes an infant to draw their attention toward the singer, and this potentially benefits social learning on the part of the infant.</p>
 </div>
 <div id="independent-samples-t-test-the-return-of-the-t-test" class="section level2">
-<h2><span class="header-section-number">5.5</span> Independent samples t-test: The return of the t-test?</h2>
+<h2><span class="header-section-number">6.5</span> Independent samples t-test: The return of the t-test?</h2>
 <p>If you’ve been following the Star Wars references, we are on last movie…the independent t-test. This were basically the same plot happens, only slightly different.</p>
 <p>Remember there are different t-tests for different kinds of research designs. When your design is a <strong>between-subjects</strong> design, you use an <strong>independent samples t-test</strong>. Between-subjects design involve different people or subjects in each experimental condition. If there are two conditions, and 10 people in each, then there are 20 total people. And, there are no paired scores, because every single person is measured once, not twice, no repeated measures. Because there are no repeated measures we can not look at the difference scores between conditions one and two. The scores are not paired in any meaningful way, to it doesn’t make sense to subtract them. So what do we do?</p>
 <p>The logic of the independent samples t-test is the very same as the other t tests. We calculated the means for each group, then we find the difference. That goes into the numerator of the t formala. Then we get an estimate of the variation for the denominator. We divide the mean difference by the estimate of the variation, and we get t. It’s the same as before.</p>
@@ -1136,12 +1183,12 @@ t <span class="co"># print results</span></code></pre></div>
 ##       3.0       5.6</code></pre>
 </div>
 <div id="simulating-data-for-t-tests" class="section level2">
-<h2><span class="header-section-number">5.6</span> Simulating data for t-tests</h2>
+<h2><span class="header-section-number">6.6</span> Simulating data for t-tests</h2>
 <p>An “advanced” topic for t-tests is the idea of using R to simulations for t-tests.</p>
 <p>If you recall, <span class="math inline">\(t\)</span> is a property of a sample. We calculate <span class="math inline">\(t\)</span> from our sample. The <span class="math inline">\(t\)</span> distribution is the hypothetical behavior of our sample. That is, if we had taken thousands upon thousands of samples, and calculated <span class="math inline">\(t\)</span> for each one, and then looked at the distribution of those <span class="math inline">\(t\)</span>’s, we would have the sampling distribution of <span class="math inline">\(t\)</span>!</p>
 <p>It can be very useful to get in the habit of using R to simulate data under certain conditions, to see how your sample data, and things like <span class="math inline">\(t\)</span> behave. Why is this useful? It mainly prepares you with some intuitions about how sampling error (random chance) can influence your results, given specific parameters of your design, such as sample-size, the size of the mean difference you expect to find in your data, and the amount of variation you might find. These methods can be used formally to conduct power-analyses. Or more informally for data sense.</p>
 <div id="simulating-a-one-sample-t-test" class="section level3">
-<h3><span class="header-section-number">5.6.1</span> Simulating a one-sample t-test</h3>
+<h3><span class="header-section-number">6.6.1</span> Simulating a one-sample t-test</h3>
 <p>Here are the steps you might follow to simulate data for a one sample-test.</p>
 <ol style="list-style-type: decimal">
 <li><p>Make some assumptions about what your sample (that you might be planning to collect) might look like. For example, you might be planning to collect 30 subjects worth of data. The scores of those data points might come from a normal distribution (mean = 50, sd = 10).</p></li>
@@ -1176,7 +1223,7 @@ simulated_ps &lt;-<span class="st"> </span><span class="kw">replicate</span>(<sp
 <p><img src="statistics_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 </div>
 <div id="simulating-a-paired-samples-test" class="section level3">
-<h3><span class="header-section-number">5.6.2</span> Simulating a paired samples test</h3>
+<h3><span class="header-section-number">6.6.2</span> Simulating a paired samples test</h3>
 <p>The code below is set-up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
@@ -1195,10 +1242,10 @@ for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
 <p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for t and p. These again show how the null distribution of no differences behaves.</p>
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
-<pre><code>## [1] 57</code></pre>
+<pre><code>## [1] 52</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
-<pre><code>## [1] 0.057</code></pre>
-<p>We happened to make 57. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
+<pre><code>## [1] 0.052</code></pre>
+<p>We happened to make 52. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happns if there actually is a difference in the simulated data, let’s set one condition to have larger mean than the other:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
@@ -1217,10 +1264,10 @@ for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
 <p>Now you can see that the p-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
-<pre><code>## [1] 224</code></pre>
+<pre><code>## [1] 223</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
-<pre><code>## [1] 0.224</code></pre>
-<p>We happened to get 224 simulations where p was less than .05, that’s only 0.224 experiments. If you were the researcher, would you want to run an experiment that would be succesful only 0.224 of the time? I wouldn’t. I would run a better experiment.</p>
+<pre><code>## [1] 0.223</code></pre>
+<p>We happened to get 223 simulations where p was less than .05, that’s only 0.223 experiments. If you were the researcher, would you want to run an experiment that would be succesful only 0.223 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase n, the number of subjects in the experiment. Let’s increase n from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
@@ -1237,13 +1284,13 @@ for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ts)</code></pre></div>
 <p><img src="statistics_files/figure-html/unnamed-chunk-104-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
-<pre><code>## [1] 985</code></pre>
+<pre><code>## [1] 991</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
-<pre><code>## [1] 0.985</code></pre>
+<pre><code>## [1] 0.991</code></pre>
 <p>Cool, now almost all of the experiments show a p-value of less than .05 (using a two-tailed test, that’s the default in R). See, you could use this simulation process to determine how many subjects you need to reliably find your effect.</p>
 </div>
 <div id="simulating-an-independent-samples-t.test" class="section level3">
-<h3><span class="header-section-number">5.6.3</span> Simulating an independent samples t.test</h3>
+<h3><span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</h3>
 <p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
@@ -1259,9 +1306,9 @@ for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ts)</code></pre></div>
 <p><img src="statistics_files/figure-html/unnamed-chunk-105-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
-<pre><code>## [1] 55</code></pre>
+<pre><code>## [1] 62</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
-<pre><code>## [1] 0.055</code></pre>
+<pre><code>## [1] 0.062</code></pre>
 <!--
 
 Chapters [FoundationForInference] and [inferenceForCategoricalData] introduced us to inference for proportions using the normal model, and in Section [oneWayChiSquare], we encountered the chi-square distribution, which is useful for working with categorical data with many levels. In this chapter, our focus will be on numerical data, where we will encounter two more distributions: the $t$ distribution (looks a lot like the normal distribution) and the $F$ distribution. Our general approach will be:
@@ -1874,8 +1921,8 @@ The benefits of pooling the standard deviation are realized through obtaining a 
           </div>
         </div>
       </div>
-<a href="sampling-and-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="inferenceForNumericalDataANOVA.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="foundations-for-inference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
