@@ -3,6 +3,7 @@
 ```{r}
 library(dplyr)
 library(ggplot2)
+library(xtable)
 ```
 
 
@@ -119,7 +120,6 @@ The total sums of squares, or $SS\text{Total}$ measures the total variation in a
 
 
 ```{r}
-library(dplyr)
 scores <- c(20,11,2,6,2,7,2,11,2)
 conditions <- as.character(rep(c("A","B","C"), each=3))
 subjects <-rep(1:3,3)
@@ -272,7 +272,7 @@ $SS_\text{Error (left-over)} = SS_\text{Error (within conditions)} - SS_\text{Su
 Before we continue to compute the MSEs and F-value for our data, let's quickly check our work. For example, we could have R compute the repeated measures ANOVA for us, and then we could look at the ANOVA table and see if we are on the right track so far.
 
 ```{r}
-library(xtable)
+
 summary_out <- summary(aov(scores~conditions + Error(subjects/conditions),df[1:9,]))
 knitr::kable(xtable(summary_out))
 ```
@@ -310,7 +310,6 @@ And, there we have it!
 We already conducted the repeated-measures ANOVA using R and reported the ANOVA. Here it is again. The table shows the p-value associated with our F-value.
 
 ```{r}
-library(xtable)
 summary_out <- summary(aov(scores~conditions + Error(subjects/conditions),df[1:9,]))
 knitr::kable(xtable(summary_out))
 ```
@@ -464,5 +463,85 @@ ggplot(plot_df, aes(x=ps))+
 ```
 
 Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the p-values were less than .05. There were `r length(w_p[w_p<.05])` experiments with a p less than 0.05, or `r length(w_p[w_p<.05])/1000` of experiments were "significant", with alpha=.05. That's huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design is more sensitive than the between-subjects design. 
+
+## Real Data
+
+Let's look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College.
+
+We were interested in how people perform sequences of actions. One kind of question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters. 
+
+Prior research shown that people type words way faster than than random letters, but if you made the random letters a little bit more english-like, then people type those englishy kinds of letter a little bit faster, but not as fast as random letters. 
+
+In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in english (Bigram Condition, QUENP), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let's take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.
+
+```{r, cache=FALSE}
+library(data.table)
+
+
+exp1_data <- fread("data/exp1_BehmerCrumpAPP.csv")
+
+exp1_data$Block<-as.factor(exp1_data$Block)
+levels(exp1_data$Block) <- c("Visible keyboard","Covered Keyboard")
+
+## get subject mean RTs
+
+subject_means <- exp1_data %>%
+                 filter(Order==1, Correct==1, PureRTs<5000) %>%
+                 group_by(Subject, Block, Stimulus) %>%
+                 summarise(mean_rt = mean(PureRTs))
+
+subject_means$Subject<-as.factor(subject_means$Subject)
+subject_means$Block<-as.factor(subject_means$Block)
+subject_means$Stimulus<-as.factor(subject_means$Stimulus)
+
+## get condition mean RTs
+
+plot_means <- subject_means %>%
+              arrange(match(Stimulus,c("Normal","Bigrams","Random"))) %>%
+              group_by(Block, Stimulus) %>%
+              summarise(means = mean(mean_rt),
+                        SEs = sd(mean_rt)/sqrt(length(mean_rt)))
+
+## plot the condition means
+
+# re-order stimulus factor for plotting
+plot_means$Stimulus <- factor(plot_means$Stimulus, levels = c("Normal", "Bigrams", "Random"))
+
+ggplot(plot_means, aes(x=Stimulus, y=means, group=Block, color=Block))+
+  geom_point()+
+  geom_line()+
+  geom_errorbar(aes(ymin=means-SEs, ymax=means+SEs), width=.2)+
+  theme_classic()+
+  ylab("Mean Reaction Time (ms)")+
+  xlab("Typing Material")
+       
+
+```
+
+Ok, I made a figure showing the mean reaction times for the different typing material conditions. You will notice that there are two sets of lines. That's because there was another manipulation I didn't tell you about. In one block of trials participants got to look at the keyboard while they typed, but in the other condition we covered up the keyboard so people had to type without looking. Finally, the error bars are standard error of the means.
+
+<div class="marginnote">
+Note, the use of error bars for repeated-measures designs is not very straightforward. In fact the standard error the means that we have added here are not very meaningful for judging whether the differences between the means are likely not due to chance. They would be if this was a between-subjects design. We will update this textbook with a longer discussion of this issue, for now we will just live with these error bars.
+</div>
+
+For the purposes of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (english-like), and they started typing random letters the most slowly of all. Just like prior research had found.
+
+Let's focus only on the Block of trials where participants were allowed to look at the keyboard while they typed, that's the red line, for the "visible keyboard" block. We can see the means look different. Let's next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.
+
+```{r}
+
+visible_means<- subject_means %>%
+                 filter(Block=="Visible keyboard")
+
+s_out <- summary(aov(mean_rt~Stimulus + Error (Subject/Stimulus),visible_means))
+
+knitr::kable(xtable(s_out))
+
+```
+
+Alright, we might report the results like this. There was a significant main effect of Stimulus type, F(2, 74) = 235.73, MSE = 3022.289, p < 0.001.
+
+Notice a couple things. First, this is a huge F value. It's 253! Notice also that the p-value is listed as 0. That doesn't mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000... The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have arised by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type english-like strings somewhere in the middle in terms of speed.
+
 
 

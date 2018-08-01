@@ -317,6 +317,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#repeated-vs-between-subjects-anova"><i class="fa fa-check"></i><b>8.4.1</b> Repeated vs between-subjects ANOVA</a></li>
 <li class="chapter" data-level="8.4.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#repeated-measures-designs-are-more-sensitive"><i class="fa fa-check"></i><b>8.4.2</b> repeated measures designs are more sensitive</a></li>
 </ul></li>
+<li class="chapter" data-level="8.5" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#real-data"><i class="fa fa-check"></i><b>8.5</b> Real Data</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVA</a></li>
 <li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a></li>
@@ -1132,8 +1133,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>What do you think would happen if we ran 30 subjects in the repeated measures design? Let’s find out. Here we redo the above, but this time only for the repeated measures design. We increase N from 10 to 30.</p>
 <p><img src="statistics_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the p-values were less than .05. There were 984 experiments with a p less than 0.05, or 0.984 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design is more sensitive than the between-subjects design.</p>
-
 </div>
+</div>
+<div id="real-data" class="section level2">
+<h2><span class="header-section-number">8.5</span> Real Data</h2>
+<p>Let’s look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College.</p>
+<p>We were interested in how people perform sequences of actions. One kind of question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters.</p>
+<p>Prior research shown that people type words way faster than than random letters, but if you made the random letters a little bit more english-like, then people type those englishy kinds of letter a little bit faster, but not as fast as random letters.</p>
+<p>In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in english (Bigram Condition, QUENP), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let’s take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.</p>
+<p><img src="statistics_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p>Ok, I made a figure showing the mean reaction times for the different typing material conditions. You will notice that there are two sets of lines. That’s because there was another manipulation I didn’t tell you about. In one block of trials participants got to look at the keyboard while they typed, but in the other condition we covered up the keyboard so people had to type without looking. Finally, the error bars are standard error of the means.</p>
+<div class="marginnote">
+<p>Note, the use of error bars for repeated-measures designs is not very straightforward. In fact the standard error the means that we have added here are not very meaningful for judging whether the differences between the means are likely not due to chance. They would be if this was a between-subjects design. We will update this textbook with a longer discussion of this issue, for now we will just live with these error bars.</p>
+</div>
+<p>For the purposes of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (english-like), and they started typing random letters the most slowly of all. Just like prior research had found.</p>
+<p>Let’s focus only on the Block of trials where participants were allowed to look at the keyboard while they typed, that’s the red line, for the “visible keyboard” block. We can see the means look different. Let’s next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Residuals</td>
+<td align="right">37</td>
+<td align="right">2452611.9</td>
+<td align="right">66286.808</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td>Stimulus</td>
+<td align="right">2</td>
+<td align="right">1424914.0</td>
+<td align="right">712457.010</td>
+<td align="right">235.7342</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td>Residuals1</td>
+<td align="right">74</td>
+<td align="right">223649.4</td>
+<td align="right">3022.289</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Alright, we might report the results like this. There was a significant main effect of Stimulus type, F(2, 74) = 235.73, MSE = 3022.289, p &lt; 0.001.</p>
+<p>Notice a couple things. First, this is a huge F value. It’s 253! Notice also that the p-value is listed as 0. That doesn’t mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000… The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have arised by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type english-like strings somewhere in the middle in terms of speed.</p>
+
 </div>
 </div>
             </section>
