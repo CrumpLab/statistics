@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79429674-3"></script>
 <script>
@@ -337,6 +338,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.6.1" data-path="factorial-anova.html"><a href="factorial-anova.html#main-effects"><i class="fa fa-check"></i><b>9.6.1</b> Main effects</a></li>
 <li class="chapter" data-level="9.6.2" data-path="factorial-anova.html"><a href="factorial-anova.html#interaction"><i class="fa fa-check"></i><b>9.6.2</b> Interaction</a></li>
 <li class="chapter" data-level="9.6.3" data-path="factorial-anova.html"><a href="factorial-anova.html#looking-at-the-data"><i class="fa fa-check"></i><b>9.6.3</b> Looking at the data</a></li>
+<li class="chapter" data-level="9.6.4" data-path="factorial-anova.html"><a href="factorial-anova.html#main-effect-of-distraction"><i class="fa fa-check"></i><b>9.6.4</b> Main effect of Distraction</a></li>
+<li class="chapter" data-level="9.6.5" data-path="factorial-anova.html"><a href="factorial-anova.html#main-effect-of-reward"><i class="fa fa-check"></i><b>9.6.5</b> Main effect of Reward</a></li>
+<li class="chapter" data-level="9.6.6" data-path="factorial-anova.html"><a href="factorial-anova.html#interaction-between-distraction-and-reward"><i class="fa fa-check"></i><b>9.6.6</b> Interaction between Distraction and Reward</a></li>
+<li class="chapter" data-level="9.6.7" data-path="factorial-anova.html"><a href="factorial-anova.html#writing-it-all-up"><i class="fa fa-check"></i><b>9.6.7</b> Writing it all up</a></li>
+<li class="chapter" data-level="9.6.8" data-path="factorial-anova.html"><a href="factorial-anova.html#x2-repeated-measures-anova"><i class="fa fa-check"></i><b>9.6.8</b> 2x2 Repeated Measures ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="factorial-anova.html"><a href="factorial-anova.html#x2-between-subjects-anova"><i class="fa fa-check"></i><b>9.7</b> 2x2 Between-subjects ANOVA</a><ul>
+<li class="chapter" data-level="9.7.1" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-total-2"><i class="fa fa-check"></i><b>9.7.1</b> SS Total</a></li>
+<li class="chapter" data-level="9.7.2" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-distraction"><i class="fa fa-check"></i><b>9.7.2</b> SS Distraction</a></li>
+<li class="chapter" data-level="9.7.3" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-reward"><i class="fa fa-check"></i><b>9.7.3</b> SS Reward</a></li>
+<li class="chapter" data-level="9.7.4" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-distraction-by-reward"><i class="fa fa-check"></i><b>9.7.4</b> SS Distraction by Reward</a></li>
+<li class="chapter" data-level="9.7.5" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-error-1"><i class="fa fa-check"></i><b>9.7.5</b> SS Error</a></li>
+<li class="chapter" data-level="9.7.6" data-path="factorial-anova.html"><a href="factorial-anova.html#check-your-work"><i class="fa fa-check"></i><b>9.7.6</b> Check your work</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a></li>
@@ -562,7 +576,3367 @@ b. Caffeine (1 coffee, 2 coffees, 3 coffees): Do students do better on tests whe
 </div>
 <div id="looking-at-the-data" class="section level3">
 <h3><span class="header-section-number">9.6.3</span> Looking at the data</h3>
-<p>It is most helpful to see some data in order to understand how will will analyze it. Let’s imagine we ran our fake attention study. We will have three people in the study, and they will participate in all conditions, so it will be a fully repeated-measures design. The data could look like this:</p>
+<p>It is most helpful to see some data in order to understand how will will analyze it. Let’s imagine we ran our fake attention study. We will have five people in the study, and they will participate in all conditions, so it will be a fully repeated-measures design. The data could look like this:</p>
+<table>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+subject
+</th>
+<th style="text-align:right;">
+A
+</th>
+<th style="text-align:right;">
+B
+</th>
+<th style="text-align:right;">
+C
+</th>
+<th style="text-align:right;">
+D
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<span style="font-style: italic;">Note: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border: 0;" colspan="100%">
+<sup></sup> Number of differences spotted for each subject in each condition.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="main-effect-of-distraction" class="section level3">
+<h3><span class="header-section-number">9.6.4</span> Main effect of Distraction</h3>
+<p>The main effect of Distraction compares the overall means for all scores in the No-distraction and Distraction conditions, collapsing over the Reward conditions.</p>
+<p>The yellow columns show the No-Distraction scores for each subject. The blue columns show the Distraction scores for each subject.</p>
+<p>The overall means for for each subject, for the two Distraction conditions are shown to the right. For example, subject 1 had a 10 and 12 in the No-Distraction condition, so their mean is 11.</p>
+<p>We are interested in the main effect of distraction. This is the difference between the AC column (average of subject scores in the No-distraction condition) and the BD column (average of the subjec scores in the distraction condition). These differences for each subjecct are shown in the last green column. The overall means, averaging over subjects are in the bottom green row.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden" colspan="3">
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction Means
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction Effect
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Difference
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+subject
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+AC
+</th>
+<th style="text-align:left;">
+BD
+</th>
+<th style="text-align:left;">
+AC.minus.BD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;background-color: yellow;">
+10
+</td>
+<td style="text-align:left;background-color: lightblue;">
+5
+</td>
+<td style="text-align:left;background-color: yellow;">
+12
+</td>
+<td style="text-align:left;background-color: lightblue;">
+9
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;background-color: yellow;">
+8
+</td>
+<td style="text-align:left;background-color: lightblue;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+13
+</td>
+<td style="text-align:left;background-color: lightblue;">
+8
+</td>
+<td style="text-align:left;">
+10.5
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+4.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;background-color: yellow;">
+11
+</td>
+<td style="text-align:left;background-color: lightblue;">
+3
+</td>
+<td style="text-align:left;background-color: yellow;">
+14
+</td>
+<td style="text-align:left;background-color: lightblue;">
+10
+</td>
+<td style="text-align:left;">
+12.5
+</td>
+<td style="text-align:left;">
+6.5
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+9
+</td>
+<td style="text-align:left;background-color: lightblue;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+11
+</td>
+<td style="text-align:left;background-color: lightblue;">
+11
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+7.5
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+2.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;background-color: yellow;">
+10
+</td>
+<td style="text-align:left;background-color: lightblue;">
+2
+</td>
+<td style="text-align:left;background-color: yellow;">
+13
+</td>
+<td style="text-align:left;background-color: lightblue;">
+12
+</td>
+<td style="text-align:left;">
+11.5
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+4.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+11.1
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6.8
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: lightgreen;">
+4.3
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Just looking at the means, we can see there was a main effect of Distraction, the mean for the No-Distraction condition was 11.1, and the mean for the Distraction condition was 6.8. The size of the main effect was 4.3 (the difference between 11.1 and 6.8).</p>
+<p>Now, what if we wanted to know if this main effect of Distraction (the difference of 4.3) could have been caused by chance, or sampling error. You could do two things. You could run a paired samples t-test between the mean No-distraction scores for each subject (column AC) and the mean Distraction scores for each subject (column BD). Or, you could run a one-sample t-test on the Difference scores column, testing against a mean difference of 0. Either way you will get the same answer.</p>
+<p>Here’s the paired samples version:</p>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  AC and BD
+## t = 7.6615, df = 4, p-value = 0.00156
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.741724 5.858276
+## sample estimates:
+## mean of the differences 
+##                     4.3</code></pre>
+<p>Here’s the one sample version:</p>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  AC - BD
+## t = 7.6615, df = 4, p-value = 0.00156
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  2.741724 5.858276
+## sample estimates:
+## mean of x 
+##       4.3</code></pre>
+<p>If we were to write-up our results for the main effect of distraction we could say something like this:</p>
+<p>The main effect of Distraction was significant, t(4) = 7.66, p = 0.001. The mean number of differences spotted was higher in the No-distraction condition (M = 11.1) than the Distraction condition (M = 6.8).</p>
+</div>
+<div id="main-effect-of-reward" class="section level3">
+<h3><span class="header-section-number">9.6.5</span> Main effect of Reward</h3>
+<p>The main effect of Reward compares the overall means for all scores in the No-Reward and Reward conditions, collapsing over the Reward conditions.</p>
+<p>The yellow columns show the No-Reward scores for each subject. The blue columns show the Reward scores for each subject.</p>
+<p>The overall means for for each subject, for the two Reward conditions are shown to the right. For example, subject 1 had a 10 and 5 in the No-Reward condition, so their mean is 7.5.</p>
+<p>We are interested in the main effect of reward. This is the difference between the AB column (average of subject scores in the No-Reward condition) and the CD column (average of the subject scores in the Reward condition). These differences for each subjecct are shown in the last green column. The overall means, averaging over subjects are in the bottom green row.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden" colspan="3">
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward Means
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward Effect
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Difference
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+subject
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+AB
+</th>
+<th style="text-align:left;">
+CD
+</th>
+<th style="text-align:left;">
+CD.minus.AB
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;background-color: yellow;">
+10
+</td>
+<td style="text-align:left;background-color: yellow;">
+5
+</td>
+<td style="text-align:left;background-color: lightblue;">
+12
+</td>
+<td style="text-align:left;background-color: lightblue;">
+9
+</td>
+<td style="text-align:left;">
+7.5
+</td>
+<td style="text-align:left;">
+10.5
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;background-color: yellow;">
+8
+</td>
+<td style="text-align:left;background-color: yellow;">
+4
+</td>
+<td style="text-align:left;background-color: lightblue;">
+13
+</td>
+<td style="text-align:left;background-color: lightblue;">
+8
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+10.5
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+4.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;background-color: yellow;">
+11
+</td>
+<td style="text-align:left;background-color: yellow;">
+3
+</td>
+<td style="text-align:left;background-color: lightblue;">
+14
+</td>
+<td style="text-align:left;background-color: lightblue;">
+10
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+9
+</td>
+<td style="text-align:left;background-color: yellow;">
+4
+</td>
+<td style="text-align:left;background-color: lightblue;">
+11
+</td>
+<td style="text-align:left;background-color: lightblue;">
+11
+</td>
+<td style="text-align:left;">
+6.5
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+4.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;background-color: yellow;">
+10
+</td>
+<td style="text-align:left;background-color: yellow;">
+2
+</td>
+<td style="text-align:left;background-color: lightblue;">
+13
+</td>
+<td style="text-align:left;background-color: lightblue;">
+12
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+12.5
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+11.3
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: lightgreen;">
+4.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Just looking at the means, we can see there was a main effect of reward. The mean number of differences spotted was 11.3 in th Reward condition, and 6.6 in the No-reward condition. So, the size of the main effectd of reward was 4.7.</p>
+<p>Is a difference of this size likely o unlikey due to chance? We, could conduct a paired-samples t-test on the AB vs. CD means, or a one-sample t-test on the Difference scores. They both give the same answer:</p>
+<p>Here’s the paired samples version:</p>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  CD and AB
+## t = 8.3742, df = 4, p-value = 0.001112
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  3.141724 6.258276
+## sample estimates:
+## mean of the differences 
+##                     4.7</code></pre>
+<p>Here’s the one sample version:</p>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  CD - AB
+## t = 8.3742, df = 4, p-value = 0.001112
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  3.141724 6.258276
+## sample estimates:
+## mean of x 
+##       4.7</code></pre>
+<p>If we were to write-up our results for the main effect of reward we could say something like this:</p>
+<p>The main effect of reward was significant, t(4) = 8.37, p = 0.001. The mean number of differences spotted was higher in the reward condition (M = 11.3) than the no-reward condition (M = 6.6).</p>
+</div>
+<div id="interaction-between-distraction-and-reward" class="section level3">
+<h3><span class="header-section-number">9.6.6</span> Interaction between Distraction and Reward</h3>
+<p>Now we are ready to look at the interaction. Remember, the whole point of this fake study was what? Can you remember?</p>
+<p>Here’s a reminder. We wanted to know if giving rewards versus not would change the size of the distraction effect.</p>
+<p>Notice, neither the main effect of Distraction, or the main effect of Reward, which we just went through the process of computing, answers this question.</p>
+<p>In order to answer the question we need to do two things. First, compute distraction effect for each subject when they were in the no-reward condition. Second, compute the distraction effect for each subject when they were in the reward condition.</p>
+<p>Then, we can compare the two distraction effects and see if they are different. The comparison between the two distraction effects is what we call the <strong>interaction effect</strong>. Remember, this is a difference between two difference scores. We first get the difference scores for the distraction effects in the no-reward and reward conditions. Then we find the difference scores between the two distraction effects. This difference of differences is the interaction effect (green column in the table)</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden" colspan="3">
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction Effects
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Interaction Effect
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Difference
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+subject
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+A-B
+</th>
+<th style="text-align:left;">
+C-D
+</th>
+<th style="text-align:left;">
+(A-B)-(C-D)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;background-color: yellow;">
+10
+</td>
+<td style="text-align:left;background-color: lightblue;">
+5
+</td>
+<td style="text-align:left;background-color: yellow;">
+12
+</td>
+<td style="text-align:left;background-color: lightblue;">
+9
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;background-color: yellow;">
+8
+</td>
+<td style="text-align:left;background-color: lightblue;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+13
+</td>
+<td style="text-align:left;background-color: lightblue;">
+8
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+-1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;background-color: yellow;">
+11
+</td>
+<td style="text-align:left;background-color: lightblue;">
+3
+</td>
+<td style="text-align:left;background-color: yellow;">
+14
+</td>
+<td style="text-align:left;background-color: lightblue;">
+10
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+9
+</td>
+<td style="text-align:left;background-color: lightblue;">
+4
+</td>
+<td style="text-align:left;background-color: yellow;">
+11
+</td>
+<td style="text-align:left;background-color: lightblue;">
+11
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;background-color: yellow;">
+10
+</td>
+<td style="text-align:left;background-color: lightblue;">
+2
+</td>
+<td style="text-align:left;background-color: yellow;">
+13
+</td>
+<td style="text-align:left;background-color: lightblue;">
+12
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+2.6
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: lightgreen;">
+3.4
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The mean distraction effects in the no-reward (6) and reward (2.6) conditions were different. This difference is the interaction effect. The size of the interaction effect was 3.4.</p>
+<p>How can we test whether the interaction effect was likely or unlikely due to chance? We could run another paired-sample t-test between the two distraction effect measures for each subject, or a one sample t-test on the green column (representing the difference between the differences). Both of these t-tests wil give the same results:</p>
+<p>Here’s the paired samples version:</p>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  A_B and C_D
+## t = 2.493, df = 4, p-value = 0.06727
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.3865663  7.1865663
+## sample estimates:
+## mean of the differences 
+##                     3.4</code></pre>
+<p>Here’s the one sample version:</p>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  A_B - C_D
+## t = 2.493, df = 4, p-value = 0.06727
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -0.3865663  7.1865663
+## sample estimates:
+## mean of x 
+##       3.4</code></pre>
+<p>Oh look, the interaction was not significant. At least, if we had set our alpha criterion to 0.05, it would not have met that criteria. We could write up the results like this. The two-way interaction between between Distraction and Reward was not significant, t(4) = 2.493, p = 0.067.</p>
+<p>Often times when a result is “not significant” according to the alpha criteria, the pattern among the means is not described further. One reason for this practice is that the researcher is treating the means as if they are not different (because there was an above alpha probability that the observed idfferences were due to chance). If they are not different, then there is no pattern to report.</p>
+<p>There are differences in opinion among reasonable and expert statisticians on what should or should not be reported. Let’s say we wanted to report the observed mean differences, we would write something like this:</p>
+<p>The two-way interaction between between Distraction and Reward was not significant, t(4) = 2.493, p = 0.067. The mean distraction effect in the no-reward condition was 6 and the mean distraction effect in the reward condition was 2.6.</p>
+</div>
+<div id="writing-it-all-up" class="section level3">
+<h3><span class="header-section-number">9.6.7</span> Writing it all up</h3>
+<p>We have completed an analysis of a 2x2 repeated measures design using paired-samples t-tests. Here is what a full write-up of the results could look like.</p>
+<p>The main effect of Distraction was significant, t(4) = 7.66, p = 0.001. The mean number of differences spotted was higher in the No-distraction condition (M = 11.1) than the Distraction condition (M = 6.8).</p>
+<p>The main effect of reward was significant, t(4) = 8.37, p = 0.001. The mean number of differences spotted was higher in the reward condition (M = 11.3) than the no-reward condition (M = 6.6).</p>
+<p>The two-way interaction between between Distraction and Reward was not significant, t(4) = 2.493, p = 0.067. The mean distraction effect in the no-reward condition was 6 and the mean distraction effect in the reward condition was 2.6.</p>
+<p><strong>Interim Summary</strong>. We went through this exercise to show you how to break up the data into individual comparisons of interest. Generally speaking, a 2x2 repeated measures design would not be anlayzed with three paired-samples t-test. This is because it is more convenient to use the repeated measures ANOVA for this task. We will do this in a moment to show you that they give the same results. And, by the same results, what we will show is that the p-values for each main effect, and the interaction, are the same. The ANOVA will give us <span class="math inline">\(F\)</span>-values rather than <span class="math inline">\(t\)</span> values. It turns out that in this situation, the <span class="math inline">\(F\)</span>-values are related to the <span class="math inline">\(t\)</span> values. In fact, <span class="math inline">\(t^2 = F\)</span>.</p>
+</div>
+<div id="x2-repeated-measures-anova" class="section level3">
+<h3><span class="header-section-number">9.6.8</span> 2x2 Repeated Measures ANOVA</h3>
+<p>We just showed how a 2x2 repeated measures design can be analyzed using paired-sampled t-tests. We broke up the analysis into three parts. The main effect for Distraction, the main effect for Reward, and the 2-way interaction between Distraction and Reward. We claimed the results of the paired-samples t-test analysis would mirror what we would find if we conducted the analysis using an ANOVA. Let’s show that the results are the same. Here are the results from the 2x2 repeated-measures ANOVA, using the <code>aov</code> function in R.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3.70
+</td>
+<td style="text-align:right;">
+0.925
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Distraction
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+92.45
+</td>
+<td style="text-align:right;">
+92.450
+</td>
+<td style="text-align:right;">
+58.698413
+</td>
+<td style="text-align:right;">
+0.0015600
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6.30
+</td>
+<td style="text-align:right;">
+1.575
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Reward
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+110.45
+</td>
+<td style="text-align:right;">
+110.450
+</td>
+<td style="text-align:right;">
+70.126984
+</td>
+<td style="text-align:right;">
+0.0011122
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+6.30
+</td>
+<td style="text-align:right;">
+1.575
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Distraction:Reward
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14.45
+</td>
+<td style="text-align:right;">
+14.450
+</td>
+<td style="text-align:right;">
+6.215054
+</td>
+<td style="text-align:right;">
+0.0672681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+9.30
+</td>
+<td style="text-align:right;">
+2.325
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s compare these results with the paired-samples t-tests.</p>
+<p><strong>Main effect of Distraction</strong>: Using the paired samples t-test, we found t(4) =7.6615, p=0.00156. Using the ANOVA we found, F(1,4) = 58.69, p=0.00156. See, the <span class="math inline">\(p\)</span>-values are the same, and <span class="math inline">\(t^2 = 7.6615^2 = 58.69 = F\)</span>.</p>
+<p><strong>Main effect of Reward</strong>: Using the paired samples t-test, we found t(4) =8.3742, p=0.001112. Using the ANOVA we found, F(1,4) = 70.126, p=0.001112. See, the <span class="math inline">\(p\)</span>-values are the same, and <span class="math inline">\(t^2 = 8.3742^2 = 70.12 = F\)</span>.</p>
+<p><strong>Interaction effect</strong>: Using the paired samples t-test, we found t(4) =2.493, p=0.06727. Using the ANOVA we found, F(1,4) = 6.215, p=0.06727. See, the <span class="math inline">\(p\)</span>-values are the same, and <span class="math inline">\(t^2 = 2.493^2 = 6.215 = F\)</span>.</p>
+<p>There you have it. The results from a 2x2 repeated measures ANOVA are the same as you would get if you used paired-samples t-tests for the main effects and interactions.</p>
+</div>
+</div>
+<div id="x2-between-subjects-anova" class="section level2">
+<h2><span class="header-section-number">9.7</span> 2x2 Between-subjects ANOVA</h2>
+<p>You must be wondering how to calculate a 2x2 ANOVA. We haven’t discussed this yet. We’ve only shown you that you don’t have to do it when the design is a 2x2 repeated measures design (note this is special case).</p>
+<p>We are now going to work through some examples of calculating the ANOVA table for 2x2 designs. We will start with the between-subjects ANOVA for 2x2 designs. We do essentially the same thing that we did before, and the only new thing is to show how to compute the interaction effect.</p>
+<p>Remember the logic of the ANOVA is to partition the variance into different parts. The SS formula for the between-subjects 2x2 ANOVA looks like this:</p>
+<p><span class="math inline">\(SS_\text{Total} = SS_\text{Effect IV1} + SS_\text{Effect IV2} + SS_\text{Effect IV1xIV2} + SS_\text{Error}\)</span></p>
+<p>In the following sections we use tables to show the calculation of each SS. We use the same example as before with the exception that <strong>we are turning this into a between-subjects design</strong>. There are now 5 different subjects in each condition, for a total of 20 subjects. As a result, we remove the subjects column.</p>
+<div id="ss-total-2" class="section level3">
+<h3><span class="header-section-number">9.7.1</span> SS Total</h3>
+<p>We calculate the grand mean (mean of all of the score). Then, we calculate the differences between each score and the grand mean. We square the difference scores, and sum them up. That is <span class="math inline">\(SS_\text{Total}\)</span>, reported in the bottom yellow row.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Difference from Grand Mean
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Squared Differences
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+A-GrandM
+</th>
+<th style="text-align:left;">
+B-GrandM
+</th>
+<th style="text-align:left;">
+C-GrandM
+</th>
+<th style="text-align:left;">
+D-GrandM
+</th>
+<th style="text-align:left;">
+(A-GrandM)^2
+</th>
+<th style="text-align:left;">
+(B-GrandM)^2
+</th>
+<th style="text-align:left;">
+(C-GrandM)^2
+</th>
+<th style="text-align:left;">
+(D-GrandM)^2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+1.05
+</td>
+<td style="text-align:left;">
+-3.95
+</td>
+<td style="text-align:left;">
+3.05
+</td>
+<td style="text-align:left;">
+0.05
+</td>
+<td style="text-align:left;background-color: yellow;">
+1.1025
+</td>
+<td style="text-align:left;background-color: yellow;">
+15.6025
+</td>
+<td style="text-align:left;background-color: yellow;">
+9.3025
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.0025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+-0.95
+</td>
+<td style="text-align:left;">
+-4.95
+</td>
+<td style="text-align:left;">
+4.05
+</td>
+<td style="text-align:left;">
+-0.95
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.9025
+</td>
+<td style="text-align:left;background-color: yellow;">
+24.5025
+</td>
+<td style="text-align:left;background-color: yellow;">
+16.4025
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.9025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+2.05
+</td>
+<td style="text-align:left;">
+-5.95
+</td>
+<td style="text-align:left;">
+5.05
+</td>
+<td style="text-align:left;">
+1.05
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.2025
+</td>
+<td style="text-align:left;background-color: yellow;">
+35.4025
+</td>
+<td style="text-align:left;background-color: yellow;">
+25.5025
+</td>
+<td style="text-align:left;background-color: yellow;">
+1.1025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+0.05
+</td>
+<td style="text-align:left;">
+-4.95
+</td>
+<td style="text-align:left;">
+2.05
+</td>
+<td style="text-align:left;">
+2.05
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.0025
+</td>
+<td style="text-align:left;background-color: yellow;">
+24.5025
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.2025
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.2025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+1.05
+</td>
+<td style="text-align:left;">
+-6.95
+</td>
+<td style="text-align:left;">
+4.05
+</td>
+<td style="text-align:left;">
+3.05
+</td>
+<td style="text-align:left;background-color: yellow;">
+1.1025
+</td>
+<td style="text-align:left;background-color: yellow;">
+48.3025
+</td>
+<td style="text-align:left;background-color: yellow;">
+16.4025
+</td>
+<td style="text-align:left;background-color: yellow;">
+9.3025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+9.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+3.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+12.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+10
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Grand Mean
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+8.95
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+sums
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+Sums
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+7.3125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+148.3125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+71.8125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+15.5125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+SS Total
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+SS Total
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+242.95
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ss-distraction" class="section level3">
+<h3><span class="header-section-number">9.7.2</span> SS Distraction</h3>
+<p>We need to compute the SS for the main effect for Distraction. We calculate the grand mean (mean of all of the scores). Then, we calculate the means for the two distraction conditions. Then we treat each score as if it was the mean for it’s respective distraction condition. We find the differences between each distractino condition mean and the grand mean. Then we square the differences and sum them up. That is <span class="math inline">\(SS_\text{Distraction}\)</span>, reported in the bottom yellow row.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction Mean - GM
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Squared Differences
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+NDM-GM A
+</th>
+<th style="text-align:left;">
+DM-GM B
+</th>
+<th style="text-align:left;">
+NDM-GM C
+</th>
+<th style="text-align:left;">
+DM-GM D
+</th>
+<th style="text-align:left;">
+(NDM-GM )^2 A
+</th>
+<th style="text-align:left;">
+(DM-GM)^2 B
+</th>
+<th style="text-align:left;">
+(NDM-GM)^2 C
+</th>
+<th style="text-align:left;">
+(DM-GM)^2 D
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;">
+2.15
+</td>
+<td style="text-align:left;">
+-2.15
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+<td style="text-align:left;background-color: yellow;">
+4.6225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+9.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+3.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+12.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+10
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Grand Mean
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+8.95
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+No Distraction
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+11.1
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+Distraction
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6.8
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+sums
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+Sums
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+23.1125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+23.1125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+23.1125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+23.1125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+SS Distraction
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+SS Distraction
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+92.45
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These tables are a lot to look at! Notice here, that we first found the grand mean (8.95). Then we found the mean for all the scores in the no-distraction condition (columns A and C), that was 11.1. All of the difference scores for the no-distraction condition are 11.1-8.95 = 2.15. We also found the mean for the scores in the distraction condition (columns B and D), that was 6.8. So, all tof the difference scores are 6.8-8.95 = -2.15. Remember, means are the balancing point in the data, this is why the difference scores are +2.15 and -2.15. The grand mean 8.95 is in between the two condition means (11.1 and 6.8), by a difference of 2.15.</p>
+</div>
+<div id="ss-reward" class="section level3">
+<h3><span class="header-section-number">9.7.3</span> SS Reward</h3>
+<p>We need to compute the SS for the main effect for Reward. We calculate the grand mean (mean of all of the scores). Then, we calculate the means for the two reward conditions. Then we treat each score as if it was the mean for it’s respective reward condition. We find the differences between each reward condition mean and the grand mean. Then we square the differences and sum them up. That is <span class="math inline">\(SS_\text{Reward}\)</span>, reported in the bottom yellow row.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward Mean - GM
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Squared Differences
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+NRM-GM A
+</th>
+<th style="text-align:left;">
+NRM-GM B
+</th>
+<th style="text-align:left;">
+RM-GM C
+</th>
+<th style="text-align:left;">
+RM-GM D
+</th>
+<th style="text-align:left;">
+(NRM-GM )^2 A
+</th>
+<th style="text-align:left;">
+(NRM-GM)^2 B
+</th>
+<th style="text-align:left;">
+(RM-GM)^2 C
+</th>
+<th style="text-align:left;">
+(RM-GM)^2 D
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+-2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;">
+2.35
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+<td style="text-align:left;background-color: yellow;">
+5.5225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+9.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+3.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+12.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+10
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Grand Mean
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+8.95
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+No Reward
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+6.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+Reward
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+11.3
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+sums
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+Sums
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+27.6125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+27.6125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+27.6125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+27.6125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+SS Reward
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+SS Reward
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+110.45
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now we treat each no-reward score as the mean for the no-reward condition (6.6), and subtract it from the grand mean (8.95), to get -2.35. Then, we treat each reward score as the mean for the reward condition (11.3), and subtract it from the grand mean (8.95), to get +2.35. Then we square the differences and sum them up.</p>
+</div>
+<div id="ss-distraction-by-reward" class="section level3">
+<h3><span class="header-section-number">9.7.4</span> SS Distraction by Reward</h3>
+<p>We need to compute the SS for the interaction effect between distraction and reward. This is the new thing that we do in an ANOVA with more than one IV. How do we calculate the variation explained by the interaction?</p>
+<p>The heart of the question is something like this. Do the individual means for each of the four conditions do something a little bit different than the group means for both of the independent variables.</p>
+<p>For example, consider the overall mean for all of the scores in the No Reward condition, we found that to be 6.6 Now, was the mean for each no-reward condition in the whole design a 6.6? For example, in the no-distraction condition, was the mean for column A (the no-reward condition in that group) also 6.6? The answer is no, it was 9.6. How about the distraction group? Was the mean for the reward condition in the distraction group (column B) 6.6? No, it was 3.6. The mean of 9.6 and 3.6 is 6.6. If there was no hint of an interaction, we would expect that the means for the reward condition in both levels of the Distraction group would be the same, they would both be 6.6. However, when there is an interaction, the means for the reward condition will depend on the levels of the group from another IV. In this case, it looks like there is an interaction because the means are different from 6.6, they are 9.6 and 3.6 for the no-distraction and distraction conditions. This is extra-variance that is not explained by the mean for the reward condition. We want to capture this extra variance and sum it up. Then we will have measure of the portion of the variance that is due to the interaction between the reward and distraction conditions.</p>
+<p>What we will do is this. We will find the four condition means. Then we will see how much additional variation they explain beyond the group means for reward and distraction. To do this we treat each score as the condition mean for that score. Then we subtract the mean for the distraction group, and the mean for the reward group, and then we add the grand mean. This gives us the unique variation that is due to the interaction. We could also say that we are subtracting each condition mean from the grand mean, and then adding back in the distraction mean and the reward mean, that would amount to the same thing, and perhaps make more sense.</p>
+<p>Here is a formula to describe the process for each score:</p>
+<p><span class="math inline">\(\bar{X}_\text{condition} -\bar{X}_\text{IV1} - \bar{X}_\text{IV2} + \bar{X}_\text{Grand Mean}\)</span></p>
+<p>Or we could write it this way:</p>
+<p><span class="math inline">\(\bar{X}_\text{condition} - \bar{X}_\text{Grand Mean} + \bar{X}_\text{IV1} + \bar{X}_\text{IV2}\)</span></p>
+<p>When you look at the following table, we apply this formula to the calculation of each of the differences scores. We then square the difference scores, and sum them up to get <span class="math inline">\(SS_\text{Interaction}\)</span>, which is reported in the bottom yellow row.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+All Conditions
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Interaction Differences
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Squared Differences
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Reward
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Reward
+</div>
+</th>
+</tr>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+No Distraction
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+Distraction
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:left;">
+B
+</th>
+<th style="text-align:left;">
+C
+</th>
+<th style="text-align:left;">
+D
+</th>
+<th style="text-align:left;">
+A-ND-NR+GM
+</th>
+<th style="text-align:left;">
+B-D-NR+GM
+</th>
+<th style="text-align:left;">
+C-ND-R+GM
+</th>
+<th style="text-align:left;">
+D-D-R+GM
+</th>
+<th style="text-align:left;">
+(A-ND-NR+GM)^2 A
+</th>
+<th style="text-align:left;">
+(B-D-NR+GM)^2 B
+</th>
+<th style="text-align:left;">
+(C-ND-R+GM)^2 C
+</th>
+<th style="text-align:left;">
+(D-D-R+GM)^2 D
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+-0.85
+</td>
+<td style="text-align:left;">
+0.85
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+<td style="text-align:left;background-color: yellow;">
+0.7225
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Means
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+9.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+3.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+12.6
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+10
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: lightgreen;">
+Grand Mean
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+8.95
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+sums
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+Sums
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+3.6125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+3.6125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+3.6125
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+3.6125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;background-color: yellow;">
+SS Interaction
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;">
+SS Interaction
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+14.45
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+<td style="text-align:left;background-color: yellow;background-color: yellow;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ss-error-1" class="section level3">
+<h3><span class="header-section-number">9.7.5</span> SS Error</h3>
+<p>The last thing we need to find is the SS Error. We can solve for that because we found everything else in this formula:</p>
+<p><span class="math inline">\(SS_\text{Total} = SS_\text{Effect IV1} + SS_\text{Effect IV2} + SS_\text{Effect IV1xIV2} + SS_\text{Error}\)</span></p>
+<p>Even though this is textbook meant to explain everything, we guess you are tired from watching us work out the 2x2 ANOVA by hand. You and me both, making these tables was a lot of work. We have already shown you how to compute the SS for error before, so we will not do the full example here. Instead, we solve for SS Error using the numbers we have alread obtained.</p>
+<p>$SS_ = SS_- SS_ - SS_ - SS_ $</p>
+<p>$SS_ = 242.95 - 92.45 - 110.45 - 14.45 = 25.6 $</p>
+</div>
+<div id="check-your-work" class="section level3">
+<h3><span class="header-section-number">9.7.6</span> Check your work</h3>
+<p>We are going to skip the part where we divide the SSes by their dfs to find the MSEs so that we can compute the three <span class="math inline">\(F\)</span>-values. Instead, if we have done the calculations of the SSes correctly, they should be same as what we would get if we used R to calculate the SSes. Let’s make R do the work, and then compare to check our work.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Distraction
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+92.45
+</td>
+<td style="text-align:right;">
+92.45
+</td>
+<td style="text-align:right;">
+57.78125
+</td>
+<td style="text-align:right;">
+0.0000011
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Reward
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+110.45
+</td>
+<td style="text-align:right;">
+110.45
+</td>
+<td style="text-align:right;">
+69.03125
+</td>
+<td style="text-align:right;">
+0.0000003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Distraction:Reward
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14.45
+</td>
+<td style="text-align:right;">
+14.45
+</td>
+<td style="text-align:right;">
+9.03125
+</td>
+<td style="text-align:right;">
+0.0083879
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+25.60
+</td>
+<td style="text-align:right;">
+1.60
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>A quick look through the column <code>Sum Sq</code> shows that we did our work by hand correctly. Congratulations to us! Note, this is not the same results as we had before with the repeated measures ANOVA. We conducted a between-subjects design, so we did not get to further partition the SS error into a part due to Subject variation and a left-over part. We also gained degrees of freedom in the error term. It turns out with this specific set of data, we find p-values of less than 0.05 for all effects (main effects and the interaction, which was not less than 0.05 using the same data, but treating it as a repeated measures design)</p>
 
 </div>
 </div>
