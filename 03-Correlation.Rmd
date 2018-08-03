@@ -11,13 +11,13 @@ Chapter by Matthew Crump
 
 In the last chapter we had some data. It was too much too look at and it didn't make sense. So, we talked about how to look at the data visually using plots and histograms, and we talked about how to summarize lots of numbers so we could determine their central tendencies (sameness) and variability (differentness). And, all was well with the world.
 
-Let's not forget the big reason why learned about descriptive statistics. The big reason is that we are interested in getting answers to questions using data. If you are looking for a thread to think about the whole way through this big, that thread is: how do we ask an answer questions using data? For every section in this book, you should be connecting your inner monologe to this question, and asking yourself: How does what I am learning about help me answer questions with data? Advance warning, we know it is easy to forget this stuff when we dive into the details, and we will try to throw you a rope to help you out along the way.
+Let's not forget the big reason why learned about descriptive statistics. The big reason is that we are interested in getting answers to questions using data. If you are looking for a thread to think about the whole way through this big, that thread is: how do we ask an answer questions using data? For every section in this book, you should be connecting your inner monologue to this question, and asking yourself: How does what I am learning about help me answer questions with data? Advance warning, we know it is easy to forget this stuff when we dive into the details, and we will try to throw you a rope to help you out along the way.
 
 We started Chapter two with some fake data on human happiness, remember? We imagined that we asked a bunch of people to tell us how happy they were, then we looked at the numbers they gave us. Let's continue with this imaginary thought experiment.
 
 What do you get when ask people to use a number to describe how happy they are? A bunch of numbers. What kind of questions can you ask about those numbers? Well, you can look at the numbers and estimate their general properties as we already did. We would expect to find what we can imagine to be true. There are different people, and different people are different amounts of happy. You've probably met some of those of really happy people, and really unhappy people, and you yourself probably have some amount of happiness. "Great, thanks captain obvious". Before moving on, you should also be skeptical of what the numbers might mean. For example, if you force people to give a number between 0-100 to rate their happiness, does this number truly reflect how happy that person is? Can a person know how happy they are? Does the question format bias how they give their answer? Is happiness even a real thing? These are all good questions about the **validity** of the construct (happiness itself) and the measure (numbers) you are using to quantify it. For now, though, we will side-step those very important questions, and assume that, happiness is a thing, and our measure of happiness measures something about how happy people are.
 
-Ok then, after we have measured some happiness, I bet you can think of some more pressing questions. For example, what causes happiness to go up or down. If you knew the causes of happiness what could you do? How about increase your own happiness, or help people who are unhappy, or better appreciate why Eeyore is unhappy, or present valid scientific arguments that argue against incorrect claims about what causes happiness. A causal theory and understanding of happiness could be used for all of those things. How can we get there?
+OK then, after we have measured some happiness, I bet you can think of some more pressing questions. For example, what causes happiness to go up or down. If you knew the causes of happiness what could you do? How about increase your own happiness, or help people who are unhappy, or better appreciate why Eeyore is unhappy, or present valid scientific arguments that argue against incorrect claims about what causes happiness. A causal theory and understanding of happiness could be used for all of those things. How can we get there?
 
 Imagine you were an alien observer. You arrived on earth and heard about this thing called happiness that people have. You want to know what causes happiness. You also discover that the planet earth has lots of other things. Which of those things, you wonder, cause happiness? How to get started on this big question.
 
@@ -29,9 +29,9 @@ Before we go around determining the causes of happiness, we should prepare ourse
 
 ### Charlie and the Chocolate factory
 
-Let's imagine that a person's supply of chocolate has a causal influence on their level of happiness. Let's further imagine that, like Charlie, the more chocolate you have the more happy you will be, and the less chocolate you have, the less happy you will be. Finally, because we suspect happyness is caused by lots of other things in a person's life, we anticipate that the relationship between chocolate supply and happyness won't be perfect. What do these assumptions mean for how the data should look?
+Let's imagine that a person's supply of chocolate has a causal influence on their level of happiness. Let's further imagine that, like Charlie, the more chocolate you have the more happy you will be, and the less chocolate you have, the less happy you will be. Finally, because we suspect happiness is caused by lots of other things in a person's life, we anticipate that the relationship between chocolate supply and happiness won't be perfect. What do these assumptions mean for how the data should look?
 
-Our first step is to collect some imaginary data from 100 people. We walk around and ask the first 100 people we meet to answer two questions: 1) how much chocolate do you have, and 2) how happy are you. For convenvience, both the scales will go from 0 - 100. For the chocolate scale, 0 means no chocolate, 100 means lifetime supply of chocolate, and any other number is somewhere in between. For the happiness scale, 0 means no happiness, 100 means all of the happiness, and in between means some amount in between.
+Our first step is to collect some imaginary data from 100 people. We walk around and ask the first 100 people we meet to answer two questions: 1) how much chocolate do you have, and 2) how happy are you. For convenience, both the scales will go from 0 - 100. For the chocolate scale, 0 means no chocolate, 100 means lifetime supply of chocolate, and any other number is somewhere in between. For the happiness scale, 0 means no happiness, 100 means all of the happiness, and in between means some amount in between.
 
 Here is some sample data from the first 10 imaginary subjects.
 
@@ -50,9 +50,9 @@ knitr::kable(the_df_short)
 
 Of course, we asked each subjects two questions, so there are two scores for each subject, one for their chocolate supply, and one for their level of happiness. You might already notice some relationships between amount of chocolate and level of happiness in the table. To make those relationships even more clear, let's plot all of the data in a graph.
 
-### Scatterplots
+### Scatter plots
 
-When you have two measurements worth of data, you can always turn them into dots and plot them in a scatter plot. A scatterplot has a horizontal x-axis, and a veritcal y-axis. You get to choose which measurement goes on which axis. Let's put chocolate supply on the x-axis, and happiness level on the y-axis. The plot below shows 100 dots for each subject.
+When you have two measurements worth of data, you can always turn them into dots and plot them in a scatter plot. A scatter plot has a horizontal x-axis, and a vertical y-axis. You get to choose which measurement goes on which axis. Let's put chocolate supply on the x-axis, and happiness level on the y-axis. The plot below shows 100 dots for each subject.
 
 ```{r scatter1, echo=F}
 library(ggplot2)
@@ -65,13 +65,13 @@ ggplot(the_df_CC,aes(x=chocolate,y=happiness))+
 
 You might be wondering, why are there only 100 dots for the data. Didn't we collect 100 measures for chocolate, and 100 measures for happiness, shouldn't there be 200 dots? Nope. Each dot is for one subject, there are 100 subjects, so there are 100 dots. 
 
-What do the dots mean? Each dot has two coordinates, an x-coordinate for chocolate, and a y-coordinate for happiness. The first dot, all the way on the bottom left is the first subject in the table, who had close to 0 chocolate and close to zero happiness. You can look at any dot, then draw a straight line down to the x-xaxis: that will tell you have much chocolate that subject has. You can draw a straight line left to the y-axis: that will tell you how much happiness the subject has.
+What do the dots mean? Each dot has two coordinates, an x-coordinate for chocolate, and a y-coordinate for happiness. The first dot, all the way on the bottom left is the first subject in the table, who had close to 0 chocolate and close to zero happiness. You can look at any dot, then draw a straight line down to the x-axis: that will tell you have much chocolate that subject has. You can draw a straight line left to the y-axis: that will tell you how much happiness the subject has.
 
-Now that we are looking at the scatterplot, we can see many things. One, the dots are scattered around a bit aren't they, hence **scatterplot**. Even when the dot's don't scatter, they're still called scatterplots, perhaps because those pesky dots in real life have so much scatter all the time. More important, the dots show a relationship between chocolate supply and happiness. Happiness is lower for people with smaller supplies of choclate, and higher for people with larger supplies of chocolate. It looks like the more chocolate you have the happier you will be, and vice versa. This kind of relationship is called a **positive correlation**. 
+Now that we are looking at the scatter plot, we can see many things. One, the dots are scattered around a bit aren't they, hence **scatter plot**. Even when the dot's don't scatter, they're still called scatter plots, perhaps because those pesky dots in real life have so much scatter all the time. More important, the dots show a relationship between chocolate supply and happiness. Happiness is lower for people with smaller supplies of chocolate, and higher for people with larger supplies of chocolate. It looks like the more chocolate you have the happier you will be, and vice-versa. This kind of relationship is called a **positive correlation**. 
 
 ### Positive, Negative, and No-Correlation
 
-Seeing as we are in the business of imagining data, let's imagine some more. We've already imagined what data would look like if larger chocolate supplies increase happiness. We'll show that again in a bit. What do you imagine the scatterplot would look like if the relationship was reversed, and larger chocolate supplies decreased happiness. Or, what do you imagine the scatterplot would look like if there was no relationship, and the amount of chocolate that you have doesn't do anything to your happiness. We invite your imagination to look at these graphs:
+Seeing as we are in the business of imagining data, let's imagine some more. We've already imagined what data would look like if larger chocolate supplies increase happiness. We'll show that again in a bit. What do you imagine the scatter plot would look like if the relationship was reversed, and larger chocolate supplies decreased happiness. Or, what do you imagine the scatter plot would look like if there was no relationship, and the amount of chocolate that you have doesn't do anything to your happiness. We invite your imagination to look at these graphs:
 
 ```{r, echo=F}
 
@@ -106,15 +106,15 @@ ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
 ```
 
 
-The first panel shows a **negative correlation**. Happiness goes down as chocolate supply increases. Negative correlation occurs when one thing goes up and the other thing goes down; or, when more of X is less of Y, and vice versa. The second panel shows a **positive correlation**. Happiness goes up as chocolate as chocolate supply increases. Postive correlation occurs when both things go up togetehr, and go down together: more of X is more of Y, and vice versa. The third panel shows **no correlation**. Here, there doesn't appear to be any obvious relationship between chocolate supply and happiness. The dots are scattered all over the place, the truest of the scatterplots. Zero correlation occurs when one thing is not related in any way to another another. Changes in X do not relate to any changes in Y, and vice-versa.
+The first panel shows a **negative correlation**. Happiness goes down as chocolate supply increases. Negative correlation occurs when one thing goes up and the other thing goes down; or, when more of X is less of Y, and vice-versa. The second panel shows a **positive correlation**. Happiness goes up as chocolate as chocolate supply increases. Positive correlation occurs when both things go up together, and go down together: more of X is more of Y, and vice-versa. The third panel shows **no correlation**. Here, there doesn't appear to be any obvious relationship between chocolate supply and happiness. The dots are scattered all over the place, the truest of the scatter plots. Zero correlation occurs when one thing is not related in any way to another another. Changes in X do not relate to any changes in Y, and vice-versa.
 
-## Pearson's r
+## Pearson's $r$
 
-If Beyoncé was a statistician, she might look at these scatterplots and want to "put a number on it". We think this is a good idea too. We've already learned how to creative descriptive statistics for a single measure, like chocolate, or happiness (i.e., means, variances, etc.). Is it possible to create a descriptive statistic that summarized the relationship between two measures, all in one number? Can it be done? Karl Pearson to the rescue.
+If Beyoncé was a statistician, she might look at these scatter plots and want to "put a number on it". We think this is a good idea too. We've already learned how to creative descriptive statistics for a single measure, like chocolate, or happiness (i.e., means, variances, etc.). Is it possible to create a descriptive statistic that summarized the relationship between two measures, all in one number? Can it be done? Karl Pearson to the rescue.
 
-There's a statistic for that, and Karl Pearson invented it. Everyone now calls it, "Pearson's r". We will find out later that Karl Pearson was a big-wig editor at Biometrika in the 1930s. He took a hating to another big-wig statisticain, Sir Ronald Fisher (who we learn about later), and they some stat fights...why can't we all just get along in statistics.
+There's a statistic for that, and Karl Pearson invented it. Everyone now calls it, "Pearson's $r$". We will find out later that Karl Pearson was a big-wig editor at Biometrika in the 1930s. He took a hating to another big-wig statistician, Sir Ronald Fisher (who we learn about later), and they some stat fights...why can't we all just get along in statistics.
 
-How does Pearsons' r work? Let's look again at the first 10 subjects in our fake experiment:
+How does Pearson's $r$ work? Let's look again at the first 10 subjects in our fake experiment:
 
 ```{r,echo=F}
 library(dplyr)
@@ -130,7 +130,7 @@ What could we do to these numbers to produce a single, summary value, that repre
 
 ### The idea of co-variance
 
-"Oh please no, don't use the word variance again". Yes, we're doing it, we're going to use the word variance again, and again, until it starts making sense. Remember what variance means about some numbers. It means the numbers have some change in them, they are not all the same, some of them are big, some are small. We can see that there is variance in chocolate supply across the 10 subjects. We can see that there is variance in happiness across the 10 subjects. We also saw in the scatterplot, that happiness increases as chocolate supply increases; which is a positive relationship, a positive correlation. What does this have to do with variance? Well, it means there is a relationship between the variance in chocolate supply, and the variance in happiness levels. The two measures vary together don't they? When we have two measures that vary together, they are like a happy couple who share their variance. This is what co-variance refers to, the idea that the pattern of varying numbers in one measure is shared by the pattern of varying numbers in another measure. 
+"Oh please no, don't use the word variance again". Yes, we're doing it, we're going to use the word variance again, and again, until it starts making sense. Remember what variance means about some numbers. It means the numbers have some change in them, they are not all the same, some of them are big, some are small. We can see that there is variance in chocolate supply across the 10 subjects. We can see that there is variance in happiness across the 10 subjects. We also saw in the scatter plot, that happiness increases as chocolate supply increases; which is a positive relationship, a positive correlation. What does this have to do with variance? Well, it means there is a relationship between the variance in chocolate supply, and the variance in happiness levels. The two measures vary together don't they? When we have two measures that vary together, they are like a happy couple who share their variance. This is what co-variance refers to, the idea that the pattern of varying numbers in one measure is shared by the pattern of varying numbers in another measure. 
 
 **Co-variance** is **very, very, very ,very** important. We suspect that the word co-variance is initially confusing, especially if you are not yet fully comfortable with the meaning of variance for a single measure. Nevertheless, we must proceed and use the idea of co-variance over and over again to firmly implant into your statistical mind (we already said, but redundancy works, it's a thing). 
 
@@ -140,7 +140,7 @@ What could we do to these numbers to produce a single, summary value, that repre
 
 ## Turning the numbers into a measure of co-variance
 
-"Ok, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I'm good with that. I suppose we would need some way to measure that." Correct, back to our table...notice anything new?
+"OK, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I'm good with that. I suppose we would need some way to measure that." Correct, back to our table...notice anything new?
 
 ```{r,echo=F}
 the_df_temp<-data.frame(subject,chocolate,happiness,Chocolate_X_Happiness=chocolate*happiness)
@@ -194,9 +194,9 @@ ggplot(sim_df,aes(x=sims,y=simulated_sums))+
 
 ```
 
-The above graph shows 1000 computer simuations. I forced my computer to randomly order the numbers 1 to 10 for X, and randomly order the numbers 1 to 10 for Y. Then, I multiplied X and Y, and added the products together. I did this 1000 times. The dot's show the sum of the products for each simluation. The two black lines show the maximum possible sum (385), and the minimum possible sum (220), for this set of numbers. Notice, how all of the dots are in between the maximum and minimum possible values. Told you so.
+The above graph shows 1000 computer simulations. I forced my computer to randomly order the numbers 1 to 10 for X, and randomly order the numbers 1 to 10 for Y. Then, I multiplied X and Y, and added the products together. I did this 1000 times. The dot's show the sum of the products for each simulation. The two black lines show the maximum possible sum (385), and the minimum possible sum (220), for this set of numbers. Notice, how all of the dots are in between the maximum and minimum possible values. Told you so.
 
-"Ok fine, you told me so...So what, who cares?". We've been looking for a way to summarize the covariance between two measures right? Well, for these numbers, we have found one, haven't we. It's the sum of the products. We know that when the sum of the products is 385, we have found a perfect, positive correlation. We know, that when the sum of the products is 220, we have found a perfect negative correlation. What about the numbers in between. What we could conclude about the correlation if we found the sum of the products to be 350. Well, it's going to be positive, because it's close to 385, and that's perfectly positive. If the sum of the products was  240, that's going to be negative, because it's close to the perfectly negatively correlating 220. What about no correlation? Well, that's going to be in the middle between 220 and 385 right.
+"OK fine, you told me so...So what, who cares?". We've been looking for a way to summarize the co-variance between two measures right? Well, for these numbers, we have found one, haven't we. It's the sum of the products. We know that when the sum of the products is 385, we have found a perfect, positive correlation. We know, that when the sum of the products is 220, we have found a perfect negative correlation. What about the numbers in between. What we could conclude about the correlation if we found the sum of the products to be 350. Well, it's going to be positive, because it's close to 385, and that's perfectly positive. If the sum of the products was  240, that's going to be negative, because it's close to the perfectly negatively correlating 220. What about no correlation? Well, that's going to be in the middle between 220 and 385 right.
 
 We have just come up with a data-specific summary measure for the correlation between the numbers 1 to 10 in X, and the numbers 1 to 10 in Y, it's the sum of the products. We know the maximum (385) and minimum values (220), so we can now interpret any product sum for this kind of data with respect to that scale.
 
@@ -204,7 +204,7 @@ We have just come up with a data-specific summary measure for the correlation be
 
 ### Co-variance, the measure
 
-We took some time to see what happens when you multiply sets of numbers together. We found that $big*big = bigger$ and $small*small=\text{still small}$, and $big*small=\text{in the middle}$. The purpose of this was to give you some conceptual idea of how the covariance between two measures is reflected in the sum of their products. We did something very straightforward. We just multiplied X with Y, and looked at how the product sums get big and small, as X and Y co-vary in different ways. 
+We took some time to see what happens when you multiply sets of numbers together. We found that $big*big = bigger$ and $small*small=\text{still small}$, and $big*small=\text{in the middle}$. The purpose of this was to give you some conceptual idea of how the co-variance between two measures is reflected in the sum of their products. We did something very straightforward. We just multiplied X with Y, and looked at how the product sums get big and small, as X and Y co-vary in different ways. 
 
 Now, we can get a little bit more formal. In statistics, **co-variance** is not just the straight multiplication of values in X and Y. Instead, it's the multiplication of the deviations in X from the mean of X, and the deviation in Y from the mean of Y. Remember those difference scores from the mean we talked about last chapter? They're coming back to haunt you know, but in a good way like Casper the friendly ghost.
 
@@ -231,33 +231,33 @@ knitr::kable(the_df_short)
 
 We have computed the deviations from the mean for the chocolate scores, and the deviations from the mean for the happiness scores. Then, we multiplied them together (last column). Finally, you can see the mean of the products listed in the bottom right corner of the table, the official **the covariance**.
 
-The formula for the covariance is:
+The formula for the co-variance is:
 
 $cov(X,Y) = \frac{\sum_{i}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{N}$
 
-Ok, so now we have a formal single number to calculate the relationship between two variables. This is great, it's what we've been looking for. However, there is a problem. Remember when we learned how to compute just the plain old **variance**. We looked at that number, and we didn't know what to make of it. It was squared, it wasn't in the same scale as the original data. So, we square rooted the **variance** to produce the **standard deviation**, which gave us a more interpretable number in the range of our data. The **co-variance** has a similar problem. When you calculate the covariance as we just did, we don't know immediately know its scale. Is a 3 big? is as 6 big? is a 100 big? How big or small is this thing?
+OK, so now we have a formal single number to calculate the relationship between two variables. This is great, it's what we've been looking for. However, there is a problem. Remember when we learned how to compute just the plain old **variance**. We looked at that number, and we didn't know what to make of it. It was squared, it wasn't in the same scale as the original data. So, we square rooted the **variance** to produce the **standard deviation**, which gave us a more interpretable number in the range of our data. The **co-variance** has a similar problem. When you calculate the co-variance as we just did, we don't know immediately know its scale. Is a 3 big? is as 6 big? is a 100 big? How big or small is this thing?
 
-From our prelude discussion on the idea of co-variance, we learned the sum of products between two measures ranges between a maximum and minimum value. The same is true of the co-variance. For a given set of data, there is a maximum possible positive value for the covariance (which occurs when there is perfect positive correlation). And, there is a minimum possible negative value for the covariance (which occurs when there is a perfect negative correlation). When there is zero covariation, guess what happens. Zeroes. So, at the very least, when we look at a covariation statistic, we can see if what direction it points, positive or negative. But, we don't know how big or small it is compared to the maxiumum or minimum possible value, so we don't know the relative size, which means we can't say how strong the correlation is. What to do?
+From our prelude discussion on the idea of co-variance, we learned the sum of products between two measures ranges between a maximum and minimum value. The same is true of the co-variance. For a given set of data, there is a maximum possible positive value for the co-variance (which occurs when there is perfect positive correlation). And, there is a minimum possible negative value for the co-variance (which occurs when there is a perfect negative correlation). When there is zero co-variation, guess what happens. Zeroes. So, at the very least, when we look at a co-variation statistic, we can see if what direction it points, positive or negative. But, we don't know how big or small it is compared to the maximum or minimum possible value, so we don't know the relative size, which means we can't say how strong the correlation is. What to do?
 
-### Pearson's r we there yet
+### Pearson's $r$ we there yet
 
-Yes, we are here now. Wouldn't it be nice if could force our measure of covariation to be between -1 and +1. -1 would be the minimum possible value for a perfect negative correlation. +1 would be the maximum possible value for a perfect positive correlation. 0 would mean no correlation. Everything in between 0 and -1 would be increasingly large negative correlations. Everything between 0 and +1 would be increasingly large positive correlations. It would be a fantastic, sensible, easy to interpret system. If only we could force the covariation number to be between -1 and 1. Fortunately, for us, this episode is brought to you by Pearson's r, which does precisely this wonderful thing.
+Yes, we are here now. Wouldn't it be nice if could force our measure of co-variation to be between -1 and +1. -1 would be the minimum possible value for a perfect negative correlation. +1 would be the maximum possible value for a perfect positive correlation. 0 would mean no correlation. Everything in between 0 and -1 would be increasingly large negative correlations. Everything between 0 and +1 would be increasingly large positive correlations. It would be a fantastic, sensible, easy to interpret system. If only we could force the co-variation number to be between -1 and 1. Fortunately, for us, this episode is brought to you by Pearson's $r$, which does precisely this wonderful thing.
 
-Let's take a look at a formula for Pearson's r:
+Let's take a look at a formula for Pearson's $r$:
 
 $r = \frac{cov(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{cov(X,Y)}{SD_{X}SD_{Y}}$
 
-We see the symbol $\sigma$ here, that's more Greek for you. $\sigma$ is often used as a symbol for the standard deviation (SD). If we read out the formula in English, we see that r is the covariance of X and Y, divided by the product of the standard deviation of X and the standard deviation of Y. Why are we dividing the covariance by the product of the standard deviations. This operation has the effect of **normalizing** the covariance into the range -1 to 1. 
+We see the symbol $\sigma$ here, that's more Greek for you. $\sigma$ is often used as a symbol for the standard deviation (SD). If we read out the formula in English, we see that r is the co-variance of X and Y, divided by the product of the standard deviation of X and the standard deviation of Y. Why are we dividing the co-variance by the product of the standard deviations. This operation has the effect of **normalizing** the co-variance into the range -1 to 1. 
 
 <div class="marginnote">
-But, we will fill this part in as soon as we can...promisary note to explain the magic. FYI, it's not magic. Brief explanation here is that dividing each measure by its standard deviation ensures that the values in each measure are in the same range as one another. 
+But, we will fill this part in as soon as we can...promissory note to explain the magic. FYI, it's not magic. Brief explanation here is that dividing each measure by its standard deviation ensures that the values in each measure are in the same range as one another. 
 </div>
 
 For now, we will call this mathematical magic. It works, but we don't have space to tell you why it works right now.
 
-> It's worth saying that there are loads of different formulas for computing Pearson's r. You can find them by googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster than if you did by hand using the approach we took here. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important to.
+> It's worth saying that there are loads of different formulas for computing Pearson's $r$. You can find them by googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster than if you did by hand using the approach we took here. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important to.
 
-Does Pearson's R really stay between -1 and 1 no matter what? It's true, take a look at the following simulation. Here I randomly ordered the numbers 1 to 10 for an X measure, and did the same for a Y measure. Then, I computed Pearson's r, and repeated this process 1000 times. As you can see all of the dots are between -1 and 1. Neat huh.
+Does Pearson's $r$ really stay between -1 and 1 no matter what? It's true, take a look at the following simulation. Here I randomly ordered the numbers 1 to 10 for an X measure, and did the same for a Y measure. Then, I computed Pearson's $r$, and repeated this process 1000 times. As you can see all of the dots are between -1 and 1. Neat huh.
 
 ```{r}
 simulated_sums <- length(0)
@@ -284,9 +284,9 @@ Examples here
 
 ## Regression: A mini intro
 
-We're going to spend the next little bit adding one more thing to our understanding of correlation. It's called **linear regression**. It sounds scary, and it really is. You'll find out much later in the textbook that everything we will be soon be talking about can be thought of as a special case of regression. But, we don't want to scard you off, so right now we just introduce the basic concepts.
+We're going to spend the next little bit adding one more thing to our understanding of correlation. It's called **linear regression**. It sounds scary, and it really is. You'll find out much later in the textbook that everything we will be soon be talking about can be thought of as a special case of regression. But, we don't want to scare you off, so right now we just introduce the basic concepts.
 
-First, let's look at a linear regression. This way we can see what we're trying to learn about. Here's some scatterplots, same one's you've already seen. But, we've added something new! Lines.
+First, let's look at a linear regression. This way we can see what we're trying to learn about. Here's some scatter plots, same one's you've already seen. But, we've added something new! Lines.
 
 ```{r, echo=F}
 
@@ -334,7 +334,7 @@ What do we want out of our line? Well, if you had a pencil, and a printout of th
 R code for plotting residuals thanks to Simon Jackson's blog post: [https://drsimonj.svbtle.com/visualising-residuals](https://drsimonj.svbtle.com/visualising-residuals)
 </div>
 
-Check out this next plot, it shows a line through some dots. But, it also shows some teeny tiny lines. These lines drop down from each dot, and they land on the line. Each of these little lines is called a **residual**. They show you how far off the line is for diferent dots. It's measure of error, it shows us just how wrong the line is. After all, it's pretty obvious that not all of the dots are on the line. This means the line does not actually represent all of the dots. The line is wrong. But, the best fit line is the least wrong of all the wrong lines.
+Check out this next plot, it shows a line through some dots. But, it also shows some teeny tiny lines. These lines drop down from each dot, and they land on the line. Each of these little lines is called a **residual**. They show you how far off the line is for different dots. It's measure of error, it shows us just how wrong the line is. After all, it's pretty obvious that not all of the dots are on the line. This means the line does not actually represent all of the dots. The line is wrong. But, the best fit line is the least wrong of all the wrong lines.
 
 
 ```{r}
@@ -358,11 +358,11 @@ ggplot(d, aes(x = hp, y = mpg)) +
 
 ```
 
-There's a lot going on in this graph. First, we are looking at a scatter plot of two variables, an X and Y variable. Each of the black dots are the actual values from these variables. You can see there is a negative correlation here, as X increases, Y tends to decrease. We drew a regression line through the data, that's the blue line. There's these little white dots too. This is where the line thinks the black dots should be. The red lines are the important residuals we've been talking about. Each black dot has a red line that drops straight down, or straight up fromt he location of the black dot, and lands directly on the line. We can already see that many of the dots are not on the line, so we already know the line is "off" about those dots. The red line just makes it easier to see exactly how off the line is.
+There's a lot going on in this graph. First, we are looking at a scatter plot of two variables, an X and Y variable. Each of the black dots are the actual values from these variables. You can see there is a negative correlation here, as X increases, Y tends to decrease. We drew a regression line through the data, that's the blue line. There's these little white dots too. This is where the line thinks the black dots should be. The red lines are the important residuals we've been talking about. Each black dot has a red line that drops straight down, or straight up from the location of the black dot, and lands directly on the line. We can already see that many of the dots are not on the line, so we already know the line is "off" about those dots. The red line just makes it easier to see exactly how off the line is.
 
 The important thing that is happening here, is that the the blue line is drawn is such a way, that it minimizes the length of the red lines. For example, if we wanted to know how wrong this line was, we could simply gather up all the red lines the residuals), measure how long they are, and then add all the wrongness together. This would give us the total amount of wrongness. We usually call this the error. In fact, we've already talked about this idea before when we discussed standard deviation. What we will actually be doing with the red lines, is computing the sum of the squared deviations from the line. That sum is the total amount of error. Now, this blue line here minimizes the sum of the squared deviations. Everything other line would produce a larger total error.
 
-Here's a few more graphs to see this in action. First, imagine we drew a different line, up higher in the graph. We coul still compute the red line residuals, and then add up the error, and see how big it was. If we go way up, the red lines will get longer and longer, so the total error will get bigger and bigger. As we move away from the sweet spot going up, the error gets bigger. The same thing will happen if we move the line down, the error will get bigger and bigger. Here's what that looks like:
+Here's a few more graphs to see this in action. First, imagine we drew a different line, up higher in the graph. We could still compute the red line residuals, and then add up the error, and see how big it was. If we go way up, the red lines will get longer and longer, so the total error will get bigger and bigger. As we move away from the sweet spot going up, the error gets bigger. The same thing will happen if we move the line down, the error will get bigger and bigger. Here's what that looks like:
 
 ```{r}
 coefs<-coef(lm(mpg ~ hp, data = mtcars))
@@ -421,11 +421,11 @@ ggplot(df,aes(x=move_line,y=total_error))+
 
 ```
 
-Ok, so we haven't talked about the y-intercept yet. But, what this graph shows is how the total error behaves as we move the line up and down. The y-intercept here is the thing we change that makes our line move up and down. As you can see the dots go up when we move the line down from 0 to -5, and the dots go up when we move the line up from 0 to +5. The best line, that minimizes the error occurs right in the middle, when we don't move the blue regression line at all.
+OK, so we haven't talked about the y-intercept yet. But, what this graph shows is how the total error behaves as we move the line up and down. The y-intercept here is the thing we change that makes our line move up and down. As you can see the dots go up when we move the line down from 0 to -5, and the dots go up when we move the line up from 0 to +5. The best line, that minimizes the error occurs right in the middle, when we don't move the blue regression line at all.
 
 ### Lines
 
-Ok, fine you say. So, there is one magic line that will go through the middle of the scatterplot and minimize the sum of the squared deviations. How do I find this magic line? We'll show you. But, to be completely honest, you'll almost never do it the way we'll show you here. Instead, it's much easier to use software and make your computer do it for. You'll learn how to that in the labs.
+OK, fine you say. So, there is one magic line that will go through the middle of the scatter plot and minimize the sum of the squared deviations. How do I find this magic line? We'll show you. But, to be completely honest, you'll almost never do it the way we'll show you here. Instead, it's much easier to use software and make your computer do it for. You'll learn how to that in the labs.
 
 Before we show you how to find the regression line, it's worth refreshing your memory about how lines work, especially in 2 dimensions. Remember this?
 
@@ -457,7 +457,7 @@ That's lines.
 
 ### Computing the best fit line
 
-If you have a scatterplot showing the locations of scores from two variables, the real question is how can you find the slope and the y-intercept for the best fit line? What are you going to do? Draw millions of lines, add up the residuals, and then see which one was best? That would take forever. Fortunately, there are computers, and when you don't have one around, there's also some handy formulas.
+If you have a scatter plot showing the locations of scores from two variables, the real question is how can you find the slope and the y-intercept for the best fit line? What are you going to do? Draw millions of lines, add up the residuals, and then see which one was best? That would take forever. Fortunately, there are computers, and when you don't have one around, there's also some handy formulas.
 
 <div class="marginnote">
 It's worth pointing out just how much computers have changed everything. Before computers everyone had to do these calculations by hand, such a chore! Aside from the deeper mathematical ideas in the formulas, many of them were made for convenience, to speed up hand calculations, because there were no computers. Now that we have computers, the hand calculations are often just an exercise in algebra. Perhaps they build character. You decide.
@@ -493,13 +493,13 @@ knitr::kable(all_df)
 
 ```
 
-We see 7 sets of scores for the x and y variable. We calculated $x^2$ by squaring each value of x, and putting it in a column. We calculated $y^2$ by squareing each value of y, and putting it in a column. Then we calculated $xy$, by multiplying each $x$ score with each $y$ score, and put that in a column. Then we added all the columns up, and put the sums at the bottom. These are all the number we need for the formulas to find the best fit line. Here's what the formulas look like when we put numbers in them:
+We see 7 sets of scores for the x and y variable. We calculated $x^2$ by squaring each value of x, and putting it in a column. We calculated $y^2$ by squaring each value of y, and putting it in a column. Then we calculated $xy$, by multiplying each $x$ score with each $y$ score, and put that in a column. Then we added all the columns up, and put the sums at the bottom. These are all the number we need for the formulas to find the best fit line. Here's what the formulas look like when we put numbers in them:
 
 $slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 275 - 34*231}{7*200-34^2} = -1.23 $
 
 $intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{6*231-34*39}{6*275-34^2} = 1.36$
 
-Great, now we can check our work, let's plot the scores in a scatterplot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots.
+Great, now we can check our work, let's plot the scores in a scatter plot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots.
 
 ```{r}
 plot_df<-data.frame(x,y)
@@ -529,15 +529,15 @@ Like most plants, snake plants need some water to stay alive. However, they also
 
 #### Even when there is causation, there might not be obvious correlation
 
-The first plant given no water at all would have a very hard time and eventually die. It should have the least amount of weekly growth. How about the plants given only a few teaspoons of water per day. This could be just enough water to keep the plants alive, so they will grow a little bit but not alot. If you are imagining a scatterplot, with each dot being a snake plant, then you should imagine some dots starting in the bottom left hand corner (no water & no plant growth), moving up and to the right (a bit of water, and a bit of growth). As we look at snake plants getting more and more water, we should see more and more plant growth, right? "Sure, but only up to a point". Correct, there should be a trend for a positive correlation with increasing plant growth as amount of water per day increases. But, what happens when you give snake plants too much water? From personal experience, they die. So, at some point, the dots in the scatter plot will start moving back down again. Snake plants that get way too much water will not grow very well.
+The first plant given no water at all would have a very hard time and eventually die. It should have the least amount of weekly growth. How about the plants given only a few teaspoons of water per day. This could be just enough water to keep the plants alive, so they will grow a little bit but not a lot. If you are imagining a scatter plot, with each dot being a snake plant, then you should imagine some dots starting in the bottom left hand corner (no water & no plant growth), moving up and to the right (a bit of water, and a bit of growth). As we look at snake plants getting more and more water, we should see more and more plant growth, right? "Sure, but only up to a point". Correct, there should be a trend for a positive correlation with increasing plant growth as amount of water per day increases. But, what happens when you give snake plants too much water? From personal experience, they die. So, at some point, the dots in the scatter plot will start moving back down again. Snake plants that get way too much water will not grow very well.
 
-The imaginary scatterplot you should be envisioning could have an upside U shape. Going from left to right, the dot's go up, they reach a maximum, then they go down again reaching a minimum. Computing Pearson's r for data like this can give you $r$ values close to zero.
+The imaginary scatter plot you should be envisioning could have an upside U shape. Going from left to right, the dot's go up, they reach a maximum, then they go down again reaching a minimum. Computing Pearson's $r$ for data like this can give you $r$ values close to zero.
 
 <div class="marginnote">
-There are many ways to create a summary statistic for relationships between variables that are like Pearson's r. We discuss some of these in the chapter on Linear Regression.
+There are many ways to create a summary statistic for relationships between variables that are like Pearson's $r$. We discuss some of these in the chapter on Linear Regression.
 </div>
 
-This example illustrates some conundrums in interpreting correlations. We already know that water is needed for plants to grow, so we are rightly expecting there to be a relationship between measure of amount of water and plant growth. If we look at the first half of the data we see a positive correlation, if we look at the last half of the data we see a negative correlation, and if we look at all of the data we see no correlation. Yikes. So, even when there is a causal connection between two measures, we won't necessarilly clear evidence of the connection just by computing a correlation coefficient. 
+This example illustrates some conundrums in interpreting correlations. We already know that water is needed for plants to grow, so we are rightly expecting there to be a relationship between measure of amount of water and plant growth. If we look at the first half of the data we see a positive correlation, if we look at the last half of the data we see a negative correlation, and if we look at all of the data we see no correlation. Yikes. So, even when there is a causal connection between two measures, we won't necessarily clear evidence of the connection just by computing a correlation coefficient. 
 
 > Pro Tip: This is one reason why plotting your data is so important. If you see an upside U shape pattern, then a correlation analysis is probably not the best analysis for your data.
 
@@ -555,11 +555,11 @@ Anybody can correlate any two things that can be quantified and measured. For ex
   
 Let's say we found a positive correlation between yearly salary and happiness. Note, we could have just as easily computed the same correlation between happiness and yearly salary. If we found a correlation, would you be willing to infer that yearly salary causes happiness? Perhaps it does play a small part. But, something like happiness probably has a lot of contributing causes. Money could directly cause some people to be happy. But, more likely, money buys people access to all sorts of things, and some of those things might contribute happiness. Theses "other" things are called **third** variables. For example, perhaps people living in nicer places in more expensive houses are more happy than people in worse places in cheaper houses. In this scenario, money isn't causing happiness, it's the places and houses that money buys. But, even is this were true, people can still be more or less in lots of different situations.
 
-The lesson here is that a correlation can occur between two measures because of a third variable that is not directly measured. So, just because we find a correlation, does not mean we can conlude anything about a causal connection between two measurements.
+The lesson here is that a correlation can occur between two measures because of a third variable that is not directly measured. So, just because we find a correlation, does not mean we can conclude anything about a causal connection between two measurements.
 
 ### Correlation and Random chance
 
-Another very important aspect of correlations is the fact that they can be produced by random chance. This means that you can find a positive or negative correlation between two measures, even when they have absolutely nothing to do with one another. You might have hoped to find zero correlation when two measures are totally unrelated to each other. Althought this certainly happens, unrelated measures can accidentally produce **spurious** correlations, just by chance alone. 
+Another very important aspect of correlations is the fact that they can be produced by random chance. This means that you can find a positive or negative correlation between two measures, even when they have absolutely nothing to do with one another. You might have hoped to find zero correlation when two measures are totally unrelated to each other. Although this certainly happens, unrelated measures can accidentally produce **spurious** correlations, just by chance alone. 
 
 Let's demonstrate how correlations can occur by chance when there is no causal connection between two measures. Imagine two participants. One is at the North pole with a lottery machine full of balls with numbers from 1 to 10. The other is at the south pole with a different lottery machine full of balls with numbers from 1 to 10. There are an endless supply of balls in the machine, so every number could be picked for any ball. Each participant randomly chooses 10 balls, then records the number on the ball. In this situation we will assume that there is no possible way that balls chosen by the first participant could causally influence the balls chose by the second participant. They are on the other side of the world. We should assume that the balls will be chosen by chance alone. 
 
@@ -580,7 +580,7 @@ knitr::kable(the_df_balls)
 
 ```
 
-In this one case, if we computed Pearons' $r$, we would find that $r =$ `r cor(North_pole,South_pole)`. But, we already know that this value does not tell us anything about the relationship between the balls chosen in the north and sout pole. We know that relationship should be completely random, because that is how we set up the game.
+In this one case, if we computed Pearson's $r$, we would find that $r =$ `r cor(North_pole,South_pole)`. But, we already know that this value does not tell us anything about the relationship between the balls chosen in the north and south pole. We know that relationship should be completely random, because that is how we set up the game.
 
 The better question here is to ask what can random chance do? For example, if we ran our game over and over again thousands of times, each time choosing new balls, and each time computing the correlation, what would we find?First, we will find fluctuation. The r value will sometimes be positive, sometimes be negative, sometimes be big and sometimes be small. Second, we will see what the fluctuation looks like. This will give us a window into the kinds of correlations that chance alone can produce. Let's see what happens.
 
@@ -608,11 +608,11 @@ ggplot(sim_df, aes(x = sims, y = simulated_correlations))+
   ggtitle("Simulation of 1000 r values")
 ```
 
-Let's take a look at all of the 1000 Pearson $r$ values. Does the figure below look familiar to you? It should, we have already conducted a similar kind of simulation before. Each dot in the scatterplot shows the Pearson $r$ for each simulation from 1 to 1000. As you can see the dots are all of the place, in between the range -1 to 1. The important lesson here is that random chance produced all of these correlations. This means we can find "correlations" in the data that are completely meaningless, and do not reflect any causal relationship between one measure and another.
+Let's take a look at all of the 1000 Pearson $r$ values. Does the figure below look familiar to you? It should, we have already conducted a similar kind of simulation before. Each dot in the scatter plot shows the Pearson $r$ for each simulation from 1 to 1000. As you can see the dots are all of the place, in between the range -1 to 1. The important lesson here is that random chance produced all of these correlations. This means we can find "correlations" in the data that are completely meaningless, and do not reflect any causal relationship between one measure and another.
 
-Let's illustrate the idea of finding "random" correlations one more time, with a little movie. This time, we will show you a scatterplot of the random values sampled for the balls chosen from the North and South pole. If there is no relationship we should see dots going everywhere. If there happens to be a positive relationship (purely by chance), we should see the dots going from the bottom left to the top right. If there happens to be a negative relationship (purely by chance), we should see the dots going from the top left down to the bottom right.
+Let's illustrate the idea of finding "random" correlations one more time, with a little movie. This time, we will show you a scatter plot of the random values sampled for the balls chosen from the North and South pole. If there is no relationship we should see dots going everywhere. If there happens to be a positive relationship (purely by chance), we should see the dots going from the bottom left to the top right. If there happens to be a negative relationship (purely by chance), we should see the dots going from the top left down to the bottom right.
 
-On more thing to prepare you for the movie. There are three scatterplots below, showing negative, positive, and zero correlations between two variabls. You've already seen this graph before. But, we added something. Blue lines. "Oooh blue lines, tell me more". The are helpful for seeing the correlation. We are drawing the lines straight through the dots (we'll learn more about in the chapter on linear regression), such that they do the best job of summarizing the middle of dots. Negative correlations occur when a line goes down from the top left to bottom right. Positive correlations occur when a line goes up from the bottom left to the top right. Zero correlations occur when the line is flat (doesn't go up or down).
+On more thing to prepare you for the movie. There are three scatter plots below, showing negative, positive, and zero correlations between two variables. You've already seen this graph before. But, we added something. Blue lines. "Ooh blue lines, tell me more". The are helpful for seeing the correlation. We are drawing the lines straight through the dots (we'll learn more about in the chapter on linear regression), such that they do the best job of summarizing the middle of dots. Negative correlations occur when a line goes down from the top left to bottom right. Positive correlations occur when a line goes up from the bottom left to the top right. Zero correlations occur when the line is flat (doesn't go up or down).
 
 ```{r, echo=F}
 
@@ -647,7 +647,7 @@ ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
 
 ```
 
-Ok, now we are ready for the movie. You are looking at the process of sampling two set of numbers randomly, one for the X variable, and one for the Y variable. Each time we sample 10 numbers for each, plot them, then draw a line through them. Remember, these numbers are all completely random, so we should expect, on average that there should be no correlation between the numbers. However, this is not what happens. You can the line going all over the place. Sometimes we find a negative correlation (line goes down), sometimes we see a positive correlation (line goes up), and sometimes it looks like zero correlation (line is more flat). 
+OK, now we are ready for the movie. You are looking at the process of sampling two set of numbers randomly, one for the X variable, and one for the Y variable. Each time we sample 10 numbers for each, plot them, then draw a line through them. Remember, these numbers are all completely random, so we should expect, on average that there should be no correlation between the numbers. However, this is not what happens. You can the line going all over the place. Sometimes we find a negative correlation (line goes down), sometimes we see a positive correlation (line goes up), and sometimes it looks like zero correlation (line is more flat). 
 
 ```{r,echo=F}
 library(gganimate)
@@ -687,14 +687,14 @@ hist(simulated_correlations,breaks=seq(-1,1,.1))
 ```
 
 
-Notic that this histogram is not flat. Most of the simulated $r$ values are close to zero. Notice, also that the bars get smaller as you move away from zero in the positive or negative direction. The general take home here is that chance can produce a wide range of correlations. However, not all correlations happen very often. For example, the bars for -1 and 1 are very small. Chance does not produce nearly perfect correlations very often. The bars around -.5 and .5 are smaller than the bars around zero, as medium correlations do not occur as often as small correlations by chance alone.
+Notice that this histogram is not flat. Most of the simulated $r$ values are close to zero. Notice, also that the bars get smaller as you move away from zero in the positive or negative direction. The general take home here is that chance can produce a wide range of correlations. However, not all correlations happen very often. For example, the bars for -1 and 1 are very small. Chance does not produce nearly perfect correlations very often. The bars around -.5 and .5 are smaller than the bars around zero, as medium correlations do not occur as often as small correlations by chance alone.
 
 You can think of this histogram as the window of chance. It shows what chance often does, and what it often does not do. If you found a correlation under these very same circumstances (e.g., measured the correlation between two sets of 10 random numbers), then you could consult this window. What should you ask the window? How about, could my observed correlation (the one that you found in your data) have come from this window. Let's say you found a correlation of $r = .1$. Could a .1 have come from the histogram? Well, look at the histogram around where the .1 mark on the x-axis is. Is there a big bar there? If so, this means that chance produces this value fairly often. You might be comfortable with the inference, Yes, this .1 could have been produced by chance, because it is well inside the window of chance. How about $r = .5$? The bar is much smaller here, you might think, "well, I can see that chance does produce .5 some times, so chance could have produced my .5. Did it? Maybe, maybe not, not sure". Here, your confidence in a strong inference might start getting a bit shakier. How about an $r = .95$?. You might see that the bar for .95 is very very small, perhaps too small to see. What does this tell you? It tells you that chance does not produce .95 very often, hardly if at all, pretty much never. So, if you found a .95 in your data, what would infer? Perhaps you would be comfortable inferring that chance did not produce your .95, after .95 is not inside the window of chance.
 
 In this section we have started to build some intuitions about **inferential statistics**. We go into more detail in the next chapters. For now, the main ideas are:
 
 1. We can measure relationships in data using things like correlation
-2. The correlations we measure can be produced by numerous things, so they are hard to to intrepret
+2. The correlations we measure can be produced by numerous things, so they are hard to to interpret
 3. Correlations can be produced by chance, so have the potential to be completely meaningless.
 4. However, we can create a model of exactly what chance can do. The model tells us whether chance is more or less likely to produce correlations of different sizes
 5. We can use the chance model to help us make decisions about our own data. We can compare the correlation we found in our data to the model, then ask whether or not chance could have or was likely to have produced our results.
@@ -705,7 +705,7 @@ Before moving on, let's do one more thing with correlations. In our pretend lott
 
 The good news is that, as a researcher, you get to make the rules of the game. You get to determine how chance can play. This is all a little bit metaphorical, so let's make it concrete.
 
-We will see what happens in four different scenarios. First, we will repeat what we already did. Each participant will draw 10 balls, then we compute the correlation, and do this over 1000 times and look at a histrogram. Second, we will change the game so each participant draws 50 balls each, and then repeat our simulation. Third, and fourth, we will change the game so each participant draws 100 balls each, and then 1000 balls each, and repeat etc.
+We will see what happens in four different scenarios. First, we will repeat what we already did. Each participant will draw 10 balls, then we compute the correlation, and do this over 1000 times and look at a histogram. Second, we will change the game so each participant draws 50 balls each, and then repeat our simulation. Third, and fourth, we will change the game so each participant draws 100 balls each, and then 1000 balls each, and repeat etc.
 
 The graph below shows four different histograms of the Pearson $r$ values in each of the different scenarios. Each scenario involves a different sample-size, from, 10, 50, 100 to 1000.
 
@@ -731,9 +731,9 @@ ggplot(all_df,aes(x=simulated_correlations))+
 ```
 
 
-By inspecting the four histrograms you should notice a clear pattern. The width or range of each histogram shrinks as the sample-size increases. What is going on here? Well, we already know that we can think of these histograms as windows of chance. They tell us which $r$ values occur fairly often, which do not. When our sample-size is 10, lots of different $r$ values happen. That histrogram is very flat and spread out. However, as the sample-size inreases, we see that the window of chance gets pulled in. For example, by the time we get to 1000 balls each, almost all of the Pearson $r$ values are very close to 0.
+By inspecting the four histograms you should notice a clear pattern. The width or range of each histogram shrinks as the sample-size increases. What is going on here? Well, we already know that we can think of these histograms as windows of chance. They tell us which $r$ values occur fairly often, which do not. When our sample-size is 10, lots of different $r$ values happen. That histogram is very flat and spread out. However, as the sample-size increases, we see that the window of chance gets pulled in. For example, by the time we get to 1000 balls each, almost all of the Pearson $r$ values are very close to 0.
 
-One take home here, is that increasing sample-size narrows the window of chance. So, for example, if you ran a study involving 1000 samples of two measures, and you found a correlation of .5, then you can clearly see in the bottom right histogram that .5 does not occur very often by chance alone. In fact, there is no bar, because it didnt happen even once in the simulation. As a result, when you have a large sample size like n = 1000, you might be more confident that your observed correlation (say of .5) was not a spurious correlation. If chance is not producing your result, then something else is.
+One take home here, is that increasing sample-size narrows the window of chance. So, for example, if you ran a study involving 1000 samples of two measures, and you found a correlation of .5, then you can clearly see in the bottom right histogram that .5 does not occur very often by chance alone. In fact, there is no bar, because it didn't happen even once in the simulation. As a result, when you have a large sample size like n = 1000, you might be more confident that your observed correlation (say of .5) was not a spurious correlation. If chance is not producing your result, then something else is.
 
 Finally, notice how your confidence about whether or not chance is mucking about with your results depends on your sample size. If you only obtained 10 samples per measurement, and found $r = .5$, you should not be as confident that your correlation reflects a real relationship. Instead, you can see that $r$'s of .5 happen fairly often by chance alone. 
 
@@ -785,17 +785,17 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 Which line should you trust? Well, hopefully you can see that the line for 1000 samples is the most stable. It tends to be very flat every time, and it does not depend so much on the particular sample. The line with 10 observations per sample goes all over the place. The take home here, is that if someone told you that they found a correlation, you should want to know how many observations they hand in their sample. If they only had 10 observations, how could you trust the claim that there was a correlation? You can't!!! Not now that you know samples that are that small can do all sorts of things by chance alone. If instead, you found out the sample was very large, then you might trust that finding a little bit more. For example, in the above movie you can see that when there are 1000 samples, we never see a strong or weak correlation; the line is always flat. This is because chance almost never produces strong correlations when the sample size is very large. 
 
-In the above example, we sampled numbers random numbers from a uniform distribution. Many examples of real-world data will come from a normal or approximately normal distibribution. We can repeat the above, but sample random numbers from the same normal distribution. There will still be zero actual correlation between the X and Y variables, because everything is sampled randomly. But, we still see the same behavior as above. The computed correlation for small sample-sizes flucuate wildly, and large sample sizes do not.
+In the above example, we sampled numbers random numbers from a uniform distribution. Many examples of real-world data will come from a normal or approximately normal distribution. We can repeat the above, but sample random numbers from the same normal distribution. There will still be zero actual correlation between the X and Y variables, because everything is sampled randomly. But, we still see the same behavior as above. The computed correlation for small sample-sizes fluctuate wildly, and large sample sizes do not.
 
 ```{r, echo=F,eval=T}
 knitr::include_graphics(path="gifs/corNormFourNs-1.gif")
 ```
 
-Ok, so what do things look like when there actually is a correlation between variables?
+OK, so what do things look like when there actually is a correlation between variables?
 
 #### Watching correlations behave when there really is a correlation
 
-Sometimes there really are correlations between two variables that are not caused by chance. Below, we get to watch a movie of four scatterplots. Each shows the correlation between two variables. Again, we change the sample-size in steps of 10, 50 100, and 1000. The data have programmed to contain a real positive correlation. So, we should expect that the line will be going up from the bottom left to the top right. However, there is still variability in the data. So this time, sampling error due to chance will fuzz the correlation. We know it is there, but sometimes chance will cause the correlation to be eliminated.
+Sometimes there really are correlations between two variables that are not caused by chance. Below, we get to watch a movie of four scatter plots. Each shows the correlation between two variables. Again, we change the sample-size in steps of 10, 50 100, and 1000. The data have programmed to contain a real positive correlation. So, we should expect that the line will be going up from the bottom left to the top right. However, there is still variability in the data. So this time, sampling error due to chance will fuzz the correlation. We know it is there, but sometimes chance will cause the correlation to be eliminated.
 
 Notice that in the top left panel (sample-size 10), the line is twirling around much more than the other panels. Every new set of samples produces different correlations. Sometimes, the line even goes flat or downward. However, as we increase sample-size, we can see that the line doesn't change very much, it is always going up showing a positive correlation.
 

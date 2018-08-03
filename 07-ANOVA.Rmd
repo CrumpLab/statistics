@@ -13,7 +13,7 @@ We present the ANOVA in the Fisherian sense, and at the end describe the Neyman-
 
 ## ANOVA is Analysis of Variance
 
-ANOVA stands for ANalysis Of VAriance. It is a widely used technique for assessing the likelihood that differences found between means in sample data  could be produced by chance. You might be thinking, well don't we have t-tests for that? Why do we need the ANOVA, what do we get that's new that we didn't have before?
+ANOVA stands for Analysis Of Variance. It is a widely used technique for assessing the likelihood that differences found between means in sample data  could be produced by chance. You might be thinking, well don't we have t-tests for that? Why do we need the ANOVA, what do we get that's new that we didn't have before?
 
 What's new with the ANOVA, is the ability to test a wider range of means beyond just two. In all of the t-test examples we were always comparing two things. For example, we might ask whether the difference between two sample means could have been produced by chance. What if our experiment had more than two conditions or groups? We would have more than 2 means. We would have one mean for each group or condition. That could be a lot depending on the experiment. How would we compare all of those means? What should we do, run a lot of t-tests, comparing every possible combination of means? Actually, you could do that. Or, you could do an ANOVA. One way to think of the ANOVA is in terms of Lord of the Rings (it's one test to rule them all).
 
@@ -21,7 +21,7 @@ In practice, we will combine both the ANOVA test and t-tests when analyzing data
 
 ## One-factor ANOVA
 
-The one-factor ANOVA is sometimes also called a between-subjects ANOVA, an independent factor ANOVA, or a one-way ANOVA (which is a bit a misnomer as we discuss later). The critical ingredient for a one-factor, between-subjects ANOVA, is that you have one independent variable, with at least two-levels. When you have one IV with two levels, you can run a t-test. You can also run an ANOVA. Interestingly, they give you almost the exact same results. You will get a p-value from both tests that is identical (they are really doing the same thing under the hood). The t-test gives a $t$-value as the important sample statistic. The ANOVA gives you the $F$ value (for Fisher, the inventor of the test) as the important sample statistic. It turns out that $t^2$ equals $F$, when there are only two groups in the design. They are the same test. Sidenote, it turns out they are all related to Pearons's r too (but we discuss this relationship much later).
+The one-factor ANOVA is sometimes also called a between-subjects ANOVA, an independent factor ANOVA, or a one-way ANOVA (which is a bit a misnomer as we discuss later). The critical ingredient for a one-factor, between-subjects ANOVA, is that you have one independent variable, with at least two-levels. When you have one IV with two levels, you can run a t-test. You can also run an ANOVA. Interestingly, they give you almost the exact same results. You will get a p-value from both tests that is identical (they are really doing the same thing under the hood). The t-test gives a $t$-value as the important sample statistic. The ANOVA gives you the $F$ value (for Fisher, the inventor of the test) as the important sample statistic. It turns out that $t^2$ equals $F$, when there are only two groups in the design. They are the same test. Side-note, it turns out they are all related to Pearson's r too (but we discuss this relationship much later).
 
 Remember that $t$ is computed directly from the data. It's like a mean and standard error that we measure from the sample. In fact it's the mean difference divided by the standard error of the sample. It's just another descriptive statistic isn't it.
 
@@ -35,13 +35,13 @@ The difference with F, is that we use variances to describe both the measure of 
 
 Remember what we said about how these ratios work. When the variance associated with the effect is the same size as the variance associated with sampling error, we will get two of the same numbers, this will result in an F-value of 1. When the variance due to the effect is larger than the variance associated with sampling error, then F will be greater than 1. When the variance associated with the effect is smaller than the variance associated with sampling error, F will be less than one. 
 
-Let's rewrite in plainer english. We are talking about two concepts that we would like to measure from our data. 1) A measure of what we can explain, and 2) a measure of error, or stuff about our data we can't explain. So, the F formula looks like this:
+Let's rewrite in plainer English. We are talking about two concepts that we would like to measure from our data. 1) A measure of what we can explain, and 2) a measure of error, or stuff about our data we can't explain. So, the F formula looks like this:
 
 $\text{F} = \frac{\text{Can Explain}}{\text{Can't Explain}}$
 
-When we can explain as much as we can't explain, F=1. This isn't that great of a situation for us to be in. It means we have a lot of uncertainty. When we can explain much more than we can'y we are doing a good job, F will be greater than 1. When we can explain less than what we can't, we really can't explain very much, F will be less than 1. That's the concept behind making F. 
+When we can explain as much as we can't explain, F=1. This isn't that great of a situation for us to be in. It means we have a lot of uncertainty. When we can explain much more than we can't we are doing a good job, F will be greater than 1. When we can explain less than what we can't, we really can't explain very much, F will be less than 1. That's the concept behind making F. 
 
-If you saw and F in the wild, and it was .6. Then you would automatically know the researchers couldn't explain much of their data. If you saw an F of 5, then you would know the researchers coudl explain 5 times more than the couldn't, that's pretty good. And the point of this is to give you an intuition about the meaning of an F - value, even before you know how to compute it.
+If you saw and F in the wild, and it was .6. Then you would automatically know the researchers couldn't explain much of their data. If you saw an F of 5, then you would know the researchers could explain 5 times more than the couldn't, that's pretty good. And the point of this is to give you an intuition about the meaning of an F - value, even before you know how to compute it.
 
 
 
@@ -53,7 +53,7 @@ Total Variation = Variation due to Manipulation + Variation due to sampling erro
 
 This is a nice idea, but it is also vague. We haven't specified our measure of variation. What should we use?
 
-Remember the sums of squares tht we used to make the variance and the standard deviation? That's what we'll use. Let's take another look at the formula, using sums of squares for the measure of variation:
+Remember the sums of squares that we used to make the variance and the standard deviation? That's what we'll use. Let's take another look at the formula, using sums of squares for the measure of variation:
 
 $SS_\text{total} = SS_\text{Effect} + SS_\text{Error}$
 
@@ -87,9 +87,9 @@ We also calculated all of the difference scores **from the Grand Mean**. The dif
 
 Remember, the difference scores are a way of measuring variation. They represent how far each number is from the Grand Mean. If the Grand Mean represents our best guess at summarizing the data, the difference scores represent the error between the guess and each actual data point. The only problem with the difference scores is that they sum to zero (because the mean is the balancing point in the data). So, it is convenient to square the difference scores, this turns all of them into positive numbers. The size of the squared difference scores still represents error between the mean and each score. And, the squaring operation exacerbates the differences as the error grows larger (squaring a big number makes a really big number, squaring a small number still makes a smallish number).
 
-Ok fine! We have the squared deviations from the grand mean, we know that they represent the error between the grand mean and each score. What next? SUM THEM UP!
+OK fine! We have the squared deviations from the grand mean, we know that they represent the error between the grand mean and each score. What next? SUM THEM UP!
 
-When you add up all of the individual squared deviations (difference sscores) you get the sums of squares. That's why it's called the sums of squares (SS).
+When you add up all of the individual squared deviations (difference scores) you get the sums of squares. That's why it's called the sums of squares (SS).
 
 Now, we have the first part of our answer:
 
@@ -179,7 +179,7 @@ Alright, we did almost the same thing as we did to find $SS_\text{Effect}$. Can 
 
 ### Degrees of freedom
 
-Degrees of freedom come into play again with ANOVA. This time, their purpose is a little bit more clear. Dfs can be fairly simple when we are doing a relatitvely simple ANOVA like this one, but they can become complicated when designs get more complicated.
+Degrees of freedom come into play again with ANOVA. This time, their purpose is a little bit more clear. Dfs can be fairly simple when we are doing a relatively simple ANOVA like this one, but they can become complicated when designs get more complicated.
 
 Let's talk about the degrees of freedom for the $SS_\text{Effect}$ and $SS_\text{Error}$.
 
@@ -187,7 +187,7 @@ The formula for the degrees of freedom for $SS_\text{Effect}$ is
 
 $df_\text{Effect} = \text{Groups} -1$, where Groups is the number of groups in the design. 
 
-In our example, there are 3 groups, so the df is 3-1 = 2. You can think of the df for the effect this way. When we estimate the grand mean (the overall mean), we are taking away a degree of freedom for the group means. Two of the group means can be anything they want (they have complete freedom), but in order for all three to be conistent with the Grand Mean, the lats group mean has to be fixed.
+In our example, there are 3 groups, so the df is 3-1 = 2. You can think of the df for the effect this way. When we estimate the grand mean (the overall mean), we are taking away a degree of freedom for the group means. Two of the group means can be anything they want (they have complete freedom), but in order for all three to be consistent with the Grand Mean, the lats group mean has to be fixed.
 
 The formula for the degrees of freedom for $SS_\text{Error}$ is
 
@@ -195,7 +195,7 @@ $df_\text{Error} = \text{scores} - \text{groups}$, or the number of scores minus
 
 ### Mean Squared Error
 
-Ok, so we have the degrees of freedom. What's next? There are two steps left. First we divide the SS's by their respective degrees of freedom to create something new called Mean Squared Error. Let's talk about why we do this.
+OK, so we have the degrees of freedom. What's next? There are two steps left. First we divide the SSes by their respective degrees of freedom to create something new called Mean Squared Error. Let's talk about why we do this.
 
 First of all, remember we are trying to accomplish this goal:
 
@@ -240,7 +240,7 @@ Done!
 
 ### The ANOVA TABLE
 
-You might suspesct we aren't totally done here. We've walked through the steps of computing $F$. Remember, F is a sample statistic, we computed $F$ directly from the data. There were a whole bunch of pieces we needed, the dfs, the SSs, the MSEs, and then finally the F.
+You might suspect we aren't totally done here. We've walked through the steps of computing $F$. Remember, F is a sample statistic, we computed $F$ directly from the data. There were a whole bunch of pieces we needed, the dfs, the SSes, the MSEs, and then finally the F.
 
 All of these little pieces are conveniently organized by ANOVA tables. ANOVA tables look like this:
 
@@ -264,7 +264,7 @@ We've just noted that the ANOVA has a bunch of numbers that we calculated straig
 
 As we keep saying, $F$ is a sample statistic. Can you guess what we do with sample statistics in this textbook? We did it for the Crump Test, the Randomization Test, and the t-test... We make fake data, we simulate it, we compute the sample statistic we are interested in, then we see how it behaves over many replications or simulations.
 
-Let's do that for $F$. This will help you understand what $F$ really is, and how it behaves. We are going to created the sampling distribution of $F$. Once we have that you will be able to see where the p-values come frome. It's the same basic process that we followed for the $t$ tests, except we are measuring $F$ instead of $t$.
+Let's do that for $F$. This will help you understand what $F$ really is, and how it behaves. We are going to created the sampling distribution of $F$. Once we have that you will be able to see where the p-values come from. It's the same basic process that we followed for the $t$ tests, except we are measuring $F$ instead of $t$.
 
 Here is the set-up, we are going to run an experiment with three levels. In our imaginary experiment we are going to test whether a new magic pill can make you smarter. The independent variable is the number of magic pills you take: 1, 2, or 3. We will measure your smartness using a smartness test. We will assume the smartness test has some known properties, the mean score on the test is 100, with a standard deviation of 10 (and the distribution is normal).
 
@@ -309,7 +309,7 @@ At the same time, we do see that some F values that are larger than 1. There are
 We can use the sampling distribution of the F (for the null) to make decisions about the role of chance in a real experiment. For example, we could do the following. 
 
 1. Set an alpha criterion of p = 0.05
-2. Find out the critical value for $F$, for our particular situation (with our dfs for the numerator and denomitor).
+2. Find out the critical value for $F$, for our particular situation (with our dfs for the numerator and denominator).
 
 Let's do that. I've drawn the line for the critical value onto the histogram:
 
@@ -336,7 +336,7 @@ Up to here we have been building your intuition for understanding F. We went thr
 
 Notice, if I told you I ran an experiment with three groups, testing whether some manipulation changes the behavior of the groups, and I told you that I found a big F!, say an F of 6!. And, that the F of 6 had a p-value of .001. What would you know based on that information alone? You would only know that Fs of 6 don't happen very often by chance. In fact they only happen 0.1% of the time, that's hardly at all. If someone told me those values, I would believe that the results they found in their experiment were not likely due to chance. However, I still would not know what the results of the experiment were! Nobody told us what the means were in the different groups, we don't know what happened!
 
-IMPORTANT: even though we don't know what the means were, we do know something about them, whenever we get F-values and p-values like that (big Fs, and very small associated ps)... Can you guess what we know? I'll tell you. We automatically know that there **must have been some differences between the means**. If there was no differences between the means, then the variance explained by the means (the numerator for F) would not be very large. So, we know that there must be some differences, we just don't know what they are. Of course, if we had the data, all we would need to do is look at the means for the groups (the ANOVA table doesn' report this, we need to do it as a separate step).
+IMPORTANT: even though we don't know what the means were, we do know something about them, whenever we get F-values and p-values like that (big Fs, and very small associated ps)... Can you guess what we know? I'll tell you. We automatically know that there **must have been some differences between the means**. If there was no differences between the means, then the variance explained by the means (the numerator for F) would not be very large. So, we know that there must be some differences, we just don't know what they are. Of course, if we had the data, all we would need to do is look at the means for the groups (the ANOVA table doesn't report this, we need to do it as a separate step).
 
 #### ANOVA is an omnibus test
 
@@ -502,7 +502,7 @@ ggplot(plot_df,aes(x=pill_group,y=means, fill=simulations))+
 
 The numbers in the panels now tell us which simulations actually produced Fs of less than 1.
 
-We see here that all the bars aren't perfectly flat, that's ok. What's more important is that for each panel, the error bars for each mean are totally overlapping with all the other error bars. We can see visually that our estimate of the mean for each sample is about the same for all of the bars. That's good, we wouldn't make any type I errors here.
+We see here that all the bars aren't perfectly flat, that's OK. What's more important is that for each panel, the error bars for each mean are totally overlapping with all the other error bars. We can see visually that our estimate of the mean for each sample is about the same for all of the bars. That's good, we wouldn't make any type I errors here.
 
 
 
@@ -551,12 +551,12 @@ ggplot(plot_df,aes(x=pill_group,y=means, fill=simulations))+
  
 The numbers in the panels now tell us which simulations actually produced Fs that were greater than 3.35
 
-What do you notice about the pattern of means inside each panel? Now, every single panel shows at least one mean that is different from the others. Specifcally, the error bars for one mean do not overlap with the error bars for one or another mean. This is what mistakes looks like. These are all type I errors. They are insidious. When they happen to you by chance, the data really does appear to show a strong pattern, and your F-value is large, and your p-value is small! It is easy to be convinced by a type I error (it's the siren song of chance).
+What do you notice about the pattern of means inside each panel? Now, every single panel shows at least one mean that is different from the others. Specifically, the error bars for one mean do not overlap with the error bars for one or another mean. This is what mistakes looks like. These are all type I errors. They are insidious. When they happen to you by chance, the data really does appear to show a strong pattern, and your F-value is large, and your p-value is small! It is easy to be convinced by a type I error (it's the siren song of chance).
 
 
 ## ANOVA on Real Data
 
-We've covered many fundamentals about the ANOVA, how to calculate the necessary values to obtain an F-statistic, and how to interpet the F-statistic along with it's associate p-value once we have one. In general, you will be conducting ANOVAs and playing with Fs and ps using software that will automatically spit out the numbers for you. It's important that you understand what the numbers mean, that's why we've spent time on the concepts. We also recommend that you try to compute an ANOVA by hand at least once. It builds character, and let's you know that you know what you are doing with the numbers.
+We've covered many fundamentals about the ANOVA, how to calculate the necessary values to obtain an F-statistic, and how to interpret the F-statistic along with it's associate p-value once we have one. In general, you will be conducting ANOVAs and playing with Fs and ps using software that will automatically spit out the numbers for you. It's important that you understand what the numbers mean, that's why we've spent time on the concepts. We also recommend that you try to compute an ANOVA by hand at least once. It builds character, and let's you know that you know what you are doing with the numbers.
 
 But, we've probably also lost the real thread of all this. The core thread is that when we run an experiment, we use our inferential statistics, like ANOVA, to help us determine whether the differences we found are likely due to chance or not. In general, we like to find out that the differences that we find are not due to chance, but instead to due to our manipulation.
 
@@ -564,9 +564,9 @@ So, we return to the application of the ANOVA to real data set, with a real ques
 
 ### Tetris and bad memories
 
-Yup, you read that right. The research you will learn about tests whether playing tetris after watching a scary movie can help prevent you from having bad memories from the movie. Sometimes in life people have intrusive memories, and they think about things they'd rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.
+Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie. Sometimes in life people have intrusive memories, and they think about things they'd rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.
 
-Here's what they did. Subjects watched a scary movie, then at the end of the week they reported how many intrusive memories about the movie they had. The mean number of intrusive memories was the measurement (the dependent variable). This was a between-subjects experiment with four groups. Each group of subjects recieved a different treatment following the scary movie. The question was whether any of these treatments would reduce the number of intrusive memories. All of these treatments occured after watching the scary movie:
+Here's what they did. Subjects watched a scary movie, then at the end of the week they reported how many intrusive memories about the movie they had. The mean number of intrusive memories was the measurement (the dependent variable). This was a between-subjects experiment with four groups. Each group of subjects received a different treatment following the scary movie. The question was whether any of these treatments would reduce the number of intrusive memories. All of these treatments occurred after watching the scary movie:
 
 1. No-task control: These participants completed a 10-minute music filler task after watching the scary movie.
 2. Reactivation + Tetris: These participants were shown a series of images from the trauma film to reactivate the traumatic memories (i.e., reactivation task). Then, participants played the video game Tetris for 12 minutes.
@@ -575,7 +575,7 @@ Here's what they did. Subjects watched a scary movie, then at the end of the wee
 
 For reasons we elaborate on in the lab, the researchers hypothesized that the Reactivation+Tetris group would have fewer intrusive memories over the week than the other groups.
 
-Let's look at the findings. Note you will learn how to do all of these steps in the lab. For now, we just show the findings and the anova table. Then we walk through how to interpret it.
+Let's look at the findings. Note you will learn how to do all of these steps in the lab. For now, we just show the findings and the ANOVA table. Then we walk through how to interpret it.
 
 ```{r tetrisData, fig.cap="help again",eval=TRUE, cache=FALSE}
 library(data.table)
@@ -652,7 +652,7 @@ t.test(Days_One_to_Seven_Number_of_Intrusions ~ Condition,
 
 We found that there was a significant difference between the control group (M=5.11) and Reactivation + Tetris group (M=1.89), t(34) = 2.99, p=0.005.
 
-Above you just saw an example of reporting another t-test. This sentences does an ok job of telling the reader everything they want to know. It has the means for each group, and the important bits from the t-test.
+Above you just saw an example of reporting another t-test. This sentences does an OK job of telling the reader everything they want to know. It has the means for each group, and the important bits from the t-test.
 
 More important, as we suspected the difference between the control and Reactivation + Tetris group was likely not due to chance. 
 
@@ -672,7 +672,7 @@ t.test(Days_One_to_Seven_Number_of_Intrusions ~ Condition,
 
 Here we did not find a significant difference. We found that no significant difference between the control group (M=5.11) and Tetris Only group (M=3.89), t(34) = 2.99, p=0.318.
 
-So, it seems that not all of the differences between our means are large enough to be called statistically signifcant. In particular, the difference here, or larger, happens by chance 31.8% of the time.
+So, it seems that not all of the differences between our means are large enough to be called statistically significant. In particular, the difference here, or larger, happens by chance 31.8% of the time.
 
 You could go on doing more comparisons, between all of the different pairs of means. Each time conducting a t-test, and each time saying something more specific about the patterns across the means than you get to say with the omnibus test provided by the ANOVA. 
 

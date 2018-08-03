@@ -8,18 +8,18 @@ library(ggplot2)
 
 One day, many moons ago, William Sealy Gosset got a job working for Guinness Breweries. They make that really dark and famous Irish beer called Guinness. What happens next went something like this (total fabrication, but mostly on point). 
 
-Guinness wanted all of its beers to the best beers. No mistakes, No bad beers. They wanted to improve their quality control, so that wherever you pour a Guiness, anywhere in the world, it always comes out just fantastic, let's say 5 stars out of 5 every time. They want to be the best.
+Guinness wanted all of its beers to the best beers. No mistakes, No bad beers. They wanted to improve their quality control, so that wherever you pour a Guinness, anywhere in the world, it always comes out just fantastic, let's say 5 stars out of 5 every time. They want to be the best.
 
-Guiness had some beer tasters, who were super-experts. Everytime they tasted a Guiness from the factor that wasn't 5 out of 5, they knew right away.
+Guinness had some beer tasters, who were super-experts. Every time they tasted a Guinness from the factor that wasn't 5 out of 5, they knew right away.
 
-But, Guiness had a big problem. They would make a keg of beer, and they would want to know if every single pint that would come out would be a 5 out of 5. So, the beer tasters drank pint after pint out of the keg, until it was gone. Some kegs were all 5 out of 5s. Some weren't, Guiness needed to fix that. But, the biggest problem was that, after the testing, there **was no beer left to sell**, the testers drank it all (remember I'm kind of making this part up to illustrate a point, they probably still had beer to sell).
+But, Guinness had a big problem. They would make a keg of beer, and they would want to know if every single pint that would come out would be a 5 out of 5. So, the beer tasters drank pint after pint out of the keg, until it was gone. Some kegs were all 5 out of 5s. Some weren't, Guinness needed to fix that. But, the biggest problem was that, after the testing, there **was no beer left to sell**, the testers drank it all (remember I'm kind of making this part up to illustrate a point, they probably still had beer to sell).
 
-Guiness had a sampling and population problem. They wanted to know that the entire population of the beers they made were all 5 out of 5 stars. But, if they sampled the entire population, they would drink all of their beer, and wouldn't have any left to sell.
+Guinness had a sampling and population problem. They wanted to know that the entire population of the beers they made were all 5 out of 5 stars. But, if they sampled the entire population, they would drink all of their beer, and wouldn't have any left to sell.
 
 Enter William Sealy Gosset. Gosset figured out the solution to the problem. He asked questions like this:
 
 1. How many samples do I really need to take to know the whole population is 5 out of 5?
-2. What's the fewest amount of samples I need to take to know the above, that would mean Guiness could test fewer beers for quality, and sell more beers for profit, and making the product testing time shorter.
+2. What's the fewest amount of samples I need to take to know the above, that would mean Guinness could test fewer beers for quality, and sell more beers for profit, and making the product testing time shorter.
 
 Gosset solved those questions, and he invented something called the *Student's t-test*. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym. He called himself Student, hence Student's t-test. Now you know the rest of the story.
 
@@ -57,13 +57,13 @@ Imagine we have a mean of 50, and a truly small standard deviation of 1. What do
 
 $\frac{50}{1} = 50 $
 
-Imgaine we have a mean of 50, and a big standard deviation of 100. What do we get with our formula?
+Imagine we have a mean of 50, and a big standard deviation of 100. What do we get with our formula?
 
 $\frac{50}{100} = 0.5 $
 
 Notice, when we have a mean paired with a small standard deviation, our formula gives us a big number, like 50. When we have a mean paired with a large standard deviation, our formula gives us a small number, like 0.5. These numbers can tell us something about confidence in our mean, in a general way. We can be 50 confident in our mean in the first case, and only 0.5 (not at a lot) confident in the second case.
 
-What did we do here? We created a descriptive statistic by dividing the mean by the standard deviation. And, we have a sense of how to interpet this number, when it's big we're more confident that the mean represents all of the numbers, when it's small we are less confident. This is a useful kind of number, a ratio between what we think about our sample (the mean), and the variability in our sample (the standard deviation). Get used to this idea. Almost everything that follows in this textbook is based on this kind of ratio. We will see that our ratio becomes different kinds of "statistics", and the ratios will look like this in general:
+What did we do here? We created a descriptive statistic by dividing the mean by the standard deviation. And, we have a sense of how to interpret this number, when it's big we're more confident that the mean represents all of the numbers, when it's small we are less confident. This is a useful kind of number, a ratio between what we think about our sample (the mean), and the variability in our sample (the standard deviation). Get used to this idea. Almost everything that follows in this textbook is based on this kind of ratio. We will see that our ratio becomes different kinds of "statistics", and the ratios will look like this in general:
 
 $\text{name of statistic} = \frac{\text{measure of what we know}}{\text{measure of what we don't know}}$
 
@@ -77,9 +77,9 @@ In fact, this is the general formula for the t-test. Big surprise!
 
 Now we are ready to talk about t-test. We will talk about three of them. We start with the one-sample t-test.
 
-Commonly, the one-sample t-test is used to estimate the chances that your sample came from a particular popualtion. Specifically, you might want to know whether the mean that you found from your sample, could have come from a particular population having a particular mean. 
+Commonly, the one-sample t-test is used to estimate the chances that your sample came from a particular population. Specifically, you might want to know whether the mean that you found from your sample, could have come from a particular population having a particular mean. 
 
-Straight away, the one-sample t-test becomes a little confusing (and I haven't even described it yet). Offically, the uses known parameters from the population, like the mean of the population and the standard deviation of the population. However, most times you don't know those parameters of the population! So, you have to estimate them from your sample. Remember, from the chapter on descriptive statistics, our sample mean is an unbiased estimate of the population mean. And, our sample standard deviation (the one where we divide by n-1) is an unbiased estimate of the population standard deviation. When Gosset developed the t-test, he recognized that he could use these estimates from his samples, to make the t-test. Here is the formula for the one sample t-test, we first use words, and then become more specific:
+Straight away, the one-sample t-test becomes a little confusing (and I haven't even described it yet). Officially, the uses known parameters from the population, like the mean of the population and the standard deviation of the population. However, most times you don't know those parameters of the population! So, you have to estimate them from your sample. Remember, from the chapter on descriptive statistics, our sample mean is an unbiased estimate of the population mean. And, our sample standard deviation (the one where we divide by n-1) is an unbiased estimate of the population standard deviation. When Gosset developed the t-test, he recognized that he could use these estimates from his samples, to make the t-test. Here is the formula for the one sample t-test, we first use words, and then become more specific:
 
 ### Formulas for one-sample t-test
 
@@ -119,7 +119,7 @@ If the sample standard error is smaller than 1, what happens to $t$? It get's bi
 
 Can $t$ be smaller than 1? Sure, it can. If the sample standard error is big, say like 2, then $t$ will be smaller than one (in our case), e.g., 1/2 = .5. The direction of the difference between the sample mean and population mean, can also make the $t$ become negative. What if our sample mean was 4. Well, then $t$ will be negative, because the mean difference in the numerator will be negative, and the number in the bottom (denominator) will always be positive (remember why, it's the standard error, computed from the sample standard deviation, which is always positive because of the squaring that we did.).
 
-So, that is some intutions about what the kinds of values t can take. $t$ can be positive or negative, and big or small. Fine then, what can we do with this?
+So, that is some intuitions about what the kinds of values t can take. $t$ can be positive or negative, and big or small. Fine then, what can we do with this?
 
 ### Calculating t from data
 
@@ -227,7 +227,7 @@ Now, look at $t$. It's range is basically between -3 and +3 here. 3s barely happ
 All of these sampling windows are chance windows, and they can all be used in the same way as we have used similar sampling distributions before (e.g., Crump Test, and Randomization Test) for statistical inference. For all of them we would follow the same process:
 
 1. Generate these distributions
-2. Look at your sample statistics for the dat you have (mean, sd, sem, and $t$)
+2. Look at your sample statistics for the data you have (mean, SD, SEM, and $t$)
 3. Find out how likely each value (or greater than that value) is
 4. Obtain that probability
 5. See if you think your sample statistics were probable or improbable.
@@ -277,7 +277,7 @@ ggplot(all_df,aes(x=sample_t))+
 
 ### Making a decision
 
-From our early example involving the TRUE/FALSE quizzes, we are not ready to make some kind of decision about what happended there. We found a mean difference of `r mean(scores)-50`. We found a $t$ = `r t.test(scores, mu=50)$statistic`. The probability of this $t$ or larger occuring is $p$ = `r t.test(scores, mu=50)$p.value`. We were testing the idea that our sample mean of `r mean(scores)` could have come from a normal distribution with mean = 50. The $t$ test tells us that the $t$ for our sample, or a larger one, would happen with p = `r t.test(scores, mu=50)$p.value`. In other words, chance can do it a kind of small amount of time, but not often. In english, this means that all of the students could have been, guessing, but it wasn't that likely that were just guessing. 
+From our early example involving the TRUE/FALSE quizzes, we are not ready to make some kind of decision about what happened there. We found a mean difference of `r mean(scores)-50`. We found a $t$ = `r t.test(scores, mu=50)$statistic`. The probability of this $t$ or larger occurring is $p$ = `r t.test(scores, mu=50)$p.value`. We were testing the idea that our sample mean of `r mean(scores)` could have come from a normal distribution with mean = 50. The $t$ test tells us that the $t$ for our sample, or a larger one, would happen with p = `r t.test(scores, mu=50)$p.value`. In other words, chance can do it a kind of small amount of time, but not often. In English, this means that all of the students could have been, guessing, but it wasn't that likely that were just guessing. 
 
 We're guessing that you are still a little bit confused about $t$ values, and what we are doing here. We are going to skip ahead to the next $t$-test, called a **paired samples t-test**. We will also fill in some more things about $t$-tests that are more obvious when discussing paired samples t-test. In fact, spoiler alert, we will find out that paired samples t-test is actually a one-sample t-test in disguise (WHAT!), yes it is. If the one-sample $t$-test didn't make sense to you, read the next section.
 
@@ -297,7 +297,7 @@ We will introduce the paired-samples t-test with an example using real data, fro
 
 First, parents were trained to sing a song to their infants. After many days of singing this song to the infants, the parent came into the lab with their infants. In the first session, parents sat with their infants on their knees, so the infant could watch two video presentations. There were two videos. Each video involved two unfamiliar new people the infant had never seen before. Each new person in the video (the singers) sang one song to the infant. One singer sang the "familiar" song the infant had learned from their parents. The other singer sang an "unfamiliar" song the infant had not hear before. 
 
-There were two really important measurement phases, the baseline phase, and the test phase. The baseline phase occured before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).
+There were two really important measurement phases, the baseline phase, and the test phase. The baseline phase occurred before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).
 
 
 The test phase occurred after infants saw and heard each song, sung by each singer.
@@ -315,7 +315,7 @@ The important question was whether infants would change their looking time, and 
 
 ### The data
 
-Let's take a look at the data for the first 5 infants in the study. This will help us better understand some properties of the data before we anlayze it. We will see that the data is stuctured in a particular way, that we can take advantage of with a paired samples t-test. Note, we look at the first 5 infants to show how the computations work. The results of the paired-samples t-test change when we use all of the data from the study.
+Let's take a look at the data for the first 5 infants in the study. This will help us better understand some properties of the data before we analyze it. We will see that the data is structured in a particular way, that we can take advantage of with a paired samples t-test. Note, we look at the first 5 infants to show how the computations work. The results of the paired-samples t-test change when we use all of the data from the study.
 
 
 Here is a table of the data:
@@ -366,7 +366,7 @@ Let's look add the difference scores to the table of data so it is easier to see
 1. Test phase score - Baseline Phase Score
 2. Baseline phase score - Test Phase score
 
-Let's use the first formula. Why? Because it will give us positive differences when the test phase score is higher than the baseline phsae score. This makes a positive score meaningful with respect to the study design, we know (because we defined it to be this way), that positive scores will mean longer proportion looking times (to singer of familiar song) during the test phase compared to the baseline phase. 
+Let's use the first formula. Why? Because it will give us positive differences when the test phase score is higher than the baseline phase score. This makes a positive score meaningful with respect to the study design, we know (because we defined it to be this way), that positive scores will mean longer proportion looking times (to singer of familiar song) during the test phase compared to the baseline phase. 
 
 ```{r}
 paired_sample_df <- cbind(paired_sample_df, 
@@ -401,11 +401,11 @@ We will more formally evaluate whether this difference could have been caused by
 
 ### Calculate $t$
 
-Ok, so how do we calculate $t$ for a paired-samples $t$-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample $t$-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample $t$-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distibrution with mean difference = 0. This is a special distribution we refer to as the **null distribution**. It is the distribution no differences. Of course, this **null distribution** can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.
+OK, so how do we calculate $t$ for a paired-samples $t$-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample $t$-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample $t$-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distribution with mean difference = 0. This is a special distribution we refer to as the **null distribution**. It is the distribution no differences. Of course, this **null distribution** can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.
 
 We calculate $t$ in a moment. Let's now consider again why we want to calculate $t$? Why don't we just stick with the mean difference we already have?
 
-Remember, the whole concept behind $t$, is that it gives an indication of how confident we should be in our mean. Remember, $t$ involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denonimator. The resulting $t$ value is small when the mean difference is small, or when the variation is large. So small $t$-values tell us that we shouldn't be that confident in the estimate of our mean difference. Large $t$-values occur when the mean difference is large and/or when the measure of variation is small. So, large $t$-values tell us that we can be more confident in the estimate of our mean difference. Let's find $t$ for the mean difference scores. We use the same formulas as we did last time:
+Remember, the whole concept behind $t$, is that it gives an indication of how confident we should be in our mean. Remember, $t$ involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denominator. The resulting $t$ value is small when the mean difference is small, or when the variation is large. So small $t$-values tell us that we shouldn't be that confident in the estimate of our mean difference. Large $t$-values occur when the mean difference is large and/or when the measure of variation is small. So, large $t$-values tell us that we can be more confident in the estimate of our mean difference. Let's find $t$ for the mean difference scores. We use the same formulas as we did last time:
 
 ```{r, echo=FALSE}
 
@@ -474,15 +474,15 @@ ggplot(plot_df,aes(x=range, y=null_distribution))+
 The $t$-distribution above shows us the kinds of values $t$ will will take by chance alone, when we measure the mean differences for pairs of 5 samples (like our current). $t$ is most likely to be zero, which is good, because we are looking at the distribution of no-differences, which should most often be 0! But, sometimes, due to sampling error, we can get $t$s that are bigger than 0, either in the positive or negative direction. Notice the distribution is symmetrical, a $t$ from the null-distribution will be positive half of the time, and negative half of the time, that is what we would expect by chance. 
 
 
-So, what kind of information do we want know when we find a particular $t$ value from our sample? We want to know how likely the $t$ value like the one we found occurs just by chance. This is actually a subtly nuanced kind of question. For example, any particular $t$ value doesn't have a specific probability of occuring. When we talk about probabilities, we are talking about ranged of probabilities. Let's consider some probabilities. We will use the letter $p$, to talk about the probabilites of particulat $t$ values.
+So, what kind of information do we want know when we find a particular $t$ value from our sample? We want to know how likely the $t$ value like the one we found occurs just by chance. This is actually a subtly nuanced kind of question. For example, any particular $t$ value doesn't have a specific probability of occurring. When we talk about probabilities, we are talking about ranged of probabilities. Let's consider some probabilities. We will use the letter $p$, to talk about the probabilities of particular $t$ values.
 
-1. What is the probability that $t$ is zero or positive or negative? The answer is p=1, or 100%. We will always have a $t$ value that is zero or non-zero...Actually, if we can't compute the t-value, for example when the standard deviaion is undefined, I guess then we would have a non-number. But, assuming we can calculate $t$, then it will always be 0 or positive or negative.
+1. What is the probability that $t$ is zero or positive or negative? The answer is p=1, or 100%. We will always have a $t$ value that is zero or non-zero...Actually, if we can't compute the t-value, for example when the standard deviation is undefined, I guess then we would have a non-number. But, assuming we can calculate $t$, then it will always be 0 or positive or negative.
 
 2. What is the probability of $t$ = 0 or greater than 0? The answer is p=.5, or 50%. 50% of $t$-values are 0 or greater.
 
 3. What is the of $t$ = 0 or smaller than 0? The answer is p=.5, or 50%. 50% of $t$-values are 0 or smaller. 
 
-We can answer all of those questions just by looking at our t-distribution, an dividing it into two eqal regions, the left side (containing 50% of the $t values), and the right side containing 50% of the $t-values).
+We can answer all of those questions just by looking at our t-distribution, an dividing it into two equal regions, the left side (containing 50% of the $t values), and the right side containing 50% of the $t-values).
 
 What if we wanted to take a more fine-grained approach, let's say we were interested in regions of 10%. What kinds of $t$s occur 10% of the time. We would apply lines like the following. Notice, the likelihood of bigger numbers (positive or negative) gets smaller, so we have to increase the width of the bars for each of the intervals between the bars to contain 10% of the t-values, it looks like this:
 
@@ -513,7 +513,7 @@ ggplot(plot_df,aes(x=range, y=null_distribution))+
 
 Consider the probabilities (p) of $t$ for the different ranges.
  
-1. $t$ <= -1.5 (t is les than or equal to -1.5), p = 10%
+1. $t$ <= -1.5 (t is less than or equal to -1.5), p = 10%
 2. -1.5 >= $t$ <= -0.9 (t is equal to or between -1.5 and -.9), p = 10%
 3. -.9 >= $t$ <= -0.6 (t is equal to or between -.9 and -.6), p = 10%
 4. $t$ >= 1.5 (t is greater than or equal to 1.5), p = 10%
@@ -532,7 +532,7 @@ This is all to say that you can find the $ts$ and their associated $ps$ using so
 
 ### One-tailed tests
 
-A **one-tailed test** is sometimes also called a directional test. It is called a directional test, because a researcher might have a hypothesis in mind suggesting that the difference they observe in their means is going to have a particualr direction, either a positive difference, or a negative difference. 
+A **one-tailed test** is sometimes also called a directional test. It is called a directional test, because a researcher might have a hypothesis in mind suggesting that the difference they observe in their means is going to have a particular direction, either a positive difference, or a negative difference. 
 
 Typically, a researcher would set an alpha criterion. The alpha criterion describes a line in the sand for the researcher. Often, the alpha criterion is set at p=.05. What does this mean? Let's look at again at the graph of the t-distribution, and show the alpha criterion.
 
@@ -623,7 +623,7 @@ Following the "standard" decision making procedure, we would claim that our $t$ 
 
 ### Two-tailed tests
 
-Ok so that is one-tailed tests... What are two tailed tests, what is that? The p-value that we orginally calculated from our paired-samples t-test was for a 2-tailed test. Often, the default is that the p-value is for a two-tailed test.
+OK so that is one-tailed tests... What are two tailed tests, what is that? The p-value that we originally calculated from our paired-samples t-test was for a 2-tailed test. Often, the default is that the p-value is for a two-tailed test.
 
 The two-tailed test, is asking a more general question about whether a difference is likely to have been produced by chance. The question is, what is probability of any difference. It is also called a **non-directional** test, because here we don't care about the direction or sign of the difference (positive or negative), we just care if there is any kind of difference. 
 
@@ -676,13 +676,13 @@ As a result, the critical $t$ value is (+/-) 2.78 for a two-tailed test. As you 
 
 Now that you know there are two kinds of tests, one-tailed, and two-tailed, which one should you use? There is some conventional wisdom on this, but also some debate. In the end, it is up to you to be able to justify your choice and why it is appropriate for you data. That is the real answer.
 
-The conventional answer is that you use you one-tailed test when you have a theory or hypothesis that is making a directional prediction (the theory predicts that the difference will be positive, or negative). Similarly, use a two-tailed test when you are looking for any difference, and you don't have a theory that makes a directional prediction (it just makes the prediction that there will be a difference, either postive or negative).
+The conventional answer is that you use you one-tailed test when you have a theory or hypothesis that is making a directional prediction (the theory predicts that the difference will be positive, or negative). Similarly, use a two-tailed test when you are looking for any difference, and you don't have a theory that makes a directional prediction (it just makes the prediction that there will be a difference, either positive or negative).
 
-Also, people appear to choose a one or two-tailed test based on how risky they are as researchers. If you always ran one-tailed tests, your critical $t$ values for your set alpha criterion would always be smaller than the critical $t$s for a two-tailed test. Over the long run, you would make more type I errors, because the criterion to detect an effect is a lower bar for one than two tailed tests. Similarly, if you always ran two-tailed tests, even when you had a directional prediction, you would make fewer type I errors over the long run, because the $t$ for a two-tailed test is higher than the $t$ for a one-tailed test. It seems quite common for researchers to use a more conservative two-tailed test, even when they are making a directional prediction based on theory. In practice, researchers tend to adopt a standard for reporting that is common in their field. Whether or not the practice is justifiable can sometimes be an open question. The important task for any researcer, or student learning statistics, is to be able to justify their choice of test. 
+Also, people appear to choose a one or two-tailed test based on how risky they are as researchers. If you always ran one-tailed tests, your critical $t$ values for your set alpha criterion would always be smaller than the critical $t$s for a two-tailed test. Over the long run, you would make more type I errors, because the criterion to detect an effect is a lower bar for one than two tailed tests. Similarly, if you always ran two-tailed tests, even when you had a directional prediction, you would make fewer type I errors over the long run, because the $t$ for a two-tailed test is higher than the $t$ for a one-tailed test. It seems quite common for researchers to use a more conservative two-tailed test, even when they are making a directional prediction based on theory. In practice, researchers tend to adopt a standard for reporting that is common in their field. Whether or not the practice is justifiable can sometimes be an open question. The important task for any researcher, or student learning statistics, is to be able to justify their choice of test. 
 
 ### Degrees of freedom
 
-Before we finsih up with paired-samples t-tests, we should talk about degrees of freedom. Our sense is that students don't really understand degrees of freedom very well. If you are reading this textbook, you are probably still wondering what is degrees of freedom, seeing as we haven't really talked about it all. 
+Before we finish up with paired-samples t-tests, we should talk about degrees of freedom. Our sense is that students don't really understand degrees of freedom very well. If you are reading this textbook, you are probably still wondering what is degrees of freedom, seeing as we haven't really talked about it all. 
 
 For the t-test, there is a formula for degrees of freedom. For the one-sample and paired sample t-tests, the formula is:
 
@@ -690,9 +690,9 @@ $\text{Degrees of Freedom} = \text{df} = n-1$. Where n is the number of samples 
 
 In our paired t-test example, there were 5 infants. Therefore, degrees of freedom = 5-1 = 4. 
 
-Ok, that's formula. Who cares about degrees of freedom, what does the number mean? And why do we report it when we report a t-test...you've probably noticed the number in parentheses e.g., t(4)=.72, the 4 is the df, or degrees of freedom.
+OK, that's formula. Who cares about degrees of freedom, what does the number mean? And why do we report it when we report a t-test...you've probably noticed the number in parentheses e.g., t(4)=.72, the 4 is the $df$, or degrees of freedom.
 
-Degrees of freedom is both a concept, and a correction. The concept is that if you estimate a property of the numbers, and you use this estimate, you will be forcing some contraints on your numbers.
+Degrees of freedom is both a concept, and a correction. The concept is that if you estimate a property of the numbers, and you use this estimate, you will be forcing some constraints on your numbers.
 
 Consider the numbers: 1, 2, 3. The mean of these numbers is 2. Now, let's say I told you that the mean of three numbers is 2. Then, how many of these three numbers have freedom? Funny question right. What we mean is, how many of the three numbers could be any number...has the freedom to be any number.
 
@@ -706,7 +706,7 @@ Now, statisticians often apply degrees of freedom to their calculations, especia
 
 There are at least two ways to think the degrees of freedom for a t-test. For example, if you want to use math to compute aspects of the $t$ distribution, then you need the degrees of freedom to plug in to the formula... If you want to see the formulas I'm talking about, scroll down on the [t-test wikipedia page](https://en.wikipedia.org/wiki/Student%27s_t-distribution) and look for the probability density or cumulative distribution functions...We think that is quite scary for most people, and one reason why degrees of freedom are not well-understood.
 
-If we wanted to simulate the t distribution we could more easily see what influence degrees of freedom has on the shape of the distribution. Remember, $t$ is a sample statistic, it is something we measure from the sample. So, we could simulate the process of measuring $t$ from many different samples, then plot the histogram of $t$ to show us the simualted $t$ distribution.
+If we wanted to simulate the t distribution we could more easily see what influence degrees of freedom has on the shape of the distribution. Remember, $t$ is a sample statistic, it is something we measure from the sample. So, we could simulate the process of measuring $t$ from many different samples, then plot the histogram of $t$ to show us the simulated $t$ distribution.
 
 
 ```{r}
@@ -726,9 +726,9 @@ ggplot(t_df,aes(x=ts, group=dfs, color=dfs))+
 ```
 
 
-Notice that the red distribution for df =4, is a little bit shorter, and a little bit wider than the bluey-green distribution for df = 100. As degrees of freedom increase, the $t$-distribution gets taller (in the middle), and narrower in the range. It get's more peaky. Can you guess the reason for this? Remember, we are estimating a sample statistic, and degrees of freedom is really just a number that refers to the number of subjects (well minus). And, we already know that as we increase n, our sample statistics become better estimates (less variance) of the distributional parameters they are estimating. So, $t$ becomes a better estimate of it's "true" value as sample size increase, and which results in a more narrow distribution of $t$s.
+Notice that the red distribution for $df$ =4, is a little bit shorter, and a little bit wider than the bluey-green distribution for $df$ = 100. As degrees of freedom increase, the $t$-distribution gets taller (in the middle), and narrower in the range. It get's more peaky. Can you guess the reason for this? Remember, we are estimating a sample statistic, and degrees of freedom is really just a number that refers to the number of subjects (well minus). And, we already know that as we increase n, our sample statistics become better estimates (less variance) of the distributional parameters they are estimating. So, $t$ becomes a better estimate of it's "true" value as sample size increase, and which results in a more narrow distribution of $t$s.
 
-There is a slightly different $t$ distribution for every degrees of freedom, and the critical regions associated with 5% of the extreme values are thus slightly different everytime. This is why we report the degrees of freedom for each t-test, they define the distribution of $t$ values for the sample-size in question. Why do we use n-1 and not n? Well, we calcualte $t$ using the sample standard deviation to estimate the standard error or the mean, that estimate uses n-1 in the denominator, so our $t$ distribution is built assuming n-1. That's enough for degrees of freedom...
+There is a slightly different $t$ distribution for every degrees of freedom, and the critical regions associated with 5% of the extreme values are thus slightly different every time. This is why we report the degrees of freedom for each t-test, they define the distribution of $t$ values for the sample-size in question. Why do we use n-1 and not n? Well, we calculate $t$ using the sample standard deviation to estimate the standard error or the mean, that estimate uses n-1 in the denominator, so our $t$ distribution is built assuming n-1. That's enough for degrees of freedom...
 
 ## The paired samples t-test strikes back
 
@@ -769,7 +769,7 @@ t.test(round(differences, digits=2), mu=0)
 
 Let's write down the finding one more time: The mean difference was 0.054, $t$(4) = .72, p=.509. We can also now confirm, that the p-value was from a two-tailed test. So, what does this all really mean.
 
-Well, we can say that a $t$ value of with an absolute of .72 or larger occurs 50.9%  of the time. More precisaly, the distribution of no differences (the null), will produce a $t$ value this large or larger 50.9% of the time. In other words, chance alone good have easily produced the $t$ value from our sample, and the mean difference we observed or .054, could easily have been a result of chance.
+Well, we can say that a $t$ value of with an absolute of .72 or larger occurs 50.9%  of the time. More precisely, the distribution of no differences (the null), will produce a $t$ value this large or larger 50.9% of the time. In other words, chance alone good have easily produced the $t$ value from our sample, and the mean difference we observed or .054, could easily have been a result of chance.
 
 Let's quickly put all of the data in the t-test, and re-run the test using all of the infant subjects.
 
@@ -784,7 +784,7 @@ t.test(differences,mu=0)
 
 ```
 
-Now we get a very different answer. We would summarise the results saying the mean difference was .073, t(31) = 2.44, p = 0.020. How many total infants were their? Well the degrees of freedrom was 31, so there must have been 32 infants in the study. Now we see a much smaller p-value. This was also a two-tailed test, so we that observing a $t$ value of 2.4 or greater (absolute value) only occurs 2% of the time. In other words, the distribution of no differences will produce the observed t-value very rarely. So, it is unlikely that the observed mean difference of .073 was due to chance (it could have been due to chance, but that is very unlikely). As a result, we can be somewhat confident in concluding that something about seeing and hearing a unfamiliar person sing a familiar song, causes an infant to draw their attention toward the singer, and this potentially benefits social learning on the part of the infant.
+Now we get a very different answer. We would summarize the results saying the mean difference was .073, t(31) = 2.44, p = 0.020. How many total infants were their? Well the degrees of freedom was 31, so there must have been 32 infants in the study. Now we see a much smaller p-value. This was also a two-tailed test, so we that observing a $t$ value of 2.4 or greater (absolute value) only occurs 2% of the time. In other words, the distribution of no differences will produce the observed t-value very rarely. So, it is unlikely that the observed mean difference of .073 was due to chance (it could have been due to chance, but that is very unlikely). As a result, we can be somewhat confident in concluding that something about seeing and hearing a unfamiliar person sing a familiar song, causes an infant to draw their attention toward the singer, and this potentially benefits social learning on the part of the infant.
 
 ## Independent samples t-test: The return of the t-test?
 
@@ -792,9 +792,9 @@ If you've been following the Star Wars references, we are on last movie...the in
 
 Remember there are different t-tests for different kinds of research designs. When your design is a **between-subjects** design, you use an **independent samples t-test**. Between-subjects design involve different people or subjects in each experimental condition. If there are two conditions, and 10 people in each, then there are 20 total people. And, there are no paired scores, because every single person is measured once, not twice, no repeated measures. Because there are no repeated measures we can not look at the difference scores between conditions one and two. The scores are not paired in any meaningful way, to it doesn't make sense to subtract them. So what do we do?
 
-The logic of the independent samples t-test is the very same as the other t tests. We calculated the means for each group, then we find the difference. That goes into the numerator of the t formala. Then we get an estimate of the variation for the denominator. We divide the mean difference by the estimate of the variation, and we get t. It's the same as before.
+The logic of the independent samples t-test is the very same as the other t tests. We calculated the means for each group, then we find the difference. That goes into the numerator of the t formula. Then we get an estimate of the variation for the denominator. We divide the mean difference by the estimate of the variation, and we get t. It's the same as before.
 
-The only wrinkly here is what goes into the denominator? How should we calculate the estimate of the variance? It would be nice if we could do seomething very straightforward like this, say for a n experiment with two groups A and B:
+The only wrinkly here is what goes into the denominator? How should we calculate the estimate of the variance? It would be nice if we could do something very straightforward like this, say for a n experiment with two groups A and B:
 
 $t = \frac{\bar{A}-\bar{B}}{(\frac{SEM_A+SEM_B}{2})}$
 
@@ -856,11 +856,11 @@ It can be very useful to get in the habit of using R to simulate data under cert
 
 Here are the steps you might follow to simulate data for a one sample-test.
 
-1. Make some assumptions about what your sample (that you might be planning to collect) might look like. For example, you might be planning to collect 30 subjects worth of data. The scores of those data points might come from a normal distribution (mean = 50, sd = 10).
+1. Make some assumptions about what your sample (that you might be planning to collect) might look like. For example, you might be planning to collect 30 subjects worth of data. The scores of those data points might come from a normal distribution (mean = 50, SD = 10).
 
-2. sample simulated numbers from the distribution, then conduct a t.test on the simulated numbers. Save the statistics you want (such as ts and ps), and then see how things behave.
+2. sample simulated numbers from the distribution, then conduct a t.test on the simulated numbers. Save the statistics you want (such as ts and $p$s), and then see how things behave.
 
-Let's do this a couple different times. First,t's simulate samples with N = 30, taken from a normal (mean= 50, sd =25). We'll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences
+Let's do this a couple different times. First, let's simulate samples with N = 30, taken from a normal (mean= 50, SD =25). We'll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences
 
 
 ```{r, echo=TRUE}
@@ -882,7 +882,7 @@ hist(save_ps)
 
 ```
 
-Neat. We see both a $t$ distribution, that looks like $t$ distribution as it should. And we see the $p$ distribution. This shows us how often we get $t$ values of particular sizes. You may find it interesting that the $p$-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a $t$ with a p-value betwen 0 and 0.05, as you would for getting a $t$ with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of $t$ values in them by definition. 
+Neat. We see both a $t$ distribution, that looks like $t$ distribution as it should. And we see the $p$ distribution. This shows us how often we get $t$ values of particular sizes. You may find it interesting that the $p$-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a $t$ with a p-value between 0 and 0.05, as you would for getting a $t$ with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of $t$ values in them by definition. 
 
 Here's another way to do the same simulation in R, using the replicate function, instead a for loop:
 ```{r, echo=TRUE}
@@ -930,7 +930,7 @@ length(save_ps[save_ps<.05])/1000
 
 We happened to make `r length(save_ps[save_ps<.05])`. The expectation over the long run is 5% type I error rates (if your alpha is .05).
 
-What happns if there actually is a difference in the simulated data, let's set one condition to have larger mean than the other:
+What happens if there actually is a difference in the simulated data, let's set one condition to have larger mean than the other:
 
 ```{r, echo=TRUE}
 
@@ -960,7 +960,7 @@ length(save_ps[save_ps<.05])
 length(save_ps[save_ps<.05])/1000
 ```
 
-We happened to get `r length(save_ps[save_ps<.05])` simulations where p was less than .05, that's only `r length(save_ps[save_ps<.05])/1000` experiments. If you were the researcher, would you want to run an experiment that would be succesful only `r length(save_ps[save_ps<.05])/1000` of the time? I wouldn't. I would run a better experiment. 
+We happened to get `r length(save_ps[save_ps<.05])` simulations where p was less than .05, that's only `r length(save_ps[save_ps<.05])/1000` experiments. If you were the researcher, would you want to run an experiment that would be successful only `r length(save_ps[save_ps<.05])/1000` of the time? I wouldn't. I would run a better experiment. 
 
 How would you run a better simulated experiment? Well, you could increase n, the number of subjects in the experiment. Let's increase n from 10 to 100, and see what happens to the number of "significant" simulated experiments.
 

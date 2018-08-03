@@ -54,9 +54,9 @@ knitr::kable(df)
 
 Time to introduce a new name for an idea you learned about last chapter, it's called **partitioning the sums of squares**. Sometimes an obscure new name can be helpful for your understanding of what is going on. ANOVAs are all about partitioning the sums of squares. We already did some partitioning in the last chapter. What do we mean by partitioning?
 
-Imagine you had a big empty house with no rooms in it. What would happen if you partitioned the house? What would you be doing? One way to partion the house is to split it up into different rooms. You can do this by adding new walls and making little rooms everywhere. That's what partitionining means, to split up.
+Imagine you had a big empty house with no rooms in it. What would happen if you partitioned the house? What would you be doing? One way to partition the house is to split it up into different rooms. You can do this by adding new walls and making little rooms everywhere. That's what partitioning means, to split up.
 
-The act of partitioning, or splitting up, is the core idea of ANOVA. To use the house analogy. Our total sums of squares (SS Total) is our big empty house. We want to split it up into little rooms. Before we partioned SS Total using this formula:
+The act of partitioning, or splitting up, is the core idea of ANOVA. To use the house analogy. Our total sums of squares (SS Total) is our big empty house. We want to split it up into little rooms. Before we partitioned SS Total using this formula:
 
 $SS_\text{TOTAL} = SS_\text{Effect} + SS_\text{Error}$
 
@@ -72,7 +72,7 @@ We've added $SS_\text{Subjects}$ as the new idea in the formula. What's the idea
 
 We just showed you a "formula" to split up $SS_\text{TOTAL}$ into three parts, but we called the formula an idea. We did that because the way we wrote the formula is a little bit misleading, and we need to clear something up. Before we clear the thing up, we will confuse you just a little bit. Be prepared to be confused a little bit.
 
-First, we need to introduce you to some more terms. It turns out that different authors use different words to describe parts of the ANOVA. thi can be really confusing. For example, we described the SS formulat for a between subjects design like this:
+First, we need to introduce you to some more terms. It turns out that different authors use different words to describe parts of the ANOVA. This can be really confusing. For example, we described the SS formula for a between subjects design like this:
 
 $SS_\text{TOTAL} = SS_\text{Effect} + SS_\text{Error}$
 
@@ -80,9 +80,9 @@ However, the very same formula is often written differently, using the words bet
 
 $SS_\text{TOTAL} = SS_\text{Between} + SS_\text{Within}$
 
-Whoa, hold on a minute. Haven't we switched back to talking about a **between-subjects** ANOVA. YES! Then why are we using the word **within**, what does that mean? YES! We think this is very confusing for people. Here the word **within** has a special meaning. It **does not** refer to a within-subjects design. Let's explain. First, $SS_\text{Between}$ (which we have been calling $SS_\text{Effect}$) refers to variation **between** the group means, that's why it is called $SS_\text{Between}$. Second, and most important, $SS_\text{Within}$ (which we have been calling $SS_\text{Error}$), refers to the leftover variation within each group mean. Specifically, it is the variation between each group mean and each score in the group. "AAGGH, you've just used the word between to describe within group varition!". Yes! We feel your pain. Remember, for each group mean, every score is probably off a little bit from the mean. So, the scores within each group have some variation. This is the within group variation, and it is why the leftover error that we can't explain is often called $SS_\text{Within}$.
+Whoa, hold on a minute. Haven't we switched back to talking about a **between-subjects** ANOVA. YES! Then why are we using the word **within**, what does that mean? YES! We think this is very confusing for people. Here the word **within** has a special meaning. It **does not** refer to a within-subjects design. Let's explain. First, $SS_\text{Between}$ (which we have been calling $SS_\text{Effect}$) refers to variation **between** the group means, that's why it is called $SS_\text{Between}$. Second, and most important, $SS_\text{Within}$ (which we have been calling $SS_\text{Error}$), refers to the leftover variation within each group mean. Specifically, it is the variation between each group mean and each score in the group. "AAGGH, you've just used the word between to describe within group variation!". Yes! We feel your pain. Remember, for each group mean, every score is probably off a little bit from the mean. So, the scores within each group have some variation. This is the within group variation, and it is why the leftover error that we can't explain is often called $SS_\text{Within}$.
 
-Ok. So why did we introduce this new confusing way of talking about things? Why can't we just use $SS_\text{Error}$ to talk about this instead of $SS_\text{Within}$, which you might (we do) find confusing. We're getting there, but perhaps a picture will help to clear things up.
+OK. So why did we introduce this new confusing way of talking about things? Why can't we just use $SS_\text{Error}$ to talk about this instead of $SS_\text{Within}$, which you might (we do) find confusing. We're getting there, but perhaps a picture will help to clear things up.
 
 ```{r}
 knitr::include_graphics("figures/SS_ANOVA.png")
@@ -112,7 +112,7 @@ Now that you are familiar with the concept of an ANOVA table (remember the table
 knitr::include_graphics("figures/RMANOVA_table.png")
 ```
 
-So, what we need to do is calculate all the SSs that we did before for the between-subjects ANOVA. That means the next three steps are identical to the ones you did before. In fact, I will just basically copy the next three steps to find $SS_\text{TOTAL}$,  $SS_\text{Effect}$ , and $SS_\text{Error (within-conditions)}$. After that we will talk about splitting up $SS_\text{Error (within-conditions)}$ into two parts, this is the new thing for this chapter. Here we go!
+So, what we need to do is calculate all the SSes that we did before for the between-subjects ANOVA. That means the next three steps are identical to the ones you did before. In fact, I will just basically copy the next three steps to find $SS_\text{TOTAL}$,  $SS_\text{Effect}$ , and $SS_\text{Error (within-conditions)}$. After that we will talk about splitting up $SS_\text{Error (within-conditions)}$ into two parts, this is the new thing for this chapter. Here we go!
 
 ### SS Total
 
@@ -229,7 +229,7 @@ When we compute $SS_\text{Error (within conditions)}$ directly, we find the diff
 
 ### SS Subjects
 
-Now we are ready to calculate new partition, called $SS_\text{Subjects}$. We first find the means for each subject. For subject 1, this is the mean of their scores across Conditions A, B, and C. The mean for subject 1 is 9.33 (repeating). Notice there is going to be some rounding error here, that's ok for now. 
+Now we are ready to calculate new partition, called $SS_\text{Subjects}$. We first find the means for each subject. For subject 1, this is the mean of their scores across Conditions A, B, and C. The mean for subject 1 is 9.33 (repeating). Notice there is going to be some rounding error here, that's OK for now. 
 
 The `means` column now shows all of the subject means. We then find the difference between each subject mean and the grand mean. These deviations are shown in the `diff` column. Then we square the deviations, and sum them up. 
 
@@ -277,7 +277,7 @@ summary_out <- summary(aov(scores~conditions + Error(subjects/conditions),df[1:9
 knitr::kable(xtable(summary_out))
 ```
 
-Ok, looks good. We found the $SS_\text{Effect}$ to be 72, and the SS for the conditions (same thing) in the table is also 72. We found the $SS_\text{Subjects}$ to be 52.75, and the SS for the first residual (same thing) in the table is also 53.66 repeating. That's close, and our number is off because of rounding error. Finally, we found the $SS_\text{Error (left-over)}$ to be 177.25, and the SS for the bottom residuals in the table (same thing) in the table is 177.33 repeating, again close but slightly off due to rounding error.
+OK, looks good. We found the $SS_\text{Effect}$ to be 72, and the SS for the conditions (same thing) in the table is also 72. We found the $SS_\text{Subjects}$ to be 52.75, and the SS for the first residual (same thing) in the table is also 53.66 repeating. That's close, and our number is off because of rounding error. Finally, we found the $SS_\text{Error (left-over)}$ to be 177.25, and the SS for the bottom residuals in the table (same thing) in the table is 177.33 repeating, again close but slightly off due to rounding error.
 
 We have finished our job of computing the sums of squares that we need in order to do the next steps, which include computing the MSEs for the effect and the error term. Once we do that, we can find the F-value, which is the ratio of the two MSEs.
 
@@ -298,7 +298,7 @@ $MSE_\text{Error (left-over)} = \frac{SS_\text{Error (left-over)}}{df} = \frac{1
 
 ### Compute F
 
-We just found the two MSEs that we need to comput F. We went through all of this to compute F for our data, so let'e do it:
+We just found the two MSEs that we need to compute F. We went through all of this to compute F for our data, so let's do it:
 
 $F = \frac{MSE_\text{Effect}}{MSE_\text{Error (left-over)}} = \frac{36}{44.33}= 0.812$
 
@@ -326,7 +326,7 @@ This can have the consequence of generally making F-values in repeated measures 
 
 Because big F values usually let us reject the idea that differences in our means are due to chance, the repeated-measures ANOVA becomes a more sensitive test of the differences (it's F-values are usually larger). 
 
-At the same time, there is a tradeoff here. The repeated measures ANOVA uses different degrees of freedom for the error term, and these are typically a smaller number of degrees of freedom. So, the f-distributions for the repeated measures and between-subjects designs are actually different f-distributions, because they have different degrees of freedom.
+At the same time, there is a trade-off here. The repeated measures ANOVA uses different degrees of freedom for the error term, and these are typically a smaller number of degrees of freedom. So, the f-distributions for the repeated measures and between-subjects designs are actually different f-distributions, because they have different degrees of freedom.
 
 ### Repeated vs between-subjects ANOVA
 
@@ -335,7 +335,7 @@ Let's do a couple simulations to see some the differences between the ANOVA for 
 We will do the following. 
 
 1. Simulate a design with three conditions, A, B, and C
-2. sample 10 scores into each condition from the same normal distribution (mean = 100, sd = 10)
+2. sample 10 scores into each condition from the same normal distribution (mean = 100, SD = 10)
 3. We will include a subject factor for the repeated-measures version. Here there are 10 subjects, each contributing three scores, one each condition
 4. For the between-subjects design there are 30 different subjects, each contributing one score in the condition they were assigned to (really the group).
 
@@ -378,7 +378,7 @@ These two F sampling distributions look pretty similar. However, they are subtly
 
 The repeated-measures F distribution has degrees of freedom 2, and 18, for the numerator and denominator. There are 3 conditions, so df1 = 3-1 = 2. There are 10 subjects, so $df2 = (10-1)*(3-1) = 9*2 = 18$. The critical value, assuming an alpha of 0.05 is 3.55. This means F is 3.55 or larger 5% of the time under the null. 
 
-The critical value for the repeated measures version is slightly higher. This is because when df2 (the denomiator) is smaller, the f-distribution spreads out to the right a little bit. When it is skewed like this, we get some bigger Fs a greater proportion of the time.
+The critical value for the repeated measures version is slightly higher. This is because when df2 (the denominator) is smaller, the f-distribution spreads out to the right a little bit. When it is skewed like this, we get some bigger Fs a greater proportion of the time.
 
 So, in order to detect a real difference, you need an F of 3.35 or greater in a between-subjects design, or an F of 3.55 or greater for a repeated-measures design. The catch here is that when there is a real difference between the means, you will detect it more often with the repeated-measures design, even though you need a larger F (to pass the higher critical F-value for the repeated measures design).
 
@@ -386,11 +386,11 @@ So, in order to detect a real difference, you need an F of 3.35 or greater in a 
 
 To illustrate why repeated-measures designs are more sensitive, we will conduct another set of simulations.
 
-We will do something slightly different this time. We will make sure that the scores for condition A, are always a little bit higher than the other scores. In other words, we will program in a real true difference. Specifically, the scores for condition will be sampled from a normal distribution with mean = 105, and sd=10. This mean is 5 larger than the means for the other two conditions (still set to 100).
+We will do something slightly different this time. We will make sure that the scores for condition A, are always a little bit higher than the other scores. In other words, we will program in a real true difference. Specifically, the scores for condition will be sampled from a normal distribution with mean = 105, and SD=10. This mean is 5 larger than the means for the other two conditions (still set to 100).
 
 With a real difference in the means, we should now reject the hypothesis of no differences more often. We should find F values larger than the critical value more often. And, we should find p-values for each experiment that are smaller than .05 more often, those should occur more than 5% of the time.
 
-To look at this we conduct 1000 experiments for each design, we conduct the ANOVA, then we save the p-value we obtained for each experiment. This is like asking how many times will we find a p-value less than 0.05, when there is a real difference (in this case an average of 5) betwen some of the means. We will plot histograms of the p-values:
+To look at this we conduct 1000 experiments for each design, we conduct the ANOVA, then we save the p-value we obtained for each experiment. This is like asking how many times will we find a p-value less than 0.05, when there is a real difference (in this case an average of 5) between some of the means. We will plot histograms of the p-values:
 
 
 ```{r}
@@ -470,9 +470,9 @@ Let's look at some real data from a published experiment that uses a repeated me
 
 We were interested in how people perform sequences of actions. One kind of question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters. 
 
-Prior research shown that people type words way faster than than random letters, but if you made the random letters a little bit more english-like, then people type those englishy kinds of letter a little bit faster, but not as fast as random letters. 
+Prior research shown that people type words way faster than than random letters, but if you made the random letters a little bit more English-like, then people type those English kinds of letter a little bit faster, but not as fast as random letters. 
 
-In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in english (Bigram Condition, QUENP), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let's take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.
+In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in English (Bigram Condition, QUENP), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let's take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.
 
 ```{r, cache=FALSE}
 library(data.table)
@@ -518,13 +518,13 @@ ggplot(plot_means, aes(x=Stimulus, y=means, group=Block, color=Block))+
 
 ```
 
-Ok, I made a figure showing the mean reaction times for the different typing material conditions. You will notice that there are two sets of lines. That's because there was another manipulation I didn't tell you about. In one block of trials participants got to look at the keyboard while they typed, but in the other condition we covered up the keyboard so people had to type without looking. Finally, the error bars are standard error of the means.
+OK, I made a figure showing the mean reaction times for the different typing material conditions. You will notice that there are two sets of lines. That's because there was another manipulation I didn't tell you about. In one block of trials participants got to look at the keyboard while they typed, but in the other condition we covered up the keyboard so people had to type without looking. Finally, the error bars are standard error of the means.
 
 <div class="marginnote">
 Note, the use of error bars for repeated-measures designs is not very straightforward. In fact the standard error the means that we have added here are not very meaningful for judging whether the differences between the means are likely not due to chance. They would be if this was a between-subjects design. We will update this textbook with a longer discussion of this issue, for now we will just live with these error bars.
 </div>
 
-For the purposes of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (english-like), and they started typing random letters the most slowly of all. Just like prior research had found.
+For the purposes of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (English-like), and they started typing random letters the most slowly of all. Just like prior research had found.
 
 Let's focus only on the Block of trials where participants were allowed to look at the keyboard while they typed, that's the red line, for the "visible keyboard" block. We can see the means look different. Let's next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.
 
@@ -541,7 +541,7 @@ knitr::kable(xtable(s_out))
 
 Alright, we might report the results like this. There was a significant main effect of Stimulus type, F(2, 74) = 235.73, MSE = 3022.289, p < 0.001.
 
-Notice a couple things. First, this is a huge F value. It's 253! Notice also that the p-value is listed as 0. That doesn't mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000... The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have arised by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type english-like strings somewhere in the middle in terms of speed.
+Notice a couple things. First, this is a huge F value. It's 253! Notice also that the p-value is listed as 0. That doesn't mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000... The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have arised by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type English-like strings somewhere in the middle in terms of speed.
 
 
 
