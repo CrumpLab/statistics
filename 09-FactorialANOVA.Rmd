@@ -3,9 +3,10 @@
 ```{r}
 library(dplyr)
 library(ggplot2)
-library(xtable)
+#library(xtable)
 library(ggpubr)
 library(kableExtra)
+#library(data.table)
 ```
 
 
@@ -933,6 +934,186 @@ knitr::kable(xtable(aov_summary))
 ```
 
 A quick look through the column `Sum Sq` shows that we did our work by hand correctly. Congratulations to us! Note, this is not the same results as we had before with the repeated measures ANOVA. We conducted a between-subjects design, so we did not get to further partition the SS error into a part due to Subject variation and a left-over part. We also gained degrees of freedom in the error term. It turns out with this specific set of data, we find p-values of less than 0.05 for all effects (main effects and the interaction, which was not less than 0.05 using the same data, but treating it as a repeated measures design)
+
+## Fireside chat
+
+Sometimes it's good to get together around a fire and have a chat. Let's pretend we're sitting around a fire.
+
+It' been a long day. A long couple of weeks and months since we started this course on statistics. We just went through the most complicated things we have done so far. This is a long chapter. What should we do next?
+
+Here's a couple of options. We could work through, by hand, more and more ANOVAs. Do you want to do that? I don't, making these tables isn't too bad, but it takes a lot of time. It's really good to see everything that we do laid bare in the table form a few times. We've done that already. It's really good for you to attempt to calculate an ANOVA  by hand at least once in your life. It builds character. It's help you know that you know what you are doing, and what the ANOVA is doing. We can't make you do this, we can only make the suggestion. If we keep doing these by hand, it is not good for us, and it is not you doing them by hand. So, what are the other options.
+
+The other options are to work at a slightly higher level. We will discuss some research designs, and the ANOVAs that are appropriate for their anlaysis. We will conduct the ANOVAs using R, and print out the ANOVA tables. This is what you do in the lab, and what most researchers do. They use software most of the time to make the computer do the work. Because of this, it is most important that you know what the software is doing. You can make mistakes when telling software what to do, so you need to be able to check the software's work, and you need to be able to know when the software is giving you wrong answers. All of these skills are built up over time through the process of analyzing different data sets. So, for the remainder of our discussion on ANOVAs. We stick to that higher level. No more monster tables of SSes. You are welcome.
+
+## Real Data
+
+Let's go through the process of looking at a 2x2 factorial design in the wild. This will be the very same data that you will analyze in the lab for factorial designs. 
+
+### Stand at attention
+
+Do you pay more attention when you are sitting or standing? This was the kind of research question the researchers were asking in the study we will look at. In fact, the general question and design is very similar to our fake study idea that we used to explain factorial designs in this chapter.
+
+The paper we look at is called "Stand by your Stroop: Standing up enhances selective attention and cognitive control" (Rosenbaum, Mama, Algom, 2017). This paper asked whether sitting versus standing would influence a measure of selective attention, the ability to ignore distracting information.
+
+They used a classic test of selective attention, called the Stroop effect. You may already know what the Stroop effect is. In a typical Stroop experiment, subjects name the color of words as fast as they can. The trick is that sometimes the color of the word is the same as the name of the word, and sometimes it is not. Here are some examples:
+
+```{r}
+knitr::include_graphics("figures/Stroop.png")
+```
+
+Congruent trials occur when the color and word match. So, the correct answers for each of the congruent stimuli shown would be to say, red, green, blue and yello. Incongruent trials occur when the color and word mismatch. The correct answers for each of the incongruent stimuli would be: blue, yellow, red, green.
+
+The Stroop effect is an example of a well-known phenomena. What happens is that people are faster to name the color of the congruent items compared to the color of the incongruent items. This difference (incongruent reaction time - congruent reaction time) is called the Stroop effect.
+
+Many researchers argue that the Stroop effect measures something about selective attention, the ability to ignore distracting information. In this case, the target information that you need to pay attention to is the color, not the word. For each item, the word is potentially distracting, it is not information that you are supposed to respond to. However, it seems that most people can't help but notice the word, and their performance in the color-naming task is subsequently influenced by the presence of the distracting word. 
+
+People who are good at ignoring the distracting words should have small Stroop effects. They will ignore the word, and it won't influence them very much for either congruent or incongruent trials. As a result, the difference in performance (the Stroop effect) should be fairly small (if you have "good" selective attention in this task). People who are bad at ignoring the distracting words should have big Stroop effects. They will not ignore the words, causing them to be relatively fast when the word helps, and relatively slow when the word mismatches. As a result, they will show a difference in performance between the incongruent and congruent conditions.
+
+If we take the size of the Stroop effect as a measure of selective attention, we can then start wondering what sorts of things improve selective attention (e.g., that make the Stroop effect smaller), and what kinds of things impair selective attention (e.g., make the Stroop effect bigger).
+
+The research question of this study was to ask whether standing up improves selective attention compared to sitting down. They predicted smaller Stroop effects when people were standing up and doing the task, compared to when they were sitting down and doing the task.
+
+The design of the study was a 2x2 repeated-measures design. The first IV was congruency (congruent vs incongruent). The second IV was posture (sitting vs. standing). The DV was reaction time to name the word. 
+
+### Plot the data
+
+They had subject perform many individual trials responding to single Stroop stimuli, both congruent and incongruent. And they had subjects stand up sometimes and do it, and sit-down sometimes and do it. Here is a graph of what they found:
+
+```{r strp, cache=FALSE}
+library(data.table)
+stroop_data<-fread("data/stroop_stand.csv")
+
+RTs <- c(as.numeric(unlist(stroop_data[,1])),
+         as.numeric(unlist(stroop_data[,2])),
+         as.numeric(unlist(stroop_data[,3])),
+         as.numeric(unlist(stroop_data[,4]))
+         )
+
+Congruency <- rep(rep(c("Congruent","Incongruent"),each=50),2)
+Posture <- rep(c("Stand","Sit"),each=100)
+Subject <- rep(1:50,4)
+
+stroop_df <- data.frame(Subject,Congruency,Posture,RTs)
+
+plot_df <- stroop_df %>%
+            group_by(Congruency,Posture) %>%
+            summarise(mean_RT = mean(RTs),
+                      SEM = sd(RTs)/sqrt(length(RTs)))
+
+ggplot(plot_df, aes(x=Posture, y=mean_RT, group=Congruency, fill=Congruency))+
+  geom_bar(stat="identity", position="dodge")+
+  theme_classic()+
+  coord_cartesian(ylim=c(700,1000))
+  
+```
+
+The figure shows the means. We can see that Stroop effects were observed in both the sitting position and the standing position. In the sitting position, mean Congruent RTs were shorter than mean Incongruent RTs (the red bar is lower than the aqua bar). The same general pattern is observed for the standing position. However, it does look as if the Stroop effect is slightly smaller in the Stand condition, the difference between the red and aqua bars is slightly smaller compared to the difference when people were sitting.
+
+### Conduct the ANOVA
+
+Let's conduct a 2x2 repeated measures ANOVA on the data to evaluate whether the differences in the means are likely or unlikely to be due to chance. The ANOVA will give us main effects for Congruency and Posture (the two IVs), as well as one interaction effect to evaluate (Congruency X Posture). Remember, the interaction effect tells us whether the congruency effect changes across the levels of the Posture manipulation.
+
+```{r}
+stroop_df$Subject <- as.factor(stroop_df$Subject)
+aov_summary <- summary(aov(RTs~Congruency*Posture +
+                             Error(Subject/(Congruency*Posture)), 
+                           stroop_df))
+knitr::kable(xtable(aov_summary))
+
+```
+
+### Main effect of Congruency
+
+Let's talk about each aspect of the ANOVA table, one step at a time. First, we see that there was a significant main effect of Congruency, F(1, 49) = 342.45, p < 0.001. The $F$ value is extremely large, and the p-value is so small it reads as a zero. This F-value basically never happens by sampling error. We can be very confident that the overall mean difference between congruent and incongruent RTs was not caused by sampling error. 
+
+What were the overall mean differences between mean RTs in the congruent and incongruent conditions? We would have to look at thos means to find out. Here's a table:
+
+```{r}
+congruency_means <- stroop_df %>%
+                      group_by(Congruency) %>%
+                      summarise(mean_rt = mean(RTs),
+                                sd = sd(RTs),
+                                SEM = sd(RTs)/sqrt(length(RTs)))
+knitr::kable(congruency_means)
+
+```
+
+The table shows the mean RTs, standard deviation (sd), and standard error of the mean for each condition. These means show that there was a Stroop effect. Mean incongruent RTs were slower (larger number in milliseconds) than mean congruent RTs. The main effect of congruency is important for establishing that the researchers were able to measure the Stroop effect. However, the main effect of congruency does not say whether the size of the Stroop effect changed between the levels of the Posture variable. So, this main effect was not particularly important for answering the specific question posed by the study.
+
+### Main effect of Posture
+
+There was also a main effect of Posture, F(1,49) = 7.329, p =0.009.
+
+Let's look at the overall means for the sitting and standing conditions and see what this is all about:
+
+```{r}
+posture_means <- stroop_df %>%
+                      group_by(Posture) %>%
+                      summarise(mean_rt = mean(RTs),
+                                sd = sd(RTs),
+                                SEM = sd(RTs)/sqrt(length(RTs)))
+knitr::kable(posture_means)
+
+```
+
+Remember, the Posture main effect collapses over the means in the congruency condition. We are not measuring a Stroop effect here. We are measuring a general effect of sitting vs standing on overall reaction time. The table shows that people were a little faster overall when they were standing, compared to when they were sitting.
+
+Again, the main effect of Posture was not the primary effect of interest. The authors weren't interested if people are in general faster when they stand. They wanted to know if their selective attention would improve when they stand vs when they sit. They were most interested in whether the size of the Stroop effect (difference between incongruent and congruent performance) would be smaller when people stand, compared to when they sit. To answer this question, we need to look at the interaction effect.
+
+### Congruency X Posture Interaction
+
+Last, there was a significant Congruency X Posture interaction, F(1,49) = 8.96, p = 0.004.
+
+With this information, and by looking at the figure, we can get a pretty good idea of what this means. We know the size of the Stroop effect must have been different between the standing and sitting conditions, otherwise we would have gotten a smaller F-value and a much larger p-value.
+
+We can see from the figure the direction of this difference, but let's look at the table to see the numbers more clearly.
+
+```{r}
+int_means <- stroop_df %>%
+                      group_by(Posture, Congruency) %>%
+                      summarise(mean_rt = mean(RTs),
+                                sd = sd(RTs),
+                                SEM = sd(RTs)/sqrt(length(RTs)))
+knitr::kable(int_means)
+
+```
+
+In the sitting condition the Stroop effect was roughly 941-822 = 119 ms.
+
+In the standing condition the Stroop effect was roughly 904-808 = 96 ms.
+
+So, the Stroop effect was 119-96 = 23 ms smaller when people were standing. This is a pretty small effect in terms of the amount of time reduced, but even though it is small, a difference even this big was not very likely to be due to chance.
+
+### What does it all mean?
+
+Based on this research there appears to be some support for the following logic chain. First, the researchers can say that standing up reduces the size of a person's Stroop effect. Fine, what could that mean? Well, if the Stroop effect is an index of selective attention, then it could mean that standing up is one way to improve your ability to selectively focus and ignore distracting information. The actual size of the benefit is fairly small, so the real-world implications are not that clear. Nevertheless, maybe the next time you lose your keys, you should stand up and look for them, rather than sitting down and not look for them.
+
+## Factorial summary
+
+We have introduced you to factorial designs, which are simply designs with more than one IV. The special property of factorial designs is that all of the levels of each IV need to be crossed with the other IVs.
+
+We showed you how to analyse a repeated measures 2x2 design with paired samples-tests, and what an ANOVA table would look like if you did this in R. We also went through, by hand, the task of calculating an ANOVA table for a 2x2 between subjects design. 
+
+The main point we want you take away is that factorial designs are extremely useful for determining things that cause effects to change. Generally a researcher measures an effect of interest (their IV 1). Then, they want to know what makes that effect get bigger or smaller. They want to exert experimental control over their effect. For example, they might have a theory that says doing X should make the effect bigger, but doing Y should make it smaller. They can test these theories using factorial designs, and manipulating X or Y as a second independent variable. 
+
+In a factorial design each IV will have it's own main effect. Sometimes the main effect themselves are what the researcher is interested in measures. But more often, it is the interaction effect that is most relevant. The interaction can test whether the effect of IV1 changes between the levels of IV2. When it does, researchers can infer that their second manipulation (IV2) causes change in their effet of interest. These changes are then documented and used to test underlying causal theories about the effects of interest.
+
+<!--
+What happens to your memory for an experience when you take a picture while it is happening? These days many people have camera phones and take pictures of things that are happening all the time. Does your memory for what happened change depending on whether you did or did not take a picture? This was the kind of research question that the authors asked (Barasch, Diehl, Silverman, and Zauberman, 2017).
+
+What kind of study did they run?
+
+-->
+
+
+
+
+
+
+
+
+
+
 
 
 

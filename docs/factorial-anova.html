@@ -352,6 +352,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.7.5" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-error-1"><i class="fa fa-check"></i><b>9.7.5</b> SS Error</a></li>
 <li class="chapter" data-level="9.7.6" data-path="factorial-anova.html"><a href="factorial-anova.html#check-your-work"><i class="fa fa-check"></i><b>9.7.6</b> Check your work</a></li>
 </ul></li>
+<li class="chapter" data-level="9.8" data-path="factorial-anova.html"><a href="factorial-anova.html#fireside-chat"><i class="fa fa-check"></i><b>9.8</b> Fireside chat</a></li>
+<li class="chapter" data-level="9.9" data-path="factorial-anova.html"><a href="factorial-anova.html#real-data-1"><i class="fa fa-check"></i><b>9.9</b> Real Data</a><ul>
+<li class="chapter" data-level="9.9.1" data-path="factorial-anova.html"><a href="factorial-anova.html#stand-at-attention"><i class="fa fa-check"></i><b>9.9.1</b> Stand at attention</a></li>
+<li class="chapter" data-level="9.9.2" data-path="factorial-anova.html"><a href="factorial-anova.html#plot-the-data"><i class="fa fa-check"></i><b>9.9.2</b> Plot the data</a></li>
+<li class="chapter" data-level="9.9.3" data-path="factorial-anova.html"><a href="factorial-anova.html#conduct-the-anova"><i class="fa fa-check"></i><b>9.9.3</b> Conduct the ANOVA</a></li>
+<li class="chapter" data-level="9.9.4" data-path="factorial-anova.html"><a href="factorial-anova.html#main-effect-of-congruency"><i class="fa fa-check"></i><b>9.9.4</b> Main effect of Congruency</a></li>
+<li class="chapter" data-level="9.9.5" data-path="factorial-anova.html"><a href="factorial-anova.html#main-effect-of-posture"><i class="fa fa-check"></i><b>9.9.5</b> Main effect of Posture</a></li>
+<li class="chapter" data-level="9.9.6" data-path="factorial-anova.html"><a href="factorial-anova.html#congruency-x-posture-interaction"><i class="fa fa-check"></i><b>9.9.6</b> Congruency X Posture Interaction</a></li>
+<li class="chapter" data-level="9.9.7" data-path="factorial-anova.html"><a href="factorial-anova.html#what-does-it-all-mean"><i class="fa fa-check"></i><b>9.9.7</b> What does it all mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-summary"><i class="fa fa-check"></i><b>9.10</b> Factorial summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a></li>
 <li class="chapter" data-level="11" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>11</b> Introduction to linear regression</a></li>
@@ -3937,8 +3948,331 @@ NA
 </tbody>
 </table>
 <p>A quick look through the column <code>Sum Sq</code> shows that we did our work by hand correctly. Congratulations to us! Note, this is not the same results as we had before with the repeated measures ANOVA. We conducted a between-subjects design, so we did not get to further partition the SS error into a part due to Subject variation and a left-over part. We also gained degrees of freedom in the error term. It turns out with this specific set of data, we find p-values of less than 0.05 for all effects (main effects and the interaction, which was not less than 0.05 using the same data, but treating it as a repeated measures design)</p>
-
 </div>
+</div>
+<div id="fireside-chat" class="section level2">
+<h2><span class="header-section-number">9.8</span> Fireside chat</h2>
+<p>Sometimes it’s good to get together around a fire and have a chat. Let’s pretend we’re sitting around a fire.</p>
+<p>It’ been a long day. A long couple of weeks and months since we started this course on statistics. We just went through the most complicated things we have done so far. This is a long chapter. What should we do next?</p>
+<p>Here’s a couple of options. We could work through, by hand, more and more ANOVAs. Do you want to do that? I don’t, making these tables isn’t too bad, but it takes a lot of time. It’s really good to see everything that we do laid bare in the table form a few times. We’ve done that already. It’s really good for you to attempt to calculate an ANOVA by hand at least once in your life. It builds character. It’s help you know that you know what you are doing, and what the ANOVA is doing. We can’t make you do this, we can only make the suggestion. If we keep doing these by hand, it is not good for us, and it is not you doing them by hand. So, what are the other options.</p>
+<p>The other options are to work at a slightly higher level. We will discuss some research designs, and the ANOVAs that are appropriate for their anlaysis. We will conduct the ANOVAs using R, and print out the ANOVA tables. This is what you do in the lab, and what most researchers do. They use software most of the time to make the computer do the work. Because of this, it is most important that you know what the software is doing. You can make mistakes when telling software what to do, so you need to be able to check the software’s work, and you need to be able to know when the software is giving you wrong answers. All of these skills are built up over time through the process of analyzing different data sets. So, for the remainder of our discussion on ANOVAs. We stick to that higher level. No more monster tables of SSes. You are welcome.</p>
+</div>
+<div id="real-data-1" class="section level2">
+<h2><span class="header-section-number">9.9</span> Real Data</h2>
+<p>Let’s go through the process of looking at a 2x2 factorial design in the wild. This will be the very same data that you will analyze in the lab for factorial designs.</p>
+<div id="stand-at-attention" class="section level3">
+<h3><span class="header-section-number">9.9.1</span> Stand at attention</h3>
+<p>Do you pay more attention when you are sitting or standing? This was the kind of research question the researchers were asking in the study we will look at. In fact, the general question and design is very similar to our fake study idea that we used to explain factorial designs in this chapter.</p>
+<p>The paper we look at is called “Stand by your Stroop: Standing up enhances selective attention and cognitive control” (Rosenbaum, Mama, Algom, 2017). This paper asked whether sitting versus standing would influence a measure of selective attention, the ability to ignore distracting information.</p>
+<p>They used a classic test of selective attention, called the Stroop effect. You may already know what the Stroop effect is. In a typical Stroop experiment, subjects name the color of words as fast as they can. The trick is that sometimes the color of the word is the same as the name of the word, and sometimes it is not. Here are some examples:</p>
+<p><img src="figures/Stroop.png" width="420" /></p>
+<p>Congruent trials occur when the color and word match. So, the correct answers for each of the congruent stimuli shown would be to say, red, green, blue and yello. Incongruent trials occur when the color and word mismatch. The correct answers for each of the incongruent stimuli would be: blue, yellow, red, green.</p>
+<p>The Stroop effect is an example of a well-known phenomena. What happens is that people are faster to name the color of the congruent items compared to the color of the incongruent items. This difference (incongruent reaction time - congruent reaction time) is called the Stroop effect.</p>
+<p>Many researchers argue that the Stroop effect measures something about selective attention, the ability to ignore distracting information. In this case, the target information that you need to pay attention to is the color, not the word. For each item, the word is potentially distracting, it is not information that you are supposed to respond to. However, it seems that most people can’t help but notice the word, and their performance in the color-naming task is subsequently influenced by the presence of the distracting word.</p>
+<p>People who are good at ignoring the distracting words should have small Stroop effects. They will ignore the word, and it won’t influence them very much for either congruent or incongruent trials. As a result, the difference in performance (the Stroop effect) should be fairly small (if you have “good” selective attention in this task). People who are bad at ignoring the distracting words should have big Stroop effects. They will not ignore the words, causing them to be relatively fast when the word helps, and relatively slow when the word mismatches. As a result, they will show a difference in performance between the incongruent and congruent conditions.</p>
+<p>If we take the size of the Stroop effect as a measure of selective attention, we can then start wondering what sorts of things improve selective attention (e.g., that make the Stroop effect smaller), and what kinds of things impair selective attention (e.g., make the Stroop effect bigger).</p>
+<p>The research question of this study was to ask whether standing up improves selective attention compared to sitting down. They predicted smaller Stroop effects when people were standing up and doing the task, compared to when they were sitting down and doing the task.</p>
+<p>The design of the study was a 2x2 repeated-measures design. The first IV was congruency (congruent vs incongruent). The second IV was posture (sitting vs. standing). The DV was reaction time to name the word.</p>
+</div>
+<div id="plot-the-data" class="section level3">
+<h3><span class="header-section-number">9.9.2</span> Plot the data</h3>
+<p>They had subject perform many individual trials responding to single Stroop stimuli, both congruent and incongruent. And they had subjects stand up sometimes and do it, and sit-down sometimes and do it. Here is a graph of what they found:</p>
+<p><img src="statistics_files/figure-html/strp-1.png" width="672" /></p>
+<p>The figure shows the means. We can see that Stroop effects were observed in both the sitting position and the standing position. In the sitting position, mean Congruent RTs were shorter than mean Incongruent RTs (the red bar is lower than the aqua bar). The same general pattern is observed for the standing position. However, it does look as if the Stroop effect is slightly smaller in the Stand condition, the difference between the red and aqua bars is slightly smaller compared to the difference when people were sitting.</p>
+</div>
+<div id="conduct-the-anova" class="section level3">
+<h3><span class="header-section-number">9.9.3</span> Conduct the ANOVA</h3>
+<p>Let’s conduct a 2x2 repeated measures ANOVA on the data to evaluate whether the differences in the means are likely or unlikely to be due to chance. The ANOVA will give us main effects for Congruency and Posture (the two IVs), as well as one interaction effect to evaluate (Congruency X Posture). Remember, the interaction effect tells us whether the congruency effect changes across the levels of the Posture manipulation.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+2250738.636
+</td>
+<td style="text-align:right;">
+45933.4416
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Congruency
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+576821.635
+</td>
+<td style="text-align:right;">
+576821.6349
+</td>
+<td style="text-align:right;">
+342.452244
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+82534.895
+</td>
+<td style="text-align:right;">
+1684.3856
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Posture
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+32303.453
+</td>
+<td style="text-align:right;">
+32303.4534
+</td>
+<td style="text-align:right;">
+7.329876
+</td>
+<td style="text-align:right;">
+0.0093104
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals1
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+215947.614
+</td>
+<td style="text-align:right;">
+4407.0942
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Congruency:Posture
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6560.339
+</td>
+<td style="text-align:right;">
+6560.3389
+</td>
+<td style="text-align:right;">
+8.964444
+</td>
+<td style="text-align:right;">
+0.0043060
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+35859.069
+</td>
+<td style="text-align:right;">
+731.8177
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="main-effect-of-congruency" class="section level3">
+<h3><span class="header-section-number">9.9.4</span> Main effect of Congruency</h3>
+<p>Let’s talk about each aspect of the ANOVA table, one step at a time. First, we see that there was a significant main effect of Congruency, F(1, 49) = 342.45, p &lt; 0.001. The <span class="math inline">\(F\)</span> value is extremely large, and the p-value is so small it reads as a zero. This F-value basically never happens by sampling error. We can be very confident that the overall mean difference between congruent and incongruent RTs was not caused by sampling error.</p>
+<p>What were the overall mean differences between mean RTs in the congruent and incongruent conditions? We would have to look at thos means to find out. Here’s a table:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+868.6454
+</td>
+<td style="text-align:right;">
+126.8237
+</td>
+<td style="text-align:right;">
+8.967789
+</td>
+</tr>
+</tbody>
+</table>
+<p>The table shows the mean RTs, standard deviation (sd), and standard error of the mean for each condition. These means show that there was a Stroop effect. Mean incongruent RTs were slower (larger number in milliseconds) than mean congruent RTs. The main effect of congruency is important for establishing that the researchers were able to measure the Stroop effect. However, the main effect of congruency does not say whether the size of the Stroop effect changed between the levels of the Posture variable. So, this main effect was not particularly important for answering the specific question posed by the study.</p>
+</div>
+<div id="main-effect-of-posture" class="section level3">
+<h3><span class="header-section-number">9.9.5</span> Main effect of Posture</h3>
+<p>There was also a main effect of Posture, F(1,49) = 7.329, p =0.009.</p>
+<p>Let’s look at the overall means for the sitting and standing conditions and see what this is all about:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+868.6454
+</td>
+<td style="text-align:right;">
+126.8237
+</td>
+<td style="text-align:right;">
+8.967789
+</td>
+</tr>
+</tbody>
+</table>
+<p>Remember, the Posture main effect collapses over the means in the congruency condition. We are not measuring a Stroop effect here. We are measuring a general effect of sitting vs standing on overall reaction time. The table shows that people were a little faster overall when they were standing, compared to when they were sitting.</p>
+<p>Again, the main effect of Posture was not the primary effect of interest. The authors weren’t interested if people are in general faster when they stand. They wanted to know if their selective attention would improve when they stand vs when they sit. They were most interested in whether the size of the Stroop effect (difference between incongruent and congruent performance) would be smaller when people stand, compared to when they sit. To answer this question, we need to look at the interaction effect.</p>
+</div>
+<div id="congruency-x-posture-interaction" class="section level3">
+<h3><span class="header-section-number">9.9.6</span> Congruency X Posture Interaction</h3>
+<p>Last, there was a significant Congruency X Posture interaction, F(1,49) = 8.96, p = 0.004.</p>
+<p>With this information, and by looking at the figure, we can get a pretty good idea of what this means. We know the size of the Stroop effect must have been different between the standing and sitting conditions, otherwise we would have gotten a smaller F-value and a much larger p-value.</p>
+<p>We can see from the figure the direction of this difference, but let’s look at the table to see the numbers more clearly.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+868.6454
+</td>
+<td style="text-align:right;">
+126.8237
+</td>
+<td style="text-align:right;">
+8.967789
+</td>
+</tr>
+</tbody>
+</table>
+<p>In the sitting condition the Stroop effect was roughly 941-822 = 119 ms.</p>
+<p>In the standing condition the Stroop effect was roughly 904-808 = 96 ms.</p>
+<p>So, the Stroop effect was 119-96 = 23 ms smaller when people were standing. This is a pretty small effect in terms of the amount of time reduced, but even though it is small, a difference even this big was not very likely to be due to chance.</p>
+</div>
+<div id="what-does-it-all-mean" class="section level3">
+<h3><span class="header-section-number">9.9.7</span> What does it all mean?</h3>
+<p>Based on this research there appears to be some support for the following logic chain. First, the researchers can say that standing up reduces the size of a person’s Stroop effect. Fine, what could that mean? Well, if the Stroop effect is an index of selective attention, then it could mean that standing up is one way to improve your ability to selectively focus and ignore distracting information. The actual size of the benefit is fairly small, so the real-world implications are not that clear. Nevertheless, maybe the next time you lose your keys, you should stand up and look for them, rather than sitting down and not look for them.</p>
+</div>
+</div>
+<div id="factorial-summary" class="section level2">
+<h2><span class="header-section-number">9.10</span> Factorial summary</h2>
+<p>We have introduced you to factorial designs, which are simply designs with more than one IV. The special property of factorial designs is that all of the levels of each IV need to be crossed with the other IVs.</p>
+<p>We showed you how to analyse a repeated measures 2x2 design with paired samples-tests, and what an ANOVA table would look like if you did this in R. We also went through, by hand, the task of calculating an ANOVA table for a 2x2 between subjects design.</p>
+<p>The main point we want you take away is that factorial designs are extremely useful for determining things that cause effects to change. Generally a researcher measures an effect of interest (their IV 1). Then, they want to know what makes that effect get bigger or smaller. They want to exert experimental control over their effect. For example, they might have a theory that says doing X should make the effect bigger, but doing Y should make it smaller. They can test these theories using factorial designs, and manipulating X or Y as a second independent variable.</p>
+<p>In a factorial design each IV will have it’s own main effect. Sometimes the main effect themselves are what the researcher is interested in measures. But more often, it is the interaction effect that is most relevant. The interaction can test whether the effect of IV1 changes between the levels of IV2. When it does, researchers can infer that their second manipulation (IV2) causes change in their effet of interest. These changes are then documented and used to test underlying causal theories about the effects of interest.</p>
+<!--
+What happens to your memory for an experience when you take a picture while it is happening? These days many people have camera phones and take pictures of things that are happening all the time. Does your memory for what happened change depending on whether you did or did not take a picture? This was the kind of research question that the authors asked (Barasch, Diehl, Silverman, and Zauberman, 2017).
+
+What kind of study did they run?
+
+-->
+
 </div>
 </div>
             </section>
