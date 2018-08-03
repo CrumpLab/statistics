@@ -3,7 +3,7 @@
 ```{r}
 library(dplyr)
 library(ggplot2)
-#library(xtable)
+library(xtable)
 library(ggpubr)
 library(kableExtra)
 #library(data.table)
@@ -1013,7 +1013,8 @@ The figure shows the means. We can see that Stroop effects were observed in both
 
 Let's conduct a 2x2 repeated measures ANOVA on the data to evaluate whether the differences in the means are likely or unlikely to be due to chance. The ANOVA will give us main effects for Congruency and Posture (the two IVs), as well as one interaction effect to evaluate (Congruency X Posture). Remember, the interaction effect tells us whether the congruency effect changes across the levels of the Posture manipulation.
 
-```{r}
+```{r, cache=FALSE}
+library(xtable)
 stroop_df$Subject <- as.factor(stroop_df$Subject)
 aov_summary <- summary(aov(RTs~Congruency*Posture +
                              Error(Subject/(Congruency*Posture)), 
@@ -1028,7 +1029,7 @@ Let's talk about each aspect of the ANOVA table, one step at a time. First, we s
 
 What were the overall mean differences between mean RTs in the congruent and incongruent conditions? We would have to look at thos means to find out. Here's a table:
 
-```{r}
+```{r, cache=FALSE}
 congruency_means <- stroop_df %>%
                       group_by(Congruency) %>%
                       summarise(mean_rt = mean(RTs),
@@ -1046,7 +1047,7 @@ There was also a main effect of Posture, F(1,49) = 7.329, p =0.009.
 
 Let's look at the overall means for the sitting and standing conditions and see what this is all about:
 
-```{r}
+```{r,cache=FALSE}
 posture_means <- stroop_df %>%
                       group_by(Posture) %>%
                       summarise(mean_rt = mean(RTs),
@@ -1068,7 +1069,7 @@ With this information, and by looking at the figure, we can get a pretty good id
 
 We can see from the figure the direction of this difference, but let's look at the table to see the numbers more clearly.
 
-```{r}
+```{r,cache=FALSE}
 int_means <- stroop_df %>%
                       group_by(Posture, Congruency) %>%
                       summarise(mean_rt = mean(RTs),
