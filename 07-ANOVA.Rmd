@@ -11,7 +11,7 @@ A fun bit of stats history. Sir Ronald Fisher invented the ANOVA, which we learn
 
 We present the ANOVA in the Fisherian sense, and at the end describe the Neyman-Pearson approach that invokes the concept of null vs. alternative hypotheses.
 
-### ANOVA is Analysis of Variance
+## ANOVA is Analysis of Variance
 
 ANOVA stands for ANalysis Of VAriance. It is a widely used technique for assessing the likelihood that differences found between means in sample data  could be produced by chance. You might be thinking, well don't we have t-tests for that? Why do we need the ANOVA, what do we get that's new that we didn't have before?
 
@@ -141,7 +141,7 @@ $SS_\text{Effect}$ represents the amount of variation that is caused by differen
 
 Notice also that $SS_\text{Effect} = 72$, and that 72 is smaller than $SS_\text{total} = 302$. That is very important. $SS_\text{Effect}$ by definition can never be larger than $SS_\text{total}$.
 
-## SS Error
+### SS Error
 
 Great, we made it to SS Error. We already found SS Total, and SS Effect, so now we can solve for SS Error just like this:
 
@@ -177,7 +177,7 @@ knitr::kable(df)
 Alright, we did almost the same thing as we did to find $SS_\text{Effect}$. Can you spot the difference? This time for each score we first found the group mean, then we found the error in the group mean estimate for each score. This means, the values in the $diff$ column are the difference between each score and it's group mean. The values in the `diff_squared` column are the squared deviations. When we sum up the squared deviations, we get another Sums of Squares, this time it's the $SS_\text{Error}$. This is an appropriate name, because these deviations are the ones that the group means can't explain!
 
 
-## Degrees of freedom
+### Degrees of freedom
 
 Degrees of freedom come into play again with ANOVA. This time, their purpose is a little bit more clear. Dfs can be fairly simple when we are doing a relatitvely simple ANOVA like this one, but they can become complicated when designs get more complicated.
 
@@ -193,7 +193,7 @@ The formula for the degrees of freedom for $SS_\text{Error}$ is
 
 $df_\text{Error} = \text{scores} - \text{groups}$, or the number of scores minus the number of groups. We have 9 scores and 3 groups, so our df for the error term is 9-3 = 6. Remember, when we computed the difference score between each score and it's group mean, we had to compute three means (one for each group) to do that. So, that reduces the degrees of freedom by 3. 6 of the difference scores could be anything they want, but the last 3 have to be fixed to match the means from the groups.
 
-## Mean Squared Error
+### Mean Squared Error
 
 Ok, so we have the degrees of freedom. What's next? There are two steps left. First we divide the SS's by their respective degrees of freedom to create something new called Mean Squared Error. Let's talk about why we do this.
 
@@ -226,7 +226,7 @@ $MSE_\text{Error} = \frac{230}{6} = 38.33$
 
 
 
-## Calculate F
+### Calculate F
 
 Now that we have done all of the hard work, calculating F is easy:
 
@@ -238,7 +238,7 @@ $\text{F} = \frac{36}{38.33} = .939$
 
 Done!
 
-## The ANOVA TABLE
+### The ANOVA TABLE
 
 You might suspesct we aren't totally done here. We've walked through the steps of computing $F$. Remember, F is a sample statistic, we computed $F$ directly from the data. There were a whole bunch of pieces we needed, the dfs, the SSs, the MSEs, and then finally the F.
 
