@@ -364,7 +364,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="9.10" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-summary"><i class="fa fa-check"></i><b>9.10</b> Factorial summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a></li>
+<li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a><ul>
+<li class="chapter" data-level="10.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#looking-at-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.1</b> Looking at main effects and interactions</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#x2-designs-1"><i class="fa fa-check"></i><b>10.1.1</b> 2x2 designs</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#interactions-can-make-main-effects-even-when-they-arent-really-there"><i class="fa fa-check"></i><b>10.2</b> Interactions can make main effects even when they aren’t really there</a></li>
+<li class="chapter" data-level="10.3" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#a-general-model"><i class="fa fa-check"></i><b>10.3</b> A general model</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>11</b> Introduction to linear regression</a></li>
 <li class="chapter" data-level="12" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html"><i class="fa fa-check"></i><b>12</b> Multiple and logistic regression</a><ul>
 <li class="chapter" data-level="12.1" data-path="multipleRegressionAndANOVA.html"><a href="multipleRegressionAndANOVA.html#introductionToMultipleRegression"><i class="fa fa-check"></i><b>12.1</b> Introduction to multiple regression</a><ul>
@@ -457,17 +463,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>1 IV (two levels)</li>
 </ol>
 <p>We would use a t-test for these designs, because they only have two levels.</p>
-<pre><code>a. Time of day (Morning versus Afternoon): Do students do better on tests when they take them in the morning versus the afternoon? There is one IV (time of day), with two levels (Morning vs. Afternoon)
-b. Caffeine (some caffeine vs no caffeine): Do students do better on tests when they drink caffeine versus not drinking caffeine? There is one IV (caffeine), with two levels (some caffeine vs no caffeine)</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>Time of day (Morning versus Afternoon): Do students do better on tests when they take them in the morning versus the afternoon? There is one IV (time of day), with two levels (Morning vs. Afternoon)</p></li>
+<li><p>Caffeine (some caffeine vs no caffeine): Do students do better on tests when they drink caffeine versus not drinking caffeine? There is one IV (caffeine), with two levels (some caffeine vs no caffeine)</p></li>
+</ol>
 <ol start="2" style="list-style-type: decimal">
 <li>1 IV (three levels):</li>
 </ol>
 <p>We would use an ANOVA for these deign, because they have more than two levels</p>
-<pre><code>a. Time of day (Morning, Afternoon, Night): Do students do better on tests when they take them in the morning, the afternoon, or at night? There is one IV (time of day), with three levels (Morning, Afternoon, and Night)
-b. Caffeine (1 coffee, 2 coffees, 3 coffees): Do students do better on tests when they drink 1 coffee, 2 coffees, or three coffees? There is one IV (caffeine), with three levels (1 coffee, 2 coffees, and 2 coffees)</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>Time of day (Morning, Afternoon, Night): Do students do better on tests when they take them in the morning, the afternoon, or at night? There is one IV (time of day), with three levels (Morning, Afternoon, and Night)</p></li>
+<li><p>Caffeine (1 coffee, 2 coffees, 3 coffees): Do students do better on tests when they drink 1 coffee, 2 coffees, or three coffees? There is one IV (caffeine), with three levels (1 coffee, 2 coffees, and 2 coffees)</p></li>
+</ol>
 <p>3.<strong>2 IVs, IV1 (two levels), IV2 (two levels)</strong></p>
 <p>We haven’t talked about what kind of test to run for this design (hint it is called a factorial ANOVA)</p>
-<pre><code>a. IV1 (Time of Day: Morning vs. Afternoon); IV2 (Caffeine: some caffeine vs. no caffeine): How does time of day and caffeine consumption influence student grades? We had students take tests in the morning or in the afternoon, with or without caffeine. There are two IVs (time of day &amp; caffeine). IV1 (Time of day) has two levels (morning vs afternoon). IV2 (caffeine) has two levels (some caffeine vs. no caffeine)</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>IV1 (Time of Day: Morning vs. Afternoon); IV2 (Caffeine: some caffeine vs. no caffeine): How does time of day and caffeine consumption influence student grades? We had students take tests in the morning or in the afternoon, with or without caffeine. There are two IVs (time of day &amp; caffeine). IV1 (Time of day) has two levels (morning vs afternoon). IV2 (caffeine) has two levels (some caffeine vs. no caffeine)</li>
+</ol>
 <p>OK, let’s stop here for the moment. The first two designs both had one IV. The third design shows an example of a design with 2 IVs (time of day and caffeine), each with two levels. This is called a <strong>2x2 Factorial Design</strong>. It is called a <strong>factorial</strong> design, because the levels of each independent variable are fully crossed. This means that first each level of one IV, the levels of the other IV are also manipulated. “HOLD ON STOP PLEASE!” Yes, it seems as if we are starting to talk in the foreign language of statistics and research designs. We apologize for that. We’ll keep mixing it up with some plain language. and some pictures.</p>
 <div id="x2-designs" class="section level2">
 <h2><span class="header-section-number">9.1</span> 2x2 Designs</h2>
