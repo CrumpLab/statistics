@@ -35,7 +35,7 @@ Our first step is to collect some imaginary data from 100 people. We walk around
 
 Here is some sample data from the first 10 imaginary subjects.
 
-```{r}
+```{r 3chocHappy}
 subject<-1:100
 chocolate<-round(1:100*runif(100,.5,1))
 happiness<-round(1:100*runif(100,.5,1))
@@ -54,7 +54,7 @@ Of course, we asked each subjects two questions, so there are two scores for eac
 
 When you have two measurements worth of data, you can always turn them into dots and plot them in a scatter plot. A scatter plot has a horizontal x-axis, and a vertical y-axis. You get to choose which measurement goes on which axis. Let's put chocolate supply on the x-axis, and happiness level on the y-axis. The plot below shows 100 dots for each subject.
 
-```{r scatter1, echo=F}
+```{r 3scatter1, fig.cap="Imaginary data showing a positive correlation between amount of chocolate and amount happiness", echo=F}
 library(ggplot2)
 ggplot(the_df_CC,aes(x=chocolate,y=happiness))+
   geom_point()+
@@ -73,7 +73,7 @@ Now that we are looking at the scatter plot, we can see many things. One, the do
 
 Seeing as we are in the business of imagining data, let's imagine some more. We've already imagined what data would look like if larger chocolate supplies increase happiness. We'll show that again in a bit. What do you imagine the scatter plot would look like if the relationship was reversed, and larger chocolate supplies decreased happiness. Or, what do you imagine the scatter plot would look like if there was no relationship, and the amount of chocolate that you have doesn't do anything to your happiness. We invite your imagination to look at these graphs:
 
-```{r, echo=F}
+```{r 3posnegrand, fig.cap="Three scatterplots showing negative, positive, and zero correlation", echo=F}
 
 subject_x<-1:100
 chocolate_x<-round(1:100*runif(100,.5,1))
@@ -116,7 +116,7 @@ There's a statistic for that, and Karl Pearson invented it. Everyone now calls i
 
 How does Pearson's $r$ work? Let's look again at the first 10 subjects in our fake experiment:
 
-```{r,echo=F}
+```{r 3chocHappyB,echo=F}
 library(dplyr)
 
 the_df_short <- the_df_short %>%
@@ -142,7 +142,7 @@ What could we do to these numbers to produce a single, summary value, that repre
 
 "OK, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I'm good with that. I suppose we would need some way to measure that." Correct, back to our table...notice anything new?
 
-```{r,echo=F}
+```{r 3chochappyCOV,echo=F}
 the_df_temp<-data.frame(subject,chocolate,happiness,Chocolate_X_Happiness=chocolate*happiness)
 
 the_df_short<-the_df_temp[1:10,]
@@ -162,7 +162,7 @@ We know how to multiple numbers, and all we have to next is think about the cons
 
 Then next step is to think about how the products of two measures sum together, depending on how they line up. Let's look at another table:
 
-```{r}
+```{r 3chocHappyCOVb}
 the_df_short<-data.frame(scores=1:10,X=1:10, Y=1:10, A=1:10, B=10:1, XY = 1:10*1:10, AB=1:10*10:1)
 
 the_df_short <- the_df_short %>%
@@ -178,7 +178,7 @@ Now, look at the column $XY$. These are the products we get when we multiply the
 
 Now, look at the `Sums` for the XY and AB columns. Not the same. The sum of the XY products is 385, and the sum of the AB products is 220. For this specific set of data, the numbers 385 and 220 are very important. They represent the biggest possible sum of products (385), and the smallest possible sum of products (220). There is no way of re-ordering the numbers 1 to 10, say for X, and the numbers 1 to 10 for Y, that would ever produce larger or smaller numbers. Don't believe me? Check this out:
 
-```{r simsum}
+```{r 3simsum}
 simulated_sums<-length(0)
 for(sim in 1:1000){
 X<-sample(1:10)
@@ -210,7 +210,7 @@ Now, we can get a little bit more formal. In statistics, **co-variance** is not 
 
 Let's see what this look like in a table:
 
-```{r,echo=F}
+```{r 3cov,echo=F}
 the_df<-the_df_CC
 
 the_df_short<-the_df[1:10,]
@@ -259,7 +259,7 @@ For now, we will call this mathematical magic. It works, but we don't have space
 
 Does Pearson's $r$ really stay between -1 and 1 no matter what? It's true, take a look at the following simulation. Here I randomly ordered the numbers 1 to 10 for an X measure, and did the same for a Y measure. Then, I computed Pearson's $r$, and repeated this process 1000 times. As you can see all of the dots are between -1 and 1. Neat huh.
 
-```{r}
+```{r 3onethousandr, fig.cap="A simulation of of correlations. Each dot represents the r-value for the correlation between an X and Y variable that each contain the numbers 1 to 10 in random orders. The figure ilustrates that many r-values can be obtained by this random process"}
 simulated_sums <- length(0)
 for(sim in 1:1000){
   X <- sample(1:10)
@@ -288,7 +288,7 @@ We're going to spend the next little bit adding one more thing to our understand
 
 First, let's look at a linear regression. This way we can see what we're trying to learn about. Here's some scatter plots, same one's you've already seen. But, we've added something new! Lines.
 
-```{r, echo=F}
+```{r 3regression, fig.cap="Three scatterplots showing negative, positive, and a random correlation (where the r-value is expected to be 0), along with the best fit regression line", echo=F}
 
 subject_x<-1:100
 chocolate_x<-round(1:100*runif(100,.5,1))
@@ -337,7 +337,7 @@ R code for plotting residuals thanks to Simon Jackson's blog post: [https://drsi
 Check out this next plot, it shows a line through some dots. But, it also shows some teeny tiny lines. These lines drop down from each dot, and they land on the line. Each of these little lines is called a **residual**. They show you how far off the line is for different dots. It's measure of error, it shows us just how wrong the line is. After all, it's pretty obvious that not all of the dots are on the line. This means the line does not actually represent all of the dots. The line is wrong. But, the best fit line is the least wrong of all the wrong lines.
 
 
-```{r}
+```{r 3regressionResiduals, fig.cap="Black dots represent data points. The blue line is the best fit regression line. The white dots are repesent the predicted location of each black dot. The red lines show the error between each black dot and the regression line. The blue line is the best fit line because it minimizes the error shown by the red lines"}
 d <- mtcars
 fit <- lm(mpg ~ hp, data = d)
 d$predicted <- predict(fit)   # Save the predicted values
@@ -362,46 +362,27 @@ There's a lot going on in this graph. First, we are looking at a scatter plot of
 
 The important thing that is happening here, is that the the blue line is drawn is such a way, that it minimizes the length of the red lines. For example, if we wanted to know how wrong this line was, we could simply gather up all the red lines the residuals), measure how long they are, and then add all the wrongness together. This would give us the total amount of wrongness. We usually call this the error. In fact, we've already talked about this idea before when we discussed standard deviation. What we will actually be doing with the red lines, is computing the sum of the squared deviations from the line. That sum is the total amount of error. Now, this blue line here minimizes the sum of the squared deviations. Everything other line would produce a larger total error.
 
-Here's a few more graphs to see this in action. First, imagine we drew a different line, up higher in the graph. We could still compute the red line residuals, and then add up the error, and see how big it was. If we go way up, the red lines will get longer and longer, so the total error will get bigger and bigger. As we move away from the sweet spot going up, the error gets bigger. The same thing will happen if we move the line down, the error will get bigger and bigger. Here's what that looks like:
+Here's an animation to see this in action. The animations compares the best fit line in blue, to some other possible lines in black. The black line moves up and down. The red lines show the error between the black line and the data points. As the black line moves toward the best fit line, the total error, depicted visually by the grey area shrinks to it's minimum value. The total error expands as the black line moves away from the best fit line.
 
-```{r}
+```{r 3regressionGIF, fig.cap="The blue line is the best fit regression line explaining the co-variation among the black dots. The black line moves up and down showing alternative lines that could be drawn. The red lines show the amount of error between each data point and the black line. The total amount of error is depicted by the shaded grey area. The size of the grey area expands as the black line moves away from the best fit line, and shrinks to a minimum as the black line moves toward the best fit line", echo=F,eval=T}
+knitr::include_graphics(path="gifs/regression-1.gif")
+```
+
+Whenever the black line does not overlap with the blue line, it is worse than the best fit line. The blue regression line is like Goldilocks, it's just right, and it's in the middle.
+
+This next graph shows a little simulation of how the sum of squared deviations (the sum of the squared lengths of the red lines) behaves as we move the line up and down. What's going on here is that we are computing a measure of the total error as the black line moves through the best fit line. This represents the sum of the squared deviations. In other words, we square the length of each red line from the above animation, then we add up all of the squared red lines, and get the total error (the total sum of the squared deviations). The graph below shows what the total error looks like as the black line approaches then moves away from the best fit line. Notice, the dots in this graph start high on the left side, then they swoop down to a minimum at the bottom middle of the graph. When they reach their minimum point, we have found a line that minimizes the total error. This is the best fit regression line.
+
+```{r 3minimizeSS, fig.cap="A plot of the sum of the squared deviations for different lines moving up and down, through the best fit line. The best fit line occurs at the position that minimizes the sum of the sqaured deviations"}
+
+d <- mtcars
+fit <- lm(mpg ~ hp, data = d)
+d$predicted <- predict(fit)   # Save the predicted values
+d$residuals <- residuals(fit) # Save the residual values
+
 coefs<-coef(lm(mpg ~ hp, data = mtcars))
 coefs[1]
 coefs[2]
 
-up<-ggplot(d, aes(x = hp, y = mpg)) +
-  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  
-  geom_abline(intercept = coefs[1]+10, slope = coefs[2])+
-  lims(x = c(0,400), y = c(-5,45))+
-  geom_segment(aes(xend = hp, yend = predicted+10, color="red"), alpha = .5) + 
-  geom_point() +
-  geom_point(aes(y = predicted), shape = 1) +
-  theme_classic()+
-  theme(legend.position="none")+
-  xlab("X")+ylab("Y")
-
-down<-ggplot(d, aes(x = hp, y = mpg)) +
-  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +  
-  geom_abline(intercept = coefs[1]-10, slope = coefs[2])+
-  lims(x = c(0,400), y = c(-5,45))+
-  geom_segment(aes(xend = hp, yend = predicted-10, color="red"), alpha = .5) + 
-  geom_point() +
-  geom_point(aes(y = predicted), shape = 1) +
-  theme_classic()+
-  theme(legend.position="none")+
-  xlab("X")+ylab("Y")
-library(ggpubr)
-ggarrange(up,down, 
-          ncol = 2, nrow = 1)
-
-
-```
-
-Both of these new black lines are even worse at describing the pattern of dots. First of all they are taller and shorter than all of the dots. I wouldn't want to use either of these lines to summarize where most of the dots were. When we move the line up and down, the red lines also get longer and longer, so the error gets bigger and bigger. Regression lines are like Goldilocks, they're just right, and they're in the middle. 
-
-This next graph shows a little simulation of how the sum of squared deviations (the sum of the squared lengths of the red lines) behaves as we move the line up and down. 
-
-```{r}
 x<-d$hp
 move_line<-seq(-5,5,.5)
 total_error<-c(length(move_line))
@@ -437,7 +418,7 @@ $y = slope * x + \text{y-intercept}$
 
 The slope is the slant of the line, and the y-intercept is where the line crosses the y-axis. Let's look at some lines:
 
-```{r}
+```{r 3twolines, fig.cap="Two different lines with different y-intercepts (where the line crosses the y-axis), and different slopes. A positive slope makes the line go up from left to right. A negative slope makes the line go down from left to right."}
 ggplot()+
   geom_abline(slope=1,intercept=5,color="blue")+
   geom_abline(slope=-1, intercept=15, color="red")+
@@ -473,7 +454,7 @@ $intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}$
 
 In these formulas, the $x$ and the $y$ refer to the individual scores. Here's a table showing you how everything fits together.
 
-```{r}
+```{r 3morcov}
 scores<-c(1,2,3,4,5,6,7)
 x<-c(1,4,3,6,5,7,8)
 y<-c(2,5,1,8,6,8,9)
@@ -501,7 +482,7 @@ $intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac
 
 Great, now we can check our work, let's plot the scores in a scatter plot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots.
 
-```{r}
+```{r 3corwithLine, fig.cap="An example regression line with confidence bands going through a few data points in a scatterplot"}
 plot_df<-data.frame(x,y)
 
 ggplot(plot_df,aes(x=x,y=y))+
@@ -565,7 +546,7 @@ Let's demonstrate how correlations can occur by chance when there is no causal c
 
 Here is what the numbers on each ball could look like for each participant:
 
-```{r}
+```{r 3northsouth}
 
 Ball<-1:10
 North_pole<-round(round(runif(10,1,10)))
@@ -590,7 +571,7 @@ It is possible to use a computer to simulate our game as many times as we want. 
 
 Below is a script written for the programming language R. We won't go into the details of the code here. However, let's briefly explain what is going on. Notice, the part that says ```for(sim in 1:1000) ```. This creates a loop that repeats our game 1000 times. Inside the loop there are variables named `North_pole` and `South_pole`. During each simulation, we sample 10 random numbers (between 1 to 10) into each variable. These random numbers stand for the numbers that would have been on the balls from the lottery machine. Once we have 10 random numbers for each, we then compute the correlation using `cor(North_pole,South_pole)`. Then, we save the correlation value and move on to the next simulation. At the end, we will have 1000 individual Pearson $r$ values.
 
-```{r, echo=TRUE}
+```{r 3anotherthousand, fig.cap="Another figure showing a range of r-values that can be obtained by chance",echo=TRUE}
 simulated_correlations <- length(0)
 for(sim in 1:1000){
   North_pole <- runif(10,1,10)
@@ -614,7 +595,7 @@ Let's illustrate the idea of finding "random" correlations one more time, with a
 
 On more thing to prepare you for the movie. There are three scatter plots below, showing negative, positive, and zero correlations between two variables. You've already seen this graph before. But, we added something. Blue lines. "Ooh blue lines, tell me more". The are helpful for seeing the correlation. We are drawing the lines straight through the dots (we'll learn more about in the chapter on linear regression), such that they do the best job of summarizing the middle of dots. Negative correlations occur when a line goes down from the top left to bottom right. Positive correlations occur when a line goes up from the bottom left to the top right. Zero correlations occur when the line is flat (doesn't go up or down).
 
-```{r, echo=F}
+```{r 3reminder, fig.cap="A reminder of what positive, negative, and zero correlation looks like", echo=F}
 
 subject_x<-1:100
 chocolate_x<-round(1:100*runif(100,.5,1))
@@ -649,7 +630,11 @@ ggplot(all_data,aes(x=chocolate_x,y=happiness_x))+
 
 OK, now we are ready for the movie. You are looking at the process of sampling two set of numbers randomly, one for the X variable, and one for the Y variable. Each time we sample 10 numbers for each, plot them, then draw a line through them. Remember, these numbers are all completely random, so we should expect, on average that there should be no correlation between the numbers. However, this is not what happens. You can the line going all over the place. Sometimes we find a negative correlation (line goes down), sometimes we see a positive correlation (line goes up), and sometimes it looks like zero correlation (line is more flat). 
 
-```{r,echo=F}
+```{r 3randcor10gif, fig.cap="Completely random data points drawn from a uniform distribution with a small sampl-size of 10. The blue line twirls around sometimes showing large correlations that are produced by chance", echo=F}
+knitr::include_graphics(path="gifs/corUnifn10-1.gif")
+```
+
+```{r,echo=F, eval=FALSE}
 library(gganimate)
 
 all_df<-data.frame()
@@ -682,7 +667,7 @@ You might be thinking this is kind of disturbing. If we know that there should b
 
 Fortunately, all is not lost. We can look at our simulated data in another way, using a histogram. Remember, just before the movie, we simulated 1000 different correlations using random numbers. By, putting all of those $r$ values into a histogram, we can get a better sense of how chance behaves. We can see  what kind of correlations chance is likely or unlikely to produce. Here is a histogram of the simulated $r$ values.
 
-```{r}
+```{r 3histrandcor, fig.cap="A histogram showing the frequency distribution of r-values for completely random values between an X and Y variable (sample-size=10). A rull range of r-values can be obtained by chance alone. Larger r-values are less common than smaller r-values"}
 hist(simulated_correlations,breaks=seq(-1,1,.1))
 ```
 
@@ -709,7 +694,7 @@ We will see what happens in four different scenarios. First, we will repeat what
 
 The graph below shows four different histograms of the Pearson $r$ values in each of the different scenarios. Each scenario involves a different sample-size, from, 10, 50, 100 to 1000.
 
-```{r}
+```{r 3corrandN, fig.cap="Four histograms showing the frequency distributions of r-values between completely random X and Y variables as a function of sample-size. The width of the distributions shrink as sample-size increases. Smaller sample-sizes are more likely to produce a wider range of r-values by chance. Larger sample-sizes always produce a narrow range of small r-values"}
 all_df<-data.frame()
 for(s_size in  c(10,50,100,1000)){
   simulated_correlations <- length(0)
@@ -749,7 +734,7 @@ Below we randomly sample numbers for two variables, plot them, and show the corr
 
 Remember, because we are randomly sampling numbers, there should be no relationship between the X and Y variables. But, as we have been discussing, because of chance, we can sometimes observe a correlation (due to chance). The important thing to watch is how the line behaves across the four panels. The line twirls around in all directions when the sample size is 10. It is also moves around quite a bit when the sample size is 50 or 100. It still moves a bit when the sample size is 1000, but much less. In all cases we expect that the line should be flat, but every time we take new samples, sometimes the line shows us pseudo patterns.
 
-```{r, echo=F,eval=T}
+```{r 3corRandfour, fig.cap="Animation of how correlation behaves for completely random X and Y variables as a function of sample size. The best fit line is not very stable for small sample-sizes, but becomes more reliably flat as sample-size increases", echo=F,eval=T}
 knitr::include_graphics(path="gifs/corUnifFourNs-1.gif")
 ```
 
@@ -787,7 +772,7 @@ Which line should you trust? Well, hopefully you can see that the line for 1000 
 
 In the above example, we sampled numbers random numbers from a uniform distribution. Many examples of real-world data will come from a normal or approximately normal distribution. We can repeat the above, but sample random numbers from the same normal distribution. There will still be zero actual correlation between the X and Y variables, because everything is sampled randomly. But, we still see the same behavior as above. The computed correlation for small sample-sizes fluctuate wildly, and large sample sizes do not.
 
-```{r, echo=F,eval=T}
+```{r 3normCorfour, fig.cap="Animation of correlation for random values sampled from a normal distribution, rather than a uniform distribution",echo=F,eval=T}
 knitr::include_graphics(path="gifs/corNormFourNs-1.gif")
 ```
 
@@ -799,52 +784,9 @@ Sometimes there really are correlations between two variables that are not cause
 
 Notice that in the top left panel (sample-size 10), the line is twirling around much more than the other panels. Every new set of samples produces different correlations. Sometimes, the line even goes flat or downward. However, as we increase sample-size, we can see that the line doesn't change very much, it is always going up showing a positive correlation.
 
-```{r}
-library(MASS)
-r<-.7
-
-proportional_permute<-function(x,prop){
-  indices<-seq(1:length(x))
-  s_indices<-sample(indices)
-  n_shuffle<-round(length(x)*prop)
-  switch<-sample(indices)
-  x[s_indices[1:n_shuffle]]<-x[switch[1:n_shuffle]]
-  return(x)
-}
-
-all_df<-data.frame()
-for(sim in 1:10){
-  for(samples in c(10,50,100,1000)){
-    #data <- mvrnorm(n=samples, mu=c(0, 0), Sigma=matrix(c(1, r, r, 1), nrow=2), empirical=TRUE)
-    #North_pole <- data[, 1]  # standard normal (mu=0, sd=1)
-    #South_pole <- data[, 2] 
-    
-    North_pole <- runif(samples,1,10)
-    South_pole <- proportional_permute(North_pole,.5)+runif(samples,-5,5)
-
-    t_df<-data.frame(nsize=rep(samples,samples),
-                   simulation=rep(sim,samples),
-                                  North_pole,
-                                  South_pole)
-  all_df<-rbind(all_df,t_df)
-  }
-}
-
-ggplot(all_df,aes(x=North_pole,y=South_pole))+
-  geom_point()+
-  geom_smooth(method=lm, se=FALSE)+
-  theme_classic()+
-  facet_wrap(~nsize)+
-  transition_states(
-    simulation,
-    transition_length = 2,
-    state_length = 1
-  )+enter_fade() + 
-  exit_shrink() +
-  ease_aes('sine-in-out')
-  
+```{r 3realcorFour, fig.cap="How correlation behaves as a function of sample-size when there is a true correlation between X and Y variables", echo=F,eval=T}
+knitr::include_graphics(path="gifs/corRealgif-1.gif")
 ```
-
 
 The main takeaway here is that even when there is a positive correlation between two things, you might not be able to see it if your sample size is small. For example, you might get unlucky with the one sample that you measured. Your sample could show a negative correlation, even when the actual correlation is positive! Unfortunately, in the real world we usually only have the sample that we collected, so we always have to wonder if we got lucky or unlucky. Fortunately, if you want to remove luck, all you need to do is collect larger samples. Then you will be much more likely to observe the real pattern, rather the pattern that can be introduced by chance.
 

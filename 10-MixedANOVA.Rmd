@@ -35,7 +35,7 @@ In this section we show you some example patterns so that you can get some pract
 - 1x2 = there was an interaction
 ` ~1x2 = there was not an interaction
 
-```{r}
+```{r 10bar22, fig.cap="8 Example patterns for means for each of the possible kinds of general outcomes in a 2x2 design "}
 p1<- data.frame(IV1 = c("A","A","B","B"),
                 IV2 = c("1","2","1","2"),
                 means = c(5,5,5,5))
@@ -95,7 +95,7 @@ ggplot(all_22s, aes(x=IV1, y=means, group=IV2, fill=IV2))+
 Next, we show you the same thing in line graph form:
 
 
-```{r}
+```{r 10lines22, fig.cap="Line graphs showing 8 possible general outcomes for a 2x2 design"}
 
 ggplot(all_22s, aes(x=IV1, y=means, group=IV2, color=IV2))+
   geom_point()+
@@ -126,7 +126,7 @@ Here are two examples to help you make sense of these issues:
 
 ### A consistent main effect and an interaction
 
-```{r}
+```{r 10mainint, fig.cap="Example means showing a generally consistent main effect along with an interaction"}
 p7<- data.frame(IV1 = c("A","A","B","B"),
                 IV2 = c("1","2","1","2"),
                 means = c(2,12,5,9))
@@ -150,7 +150,7 @@ There is a main effect of IV2: the level 1 means (red points and bar) are both l
 
 ### An inconsistent main effect and an interaction
 
-```{r}
+```{r 10mainintInc, fig.cap="Example data showing how an interaction exists, and a main effect does not, even though the means for the main effect may show a difference"}
 p7<- data.frame(IV1 = c("A","A","B","B"),
                 IV2 = c("1","2","1","2"),
                 means = c(5,10,5,5))
@@ -203,7 +203,7 @@ We might be interested in manipulations that reduce the amount of forgetting tha
 
 We might expect data that looks like this:
 
-```{r}
+```{r 1023design, fig.cap="Example means for a 2x3 factorial design"}
 proportion_correct<- c(.9,.6,.95,.7,.99,.8)
 delay<-rep(c("Immediate","One week"),3)
 repetition<-as.factor(rep(c(1,2,3),each=2))
@@ -225,7 +225,7 @@ Is there an interaction? Yes, there is. Remember, an interaction occurs when the
 
 If there was no interaction, and say, no main effect of repetition, we would see something like this:
 
-```{r}
+```{r 1023one, fig.cap="Example means for a 2x3 design when there is only one main effect"}
 proportion_correct<- c(.9,.6,.9,.6,.9,.6)
 delay<-rep(c("Immediate","One week"),3)
 repetition<-as.factor(rep(c(1,2,3),each=2))
@@ -239,7 +239,7 @@ ggplot(df,aes(x=repetition,y=proportion_correct, color=delay, group=delay))+
 
 What would you say about the interaction if you saw something like this:
 
-```{r}
+```{r 1023int,fig.cap="Example means for a 2x3 design showing another pattern that produces an interaction" }
 proportion_correct<- c(.9,.6,.9,.6,.9,.8)
 delay<-rep(c("Immediate","One week"),3)
 repetition<-as.factor(rep(c(1,2,3),each=2))
@@ -259,7 +259,7 @@ Let's take it up a notch and look at a 2x2x2 design. Here there are three IVs, e
 
 We will use the same example as before but add an additional manipualtion of the kind of material that is to be remembered. For example, we could present words during an encoding phase either visually or spoken (auditory) over headphones.
 
-```{r}
+```{r 10222, fig.cap="Example means from a 2x2x2 design with no three-way interaction"}
 proportion_correct<- c(.9,.6,.9,.8,
                        .9,.6,.9,.8)
 delay<-as.factor(rep(c("Immediate","One week"),4))
@@ -278,7 +278,7 @@ Now we have two panels one for auditory and one for visual. You can think of the
 
 What is a three-way interaction anyway? That would occur if there was a difference between the 2x2 interactions. For example, consider the next pattern of results.
 
-```{r}
+```{r 10222int, fig.cap="Example means from a 2x2x2 design with a three-way interaction"}
 proportion_correct<- c(.9,.6,.9,.8,
                        .9,.8,.9,.5)
 delay<-as.factor(rep(c("Immediate","One week"),4))

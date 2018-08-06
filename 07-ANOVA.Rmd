@@ -272,7 +272,7 @@ The only catch is that our magic pill does NOTHING AT ALL. The fake people in ou
 
 Here are some more details for the experiment. Each group will have 10 different subjects, so there will be a total of 30 subjects. We are going to run this experiment 10,000 times. Each time drawing numbers randomly from the very same normal distribution. We are going to calculate $F$ from our sample data every time, and then we are going to draw the histogram of F-values. This will show us the sampling distribution of $F$ for our situation. Let's do that and see what it looks like:
 
-```{r, cache=FALSE, echo=FALSE}
+```{r 7fnull, fig.cap="A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 F values, one for each simulation. These are values that F can take in this situation. All of these F-values were produced by random sampling error", cache=FALSE, echo=FALSE}
 library(ggplot2)
 
 save_F<-length(10000)
@@ -313,7 +313,7 @@ We can use the sampling distribution of the F (for the null) to make decisions a
 
 Let's do that. I've drawn the line for the critical value onto the histogram:
 
-```{r}
+```{r 7criticalF, fig.cap="The critical value for F where 5% of all F values lie beyond this point"}
 
 ggplot(plot_df, aes(x=save_F))+
   geom_histogram(color="white", bins=100)+
@@ -370,7 +370,7 @@ We ran 10,000 experiments just before, and we didn't even once look at the group
 
 
 
-```{r me, fig.cap="Different patterns of group means under the null (all scores for each group sampled from the same distribution)",eval=TRUE, cache=FALSE}
+```{r 7manyDiffs, fig.cap="Different patterns of group means under the null (all scores for each group sampled from the same distribution)",eval=TRUE, cache=FALSE}
 #library(dplyr)
 #library(ggplot2)
 
@@ -389,9 +389,9 @@ for(i in 1:10) {
 all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df2 <- all_df %>%
-            group_by(simulations,pill_group) %>%
-            summarize(group_means = mean(smartness),
-                      group_SE= sd(smartness)/sqrt(length(smartness)) )
+              dplyr::group_by(simulations,pill_group) %>%
+              dplyr::summarise(group_means = mean(smartness),
+                        group_SE= sd(smartness)/sqrt(length(smartness)) )
 
 #print(plot_df2[1:10,])
 
@@ -401,7 +401,7 @@ ggplot(data=plot_df2, aes(x=pill_group,y=group_means, color=simulations))+
   theme_classic()+
   ggtitle("Sample means for each pill group 10 simulated experiments")+
   ylab("Mean Smartness")+
-  facet_wrap(~ simulations)
+  facet_wrap(~simulations)
 
 ```
 
@@ -421,7 +421,7 @@ For most of the simulations the error bars are all overlapping, this suggests vi
 Let's look at the exact same graph as above, but this time use bars to visually illustrate the means, instead of dots. We'll re-do our simulation of 10 experiments, so the pattern will be a little bit different:
 
 
-```{r me2, fig.cap="Different patterns of group means under the null (all scores for each group sampled from the same distribution)",eval=TRUE, cache=FALSE}
+```{r 7manyDiffsBar, fig.cap="Different patterns of group means under the null (all scores for each group sampled from the same distribution)",eval=TRUE, cache=FALSE}
 
 all_df <- data.frame()
 
@@ -436,8 +436,8 @@ for(i in 1:10) {
 all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df2 <- all_df %>%
-            group_by(simulations,pill_group) %>%
-            summarize(group_means = mean(smartness),
+            dplyr::group_by(simulations,pill_group) %>%
+            dplyr::summarize(group_means = mean(smartness),
                       group_SE= sd(smartness)/sqrt(length(smartness)) )
 
 ggplot(plot_df2, aes(x=pill_group,y=group_means, fill=simulations))+
@@ -462,7 +462,7 @@ We are now giving you some visual experience looking at what means look like fro
 
 What we are going to do now is similar to what we did before. Except this time we are going to look at 10 simulated experiments, where all of the F values were less than 1. All of these F values would also be associated with fairly large p-values. When F is less than one, we would not reject the hypothesis of no differences. So, when we look at patterns of means when F is less than 1, we should see mostly the same means, and no big differences.
 
-```{r me3, fig.cap="Different patterns of group means under the null (sampled from same distribution) when F is less than 1",eval=TRUE, cache=FALSE}
+```{r 7flesshthanone, fig.cap="Different patterns of group means under the null (sampled from same distribution) when F is less than 1",eval=TRUE, cache=FALSE}
 
 all_df<-data.frame()
 counter<-0
@@ -485,8 +485,8 @@ for(i in 1:100){
 all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df <- all_df %>%
-            group_by(simulations,pill_group) %>%
-            summarise(means=mean(smartness),
+            dplyr::group_by(simulations,pill_group) %>%
+            dplyr::summarise(means=mean(smartness),
                       SEs=sd(smartness)/sqrt(length(smartness)))
 
 ggplot(plot_df,aes(x=pill_group,y=means, fill=simulations))+
@@ -511,7 +511,7 @@ We see here that all the bars aren't perfectly flat, that's OK. What's more impo
 Earlier we found that the critical value for F in our situation was 3.35, this was the location on the F distribution where only 5% of Fs were 3.35 or greater. We would reject the hypothesis of no differences whenever F was greater than 3.35. In this case, whenever we did that, we would be making a type I error. That is because we are simulating the distribution of no differences (remember all of our sample means are coming from the exact same distribution). So, now we can take a look at what type I errors look like. In other words, we can run some simulations and look at the pattern in the means, only when F happens to be 3.35 or greater (this only happens 5% of the time, so we might have to let the computer simulate for a while). Let's see what that looks like:
 
 
-```{r me4, fig.cap="Different patterns of group means under the null when F is above critical value (these are all type I Errors)",eval=TRUE, cache=FALSE}
+```{r 7sigdiffs, fig.cap="Different patterns of group means under the null when F is above critical value (these are all type I Errors)",eval=TRUE, cache=FALSE}
 
 all_df<-data.frame()
 counter<-0
@@ -534,8 +534,8 @@ for(i in 1:1000){
 all_df$simulations  <- as.factor(all_df$simulations)
 
 plot_df <- all_df %>%
-            group_by(simulations,pill_group) %>%
-            summarise(means=mean(smartness),
+            dplyr::group_by(simulations,pill_group) %>%
+            dplyr::summarise(means=mean(smartness),
                       SEs=sd(smartness)/sqrt(length(smartness)))
 
 ggplot(plot_df,aes(x=pill_group,y=means, fill=simulations))+
@@ -577,7 +577,7 @@ For reasons we elaborate on in the lab, the researchers hypothesized that the Re
 
 Let's look at the findings. Note you will learn how to do all of these steps in the lab. For now, we just show the findings and the ANOVA table. Then we walk through how to interpret it.
 
-```{r tetrisData, fig.cap="help again",eval=TRUE, cache=FALSE}
+```{r 7tetrisData, fig.cap="Mean number of intrusive memories per week as a function of experimental treatments",eval=TRUE, cache=FALSE}
 library(data.table)
 
 all_data <- fread("data/Jamesetal2015Experiment2.csv")
@@ -590,8 +590,8 @@ levels(all_data$Condition) <- c("Control",
 
 # get means and SEs
 descriptive_df <- all_data %>% 
-                    group_by(Condition) %>% 
-                    summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
+                    dplyr::group_by(Condition) %>% 
+                    dplyr::summarise(means= mean(Days_One_to_Seven_Number_of_Intrusions),
                               SEs = sd(Days_One_to_Seven_Number_of_Intrusions)/sqrt(length(Days_One_to_Seven_Number_of_Intrusions)))
 
 # Make the plot

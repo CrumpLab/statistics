@@ -104,7 +104,7 @@ The idea is quite simple. Let's say we're talking about IQ scores. To a psycholo
 .
 
 ```{r IQdist, fig.cap="The population distribution of IQ scores (panel a) and two samples drawn randomly from it. In panel b we have a sample of 100 observations, and panel c we have a sample of 10,000 observations.", echo=FALSE,dev='png'}
-knitr::include_graphics("navarro_img/estimation/IQdist.pdf")
+knitr::include_graphics("figures/navIQ.png")
 ```
 
 IQ tests are designed so that the average IQ is 100, the standard deviation of IQ scores is 15, and the distribution of IQ scores is normal. These values are referred to as the **population parameters** because they are characteristics of the entire population. That is, we say that the population mean $\mu$ is 100, and the population standard deviation $\sigma$ is 15.
@@ -176,7 +176,7 @@ Question for yourself: What do you think the sampling distribution of the sample
 
 Let's do those four things. We already know about the uniform distribution. So, let's use that for fun. Remember, it looks like this if we are sampling from the set of integers from 1 to 10:
 
-```{r,echo=F}
+```{r 4Unif, fig.cap="A uniform distribution illustrating the probabilites of sampling the numbers 1 to 10. In a uniform distribution, all numbers have an equal probability of being sampled, so the line is flat indicating all numbers have the same probability",echo=F}
 library(ggplot2)
 
 df<-data.frame(a=1:10,b=seq(.1,1,.1))
@@ -195,7 +195,7 @@ ggplot(df,aes(x=a,y=b))+
 
 OK, now let's take a bunch of samples from that distribution. We will set our sample-size to 20. It's easier to see how the sample mean behaves in a movie. Each histogram shows a new sample. The red line shows where the mean of the sample is. The samples are all very different from each other, but the red line doesn't move around very much, it always stays near the middle. However, the red line does move around a little bit, and this variance is what we call the sampling distribution of the sample mean.
 
-```{r, echo=F,eval=T}
+```{r 4sample20unif, fig.cap="Animiation showing histograms for different samples of size 20 from the uniform distribution. The red line shows the mean of each sample", echo=F,eval=T}
 knitr::include_graphics(path="gifs/sampleHistUnif-1.gif")
 ```
 
@@ -230,7 +230,7 @@ First question. Are the sample means all the same? The answer is no. They are al
 
 Second question. What should we do with the means of our samples? Well, how about we collect them them all, and then plot a histogram of them. This would allow us to see what the distribution of the sample means looks like. The next histogram is just this. Except, rather than  taking 10 samples, we will take 10,000 samples. For each of them we will compute the means. So, we will have 10,000 means. This is the histogram of the sample means:
 
-```{r, echo=F}
+```{r 4unifmany, fig.cap="A histogram showing the sample means for 10,000 samples, each size 20, from the uniform distribution of numbers from 1 to 10. The expected mean is 5.5, and the histogram is centered on 5.5. The mean of each sample is not always 5.5 because of sampling error or chance", echo=F}
 a<-round(runif(20*10000,1,10))
 df<-data.frame(a,sample=rep(1:10000,each=20))
 df2<-aggregate(a~sample,df,mean)
@@ -260,7 +260,7 @@ One thing to keep in mind when thinking about sampling distributions is that **a
 
 Just for fun here are some different sampling distributions for different statistics. We will take a normal distribution with mean = 100, and standard deviation =20. Then, we'll take lots of sample with n = 50 (50 observations per sample). We'll save all of the sample statistics, then plot their histograms. Let's do it:
 
-```{r}
+```{r 4samplestats, fig.cap="Each panel shows a histogram of a different sampling statistic"}
 all_df<-data.frame()
 for(i in 1:10000){
   sample<-rnorm(50,100,20)
@@ -305,7 +305,7 @@ Let's give ourselves a nice movie to see everything in action. We're going to sa
 
 The new bits are the blue bars and the blue lines. The blue bars represent the sampling distribution of the sample mean. For example, in the panel for sample-size 10, we see a bunch of blue bars. This is a histogram of 10 sample means, taken from 10 samples of size 10. In the 50 panel, we see a histogram of 50 sample means, taken from 50 samples of size 50, and so on. The blue line in each panel is the mean of the sample means ("aaagh, it's a mean of means", yes it is).
 
-```{r, echo=F,eval=T}
+```{r 4samplingmean, fig.cap="Animation of samples (grey histogram shows frequency counts of data in each sample), and the sampling distribution of the mean (histogram of the sampling means for many samples). Each sample is taken from the normal distribution shown in red. The moving red line is the mean of an individual sample. The blue line is the mean of the blue histogram, which represents the sampling distribution of the mean for many samples",echo=F,eval=T}
 knitr::include_graphics(path="gifs/sampleDistNormal-1.gif")
 ```
 
@@ -366,7 +366,7 @@ Okay, so that's one part of the story. However, there's something we've been glo
 
 To see the central limit theorem in action, we are going to look at some histograms of sample means different kinds of distributions. It is very important to recognize that you are looking at distributions of sample means, not distributions of individual samples! Here we go, starting with sampling from a normal distribution. The red line is the distribution, the blue bars are the histogram for the sample means. They both look normal!
 
-```{r}
+```{r 4 sampledistmeannorm, fig.cap="Comparison of two normal distributions, and histograms for the sampling distribution of the mean for different samples-sizes. The range  of sampling distribution of the mean shrinks as sample-size increases"}
 
 get_sampling_means<-function(m,sd,s_size,iter){
   save_means<-length(iter)
@@ -408,7 +408,7 @@ ggplot(all_df, aes(x=sample))+
 
 Let's do it again. This time we sample from a flat uniform distribution. Again, we see that the distribution of the sample means is not flat, it looks like a normal distribution.
 
-```{r}
+```{r 4samplemeanunif, fig.cap="Illustration that the shape of the sampling distribution of the mean is normal, even when the samples come from a non-normal (uniform in this case) distribution"}
 
 get_sampling_means<-function(mn,mx,s_size,iter){
   save_means<-length(iter)
@@ -439,14 +439,14 @@ ggplot(all_df, aes(x=sample))+
   geom_histogram(aes(x=sample_means,y=(..density..)/max(..density..)),fill="blue",color="white",alpha=.5,bins=75)+
   geom_hline(yintercept=.1,color="red")+
   facet_wrap(~sample_size)+xlim(0,1)+
-  theme_classic()+ggtitle("Sampling distribution of mean \n for Normal Distribution")+ylab("Rough likelihoods")+
+  theme_classic()+ggtitle("Sampling distribution of mean \n for samples taken from Uniform Distribution")+ylab("Rough likelihoods")+
   xlab("value")
 
 ```
 
 One more time with an exponential distribution. Even though way more of the numbers should be smaller than bigger, then sampling distribution of the mean again does not look the red line. Instead, it looks more normal-ish. That's the central limit theorem. It just works like that.
 
-```{r}
+```{r 4samplemeanExp, fig.cap="Illustration that the shape of the sampling distribution of the mean is normal, even when the samples come from a non-normal (exponential in this case) distribution"}
 
 get_sampling_means<-function(s_size,r,iter){
   save_means<-length(iter)
@@ -481,7 +481,7 @@ ggplot(all_df, aes(x=sample))+
                 col = 'red')+
   #geom_vline(aes(xintercept=sampling_mean,frame=sims),color="blue")+
   facet_wrap(~sample_size)+xlim(0,1)+
-  theme_classic()+ggtitle("Sampling distribution of mean \n for Normal Distribution")+ylab("Rough likelihoods")+
+  theme_classic()+ggtitle("Sampling distribution of mean \n for samples from exponential Distribution")+ylab("Rough likelihoods")+
   xlab("value")
 
 ```
@@ -682,59 +682,6 @@ Yet, before we stressed the fact that we don't actually **know** the true popula
 
 When we use the $t$ distribution instead of the normal distribution, we get bigger numbers, indicating that we have more uncertainty. And why do we have that extra uncertainty? Well, because our estimate of the population standard deviation $\hat\sigma$ might be wrong! If it's wrong, it implies that we're a bit less sure about what our sampling distribution of the mean actually looks like... and this uncertainty ends up getting reflected in a wider confidence interval.
 
-<!--
-
-The hardest thing about confidence intervals is understanding what they **mean**. Whenever people first encounter confidence intervals, the first instinct is almost always to say that "there is a 95% probabaility that the true mean lies inside the confidence interval". It's simple, and it seems to capture the common sense idea of what it means to say that I am "95% confident". Unfortunately, it's not quite right. The intuitive definition relies very heavily on your own personal **beliefs** about the value of the population mean. I say that I am 95% confident because those are my beliefs. In everyday life that's perfectly okay, but if you remember back to Section [sec:probmeaning], you'll notice that talking about personal belief and confidence is a Bayesian idea. Personally (speaking as a Bayesian) I have no problem with the idea that the phrase "95% probability" is allowed to refer to a personal belief. However, confidence intervals are **not** Bayesian tools. Like everything else in this chapter, confidence intervals are **frequentist** tools, and if you are going to use frequentist methods then it's not appropriate to attach a Bayesian interpretation to them. If you use frequentist methods, you must adopt frequentist interpretations!
-
-Okay, so if that's not the right answer, what is? Remember what we said about frequentist probability: the only way we are allowed to make "probability statements" is to talk about a sequence of events, and to count up the frequencies of different kinds of events. From that perspective, the interpretation of a 95% confidence interval must have something to do with replication. Specifically: if we replicated the experiment over and over again and computed a 95% confidence interval for each replication, then 95% of those **intervals** would contain the true mean. More generally, 95% of all confidence intervals constructed using this procedure should contain the true population mean. This idea is illustrated in Figure [fig:cirep], which shows 50 confidence intervals constructed for a "measure 10 IQ scores" experiment (top panel) and another 50 confidence intervals for a "measure 25 IQ scores" experiment (bottom panel). A bit fortuitously, across the 100 replications that I simulated, it turned out that exactly 95 of them contained the true mean.
-
-cc &\
-\
- &
-
-[fig:cirep]
-
-The critical difference here is that the Bayesian claim makes a probability statement about the population mean (i.e., it refers to our uncertainty about the population mean), which is not allowed under the frequentist interpretation of probability because you can't "replicate" a population! In the frequentist claim, the population mean is fixed and no probabilistic claims can be made about it. Confidence intervals, however, are repeatable so we can replicate experiments. Therefore a frequentist is allowed to talk about the probability that the **confidence interval** (a random variable) contains the true mean; but is not allowed to talk about the probability that the **true population mean** (not a repeatable event) falls within the confidence interval.
-
-I know that this seems a little pedantic, but it does matter. It matters because the difference in interpretation leads to a difference in the mathematics. There is a Bayesian alternative to confidence intervals, known as **credible intervals**. In most situations credible intervals are quite similar to confidence intervals, but in other cases they are drastically different. As promised, though, I'll talk more about the Bayesian perspective in Chapter [ch:bayes].
-
-As far as I can tell, the core packages in  don't include a simple function for calculating confidence intervals for the mean. They **do** include a lot of complicated, extremely powerful functions that can be used to calculate confidence intervals associated with lots of different things, such as the **confint()** function that we'll use in Chapter [ch:regression]. But I figure that when you're first learning statistics, it might be useful to start with something simpler. As a consequence, the **lsr** package includes a function called **ciMean()** which you can use to calculate your confidence intervals. There are two arguments that you might want to specify:
-
-Hopefully that's fairly clear.
-
--->
-
-### Looking at confidence intervals
-
-<!---
-
-[fig:bargraph.CI]
-
-[fig:lineplot.CI]
-
-[fig:plotmeans]
-
-There's several different ways you can draw graphs that show confidence intervals as error bars. I'll show three versions here, but this certainly doesn't exhaust the possibilities. In doing so, what I'm assuming is that you want to draw is a plot showing the means and confidence intervals for one variable, broken down by different levels of a second variable. For instance, in our **afl** data that we discussed earlier, we might be interested in plotting the average **attendance** by **year**. I'll do this using three different functions, **bargraph.CI()**, **lineplot.CI()** (both of which are in the **sciplot** package), and **plotmeans()** (which is in the **gplots**) package. Assuming that you've installed these packages on your system (see Section [sec:packageinstall] if you've forgotten how to do this), you'll need to load them. You'll also need to load the **lsr** package, because we'll make use of the **ciMean()** function to actually calculate the confidence intervals
-
-\> @usrlibrary( sciplot ) \# bargraph.CI() and lineplot.CI() functions \> @usrlibrary( gplots ) \# plotmeans() function \> @usrlibrary( lsr ) \# ciMean() function
-
-Here's how to plot the means and confidence intervals drawn using **bargraph.CI()**.
-
-\> @usrbargraph.CI( x.factor = year, \# grouping variable + @usr response = attendance,  \# outcome variable + @usr data = afl,  \# data frame with the variables + @usr ci.fun= ciMean, \# name of the function to calculate CIs + @usr xlab = "Year",  \# x-axis label + @usr ylab = "Average Attendance" \# y-axis label + @usr)
-
-This produces the output shown in Figure [fig:bargraph.CI]. We can use the same arguments when calling the **lineplot.CI()** function:
-
-\> @usrlineplot.CI( x.factor = year, \# grouping variable + @usr response = attendance,  \# outcome variable + @usr data = afl,  \# data frame with the variables + @usr ci.fun= ciMean, \# name of the function to calculate CIs + @usr xlab = "Year",  \# x-axis label + @usr ylab = "Average Attendance" \# y-axis label + @usr)
-
-And the output for this command is shown in Figure [fig:lineplot.CI]. Finally, here's how you would do it using **plotmeans()**:
-
-\> @usrplotmeans( formula = attendance   year, \# outcome   group + @usr data = afl,  \# data frame with the variables + @usr n.label = FALSE \# don't show the sample sizes + @usr)
-
-This is shown in Figure [fig:plotmeans].
-
---->
-
-
 ## Summary
 
 In this chapter I've covered two main topics. The first half of the chapter talks about sampling theory, and the second half talks about how we can use sampling theory to construct estimates of the population parameters. The section breakdown looks like this:
@@ -745,7 +692,7 @@ In this chapter I've covered two main topics. The first half of the chapter talk
 
 -   Estimating means and standard deviations
 
--   Estimating a confidence interval
+- confidence intervals
 
 As always, there's a lot of topics related to sampling and estimation that aren't covered in this chapter, but for an introductory psychology class this is fairly comprehensive I think. For most applied researchers you won't need much more theory than this. One big question that I haven't touched on in this chapter is what you do when you don't have a simple random sample. There is a lot of statistical theory you can draw on to handle this situation, but it's well beyond the scope of this book.
 

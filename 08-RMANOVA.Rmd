@@ -84,7 +84,7 @@ Whoa, hold on a minute. Haven't we switched back to talking about a **between-su
 
 OK. So why did we introduce this new confusing way of talking about things? Why can't we just use $SS_\text{Error}$ to talk about this instead of $SS_\text{Within}$, which you might (we do) find confusing. We're getting there, but perhaps a picture will help to clear things up.
 
-```{r}
+```{r 8splitSS, fig.cap="Illustration showing how the total sums of squares are partitioned differently for a between versus repeated-measures design"}
 knitr::include_graphics("figures/SS_ANOVA.png")
 ```
 
@@ -98,7 +98,7 @@ The critical feature of the repeated-measures ANOVA, is that the $SS_\text{Error
 
 To make this more clear, we made another figure:
 
-```{r}
+```{r 8moresplit, fig.cap="Close-up showing that the Error term is split into two parts in the repeated measures design"}
 knitr::include_graphics("figures/SS_RMANOVA.png")
 ```
 
@@ -108,7 +108,7 @@ As we point out, the $SS_\text{Error (left-over)}$ in the green circle will be a
 
 Now that you are familiar with the concept of an ANOVA table (remember the table from last chapter where we reported all of the parts to calculate the F-value?), we can take a look at the things we need to find out to make the ANOVA table. The figure below presents an abstract for the repeated-measures ANOVA table. It shows us all the thing we need to calculate to get the F-value for our data.
 
-```{r}
+```{r 8rmtable, fig.cap="Equations for computing the ANOVA table for a repeated measures design"}
 knitr::include_graphics("figures/RMANOVA_table.png")
 ```
 
@@ -341,7 +341,7 @@ We will do the following.
 
 We run 1000 simulated experiments for each design. We calculate the F for each experiment, for both the between and repeated measures designs. Here are the two sampling distributions of F for both designs.
 
-```{r}
+```{r 8critcompare, fig.cap="Comparing critical F values for a between and repeated measures design"}
 
 b_f<-length(1000)
 w_f<-length(1000)
@@ -393,7 +393,7 @@ With a real difference in the means, we should now reject the hypothesis of no d
 To look at this we conduct 1000 experiments for each design, we conduct the ANOVA, then we save the p-value we obtained for each experiment. This is like asking how many times will we find a p-value less than 0.05, when there is a real difference (in this case an average of 5) between some of the means. We will plot histograms of the p-values:
 
 
-```{r}
+```{r 8fpvaluedist, fig.cap="p-value distributions for a between and within-subjects ANOVA"}
 
 b_p<-length(1000)
 w_p<-length(1000)
@@ -438,7 +438,7 @@ However, remember that the between-subjects design uses 30 subjects, and the rep
 
 What do you think would happen if we ran 30 subjects in the repeated measures design? Let's find out. Here we redo the above, but this time only for the repeated measures design. We increase N from 10 to 30.
 
-```{r}
+```{r 8pdistwithin, fig.cap="p-value distribution for within-subjects design with n= 30"}
 
 b_p<-length(1000)
 w_p<-length(1000)
@@ -474,7 +474,7 @@ Prior research shown that people type words way faster than than random letters,
 
 In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in English (Bigram Condition, QUENP), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let's take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.
 
-```{r, cache=FALSE}
+```{r 8behmcrump, fig.cap="Results from Behmer & Crump (2017)", cache=FALSE}
 library(data.table)
 
 
@@ -487,8 +487,8 @@ levels(exp1_data$Block) <- c("Visible keyboard","Covered Keyboard")
 
 subject_means <- exp1_data %>%
                  filter(Order==1, Correct==1, PureRTs<5000) %>%
-                 group_by(Subject, Block, Stimulus) %>%
-                 summarise(mean_rt = mean(PureRTs))
+                 dplyr::group_by(Subject, Block, Stimulus) %>%
+                 dplyr::summarise(mean_rt = mean(PureRTs))
 
 subject_means$Subject<-as.factor(subject_means$Subject)
 subject_means$Block<-as.factor(subject_means$Block)
@@ -498,8 +498,8 @@ subject_means$Stimulus<-as.factor(subject_means$Stimulus)
 
 plot_means <- subject_means %>%
               arrange(match(Stimulus,c("Normal","Bigrams","Random"))) %>%
-              group_by(Block, Stimulus) %>%
-              summarise(means = mean(mean_rt),
+              dplyr::group_by(Block, Stimulus) %>%
+              dplyr::summarise(means = mean(mean_rt),
                         SEs = sd(mean_rt)/sqrt(length(mean_rt)))
 
 ## plot the condition means

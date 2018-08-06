@@ -48,7 +48,7 @@ OK, let's stop here for the moment. The first two designs both had one IV. The t
 
 We've just finished talking about a **2x2 Factorial design**. We said this means the IVs are crossed. To illustrate this, take a look at the following table. We show an abstract version and a concrete version using time of day and caffeine as the two IVs, each with two levels in the design:
 
-```{r}
+```{r 9designs, fig.cap="Structure of 2x2 factorial designs"}
 knitr::include_graphics("figures/2x2Design.png")
 ```
 
@@ -78,7 +78,7 @@ We use a notation system to refer to these designs. The rules for notation are a
 
 Just for fun, let's illustrate a 2x3 design using the same kinds of tables we looked at before for the 2x2 design. 
 
-```{r}
+```{r 923design, fig.cap="Structure of 2x3 factorial design"}
 knitr::include_graphics("figures/2x3Design.png")
 ```
 
@@ -113,7 +113,7 @@ Here is an example. We will stick with this one example for a while, so pay atte
 
 Let's do this with another fake example. First, we pick a task. It's called **spot the difference**. You may have played this game before. You look at two pictures side-by-side, and then you locate as many differences as you can find. here is an example:
 
-```{r}
+```{r 9spotdiff, fig.cap="Spot the differences between the two images"}
 knitr::include_graphics("figures/spot_dif.png")
 ```
 
@@ -135,7 +135,7 @@ If our distraction manipulation is super-distracting, then what should we expect
 
 If our manipulation works, then we should find that people find more differences when they are not distracted, and less differences when they are distracted. For example, the data might look something like this:
 
-```{r}
+```{r 9meandiff, fig.cap="Example data from pretend experiment showing number of differences spotted in a distraction versus no distraction condition"}
 df <- data.frame(Distraction = c("No distraction","Distraction"),
                  Mean_diffs = c(10,5))
 ggplot(df, aes(x=Distraction, y=Mean_diffs))+
@@ -164,7 +164,7 @@ We are going to add a second IV to our task. The second IV will manipulate rewar
 The question we are now asking is: Will manipulating reward cause a change in the size of the distraction effect. We could predict that people receiving rewards will have a smaller distraction effect than people not receiving rewards. If that happened, the data would look something like this:
 
 
-```{r}
+```{r 9reward, fig.cap="Example data showing how the distraction effect could be modulated by a reward manipulation. Distraction condition plotted on the x-axis, makes it more difficult to compare the changes in the distraction effect between reward conditions"}
 df <- data.frame(Distraction = c("No distraction","Distraction","No distraction","Distraction"),
                  Mean_diffs = c(10,5,11,9),
                  Reward = rep(c("No Reward","Reward"),each=2))
@@ -179,7 +179,7 @@ ggplot(df, aes(x=Distraction, y=Mean_diffs, group=Reward, fill=Reward))+
 
 Now, I've just shown you a new kind of graph. I apologize right now for showing this to you first. It's more unhelpful than the next graph. What I did was keep the x-axis the same as before (to be consistent). So, we have distraction vs. no distraction on the x-axis. In the distraction condition, there are means for spot-the-difference performance in the No-reward (red), and Reward (aqua) conditions. The same goes for the No-distraction condition, a red and an aqua bar for the No-reward and Reward conditions. We can try to interpret this graph, but the next graph plots the same data in a different way, which makes it easier to see what we are talking about.
 
-```{r}
+```{r 9rewardB, fig.cap="Example data showing how the distraction effect could be modulated by a reward manipulation. Reward condition plotted on the x-axis, makes it easier to compare the changes in the distraction effect between reward conditions"}
 
 ggplot(df, aes(x=Reward, y=Mean_diffs, group=Distraction, fill=Distraction))+
   geom_bar(stat="identity", position="dodge")+
@@ -204,7 +204,7 @@ This is our description of why factorial designs are so useful. They allow resea
 
 In our example above we showed you two bar graphs of the very same means for our 2x2 design. Even though the graphs plot identical means, they look different, so they are more or less easy to interpret by looking at them. Results from 2x2 designs are also often plotted with line graphs. Those look different too. Here are four different graphs, using bars and lines to plot the very same means from before. We are showing you this so that you realize **how you graph your data** matters, and it makes it more or less easy for people to understand the results. Also, how the data is plotted matters for what you need to look at to interpret the results. 
 
-```{r}
+```{r 9visualdiffs, fig.cap="The same example means plotted using bar graphs or line graphs, and with Distraction or Reward on the x-axis"}
 
 b1 <- ggplot(df, aes(x=Reward, y=Mean_diffs, group=Distraction, fill=Distraction))+
   geom_bar(stat="identity", position="dodge")+
@@ -249,7 +249,7 @@ When you conduct a design with more than one IV, you get more means to look at. 
 
 What kinds of new things are we talking about? Let's keep going with our distraction effect experiment. We have the first IV where we manipulated distraction. So, we could find the overall means in spot-the difference for the distraction vs. no-distraction conditions (that's two means). The second IV was reward. We could find the overall means in spot-the-difference performance for the reward vs. no-reward conditions (that's two more means). We could do what we already did, and look that the means for each combination, that is the mean for distraction/reward, distraction/no-reward, no-distraction/reward, and no-distraction/no-reward (that's four more means, if you're counting). There's even more. We could look at the mean distraction effect (the difference between distraction and no-distraction) for the reward condition, and the mean distraction effect for the no-reward condition (that's two more). I hope you see here that there are a lot of means to look. And they are all different means. Let's look at all of them together in one graph with four panels.
 
-```{r}
+```{r 9alleffects, fig.cap="Each panel shows the mean for different effects in the design"}
 
 df1 <- data.frame(Distraction = c("No distraction","Distraction","No distraction","Distraction"),
                  Mean_diffs = c(10,5,11,9),
@@ -961,7 +961,7 @@ The paper we look at is called "Stand by your Stroop: Standing up enhances selec
 
 They used a classic test of selective attention, called the Stroop effect. You may already know what the Stroop effect is. In a typical Stroop experiment, subjects name the color of words as fast as they can. The trick is that sometimes the color of the word is the same as the name of the word, and sometimes it is not. Here are some examples:
 
-```{r}
+```{r 9stroop, fig.cap="Exampls of congruent and incongruent Stroop stimuli. The task is to name the color, not the word"}
 knitr::include_graphics("figures/Stroop.png")
 ```
 
@@ -983,7 +983,7 @@ The design of the study was a 2x2 repeated-measures design. The first IV was con
 
 They had subject perform many individual trials responding to single Stroop stimuli, both congruent and incongruent. And they had subjects stand up sometimes and do it, and sit-down sometimes and do it. Here is a graph of what they found:
 
-```{r strp, cache=FALSE}
+```{r 9strp, fig.cap="Means from Rosenbaum et al (2017)",cache=FALSE}
 library(data.table)
 stroop_data<-fread("data/stroop_stand.csv")
 
@@ -1000,8 +1000,8 @@ Subject <- rep(1:50,4)
 stroop_df <- data.frame(Subject,Congruency,Posture,RTs)
 
 plot_df <- stroop_df %>%
-            group_by(Congruency,Posture) %>%
-            summarise(mean_RT = mean(RTs),
+            dplyr::group_by(Congruency,Posture) %>%
+            dplyr::summarise(mean_RT = mean(RTs),
                       SEM = sd(RTs)/sqrt(length(RTs)))
 
 ggplot(plot_df, aes(x=Posture, y=mean_RT, group=Congruency, fill=Congruency))+

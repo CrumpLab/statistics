@@ -125,6 +125,59 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
   ease_aes('sine-in-out')
 ```
 
+### Correlation between X and Y variables that have a true correlation as a function of sample-size
+
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/corRealgif-1.gif")
+```
+
+```{r corRealgif,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+library(MASS)
+r<-.7
+
+proportional_permute<-function(x,prop){
+  indices<-seq(1:length(x))
+  s_indices<-sample(indices)
+  n_shuffle<-round(length(x)*prop)
+  switch<-sample(indices)
+  x[s_indices[1:n_shuffle]]<-x[switch[1:n_shuffle]]
+  return(x)
+}
+
+all_df<-data.frame()
+for(sim in 1:10){
+  for(samples in c(10,50,100,1000)){
+    #data <- mvrnorm(n=samples, mu=c(0, 0), Sigma=matrix(c(1, r, r, 1), nrow=2), empirical=TRUE)
+    #North_pole <- data[, 1]  # standard normal (mu=0, sd=1)
+    #South_pole <- data[, 2] 
+    
+    North_pole <- runif(samples,1,10)
+    South_pole <- proportional_permute(North_pole,.5)+runif(samples,-5,5)
+
+    t_df<-data.frame(nsize=rep(samples,samples),
+                   simulation=rep(sim,samples),
+                                  North_pole,
+                                  South_pole)
+  all_df<-rbind(all_df,t_df)
+  }
+}
+
+ggplot(all_df,aes(x=North_pole,y=South_pole))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  theme_classic()+
+  facet_wrap(~nsize)+
+  transition_states(
+    simulation,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
+
 
 ### Type I errors, sampling random deviates from normal distribution with regression lines
 
@@ -293,7 +346,7 @@ Animation shows histograms for N=20, sampled from a uniform distribution, along 
 knitr::include_graphics(path="gifs/sampleHistUnif-1.gif")
 ```
 
-```{r sampleHistUnifgif,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+```{r sampleHistUnif,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
 a<-round(runif(20*10,1,10))
 df<-data.frame(a,sample=rep(1:10,each=20))
 df2<-aggregate(a~sample,df,mean)
@@ -315,6 +368,34 @@ ggplot(df,aes(x=a, group=sample,frame=sample)) +
   ease_aes('sine-in-out')
 ```
 
+### Sampling from uniform with line showing expected value for each number
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/sampleUnifExpected-1.gif")
+```
+
+```{r sampleUnifExpected,echo=T, fig.path='gifs/', message=F, warning=F, eval=F}
+
+a<-round(runif(20*10,1,10))
+df<-data.frame(a,sample=rep(1:10,each=20))
+
+
+library(gganimate)
+ggplot(df,aes(x=a))+
+  geom_histogram(bins=10, color="white")+
+  theme_classic()+
+  scale_x_continuous(breaks=seq(1,10,1))+
+  geom_hline(yintercept=2)+
+  ggtitle("Small N=20 samples from a uniform distribution")+
+  transition_states(
+    sample,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+```
 
 
 ### Sampling distribution of the mean, Normal population distribution and sample histograms 
