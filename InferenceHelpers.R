@@ -253,3 +253,24 @@ ggplot(all_df,aes(x=scores, y=0, shape=group))+
   
 
 
+### pvalues for 2x2x2
+
+ps<-c()
+for(i in 1:1000){
+IV1<-rep(c("A","B"),each=10)
+IV2<-rep(c("A","B"),10)
+scores<-rnorm(20,0,1)
+df<-data.frame(IV1,IV2, scores)
+
+sum_aov<-summary(aov(scores~IV1*IV2,df))
+all_ps<-sum_aov[[1]]$`Pr(>F)`[1:3]
+
+if(length(all_ps[all_ps<0.05])>0){
+ps<-c(ps,1)
+}
+}
+
+sum(ps)/1000
+
+hist(ps)
+

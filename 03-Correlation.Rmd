@@ -178,7 +178,7 @@ Now, look at the column $XY$. These are the products we get when we multiply the
 
 Now, look at the `Sums` for the XY and AB columns. Not the same. The sum of the XY products is 385, and the sum of the AB products is 220. For this specific set of data, the numbers 385 and 220 are very important. They represent the biggest possible sum of products (385), and the smallest possible sum of products (220). There is no way of re-ordering the numbers 1 to 10, say for X, and the numbers 1 to 10 for Y, that would ever produce larger or smaller numbers. Don't believe me? Check this out:
 
-```{r}
+```{r simsum}
 simulated_sums<-length(0)
 for(sim in 1:1000){
 X<-sample(1:10)

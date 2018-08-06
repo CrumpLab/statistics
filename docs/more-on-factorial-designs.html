@@ -470,15 +470,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-summary"><i class="fa fa-check"></i><b>9.9</b> Factorial summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html"><i class="fa fa-check"></i><b>10</b> Mixed Design ANOVA</a><ul>
-<li class="chapter" data-level="10.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#looking-at-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.1</b> Looking at main effects and interactions</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#x2-designs-1"><i class="fa fa-check"></i><b>10.1.1</b> 2x2 designs</a></li>
+<li class="chapter" data-level="10" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> More On Factorial Designs</a><ul>
+<li class="chapter" data-level="10.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#looking-at-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.1</b> Looking at main effects and interactions</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#x2-designs-1"><i class="fa fa-check"></i><b>10.1.1</b> 2x2 designs</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#interpreting-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.2</b> Interpreting main effects and interactions</a><ul>
-<li class="chapter" data-level="10.2.1" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#a-consistent-main-effect-and-an-interaction"><i class="fa fa-check"></i><b>10.2.1</b> A consistent main effect and an interaction</a></li>
-<li class="chapter" data-level="10.2.2" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#an-inconsistent-main-effect-and-an-interaction"><i class="fa fa-check"></i><b>10.2.2</b> An inconsistent main effect and an interaction</a></li>
+<li class="chapter" data-level="10.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#interpreting-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.2</b> Interpreting main effects and interactions</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#a-consistent-main-effect-and-an-interaction"><i class="fa fa-check"></i><b>10.2.1</b> A consistent main effect and an interaction</a></li>
+<li class="chapter" data-level="10.2.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#an-inconsistent-main-effect-and-an-interaction"><i class="fa fa-check"></i><b>10.2.2</b> An inconsistent main effect and an interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="mixed-design-anova.html"><a href="mixed-design-anova.html#a-general-model"><i class="fa fa-check"></i><b>10.3</b> A general model</a></li>
+<li class="chapter" data-level="10.3" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#mixed-designs"><i class="fa fa-check"></i><b>10.3</b> Mixed Designs</a></li>
+<li class="chapter" data-level="10.4" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#more-complicated-designs"><i class="fa fa-check"></i><b>10.4</b> More complicated designs</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#x3-design"><i class="fa fa-check"></i><b>10.4.1</b> 2x3 design</a></li>
+<li class="chapter" data-level="10.4.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#x2x2-designs"><i class="fa fa-check"></i><b>10.4.2</b> 2x2x2 designs</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html"><i class="fa fa-check"></i><b>11</b> Introduction to linear regression</a><ul>
 <li class="chapter" data-level="11.1" data-path="linRegrForTwoVar.html"><a href="linRegrForTwoVar.html#lineFittingResidualsCorrelation"><i class="fa fa-check"></i><b>11.1</b> Line fitting, residuals, and correlation</a><ul>
@@ -583,11 +587,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="mixed-design-anova" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> Mixed Design ANOVA</h1>
+<div id="more-on-factorial-designs" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> More On Factorial Designs</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.4.4</code></pre>
-<p>We should probably call this chapter “more on factorial designs”, rather than just mixed design ANOVA. We are going to do a couple things in this chapter. The most important thing we do is give you more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA. You already know that you can have more than one IV. And, you know that research designs can be between-subjects or within-subjects (repeated-measures). When you have more than one IV, they can all be between-subjects variables, they can all be within-subject repeated measures, or they can be a mix: say one between-subject variable and one within-subject variable. You can use ANOVA to anlayse all of these kinds of designs. You always get one main effect for each IV, and a number of interactions, or just one, depending on the number of IVs.</p>
+<p>We are going to do a couple things in this chapter. The most important thing we do is give you more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA. You already know that you can have more than one IV. And, you know that research designs can be between-subjects or within-subjects (repeated-measures). When you have more than one IV, they can all be between-subjects variables, they can all be within-subject repeated measures, or they can be a mix: say one between-subject variable and one within-subject variable. You can use ANOVA to anlayse all of these kinds of designs. You always get one main effect for each IV, and a number of interactions, or just one, depending on the number of IVs.</p>
 <div id="looking-at-main-effects-and-interactions" class="section level2">
 <h2><span class="header-section-number">10.1</span> Looking at main effects and interactions</h2>
 <p>Designs with multiple factors are very common. When you read a research article you will often see graphs that show the results from designs with multiple factors. It would be good for you if you were comfortable interpreting the meaning of those results. The skill here is to be able to look at a graph and see the pattern of main effects and interactions. This skill is important, because the patterns in the data can quickly become very complicated looking, especially when there are more than two independent variables, with more than two levels.</p>
@@ -723,15 +727,138 @@ all_22s &lt;-<span class="st"> </span><span class="kw">cbind</span>(all_22s,type
 <p><strong>What does the qualification mean for the main effect</strong>? In this case, we might doubt whether there is a main effect of at all. It could turn out that IV2 does not have a general influence over the DV all of the time, it may only do something in very specific circumstances, in combination with the presence of other factors.</p>
 </div>
 </div>
-<div id="a-general-model" class="section level2">
-<h2><span class="header-section-number">10.3</span> A general model</h2>
-<p>It’s probably time we introduce you to another new concept. This concept has been underyling everything we have been doing so far. It’s called the general linear model, or GLM for short. Don’t worry it’s not that scary. And, right now, we won’t dive off into the deep mind. Instead, we will do a little bit of light GLM, for beginners. The purpose is to give you some idea where the main effects and interaction come from, and when they are there, how they influence the pattern in the means.</p>
-<p>The GLM makes you think about the various things that influence each mean you measure. It’s like thinking that each mean is a little bit of this, and a little bit of that. Here’s a general formula for the means:</p>
-<p>$  =  +  +  +  +  $</p>
-<p>Let’s say you ran an experiment with two IVs, but they did absolutely nothing, and there was no interaction. What would you expect your means to be in each of the four conditions. You would still measure a bunch of scores, but they should all be the same right? If so, then the grand mean of all the scores should be your mean for all of the conditions. The formula would look like this:</p>
-<p>$  =  + 0 + 0 + 0 + $</p>
-<p>Remember there will still be some sampling error, so each mean will be the grand mean, plus or minus some amount of random sampling error.</p>
+<div id="mixed-designs" class="section level2">
+<h2><span class="header-section-number">10.3</span> Mixed Designs</h2>
+<p>Throughout this book we keep reminding you that research designs can take different forms. The manipulations can be between-subjects (different subjects in each group), or within-subjects (everybody contributes data in all conditions). If you have more than one manipulation, you can have a mixed design when one of your IVs is between-subjects and one of the other ones is within-subjects.</p>
+<p>The only “trick” to these designs is to use the appropriate error terms to construct the F-values for each effect. Effects that have a within-subjects repeated measure (IV) use different error terms than effects that only have a between-subject IV. In principle, you could run an ANOVA with any number of IVs, and any of them good be between or within-subjects variables.</p>
+<p>Because this is an introductory textbook, we leave out a full discussion on mixed designs. What we are leaving out are the formulas to construct ANOVA tables that show how to use the correct error terms for each effect. There are many good more advanced textbooks that discuss these issues in much more depth. And, these things can all be Googled. This is a bit of a cop-out on our part, and we may return to fill in this section at some point in the future (or perhaps someone else will add a chapter about this).</p>
+<p>In the lab manual, you will learn how to conduct a mixed design ANOVA using software. Generally speaking, the software takes care of the problem of using the correct error terms to construct the ANOVA table.</p>
+</div>
+<div id="more-complicated-designs" class="section level2">
+<h2><span class="header-section-number">10.4</span> More complicated designs</h2>
+<p>Up until now we have focuse on the simplest case for factorial designs, the 2x2 design, with two IVs, each with 2 levels. It is worth spending some time looking at a few more complicated designs and how to interpret them.</p>
+<div id="x3-design" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> 2x3 design</h3>
+<p>In a 2x3 design there are two IVs. IV1 has two levels, and IV2 has three levels. Typically, there would be one DV. Let’s talk about the main effects and interaction for this design.</p>
+<p>First, let’s make the design concrete. Let’s imagine we are running a memory experiment. We give people some words to remember, and then test them to see how many they can correctly remember. Our DV is proportion correct. We know that people forget things over time. Our first IV will be time of test, immediate vs. 1 week. The time of test IV will produce a forgetting effect. Generally, people will have a higher proportion correct on an immediate test of their memory for things they just saw, compared to testing a week later.</p>
+<p>We might be interested in manipulations that reduce the amount of forgetting that happens over the week. The second IV could be many things. Let’s make it the number of time people got to study the items before the memory test, once, twice or three times. We call IV2 the repetition manipulation.</p>
+<p>We might expect data that looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proportion_correct&lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">95</span>,.<span class="dv">7</span>,.<span class="dv">99</span>,.<span class="dv">8</span>)
+delay&lt;-<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Immediate&quot;</span>,<span class="st">&quot;One week&quot;</span>),<span class="dv">3</span>)
+repetition&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">each=</span><span class="dv">2</span>))
+df&lt;-<span class="kw">data.frame</span>(proportion_correct,delay,repetition)
 
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>repetition,<span class="dt">y=</span>proportion_correct, <span class="dt">color=</span>delay, <span class="dt">group=</span>delay))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_line</span>()+
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>The figure shows some pretend means in all conditions. Let’s talk about the main effects and interaction.</p>
+<p>First, the main effect of delay (time of test) is very obvious, the red line is way above the aqua line. Proportion correct on the memory test is always higher when the memory test is taken immediately compared to after one week.</p>
+<p>Second, the main effect of repetition seems to be clearly present. The more times people saw the items in the memory test (once, twice, or three times), the more they remembered, as measured by increasingly higher proportion correct as a function of number of repetitions.</p>
+<p>Is there an interaction? Yes, there is. Remember, an interaction occurs when the effect of one IV depends on the levels of an another. The delay IV measures the forgetting effect. Does the size of the forgetting effet change across the levels of the repetition variable? Yes it does. With one repetition the forgetting effect is .9-.6 =.4. With two repetitions, the forgetting effect is a little bit smaller, and with three, the repetition is even smaller still. So, the size of the forgetting effect changes as a function of the levels of the repetition IV. There is evidence in the means for an interaction. You would have to conduct an inferential test on the interaction term to see if these differences were likely or unlikely to be due to sampling error.</p>
+<p>If there was no interaction, and say, no main effect of repetition, we would see something like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proportion_correct&lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">6</span>)
+delay&lt;-<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Immediate&quot;</span>,<span class="st">&quot;One week&quot;</span>),<span class="dv">3</span>)
+repetition&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">each=</span><span class="dv">2</span>))
+df&lt;-<span class="kw">data.frame</span>(proportion_correct,delay,repetition)
+
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>repetition,<span class="dt">y=</span>proportion_correct, <span class="dt">color=</span>delay, <span class="dt">group=</span>delay))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_line</span>()+
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>What would you say about the interaction if you saw something like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proportion_correct&lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">8</span>)
+delay&lt;-<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Immediate&quot;</span>,<span class="st">&quot;One week&quot;</span>),<span class="dv">3</span>)
+repetition&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dt">each=</span><span class="dv">2</span>))
+df&lt;-<span class="kw">data.frame</span>(proportion_correct,delay,repetition)
+
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>repetition,<span class="dt">y=</span>proportion_correct, <span class="dt">color=</span>delay, <span class="dt">group=</span>delay))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_line</span>()+
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>The correct answer is that there is evidence in the means for an interaction. Remember, we are measuring the forgetting effect (effect of delay) three times. The forgetting effect is the same for repetition condition 1 and 2, but it is much smaller for repetition condition 3. The size of the forgetting effect depends on the levels of the repetition IV, so here again there is an interaction.</p>
+</div>
+<div id="x2x2-designs" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> 2x2x2 designs</h3>
+<p>Let’s take it up a notch and look at a 2x2x2 design. Here there are three IVs, each with 2 levels each. There are three main effects, three two-way interactions, and one 2-way interaction.</p>
+<p>We will use the same example as before but add an additional manipualtion of the kind of material that is to be remembered. For example, we could present words during an encoding phase either visually or spoken (auditory) over headphones.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proportion_correct&lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">8</span>,
+                       .<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">8</span>)
+delay&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Immediate&quot;</span>,<span class="st">&quot;One week&quot;</span>),<span class="dv">4</span>))
+repetition&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">each=</span><span class="dv">2</span>),<span class="dv">2</span>))
+modality&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;visual&quot;</span>,<span class="st">&quot;auditory&quot;</span>),<span class="dt">each=</span><span class="dv">4</span>))
+df&lt;-<span class="kw">data.frame</span>(proportion_correct,delay,repetition, modality)
+
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>repetition,<span class="dt">y=</span>proportion_correct, <span class="dt">color=</span>delay, <span class="dt">group=</span>delay))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_line</span>()+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">facet_wrap</span>(~modality)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Now we have two panels one for auditory and one for visual. You can think of the 2x2x2, as two 2x2s, one for auditory and one for visual. What’s the take home from this example data? We can see that the graphs for auditory and visual are the same. They both show a 2x2 interaction between delay and repetition. People forgot more things across the week when they studied the material once, compared to when they studied the material twice. There is a main effect of delay, there is a main effect of repetition, there is no main effect of modality, and there is no three-way interaction.</p>
+<p>What is a three-way interaction anyway? That would occur if there was a difference between the 2x2 interactions. For example, consider the next pattern of results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proportion_correct&lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">9</span>,.<span class="dv">6</span>,.<span class="dv">9</span>,.<span class="dv">8</span>,
+                       .<span class="dv">9</span>,.<span class="dv">8</span>,.<span class="dv">9</span>,.<span class="dv">5</span>)
+delay&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Immediate&quot;</span>,<span class="st">&quot;One week&quot;</span>),<span class="dv">4</span>))
+repetition&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">each=</span><span class="dv">2</span>),<span class="dv">2</span>))
+modality&lt;-<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;visual&quot;</span>,<span class="st">&quot;auditory&quot;</span>),<span class="dt">each=</span><span class="dv">4</span>))
+df&lt;-<span class="kw">data.frame</span>(proportion_correct,delay,repetition, modality)
+
+<span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x=</span>repetition,<span class="dt">y=</span>proportion_correct, <span class="dt">color=</span>delay, <span class="dt">group=</span>delay))+
+<span class="st">  </span><span class="kw">geom_point</span>()+
+<span class="st">  </span><span class="kw">geom_line</span>()+
+<span class="st">  </span><span class="kw">theme_classic</span>()+
+<span class="st">  </span><span class="kw">facet_wrap</span>(~modality)</code></pre></div>
+<p><img src="statistics_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>We are looking at a 3-way interaction between modality, repetition and delay. What is going on here? These results would be very strange, here is an interpetation.</p>
+<p>For auditory stimuli, we see that there is a small forgetting effect when people studied things once, but the forgetting effect gets bigger if they studies things twice. A pattern like this would generally be very strange, usually people would do better if they got to review the material twice.</p>
+<p>The visual stimuli show a different pattern. Here, the forgetting effect is large when studying visual things once, and it get’s smaller when studying visual things twice.</p>
+<p>We see that there is an interaction between delay (the forgetting effect) and repetition for the auditory stimuli; BUT, this interaction effect is <strong>different</strong> from the interaction effect we see for the visual stimuli. The 2x2 interaction for the auditory stimuli is <strong>different</strong> from the 2x2 interaction for the visual stimuli. In other words, there is an interaction between the two interactions, as a result there is a three-way interaction, called a 2x2x2 interaction.</p>
+<p>We will note a general pattern here. Imagine you had a 2x2x2x2 design. That would have a 4-way interaction. What would that mean? It would mean that the pattern of the 2x2x2 interaction changes across the levels of the 4th IV. If two three-way interactions are different, then there is a four-way interaction.</p>
+<!--
+## A general model
+
+It's probably time we introduce you to another new concept. This concept has been underyling everything we have been doing so far. It's called the general linear model, or GLM for short. Don't worry it's not that scary. And, right now, we won't dive off into the deep end. Instead, we will do a little bit of light GLM, for beginners. The purpose is to give you some idea where the main effects and interaction come from, and when they are there, how they influence the pattern in the means.
+
+The GLM makes you think about the various things that influence each mean you measure. It's the idea that any mean is the sum of it's parts: a little bit of this, a little bit of that. Here's a general formula for the composition of a mean in a 2x2 design:
+
+$ \text{A mean} = \text{Grand Mean} + \text{IV1 effect} + \text{IV2 effect} + \text{Interaction effect} + \text{error} $
+
+Let's say you ran an experiment with two IVs, but they did absolutely nothing, and there was no interaction. What would you expect your means to be in each of the four conditions. You would still measure a bunch of scores, but they should all be the same right? If so, then the grand mean of all the scores should be your mean for all of the conditions. The formula would look like this:
+
+$ \text{Each mean} = \text{Grand Mean} + 0 + 0 + 0 + \text{error}$
+
+Remember there will still be some sampling error, so each mean will be the grand mean, plus or minus some amount of random sampling error.
+
+How about if IV1 has an effect of +10. That is, the means in level 1 of IV1 are +10 more than the means of level 2 of IV1. Let's say that is the only thing going on. Then we would expect the following:
+
+$ \text{IV1: Level 1 mean} = \text{Grand Mean} + 10 + 0 + 0 + \text{error}$
+
+$ \text{IV1: Level 2 mean} = \text{Grand Mean} + 0 + 0 + 0 + \text{error}$
+
+Or, we could write it this way to make the effect of IV1 balanced about the Grand mean:
+
+$ \text{IV1: Level 1 mean} = \text{Grand Mean} + 5 + 0 + 0 + \text{error}$
+
+$ \text{IV1: Level 2 mean} = \text{Grand Mean} + -5 + 0 + 0 + \text{error}$
+
+
+```r
+# 2x2 simulator
+
+
+IV1 <- c(4,7)
+IV2 <- c(5, 5)
+interaction <-c(0,0,0,0)
+```
+
+
+-->
+
+</div>
 </div>
 </div>
             </section>
