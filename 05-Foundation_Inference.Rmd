@@ -276,7 +276,7 @@ Remember when we showed that chance can produce correlations. We also showed tha
 
 The first thing to do is pretend you conduct the gumball experiment 10 times in a row. This will produce 10 different sets of results. For each of them we can make a bar graph, and look at whether the left hand chose more green gumballs than red gumballs. It looks like this:
 
-```{r 5gumball sims, fig.cap="10 simulated replications of picking gumballs. Each replication gives a slightly different answer. Any difference are all due to chance, or sampling error. This shows that chance alone can produce differences, just by the act of sampling",echo=F}
+```{r 5gumballsims, fig.cap="10 simulated replications of picking gumballs. Each replication gives a slightly different answer. Any difference are all due to chance, or sampling error. This shows that chance alone can produce differences, just by the act of sampling",echo=F}
 hand<-rep(rep(c("left","right"),each=10),10)
 experiment<-rep(1:10,each=20)
 gumball<-rbinom(20*10,1,.5)

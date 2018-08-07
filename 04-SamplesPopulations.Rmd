@@ -554,7 +554,7 @@ First, what do you think the sample means refers to? Well, if you took a sample 
 
 "I'm following along sort of, why would I want to do this instead of watching Netflix...". Because, the sampling distribution of the sample means gives you another window into chance. A very useful one that you can control, just like your remote control, by pressing the right design buttons.
 
-#### Seeing the pieces
+### Seeing the pieces
 
 To make a sampling distribution of the sample means, we just need the following:
 
@@ -564,7 +564,9 @@ To make a sampling distribution of the sample means, we just need the following:
 4. Get all of the sample means, and plot them in a histogram
 
 ---
+
 Question for yourself: What do you think the sampling distribution of the sample means will look like? Will it tend to look the shape of the distribution that the samples came from? Or not? Good question, think about it.
+
 ---
 
 Let's do those four things. We already know about the uniform distribution. So, let's use that for fun. Remember, it looks like this if we are sampling from the set of integers from 1 to 10:
@@ -688,9 +690,9 @@ We just computed 4 different sampling distributions, for the mean, standard devi
 
 These sampling distributions are super important, and worth thinking about. What should you think about? Well, here's a clue. These distributions are telling you what to expect from your sample. Critically, they are telling you what you should expect from a sample, when you take one from the specific distribution that we used (normal distribution with mean =100 and SD = 20). What have we learned. We've learned a tonne. We've learned that we can expect our sample to have a mean somewhere between 90 and 108ish. Notice, the sample means are never more extreme. We've learned that our sample with usually have some variance, and that the the standard deviation will be somewhere between 15 and 25 (never much more extreme than that). We can see that sometime we get some big numbers, say between 120 and 180, but not much bigger than that. And, we can see that the median is pretty similar to the mean. If you ever took a sample of 50 numbers, and your descriptive statistics were inside these windows, then perhaps they came from this kind of normal distribution. If your sample statistics are very different, then your sample probably did not come this distribution. By using simulation, we can find out what samples look like when they come from distributions, and we can use this information to make inferences about whether our sample came from particular distributions.
 
-### The central limit theorem
+## The central limit theorem
 
-OK, so no you've seen lots of sampling distributions, and you know what the sampling distribution of the mean is. Here, we'll focus on **how the sampling distribution of the mean changes as a function of sample size.** 
+OK, so now you've seen lots of sampling distributions, and you know what the sampling distribution of the mean is. Here, we'll focus on **how the sampling distribution of the mean changes as a function of sample size.** 
 
 Intuitively, you already know part of the answer: if you only have a few observations, the sample mean is likely to be quite inaccurate (you've already seen it bounce around): if you replicate a small experiment and recalculate the mean you'll get a very different answer. In other words, the sampling distribution is quite wide. If you replicate a large experiment and recalculate the sample mean you'll probably get the same answer you got last time, so the sampling distribution will be very narrow. 
 
@@ -891,6 +893,170 @@ On the basis of these figures, it seems like we have evidence for all of the fol
 As it happens, not only are all of these statements true, there is a very famous theorem in statistics that proves all three of them, known as the **central limit theorem**. Among other things, the central limit theorem tells us that if the population distribution has mean $\mu$ and standard deviation $\sigma$, then the sampling distribution of the mean also has mean $\mu$, and the standard error of the mean is $$\mbox{SEM} = \frac{\sigma}{ \sqrt{N} }$$ Because we divide the population standard deviation $\sigma$ by the square root of the sample size $N$, the SEM gets smaller as the sample size increases. It also tells us that the shape of the sampling distribution becomes normal.
 
 This result is useful for all sorts of things. It tells us why large experiments are more reliable than small ones, and because it gives us an explicit formula for the standard error it tells us **how much** more reliable a large experiment is. It tells us why the normal distribution is, well, **normal**. In real experiments, many of the things that we want to measure are actually averages of lots of different quantities (e.g., arguably, "general" intelligence as measured by IQ is an average of a large number of "specific" skills and abilities), and when that happens, the averaged quantity should follow a normal distribution. Because of this mathematical law, the normal distribution pops up over and over again in real data.
+
+## z-scores
+
+
+We are now in a position to combine some of thing we've been talking about in this chapter, and introduce you to a new tool, **z-scores**. It turns out we won't use **z-scores** very much in this textbook. However, you can't take a class on statistics and not learn about **z-scores**. 
+
+The first thing we show you seems to be something that many students remember from their statistics class. This thing is probably remembered because instructors may test this knowledge many times, so students have to learn it for the test. Let's look at this thing. We are going to look at a normal distribution, and we are going to draw lines through the distribution at 0, +/- 1, +/-2, and +/- 3 standard deviations from the mean:
+
+```{r 4normalSDspercents, fig.cap="A normal distribution. Each line represents a standard deviation from the mean. The labels show the proportions of scores that fall between each bar."}
+
+dnorm_vec <- dnorm(seq(-5,5,.1),mean=0,sd=1)
+x_range   <- seq(-5,5,.1)
+t_df<-data.frame(x_range,dnorm_vec)
+
+ggplot(t_df, aes(x=x_range,y=dnorm_vec))+
+  geom_line()+
+  geom_vline(xintercept = 0)+
+  geom_vline(xintercept = c(-3,-2,-1,1,2,3))+
+  theme_classic()+
+  ylab("Density")+
+  xlab("score") +
+  scale_x_continuous(breaks=seq(-5,5,1))+
+  geom_label(data = data.frame(x=-.5, y=.3,
+            label=round(pnorm(c(0,1),0,1)[2]-pnorm(c(0,1),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=.5, y=.3,
+            label=round(pnorm(c(0,1),0,1)[2]-pnorm(c(0,1),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+    geom_label(data = data.frame(x=-1.5, y=.3,
+            label=round(pnorm(c(1,2),0,1)[2]-pnorm(c(1,2),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=1.5, y=.3,
+            label=round(pnorm(c(1,2),0,1)[2]-pnorm(c(1,2),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label)) + 
+  geom_label(data = data.frame(x=-2.5, y=.3,
+            label=round(pnorm(c(2,3),0,1)[2]-pnorm(c(2,3),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=2.5, y=.3,
+            label=round(pnorm(c(2,3),0,1)[2]-pnorm(c(2,3),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+ 
+  geom_label(data = data.frame(x=-3.5, y=.3,
+            label=round(pnorm(c(3,4),0,1)[2]-pnorm(c(3,4),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=3.5, y=.3,
+            label=round(pnorm(c(3,4),0,1)[2]-pnorm(c(3,4),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))
+
+
+
+```
+
+
+The figure shows a normal distribution with mean = 0, and standard deviation = 1. We've drawn lines at each of the standard deviations: -3, -2, -1, 0, 1, 2, and 3. We also show some numbers in the labels, in between each line. These numbers are proportions. For example, we see the proportion is .341 for scores that fall between the range 0 and 1. Scores between 0 and 1 occur 34.1% of the time. Scores in between -1 and 1, occur 68.2% of the time, that's more than half of the scores. Scores between 1 and occur about 13.6% of the time, and scores between 2 and 3 occur even less, only 2.1% of the time.
+
+Normal distributions always have these properties, even when they have different means and standard deviations. For example, take a look at this normal distribution, it has a mean =100, and standard deviation =25.
+
+
+```{r 4normalSDspercentsB, fig.cap="A normal distribution. Each line represents a standard deviation from the mean. The labels show the proportions of scores that fall between each bar."}
+
+dnorm_vec <- dnorm(seq(0,200,.1),mean=100,sd=25)
+x_range   <- seq(0,200,.1)
+t_df<-data.frame(x_range,dnorm_vec)
+
+ggplot(t_df, aes(x=x_range,y=dnorm_vec))+
+  geom_line()+
+  geom_vline(xintercept = 100)+
+  geom_vline(xintercept = c(25,50,75,125,150,175))+
+  theme_classic()+
+  ylab("Density")+
+  xlab("score") +
+  scale_x_continuous(breaks=seq(0,200,25))+
+  geom_label(data = data.frame(x=87.5, y=0.01,
+            label=round(pnorm(c(0,1),0,1)[2]-pnorm(c(0,1),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=112.5, y=0.01,
+            label=round(pnorm(c(0,1),0,1)[2]-pnorm(c(0,1),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+    geom_label(data = data.frame(x=62.5, y=0.01,
+            label=round(pnorm(c(1,2),0,1)[2]-pnorm(c(1,2),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=137.5, y=0.01,
+            label=round(pnorm(c(1,2),0,1)[2]-pnorm(c(1,2),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label)) + 
+  geom_label(data = data.frame(x=37.5, y=0.01,
+            label=round(pnorm(c(2,3),0,1)[2]-pnorm(c(2,3),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=162.5, y=0.01,
+            label=round(pnorm(c(2,3),0,1)[2]-pnorm(c(2,3),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+ 
+  geom_label(data = data.frame(x=12.5, y=0.01,
+            label=round(pnorm(c(3,4),0,1)[2]-pnorm(c(3,4),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=187.5, y=0.01,
+            label=round(pnorm(c(3,4),0,1)[2]-pnorm(c(3,4),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))
+
+
+
+```
+
+
+Now we are looking at a normal distribution with mean = 100 and standard deviation = 25. Notice that the region between 100 and 125 contains 34.1% of the scores. This region is 1 standard deviation away from the mean (the standard deviation is 25, the mean is 100, so 25 is one whole standard deviation away from 100). As you can see, the very same proportions occur between each of the standard deviations, as they did when our standard deviation was set to 1 (with a mean of 0). 
+
+
+### Idea behind z-scores
+
+
+Sometimes it can be convenient to transform your original scores into different scores that are easier to work with. For example, if you have a bunch of proportions, like .3, .5, .6, .7, you might want to turn them into percentages like 30%, 50%, 60%, and 70%. To do that you multiply the proportions by a constant of 100. If you want to turn percentages back into proportion, you divide by a constant of 100. This kind of transformation just changes the scale of the numbers from between 0-1, and between 0-100. Otherwise, the pattern in  the numbers stays the same.
+
+The idea behind z-scores is a similar kind of transformation. The idea is express each raw score in terms of it's standard deviation. For example, if I told you I got a 75% on test, you wouldn't know how well I did compared to the rest of the class. But, if I told you that I scored 2 standard deviations above the mean, you'd know I did quite well compared to the rest of the class, because you know that most scores (if they are distributed normally) fall below 2 standard deviations of the mean.
+
+We also know, now thanks to the central limit theorem, that many of our measures, such as sample means, will be distributed normally. So, it can often be desirable to map express the raw scores in terms of their standard deviations.
+
+Let's see how this looks in a table without showing you any formulas. We will look at some scores that come from a normal distirbution with mean =100, and standard deviation = 25. We will list some raw scores, along with the z-scores
+
+```{r}
+raw <- c(25, 50,75, 100,125,150,175)
+z   <- c(-3,-2,-1,0,1,2,3)
+df<-data.frame(raw,z)
+knitr::kable(df)
+
+```
+
+Remember, the mean is 100, and the standard deviation is 25. How many standard deviations away from the mean is a score of 100? The answer is 0, it's right on the mean. You can see the z-score for 100, is 0. How many standard deviations is 125 away from the mean? Well the standard deviation is 25, 125 is one whole 25 away from 100, that's a total of 1 standard deviation, so the z-score for 125 is 1. The z-score for 150 is 2, because 150 is two 25s away from 100. The z-score for 50 is -2, because 50 is two 25s away from 100 in the opposite direction. All we are doing here is re-expressing the raw scores in terms of how many standard deviations they are from the mean. Remember, the mean is always right on target, so the center of the z-score distribution is always 0.
+
+
+### Calculating z-scores
+
+
+To calculate z-scores all you have to do is figure out how many standard deviations from the mean each number is. Let's say the mean is 100, and the standard deviation is 25. You have a score of 97. How many standard deviations from the mean is 97?
+
+First compute the difference between the score and the mean:
+
+$97-100 = -3$
+
+Alright, we have a total difference of -3. How many standard deviations does -3 represent if 1 standard deviation is 25? Clearly -3 is much smaller than 25, so it's going to be much less than 1. To figure it out, just divide -3 by the standard deviation.
+
+$\frac{-3}{25} = -.12$
+
+Our z-score for 97 is -.12.
+
+Here's the general formula:
+
+$z = \frac{\text{raw score} - \text{mean}}{\text{standard deviation}}$
+
+So, for example if we had these 10 scores from a normal distribution with mean = 100, and standard deviation =25
+
+```{r}
+scores <- round(rnorm(10,100,25),digits=2)
+print(scores)
+```
+
+The z-scores would be:
+
+```{r}
+(scores-100)/25
+```
+
+Once you have the z-scores, you could use them as another way to describe your data. For example, now just by looking at a score you know if it is likely or unlikely to occur, because you know how the area under the normal curve works. z-scores between -1 and 1 happen pretty often, scores greater than 1 or -1 still happen fairly often, but not as often. And, scores bigger than 2 or -2 don't happen very often. This is a convenient thing to do if you want to look at your numbers and get a general sense of how often they happen.
+
+Usually you do not know the mean or the standard deviation of the population that you are drawing your sample scores from. So, you could use the mean and standard deviation of your sample as an estimate, and then use those to calculate z-scores. 
+
+Finally, z-scores are also called **standardized scores**, because each raw score is described in terms of it's standard deviation. This may well be the last time we talk about z-scores in this book. You might wonder why we even bothered telling you about them. First, it's worth knowing they are a thing. Second, they become important as your statistical prowess becomes more advanced. Third, some statistical concepts, like correlation, can be re-written in terms of z-scores, and this illuminates aspects of those statistics. Finally, they are super useful when you are dealing with a normal distribution that has a known mean and standard deviation. 
+
 
 ## Estimating population parameters
 
