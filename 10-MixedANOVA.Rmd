@@ -304,48 +304,7 @@ We see that there is an interaction between delay (the forgetting effect) and re
 We will note a general pattern here. Imagine you had a 2x2x2x2 design. That would have a 4-way interaction. What would that mean? It would mean that the pattern of the 2x2x2 interaction changes across the levels of the 4th IV. If two three-way interactions are different, then there is a four-way interaction.
 
 
-<!--
-## A general model
 
-It's probably time we introduce you to another new concept. This concept has been underyling everything we have been doing so far. It's called the general linear model, or GLM for short. Don't worry it's not that scary. And, right now, we won't dive off into the deep end. Instead, we will do a little bit of light GLM, for beginners. The purpose is to give you some idea where the main effects and interaction come from, and when they are there, how they influence the pattern in the means.
-
-The GLM makes you think about the various things that influence each mean you measure. It's the idea that any mean is the sum of it's parts: a little bit of this, a little bit of that. Here's a general formula for the composition of a mean in a 2x2 design:
-
-$ \text{A mean} = \text{Grand Mean} + \text{IV1 effect} + \text{IV2 effect} + \text{Interaction effect} + \text{error} $
-
-Let's say you ran an experiment with two IVs, but they did absolutely nothing, and there was no interaction. What would you expect your means to be in each of the four conditions. You would still measure a bunch of scores, but they should all be the same right? If so, then the grand mean of all the scores should be your mean for all of the conditions. The formula would look like this:
-
-$ \text{Each mean} = \text{Grand Mean} + 0 + 0 + 0 + \text{error}$
-
-Remember there will still be some sampling error, so each mean will be the grand mean, plus or minus some amount of random sampling error.
-
-How about if IV1 has an effect of +10. That is, the means in level 1 of IV1 are +10 more than the means of level 2 of IV1. Let's say that is the only thing going on. Then we would expect the following:
-
-$ \text{IV1: Level 1 mean} = \text{Grand Mean} + 10 + 0 + 0 + \text{error}$
-
-$ \text{IV1: Level 2 mean} = \text{Grand Mean} + 0 + 0 + 0 + \text{error}$
-
-Or, we could write it this way to make the effect of IV1 balanced about the Grand mean:
-
-$ \text{IV1: Level 1 mean} = \text{Grand Mean} + 5 + 0 + 0 + \text{error}$
-
-$ \text{IV1: Level 2 mean} = \text{Grand Mean} + -5 + 0 + 0 + \text{error}$
-
-```{r}
-# 2x2 simulator
-
-
-IV1 <- c(4,7)
-IV2 <- c(5, 5)
-interaction <-c(0,0,0,0)
-
-
-
-
-```
-
-
--->
 
 
 
