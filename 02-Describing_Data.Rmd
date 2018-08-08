@@ -27,17 +27,17 @@ happiness<-rnorm(500,100,500)
 knitr::kable(matrix(round(happiness),ncol=10,nrow=50))
 ```
 
-Now, what are you going to with that big pile of numbers? Look at it all day long?. When you deal with data, it will deal so many numbers to you that you will be overwhelmed by them. That is why we need ways to describe the data in a more manageable fashion. 
+Now, what are you going to with that big pile of numbers? Look at it all day long? When you deal with data, it will deal so many numbers to you that you will be overwhelmed by them. That is why we need ways to describe the data in a more manageable fashion. 
 
-The complete description on the data is always the data itself. **Descriptive statistics** and other tools for describing data go one step further to summarize aspects of the data. Summaries are a way to compress the important bits of a thing down to a useful and manageable tidbit. It's like telling your friends why they should watch a movie. When they ask what it is about, you don't replay the entire movie for them, instead you hit the highlights. Summarizing the data is just like a movie preview, only for data.
+The complete description of the data is always the data itself. **Descriptive statistics** and other tools for describing data go one step further to summarize aspects of the data. Summaries are a way to compress the important bits of a thing down to a useful and manageable tidbit. It's like telling your friends why they should watch a movie: you don't replay the entire movie for them, instead you hit the highlights. Summarizing the data is just like a movie preview, only for data.
 
 ## Look at the data
 
-We already tried one way of looking at the numbers, and it wasn't useful. Let's look at some other ways of looking at the numbers in graphs. Graphing data by putting them in plots or figures can help us see the data.
+We already tried one way of looking at the numbers, and it wasn't useful. Let's look at some other ways of looking at the numbers, using graphs.
 
 ### Stop, plotting time (o o oh) U can plot this
 
-Let's turn all of the numbers into dots, then show them in a graph. Note, when we do this we have not yet summarized anything about the data. Instead, in this step we just look at all of the data in a visual format, rather than looking at the numbers. 
+Let's turn all of the numbers into dots, then show them in a graph. Note, when we do this, we have not yet summarized anything about the data. Instead, we just look at all of the data in a visual format, rather than looking at the numbers. 
 
 ```{r 2happyPlot, echo=F, fig.cap="Pretend happiness ratings from 500 people"}
 plot(happiness)
@@ -53,26 +53,58 @@ OK, so if these dots represent how happy 500 people are, what can we say about t
 
 ### Histograms
 
-Making a histogram will be our first act of officially summarizing something about the data. We will no longer the individual bits of data, instead we will see how the numbers group together. Let's look at a histogram of the happiness data, and then explain it.
+Making a histogram will be our first act of officially summarizing something about the data. We will no longer look at the individual bits of data, instead we will see how the numbers group together. Let's look at a histogram of the happiness data, and then explain it.
 
 ```{r 2happyHist, echo=F, fig.cap="A histogram of the happiness ratings"}
 hist(happiness)
 ```
-The dots have disappeared, and now we some bars. Each bar is a summary of the dots, representing the number of dots (frequency count) inside a particular range of happiness, also called **bins**. For example, how many people gave a happiness rating between 0 and 500? Well, the fifth bar, the one between 0 and 500 and the x-axis, tells you how many? Look how tall that bar is. How tall is it? Well, the height is shown on the y-axis, which provides a frequency count (the number of dots or data points). It looks like around 150 people sad their happiness was between 0-500.
+The dots have disappeared, and now we some bars. Each bar is a summary of the dots, representing the number of dots (frequency count) inside a particular range of happiness, also called **bins**. For example, how many people gave a happiness rating between 0 and 500? The fifth bar, the one between 0 and 500 on the x-axis, tells you how many. Look how tall that bar is. How tall is it? The height is shown on the y-axis, which provides a frequency count (the number of dots or data points). It looks like around 150 people said their happiness was between 0-500.
 
-More generally, we see there are many bins on the x-axis. We have divided the data into bins of 500. Bin \#1 goes from -2000 to -1500, bin \#2 goes from -1500 to -1000, and so until the last bin. To make the histogram, we just count up the number of data points falling inside each bin, then plot those frequency counts as a function of the bins. Voila, a histogram.
+More generally, we see there are many bins on the x-axis. We have divided the data into bins of 500. Bin \#1 goes from -2000 to -1500, bin \#2 goes from -1500 to -1000, and so on until the last bin. To make the histogram, we just count up the number of data points falling inside each bin, then plot those frequency counts as a function of the bins. Voila, a histogram.
 
 What does the histogram help us see about the data? First, we can see the **shape** of data. The shape of the histogram refers to how it goes up and down. The shape tells us where the data is. For example, when the bars are low we know there isn't much data there. When the bars are high, we know there is more data there. So, where is most of the data? It looks like it's mostly in the middle two bins, between -500 and 500. We can also see the **range** of the data. This tells us the minimums and the maximums of the data. Most of the data is between -1500 and +1500, so no infinite sadness or infinite happiness in our data-set.
 
+When you make a histogram you get to choose how wide each bar will be. For example, below are four different histograms of the very same happiness data. What changes is the width of the bins. 
+
+
+```{r 2manyhistbin, fig.cap="Four histograms of the same data using different bin widths"}
+
+library(ggplot2)
+library(ggpubr)
+
+g1 <- qplot(x=happiness, color="white", bins=5)+
+  theme_classic()+
+  theme(legend.position="none")
+
+g2 <- qplot(x=happiness, color="white", bins=10)+
+  theme_classic()+
+  theme(legend.position="none")
+
+g3 <- qplot(x=happiness, color="white", bins=20)+
+  theme_classic()+
+  theme(legend.position="none")
+
+g4 <- qplot(x=happiness, color="white", bins=50)+
+  theme_classic()+
+  theme(legend.position="none")
+
+ggarrange(g1, g2, g3, g4, ncol=2, nrow=2)
+
+```
+
+All of the histograms have roughly the same overall shape: From left to right, the bars start off small, then go up, then get small again. In other words, as the numbers get closer to zero, they start to occur more frequently. We see this general trend across all the histograms. But, some aspects of the trend fall apart when the bars get really narrow. For example, although the bars generally get taller when moving from -1000 to 0, there are some exceptions and the bars seem to fluctuate a little bit. When the bars are wider, there are less exceptions to the general trend. How wide or narrow should your histogram be? It's a Goldilocks question. Make it just right for your data.
+
+
+
 ## Important Ideas: Distribution, Central Tendency, and Variance
 
-Let's introduce a three important terms we will use a lot, **distribution**, **central tendency**, and **variance**. These terms are similar to their everyday meanings (although I suspect most people don't say central tendency very often).
+Let's introduce three important terms we will use a lot, **distribution**, **central tendency**, and **variance**. These terms are similar to their everyday meanings (although I suspect most people don't say central tendency very often).
 
-**Distribution.** When you order something from Amazon, where does it come from, and how does it get to your place? That stuff comes from one of Amazon's distribution centers. They distribute all sorts of things by spreading them around to your doorstep. Distribute is spreading something. Notice, the histogram, distributes the data by spreading the numbers across the bins. We can also talk about a distribution as a noun. The histogram is a distribution of the frequency counts across the bins. Distributions are **very, very, very, very, very** important. They can have many different shapes. They can describe data, like in the histogram above. And as we will learn in later chapters, they can **produce** data. Many times we will be asking questions about where our data came from, and this usually means asking what kind of distribution could have created our data (more on that later.)
+**Distribution.** When you order something from Amazon, where does it come from, and how does it get to your place? That stuff comes from one of Amazon's distribution centers. They distribute all sorts of things by spreading them around to your doorstep. "To Distribute"" is to spread something. Notice, the data in the histogram is distributed, or spread across the bins. We can also talk about a distribution as a noun. The histogram is a distribution of the frequency counts across the bins. Distributions are **very, very, very, very, very** important. They can have many different shapes. They can describe data, like in the histogram above. And as we will learn in later chapters, they can **produce** data. Many times we will be asking questions about where our data came from, and this usually means asking what kind of distribution could have created our data (more on that later.)
 
-**Central Tendency** is all about sameness. Is there anything similar about all of the numbers in the histogram? Yes, we can say that most of them are near 0. There is a tendency for most of the numbers to be centered near 0. Notice we are being cautious about our generalization about the numbers. We are not saying they are all 0. We are saying there is a tendency for many of them to be near zero. There are lots of ways to talk about the central tendency of some numbers. There can even be more than one kind of tendency. For example, if lots of the numbers were around -1000, and a similar large amount of numbers were grouped around 1000, we could say there was two tendencies.
+**Central Tendency** is all about sameness: What is common about some numbers? For example, is there anything similar about all of the numbers in the histogram? Yes, we can say that most of them are near 0. There is a tendency for most of the numbers to be centered near 0. Notice we are being cautious about our generalization about the numbers. We are not saying they are all 0. We are saying there is a tendency for many of them to be near zero. There are lots of ways to talk about the central tendency of some numbers. There can even be more than one kind of tendency. For example, if lots of the numbers were around -1000, and a similar large amount of numbers were grouped around 1000, we could say there was two tendencies.
 
-**Variance** is all about differentness. Is there anything different about all of the numbers in the histogram? YES!!! The numbers are not all the same! When the numbers are not all the same, they must vary. So, the variance in the numbers refers to how the numbers are different. There are many ways to summarize the amount of variance in the numbers, and we discuss these very soon.
+**Variance** is all about differentness: What is different about some numbers?. For example, is there anything different about all of the numbers in the histogram? YES!!! The numbers are not all the same! When the numbers are not all the same, they must vary. So, the variance in the numbers refers to how the numbers are different. There are many ways to summarize the amount of variance in the numbers, and we discuss these very soon.
 
 ## Measures of Central Tendency (Sameness)
 
@@ -80,13 +112,13 @@ We've seen that we can get a sense of data by plotting dots in a graph, and by m
 
 ### From many numbers to one
 
-Measures of central have one important summary goal: to reduce a pile of numbers to a single number that we can look at. We already know looking at thousands of numbers is hopeless. Wouldn't it be nice if we could just look at one number instead? We think so. It turns out there are lots of ways to do this. Then, if your friend ever asks the frightening question, "hey, what are all these numbers like?". You can say they are like this one number right here.
+Measures of central have one important summary goal: to reduce a pile of numbers to a single number that we can look at. We already know that looking at thousands of numbers is hopeless. Wouldn't it be nice if we could just look at one number instead? We think so. It turns out there are lots of ways to do this. Then, if your friend ever asks the frightening question, "hey, what are all these numbers like?". You can say they are like this one number right here.
 
 But, just like in Indiana Jones and the Last Crusade (highly recommended movie), you must choose your measure of central tendency wisely. 
 
 ### Mode
 
-The **mode** is the most frequently occurring number in your measurement. That is it. How do you find it? You have count the number of times each number appears in your measure, then whichever one occurs the most, is the mode.
+The **mode** is the most frequently occurring number in your measurement. That is it. How do you find it? You have to count the number of times each number appears in your measure, then whichever one occurs the most, is the mode.
 
 > Example: 1 1 1 2 3 4 5 6
 
@@ -100,11 +132,11 @@ Hmm, now 1 and 2 both occur three times each. What do we do? We say there are tw
 
 Why is the mode a measure of central tendency? Well, when we ask, "what are my numbers like", we can say, "most of the number are, like a 1 (or whatever the mode is)".
 
-Is the mode a good measure of central tendency? Well, that depends on your numbers. For example, consider these numbers
+Is the mode a good measure of central tendency? That depends on your numbers. For example, consider these numbers
 
 > 1 1 2 3 4 5 6 7 8 9
 
-Here, the mode is 1 again, because there are two 1s, and all of the other numbers occur once. But, are most of the numbers like, a 1. No, they are mostly not 1s.
+Here, the mode is 1 again, because there are two 1s, and all of the other numbers occur once. But, are most of the numbers like, a 1. No, they are mostly not 1s. 
 
 "Argh, so should I or should I not use the mode? I thought this class was supposed to tell me what to do?". There is no telling you what to do. Every time you use a tool in statistics you have to think about what you are doing and justify why what you are doing makes sense. Sorry.
 
@@ -120,11 +152,11 @@ Umm, OK. So, three is in the middle? Isn't that kind of arbitrary. Yes. Before w
 
 Now, 5 is in the middle. And, by middle we mean in the middle. There are three numbers to the left of 5, and three numbers to the right. So, five is definitely in the middle.
 
-OK fine, but what happens when there aren't an even number of numbers? Then the middle will be missing right? let's see
+OK fine, but what happens when there aren't an even number of numbers? Then the middle will be missing right? Let's see:
 
 > 1 2 3 4 5 6
 
-There is no number between 3 and 4, the middle is empty. In this case, we compute the median by figuring out the number in between 3 and 4. So, the median would be 3.5.
+There is no number between 3 and 4 in the data, the middle is empty. In this case, we compute the median by figuring out the number in between 3 and 4. So, the median would be 3.5.
 
 Is the median a good measure of central tendency? Sure, it is often very useful. One property of the median is that it stays in the middle even when some of the other numbers get really weird. For example, consider these numbers:
 
@@ -132,7 +164,7 @@ Is the median a good measure of central tendency? Sure, it is often very useful.
 
 Most of these numbers are smallish, but the 1000 is a big old weird number, very different from the rest. The median is still 5, because it is in the middle of these ordered numbers. We can also see that five is pretty similar to most of the numbers (except for 1000). So, the median does a pretty good job of representing most of the numbers in the set, and it does so even if one or two of the numbers are very different from the others.
 
-Finally, **outlier** is a term will we use to describe numbers that appear in data that are very different from the rest. 1000 is an outlier, because it lies way out there on the number compared to the other numbers. What to do with outliers is another topic we cover later in the book.
+Finally, **outlier** is a term will we use to describe numbers that appear in data that are very different from the rest. 1000 is an outlier, because it lies way out there on the number line compared to the other numbers. What to do with outliers is another topic we discuss sometimes throughout this course.
 
 ### Mean
 
@@ -142,7 +174,7 @@ The **mean** is also called the average. And, we're guessing you might already n
 
 $Mean = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N}$
 
-"That looks like Greek to me". Yup. The $\sum$ symbol is called **sigma**, and it stands for the operation of summing. The little "i" on the bottom, and the little "n" on the top refers to all of the numbers in the set, from the first number "i" to the last number "n". The letters are just arbitrary labels, called **variables** that we use for descriptive purposes. The $x_{i}$ refers to individual numbers in the set. We sum up all of the numbers, then divide the sum by $N$, which is the total number of numbers. Sometime you will see $\bar{X}$ to refer to the mean of all of the numbers inside $X_{i}$, which refers to all of our numbers.
+"That looks like Greek to me". Yup. The $\sum$ symbol is called **sigma**, and it stands for the operation of summing. The little "i" on the bottom, and the little "n" on the top refers to all of the numbers in the set, from the first number "i" to the last number "n". The letters are just arbitrary labels, called **variables** that we use for descriptive purposes. The $x_{i}$ refers to individual numbers in the set. We sum up all of the numbers, then divide the sum by $N$, which is the total number of numbers. Sometimes you will see $\bar{X}$ to refer to the mean of all of the numbers.
 
 In plain English, the formula looks like:
 
@@ -172,7 +204,7 @@ $Mean = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N} = \frac{3+7+9+2+6}{5} = \frac{2
 
 OK fine, that is how to compute the mean. But, like we imagined, you probably already knew that, and if you didn't that's OK, now you do. What's next?
 
-Is the mean a good measure of central tendency? You should know now the answer to this question is: it depends. 
+Is the mean a good measure of central tendency? By now, you should know: it depends. 
 
 ### What does the mean mean?
 
@@ -184,15 +216,36 @@ OK, so what happens when you divide any number by another number? Of course, the
 
 $\frac{12}{3} = 4$
 
-So, we know the answer is 4. But, what is really going on here is that we are slicing and dicing up 12 aren't we. The answer 4 tells us that we can slice and dice 12 up into three perfect pieces. So, now we are thinking of 12 as three different pieces $= 4 + 4 + 4$. I know this will be obvious, but what kind of properties do our pieces have? You mean the fours? Yup. Well, obviously they are all fours. Yes. The pieces are all the same size. They are all equal. So, division equalizes the numerator by the denominator...
+So, we know the answer is 4. But, what is really going on here is that we are slicing and dicing up 12 aren't we. Yes, and we slicing 12 into three parts. It turns out the size of those three parts is 4. So, now we are thinking of 12 as three different pieces $12 = 4 + 4 + 4$. I know this will be obvious, but what kind of properties do our pieces have? You mean the fours? Yup. Well, obviously they are all fours. Yes. The pieces are all the same size. They are all equal. So, division equalizes the numerator by the denominator...
 
-"Umm, I think I learned this in elementary school, what does this have to do with the mean?". The number on top of the formula for the mean is just another numerator being divided by a denominator isn't it. In this case, the numerator is a sum of all the values in your data. What if it was the sum of all of the happiness ratings? We saw earlier that there were 500 people gave different ratings. The sum of all of them would just be a single number adding up all the different ratings. If we split the sum up into equal parts representing one part for each person's happiness what would we get? We would get 500 identical and equal numbers for each person. It would be like taking all of the happiness in the world, then dividing it up equally, then to be fair, giving back the same equal amount of happiness to everyone in the world. This would make some people more happy than they were before, and some people less happy right. Of course, that's because it would be equalizing the distribution of happiness for everybody. This process of equalization by dividing something into equal parts is what the **mean** does. See, it's more than just a formula. It's an idea. This is just the beginning of thinking about these kinds of ideas. We will come back to this idea about the mean, and other ideas, in later chapters.
+"Umm, I think I learned this in elementary school, what does this have to do with the mean?". The number on top of the formula for the mean is just another numerator being divided by a denominator isn't it. In this case, the numerator is a sum of all the values in your data. What if it was the sum of all of the 500 happiness ratings? The sum of all of them would just be a single number adding up all the different ratings. If we split the sum up into equal parts representing one part for each person's happiness what would we get? We would get 500 identical and equal numbers for each person. It would be like taking all of the happiness in the world, then dividing it up equally, then to be fair, giving back the same equal amount of happiness to everyone in the world. This would make some people more happy than they were before, and some people less happy right. Of course, that's because it would be equalizing the distribution of happiness for everybody. This process of equalization by dividing something into equal parts is what the **mean** does. See, it's more than just a formula. It's an idea. This is just the beginning of thinking about these kinds of ideas. We will come back to this idea about the mean, and other ideas, in later chapters.
 
 > Pro tip: The mean is the one and only number that can take the place of every number in the data, such that when you add up all the equal parts, you get back the original sum of the data.
 
+### All together now
+
+Just to remind ourselves of the mode, median, and mean, take a look at the next histogram. We have overlaid the location of the mean (red), median (green), and mode (blue). For this dataset, the three measures of central tendency all give different answers. The mean is the largest because it is influenced by large numbers, even if they occur rarely. The mode and median are insensitive to large numbers that occur infrequently, so they have smaller values.
+
+```{r 2meanmodemed, fig.cap="A histogram with the mean (red), the median (green), and the mode (blue)"}
+my_mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+exp_num<-round(rexp(1000,.15),digits=1)
+
+qplot(exp_num, col=I("grey"), fill=I("white"))+
+  geom_vline(xintercept=mean(exp_num), color="red", size=1.5)+
+  geom_vline(xintercept=median(exp_num), color="green", size=1.5)+
+  geom_vline(xintercept=my_mode(exp_num), color="blue", size=1.5)+
+  theme_classic()
+
+```
+
+
 ## Measures of Variation (Differentness)
 
-What did you do when you wrote essay's in high school about a book you read? Probably compare and contrast something right? When you summarize data, you do the same thing. Measures of central tendency give us something like comparing does, it tells us stuff about what is the same. Measures of Variation give us something like contrasting does, it tells us stuff about what is different.
+What did you do when you wrote essayss in high school about a book you read? Probably compare and contrast something right? When you summarize data, you do the same thing. Measures of central tendency give us something like comparing does, they tell us stuff about what is the same. Measures of variation give us something like contrasting does, they tell us stuff about what is different.
 
 First, we note that whenever you see a bunch of numbers that aren't the same, you already know there are some differences. This means the numbers vary, and there is variation in the size of the numbers.
 
@@ -200,7 +253,7 @@ First, we note that whenever you see a bunch of numbers that aren't the same, yo
 
 Consider these 10 numbers, that I already ordered from smallest to largest for you:
 
-> 1 5 4 3 6 5 7 8 9 24
+> 1 3 4 5 5 6 7 8 9 24
 
 The numbers have variation, because they are not all the same. We can use the range to describe the width of the variation. The range refers to the **minimum** (smallest value) and **maximum** (largest value) in the set. So, the range would be 1 and 24.
 
@@ -210,12 +263,12 @@ The range is a good way to quickly summarize the boundaries of your data in just
 
 It would be nice to summarize the amount of differentness in the data. Here's why. If you thought that raw data (lots of numbers) is too big to look at, then you will be frightened to contemplate how many differences there are to look at. For example, these 10 numbers are easy to look at:
 
-> 1 5 4 3 6 5 7 8 9 24
+> 1 3 4 5 5 6 7 8 9 24
 
 But, what about the difference between the numbers, what do those look like? We can compute the difference scores between each number, then put them in a matrix like the one below:
 
 ```{r 2diffscores,echo=F}
-numbers<-c(1, 5, 4, 3, 6, 5, 7, 8, 9, 24)
+numbers<-c(1, 3, 4, 5, 5, 6, 7, 8, 9, 24)
 mat<-matrix(rep(numbers,10),ncol=10)
 differences<-t(mat)-numbers
 row.names(differences)<-numbers
@@ -224,7 +277,7 @@ knitr::kable(differences,row.names=T)
 
 ```
 
-We are looking at all of the possible differences between each number and every other number. So, in the top left, the difference between 1 and itself is 0. One column over to the right, the difference between 5 and 1 (5-1) is 4, etc. As you can see, this is a 10x10 matrix, which means there are 100 differences to look at. Not too bad, but if we had 500 numbers, then we would have 500*500 = 250,000 differences to look at (go for it if you like looking at that sort of thing). 
+We are looking at all of the possible differences between each number and every other number. So, in the top left, the difference between 1 and itself is 0. One column over to the right, the difference between 3 and 1 (3-1) is 2, etc. As you can see, this is a 10x10 matrix, which means there are 100 differences to look at. Not too bad, but if we had 500 numbers, then we would have 500*500 = 250,000 differences to look at (go for it if you like looking at that sort of thing). 
 
 Pause for a simple question. What would this matrix look like if all of the 10 numbers in our data were the same number? It should look like a bunch of 0s right? Good. In that case, we could easily see that the numbers have no variation.
 
@@ -249,7 +302,7 @@ $\text{mean of difference scores} = \frac{0+1+2-1+0+1-2-1+0}{9} = \frac{0}{9} = 
 
 Uh oh, we get zero for the mean of the difference scores. This will always happen whenever you take the mean of the difference scores. We can see that there are some differences between the numbers, so using 0 as the summary value for the variation in the numbers doesn't make much sense.
 
-Furthermore, you might also notice that the matrices of difference scores are redundant. The diagonal is always zero, and the top numbers are the same as the bottom numbers, except their signs are reversed.
+Furthermore, you might also notice that the matrices of difference scores are redundant. The diagonal is always zero, and numbers on one side of the diagonal are the same as the numbers on the other side, except their signs are reversed. So, that's one reason why the difference scores add up to zero.
 
 These are little problems that can be solved by computing the **variance** and the **standard deviation**. For now, the standard deviation is a just a trick that we use to avoid getting a zero. But, later we will see it has properties that are important for other reasons.
 
@@ -267,10 +320,10 @@ $variance = \frac{\text{Sum of squared difference scores}}{\text{Number of Score
 
 #### Deviations from the mean, Difference scores from the mean
 
-We got a little bit complicated before when we computed the difference scores between all of the numbers in the data. Let's do it again, but in more manageable way. This time, we calculate the difference between each score and the mean. The idea here is
+We got a little bit complicated before when we computed the difference scores between all of the numbers in the data. Let's do it again, but in a more manageable way. This time, we calculate the difference between each score and the mean. The idea here is
 
-1. We can figure out how similar our scores our by computing the mean
-2. Then we can figure out how different our scores our from the mean
+1. We can figure out how similar our scores are by computing the mean
+2. Then we can figure out how different our scores are from the mean
 
 This could tell us, 1) something about whether our scores are really all very close to the mean (which could help us know if the mean is good representative number of the data), and 2) something about how much differences there are in the numbers.
 
@@ -291,19 +344,23 @@ knitr::kable(the_df)
 
 ```
 
-The first column shows we have 6 scores in the data set, and the 'value' columns shows each score. The sum of the values, and the mean is presented on the last two rows. These values were obtained by $\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4.5$. 
+The first column shows we have 6 scores in the data set, and the `value` columns shows each score. The sum of the values, and the mean is presented on the last two rows. The sum and the mean were obtained by:
 
-The third column 'mean', appears a bit silly. We are just listing the mean once for every score. If you think back to our discussion about the meaning of the mean, then you will remember that it equally distributes the total sum across each data point. We can see that here, if we treat each score as the mean, then every score is a 4.5. We can also see that adding up all of the means for each score gives us back 27, which is the sum of the original values. Also, we see that if we find the mean of the mean scores, we get back the mean (4.5 again).
+$\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4.5$. 
 
-All of the action is occurring in the fourth column, 'Difference_from_Mean'. Here, we are showing the difference scores from the mean, using $X_{i}-\bar{X}$. In other words, we subtracted the mean from each score. So, the first score, 1, is -3.5 from the mean, the second score, 6, is +1.5 from the mean, and so on.
+The third column `mean`, appears a bit silly. We are just listing the mean once for every score. If you think back to our discussion about the meaning of the mean, then you will remember that it equally distributes the total sum across each data point. We can see that here, if we treat each score as the mean, then every score is a 4.5. We can also see that adding up all of the means for each score gives us back 27, which is the sum of the original values. Also, we see that if we find the mean of the mean scores, we get back the mean (4.5 again).
 
-Now, we can look at our original scores, and we can look at their differences from the mean. Notice, we don't have a matrix of raw difference scores, so it is much easier to look at out. But, we still have a problem. We can see that there are non-zero values in the difference scores. But, when we add them all up, we still get zero, which makes it seem like there are a total of zero differences in the data...Why does this happen...and what to do about it?
+All of the action is occurring in the fourth column, `Difference_from_Mean`. Here, we are showing the difference scores from the mean, using $X_{i}-\bar{X}$. In other words, we subtracted the mean from each score. So, the first score, 1, is -3.5 from the mean, the second score, 6, is +1.5 from the mean, and so on.
+
+Now, we can look at our original scores and we can look at their differences from the mean. Notice, we don't have a matrix of raw difference scores, so it is much easier to look at out. But, we still have a problem:
+
+We can see that there are non-zero values in the difference scores, so we know there are a differences in the data. But, when we add them all up, we still get zero, which makes it seem like there are a total of zero differences in the data...Why does this happen...and what to do about it?
 
 #### The mean is the balancing point in the data
 
-One brief pause here to point out another wonderful property of the mean. It is the balancing point in the data. If you take a pen or pencil and try to balance it on your figure so it lays flat what are you doing. You need to find the center of mass in the pen, so that have of it is one side, and the other half is on the other side. That's how balancing works. One side = the other side. 
+One brief pause here to point out another wonderful property of the mean. It is the balancing point in the data. If you take a pen or pencil and try to balance it on your figure so it lays flat what are you doing? You need to find the center of mass in the pen, so that half of it is on one side, and the other half is on the other side. That's how balancing works. One side = the other side. 
 
-We can think of data as having mass or weight to it. If we put our data on our bathroom scale, we could figure out how heavy it was by summing it up. If we wanted to split the data down the middle so that half of it's weight was equal to the other half, then we could balance the data on top of a pin. The mean of the data tells you where to put the pin. It is the location in the data, where on the one side the numbers add to the same sum as the numbers on the other side.
+We can think of data as having mass or weight to it. If we put our data on our bathroom scale, we could figure out how heavy it was by summing it up. If we wanted to split the data down the middle so that half of the weight was equal to the other half, then we could balance the data on top of a pin. The mean of the data tells you where to put the pin. It is the location in the data, where the numbers on the one side add up to the same sum as the numbers on the other side.
 
 If we think this through, it means that the sum of the difference scores from the mean will always add up to zero. This is because the numbers on one side of the mean will always add up to -x (whatever the sum of those numbers is), and the numbers of the other side of the mean will always add up to +x (which will be the same value only positive). And:
 
@@ -334,19 +391,21 @@ knitr::kable(the_df)
 
 ```
 
-OK, now we have new column called `squared_deviations`. These are just the difference scores squared. So, $-3.5^2 = 12.25$, etc. You can confirm for yourself with your cellphone calculator.
+OK, now we have a new column called `squared_deviations`. These are just the difference scores squared. So, $-3.5^2 = 12.25$, etc. You can confirm for yourself with your cellphone calculator.
 
-Now that all of the squared deviations are positive, we can add them up. When we do this create something very special called the sum of squares (SS), also known as the sum of the squared deviations from the mean. We will talk at length about this SS later on in the ANOVA chapter. So, when you get there, remember that you already know what it is, just some sums of some squared deviations, nothing fancy.
+Now that all of the squared deviations are positive, we can add them up. When we do this we create something very special called the sum of squares (SS), also known as the sum of the squared deviations from the mean. We will talk at length about this SS later on in the ANOVA chapter. So, when you get there, remember that you already know what it is, just some sums of some squared deviations, nothing fancy.
 
 #### Finally, the variance
 
 Guess what, we already computed the variance. It already happened, and maybe you didn't notice. "Wait, I missed that, what happened?".
 
-First, see if you can remember what we are trying to do here. Trying pausing before reading to see you if can tell yourself what problem we are trying solve.
+First, see if you can remember what we are trying to do here. Take a pause, and see if you can tell yourself what problem we are trying solve.
+
+> pause
 
 Without further ado, we are trying to get a summary of the differences in our data. There are just as many difference scores from the mean as there are data points, which can be a lot, so it would be nice to have a single number to look at, something like a mean, that would tell us about the average differences in the data.
 
-If you look at the table, you can see already computed the mean of the squared deviations. First, we found the sum (SS), then below that we calculated the mean = 5.916 repeating. This is **the variance**. The variance is the mean of the sum of the squared deviations:
+If you look at the table, you can see we already computed the mean of the squared deviations. First, we found the sum (SS), then below that we calculated the mean = 5.916 repeating. This is **the variance**. The variance is the mean of the sum of the squared deviations:
 
 $variance = \frac{SS}{N}$, where SS is the sum of the squared deviations, and N is the number of observations.
 
@@ -386,11 +445,14 @@ knitr::kable(the_df)
 
 We measured the standard deviation as `r sqrt(5.916)`. Notice this number fits right in the with differences scores from the mean. All of the scores are kind of in and around + or - `r sqrt(5.916)`. Whereas, if we looked at the variance, 5.916 is just too big, it doesn't summarize the actual differences very well.
 
-What does all this mean? Well, if someone told they had some number with a mean of 4.5 (like the values in our table), and a standard deviation of `r sqrt(5.916)`, you would get a pretty good summary of the numbers. You would know that lots of the numbers are spread about 4.5, and are + or - `r sqrt(5.916)` from 4.5. That's a good start for describing numbers. If you had loads of numbers, you could reduce them down to the mean and the standard deviation, and still be pretty well off in terms of getting a sense of those numbers.
+What does all this mean? Well, if someone told they had some number with a mean of 4.5 (like the values in our table), and a standard deviation of `r sqrt(5.916)`, you would get a pretty good summary of the numbers. You would know that many of the numbers are around 4.5, and you would know that not all of the numbers are 4.5. You would know that the numbers spread around 4.5. You also know that the spread isn't super huge, it's only + or - `r sqrt(5.916)` on average. That's a good starting point for describing numbers. 
+
+If you had loads of numbers, you could reduce them down to the mean and the standard deviation, and still be pretty well off in terms of getting a sense of those numbers.
 
 ## Using Descriptive Statistics with data
 
-Example here:
+Remember, you will be learning how to compute descriptive statistics using software in the labs. Check out the [lab manual exercises for descriptives](https://crumplab.github.io/statisticsLab/lab-2-descriptive-statistics.html) to see some examples of working with real data.
+
 
 ## Rolling your own descriptive statistics
 
@@ -422,5 +484,68 @@ This works pretty well too. By converting the difference scores from the mean to
 ### Other sign-inverting operations
 
 In principle, we could create lots of different summary statistics for variance that solve the summing to zero problem. For example, we could raise every difference score to any even numbered power beyond 2 (which is the square). We could use, 4, 6, 8, 10, etc. There is an infinity of even numbers, so there is an infinity of possible variance statistics. We could also use odd numbers as powers, and then take their absolute value. Many things are possible. The important aspect to any of this is to have a reason for what you are doing, and to choose a method that works for the data-analysis problem you are trying to solve. Note also, we bring up this general issue because we want you to understand that statistics is a creative exercise. We invent things when we need them, and we use things that have already been invented when they work for the problem at hand.
+
+## Remember to look at your data
+
+Descriptive statistics are great and we will use them a lot in the course to describe data. You may suspect that descriptive statistics also have some short-comings. This is very true. They are compressed summaries of large piles of numbers. They will almost always be unable to represent all of the numbers fairly. There are also different kinds of descriptive statistics that you could use, and it sometimes not clear which one's you should use. 
+
+Perhaps the most important thing you can do when using descriptives is to use them in combination with looking at the data in a graph form. This can help you see whether or not your descriptives are doing a good job of representing the data.
+
+### Anscombe's Quartet
+
+To hit this point home, and to get you thinking about the issues we discuss in the next chapter, check this out. It's called Anscombe's Quartet, because these interesting graphs and numbers and numbers were produced by @Anscombe1973. You are looking at pairs of measurements. Each graph has an X and Y axis, and each point represents two measurements. Each of the graphs looks very different, right? 
+
+```{r}
+library(data.table)
+ac <- fread("data/anscombe.txt")
+ac<-as.data.frame(ac)
+
+ac_long<-data.frame(x=c(ac[,1],
+                        ac[,3],
+                        ac[,5],
+                        ac[,7]),
+                    y=c(ac[,2],
+                        ac[,4],
+                        ac[,6],
+                        ac[,8]),
+                    quartet = as.factor(rep(1:4,each=11))
+                        )
+
+ggplot(ac_long, aes(x=x, y=y, color=quartet))+
+  geom_point()+
+  theme_classic()+
+  facet_wrap(~quartet)
+
+
+```
+
+
+Well, would you be surprised if I told that the descriptive statistics for the numbers in these graphs are exactly the same? It turns out they do have the same descriptive statistics. In the table below I present the mean and variance for the x-values in each graph, and the mean and the variance for the y-values in each graph.
+
+
+```{r}
+library(dplyr)
+
+ac_long_summary <- ac_long %>%
+                    dplyr::group_by(quartet) %>%
+                    dplyr::summarise(mean_x = mean(x),
+                              var_x = var(x),
+                              mean_y = mean(y),
+                              var_y = var(y))
+
+knitr::kable(ac_long_summary)
+
+```
+
+
+The descriptives are all the same! Anscombe put these special numbers together to illustrate the point of graphing your numbers. If you only look at your descriptives, you don't know what patterns in the data they are hiding. If you look at the graph, then you can get a better understanding.
+
+### Datasaurus Dozen
+
+If you thought that Anscombe's quartet was neat, you should take a look at the [Datasaurus Dozen](https://www.autodeskresearch.com/publications/samestats) [@matejka2017same]. Scroll down to see the examples. You will be looking at dot plots. The dot plots show many different patterns, including dinosaurs! What's amazing is that all of the dots have very nearly the same descriptive statistics. Just another reminder to look at your data, it might look like a dinosaur!
+
+
+
+
 
 
