@@ -9,9 +9,9 @@ library(xtable)
 
 This chapter introduces you to **repeated measures ANOVA**. Repeated measures ANOVAs are very common in Psychology, because psychologists often use repeated measures designs, and repeated measures ANOVAs are the appropriate test for making inferences about repeated measures designs. 
 
-Remember the paired sample t-test? We used that test to compare two means from a repeated measures design. Remember what a repeated measures design is? It's also called a within-subjects design. These designs involve measuring the same subject more than once. Specifically, at least once for every experimental condition. In the paired t-test example, we discussed a simple experiment with only two experimental conditions. There, each subject would contribute a measurement to level one and level two of the design.
+Remember the paired sample $t$-test? We used that test to compare two means from a repeated measures design. Remember what a repeated measures design is? It's also called a within-subjects design. These designs involve measuring the same subject more than once. Specifically, at least once for every experimental condition. In the paired $t$-test example, we discussed a simple experiment with only two experimental conditions. There, each subject would contribute a measurement to level one and level two of the design.
 
-However, paired-samples t-tests are limited to comparing two means. What if you had a design that had more than two experimental conditions? For example, perhaps your experiment had 3 levels for the independent variable, and each subject contributed data to each of the three levels?
+However, paired-samples $t$-tests are limited to comparing two means. What if you had a design that had more than two experimental conditions? For example, perhaps your experiment had 3 levels for the independent variable, and each subject contributed data to each of the three levels?
 
 This is starting to sounds like an ANOVA problem. ANOVAs are capable of evaluating whether there is a difference between any number of means, two or greater. So, we can use an ANOVA for our repeated measures design with three levels for the independent variable.
 
@@ -19,8 +19,6 @@ Great! So, what makes a repeated measures ANOVA different from the ANOVA we just
 
 
 ##  Repeated measures design
-
-
 
 Let's use the exact same toy example from the previous chapter, but let's convert it to a repeated measures design.
 
@@ -94,7 +92,7 @@ So, when we earlier wrote the formula to split up SS in the repeated-measures de
 
 $SS_\text{TOTAL} = SS_\text{Effect} + SS_\text{Subjects} +SS_\text{Error}$
 
-The critical feature of the repeated-measures ANOVA, is that the $SS_\text{Error}$ that we will later use to compute the MSE in the denominator for the $F$-value, is smaller in a a repeated-measures design, compared to a between subjects design. This is because the $SS_\text{Error (within-groups)}$ is split into two parts, $SS_\text{Subjects (error variation about the subject mean)}$ and $SS_\text{Error (left-over variation we can't explain)}$.
+The critical feature of the repeated-measures ANOVA, is that the $SS_\text{Error}$ that we will later use to compute the MSE in the denominator for the $F$-value, is smaller in a repeated-measures design, compared to a between subjects design. This is because the $SS_\text{Error (within-groups)}$ is split into two parts, $SS_\text{Subjects (error variation about the subject mean)}$ and $SS_\text{Error (left-over variation we can't explain)}$.
 
 To make this more clear, we made another figure:
 
@@ -106,13 +104,13 @@ As we point out, the $SS_\text{Error (left-over)}$ in the green circle will be a
 
 ## Calculating the RM ANOVA
 
-Now that you are familiar with the concept of an ANOVA table (remember the table from last chapter where we reported all of the parts to calculate the F-value?), we can take a look at the things we need to find out to make the ANOVA table. The figure below presents an abstract for the repeated-measures ANOVA table. It shows us all the thing we need to calculate to get the F-value for our data.
+Now that you are familiar with the concept of an ANOVA table (remember the table from last chapter where we reported all of the parts to calculate the $F$-value?), we can take a look at the things we need to find out to make the ANOVA table. The figure below presents an abstract for the repeated-measures ANOVA table. It shows us all the thing we need to calculate to get the $F$-value for our data.
 
 ```{r 8rmtable, fig.cap="Equations for computing the ANOVA table for a repeated measures design"}
 knitr::include_graphics("figures/RMANOVA_table.png")
 ```
 
-So, what we need to do is calculate all the SSes that we did before for the between-subjects ANOVA. That means the next three steps are identical to the ones you did before. In fact, I will just basically copy the next three steps to find $SS_\text{TOTAL}$,  $SS_\text{Effect}$ , and $SS_\text{Error (within-conditions)}$. After that we will talk about splitting up $SS_\text{Error (within-conditions)}$ into two parts, this is the new thing for this chapter. Here we go!
+So, what we need to do is calculate all the $SS$es that we did before for the between-subjects ANOVA. That means the next three steps are identical to the ones you did before. In fact, I will just basically copy the next three steps to find $SS_\text{TOTAL}$,  $SS_\text{Effect}$ , and $SS_\text{Error (within-conditions)}$. After that we will talk about splitting up $SS_\text{Error (within-conditions)}$ into two parts, this is the new thing for this chapter. Here we go!
 
 ### SS Total
 
@@ -281,11 +279,11 @@ OK, looks good. We found the $SS_\text{Effect}$ to be 72, and the SS for the con
 
 We have finished our job of computing the sums of squares that we need in order to do the next steps, which include computing the MSEs for the effect and the error term. Once we do that, we can find the F-value, which is the ratio of the two MSEs.
 
-Before we do that, you may have noticed that we solved for $SS_\text{Error (left-over)}$, rather than directly computed it from the data. In this chapter we are not going to show you the steps for doing this. We are not trying to hide anything from, instead it turns out these steps are related to another important idea in ANOVA. We discuss this idea, which is called an **interaction** in the next chapter, when we discuss **factorial** design (designs with more than one independent variable).
+Before we do that, you may have noticed that we solved for $SS_\text{Error (left-over)}$, rather than directly computing it from the data. In this chapter we are not going to show you the steps for doing this. We are not trying to hide anything from, instead it turns out these steps are related to another important idea in ANOVA. We discuss this idea, which is called an **interaction** in the next chapter, when we discuss **factorial** designs (designs with more than one independent variable).
 
 ### Compute the MSEs
 
-Calculating the MSEs (mean squared error) that we need for the F value involves the same general steps as last time. We divide each SS by the degrees of freedom for the SS. 
+Calculating the MSEs (mean squared error) that we need for the $F$-value involves the same general steps as last time. We divide each SS by the degrees of freedom for the SS. 
 
 The degrees of freedom for $SS_\text{Effect}$ are the same as before, the number of conditions - 1. We have three conditions, so the df is 2. Now we can compute the $MSE_\text{Effect}$.
 
@@ -298,7 +296,7 @@ $MSE_\text{Error (left-over)} = \frac{SS_\text{Error (left-over)}}{df} = \frac{1
 
 ### Compute F
 
-We just found the two MSEs that we need to compute F. We went through all of this to compute F for our data, so let's do it:
+We just found the two MSEs that we need to compute $F$. We went through all of this to compute $F$ for our data, so let's do it:
 
 $F = \frac{MSE_\text{Effect}}{MSE_\text{Error (left-over)}} = \frac{36}{44.33}= 0.812$
 
@@ -307,7 +305,7 @@ And, there we have it!
 
 ### p-value
 
-We already conducted the repeated-measures ANOVA using R and reported the ANOVA. Here it is again. The table shows the p-value associated with our F-value.
+We already conducted the repeated-measures ANOVA using R and reported the ANOVA. Here it is again. The table shows the $p$-value associated with our $F$-value.
 
 ```{r}
 summary_out <- summary(aov(scores~conditions + Error(subjects/conditions),df[1:9,]))
@@ -316,17 +314,17 @@ knitr::kable(xtable(summary_out))
 
 We might write up the results of our experiment and say that the main effect condition was not significant, F(2,4) = 0.812, MSE = 44.33, p = 0.505. 
 
-What does this statement mean? Remember, that the p-value represents the probability of getting the F value we observed or larger under the null (assuming that the samples come from the same distribution, the assumption of no differences). So, we know that an F-value of 0.812 or larger happens fairly often by chance (when there are no real differences), in fact it happens 50.5% of the time. As a result, we do not reject the idea that any differences in the means we have observed could have been produced by chance.
+What does this statement mean? Remember, that the $p$-value represents the probability of getting the $F$ value we observed or larger under the null (assuming that the samples come from the same distribution, the assumption of no differences). So, we know that an $F$-value of 0.812 or larger happens fairly often by chance (when there are no real differences), in fact it happens 50.5% of the time. As a result, we do not reject the idea that any differences in the means we have observed could have been produced by chance.
 
 ## Things worth knowing
 
-Repeated Measures ANOVAs have some special properties that are worth knowing about. The main special property is that the error term used to for the F-value (the MSE in the denominator) will always be smaller than the error term used for the F-value the ANOVA for a between-subjects design. We discussed this earlier. It is smaller, because we subtract out the error associated with the subject means.
+Repeated Measures ANOVAs have some special properties that are worth knowing about. The main special property is that the error term used to for the $F$-value (the MSE in the denominator) will always be smaller than the error term used for the $F$-value the ANOVA for a between-subjects design. We discussed this earlier. It is smaller, because we subtract out the error associated with the subject means.
 
-This can have the consequence of generally making F-values in repeated measures designs larger than F-values in between-subjects designs. When the number in the bottom of the F formula is generally smaller, it will generally make the resulting ratio a larger number. That's what happens when you make the number in the bottom smaller. 
+This can have the consequence of generally making $F$-values in repeated measures designs larger than $F$-values in between-subjects designs. When the number in the bottom of the $F$ formula is generally smaller, it will generally make the resulting ratio a larger number. That's what happens when you make the number in the bottom smaller. 
 
-Because big F values usually let us reject the idea that differences in our means are due to chance, the repeated-measures ANOVA becomes a more sensitive test of the differences (it's F-values are usually larger). 
+Because big $F$ values usually let us reject the idea that differences in our means are due to chance, the repeated-measures ANOVA becomes a more sensitive test of the differences (its $F$-values are usually larger). 
 
-At the same time, there is a trade-off here. The repeated measures ANOVA uses different degrees of freedom for the error term, and these are typically a smaller number of degrees of freedom. So, the f-distributions for the repeated measures and between-subjects designs are actually different f-distributions, because they have different degrees of freedom.
+At the same time, there is a trade-off here. The repeated measures ANOVA uses different degrees of freedom for the error term, and these are typically a smaller number of degrees of freedom. So, the $F$-distributions for the repeated measures and between-subjects designs are actually different $F$-distributions, because they have different degrees of freedom.
 
 ### Repeated vs between-subjects ANOVA
 
@@ -339,7 +337,7 @@ We will do the following.
 3. We will include a subject factor for the repeated-measures version. Here there are 10 subjects, each contributing three scores, one each condition
 4. For the between-subjects design there are 30 different subjects, each contributing one score in the condition they were assigned to (really the group).
 
-We run 1000 simulated experiments for each design. We calculate the F for each experiment, for both the between and repeated measures designs. Here are the two sampling distributions of F for both designs.
+We run 1000 simulated experiments for each design. We calculate the $F$ for each experiment, for both the between and repeated measures designs. Here are the two sampling distributions of $F$ for both designs.
 
 ```{r 8critcompare, fig.cap="Comparing critical F values for a between and repeated measures design"}
 
@@ -374,23 +372,23 @@ ggplot(plot_df, aes(x=fs))+
 
 ```
 
-These two F sampling distributions look pretty similar. However, they are subtly different. The between F distribution has degrees of freedom 2, and 27, for the numerator and denominator. There are 3 conditions, so df1 = 3-1 = 2. There are 30 subjects, so df2 = 30-3 =27. The critical value, assuming an alpha of 0.05 is 3.35. This means F is 3.35 or larger 5% of the time under the null.
+These two $F$ sampling distributions look pretty similar. However, they are subtly different. The between $F$ distribution has degrees of freedom 2, and 27, for the numerator and denominator. There are 3 conditions, so $df$1 = 3-1 = 2. There are 30 subjects, so $df$2 = 30-3 =27. The critical value, assuming an alpha of 0.05 is 3.35. This means $F$ is 3.35 or larger 5% of the time under the null.
 
-The repeated-measures F distribution has degrees of freedom 2, and 18, for the numerator and denominator. There are 3 conditions, so df1 = 3-1 = 2. There are 10 subjects, so $df2 = (10-1)*(3-1) = 9*2 = 18$. The critical value, assuming an alpha of 0.05 is 3.55. This means F is 3.55 or larger 5% of the time under the null. 
+The repeated-measures $F$ distribution has degrees of freedom 2, and 18, for the numerator and denominator. There are 3 conditions, so $df$1 = 3-1 = 2. There are 10 subjects, so $df$2 = (10-1)*(3-1) = 9*2 = 18. The critical value, assuming an alpha of 0.05 is 3.55. This means $F$ is 3.55 or larger 5% of the time under the null. 
 
-The critical value for the repeated measures version is slightly higher. This is because when df2 (the denominator) is smaller, the f-distribution spreads out to the right a little bit. When it is skewed like this, we get some bigger Fs a greater proportion of the time.
+The critical value for the repeated measures version is slightly higher. This is because when $df$2 (the denominator) is smaller, the $F$-distribution spreads out to the right a little bit. When it is skewed like this, we get some bigger $F$s a greater proportion of the time.
 
-So, in order to detect a real difference, you need an F of 3.35 or greater in a between-subjects design, or an F of 3.55 or greater for a repeated-measures design. The catch here is that when there is a real difference between the means, you will detect it more often with the repeated-measures design, even though you need a larger F (to pass the higher critical F-value for the repeated measures design).
+So, in order to detect a real difference, you need an $F$ of 3.35 or greater in a between-subjects design, or an $F$ of 3.55 or greater for a repeated-measures design. The catch here is that when there is a real difference between the means, you will detect it more often with the repeated-measures design, even though you need a larger $F$ (to pass the higher critical $F$-value for the repeated measures design).
 
 ### repeated measures designs are more sensitive
 
 To illustrate why repeated-measures designs are more sensitive, we will conduct another set of simulations.
 
-We will do something slightly different this time. We will make sure that the scores for condition A, are always a little bit higher than the other scores. In other words, we will program in a real true difference. Specifically, the scores for condition will be sampled from a normal distribution with mean = 105, and SD=10. This mean is 5 larger than the means for the other two conditions (still set to 100).
+We will do something slightly different this time. We will make sure that the scores for condition A, are always a little bit higher than the other scores. In other words, we will program in a real true difference. Specifically, the scores for condition will be sampled from a normal distribution with mean = 105, and SD = 10. This mean is 5 larger than the means for the other two conditions (still set to 100).
 
-With a real difference in the means, we should now reject the hypothesis of no differences more often. We should find F values larger than the critical value more often. And, we should find p-values for each experiment that are smaller than .05 more often, those should occur more than 5% of the time.
+With a real difference in the means, we should now reject the hypothesis of no differences more often. We should find $F$ values larger than the critical value more often. And, we should find $p$-values for each experiment that are smaller than .05 more often, those should occur more than 5% of the time.
 
-To look at this we conduct 1000 experiments for each design, we conduct the ANOVA, then we save the p-value we obtained for each experiment. This is like asking how many times will we find a p-value less than 0.05, when there is a real difference (in this case an average of 5) between some of the means. We will plot histograms of the p-values:
+To look at this we conduct 1000 experiments for each design, we conduct the ANOVA, then we save the $p$-value we obtained for each experiment. This is like asking how many times will we find a $p$-value less than 0.05, when there is a real difference (in this case an average of 5) between some of the means. We will plot histograms of the $p$-values:
 
 
 ```{r 8fpvaluedist, fig.cap="p-value distributions for a between and within-subjects ANOVA"}
@@ -426,17 +424,17 @@ ggplot(plot_df, aes(x=ps))+
 ```
 
 
-Here we have two distributions of observed p-values for the simulations. The red line shows the location of 0.05. Overall, we can see that for both designs, we got a full range of p-values from 0 to 1. This means that many times we would not have rejected the hypothesis of no differences (even though we know there is a small difference). We would have rejected the null every time the p-value was less than 0.05.
+Here we have two distributions of observed p-values for the simulations. The red line shows the location of 0.05. Overall, we can see that for both designs, we got a full range of $p$-values from 0 to 1. This means that many times we would not have rejected the hypothesis of no differences (even though we know there is a small difference). We would have rejected the null every time the $p$-value was less than 0.05.
 
-For the between subject design, there were `r length(b_p[b_p<.05])` experiments with a p less than 0.05, or `r length(b_p[b_p<.05])/1000` of experiments were "significant", with alpha=.05.
+For the between subject design, there were `r length(b_p[b_p<.05])` experiments with a $p$ less than 0.05, or `r length(b_p[b_p<.05])/1000` of experiments were "significant", with alpha=.05.
 
-For the within subject design, there were `r length(w_p[w_p<.05])` experiments with a p less than 0.05, or `r length(w_p[w_p<.05])/1000` of experiments were "significant", with alpha=.05.
+For the within subject design, there were `r length(w_p[w_p<.05])` experiments with a $p$ less than 0.05, or `r length(w_p[w_p<.05])/1000` of experiments were "significant", with alpha=.05.
 
 OK, well, you still might not be impressed. In this case, the between-subjects design detected the true effect slightly more often than the repeated measures design. Both them were right around 55% of the time. Based on this, we could say the two designs are pretty comparable in their sensitivity, or ability to detect a true difference when there is one.
 
 However, remember that the between-subjects design uses 30 subjects, and the repeated measures design only uses 10. We had to make a big investment to get our 30 subjects. And, we're kind of unfairly comparing the between design (which is more sensitive because it has more subjects) with the repeated measures design that has fewer subjects. 
 
-What do you think would happen if we ran 30 subjects in the repeated measures design? Let's find out. Here we redo the above, but this time only for the repeated measures design. We increase N from 10 to 30.
+What do you think would happen if we ran 30 subjects in the repeated measures design? Let's find out. Here we redo the above, but this time only for the repeated measures design. We increase $N$ from 10 to 30.
 
 ```{r 8pdistwithin, fig.cap="p-value distribution for within-subjects design with n= 30"}
 
@@ -462,17 +460,17 @@ ggplot(plot_df, aes(x=ps))+
 
 ```
 
-Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the p-values were less than .05. There were `r length(w_p[w_p<.05])` experiments with a p less than 0.05, or `r length(w_p[w_p<.05])/1000` of experiments were "significant", with alpha=.05. That's huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design is more sensitive than the between-subjects design. 
+Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the $p$-values were less than .05. There were `r length(w_p[w_p<.05])` experiments with a $p$ less than 0.05, or `r length(w_p[w_p<.05])/1000` of experiments were "significant", with alpha=.05. That's huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design. 
 
 ## Real Data
 
-Let's look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College.
+Let's look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College [@behmer2017spatial].
 
-We were interested in how people perform sequences of actions. One kind of question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters. 
+We were interested in how people perform sequences of actions. One question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters. 
 
-Prior research shown that people type words way faster than than random letters, but if you made the random letters a little bit more English-like, then people type those English kinds of letter a little bit faster, but not as fast as random letters. 
+From prior work we knew that people type words way faster than than random letters, but if you made the random letters a little bit more English-like, then people type those letter strings a little bit faster, but not as slow as random string. 
 
-In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in English (Bigram Condition, QUENP), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let's take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.
+In the study, 38 participants sat in front of a computer and typed 5 letter strings one at a time. Sometimes the 5 letter made a word (Normal condition, TRUCK), sometimes they were completely random (Random Condition, JWYFG), and sometimes they followed patterns like you find in English (Bigram Condition, QUEND), but were not actual words. So, the independent variable for the typing material had three levels. We measured every single keystroke that participants made. This gave us a few different dependent measures. Let's take a look a the reaction times. This is how long it took for participants to start typing the first letter in the string.
 
 ```{r 8behmcrump, fig.cap="Results from Behmer & Crump (2017)", cache=FALSE}
 library(data.table)
@@ -521,12 +519,12 @@ ggplot(plot_means, aes(x=Stimulus, y=means, group=Block, color=Block))+
 OK, I made a figure showing the mean reaction times for the different typing material conditions. You will notice that there are two sets of lines. That's because there was another manipulation I didn't tell you about. In one block of trials participants got to look at the keyboard while they typed, but in the other condition we covered up the keyboard so people had to type without looking. Finally, the error bars are standard error of the means.
 
 <div class="marginnote">
-Note, the use of error bars for repeated-measures designs is not very straightforward. In fact the standard error the means that we have added here are not very meaningful for judging whether the differences between the means are likely not due to chance. They would be if this was a between-subjects design. We will update this textbook with a longer discussion of this issue, for now we will just live with these error bars.
+Note, the use of error bars for repeated-measures designs is not very straightforward. In fact the standard error of the means that we have added here are not very meaningful for judging whether the differences between the means are likely not due to chance. They would be if this was a between-subjects design. We will update this textbook with a longer discussion of this issue, for now we will just live with these error bars.
 </div>
 
-For the purposes of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (English-like), and they started typing random letters the most slowly of all. Just like prior research had found.
+For the purpose of this example, we will say, it sure looks like the previous finding replicated. For example, people started typing Normal words faster than Bigram strings (English-like), and they started typing random letters the most slowly of all. Just like prior research had found.
 
-Let's focus only on the Block of trials where participants were allowed to look at the keyboard while they typed, that's the red line, for the "visible keyboard" block. We can see the means look different. Let's next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.
+Let's focus only on the block of trials where participants were allowed to look at the keyboard while they typed, that's the red line, for the "visible keyboard" block. We can see the means look different. Let's next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.
 
 ```{r}
 
@@ -541,7 +539,11 @@ knitr::kable(xtable(s_out))
 
 Alright, we might report the results like this. There was a significant main effect of Stimulus type, F(2, 74) = 235.73, MSE = 3022.289, p < 0.001.
 
-Notice a couple things. First, this is a huge F value. It's 253! Notice also that the p-value is listed as 0. That doesn't mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000... The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have arised by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type English-like strings somewhere in the middle in terms of speed.
+Notice a couple things. First, this is a huge $F$-value. It's 253! Notice also that the p-value is listed as 0. That doesn't mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000... The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have been produced by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence and and previous work showing the same thing, that our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type English-like strings somewhere in the middle in terms of speed.
+
+## Summary
+
+In this chapter you were introduced to the repeated-measures ANOVA. This analyis is appropriate for within-subjects or repeated measures designs. The main difference between the independent factor ANOVA and the repeated measures ANOVA, is the ability to partial out variance due to the individual subject means. This can often result in the repeated-measures ANOVA being more sensitive to true effects than the between-subjects ANOVA.
 
 
 

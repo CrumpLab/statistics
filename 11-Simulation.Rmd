@@ -7,9 +7,9 @@ library(dplyr)
 
 
 
-You may have noticed that throughout this book so far we have analyzed a lot of fake data. We used R to simulate pretend numbers, and then we analyzed those numbers. We also, from time to time, loaded in some "real" data, and analyzed that. In your labs each, you have been analyzing a lot of real data. You might be thinking that the simulations we ran were just for educational purposes, to show you how things work. That's partly true, that's one reason we ran so many simulations. At the same time, conducting simulations to understand how data behaves is a legitimate branch of statistics. There are some problems out there where we don't have really good analytic math formulas to tell us the correct answer, so we create and run simulations to approximate the answer. 
+You may have noticed that throughout this book so far we have analyzed a lot of fake data. We used R to simulate pretend numbers, and then we analyzed those numbers. We also, from time to time, loaded in some "real" data, and analyzed that. In your labs each week, you have been analyzing a lot of real data. You might be thinking that the simulations we ran were just for educational purposes, to show you how things work. That's partly true, that's one reason we ran so many simulations. At the same time, conducting simulations to understand how data behaves is a legitimate branch of statistics. There are some problems out there where we don't have really good analytic math formulas to tell us the correct answer, so we create and run simulations to approximate the answer. 
 
-I'm going to say something mildy controversial right now: If you can't simulate your data, then you probably don't really understand your data or how to analyze it. Perhaps, this is too bold of a statement. There are many researchers out there who have never simulated there data, and it might be too much too claim that they don't really understand their data because they didn't simulate. Perhaps. There are also many students who have taken statistics classes, and learned how to press some buttons, or copy some code, to analyze some real data; but, who never learned how to run simulations. Perhaps my statement applies more to those students, who I believe would benefit greatly from learning some simulation tricks.
+I'm going to say something mildy controversial right now: If you can't simulate your data, then you probably don't really understand your data or how to analyze it. Perhaps, this is too bold of a statement. There are many researchers out there who have never simulated their data, and it might be too much too claim that they don't really understand their data because they didn't simulate. Perhaps. There are also many students who have taken statistics classes, and learned how to press some buttons, or copy some code, to analyze some real data; but, who never learned how to run simulations. Perhaps my statement applies more to those students, who I believe would benefit greatly from learning some simulation tricks.
 
 ## Reasons to simulate
 
@@ -35,7 +35,7 @@ OK, so that's just a few reasons why simulations are useful.
 
 The basic idea here is actually pretty simple. You make some assumptions about how many subjects will be in your design (set N), you make some assumptions about the distributions that you will be sampling your scores from, then you use R to fabricate fake data according to the parameters you set. Once you build some simulated data, you can conduct a statistical analysis that you would be planning to run on the real data. Then you can see what happens. More importantly, you can repeat the above process many times. This is similar to conducting a replication of your experiment to see if you find the same thing, only you make the computer replicate your simulation 1000s of times. This way you can see how your simulated experiment would turn out over the long run. For example, you might find that the experiment you are planning to run will only produce a "signficant" result 25% of the time, that's not very good. Your simulation might also tell you that if you increase your N by say 25, that could really help, and your new experiment with N=25 might succeed 90% of the time. That's information worth knowing.
 
-Before we go into more simulation details, let's just run a quick one. We'll do an independent samples t-test. Imagin we have a study with N=10 in each group. There are two groups. We are measuring heart rate. Let's say we know that heart rate is on average 100 beats per minute with a standard deviation of 7. We are going to measure heart rate in condition A where nothing happens, and we are going to measure heart rate in condition B while they watch a scary movie. We think the scary movie might increase heart rate by 5 beats per minute. Let's run a simulation of this:
+Before we go into more simulation details, let's just run a quick one. We'll do an independent samples $t$-test. Imagine we have a study with N=10 in each group. There are two groups. We are measuring heart rate. Let's say we know that heart rate is on average 100 beats per minute with a standard deviation of 7. We are going to measure heart rate in condition A where nothing happens, and we are going to measure heart rate in condition B while they watch a scary movie. We think the scary movie might increase heart rate by 5 beats per minute. Let's run a simulation of this:
 
 ```{r, echo=TRUE}
 group_A <- rnorm(10,100,7)
@@ -44,9 +44,9 @@ t.test(group_A,group_B,var.equal = TRUE)
 
 ```
 
-We sampled 10 scores from a normal distribution for each group. We changed the mean for group_b to 105, because we were thinking their heart rate would be 5 more than group A. We ran one t.test, and we got a result. This result tells us what happens for this one simulation. 
+We sampled 10 scores from a normal distribution for each group. We changed the mean for group_b to 105, because we were thinking their heart rate would be 5 more than group A. We ran one $t$-test, and we got a result. This result tells us what happens for this one simulation. 
 
-We could learn more by repeating the simulation 1000 times, saving the p-values from each replication, and then finding out how many of our 1000 simulated experiments give us a significant result:
+We could learn more by repeating the simulation 1000 times, saving the $p$-values from each replication, and then finding out how many of our 1000 simulated experiments give us a significant result:
 
 ```{r, echo=TRUE}
 save_ps<-length(1000)
@@ -62,7 +62,7 @@ print(prop_p)
 
 ```
 
-Now this is more interesting. We found that `r prop_p*100`% of simulated experiments had a p-value less than 0.05. That's not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.
+Now this is more interesting. We found that `r prop_p*100`% of simulated experiments had a $p$-value less than 0.05. That's not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.
 
 What happens if we increase the number of subject to 50 in each group?
 
@@ -173,7 +173,7 @@ What we are doing with the GLM approach is making these same predictions, but do
 
 ## Simulating t-tests
 
-We've already seen some code for simulating a t-test 1000 times, saving the p-values, and then calculating the proportion of simulations that are significant (p<0.05). It looked like this:
+We've already seen some code for simulating a $t$-test 1000 times, saving the $p$-values, and then calculating the proportion of simulations that are significant (p<0.05). It looked like this:
 
 ```{r, echo=TRUE}
 
@@ -230,7 +230,7 @@ ggplot(plot_df, aes(x=mean_diff,
 ```
 
 
-A graph like this is very helpful to look at. Generally, before we run an experiment, we might not have a very good idea of the size of the effect that our manipulation might cause. Will it be a mean difference of 0 (no effect), or 5, or 10, or 20? If you are doing something new, you just might not have a good idea about this. You would know in general that bigger effects are easier to detect. You would be able to detect smaller and smaller effects if you ran more and more subjects. When you run this kind of simulation, you can vary the possible mean difference and the number of the subjects at the same time, and then see what happens. 
+A graph like this is very helpful to look at. Generally, before we run an experiment, we might not have a very good idea of the size of the effect that our manipulation might cause. Will it be a mean difference of 0 (no effect), or 5, or 10, or 20? If you are doing something new, you just might not have a good idea about this. You would know in general that bigger effects are easier to detect. You would be able to detect smaller and smaller effects if you ran more and more subjects. When you run this kind of simulation, you can vary the possible mean differences and the number of the subjects at the same time, and then see what happens. 
 
 When the mean diference is 0, we should get an average of 5%, or (0.05 proportion) experiments being significant. This is what we expect by chance, and it doesn't matter how many subjects we run. When there is no difference, we will reject the null 5% of the time (these would all be type 1 errors). 
 
@@ -258,7 +258,7 @@ knitr::kable(xtable(aov_results))
 
 ```
 
-In this next example, we simulate the same design 100 times, save the p-values, and the determine the proportion of significant simulations.
+In this next example, we simulate the same design 100 times, save the $p$-values, and the determine the proportion of significant simulations.
 
 ```{r, echo=TRUE}
 
@@ -284,7 +284,7 @@ length(save_p[save_p<0.05])/100
 
 ## Other resources
 
-OK, It's a tuesday, the summer is almost over. I've spent most of this summer (2018) writing this textbook, because we are using it this Fall 2018. Because I am running out of time, I need to finish this and make sure everything is in place for the course to work. As a result, I am not going to finish this chapter right now. The nice things about this book, is that I (and other people) can fill things in over time. We have shown a few examples of data-simulation, so that's at least something.
+OK, It's a tuesday, the summer is almost over. I've spent most of this summer (2018) writing this textbook, because we are using it this Fall 2018. Because I am running out of time, I need to finish this and make sure everything is in place for the course to work. As a result, I am not going to finish this chapter right now. The nice thing about this book, is that I (and other people) can fill things in over time. We have shown a few examples of data-simulation, so that's at least something.
 
 If you want to see more examples, I suggest you check out this chapter:
 

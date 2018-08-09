@@ -5,7 +5,7 @@ library(ggplot2)
 ```
 
 
-We are going to do a couple things in this chapter. The most important thing we do is give you more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA. You already know that you can have more than one IV. And, you know that research designs can be between-subjects or within-subjects (repeated-measures). When you have more than one IV, they can all be between-subjects variables, they can all be within-subject repeated measures, or they can be a mix: say one between-subject variable and one within-subject variable. You can use ANOVA to anlayse all of these kinds of designs. You always get one main effect for each IV, and a number of interactions, or just one, depending on the number of IVs.
+We are going to do a couple things in this chapter. The most important thing we do is give you more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA. You already know that you can have more than one IV. And, you know that research designs can be between-subjects or within-subjects (repeated-measures). When you have more than one IV, they can all be between-subjects variables, they can all be within-subject repeated measures, or they can be a mix: say one between-subject variable and one within-subject variable. You can use ANOVA to anlayze all of these kinds of designs. You always get one main effect for each IV, and a number of interactions, or just one, depending on the number of IVs.
 
 ## Looking at main effects and interactions
 
@@ -13,7 +13,7 @@ Designs with multiple factors are very common. When you read a research article 
 
 ### 2x2 designs
 
-Let's take the case of 2x2 designs. There will always be the possibility of two main effects and one interaction. You will always be able to compare the means for each main effect and interaction. If the means are different then there is a main effect or interaction. Here's the thing, there a bunch of ways all of this can turn out. Check out the ways, there are 8 of them:
+Let's take the case of 2x2 designs. There will always be the possibility of two main effects and one interaction. You will always be able to compare the means for each main effect and interaction. If the appropriate means are different then there is a main effect or interaction. Here's the thing, there a bunch of ways all of this can turn out. Check out the ways, there are 8 of them:
 
 1. no IV1 main effect, no IV2 main effect, no interaction
 2. IV1 main effect, no IV2 main effect, no interaction
@@ -110,7 +110,7 @@ You might find the line graphs easier to interpret. Whenever the lines cross, or
 
 ## Interpreting main effects and interactions
 
-The interpretation of main effects and interactions can get tricky. Consider the concept of a main effect. This is the idea that a particular IV has a consistent effect. For example, drinking 5 cups of coffee makes you more awake compared to not drinking 5 cups of coffee. The main effect of drinking 5 cups of coffee vs not will generally be true across the levels of other IVs in our life. For example, let's say you conducted an experiment testing whether the effect of drinking 5 cups of coffee vs not changes depending on whether you are in your house or in a car. Perhaps the situation matters? No, probably not so much. You will probably still be more awake in your house, or your car, after having 5 cups of coffee, compare to if you hadn't. 
+The interpretation of main effects and interactions can get tricky. Consider the concept of a main effect. This is the idea that a particular IV has a consistent effect. For example, drinking 5 cups of coffee makes you more awake compared to not drinking 5 cups of coffee. The main effect of drinking 5 cups of coffee vs not drinking coffee will generally be true across the levels of other IVs in our life. For example, let's say you conducted an experiment testing whether the effect of drinking 5 cups of coffee vs not, changes depending on whether you are in your house or in a car. Perhaps the situation matters? No, probably not so much. You will probably still be more awake in your house, or your car, after having 5 cups of coffee, compared to if you hadn't. 
 
 The coffee example is a reasonably good example of a consistent main effect. Another silly kind of example might be the main effect of shoes on your height. For example, if your IV was wearing shoes or not, and your DV was height, then we could expect to find a main effect of wearing shoes on your measurement of height. When you wear shoes, you will become taller compared to when you don't wear shoes. Wearing shoes adds to your total height. In fact, it's hard to imagine how the effect of wearing shoes on your total height would ever interact with other kinds of variables. You will be always be that extra bit taller wearing shoes. Indeed, if there was another manipulation that could cause an interaction that would truly be strange. For example, imagine if the effect of being inside a bodega or outside a bodega interacted with the effect of wearing shoes on your height. That could mean that shoes make you taller when you are outside a bodega, but when you step inside, your shoes make you shorter...but, obviously this is just totally ridiculous. That's correct, it is often ridiculous to expect that one IV will have an influence on the effect of another, especially when there is no good reason.
 
@@ -146,7 +146,7 @@ There is a main effect of IV2: the level 1 means (red points and bar) are both l
 
 **What's the qualification**? The size of the IV2 effect changed as a function of the levels of IV1. It was big for level A, and small for level B of IV1. 
 
-**What does the qualification mean for the main effect**? Well, first it means the main effect can be changed by the other IV. That's important to know. Does it also mean that the main effect is not a real main effect because there was an interaction? Not really, there is a general consistent effect of IV2. The green points are above the red points in all cases. Whatever IV2 is doing, it seems to work in at least a couple situations, even if they cause some change to the influence.
+**What does the qualification mean for the main effect**? Well, first it means the main effect can be changed by the other IV. That's important to know. Does it also mean that the main effect is not a real main effect because there was an interaction? Not really, there is a generally consistent effect of IV2. The green points are above the red points in all cases. Whatever IV2 is doing, it seems to work in at least a couple situations, even if the other IV also causes some change to the influence.
 
 
 ### An inconsistent main effect and an interaction
@@ -164,7 +164,7 @@ ggplot(p7, aes(x=IV1, y=means, group=IV2, color=IV2))+
 
 ```
 
-This figure shows another 2x2 design. You should see an interaction here straight away. The difference between the aqua and red points in condition A (left two dots) is huge, and there is 0 difference between them in condition B. Is there an interaction? Yes, Check!
+This figure shows another 2x2 design. You should see an interaction here straight away. The difference between the aqua and red points in condition A (left two dots) is huge, and there is 0 difference between them in condition B. Is there an interaction? Yes!
 
 Are there any main effects here? With data like this, sometimes an ANOVA will suggest that you do have significant main effects. For example, what is the mean difference between level 1 and 2 of IV2? That is the average of the green points ( (10+5)/2 = 15/2= 7.5 ) compared to the average of the red points (5). There will be a difference of 2.5 for the main effect (7.5 vs. 5). 
 
@@ -172,11 +172,11 @@ Starting to see the issue here? From the perspective of the main effect (which c
 
 What is happening here is that a "main effect" is produced by the process of averaging over a clear interaction.
 
-**How would we interpret this**? We might have to say there was a main effect of IV2, BUT we would defiently say it was qualified by an IV1 x IV2 interaction.
+**How would we interpret this**? We might have to say there was a main effect of IV2, BUT we would definetely say it was qualified by an IV1 x IV2 interaction.
 
 **What's the qualification**? The size of the IV2 effect completely changes as a function of the levels of IV1. It was big for level A, and nonexistent for level B of IV1. 
 
-**What does the qualification mean for the main effect**? In this case, we might doubt whether there is a main effect of at all. It could turn out that IV2 does not have a general influence over the DV all of the time, it may only do something in very specific circumstances, in combination with the presence of other factors.
+**What does the qualification mean for the main effect**? In this case, we might doubt whether there is a main effect of IV2 at all. It could turn out that IV2 does not have a general influence over the DV all of the time, it may only do something in very specific circumstances, in combination with the presence of other factors.
 
 
 ## Mixed Designs
