@@ -274,3 +274,18 @@ sum(ps)/1000
 
 hist(ps)
 
+
+## mean stde sim
+
+sample_mean<-length(1000)
+sample_se<-length(1000)
+
+for(i in 1:1000){
+  s<-rnorm(10,0,1)
+  sample_mean[i]<-mean(s)
+  sample_se[i]<-sd(s)/sqrt(length(s))
+}
+
+plot(sample_mean,sample_se)
+hist(sample_mean/sample_se, breaks=30)
+
