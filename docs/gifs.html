@@ -473,6 +473,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3.3" data-path="gifs.html"><a href="gifs.html#independent-t-test-true"><i class="fa fa-check"></i><b>12.3.3</b> Independent t-test True</a></li>
 <li class="chapter" data-level="12.3.4" data-path="gifs.html"><a href="gifs.html#t-test-true-sample-size"><i class="fa fa-check"></i><b>12.3.4</b> T-test True sample-size</a></li>
 <li class="chapter" data-level="12.3.5" data-path="gifs.html"><a href="gifs.html#one-factor-anova-null"><i class="fa fa-check"></i><b>12.3.5</b> one-factor ANOVA Null</a></li>
+<li class="chapter" data-level="12.3.6" data-path="gifs.html"><a href="gifs.html#factorial-null"><i class="fa fa-check"></i><b>12.3.6</b> Factorial Null</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="gifs.html"><a href="gifs.html#distributions"><i class="fa fa-check"></i><b>12.4</b> Distributions</a><ul>
 <li class="chapter" data-level="12.4.1" data-path="gifs.html"><a href="gifs.html#normal-changing-mean"><i class="fa fa-check"></i><b>12.4.1</b> Normal changing mean</a></li>
@@ -1321,9 +1322,9 @@ a&lt;-<span class="kw">ggplot</span>(means_df, <span class="kw">aes</span>(<span
 
 b&lt;-<span class="kw">ggplot</span>(stats_df,<span class="kw">aes</span>(<span class="dt">x=</span>Fs))+
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>Fs))+
-<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qf</span>(.<span class="dv">95</span>, <span class="dt">df1=</span><span class="dv">2</span>,<span class="dt">df2=</span><span class="dv">7</span>),<span class="dt">color=</span><span class="st">&quot;green&quot;</span>)+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qf</span>(.<span class="dv">95</span>, <span class="dt">df1=</span><span class="dv">2</span>,<span class="dt">df2=</span><span class="dv">27</span>),<span class="dt">color=</span><span class="st">&quot;green&quot;</span>)+
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>,.<span class="dv">1</span>),
-                            <span class="dt">y=</span><span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>,.<span class="dv">1</span>),<span class="dt">df1=</span><span class="dv">2</span>,<span class="dt">df2=</span><span class="dv">7</span>)),
+                            <span class="dt">y=</span><span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>,.<span class="dv">1</span>),<span class="dt">df1=</span><span class="dv">2</span>,<span class="dt">df2=</span><span class="dv">27</span>)),
             <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))+
 <span class="st">  </span><span class="kw">theme_classic</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)+
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;density&quot;</span>)+
@@ -1349,6 +1350,84 @@ for(i in <span class="dv">2</span>:<span class="dv">100</span>){
 }
 
 new_gif</code></pre></div>
+</div>
+<div id="factorial-null" class="section level3">
+<h3><span class="header-section-number">12.3.6</span> Factorial Null</h3>
+<p>10 simulations, N=10 in each of 4 conditions in a 2x2 (between-subjects). All observations taken from the same normal distribution (mu=50, sd =10).</p>
+<p><img src="gifs/FactorialNull.gif" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">A&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)
+B&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)
+C&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)
+D&lt;-<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)
+DV &lt;-<span class="st"> </span><span class="kw">c</span>(A,B,C,D)
+IV1 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>),<span class="dt">each=</span><span class="dv">200</span>)
+IV2&lt;-<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>),<span class="dt">each=</span><span class="dv">100</span>),<span class="dv">2</span>)
+sims &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">10</span>,<span class="dv">40</span>)
+df&lt;-<span class="kw">data.frame</span>(sims,IV1,IV2,DV)
+
+means_df &lt;-<span class="st"> </span>df %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(sims,IV1,IV2) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">means=</span><span class="kw">mean</span>(DV),
+            <span class="dt">sem =</span> <span class="kw">sd</span>(DV)/<span class="kw">sqrt</span>(<span class="kw">length</span>(DV)))
+
+stats_df &lt;-<span class="st"> </span>df %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(sims) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">FIV1 =</span> <span class="kw">summary</span>(<span class="kw">aov</span>(DV~IV1*IV2))[[<span class="dv">1</span>]][[<span class="dv">4</span>]][<span class="dv">1</span>],
+            <span class="dt">FIV2 =</span> <span class="kw">summary</span>(<span class="kw">aov</span>(DV~IV1*IV2))[[<span class="dv">1</span>]][[<span class="dv">4</span>]][<span class="dv">2</span>],
+            <span class="dt">F1x2 =</span> <span class="kw">summary</span>(<span class="kw">aov</span>(DV~IV1*IV2))[[<span class="dv">1</span>]][[<span class="dv">4</span>]][<span class="dv">3</span>]
+            )
+
+a&lt;-<span class="kw">ggplot</span>(means_df, <span class="kw">aes</span>(<span class="dt">x=</span>IV1,<span class="dt">y=</span>means, 
+                                           <span class="dt">group=</span>IV2,
+                                           <span class="dt">color=</span>IV2))+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data=</span>df,<span class="kw">aes</span>(<span class="dt">x=</span>IV1, <span class="dt">y=</span>DV,<span class="dt">group=</span>IV2), 
+             <span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span>.<span class="dv">2</span>),
+             <span class="dt">size=</span><span class="dv">2</span>,
+             <span class="dt">alpha=</span>.<span class="dv">25</span>)+
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">4</span>)+
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="fl">1.3</span>)+
+<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>means-sem, <span class="dt">ymax=</span>means+sem),<span class="dt">width=</span>.<span class="dv">2</span>,
+                <span class="dt">color=</span><span class="st">&quot;black&quot;</span>)+
+<span class="st">  </span><span class="kw">theme_classic</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)+
+<span class="st">  </span><span class="kw">transition_states</span>(
+    <span class="dt">states=</span>sims,
+    <span class="dt">transition_length =</span> <span class="dv">2</span>,
+    <span class="dt">state_length =</span> <span class="dv">1</span>
+  )+<span class="kw">enter_fade</span>() +<span class="st"> </span>
+<span class="st">  </span><span class="kw">exit_shrink</span>() +
+<span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)
+
+b&lt;-<span class="kw">ggplot</span>(stats_df,<span class="kw">aes</span>(<span class="dt">x=</span>FIV1))+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>FIV1),<span class="dt">color=</span><span class="st">&quot;red&quot;</span>,<span class="dt">size=</span><span class="fl">1.2</span>)+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>FIV2),<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">size=</span><span class="fl">1.2</span>)+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="kw">aes</span>(<span class="dt">xintercept=</span>F1x2),<span class="dt">color=</span><span class="st">&quot;purple&quot;</span>,<span class="dt">size=</span><span class="fl">1.2</span>)+
+<span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span><span class="kw">qf</span>(.<span class="dv">95</span>, <span class="dt">df1=</span><span class="dv">1</span>,<span class="dt">df2=</span><span class="dv">36</span>),<span class="dt">color=</span><span class="st">&quot;green&quot;</span>,<span class="dt">size=</span><span class="fl">1.2</span>)+
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data=</span><span class="kw">data.frame</span>(<span class="dt">x=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,.<span class="dv">1</span>),
+                            <span class="dt">y=</span><span class="kw">df</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">20</span>,.<span class="dv">1</span>),<span class="dt">df1=</span><span class="dv">1</span>,<span class="dt">df2=</span><span class="dv">36</span>)),
+            <span class="kw">aes</span>(<span class="dt">x=</span>x,<span class="dt">y=</span>y))+
+<span class="st">  </span><span class="kw">theme_classic</span>(<span class="dt">base_size =</span> <span class="dv">20</span>)+
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;density&quot;</span>)+
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;F value&quot;</span>)+
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="dt">label=</span><span class="st">&quot;&quot;</span>,<span class="dt">subtitle=</span><span class="st">&quot;red=IV1, blue=IV2, </span><span class="ch">\n</span><span class="st"> purple=Interaction&quot;</span>)+
+<span class="st">  </span><span class="kw">transition_states</span>(
+    <span class="dt">states=</span>sims,
+    <span class="dt">transition_length =</span> <span class="dv">2</span>,
+    <span class="dt">state_length =</span> <span class="dv">1</span>
+  )
+
+a_gif&lt;-<span class="kw">animate</span>(a,<span class="dt">width=</span><span class="dv">480</span>,<span class="dt">height=</span><span class="dv">480</span>)
+b_gif&lt;-<span class="kw">animate</span>(b,<span class="dt">width=</span><span class="dv">480</span>,<span class="dt">height=</span><span class="dv">480</span>)
+
+a_mgif&lt;-<span class="kw">image_read</span>(a_gif)
+b_mgif&lt;-<span class="kw">image_read</span>(b_gif)
+
+new_gif&lt;-<span class="kw">image_append</span>(<span class="kw">c</span>(a_mgif[<span class="dv">1</span>], b_mgif[<span class="dv">1</span>]))
+for(i in <span class="dv">2</span>:<span class="dv">100</span>){
+  combined &lt;-<span class="st"> </span><span class="kw">image_append</span>(<span class="kw">c</span>(a_mgif[i], b_mgif[i]))
+  new_gif&lt;-<span class="kw">c</span>(new_gif,combined)
+}
+
+<span class="kw">image_animate</span>(new_gif, <span class="dt">fps =</span> <span class="dv">10</span>,<span class="dt">dispose=</span><span class="st">&quot;none&quot;</span>)</code></pre></div>
 </div>
 </div>
 <div id="distributions" class="section level2">

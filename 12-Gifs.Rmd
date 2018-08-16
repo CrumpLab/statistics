@@ -963,9 +963,9 @@ a<-ggplot(means_df, aes(x=IV,y=means, fill=IV))+
 
 b<-ggplot(stats_df,aes(x=Fs))+
   geom_vline(aes(xintercept=Fs))+
-  geom_vline(xintercept=qf(.95, df1=2,df2=7),color="green")+
+  geom_vline(xintercept=qf(.95, df1=2,df2=27),color="green")+
   geom_line(data=data.frame(x=seq(0,6,.1),
-                            y=df(seq(0,6,.1),df1=2,df2=7)),
+                            y=df(seq(0,6,.1),df1=2,df2=27)),
             aes(x=x,y=y))+
   theme_classic(base_size = 20)+
   ylab("density")+
@@ -992,6 +992,95 @@ for(i in 2:100){
 
 new_gif
 ```
+
+### Factorial Null
+
+10 simulations, N=10 in each of 4 conditions in a 2x2 (between-subjects). All observations taken from the same normal distribution (mu=50, sd =10). 
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/FactorialNull.gif")
+```
+
+```{r, echo=TRUE,eval=FALSE}
+
+
+A<-rnorm(100,50,10)
+B<-rnorm(100,50,10)
+C<-rnorm(100,50,10)
+D<-rnorm(100,50,10)
+DV <- c(A,B,C,D)
+IV1 <- rep(c("A","B"),each=200)
+IV2<-rep(rep(c("1","2"),each=100),2)
+sims <- rep(1:10,40)
+df<-data.frame(sims,IV1,IV2,DV)
+
+means_df <- df %>%
+  group_by(sims,IV1,IV2) %>%
+  summarize(means=mean(DV),
+            sem = sd(DV)/sqrt(length(DV)))
+
+stats_df <- df %>%
+  group_by(sims) %>%
+  summarize(FIV1 = summary(aov(DV~IV1*IV2))[[1]][[4]][1],
+            FIV2 = summary(aov(DV~IV1*IV2))[[1]][[4]][2],
+            F1x2 = summary(aov(DV~IV1*IV2))[[1]][[4]][3]
+            )
+
+a<-ggplot(means_df, aes(x=IV1,y=means, 
+                                           group=IV2,
+                                           color=IV2))+
+  geom_point(data=df,aes(x=IV1, y=DV,group=IV2), 
+             position=position_dodge(width=.2),
+             size=2,
+             alpha=.25)+
+  geom_point(size=4)+
+  geom_line(size=1.3)+
+  geom_errorbar(aes(ymin=means-sem, ymax=means+sem),width=.2,
+                color="black")+
+  theme_classic(base_size = 20)+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+b<-ggplot(stats_df,aes(x=FIV1))+
+  geom_vline(aes(xintercept=FIV1),color="red",size=1.2)+
+  geom_vline(aes(xintercept=FIV2),color="blue",size=1.2)+
+  geom_vline(aes(xintercept=F1x2),color="purple",size=1.2)+
+  geom_vline(xintercept=qf(.95, df1=1,df2=36),color="green",size=1.2)+
+  geom_line(data=data.frame(x=seq(0,20,.1),
+                            y=df(seq(0,20,.1),df1=1,df2=36)),
+            aes(x=x,y=y))+
+  theme_classic(base_size = 20)+
+  ylab("density")+
+  xlab("F value")+
+  ggtitle(label="",subtitle="red=IV1, blue=IV2, \n purple=Interaction")+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )
+
+a_gif<-animate(a,width=480,height=480)
+b_gif<-animate(b,width=480,height=480)
+
+a_mgif<-image_read(a_gif)
+b_mgif<-image_read(b_gif)
+
+new_gif<-image_append(c(a_mgif[1], b_mgif[1]))
+for(i in 2:100){
+  combined <- image_append(c(a_mgif[i], b_mgif[i]))
+  new_gif<-c(new_gif,combined)
+}
+
+image_animate(new_gif, fps = 10,dispose="none")
+
+
+```
+
 
 ## Distributions
 
