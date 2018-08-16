@@ -448,3 +448,130 @@ animation <- image_animate(new_gif, fps = 10)
 animation
               
 image_read(b_gif)
+
+
+
+
+
+### speed test
+
+
+A<-rnorm(100,50,10)
+B<-rnorm(100,50,10)
+DV <- c(A,B)
+IV <- rep(rep(c("A","B"),each=10),10)
+sims <- rep(1:10,each=20)
+df<-data.frame(sims,IV,DV)
+
+means_df <- df %>%
+  group_by(sims,IV) %>%
+  summarize(means=mean(DV),
+            sem = sd(DV)/sqrt(length(DV)))
+
+stats_df <- df %>%
+  group_by(sims) %>%
+  summarize(ts = t.test(DV~IV,var.equal=TRUE)$statistic)
+
+a<-ggplot(means_df, aes(x=IV,y=means, fill=IV))+
+  geom_bar(stat="identity")+
+  geom_point(data=df,aes(x=IV, y=DV), alpha=.25)+
+  geom_errorbar(aes(ymin=means-sem, ymax=means+sem),width=.2)+
+  theme_classic(base_size = 15)+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+a
+
+######
+
+a_gif<-animate(a,width = 240, height = 240)
+
+my_renderer<-function (loop = TRUE) 
+{
+  if (!requireNamespace("magick", quietly = TRUE)) {
+    stop("The magick package is required to use this renderer", 
+         call. = FALSE)
+  }
+  function(frames, fps) {
+    anim <- if (grepl(".svg$", frames[1])) {
+      magick::image_read_svg(frames)
+    }
+    else {
+      magick::image_read(frames,density=200)
+    }
+    anim <- magick::image_animate(anim, fps, loop = if (loop) 
+      0
+      else 1)
+    anim
+  }
+}
+
+
+## anova gif
+
+
+A<-rnorm(100,50,10)
+B<-rnorm(100,50,10)
+C<-rnorm(100,50,10)
+DV <- c(A,B,C)
+IV <- rep(rep(c("A","B","C"),each=10),10)
+sims <- rep(1:10,each=30)
+df<-data.frame(sims,IV,DV)
+
+means_df <- df %>%
+  group_by(sims,IV) %>%
+  summarize(means=mean(DV),
+            sem = sd(DV)/sqrt(length(DV)))
+
+stats_df <- df %>%
+  group_by(sims) %>%
+  summarize(Fs = summary(aov(DV~IV))[[1]][[4]][1])
+
+a<-ggplot(means_df, aes(x=IV,y=means, fill=IV))+
+  geom_bar(stat="identity")+
+  geom_point(data=df,aes(x=IV, y=DV), alpha=.25)+
+  geom_errorbar(aes(ymin=means-sem, ymax=means+sem),width=.2)+
+  theme_classic(base_size = 20)+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+b<-ggplot(stats_df,aes(x=Fs))+
+  geom_vline(aes(xintercept=Fs))+
+  geom_vline(xintercept=qf(.95, df1=2,df2=7),color="green")+
+  geom_line(data=data.frame(x=seq(0,6,.1),
+                            y=df(seq(0,6,.1),df1=2,df2=7)),
+            aes(x=x,y=y))+
+  theme_classic(base_size = 20)+
+  ylab("density")+
+  xlab("F value")+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+a_gif<-animate(a,width=480,height=480)
+b_gif<-animate(b,width=480,height=480)
+
+a_mgif<-image_read(a_gif)
+b_mgif<-image_read(b_gif)
+
+new_gif<-image_append(c(a_mgif[1], b_mgif[1]))
+for(i in 2:100){
+  combined <- image_append(c(a_mgif[i], b_mgif[i]))
+  new_gif<-c(new_gif,combined)
+}
+
+new_gif
