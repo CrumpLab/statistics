@@ -744,6 +744,177 @@ new_gif
 ```
 
 
+### T-test True sample-size
+
+The top row shows 10 simulations of an independent sample t-test, with N=10, and true difference of 1 sd.
+
+The bottom row shows 10 simulations with N=50. 
+
+The observed t-value occurs past the critical value (green) line much more reliably and often when sample size is larger than smaller.
+
+```{r, echo=F,eval=T}
+knitr::include_graphics(path="gifs/indTtestN.gif")
+```
+
+```{r, echo=TRUE,eval=FALSE}
+
+library(dplyr)
+library(ggplot2)
+library(magick)
+library(gganimate)
+
+A<-rnorm(100,60,10)
+B<-rnorm(100,50,10)
+DV <- c(A,B)
+IV <- rep(c("A","B"),each=100)
+sims <- rep(rep(1:10,each=10),2)
+df<-data.frame(sims,IV,DV)
+
+means_df <- df %>%
+               group_by(sims,IV) %>%
+               summarize(means=mean(DV),
+                         sem = sd(DV)/sqrt(length(DV)))
+
+stats_df <- df %>%
+              group_by(sims) %>%
+              summarize(ts = t.test(DV~IV,var.equal=TRUE)$statistic)
+
+a<-ggplot(means_df, aes(x=IV,y=means, fill=IV))+
+  geom_bar(stat="identity")+
+  geom_point(data=df,aes(x=IV, y=DV), alpha=.25)+
+  geom_errorbar(aes(ymin=means-sem, ymax=means+sem),width=.2)+
+  theme_classic()+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+a_gif<-animate(a, width = 240, height = 240)
+
+b<-ggplot(stats_df,aes(x=ts))+
+  geom_vline(aes(xintercept=ts, frame=sims))+
+  geom_vline(xintercept=qt(c(.025, .975), df=18),color="green")+
+  geom_line(data=data.frame(x=seq(-5,5,.1),
+                            y=dt(seq(-5,5,.1),df=18)),
+            aes(x=x,y=y))+
+  theme_classic()+
+  ylab("density")+
+  xlab("t value")+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+b_gif<-animate(b, width = 240, height = 240)
+
+
+d<-image_blank(240*2,240)
+
+the_frame<-d
+for(i in 2:100){
+  the_frame<-c(the_frame,d)
+}
+
+a_mgif<-image_read(a_gif)
+b_mgif<-image_read(b_gif)
+
+new_gif<-image_append(c(a_mgif[1], b_mgif[1]))
+for(i in 2:100){
+  combined <- image_append(c(a_mgif[i], b_mgif[i]))
+  new_gif<-c(new_gif,combined)
+}
+
+new_gif
+
+## increase sample-size
+
+A<-rnorm(50*10,60,10)
+B<-rnorm(50*10,50,10)
+DV <- c(A,B)
+IV <- rep(c("A","B"),each=50*10)
+sims <- rep(rep(1:10,each=50),2)
+df<-data.frame(sims,IV,DV)
+
+means_df <- df %>%
+               group_by(sims,IV) %>%
+               summarize(means=mean(DV),
+                         sem = sd(DV)/sqrt(length(DV)))
+
+stats_df <- df %>%
+              group_by(sims) %>%
+              summarize(ts = t.test(DV~IV,var.equal=TRUE)$statistic)
+
+a<-ggplot(means_df, aes(x=IV,y=means, fill=IV))+
+  geom_bar(stat="identity")+
+  geom_point(data=df,aes(x=IV, y=DV), alpha=.25)+
+  geom_errorbar(aes(ymin=means-sem, ymax=means+sem),width=.2)+
+  theme_classic()+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+a_gif<-animate(a, width = 240, height = 240)
+
+b<-ggplot(stats_df,aes(x=ts))+
+  geom_vline(aes(xintercept=ts, frame=sims))+
+  geom_vline(xintercept=qt(c(.025, .975), df=98),color="green")+
+  geom_line(data=data.frame(x=seq(-5,5,.1),
+                            y=dt(seq(-5,5,.1),df=98)),
+            aes(x=x,y=y))+
+  theme_classic()+
+  ylab("density")+
+  xlab("t value")+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+b_gif<-animate(b, width = 240, height = 240)
+
+
+d<-image_blank(240*2,240)
+
+the_frame<-d
+for(i in 2:100){
+  the_frame<-c(the_frame,d)
+}
+
+a_mgif<-image_read(a_gif)
+b_mgif<-image_read(b_gif)
+
+new_gif2<-image_append(c(a_mgif[1], b_mgif[1]))
+for(i in 2:100){
+  combined <- image_append(c(a_mgif[i], b_mgif[i]))
+  new_gif2<-c(new_gif2,combined)
+}
+
+## add new row
+
+final_gif <- image_append(c(new_gif[1], new_gif2[1]),stack=TRUE)
+for(i in 2:100){
+  combined <- image_append(c(new_gif[i], new_gif2[i]),stack=TRUE)
+  final_gif<-c(final_gif,combined)
+}
+
+final_gif
+
+
+```
+
+
 ## Distributions
 
 ### Normal changing mean
