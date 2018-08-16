@@ -469,6 +469,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="gifs.html"><a href="gifs.html#statistical-inference"><i class="fa fa-check"></i><b>12.3</b> Statistical Inference</a><ul>
 <li class="chapter" data-level="12.3.1" data-path="gifs.html"><a href="gifs.html#randomization-test"><i class="fa fa-check"></i><b>12.3.1</b> Randomization Test</a></li>
+<li class="chapter" data-level="12.3.2" data-path="gifs.html"><a href="gifs.html#independent-t-test-null"><i class="fa fa-check"></i><b>12.3.2</b> Independent t-test Null</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="gifs.html"><a href="gifs.html#distributions"><i class="fa fa-check"></i><b>12.4</b> Distributions</a><ul>
 <li class="chapter" data-level="12.4.1" data-path="gifs.html"><a href="gifs.html#normal-changing-mean"><i class="fa fa-check"></i><b>12.4.1</b> Normal changing mean</a></li>
@@ -955,6 +956,14 @@ a&lt;-<span class="kw">ggplot</span>(raw_df,<span class="kw">aes</span>(<span cl
 <span class="st">  </span><span class="kw">ease_aes</span>(<span class="st">&#39;sine-in-out&#39;</span>)
 
 <span class="kw">animate</span>(a,<span class="dt">nframes=</span><span class="dv">100</span>,<span class="dt">fps=</span><span class="dv">5</span>)</code></pre></div>
+</div>
+<div id="independent-t-test-null" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> Independent t-test Null</h3>
+<p>This is a simulation of the null distribution for an independent samples t-test, two groups, 10 observations per group.</p>
+<p>This animation has two panels. The left panel shows means for group A and B, sampled from the same normal distribution (mu=50, sd =10). The dots represent individual scores for each of 10 observations per group.</p>
+<p>The right panel shows a t-distribution (df=18) along with the observerd t-statistic for each simulation.</p>
+<p><code>gganimate</code> does not yet directly support multiple panels as shown in this gif. I hacked together these two gifs using the <code>magick</code> package. Apologies for the hackiness.</p>
+<p><img src="gifs/IndTtest.gif" /><!-- --></p>
 </div>
 </div>
 <div id="distributions" class="section level2">

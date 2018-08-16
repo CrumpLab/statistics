@@ -289,3 +289,162 @@ for(i in 1:1000){
 plot(sample_mean,sample_se)
 hist(sample_mean/sample_se, breaks=30)
 
+
+
+## try gganimate with ggpubr
+
+library(ggplot2)
+library(gganimate)
+library(ggpubr)
+
+a<-rnorm(100,0,1)
+sims<-rep(1:10,each=10)
+df<-data.frame(sims,a)
+
+
+ggplot(df,aes(x=a))+
+  geom_histogram()+
+transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+a<-ggplot(df,aes(x=a))+
+  geom_histogram()
+b<-ggplot(df,aes(x=a))+
+  geom_histogram()
+
+ggarrange(a,b,ncol=2)+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+library(grid)
+library(gridExtra)
+
+grid.arrange(a,b,ncol=2)+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+library(magick)
+
+a<-image_read("gifs/regression-1.gif")
+
+t1<-a[1:3]
+t2<-a[4:6]
+
+b<-image_blank(480*2,480)
+
+the_frame<-b
+for(i in 2:50){
+ the_frame<-c(the_frame,b)
+}
+
+new_gif<-image_append(c(t1[1], t2[1]))
+for(i in 2:3){
+combined <- image_append(c(t1[i], t2[i]))
+new_gif<-c(new_gif,combined)
+}
+
+animation <- image_animate(new_gif, fps = 10)
+
+animation
+
+image_write(animation, "Rlogo-banana.gif")
+
+new_gif
+
+
+a %>%
+  image_border(image_background(a, "hotpink"), "#000080", "20x10")
+
+
+
+
+####
+library(dplyr)
+
+A<-rnorm(100,50,10)
+B<-rnorm(100,50,10)
+DV <- c(A,B)
+IV <- rep(rep(c("A","B"),each=10),10)
+sims <- rep(1:10,each=20)
+df<-data.frame(sims,IV,DV)
+
+means_df <- df %>%
+               group_by(sims,IV) %>%
+               summarize(means=mean(DV),
+                         sem = sd(DV)/sqrt(length(DV)))
+
+stats_df <- df %>%
+              group_by(sims) %>%
+              summarize(ts = t.test(DV~IV,var.equal=TRUE)$statistic)
+
+a<-ggplot(means_df, aes(x=IV,y=means, fill=IV))+
+  geom_bar(stat="identity")+
+  geom_point(data=df,aes(x=IV, y=DV), alpha=.25)+
+  geom_errorbar(aes(ymin=means-sem, ymax=means+sem),width=.2)+
+  theme_classic()+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+  
+a_gif<-animate(a, width = 240, height = 240)
+
+b<-ggplot(stats_df,aes(x=ts))+
+  geom_vline(aes(xintercept=ts, frame=sims))+
+  geom_line(data=data.frame(x=seq(-5,5,.1),
+                            y=dt(seq(-5,5,.1),df=18)),
+            aes(x=x,y=y))+
+  theme_classic()+
+  ylab("density")+
+  xlab("t value")+
+  transition_states(
+    states=sims,
+    transition_length = 2,
+    state_length = 1
+  )+enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+b_gif<-animate(b, width = 240, height = 240)
+
+
+d<-image_blank(240*2,240)
+
+the_frame<-d
+for(i in 2:100){
+  the_frame<-c(the_frame,d)
+}
+
+a_mgif<-image_read(a_gif)
+b_mgif<-image_read(b_gif)
+
+new_gif<-image_append(c(a_mgif[1], b_mgif[1]))
+for(i in 2:100){
+  combined <- image_append(c(a_mgif[i], b_mgif[i]))
+  new_gif<-c(new_gif,combined)
+}
+
+new_gif
+
+animation <- image_animate(new_gif, fps = 10)
+animation
+              
+image_read(b_gif)
