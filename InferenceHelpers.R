@@ -5,7 +5,7 @@
 all_df<-data.frame()
 for(i in 1:1000){
   for(n in c(10,20,50,100,1000)){
-    some_data<-rnorm(n,0.1,3)
+    some_data<-rnorm(n,0,1)
     p_value<-t.test(some_data)$p.value
     effect_size<-mean(some_data)/sd(some_data)
     mean_scores<-mean(some_data)
@@ -656,4 +656,22 @@ for(i in 2:100){
 }
 
 image_animate(new_gif, fps = 10,dispose="none")
+
+
+## a different test
+
+ss<-c()
+for(i in 1:1000){
+a<-rnorm(25,0,1)
+b<-rnorm(25,10,1)
+df<-data.frame(cond<-rep(c("a","b"),each=25),dv=c(a,b))
+aov.out<-summary(aov(dv~cond,df))
+ss[i]<-aov.out[[1]]$`Mean Sq`[2]
+}
+
+mean(ss)
+sd(ss)
+hist(ss)
+
+
 
