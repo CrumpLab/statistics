@@ -742,6 +742,42 @@ ggplot(all_df,aes(y=values,x=samples, group=samples))+
   exit_shrink() +
   ease_aes('sine-in-out')
 
+
+## changing sd ----
+
+some_sds<-seq(0.5,5,.5)
+all_df<-data.frame()
+for(i in 1:10){
+  rnorm_vec <- rnorm(1000,mean=0,sd=some_sds[i])
+  sds <- rep(some_sds[i], 1000)
+  sims <- rep(i, 1000)
+  t_df<-data.frame(sims,sds,rnorm_vec)
+  all_df<-rbind(all_df,t_df)
+}
+
+labs_df<-data.frame(sims=1:10,
+                    sds=as.character(seq(0.5,5,.5)))
+
+ggplot(all_df, aes(x=rnorm_vec, frame=sims))+
+  geom_histogram(bins=50, color="white")+
+  theme_classic()+
+  ylab("count")+
+  xlab("value")+
+  ggtitle("Histogram with increasing standard deviation")+
+  geom_label(data = labs_df, aes(x = 5, y = 200, label = sds))+
+  transition_states(
+    sims,
+    transition_length = 2,
+    state_length = 1
+  )+
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
+
+
+
+
   
 
 
