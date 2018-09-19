@@ -1775,8 +1775,8 @@ Figure 3.9: Two different lines with different y-intercepts (where the line cros
 </div>
 <p>We’ll show you the formulas. And, work through one example by hand. It’s the worst, we know. By the way, you should feel sorry for me as I do this entire thing by hand for you.</p>
 <p>Here are two formulas we can use to calculate the slope and the intercept, straight from the data. We won’t go into why these formulas do what they do. These ones are for “easy” calculation.</p>
-<p><span class="math inline">\(slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}\)</span></p>
-<p><span class="math inline">\(intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}\)</span></p>
+<p><span class="math inline">\(intercept = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}\)</span></p>
+<p><span class="math inline">\(slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}\)</span></p>
 <p>In these formulas, the <span class="math inline">\(x\)</span> and the <span class="math inline">\(y\)</span> refer to the individual scores. Here’s a table showing you how everything fits together.</p>
 <table>
 <thead>
@@ -1965,17 +1965,17 @@ Sums
 </tbody>
 </table>
 <p>We see 7 sets of scores for the x and y variable. We calculated <span class="math inline">\(x^2\)</span> by squaring each value of x, and putting it in a column. We calculated <span class="math inline">\(y^2\)</span> by squaring each value of y, and putting it in a column. Then we calculated <span class="math inline">\(xy\)</span>, by multiplying each <span class="math inline">\(x\)</span> score with each <span class="math inline">\(y\)</span> score, and put that in a column. Then we added all the columns up, and put the sums at the bottom. These are all the number we need for the formulas to find the best fit line. Here’s what the formulas look like when we put numbers in them:</p>
-<p><span class="math inline">\(slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 275 - 34*231}{7*200-34^2} = -1.23\)</span></p>
-<p><span class="math inline">\(intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{6*231-34*39}{6*275-34^2} = 1.36\)</span></p>
-<p>Great, now we can check our work, let’s plot the scores in a scatter plot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots.</p>
+<p><span class="math inline">\(intercept = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 200 - 34*231}{7*200-34^2} = -.221\)</span></p>
+<p><span class="math inline">\(slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{6*231-34*39}{6*275-34^2} = 1.19\)</span></p>
+<p>Great, now we can check our work, let’s plot the scores in a scatter plot and draw a line through it with slope = 1.19, and a y-intercept of -.221. It should go through the middle of the dots.</p>
 <div class="figure"><span id="fig:3corwithLine"></span>
 <img src="statistics_files/figure-html/3corwithLine-1.png" alt="An example regression line with confidence bands going through a few data points in a scatterplot" width="672" />
 <p class="caption">
 Figure 3.10: An example regression line with confidence bands going through a few data points in a scatterplot
 </p>
 </div>
-<pre><code>## (Intercept)           y 
-##   0.8440594   0.7202970</code></pre>
+<pre><code>## (Intercept)           x 
+##  -0.2213115   1.1926230</code></pre>
 </div>
 </div>
 <div id="interpreting-correlations" class="section level2">

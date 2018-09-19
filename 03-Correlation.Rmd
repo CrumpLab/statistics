@@ -524,9 +524,9 @@ We'll show you the formulas. And, work through one example by hand. It's the wor
 Here are two formulas we can use to calculate the slope and the intercept, straight from the data. We won't go into why these formulas do what they do. These ones are for "easy" calculation.
 
 
-$slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}$
+$intercept = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}$
 
-$intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}$
+$slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}$
 
 In these formulas, the $x$ and the $y$ refer to the individual scores. Here's a table showing you how everything fits together.
 
@@ -552,11 +552,11 @@ knitr::kable(all_df)
 
 We see 7 sets of scores for the x and y variable. We calculated $x^2$ by squaring each value of x, and putting it in a column. We calculated $y^2$ by squaring each value of y, and putting it in a column. Then we calculated $xy$, by multiplying each $x$ score with each $y$ score, and put that in a column. Then we added all the columns up, and put the sums at the bottom. These are all the number we need for the formulas to find the best fit line. Here's what the formulas look like when we put numbers in them:
 
-$slope = a = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 275 - 34*231}{7*200-34^2} = -1.23$
+$intercept = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 200 - 34*231}{7*200-34^2} = -.221$
 
-$intercept = b = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{6*231-34*39}{6*275-34^2} = 1.36$
+$slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{6*231-34*39}{6*275-34^2} = 1.19$
 
-Great, now we can check our work, let's plot the scores in a scatter plot and draw a line through it with slope = -1.23, and a y-intercept of 1.36. It should go through the middle of the dots.
+Great, now we can check our work, let's plot the scores in a scatter plot and draw a line through it with slope = 1.19, and a y-intercept of -.221. It should go through the middle of the dots.
 
 ```{r 3corwithLine, fig.cap="An example regression line with confidence bands going through a few data points in a scatterplot"}
 plot_df<-data.frame(x,y)
@@ -566,7 +566,7 @@ ggplot(plot_df,aes(x=x,y=y))+
   geom_smooth(method="lm",se=FALSE)+
   theme_classic()
 
-coef(lm(x~y,plot_df))
+coef(lm(y~x,plot_df))
 
 ```
 
