@@ -190,7 +190,7 @@ $\text{sd} = \sqrt{\frac{2890}{10-1}} = 17.92$
 
 The standard error of the mean, is the standard deviation divided by the square root of N
 
-$\text{SEM} = \frac{s}{\sqrt{N}} = \frac{17.92}{10} = 5.67 $
+$\text{SEM} = \frac{s}{\sqrt{N}} = \frac{17.92}{10} = 5.67$
 
 $t$ is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.
 
@@ -203,7 +203,7 @@ t.test(scores, mu=50)
 ```
 
 
-### How does $t$ behave?
+### How does t behave?
 
 If $t$ is just a number that we can compute from our sample (it is), what can we do with it? How can we use $t$ for statistical inference?
 
@@ -309,7 +309,7 @@ From our early example involving the TRUE/FALSE quizzes, we are now ready to mak
 
 We're guessing that you are still a little bit confused about $t$ values, and what we are doing here. We are going to skip ahead to the next $t$-test, called a **paired samples t-test**. We will also fill in some more things about $t$-tests that are more obvious when discussing paired samples t-test. In fact, spoiler alert, we will find out that a paired samples t-test is actually a one-sample t-test in disguise (WHAT!), yes it is. If the one-sample $t$-test didn't make sense to you, read the next section.
 
-## Paired-samples $t$-test
+## Paired-samples t-test
 
 For me (Crump), many analyses often boil down to a paired samples t-test. It just happens that many things I do reduce down to a test like this.
 
@@ -428,7 +428,7 @@ Can we rush to judgment and conclude that infants are more socially attracted to
 
 We will more formally evaluate whether this difference could have been caused by chance with the paired-samples t-test. But, before we do that, let's again calculate $t$ and discuss what $t$ tells us over and above what our measure of the mean of the difference scores tells us.
 
-### Calculate $t$
+### Calculate t
 
 OK, so how do we calculate $t$ for a paired-samples $t$-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample $t$-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample $t$-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distribution with mean difference = 0. This is a special distribution we refer to as the **null distribution**. It is the distribution no differences. Of course, this **null distribution** can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.
 
@@ -477,7 +477,7 @@ Here is a quick write up of our t-test results, t(4) = .72, p = .509.
 
 What does all of that tell us? There's a few things we haven't gotten into much yet. For example, the 4 represents degrees of freedom, which we discuss later. The important part, the $t$ value should start to be a little bit more meaningful. We got a kind of small t-value didn't we. It's .72. What can we tell from this value? First, it is positive, so we know the mean difference is positive. The sign of the $t$-value is always the same as the sign of the mean difference (ours was +0.054). We can also see that the p-value was .509. We've seen p-values before. This tells us that our $t$ value or larger, occurs about 50.9% of the time... Actually it means more than this. And, to understand it, we need to talk about the concept of two-tailed and one-tailed tests.
 
-### Interpreting $t$s
+### Interpreting ts
 
 Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of $t$-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like by plotting it like this:
 

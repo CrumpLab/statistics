@@ -318,16 +318,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.2.1" data-path="t-tests.html"><a href="t-tests.html#formulas-for-one-sample-t-test"><i class="fa fa-check"></i><b>6.2.1</b> Formulas for one-sample t-test</a></li>
 <li class="chapter" data-level="6.2.2" data-path="t-tests.html"><a href="t-tests.html#what-does-t-represent"><i class="fa fa-check"></i><b>6.2.2</b> What does t represent?</a></li>
 <li class="chapter" data-level="6.2.3" data-path="t-tests.html"><a href="t-tests.html#calculating-t-from-data"><i class="fa fa-check"></i><b>6.2.3</b> Calculating t from data</a></li>
-<li class="chapter" data-level="6.2.4" data-path="t-tests.html"><a href="t-tests.html#how-does-t-behave"><i class="fa fa-check"></i><b>6.2.4</b> How does <span class="math inline">\(t\)</span> behave?</a></li>
+<li class="chapter" data-level="6.2.4" data-path="t-tests.html"><a href="t-tests.html#how-does-t-behave"><i class="fa fa-check"></i><b>6.2.4</b> How does t behave?</a></li>
 <li class="chapter" data-level="6.2.5" data-path="t-tests.html"><a href="t-tests.html#making-a-decision"><i class="fa fa-check"></i><b>6.2.5</b> Making a decision</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples <span class="math inline">\(t\)</span>-test</a><ul>
+<li class="chapter" data-level="6.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples t-test</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="t-tests.html"><a href="t-tests.html#mehr-song-and-spelke-2016"><i class="fa fa-check"></i><b>6.3.1</b> Mehr, Song, and Spelke (2016)</a></li>
 <li class="chapter" data-level="6.3.2" data-path="t-tests.html"><a href="t-tests.html#the-data"><i class="fa fa-check"></i><b>6.3.2</b> The data</a></li>
 <li class="chapter" data-level="6.3.3" data-path="t-tests.html"><a href="t-tests.html#the-difference-scores-1"><i class="fa fa-check"></i><b>6.3.3</b> The difference scores</a></li>
 <li class="chapter" data-level="6.3.4" data-path="t-tests.html"><a href="t-tests.html#the-mean-difference"><i class="fa fa-check"></i><b>6.3.4</b> The mean difference</a></li>
-<li class="chapter" data-level="6.3.5" data-path="t-tests.html"><a href="t-tests.html#calculate-t"><i class="fa fa-check"></i><b>6.3.5</b> Calculate <span class="math inline">\(t\)</span></a></li>
-<li class="chapter" data-level="6.3.6" data-path="t-tests.html"><a href="t-tests.html#interpreting-ts"><i class="fa fa-check"></i><b>6.3.6</b> Interpreting <span class="math inline">\(t\)</span>s</a></li>
+<li class="chapter" data-level="6.3.5" data-path="t-tests.html"><a href="t-tests.html#calculate-t"><i class="fa fa-check"></i><b>6.3.5</b> Calculate t</a></li>
+<li class="chapter" data-level="6.3.6" data-path="t-tests.html"><a href="t-tests.html#interpreting-ts"><i class="fa fa-check"></i><b>6.3.6</b> Interpreting ts</a></li>
 <li class="chapter" data-level="6.3.7" data-path="t-tests.html"><a href="t-tests.html#getting-the-p-values-for-t-values"><i class="fa fa-check"></i><b>6.3.7</b> Getting the p-values for t-values</a></li>
 <li class="chapter" data-level="6.3.8" data-path="t-tests.html"><a href="t-tests.html#one-tailed-tests"><i class="fa fa-check"></i><b>6.3.8</b> One-tailed tests</a></li>
 <li class="chapter" data-level="6.3.9" data-path="t-tests.html"><a href="t-tests.html#two-tailed-tests"><i class="fa fa-check"></i><b>6.3.9</b> Two-tailed tests</a></li>
@@ -884,7 +884,7 @@ t
 <p><span class="math inline">\(\text{sample standard deviation} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N-1}}\)</span></p>
 <p><span class="math inline">\(\text{sd} = \sqrt{\frac{2890}{10-1}} = 17.92\)</span></p>
 <p>The standard error of the mean, is the standard deviation divided by the square root of N</p>
-<p>$ =  =  = 5.67 $</p>
+<p><span class="math inline">\(\text{SEM} = \frac{s}{\sqrt{N}} = \frac{17.92}{10} = 5.67\)</span></p>
 <p><span class="math inline">\(t\)</span> is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.</p>
 <p><span class="math inline">\(\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}} = \frac{\bar{X}-u}{SEM} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>And, that is you how calculate <span class="math inline">\(t\)</span>, by hand. It’s a pain. I was annoyed doing it this way. In the lab, you learn how to calculate <span class="math inline">\(t\)</span> using software, so it will just spit out <span class="math inline">\(t\)</span>. For example in R, all you have to do is this:</p>
@@ -902,7 +902,7 @@ t
 ##        61</code></pre>
 </div>
 <div id="how-does-t-behave" class="section level3">
-<h3><span class="header-section-number">6.2.4</span> How does <span class="math inline">\(t\)</span> behave?</h3>
+<h3><span class="header-section-number">6.2.4</span> How does t behave?</h3>
 <p>If <span class="math inline">\(t\)</span> is just a number that we can compute from our sample (it is), what can we do with it? How can we use <span class="math inline">\(t\)</span> for statistical inference?</p>
 <p>Remember back to the chapter on sampling and distributions, that’s where we discussed the sampling distribution of the sample mean. Remember, we made a lot of samples, then computed the mean for each sample, then we plotted a histogram of the sample means. Later, in that same section, we mentioned that we could generate sampling distributions for any statistic. For each sample, we could compute the mean, the standard deviation, the standard error, and now even <span class="math inline">\(t\)</span>, if we wanted to. We could generate 10,000 samples, and draw four histograms, one for each sampling distribution for each statistic.</p>
 <p>This is exactly what I did, and the results are shown in the four figures below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let’s look at the sampling distributions for each of the statistics. <span class="math inline">\(t\)</span> was computed assuming with the population mean assumed to be 0.</p>
@@ -941,7 +941,7 @@ Figure 6.4: Applying decision criteria to the t-distribution.
 </div>
 </div>
 <div id="paired-samples-t-test" class="section level2">
-<h2><span class="header-section-number">6.3</span> Paired-samples <span class="math inline">\(t\)</span>-test</h2>
+<h2><span class="header-section-number">6.3</span> Paired-samples t-test</h2>
 <p>For me (Crump), many analyses often boil down to a paired samples t-test. It just happens that many things I do reduce down to a test like this.</p>
 <p>I am a cognitive psychologist, I conduct research about how people do things like remember, pay attention, and learn skills. There are lots of Psychologists like me, who do very similar things.</p>
 <p>We all often conduct the same kinds of experiments. They go like this, and they are called <strong>repeated measures</strong> designs. They are called <strong>repeated measures</strong> designs, because we measure how one person does something more than once, we <strong>repeat</strong> the measure.</p>
@@ -1267,7 +1267,7 @@ Means
 <p>We will more formally evaluate whether this difference could have been caused by chance with the paired-samples t-test. But, before we do that, let’s again calculate <span class="math inline">\(t\)</span> and discuss what <span class="math inline">\(t\)</span> tells us over and above what our measure of the mean of the difference scores tells us.</p>
 </div>
 <div id="calculate-t" class="section level3">
-<h3><span class="header-section-number">6.3.5</span> Calculate <span class="math inline">\(t\)</span></h3>
+<h3><span class="header-section-number">6.3.5</span> Calculate t</h3>
 <p>OK, so how do we calculate <span class="math inline">\(t\)</span> for a paired-samples <span class="math inline">\(t\)</span>-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample <span class="math inline">\(t\)</span>-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample <span class="math inline">\(t\)</span>-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distribution with mean difference = 0. This is a special distribution we refer to as the <strong>null distribution</strong>. It is the distribution no differences. Of course, this <strong>null distribution</strong> can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.</p>
 <p>We calculate <span class="math inline">\(t\)</span> in a moment. Let’s now consider again why we want to calculate <span class="math inline">\(t\)</span>? Why don’t we just stick with the mean difference we already have?</p>
 <p>Remember, the whole concept behind <span class="math inline">\(t\)</span>, is that it gives an indication of how confident we should be in our mean. Remember, <span class="math inline">\(t\)</span> involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denominator. The resulting <span class="math inline">\(t\)</span> value is small when the mean difference is small, or when the variation is large. So small <span class="math inline">\(t\)</span>-values tell us that we shouldn’t be that confident in the estimate of our mean difference. Large <span class="math inline">\(t\)</span>-values occur when the mean difference is large and/or when the measure of variation is small. So, large <span class="math inline">\(t\)</span>-values tell us that we can be more confident in the estimate of our mean difference. Let’s find <span class="math inline">\(t\)</span> for the mean difference scores. We use the same formulas as we did last time:</p>
@@ -1501,7 +1501,7 @@ t
 <p>What does all of that tell us? There’s a few things we haven’t gotten into much yet. For example, the 4 represents degrees of freedom, which we discuss later. The important part, the <span class="math inline">\(t\)</span> value should start to be a little bit more meaningful. We got a kind of small t-value didn’t we. It’s .72. What can we tell from this value? First, it is positive, so we know the mean difference is positive. The sign of the <span class="math inline">\(t\)</span>-value is always the same as the sign of the mean difference (ours was +0.054). We can also see that the p-value was .509. We’ve seen p-values before. This tells us that our <span class="math inline">\(t\)</span> value or larger, occurs about 50.9% of the time… Actually it means more than this. And, to understand it, we need to talk about the concept of two-tailed and one-tailed tests.</p>
 </div>
 <div id="interpreting-ts" class="section level3">
-<h3><span class="header-section-number">6.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</h3>
+<h3><span class="header-section-number">6.3.6</span> Interpreting ts</h3>
 <p>Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of <span class="math inline">\(t\)</span>-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like by plotting it like this:</p>
 <div class="figure"><span id="fig:6tnull"></span>
 <img src="statistics_files/figure-html/6tnull-1.png" alt="A distribution of t-values that can occur by chance alone, when there is no difference between the sample and a population" width="672" />
