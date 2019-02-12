@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data</title>
+  <title>Chapter 6 t-Tests | Answering questions with data</title>
   <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:title" content="Chapter 6 t-Tests | Answering questions with data" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data" />
+  <meta name="twitter:title" content="Chapter 6 t-Tests | Answering questions with data" />
   
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
@@ -36,6 +36,7 @@
 <link rel="next" href="anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -65,41 +66,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -453,8 +480,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a><ul>
 <li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
-<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
+<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.-real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
+<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.-abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
 <li class="chapter" data-level="12.1.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#cohens-d"><i class="fa fa-check"></i><b>12.1.3</b> Cohen’s d</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a><ul>
@@ -888,7 +915,7 @@ t
 <p><span class="math inline">\(t\)</span> is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.</p>
 <p><span class="math inline">\(\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}} = \frac{\bar{X}-u}{SEM} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>And, that is you how calculate <span class="math inline">\(t\)</span>, by hand. It’s a pain. I was annoyed doing it this way. In the lab, you learn how to calculate <span class="math inline">\(t\)</span> using software, so it will just spit out <span class="math inline">\(t\)</span>. For example in R, all you have to do is this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(scores, <span class="dt">mu=</span><span class="dv">50</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(scores, <span class="dt">mu=</span><span class="dv">50</span>)</code></pre>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -1882,30 +1909,30 @@ t
 <p>and, <span class="math inline">\(s_p\)</span>, which is the pooled sample standard deviation is defined as, note the s’s in the formula are variances:</p>
 <p><span class="math inline">\(s_p = \sqrt{\frac{(n_A-1)s_A^2 + (n_B-1)s^2_B}{n_A +n_B -2}}\)</span></p>
 <p>Believe you me, that is so much more formula than I wanted to type out. Shall we do one independent <span class="math inline">\(t\)</span>-test example by hand, just to see the computations? Let’s do it…but in a slightly different way than you expect. I show the steps using R. I made some fake scores for groups A and B. Then, I followed all of the steps from the formula, but made R do each of the calculations. This shows you the needed steps by following the code. At the end, I print the <span class="math inline">\(t\)</span>-test values I computed “by hand”, and then the <span class="math inline">\(t\)</span>-test value that the R software outputs using the <span class="math inline">\(t\)</span>-test function. You should be able to get the same values for <span class="math inline">\(t\)</span>, if you were brave enough to compute <span class="math inline">\(t\)</span> by hand.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## By &quot;hand&quot; using R r code
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## By &quot;hand&quot; using R r code</span>
 a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
 b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">9</span>)
 
-mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(a)-<span class="kw">mean</span>(b) <span class="co"># compute mean difference</span>
+mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(a)<span class="op">-</span><span class="kw">mean</span>(b) <span class="co"># compute mean difference</span>
 
 variance_a &lt;-<span class="st"> </span><span class="kw">var</span>(a) <span class="co"># compute variance for A</span>
 variance_b &lt;-<span class="st"> </span><span class="kw">var</span>(b) <span class="co"># compute variance for B</span>
 
 <span class="co"># Compute top part and bottom part of sp formula</span>
 
-sp_numerator &lt;-<span class="st"> </span>(<span class="dv">4</span>*variance_a +<span class="st"> </span><span class="dv">4</span>*<span class="st"> </span>variance_b) 
-sp_denominator &lt;-<span class="st"> </span><span class="dv">5+5-2</span>
-sp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(sp_numerator/sp_denominator) <span class="co"># compute sp</span>
+sp_numerator &lt;-<span class="st"> </span>(<span class="dv">4</span><span class="op">*</span>variance_a <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span><span class="st"> </span>variance_b) 
+sp_denominator &lt;-<span class="st"> </span><span class="dv">5</span><span class="op">+</span><span class="dv">5-2</span>
+sp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(sp_numerator<span class="op">/</span>sp_denominator) <span class="co"># compute sp</span>
 
 
 <span class="co"># compute t following formulat</span>
 
-t &lt;-<span class="st"> </span>mean_difference /<span class="st"> </span>( sp *<span class="st"> </span><span class="kw">sqrt</span>( (<span class="dv">1</span>/<span class="dv">5</span>) +(<span class="dv">1</span>/<span class="dv">5</span>) ) )
+t &lt;-<span class="st"> </span>mean_difference <span class="op">/</span><span class="st"> </span>( sp <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>( (<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) ) )
 
-t <span class="co"># print results</span></code></pre></div>
+t <span class="co"># print results</span></code></pre>
 <pre><code>## [1] -2.017991</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using the R function t.test</span>
-<span class="kw">t.test</span>(a,b, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using the R function t.test</span>
+<span class="kw">t.test</span>(a,b, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -1931,26 +1958,26 @@ t <span class="co"># print results</span></code></pre></div>
 <li><p>sample simulated numbers from the distribution, then conduct a <span class="math inline">\(t\)</span>-test on the simulated numbers. Save the statistics you want (such as <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s), and then see how things behave.</p></li>
 </ol>
 <p>Let’s do this a couple different times. First, let’s simulate samples with N = 30, taken from a normal (mean= 50, SD =25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># steps to create fake data from a distribution </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># steps to create fake data from a distribution </span>
 <span class="co"># and conduct t-tests on the simulated data</span>
 save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
   my_sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">30</span>, <span class="dt">mean =</span><span class="dv">50</span>, <span class="dt">sd =</span><span class="dv">25</span>)
   t_test &lt;-<span class="st"> </span><span class="kw">t.test</span> (my_sample, <span class="dt">mu =</span> <span class="dv">50</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
+  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
 }
 
 <span class="co">#plot histograms of t and p values for 1000 simulations</span>
-<span class="kw">hist</span>(save_ts)</code></pre></div>
+<span class="kw">hist</span>(save_ts)</code></pre>
 <div class="figure"><span id="fig:6flatp"></span>
 <img src="statistics_files/figure-html/6flatp-1.png" alt="The distribution of p-values is flat under the null" width="672" />
 <p class="caption">
 Figure 6.11: The distribution of p-values is flat under the null
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ps)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ps)</code></pre>
 <div class="figure"><span id="fig:6flatp"></span>
 <img src="statistics_files/figure-html/6flatp-2.png" alt="The distribution of p-values is flat under the null" width="672" />
 <p class="caption">
@@ -1959,18 +1986,18 @@ Figure 6.11: The distribution of p-values is flat under the null
 </div>
 <p>Neat. We see both a <span class="math inline">\(t\)</span> distribution, that looks like <span class="math inline">\(t\)</span> distribution as it should. And we see the <span class="math inline">\(p\)</span> distribution. This shows us how often we get <span class="math inline">\(t\)</span> values of particular sizes. You may find it interesting that the <span class="math inline">\(p\)</span>-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a <span class="math inline">\(t\)</span> with a p-value between 0 and 0.05, as you would for getting a <span class="math inline">\(t\)</span> with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of <span class="math inline">\(t\)</span> values in them by definition.</p>
 <p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simulated_ts &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
-                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))$statistic)
-<span class="kw">hist</span>(simulated_ts)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">simulated_ts &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
+                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))<span class="op">$</span>statistic)
+<span class="kw">hist</span>(simulated_ts)</code></pre>
 <div class="figure"><span id="fig:6simtsRep"></span>
 <img src="statistics_files/figure-html/6simtsRep-1.png" alt="Simulating ts in R" width="672" />
 <p class="caption">
 Figure 6.12: Simulating ts in R
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simulated_ps &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
-                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))$p.value)
-<span class="kw">hist</span>(simulated_ps)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">simulated_ps &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
+                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))<span class="op">$</span>p.value)
+<span class="kw">hist</span>(simulated_ps)</code></pre>
 <div class="figure"><span id="fig:6simpsRep"></span>
 <img src="statistics_files/figure-html/6simpsRep-1.png" alt="Simulating ps in R" width="672" />
 <p class="caption">
@@ -1981,16 +2008,16 @@ Figure 6.13: Simulating ps in R
 <div id="simulating-a-paired-samples-t-test" class="section level3">
 <h3><span class="header-section-number">6.6.2</span> Simulating a paired samples t-test</h3>
 <p>The code below is set up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
   condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
   condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  differences &lt;-<span class="st"> </span>condition_A -<span class="st"> </span>condition_B
+  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B
   t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
-}</code></pre></div>
+  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
+}</code></pre>
 <div class="figure"><span id="fig:6simps1000"></span>
 <img src="statistics_files/figure-html/6simps1000-1.png" alt="1000 simulated ts from the null distribution" width="672" />
 <p class="caption">
@@ -2005,22 +2032,22 @@ Figure 6.15: 1000 simulated ps from the null distribution
 </div>
 <p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for <span class="math inline">\(t\)</span> and <span class="math inline">\(p\)</span>. These again show how the null distribution of no differences behaves.</p>
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])</code></pre>
 <pre><code>## [1] 52</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])<span class="op">/</span><span class="dv">1000</span></code></pre>
 <pre><code>## [1] 0.052</code></pre>
 <p>We happened to make 52. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happens if there actually is a difference in the simulated data, let’s set one condition to have a larger mean than the other:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
   condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
   condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">5</span>)
-  differences &lt;-<span class="st"> </span>condition_A -<span class="st"> </span>condition_B
+  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B
   t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
-}</code></pre></div>
+  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
+}</code></pre>
 <div class="figure"><span id="fig:6simtruets"></span>
 <img src="statistics_files/figure-html/6simtruets-1.png" alt="1000 ts when there is a true difference" width="672" />
 <p class="caption">
@@ -2035,22 +2062,22 @@ Figure 6.17: 1000 ps when there is a true difference
 </div>
 <p>Now you can see that the <span class="math inline">\(p\)</span>-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])</code></pre>
 <pre><code>## [1] 223</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps&lt;.<span class="dv">05</span>])/<span class="dv">1000</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])<span class="op">/</span><span class="dv">1000</span></code></pre>
 <pre><code>## [1] 0.223</code></pre>
 <p>We happened to get 223 simulations where p was less than .05, that’s only 0.223 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.223 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase <span class="math inline">\(n\)</span>, the number of subjects in the experiment. Let’s increase <span class="math inline">\(n\)</span> from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
   condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)
   condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">13</span>,<span class="dv">5</span>)
-  differences &lt;-<span class="st"> </span>condition_A -<span class="st"> </span>condition_B
+  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B
   t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
-}</code></pre></div>
+  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
+}</code></pre>
 <div class="figure"><span id="fig:6simtsB"></span>
 <img src="statistics_files/figure-html/6simtsB-1.png" alt="1000 ts for n =100, when there is a true effect" width="672" />
 <p class="caption">
@@ -2070,15 +2097,15 @@ Figure 6.19: 1000 ps for n =100, when there is a true effect
 <div id="simulating-an-independent-samples-t.test" class="section level3">
 <h3><span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</h3>
 <p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
+<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
 save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-for ( i in <span class="dv">1</span>:<span class="dv">1000</span> ){
+<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
   group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
   group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
   t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A, group_B, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test$p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test$statistic
-}</code></pre></div>
+  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
+  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
+}</code></pre>
 <div class="figure"><span id="fig:6simtsC"></span>
 <img src="statistics_files/figure-html/6simtsC-1.png" alt="1000 ts for n =100, when there is a true effect" width="672" />
 <p class="caption">
@@ -2103,7 +2130,7 @@ Figure 6.21: 1000 ps for n =100, when there is a true effect
 <p>Student, A. 1908. “The Probable Error of a Mean.” <em>Biometrika</em> 6: 1–2.</p>
 </div>
 <div id="ref-mehr20165">
-<p>Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. “For 5-Month-Old Infants, Melodies Are Social.” <em>Psychological Science</em> 27 (4). SAGE Publications Sage CA: Los Angeles, CA: 486–501.</p>
+<p>Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. “For 5-Month-Old Infants, Melodies Are Social.” <em>Psychological Science</em> 27 (4): 486–501.</p>
 </div>
 </div>
             </section>
@@ -2132,7 +2159,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2144,6 +2171,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statistics/blob/master/06-ttests.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["statistics.pdf"],
 "toc": {
@@ -2158,8 +2189,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data</title>
+  <title>Chapter 3 Correlation | Answering questions with data</title>
   <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:title" content="Chapter 3 Correlation | Answering questions with data" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data" />
+  <meta name="twitter:title" content="Chapter 3 Correlation | Answering questions with data" />
   
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
@@ -36,6 +36,7 @@
 <link rel="next" href="probability-sampling-and-estimation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -65,41 +66,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -453,8 +480,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a><ul>
 <li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
-<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
+<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.-real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
+<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.-abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
 <li class="chapter" data-level="12.1.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#cohens-d"><i class="fa fa-check"></i><b>12.1.3</b> Cohen’s d</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a><ul>
@@ -521,7 +548,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="Correlation" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Correlation</h1>
-<p><span class="newthought"> Correlation does not equal causation —Every Statistics and Research Methods Instructor Ever </span></p>
+<p><span class="newthought">
+Correlation does not equal causation
+—Every Statistics and Research Methods Instructor Ever
+</span></p>
 <div class="marginnote">
 <p>Chapter by Matthew Crump</p>
 </div>
@@ -1643,19 +1673,19 @@ Sums
 Means
 </td>
 <td style="text-align:left;">
-4
+4.2
 </td>
 <td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-0
+3.8
 </td>
 <td style="text-align:left;">
 0
 </td>
 <td style="text-align:left;">
-4
+0
+</td>
+<td style="text-align:left;">
+3.74
 </td>
 </tr>
 </tbody>
@@ -1720,7 +1750,7 @@ Figure 3.5: Three scatterplots showing negative, positive, and a random correlat
 <p>One big idea here is that we are using the line as a kind of mean to describe the relationship between the two variables. When we only have one variable, that variable exists on a single dimension, it’s 1D. So, it is appropriate that we only have one number, like the mean, to describe it’s central tendency. When we have two variables, and plot them together, we now have a two-dimensional space. So, for two dimensions we could use a bigger thing that is 2d, like a line, to summarize the central tendency of the relationship between the two variables.</p>
 <p>What do we want out of our line? Well, if you had a pencil, and a printout of the data, you could draw all sorts of straight lines any way you wanted. Your lines wouldn’t even have to go through the data, or they could slant through the data with all sorts of angles. Would all of those lines be very good a describing the general pattern of the dots? Most of them would not. The best lines would go through the data following the general shape of the dots. Of the best lines, however, which one is the best? How can we find out, and what do we mean by that? In short, the best fit line is the one that has the least error.</p>
 <div class="marginnote">
-<p>R code for plotting residuals thanks to Simon Jackson’s blog post: <a href="https://drsimonj.svbtle.com/visualising-residuals" class="uri">https://drsimonj.svbtle.com/visualising-residuals</a></p>
+<p>R code for plotting residuals thanks to Simon Jackson’s blog post: <a href="https://drsimonj.svbtle.com/visualising-residuals">https://drsimonj.svbtle.com/visualising-residuals</a></p>
 </div>
 <p>Check out this next plot, it shows a line through some dots. But, it also shows some teeny tiny lines. These lines drop down from each dot, and they land on the line. Each of these little lines is called a <strong>residual</strong>. They show you how far off the line is for different dots. It’s measure of error, it shows us just how wrong the line is. After all, it’s pretty obvious that not all of the dots are on the line. This means the line does not actually represent all of the dots. The line is wrong. But, the best fit line is the least wrong of all the wrong lines.</p>
 <div class="figure"><span id="fig:3regressionResiduals"></span>
@@ -1763,7 +1793,8 @@ Figure 3.9: Two different lines with different y-intercepts (where the line cros
 </p>
 </div>
 <p>So there is two lines. The formula for the blue line is <span class="math inline">\(y = 1*x + 5\)</span>. Let’s talk about that. When x = 0, where is the blue line on the y-axis? It’s at five. That happens because 1 times 0 is 0, and then we just have the five left over. How about when x = 5? In that case y =10. You just need the plug in the numbers to the formula, like this:</p>
-<p><span class="math inline">\(y = 1*x + 5\)</span> <span class="math inline">\(y = 1*5 + 5 = 5+5 =10\)</span></p>
+<p><span class="math inline">\(y = 1*x + 5\)</span>
+<span class="math inline">\(y = 1*5 + 5 = 5+5 =10\)</span></p>
 <p>The point of the formula is to tell you where y will be, for any number of x. The slope of the line tells you whether the line is going to go up or down, as you move from the left to the right. The blue line has a positive slope of one, so it goes up as x goes up. How much does it go up? It goes up by one for everyone one of x! If we made the slope a 2, it would be much steeper, and go up faster. The red line has a negative slope, so it slants down. This means <span class="math inline">\(y\)</span> goes down, as <span class="math inline">\(x\)</span> goes up. When there is no slant, and we want to make a perfectly flat line, we set the slope to 0. This means that y doesn’t go anywhere as x gets bigger and smaller.</p>
 <p>That’s lines.</p>
 </div>
@@ -2157,21 +2188,21 @@ South_pole
 <h4><span class="header-section-number">3.6.2.1</span> Monte-carlo simulation of random correlations</h4>
 <p>It is possible to use a computer to simulate our game as many times as we want. This process is often termed <strong>monte-carlo simulation</strong>.</p>
 <p>Below is a script written for the programming language R. We won’t go into the details of the code here. However, let’s briefly explain what is going on. Notice, the part that says <code>for(sim in 1:1000)</code>. This creates a loop that repeats our game 1000 times. Inside the loop there are variables named <code>North_pole</code> and <code>South_pole</code>. During each simulation, we sample 10 random numbers (between 1 to 10) into each variable. These random numbers stand for the numbers that would have been on the balls from the lottery machine. Once we have 10 random numbers for each, we then compute the correlation using <code>cor(North_pole,South_pole)</code>. Then, we save the correlation value and move on to the next simulation. At the end, we will have 1000 individual Pearson <span class="math inline">\(r\)</span> values.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simulated_correlations &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">0</span>)
-for(sim in <span class="dv">1</span>:<span class="dv">1000</span>){
+<pre class="sourceCode r"><code class="sourceCode r">simulated_correlations &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">0</span>)
+<span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   North_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)
   South_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)
   simulated_correlations[sim] &lt;-<span class="st"> </span><span class="kw">cor</span>(North_pole,South_pole)
 }
 
-sim_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sims=</span><span class="dv">1</span>:<span class="dv">1000</span>,simulated_correlations)
+sim_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sims=</span><span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>,simulated_correlations)
 
-<span class="kw">ggplot</span>(sim_df, <span class="kw">aes</span>(<span class="dt">x =</span> sims, <span class="dt">y =</span> simulated_correlations))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">theme_classic</span>()+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> -<span class="dv">1</span>)+
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">1</span>)+
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Simulation of 1000 r values&quot;</span>)</code></pre></div>
+<span class="kw">ggplot</span>(sim_df, <span class="kw">aes</span>(<span class="dt">x =</span> sims, <span class="dt">y =</span> simulated_correlations))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">-1</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">1</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Simulation of 1000 r values&quot;</span>)</code></pre>
 <div class="figure"><span id="fig:3anotherthousand"></span>
 <img src="statistics_files/figure-html/3anotherthousand-1.png" alt="Another figure showing a range of r-values that can be obtained by chance" width="672" />
 <p class="caption">
@@ -2203,7 +2234,8 @@ Figure 3.15: A histogram showing the frequency distribution of r-values for comp
 </p>
 </div>
 <p>Notice that this histogram is not flat. Most of the simulated <span class="math inline">\(r\)</span> values are close to zero. Notice, also that the bars get smaller as you move away from zero in the positive or negative direction. The general take home here is that chance can produce a wide range of correlations. However, not all correlations happen very often. For example, the bars for -1 and 1 are very small. Chance does not produce nearly perfect correlations very often. The bars around -.5 and .5 are smaller than the bars around zero, as medium correlations do not occur as often as small correlations by chance alone.</p>
-<p>You can think of this histogram as the window of chance. It shows what chance often does, and what it often does not do. If you found a correlation under these very same circumstances (e.g., measured the correlation between two sets of 10 random numbers), then you could consult this window. What should you ask the window? How about, could my observed correlation (the one that you found in your data) have come from this window. Let’s say you found a correlation of <span class="math inline">\(r = .1\)</span>. Could a .1 have come from the histogram? Well, look at the histogram around where the .1 mark on the x-axis is. Is there a big bar there? If so, this means that chance produces this value fairly often. You might be comfortable with the inference: Yes, this .1 could have been produced by chance, because it is well inside the window of chance. How about <span class="math inline">\(r = .5\)</span>? The bar is much smaller here, you might think, “well, I can see that chance does produce .5 some times, so chance could have produced my .5. Did it? Maybe, maybe not, not sure”. Here, your confidence in a strong inference about the role of chance might start getting a bit shakier.</p>
+<p>You can think of this histogram as the window of chance. It shows what chance often does, and what it often does not do. If you found a correlation under these very same circumstances (e.g., measured the correlation between two sets of 10 random numbers), then you could consult this window. What should you ask the window? How about, could my observed correlation (the one that you found in your data) have come from this window. Let’s say you found a correlation of <span class="math inline">\(r = .1\)</span>. Could a .1 have come from the histogram? Well, look at the histogram around where the .1 mark on the x-axis is. Is there a big bar there? If so, this means that chance produces this value fairly often. You might be comfortable with the inference: Yes, this .1 could have been produced by chance, because it is well inside the window of chance.
+How about <span class="math inline">\(r = .5\)</span>? The bar is much smaller here, you might think, “well, I can see that chance does produce .5 some times, so chance could have produced my .5. Did it? Maybe, maybe not, not sure”. Here, your confidence in a strong inference about the role of chance might start getting a bit shakier.</p>
 <p>How about an <span class="math inline">\(r = .95\)</span>?. You might see that the bar for .95 is very very small, perhaps too small to see. What does this tell you? It tells you that chance does not produce .95 very often, hardly if at all, pretty much never. So, if you found a .95 in your data, what would you infer? Perhaps you would be comfortable inferring that chance did not produce your .95, after .95 is mostly outside the window of chance.</p>
 </div>
 <div id="increasing-sample-size-decreases-opportunity-for-spurious-correlation" class="section level4">
@@ -2308,7 +2340,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2320,6 +2352,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statistics/blob/master/03-Correlation.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["statistics.pdf"],
 "toc": {
@@ -2334,8 +2370,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

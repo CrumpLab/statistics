@@ -251,7 +251,7 @@ the_df_short<-cbind(the_df_short,
 
 the_df_short <- the_df_short %>%
   rbind(c("Sums",round(colSums(the_df_short[1:10,2:6])),digits=2)) %>%
-  rbind(c("Means",round(colMeans(the_df_short[1:10,2:6])),digits=2))
+  rbind(c("Means",round(colMeans(the_df_short[1:10,2:6]),digits=2)))
 
 knitr::kable(the_df_short)
 

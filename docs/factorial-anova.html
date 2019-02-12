@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data</title>
+  <title>Chapter 9 Factorial ANOVA | Answering questions with data</title>
   <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:title" content="Chapter 9 Factorial ANOVA | Answering questions with data" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data" />
+  <meta name="twitter:title" content="Chapter 9 Factorial ANOVA | Answering questions with data" />
   
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
@@ -36,6 +36,7 @@
 <link rel="next" href="more-on-factorial-designs.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -65,41 +66,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -453,8 +480,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a><ul>
 <li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
-<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
+<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.-real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
+<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.-abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
 <li class="chapter" data-level="12.1.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#cohens-d"><i class="fa fa-check"></i><b>12.1.3</b> Cohen’s d</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a><ul>
@@ -4118,71 +4145,166 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>Let’s conduct a 2x2 repeated measures ANOVA on the data to evaluate whether the differences in the means are likely or unlikely to be due to chance. The ANOVA will give us main effects for congruency and posture (the two IVs), as well as one interaction effect to evaluate (congruency X posture). Remember, the interaction effect tells us whether the congruency effect changes across the levels of the posture manipulation.</p>
 <table>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Df</th>
-<th align="right">Sum Sq</th>
-<th align="right">Mean Sq</th>
-<th align="right">F value</th>
-<th align="right">Pr(&gt;F)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">49</td>
-<td align="right">2250738.636</td>
-<td align="right">45933.4416</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+2250738.636
+</td>
+<td style="text-align:right;">
+45933.4416
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td>Congruency</td>
-<td align="right">1</td>
-<td align="right">576821.635</td>
-<td align="right">576821.6349</td>
-<td align="right">342.452244</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+Congruency
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+576821.635
+</td>
+<td style="text-align:right;">
+576821.6349
+</td>
+<td style="text-align:right;">
+342.452244
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">49</td>
-<td align="right">82534.895</td>
-<td align="right">1684.3856</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+82534.895
+</td>
+<td style="text-align:right;">
+1684.3856
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td>Posture</td>
-<td align="right">1</td>
-<td align="right">32303.453</td>
-<td align="right">32303.4534</td>
-<td align="right">7.329876</td>
-<td align="right">0.0093104</td>
+<tr>
+<td style="text-align:left;">
+Posture
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+32303.453
+</td>
+<td style="text-align:right;">
+32303.4534
+</td>
+<td style="text-align:right;">
+7.329876
+</td>
+<td style="text-align:right;">
+0.0093104
+</td>
 </tr>
-<tr class="odd">
-<td>Residuals1</td>
-<td align="right">49</td>
-<td align="right">215947.614</td>
-<td align="right">4407.0942</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals1
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+215947.614
+</td>
+<td style="text-align:right;">
+4407.0942
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td>Congruency:Posture</td>
-<td align="right">1</td>
-<td align="right">6560.339</td>
-<td align="right">6560.3389</td>
-<td align="right">8.964444</td>
-<td align="right">0.0043060</td>
+<tr>
+<td style="text-align:left;">
+Congruency:Posture
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6560.339
+</td>
+<td style="text-align:right;">
+6560.3389
+</td>
+<td style="text-align:right;">
+8.964444
+</td>
+<td style="text-align:right;">
+0.0043060
+</td>
 </tr>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">49</td>
-<td align="right">35859.069</td>
-<td align="right">731.8177</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+35859.069
+</td>
+<td style="text-align:right;">
+731.8177
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table>
@@ -4193,25 +4315,29 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>What were the overall mean differences between mean RTs in the congruent and incongruent conditions? We would have to look at thos means to find out. Here’s a table:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Congruency</th>
-<th align="right">mean_rt</th>
-<th align="right">sd</th>
-<th align="right">SEM</th>
+<tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Congruent</td>
-<td align="right">814.9415</td>
-<td align="right">111.3193</td>
-<td align="right">11.13193</td>
-</tr>
-<tr class="even">
-<td align="left">Incongruent</td>
-<td align="right">922.3493</td>
-<td align="right">118.7960</td>
-<td align="right">11.87960</td>
+<tr>
+<td style="text-align:right;">
+868.6454
+</td>
+<td style="text-align:right;">
+126.8237
+</td>
+<td style="text-align:right;">
+8.967789
+</td>
 </tr>
 </tbody>
 </table>
@@ -4223,25 +4349,29 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>Let’s look at the overall means for the sitting and standing conditions and see what this is all about:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Posture</th>
-<th align="right">mean_rt</th>
-<th align="right">sd</th>
-<th align="right">SEM</th>
+<tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Sit</td>
-<td align="right">881.3544</td>
-<td align="right">135.3842</td>
-<td align="right">13.53842</td>
-</tr>
-<tr class="even">
-<td align="left">Stand</td>
-<td align="right">855.9365</td>
-<td align="right">116.9436</td>
-<td align="right">11.69436</td>
+<tr>
+<td style="text-align:right;">
+868.6454
+</td>
+<td style="text-align:right;">
+126.8237
+</td>
+<td style="text-align:right;">
+8.967789
+</td>
 </tr>
 </tbody>
 </table>
@@ -4255,42 +4385,29 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>We can see from the figure the direction of this difference, but let’s look at the table to see the numbers more clearly.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Posture</th>
-<th align="left">Congruency</th>
-<th align="right">mean_rt</th>
-<th align="right">sd</th>
-<th align="right">SEM</th>
+<tr>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Sit</td>
-<td align="left">Congruent</td>
-<td align="right">821.9232</td>
-<td align="right">117.4069</td>
-<td align="right">16.60384</td>
-</tr>
-<tr class="even">
-<td align="left">Sit</td>
-<td align="left">Incongruent</td>
-<td align="right">940.7855</td>
-<td align="right">126.6457</td>
-<td align="right">17.91041</td>
-</tr>
-<tr class="odd">
-<td align="left">Stand</td>
-<td align="left">Congruent</td>
-<td align="right">807.9599</td>
-<td align="right">105.6079</td>
-<td align="right">14.93521</td>
-</tr>
-<tr class="even">
-<td align="left">Stand</td>
-<td align="left">Incongruent</td>
-<td align="right">903.9131</td>
-<td align="right">108.5366</td>
-<td align="right">15.34939</td>
+<tr>
+<td style="text-align:right;">
+868.6454
+</td>
+<td style="text-align:right;">
+126.8237
+</td>
+<td style="text-align:right;">
+8.967789
+</td>
 </tr>
 </tbody>
 </table>
@@ -4321,7 +4438,7 @@ What kind of study did they run?
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-rosenbaum2017stand">
-<p>Rosenbaum, David, Yaniv Mama, and Daniel Algom. 2017. “Stand by Your Stroop: Standing up Enhances Selective Attention and Cognitive Control.” <em>Psychological Science</em> 28 (12). SAGE Publications Sage CA: Los Angeles, CA: 1864–7.</p>
+<p>Rosenbaum, David, Yaniv Mama, and Daniel Algom. 2017. “Stand by Your Stroop: Standing up Enhances Selective Attention and Cognitive Control.” <em>Psychological Science</em> 28 (12): 1864–7.</p>
 </div>
 </div>
             </section>
@@ -4350,7 +4467,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -4362,6 +4479,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statistics/blob/master/09-FactorialANOVA.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["statistics.pdf"],
 "toc": {
@@ -4376,8 +4497,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

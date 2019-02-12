@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Answering questions with data</title>
+  <title>Chapter 11 Simulating Data | Answering questions with data</title>
   <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Answering questions with data" />
+  <meta property="og:title" content="Chapter 11 Simulating Data | Answering questions with data" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Answering questions with data" />
+  <meta name="twitter:title" content="Chapter 11 Simulating Data | Answering questions with data" />
   
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
@@ -36,6 +36,7 @@
 <link rel="next" href="thinking-about-answering-questions-with-data.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -65,41 +66,67 @@ mattcrump=1;
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="tufte.css" type="text/css" />
@@ -453,8 +480,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a><ul>
 <li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
-<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
+<li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.-real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
+<li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.-abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
 <li class="chapter" data-level="12.1.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#cohens-d"><i class="fa fa-check"></i><b>12.1.3</b> Cohen’s d</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a><ul>
@@ -541,9 +568,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">11.2</span> Simulation overview</h2>
 <p>The basic idea here is actually pretty simple. You make some assumptions about how many subjects will be in your design (set N), you make some assumptions about the distributions that you will be sampling your scores from, then you use R to fabricate fake data according to the parameters you set. Once you build some simulated data, you can conduct a statistical analysis that you would be planning to run on the real data. Then you can see what happens. More importantly, you can repeat the above process many times. This is similar to conducting a replication of your experiment to see if you find the same thing, only you make the computer replicate your simulation 1000s of times. This way you can see how your simulated experiment would turn out over the long run. For example, you might find that the experiment you are planning to run will only produce a “signficant” result 25% of the time, that’s not very good. Your simulation might also tell you that if you increase your N by say 25, that could really help, and your new experiment with N=25 might succeed 90% of the time. That’s information worth knowing.</p>
 <p>Before we go into more simulation details, let’s just run a quick one. We’ll do an independent samples <span class="math inline">\(t\)</span>-test. Imagine we have a study with N=10 in each group. There are two groups. We are measuring heart rate. Let’s say we know that heart rate is on average 100 beats per minute with a standard deviation of 7. We are going to measure heart rate in condition A where nothing happens, and we are going to measure heart rate in condition B while they watch a scary movie. We think the scary movie might increase heart rate by 5 beats per minute. Let’s run a simulation of this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)
+<pre class="sourceCode r"><code class="sourceCode r">group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)
 group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">105</span>, <span class="dv">7</span>)
-<span class="kw">t.test</span>(group_A,group_B,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">t.test</span>(group_A,group_B,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -557,29 +584,29 @@ group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class=
 ##  102.6175  110.2962</code></pre>
 <p>We sampled 10 scores from a normal distribution for each group. We changed the mean for group_b to 105, because we were thinking their heart rate would be 5 more than group A. We ran one <span class="math inline">\(t\)</span>-test, and we got a result. This result tells us what happens for this one simulation.</p>
 <p>We could learn more by repeating the simulation 1000 times, saving the <span class="math inline">\(p\)</span>-values from each replication, and then finding out how many of our 1000 simulated experiments give us a significant result:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps&lt;-<span class="kw">length</span>(<span class="dv">1000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<pre class="sourceCode r"><code class="sourceCode r">save_ps&lt;-<span class="kw">length</span>(<span class="dv">1000</span>)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">7</span>)
   group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">105</span>, <span class="dv">7</span>)
   t_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A,group_B,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_results$p.value
+  save_ps[i] &lt;-<span class="st"> </span>t_results<span class="op">$</span>p.value
 }
 
-prop_p&lt;-<span class="kw">length</span>(save_ps[save_ps&lt;<span class="fl">0.05</span>])/<span class="dv">1000</span>
-<span class="kw">print</span>(prop_p)</code></pre></div>
+prop_p&lt;-<span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span><span class="fl">0.05</span>])<span class="op">/</span><span class="dv">1000</span>
+<span class="kw">print</span>(prop_p)</code></pre>
 <pre><code>## [1] 0.316</code></pre>
 <p>Now this is more interesting. We found that 31.6% of simulated experiments had a <span class="math inline">\(p\)</span>-value less than 0.05. That’s not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.</p>
 <p>What happens if we increase the number of subject to 50 in each group?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps&lt;-<span class="kw">length</span>(<span class="dv">1000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<pre class="sourceCode r"><code class="sourceCode r">save_ps&lt;-<span class="kw">length</span>(<span class="dv">1000</span>)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">7</span>)
   group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>,<span class="dv">105</span>, <span class="dv">7</span>)
   t_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A,group_B,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_results$p.value
+  save_ps[i] &lt;-<span class="st"> </span>t_results<span class="op">$</span>p.value
 }
 
-prop_p&lt;-<span class="kw">length</span>(save_ps[save_ps&lt;<span class="fl">0.05</span>])/<span class="dv">1000</span>
-<span class="kw">print</span>(prop_p)</code></pre></div>
+prop_p&lt;-<span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span><span class="fl">0.05</span>])<span class="op">/</span><span class="dv">1000</span>
+<span class="kw">print</span>(prop_p)</code></pre>
 <pre><code>## [1] 0.947</code></pre>
 <p>Ooh, look, almost all of the experiments are significant now. So, it would be better to use 50 subjects per group than 10 per group according to this simulation.</p>
 <p>Of course, you might already be wondering so many different kinds of things. How can we plausibly know the parameters for the distribution we are sampling from? Isn’t this all just guess work? We’ll discuss some of these issues as we move forward in this chapter.</p>
@@ -700,31 +727,31 @@ What we are doing with the GLM approach is making these same predictions, but do
 <div id="simulating-t-tests" class="section level2">
 <h2><span class="header-section-number">11.3</span> Simulating t-tests</h2>
 <p>We’ve already seen some code for simulating a <span class="math inline">\(t\)</span>-test 1000 times, saving the <span class="math inline">\(p\)</span>-values, and then calculating the proportion of simulations that are significant (p&lt;0.05). It looked like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">save_ps&lt;-<span class="kw">length</span>(<span class="dv">1000</span>)
-for(i in <span class="dv">1</span>:<span class="dv">1000</span>){
+<pre class="sourceCode r"><code class="sourceCode r">save_ps&lt;-<span class="kw">length</span>(<span class="dv">1000</span>)
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
   group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">7</span>)
   group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>,<span class="dv">105</span>, <span class="dv">7</span>)
   t_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A,group_B,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_results$p.value
+  save_ps[i] &lt;-<span class="st"> </span>t_results<span class="op">$</span>p.value
 }
 
-prop_p&lt;-<span class="kw">length</span>(save_ps[save_ps&lt;<span class="fl">0.05</span>])/<span class="dv">1000</span>
-<span class="kw">print</span>(prop_p)</code></pre></div>
+prop_p&lt;-<span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span><span class="fl">0.05</span>])<span class="op">/</span><span class="dv">1000</span>
+<span class="kw">print</span>(prop_p)</code></pre>
 <pre><code>## [1] 0.943</code></pre>
 <p>You could play around with that, and it would be very useful I think. Is there anything else that we can do that would be more useful? Sure there is. With the above simulation, you have to change N or the mean difference each time to see how proportion of significant experiments turns out. It would be nice to look at a graph where we could vary the number of subjects, and the size of the mean difference. That’s what the next simulation does. This kind of simulation can make your computer do some hard work depening on how many simulations you run. To make my computer do less work, we will only run 100 simulations for each parameter. But, what we will do is vary the number of subjects from 10 to 50 (steps of 10), and vary the size of the effect from 0 to 20 in steps of 4.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">num_sims        &lt;-<span class="dv">500</span>
+<pre class="sourceCode r"><code class="sourceCode r">num_sims        &lt;-<span class="dv">500</span>
 N               &lt;-<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)
 mean_difference &lt;-<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">16</span>,<span class="dv">20</span>)
 save_ps&lt;-<span class="kw">length</span>(num_sims)
 
 all_df&lt;-<span class="kw">data.frame</span>()
-for(diff in mean_difference){
-  for (j in N){
-    for(i in <span class="dv">1</span>:num_sims){
+<span class="cf">for</span>(diff <span class="cf">in</span> mean_difference){
+  <span class="cf">for</span> (j <span class="cf">in</span> N){
+    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>num_sims){
       group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(j,<span class="dv">100</span>,<span class="dv">7</span>)
-      group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(j,<span class="dv">100</span>+diff, <span class="dv">7</span>)
+      group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(j,<span class="dv">100</span><span class="op">+</span>diff, <span class="dv">7</span>)
       t_results &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A,group_B,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
-      save_ps[i] &lt;-<span class="st"> </span>t_results$p.value
+      save_ps[i] &lt;-<span class="st"> </span>t_results<span class="op">$</span>p.value
     }
     sim_df &lt;-<span class="kw">data.frame</span>(save_ps,
                         <span class="dt">num_subjects=</span><span class="kw">as.factor</span>(<span class="kw">rep</span>(j,num_sims)),
@@ -733,18 +760,18 @@ for(diff in mean_difference){
   }
 }  
 
-plot_df &lt;-<span class="st"> </span>all_df %&gt;%
-<span class="st">            </span>dplyr::<span class="kw">group_by</span>(num_subjects,mean_diff) %&gt;%
-<span class="st">            </span>dplyr::<span class="kw">summarise</span>(<span class="dt">proportion_sig =</span> <span class="kw">length</span>(save_ps[save_ps&lt;<span class="fl">0.05</span>])/num_sims)
+plot_df &lt;-<span class="st"> </span>all_df <span class="op">%&gt;%</span>
+<span class="st">            </span>dplyr<span class="op">::</span><span class="kw">group_by</span>(num_subjects,mean_diff) <span class="op">%&gt;%</span>
+<span class="st">            </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(<span class="dt">proportion_sig =</span> <span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span><span class="fl">0.05</span>])<span class="op">/</span>num_sims)
 
 
 <span class="kw">ggplot</span>(plot_df, <span class="kw">aes</span>(<span class="dt">x=</span>mean_diff, 
                     <span class="dt">y=</span>proportion_sig, 
                     <span class="dt">group=</span>num_subjects, 
-                    <span class="dt">color=</span>num_subjects))+
-<span class="st">  </span><span class="kw">geom_point</span>()+
-<span class="st">  </span><span class="kw">geom_line</span>()+
-<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre></div>
+                    <span class="dt">color=</span>num_subjects))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_classic</span>()</code></pre>
 <p><img src="statistics_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 <p>A graph like this is very helpful to look at. Generally, before we run an experiment, we might not have a very good idea of the size of the effect that our manipulation might cause. Will it be a mean difference of 0 (no effect), or 5, or 10, or 20? If you are doing something new, you just might not have a good idea about this. You would know in general that bigger effects are easier to detect. You would be able to detect smaller and smaller effects if you ran more and more subjects. When you run this kind of simulation, you can vary the possible mean differences and the number of the subjects at the same time, and then see what happens.</p>
 <p>When the mean diference is 0, we should get an average of 5%, or (0.05 proportion) experiments being significant. This is what we expect by chance, and it doesn’t matter how many subjects we run. When there is no difference, we will reject the null 5% of the time (these would all be type 1 errors).</p>
@@ -754,7 +781,7 @@ plot_df &lt;-<span class="st"> </span>all_df %&gt;%
 <div id="simulating-one-factor-anovas" class="section level2">
 <h2><span class="header-section-number">11.4</span> Simulating one-factor ANOVAs</h2>
 <p>The following builds simulated data for a one-factor ANOVA, appropriate for a between subjects design. We build the data frame containg a column for the group factor levels, and a column for the DV. Then, we run the ANOVA an print it out.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">10</span>
+<pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">10</span>
 groups &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), <span class="dt">each=</span><span class="dv">10</span>)
 DV &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group A</span>
         <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group B</span>
@@ -762,10 +789,10 @@ DV &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnor
         )
 sim_df&lt;-<span class="kw">data.frame</span>(groups,DV)
 
-aov_results &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">aov</span>(DV~groups, sim_df))
+aov_results &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">aov</span>(DV<span class="op">~</span>groups, sim_df))
 
 <span class="kw">library</span>(xtable)
-knitr::<span class="kw">kable</span>(<span class="kw">xtable</span>(aov_results))</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">xtable</span>(aov_results))</code></pre>
 <table>
 <thead>
 <tr>
@@ -832,10 +859,10 @@ NA
 </tbody>
 </table>
 <p>In this next example, we simulate the same design 100 times, save the <span class="math inline">\(p\)</span>-values, and the determine the proportion of significant simulations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">10</span>
+<pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">10</span>
 
 save_p&lt;-<span class="kw">length</span>(<span class="dv">100</span>)
-for(i in <span class="dv">1</span>:<span class="dv">100</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>){
   groups &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), <span class="dt">each=</span><span class="dv">10</span>)
   DV &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group A</span>
           <span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">15</span>),   <span class="co"># means for group B</span>
@@ -843,18 +870,18 @@ for(i in <span class="dv">1</span>:<span class="dv">100</span>){
           )
   sim_df&lt;-<span class="kw">data.frame</span>(groups,DV)
   
-  aov_results &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">aov</span>(DV~groups, sim_df))
-  save_p[i]&lt;-aov_results[[<span class="dv">1</span>]]$<span class="st">`</span><span class="dt">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]
+  aov_results &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">aov</span>(DV<span class="op">~</span>groups, sim_df))
+  save_p[i]&lt;-aov_results[[<span class="dv">1</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]
 }
 
-<span class="kw">length</span>(save_p[save_p&lt;<span class="fl">0.05</span>])/<span class="dv">100</span></code></pre></div>
+<span class="kw">length</span>(save_p[save_p<span class="op">&lt;</span><span class="fl">0.05</span>])<span class="op">/</span><span class="dv">100</span></code></pre>
 <pre><code>## [1] 0.03</code></pre>
 </div>
 <div id="other-resources" class="section level2">
 <h2><span class="header-section-number">11.5</span> Other resources</h2>
 <p>OK, It’s a tuesday, the summer is almost over. I’ve spent most of this summer (2018) writing this textbook, because we are using it this Fall 2018. Because I am running out of time, I need to finish this and make sure everything is in place for the course to work. As a result, I am not going to finish this chapter right now. The nice thing about this book, is that I (and other people) can fill things in over time. We have shown a few examples of data-simulation, so that’s at least something.</p>
 <p>If you want to see more examples, I suggest you check out this chapter:</p>
-<p><a href="https://crumplab.github.io/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs" class="uri">https://crumplab.github.io/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs</a></p>
+<p><a href="https://crumplab.github.io/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs">https://crumplab.github.io/programmingforpsych/simulating-and-analyzing-data-in-r.html#simulating-data-for-multi-factor-designs</a></p>
 <p>This section will get longer as I find more resources to add, and hopefully the entire chapter will get longer as I add in more examples over time.</p>
 
 </div>
@@ -885,7 +912,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -897,6 +924,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/CrumpLab/statistics/blob/master/11-Simulation.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["statistics.pdf"],
 "toc": {
@@ -911,8 +942,8 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
