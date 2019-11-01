@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Foundations for inference | Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Foundations for inference | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,19 @@
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
-<meta name="author" content="Videos: Jeffrey Suzuki">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probability-sampling-and-estimation.html">
-<link rel="next" href="t-tests.html">
+<link rel="prev" href="probability-sampling-and-estimation.html"/>
+<link rel="next" href="t-tests.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -67,26 +69,27 @@ mattcrump=1;
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,9 +98,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,8 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -606,325 +613,125 @@ Figure 5.1: Uniform distribution showing that the numbers from 1 to 10 have an e
 <p>“So what?”. Imagine that this uniform distribution is a number generating machine. It spits out numbers, but it spits out each number with the probability indicated by the line. If this distribution was going to start spitting out numbers, it would spit out 10% 1s, 10% 2s, 10% 3s, and so on, up to 10% 10s. Wanna see what that would look like? Let’s make it spit out 100 numbers</p>
 <table>
 <tbody>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-5
-</td>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">7</td>
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">7</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-7
-</td>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">2</td>
+<td align="right">4</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">9</td>
+<td align="right">4</td>
+<td align="right">4</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">9</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">9</td>
+<td align="right">7</td>
+<td align="right">9</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-6
-</td>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">7</td>
+<td align="right">6</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">1</td>
+<td align="right">8</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">7</td>
+<td align="right">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">9</td>
+<td align="right">5</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-5
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">10</td>
+<td align="right">8</td>
 </tr>
 </tbody>
 </table>
@@ -1044,175 +851,91 @@ SHINY APP here
 <p>“Umm, maybe you get 5 red gum balls and 5 green balls from your left hand, and also from your right hand?”. Sort of yes, this is what you would usually get. But, it is not all that you can get. Here is some data showing what happened from one pretend experiment:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-hand
-</th>
-<th style="text-align:right;">
-gumball
-</th>
+<tr class="header">
+<th align="left">hand</th>
+<th align="right">gumball</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">left</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">left</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">left</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-left
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">left</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">right</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">right</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">right</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">right</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">right</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">right</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td align="left">right</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">right</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">right</td>
+<td align="right">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-right
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="even">
+<td align="left">right</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -1318,11 +1041,11 @@ Figure 5.16: Histogram of mean differences arising by chance
 <p>Pause for a second. Why should the mean differences usually be zero, wasn’t the population mean = 100, shouldn’t they be around 100? No. The mean of group A will tend to be around 100, and the mean of group B will tend be around 100. So, the difference score will tend to be 100-100 = 0. That is why we expect a mean difference of zero when the samples are drawn from the same population.</p>
 <p>So, differences near zero happen the most, that’s good, that’s what we expect. Bigger or smaller differences happen increasingly less often. Differences greater than 15 or -15 never happen at all. For our purposes, it looks like chance only produces differences between -15 to 15.</p>
 <p>OK, let’s ask a couple simple questions. What was the biggest negative number that occurred in the simulation? We’ll use R for this. All of the 10,000 difference scores are stored in a variable I made called <code>difference</code>. If we want to find the minimum value, we use the <code>min</code> function. Here’s the result.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(difference)</code></pre>
-<pre><code>## [1] -20.32968</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="foundations-for-inference.html#cb22-1"></a><span class="kw">min</span>(difference)</span></code></pre></div>
+<pre><code>## [1] -17.22391</code></pre>
 <p>OK, so what was the biggest positive number that occurred? Let’s use the <code>max</code> function to find out. It finds the biggest (maximum) value in the variable. FYI, we’ve just computed the range, the minimum and maximum numbers in the data. Remember we learned that before. Anyway, here’s the max.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(difference)</code></pre>
-<pre><code>## [1] 19.35525</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="foundations-for-inference.html#cb24-1"></a><span class="kw">max</span>(difference)</span></code></pre></div>
+<pre><code>## [1] 20.16084</code></pre>
 <p>Both of these extreme values only occurred once. Those values were so rare we couldn’t even see them on the histogram, the bar was so small. Also, these biggest negative and positive numbers are pretty much the same size if you ignore their sign, which makes sense because the distribution looks roughly symmetrical.</p>
 <p>So, what can we say about these two numbers for the min and max? We can say the min happens 1 times out of 10,000. We can say the max happens 1 times out of 10,000. Is that a lot of times? Not to me. It’s not a lot.</p>
 <p>So, how often does a difference of 30 (much larger larger than the max) occur out of 10,000. We really can’t say, 30s didn’t occur in the simulation. Going with what we got, we say 0 out of 10,000. That’s never.</p>
@@ -1395,62 +1118,32 @@ Figure 5.20: The range or width of the differences produced by chance shrinks as
 <p>There you have it. The <strong>sampling distribution of the mean differences</strong> shrinks toward 0 as sample-size increases. This means if you run an experiment with a larger sample-size, you will be able to detect smaller mean differences, and be confident they aren’t due to chance. Let’s look at a table of the minimum and maximum values that chance produced across these four sample-sizes:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:right;">
-sample_size
-</th>
-<th style="text-align:right;">
-smallest
-</th>
-<th style="text-align:right;">
-biggest
-</th>
+<tr class="header">
+<th align="right">sample_size</th>
+<th align="right">smallest</th>
+<th align="right">biggest</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
--23.530921
-</td>
-<td style="text-align:right;">
-24.76306
-</td>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">-25.858660</td>
+<td align="right">26.266110</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:right;">
--17.835122
-</td>
-<td style="text-align:right;">
-17.65081
-</td>
+<tr class="even">
+<td align="right">40</td>
+<td align="right">-17.098721</td>
+<td align="right">16.177815</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-80
-</td>
-<td style="text-align:right;">
--13.314600
-</td>
-<td style="text-align:right;">
-12.11520
-</td>
+<tr class="odd">
+<td align="right">80</td>
+<td align="right">-12.000585</td>
+<td align="right">11.919035</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-160
-</td>
-<td style="text-align:right;">
--8.387004
-</td>
-<td style="text-align:right;">
-10.54134
-</td>
+<tr class="even">
+<td align="right">160</td>
+<td align="right">-9.251625</td>
+<td align="right">8.357951</td>
 </tr>
 </tbody>
 </table>
@@ -1497,264 +1190,126 @@ Figure 5.22: The red line represents the size of a mean difference that a resear
 <p>Let’s say the data looked like this:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-student
-</th>
-<th style="text-align:left;">
-gum
-</th>
-<th style="text-align:left;">
-no_gum
-</th>
+<tr class="header">
+<th align="left">student</th>
+<th align="left">gum</th>
+<th align="left">no_gum</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-48
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">89</td>
+<td align="left">73</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-75
-</td>
-<td style="text-align:left;">
-85
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">77</td>
+<td align="left">47</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-43
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">95</td>
+<td align="left">58</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-96
-</td>
-<td style="text-align:left;">
-74
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">81</td>
+<td align="left">72</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-83
-</td>
-<td style="text-align:left;">
-45
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">81</td>
+<td align="left">44</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-95
-</td>
-<td style="text-align:left;">
-83
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">95</td>
+<td align="left">86</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-90
-</td>
-<td style="text-align:left;">
-60
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">97</td>
+<td align="left">48</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-82
-</td>
-<td style="text-align:left;">
-48
-</td>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">97</td>
+<td align="left">62</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-81
-</td>
-<td style="text-align:left;">
-75
-</td>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">94</td>
+<td align="left">64</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-94
-</td>
-<td style="text-align:left;">
-85
-</td>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">71</td>
+<td align="left">46</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-76
-</td>
-<td style="text-align:left;">
-78
-</td>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">95</td>
+<td align="left">75</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-12
-</td>
-<td style="text-align:left;">
-79
-</td>
-<td style="text-align:left;">
-77
-</td>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">79</td>
+<td align="left">69</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:left;">
-95
-</td>
-<td style="text-align:left;">
-50
-</td>
+<tr class="odd">
+<td align="left">13</td>
+<td align="left">82</td>
+<td align="left">63</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:left;">
-84
-</td>
-<td style="text-align:left;">
-49
-</td>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">86</td>
+<td align="left">69</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-15
-</td>
-<td style="text-align:left;">
-89
-</td>
-<td style="text-align:left;">
-70
-</td>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">97</td>
+<td align="left">49</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-16
-</td>
-<td style="text-align:left;">
-88
-</td>
-<td style="text-align:left;">
-79
-</td>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">99</td>
+<td align="left">44</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:left;">
-96
-</td>
-<td style="text-align:left;">
-45
-</td>
+<tr class="odd">
+<td align="left">17</td>
+<td align="left">88</td>
+<td align="left">45</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-18
-</td>
-<td style="text-align:left;">
-86
-</td>
-<td style="text-align:left;">
-56
-</td>
+<tr class="even">
+<td align="left">18</td>
+<td align="left">77</td>
+<td align="left">71</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-19
-</td>
-<td style="text-align:left;">
-72
-</td>
-<td style="text-align:left;">
-45
-</td>
+<tr class="odd">
+<td align="left">19</td>
+<td align="left">94</td>
+<td align="left">52</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-83
-</td>
-<td style="text-align:left;">
-59
-</td>
+<tr class="even">
+<td align="left">20</td>
+<td align="left">93</td>
+<td align="left">83</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-1703
-</td>
-<td style="text-align:left;">
-1254
-</td>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">1767</td>
+<td align="left">1220</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-85.15
-</td>
-<td style="text-align:left;">
-62.7
-</td>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">88.35</td>
+<td align="left">61</td>
 </tr>
 </tbody>
 </table>
-<p>So, did the students chewing gum do better than the students who didn’t chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was 85.15, and the mean for students who did not chew gum was 62.7. Just looking at the means, it looks like chewing gum worked!</p>
+<p>So, did the students chewing gum do better than the students who didn’t chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was 88.35, and the mean for students who did not chew gum was 61. Just looking at the means, it looks like chewing gum worked!</p>
 <p>“STOP THE PRESSES, this is silly”. We already know this is silly because we are making pretend data. But, even if this was real data, you might think, “Chewing gum won’t do anything, this difference could have been caused by chance, I mean, maybe the better students just happened to be put into the chewing group, so because of that their grades were higher, chewing gum didn’t do anything…”. We agree. But, let’s take a closer look. We already know how the data come out. What we want to know is how they could have come out, what are all the possibilities?</p>
 <p>For example, the data would have come out a bit different if we happened to have put some of the students from the gum group into the no gum group, and vice versa. Think of all the ways you could have assigned the 40 students into two groups, there are lots of ways. And, the means for each group would turn out differently depending on how the students are assigned to each group.</p>
 <p>Practically speaking, it’s not possible to run the experiment every possible way, that would take too long. But, we can nevertheless estimate how all of those experiments might have turned out using simulation.</p>
@@ -1764,303 +1319,143 @@ Means
 <p>Before we do that, let’s show how the randomization part works. We’ll use fewer numbers to make the process easier to look at. Here are the first 5 exam scores for students in both groups.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-student
-</th>
-<th style="text-align:left;">
-gum
-</th>
-<th style="text-align:left;">
-no_gum
-</th>
+<tr class="header">
+<th align="left">student</th>
+<th align="left">gum</th>
+<th align="left">no_gum</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-48
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">89</td>
+<td align="left">73</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-75
-</td>
-<td style="text-align:left;">
-85
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">77</td>
+<td align="left">47</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-43
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">95</td>
+<td align="left">58</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-96
-</td>
-<td style="text-align:left;">
-74
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">81</td>
+<td align="left">72</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-83
-</td>
-<td style="text-align:left;">
-45
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">81</td>
+<td align="left">44</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-413
-</td>
-<td style="text-align:left;">
-295
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">423</td>
+<td align="left">294</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-82.6
-</td>
-<td style="text-align:left;">
-59
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">84.6</td>
+<td align="left">58.8</td>
 </tr>
 </tbody>
 </table>
 <p>Things could have turned out differently if some of the subjects in the gum group were switched with the subjects in the no gum group. Here’s how we can do some random switching. We will do this using R.</p>
-<pre class="sourceCode r"><code class="sourceCode r">all_scores       &lt;-<span class="st"> </span><span class="kw">c</span>(gum[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],no_gum[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])
-randomize_scores &lt;-<span class="st"> </span><span class="kw">sample</span>(all_scores)
-new_gum          &lt;-<span class="st"> </span>randomize_scores[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
-new_no_gum       &lt;-<span class="st"> </span>randomize_scores[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>]
-<span class="kw">print</span>(new_gum)</code></pre>
-<pre><code>## [1] 74 48 74 85 45</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(new_no_gum)</code></pre>
-<pre><code>## [1] 96 75 83 85 43</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="foundations-for-inference.html#cb26-1"></a>all_scores       &lt;-<span class="st"> </span><span class="kw">c</span>(gum[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],no_gum[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</span>
+<span id="cb26-2"><a href="foundations-for-inference.html#cb26-2"></a>randomize_scores &lt;-<span class="st"> </span><span class="kw">sample</span>(all_scores)</span>
+<span id="cb26-3"><a href="foundations-for-inference.html#cb26-3"></a>new_gum          &lt;-<span class="st"> </span>randomize_scores[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb26-4"><a href="foundations-for-inference.html#cb26-4"></a>new_no_gum       &lt;-<span class="st"> </span>randomize_scores[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>]</span>
+<span id="cb26-5"><a href="foundations-for-inference.html#cb26-5"></a><span class="kw">print</span>(new_gum)</span></code></pre></div>
+<pre><code>## [1] 89 58 72 81 44</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="foundations-for-inference.html#cb28-1"></a><span class="kw">print</span>(new_no_gum)</span></code></pre></div>
+<pre><code>## [1] 47 81 73 95 77</code></pre>
 <p>We have taken the first 5 numbers from the original data, and put them all into a variable called <code>all_scores</code>. Then we use the <code>sample</code> function in R to shuffle the scores. Finally, we take the first 5 scores from the shuffled numbers and put them into a new variable called <code>new_gum</code>. Then, we put the last five scores into the variable <code>new_no_gum</code>. Then we printed them, so we can see them.</p>
 <p>If we do this a couple of times and put them in a table, we can indeed see that the means for gum and no gum would be different if the subjects were shuffled around. Check it out:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-student
-</th>
-<th style="text-align:left;">
-gum
-</th>
-<th style="text-align:left;">
-no_gum
-</th>
-<th style="text-align:left;">
-gum2
-</th>
-<th style="text-align:left;">
-no_gum2
-</th>
-<th style="text-align:left;">
-gum3
-</th>
-<th style="text-align:left;">
-no_gum3
-</th>
+<tr class="header">
+<th align="left">student</th>
+<th align="left">gum</th>
+<th align="left">no_gum</th>
+<th align="left">gum2</th>
+<th align="left">no_gum2</th>
+<th align="left">gum3</th>
+<th align="left">no_gum3</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-48
-</td>
-<td style="text-align:left;">
-43
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-43
-</td>
-<td style="text-align:left;">
-85
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">89</td>
+<td align="left">73</td>
+<td align="left">81</td>
+<td align="left">81</td>
+<td align="left">44</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-75
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-45
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-83
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">77</td>
+<td align="left">47</td>
+<td align="left">47</td>
+<td align="left">58</td>
+<td align="left">77</td>
+<td align="left">47</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-43
-</td>
-<td style="text-align:left;">
-96
-</td>
-<td style="text-align:left;">
-48
-</td>
-<td style="text-align:left;">
-75
-</td>
-<td style="text-align:left;">
-45
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">95</td>
+<td align="left">58</td>
+<td align="left">77</td>
+<td align="left">73</td>
+<td align="left">73</td>
+<td align="left">58</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-96
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-85
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-48
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">81</td>
+<td align="left">72</td>
+<td align="left">72</td>
+<td align="left">95</td>
+<td align="left">95</td>
+<td align="left">72</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-83
-</td>
-<td style="text-align:left;">
-45
-</td>
-<td style="text-align:left;">
-83
-</td>
-<td style="text-align:left;">
-75
-</td>
-<td style="text-align:left;">
-74
-</td>
-<td style="text-align:left;">
-96
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">81</td>
+<td align="left">44</td>
+<td align="left">89</td>
+<td align="left">44</td>
+<td align="left">81</td>
+<td align="left">89</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-413
-</td>
-<td style="text-align:left;">
-295
-</td>
-<td style="text-align:left;">
-341
-</td>
-<td style="text-align:left;">
-367
-</td>
-<td style="text-align:left;">
-351
-</td>
-<td style="text-align:left;">
-357
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">423</td>
+<td align="left">294</td>
+<td align="left">366</td>
+<td align="left">351</td>
+<td align="left">370</td>
+<td align="left">347</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-82.6
-</td>
-<td style="text-align:left;">
-59
-</td>
-<td style="text-align:left;">
-68.2
-</td>
-<td style="text-align:left;">
-73.4
-</td>
-<td style="text-align:left;">
-70.2
-</td>
-<td style="text-align:left;">
-71.4
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">84.6</td>
+<td align="left">58.8</td>
+<td align="left">73.2</td>
+<td align="left">70.2</td>
+<td align="left">74</td>
+<td align="left">69.4</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="simulating-the-mean-differences-across-the-different-randomizations" class="section level4">
 <h4><span class="header-section-number">5.6.1.2</span> Simulating the mean differences across the different randomizations</h4>
-<p>In our pretend experiment we found that the mean for students chewing gum was 85.15, and the mean for students who did not chew gum was 62.7. The mean difference (gum - no gum) was 22.45. This is a pretty big difference. This is <strong>what did happen</strong>. But, <strong>what could have happened</strong>? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let’s find out. This is what the randomization test is all about.</p>
+<p>In our pretend experiment we found that the mean for students chewing gum was 88.35, and the mean for students who did not chew gum was 61. The mean difference (gum - no gum) was 27.35. This is a pretty big difference. This is <strong>what did happen</strong>. But, <strong>what could have happened</strong>? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let’s find out. This is what the randomization test is all about.</p>
 <p>When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference.</p>
 <p>Let’s look at a short animation of what is happening in the randomization test. Note, what you are about to see is data from a different fake experiment, but the principles are the same. We’ll return to the gum no gum experiment after the animation. The animation is showing you three important things. First, the purple dots show you the mean scores in two groups (didn’t study vs study). It looks like there is a difference, as 1 dot is lower than the other. We want to know if chance could produce a difference this big. At the beginning of the animation, the light green and red dots show the individual scores from each of 10 subjects in the design (the purple dots are the means of these original scores). Now, during the randomizations, we randomly shuffle the original scores between the groups. You can see this happening throughout the animation, as the green and red dots appear in different random combinations. The moving yellow dots show you the new means for each group after the randomization. The differences between the yellow dots show you the range of differences that chance could produce.</p>
 <div class="figure"><span id="fig:5randtest"></span>
@@ -2126,11 +1521,13 @@ Figure 5.25: Would you expect a mean difference represented by the blue line to 
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -2173,8 +1570,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

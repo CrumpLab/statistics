@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Thinking about answering questions with data | Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Thinking about answering questions with data | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,19 @@
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
-<meta name="author" content="Videos: Jeffrey Suzuki">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="simulating-data.html">
-<link rel="next" href="gifs.html">
+<link rel="prev" href="simulating-data.html"/>
+<link rel="next" href="gifs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -67,26 +69,27 @@ mattcrump=1;
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,9 +98,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,8 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -648,15 +655,15 @@ Figure 12.2: Each panel shows hypothetical distributions for two conditions. As 
 </ol>
 <p>To see this in practice let’s do a simulation. We will do a t-test on a between-groups design 10 subjects in each group. Group A will be a control group with scores sampled from a normal distribution with mean of 10, and standard deviation of 5. Group B will be a treatment group, we will say the treatment has an effect-size of Cohen’s <span class="math inline">\(d\)</span> = .5, that’s a standard deviation shift of .5, so the scores with come from a normal distribution with mean =12.5 and standard deivation of 5. Remember 1 standard deviation here is 5, so half of a standard deviation is 2.5.</p>
 <p>The following R script runs this simulated experiment 1000 times. We set the alpha criterion to .05, this means we will reject the null whenever the <span class="math inline">\(p\)</span>-value is less than .05. With this specific design, how many times out of of 1000 do we reject the null, and accept the alternative hypothesis?</p>
-<pre><code>## [1] 201</code></pre>
-<p>The answer is that we reject the null, and accept the alternative 201 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 20.1 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
+<pre><code>## [1] 179</code></pre>
+<p>The answer is that we reject the null, and accept the alternative 179 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 17.9 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
 <p>Importantly, power is completely abstract idea that is completely determined by many assumptions including N, effect-size, and alpha. As a result, it is best not to think of power as a single number, but instead as a family of numbers.</p>
 <p>For example, power is different when we change N. If we increase N, our samples will more precisely estimate the true distributions that they came from. Increasing N reduces sampling error, and shrinks the range of differences that can be produced by chance. Lets’ increase our N in this simulation from 10 to 20 in each group and see what happens.</p>
-<pre><code>## [1] 345</code></pre>
-<p>Now the number of significant experiments i 345 out of 1000, or a power of 34.5 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
+<pre><code>## [1] 360</code></pre>
+<p>Now the number of significant experiments i 360 out of 1000, or a power of 36 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
 <p>We can change the power of the design by changing the alpha-value, which tells us how much evidence we need to reject the null. For example, if we set the alpha criterion to 0.01, then we will be more conservative, only rejecting the null when chance can produce the observed difference 1% of the time. In our example, this will have the effect of reducing power. Let’s keep N at 20, but reduce the alpha to 0.01 and see what happens:</p>
-<pre><code>## [1] 149</code></pre>
-<p>Now only 149 out of 1000 experiments are significant, that’s 14.9 power.</p>
+<pre><code>## [1] 138</code></pre>
+<p>Now only 138 out of 1000 experiments are significant, that’s 13.8 power.</p>
 <p>Finally, the power of the design depends on the actual size of the effect caused by the manipulation. In our example, we hypothesized that the effect caused a shift of .5 standard deviations. What if the effect causes a bigger shift? Say, a shift of 2 standard deviations. Let’s keep N= 20, and alpha &lt; .01, but change the effect-size to two standard deviations. When the effect in the real-world is bigger, it should be easier to measure, so our power will increase.</p>
 <pre><code>## [1] 1000</code></pre>
 <p>Neat, if the effect-size is actually huge (2 standard deviation shift), then we have power 100 percent to detect the true effect.</p>
@@ -742,11 +749,13 @@ Figure 12.5: Effect size as a function of p-values for type 1 Errors under the n
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -789,8 +798,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

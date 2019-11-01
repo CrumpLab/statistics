@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Factorial ANOVA | Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Factorial ANOVA | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,19 @@
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
-<meta name="author" content="Videos: Jeffrey Suzuki">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="repeated-measures-anova.html">
-<link rel="next" href="more-on-factorial-designs.html">
+<link rel="prev" href="repeated-measures-anova.html"/>
+<link rel="next" href="more-on-factorial-designs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -67,26 +69,27 @@ mattcrump=1;
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,9 +98,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,8 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -768,12 +775,12 @@ Figure 9.8: Each panel shows the mean for different effects in the design
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
@@ -782,22 +789,22 @@ Reward
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
@@ -934,7 +941,7 @@ D
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
@@ -945,22 +952,22 @@ All Conditions
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction Means
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction Effect
 </div>
 </th>
@@ -969,37 +976,37 @@ Distraction Effect
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Difference
 </div>
 </th>
@@ -1036,16 +1043,16 @@ AC.minus.BD
 <td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 5
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 12
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 9
 </td>
 <td style="text-align:left;">
@@ -1054,7 +1061,7 @@ AC.minus.BD
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 4
 </td>
 </tr>
@@ -1062,16 +1069,16 @@ AC.minus.BD
 <td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 8
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 13
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 8
 </td>
 <td style="text-align:left;">
@@ -1080,7 +1087,7 @@ AC.minus.BD
 <td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 4.5
 </td>
 </tr>
@@ -1088,16 +1095,16 @@ AC.minus.BD
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 11
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 3
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 14
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 10
 </td>
 <td style="text-align:left;">
@@ -1106,7 +1113,7 @@ AC.minus.BD
 <td style="text-align:left;">
 6.5
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6
 </td>
 </tr>
@@ -1114,16 +1121,16 @@ AC.minus.BD
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 9
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 11
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 11
 </td>
 <td style="text-align:left;">
@@ -1132,7 +1139,7 @@ AC.minus.BD
 <td style="text-align:left;">
 7.5
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 2.5
 </td>
 </tr>
@@ -1140,16 +1147,16 @@ AC.minus.BD
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 2
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 13
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 12
 </td>
 <td style="text-align:left;">
@@ -1158,29 +1165,29 @@ AC.minus.BD
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 4.5
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+<td style="text-align:left;background-color: yellow !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightblue !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+<td style="text-align:left;background-color: yellow !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightblue !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 11.1
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6.8
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: lightgreen !important;">
 4.3
 </td>
 </tr>
@@ -1229,7 +1236,7 @@ Means
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
@@ -1240,22 +1247,22 @@ All Conditions
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward Means
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward Effect
 </div>
 </th>
@@ -1264,37 +1271,37 @@ Reward Effect
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Difference
 </div>
 </th>
@@ -1331,16 +1338,16 @@ CD.minus.AB
 <td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 10
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 12
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 9
 </td>
 <td style="text-align:left;">
@@ -1349,7 +1356,7 @@ CD.minus.AB
 <td style="text-align:left;">
 10.5
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 3
 </td>
 </tr>
@@ -1357,16 +1364,16 @@ CD.minus.AB
 <td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 8
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 13
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 8
 </td>
 <td style="text-align:left;">
@@ -1375,7 +1382,7 @@ CD.minus.AB
 <td style="text-align:left;">
 10.5
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 4.5
 </td>
 </tr>
@@ -1383,16 +1390,16 @@ CD.minus.AB
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 11
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 3
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 14
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 10
 </td>
 <td style="text-align:left;">
@@ -1401,7 +1408,7 @@ CD.minus.AB
 <td style="text-align:left;">
 12
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 5
 </td>
 </tr>
@@ -1409,16 +1416,16 @@ CD.minus.AB
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 9
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 11
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 11
 </td>
 <td style="text-align:left;">
@@ -1427,7 +1434,7 @@ CD.minus.AB
 <td style="text-align:left;">
 11
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 4.5
 </td>
 </tr>
@@ -1435,16 +1442,16 @@ CD.minus.AB
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 10
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 2
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 13
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 12
 </td>
 <td style="text-align:left;">
@@ -1453,29 +1460,29 @@ CD.minus.AB
 <td style="text-align:left;">
 12.5
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6.5
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+<td style="text-align:left;background-color: yellow !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+<td style="text-align:left;background-color: yellow !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightblue !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightblue !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 11.3
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: lightgreen !important;">
 4.7
 </td>
 </tr>
@@ -1525,7 +1532,7 @@ Means
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
@@ -1536,22 +1543,22 @@ All Conditions
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction Effects
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Interaction Effect
 </div>
 </th>
@@ -1560,37 +1567,37 @@ Interaction Effect
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Difference
 </div>
 </th>
@@ -1627,16 +1634,16 @@ C-D
 <td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 5
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 12
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 9
 </td>
 <td style="text-align:left;">
@@ -1645,7 +1652,7 @@ C-D
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 2
 </td>
 </tr>
@@ -1653,16 +1660,16 @@ C-D
 <td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 8
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 13
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 8
 </td>
 <td style="text-align:left;">
@@ -1671,7 +1678,7 @@ C-D
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 -1
 </td>
 </tr>
@@ -1679,16 +1686,16 @@ C-D
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 11
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 3
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 14
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 10
 </td>
 <td style="text-align:left;">
@@ -1697,7 +1704,7 @@ C-D
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 4
 </td>
 </tr>
@@ -1705,16 +1712,16 @@ C-D
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 9
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 4
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 11
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 11
 </td>
 <td style="text-align:left;">
@@ -1723,7 +1730,7 @@ C-D
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 5
 </td>
 </tr>
@@ -1731,16 +1738,16 @@ C-D
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 2
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 13
 </td>
-<td style="text-align:left;background-color: lightblue;">
+<td style="text-align:left;background-color: lightblue !important;">
 12
 </td>
 <td style="text-align:left;">
@@ -1749,29 +1756,29 @@ C-D
 <td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 7
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+<td style="text-align:left;background-color: yellow !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightblue !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: lightgreen;">
+<td style="text-align:left;background-color: yellow !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightblue;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightblue !important;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 2.6
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: lightgreen !important;">
 3.4
 </td>
 </tr>
@@ -2009,17 +2016,17 @@ NA
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Difference from Grand Mean
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Squared Differences
 </div>
 </th>
@@ -2028,32 +2035,32 @@ Squared Differences
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
@@ -2062,62 +2069,62 @@ Reward
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
@@ -2191,16 +2198,16 @@ D-GrandM
 <td style="text-align:left;">
 0.05
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 1.1025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 15.6025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 9.3025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.0025
 </td>
 </tr>
@@ -2231,16 +2238,16 @@ D-GrandM
 <td style="text-align:left;">
 -0.95
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.9025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 24.5025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 16.4025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.9025
 </td>
 </tr>
@@ -2271,16 +2278,16 @@ D-GrandM
 <td style="text-align:left;">
 1.05
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.2025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 35.4025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 25.5025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 1.1025
 </td>
 </tr>
@@ -2311,16 +2318,16 @@ D-GrandM
 <td style="text-align:left;">
 2.05
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.0025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 24.5025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.2025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.2025
 </td>
 </tr>
@@ -2351,145 +2358,145 @@ D-GrandM
 <td style="text-align:left;">
 3.05
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 1.1025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 48.3025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 16.4025
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 9.3025
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 9.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 3.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 12.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Grand Mean
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 8.95
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 sums
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 Sums
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 7.3125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 148.3125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 71.8125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 15.5125
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Total
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Total
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 242.95
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
 </tr>
 </tbody>
@@ -2506,17 +2513,17 @@ SS Total
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction Mean - GM
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Squared Differences
 </div>
 </th>
@@ -2525,32 +2532,32 @@ Squared Differences
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
@@ -2559,62 +2566,62 @@ Reward
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
@@ -2688,16 +2695,16 @@ DM-GM D
 <td style="text-align:left;">
 -2.15
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
 </tr>
@@ -2728,16 +2735,16 @@ DM-GM D
 <td style="text-align:left;">
 -2.15
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
 </tr>
@@ -2768,16 +2775,16 @@ DM-GM D
 <td style="text-align:left;">
 -2.15
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
 </tr>
@@ -2808,16 +2815,16 @@ DM-GM D
 <td style="text-align:left;">
 -2.15
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
 </tr>
@@ -2848,149 +2855,149 @@ DM-GM D
 <td style="text-align:left;">
 -2.15
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 4.6225
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 9.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 3.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 12.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Grand Mean
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 8.95
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 No Distraction
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 11.1
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Distraction
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6.8
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 sums
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 Sums
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 23.1125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 23.1125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 23.1125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 23.1125
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Distraction
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Distraction
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 92.45
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
 </tr>
 </tbody>
@@ -3008,17 +3015,17 @@ SS Distraction
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward Mean - GM
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Squared Differences
 </div>
 </th>
@@ -3027,32 +3034,32 @@ Squared Differences
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
@@ -3061,62 +3068,62 @@ Reward
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
@@ -3190,16 +3197,16 @@ RM-GM D
 <td style="text-align:left;">
 2.35
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
 </tr>
@@ -3230,16 +3237,16 @@ RM-GM D
 <td style="text-align:left;">
 2.35
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
 </tr>
@@ -3270,16 +3277,16 @@ RM-GM D
 <td style="text-align:left;">
 2.35
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
 </tr>
@@ -3310,16 +3317,16 @@ RM-GM D
 <td style="text-align:left;">
 2.35
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
 </tr>
@@ -3350,149 +3357,149 @@ RM-GM D
 <td style="text-align:left;">
 2.35
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 5.5225
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 9.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 3.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 12.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Grand Mean
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 8.95
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 No Reward
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 6.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Reward
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 11.3
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 sums
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 Sums
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 27.6125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 27.6125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 27.6125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 27.6125
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Reward
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Reward
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 110.45
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
 </tr>
 </tbody>
@@ -3518,17 +3525,17 @@ SS Reward
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 All Conditions
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Interaction Differences
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Squared Differences
 </div>
 </th>
@@ -3537,32 +3544,32 @@ Squared Differences
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Reward
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Reward
 </div>
 </th>
@@ -3571,62 +3578,62 @@ Reward
 <th style="border-bottom:hidden" colspan="1">
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 No Distraction
 </div>
 </th>
 <th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Distraction
 </div>
 </th>
@@ -3700,16 +3707,16 @@ D-D-R+GM
 <td style="text-align:left;">
 0.85
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
 </tr>
@@ -3740,16 +3747,16 @@ D-D-R+GM
 <td style="text-align:left;">
 0.85
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
 </tr>
@@ -3780,16 +3787,16 @@ D-D-R+GM
 <td style="text-align:left;">
 0.85
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
 </tr>
@@ -3820,16 +3827,16 @@ D-D-R+GM
 <td style="text-align:left;">
 0.85
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
 </tr>
@@ -3860,145 +3867,145 @@ D-D-R+GM
 <td style="text-align:left;">
 0.85
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 0.7225
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Means
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 9.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 3.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 12.6
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 10
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 Grand Mean
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 8.95
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;">
+<td style="text-align:left;background-color: lightgreen !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: lightgreen;background-color: yellow;">
+<td style="text-align:left;background-color: lightgreen !important;background-color: yellow !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 sums
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 Sums
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 3.6125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 3.6125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 3.6125
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 3.6125
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Interaction
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;">
 SS Interaction
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 14.45
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
-<td style="text-align:left;background-color: yellow;background-color: yellow;">
+<td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">
 </td>
 </tr>
 </tbody>
@@ -4137,7 +4144,7 @@ NA
 <div id="stand-at-attention" class="section level3">
 <h3><span class="header-section-number">9.8.1</span> Stand at attention</h3>
 <p>Do you pay more attention when you are sitting or standing? This was the kind of research question the researchers were asking in the study we will look at. In fact, the general question and design is very similar to our fake study idea that we used to explain factorial designs in this chapter.</p>
-<p>The paper we look at is called “Stand by your Stroop: Standing up enhances selective attention and cognitive control” <span class="citation">(Rosenbaum, Mama, and Algom <a href="#ref-rosenbaum2017stand">2017</a>)</span>. This paper asked whether sitting versus standing would influence a measure of selective attention, the ability to ignore distracting information.</p>
+<p>The paper we look at is called “Stand by your Stroop: Standing up enhances selective attention and cognitive control” <span class="citation">(Rosenbaum, Mama, and Algom <a href="#ref-rosenbaum2017stand" role="doc-biblioref">2017</a>)</span>. This paper asked whether sitting versus standing would influence a measure of selective attention, the ability to ignore distracting information.</p>
 <p>They used a classic test of selective attention, called the Stroop effect. You may already know what the Stroop effect is. In a typical Stroop experiment, subjects name the color of words as fast as they can. The trick is that sometimes the color of the word is the same as the name of the word, and sometimes it is not. Here are some examples:</p>
 <div class="figure"><span id="fig:9stroop"></span>
 <img src="figures/Stroop.png" alt="Exampls of congruent and incongruent Stroop stimuli. The task is to name the color, not the word" width="420" />
@@ -4169,71 +4176,166 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>Let’s conduct a 2x2 repeated measures ANOVA on the data to evaluate whether the differences in the means are likely or unlikely to be due to chance. The ANOVA will give us main effects for congruency and posture (the two IVs), as well as one interaction effect to evaluate (congruency X posture). Remember, the interaction effect tells us whether the congruency effect changes across the levels of the posture manipulation.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="right">Df</th>
-<th></th>
-<th align="center">Sum Sq</th>
-<th align="center">Mean Sq</th>
-<th align="center">F value</th>
-<th align="center">Pr(&gt;F)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">Residuals</td>
-<td>49</td>
-<td align="center">2250738.636</td>
-<td align="center">45933.4416</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+2250738.636
+</td>
+<td style="text-align:right;">
+45933.4416
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">Congruency</td>
-<td>1</td>
-<td align="center">576821.635</td>
-<td align="center">576821.6349</td>
-<td align="center">342.452244</td>
-<td align="center">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+Congruency
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+576821.635
+</td>
+<td style="text-align:right;">
+576821.6349
+</td>
+<td style="text-align:right;">
+342.452244
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Residuals</td>
-<td>49</td>
-<td align="center">82534.895</td>
-<td align="center">1684.3856</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+82534.895
+</td>
+<td style="text-align:right;">
+1684.3856
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">Posture</td>
-<td>1</td>
-<td align="center">32303.453</td>
-<td align="center">32303.4534</td>
-<td align="center">7.329876</td>
-<td align="center">0.0093104</td>
+<tr>
+<td style="text-align:left;">
+Posture
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+32303.453
+</td>
+<td style="text-align:right;">
+32303.4534
+</td>
+<td style="text-align:right;">
+7.329876
+</td>
+<td style="text-align:right;">
+0.0093104
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Residuals1</td>
-<td>49</td>
-<td align="center">215947.614</td>
-<td align="center">4407.0942</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals1
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+215947.614
+</td>
+<td style="text-align:right;">
+4407.0942
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">Congruency:Posture</td>
-<td>1</td>
-<td align="center">6560.339</td>
-<td align="center">6560.3389</td>
-<td align="center">8.964444</td>
-<td align="center">0.0043060</td>
+<tr>
+<td style="text-align:left;">
+Congruency:Posture
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6560.339
+</td>
+<td style="text-align:right;">
+6560.3389
+</td>
+<td style="text-align:right;">
+8.964444
+</td>
+<td style="text-align:right;">
+0.0043060
+</td>
 </tr>
-<tr class="odd">
-<td align="right">Residuals</td>
-<td>49</td>
-<td align="center">35859.069</td>
-<td align="center">731.8177</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+35859.069
+</td>
+<td style="text-align:right;">
+731.8177
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table>
@@ -4244,25 +4346,49 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>What were the overall mean differences between mean RTs in the congruent and incongruent conditions? We would have to look at thos means to find out. Here’s a table:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Congruency</th>
-<th align="right">mean_rt</th>
-<th align="right">sd</th>
-<th align="right">SEM</th>
+<tr>
+<th style="text-align:left;">
+Congruency
+</th>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Congruent</td>
-<td align="right">814.9415</td>
-<td align="right">111.3193</td>
-<td align="right">11.13193</td>
+<tr>
+<td style="text-align:left;">
+Congruent
+</td>
+<td style="text-align:right;">
+814.9415
+</td>
+<td style="text-align:right;">
+111.3193
+</td>
+<td style="text-align:right;">
+11.13193
+</td>
 </tr>
-<tr class="even">
-<td align="left">Incongruent</td>
-<td align="right">922.3493</td>
-<td align="right">118.7960</td>
-<td align="right">11.87960</td>
+<tr>
+<td style="text-align:left;">
+Incongruent
+</td>
+<td style="text-align:right;">
+922.3493
+</td>
+<td style="text-align:right;">
+118.7960
+</td>
+<td style="text-align:right;">
+11.87960
+</td>
 </tr>
 </tbody>
 </table>
@@ -4274,25 +4400,49 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>Let’s look at the overall means for the sitting and standing conditions and see what this is all about:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Posture</th>
-<th align="right">mean_rt</th>
-<th align="right">sd</th>
-<th align="right">SEM</th>
+<tr>
+<th style="text-align:left;">
+Posture
+</th>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Sit</td>
-<td align="right">881.3544</td>
-<td align="right">135.3842</td>
-<td align="right">13.53842</td>
+<tr>
+<td style="text-align:left;">
+Sit
+</td>
+<td style="text-align:right;">
+881.3544
+</td>
+<td style="text-align:right;">
+135.3842
+</td>
+<td style="text-align:right;">
+13.53842
+</td>
 </tr>
-<tr class="even">
-<td align="left">Stand</td>
-<td align="right">855.9365</td>
-<td align="right">116.9436</td>
-<td align="right">11.69436</td>
+<tr>
+<td style="text-align:left;">
+Stand
+</td>
+<td style="text-align:right;">
+855.9365
+</td>
+<td style="text-align:right;">
+116.9436
+</td>
+<td style="text-align:right;">
+11.69436
+</td>
 </tr>
 </tbody>
 </table>
@@ -4306,42 +4456,92 @@ Figure 9.10: Means from Rosenbaum et al (2017)
 <p>We can see from the figure the direction of this difference, but let’s look at the table to see the numbers more clearly.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Posture</th>
-<th align="left">Congruency</th>
-<th align="right">mean_rt</th>
-<th align="right">sd</th>
-<th align="right">SEM</th>
+<tr>
+<th style="text-align:left;">
+Posture
+</th>
+<th style="text-align:left;">
+Congruency
+</th>
+<th style="text-align:right;">
+mean_rt
+</th>
+<th style="text-align:right;">
+sd
+</th>
+<th style="text-align:right;">
+SEM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Sit</td>
-<td align="left">Congruent</td>
-<td align="right">821.9232</td>
-<td align="right">117.4069</td>
-<td align="right">16.60384</td>
+<tr>
+<td style="text-align:left;">
+Sit
+</td>
+<td style="text-align:left;">
+Congruent
+</td>
+<td style="text-align:right;">
+821.9232
+</td>
+<td style="text-align:right;">
+117.4069
+</td>
+<td style="text-align:right;">
+16.60384
+</td>
 </tr>
-<tr class="even">
-<td align="left">Sit</td>
-<td align="left">Incongruent</td>
-<td align="right">940.7855</td>
-<td align="right">126.6457</td>
-<td align="right">17.91041</td>
+<tr>
+<td style="text-align:left;">
+Sit
+</td>
+<td style="text-align:left;">
+Incongruent
+</td>
+<td style="text-align:right;">
+940.7855
+</td>
+<td style="text-align:right;">
+126.6457
+</td>
+<td style="text-align:right;">
+17.91041
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Stand</td>
-<td align="left">Congruent</td>
-<td align="right">807.9599</td>
-<td align="right">105.6079</td>
-<td align="right">14.93521</td>
+<tr>
+<td style="text-align:left;">
+Stand
+</td>
+<td style="text-align:left;">
+Congruent
+</td>
+<td style="text-align:right;">
+807.9599
+</td>
+<td style="text-align:right;">
+105.6079
+</td>
+<td style="text-align:right;">
+14.93521
+</td>
 </tr>
-<tr class="even">
-<td align="left">Stand</td>
-<td align="left">Incongruent</td>
-<td align="right">903.9131</td>
-<td align="right">108.5366</td>
-<td align="right">15.34939</td>
+<tr>
+<td style="text-align:left;">
+Stand
+</td>
+<td style="text-align:left;">
+Incongruent
+</td>
+<td style="text-align:right;">
+903.9131
+</td>
+<td style="text-align:right;">
+108.5366
+</td>
+<td style="text-align:right;">
+15.34939
+</td>
 </tr>
 </tbody>
 </table>
@@ -4386,11 +4586,13 @@ What kind of study did they run?
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -4433,8 +4635,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

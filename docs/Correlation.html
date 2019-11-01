@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Correlation | Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Correlation | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,19 @@
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
-<meta name="author" content="Videos: Jeffrey Suzuki">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="DescribingData.html">
-<link rel="next" href="probability-sampling-and-estimation.html">
+<link rel="prev" href="DescribingData.html"/>
+<link rel="next" href="probability-sampling-and-estimation.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -67,26 +69,27 @@ mattcrump=1;
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,9 +98,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,8 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -604,128 +611,62 @@ Correlation does not equal causation
 <p>Here is some sample data from the first 10 imaginary subjects.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:right;">
-subject
-</th>
-<th style="text-align:right;">
-chocolate
-</th>
-<th style="text-align:right;">
-happiness
-</th>
+<tr class="header">
+<th align="right">subject</th>
+<th align="right">chocolate</th>
+<th align="right">happiness</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">5</td>
+<td align="right">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-5
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">5</td>
+<td align="right">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-7
-</td>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">6</td>
+<td align="right">9</td>
 </tr>
 </tbody>
 </table>
@@ -764,156 +705,78 @@ Figure 3.2: Three scatterplots showing negative, positive, and zero correlation
 <h2><span class="header-section-number">3.2</span> Pearson’s r</h2>
 <p>If Beyoncé was a statistician, she might look at these scatter plots and want to “put a number on it”. We think this is a good idea too. We’ve already learned how to create descriptive statistics for a single measure, like chocolate, or happiness (i.e., means, variances, etc.). Is it possible to create a descriptive statistic that summarized the relationship between two measures, all in one number? Can it be done? Karl Pearson to the rescue.</p>
 <div class="marginnote">
-<p>The stories about the invention of various statistics are very interesting, you can read more about them in the book, “The Lady Tasting Tea” <span class="citation">(Salsburg <a href="#ref-salsburg2001lady">2001</a>)</span></p>
+<p>The stories about the invention of various statistics are very interesting, you can read more about them in the book, “The Lady Tasting Tea” <span class="citation">(Salsburg <a href="#ref-salsburg2001lady" role="doc-biblioref">2001</a>)</span></p>
 </div>
 <p>There’s a statistic for that, and Karl Pearson invented it. Everyone now calls it, “Pearson’s <span class="math inline">\(r\)</span>”. We will find out later that Karl Pearson was a big-wig editor at Biometrika in the 1930s. He took a hating to another big-wig statistician, Sir Ronald Fisher (who we learn about later), and they had some stats fights…why can’t we all just get along in statistics.</p>
 <p>How does Pearson’s <span class="math inline">\(r\)</span> work? Let’s look again at the first 10 subjects in our fake experiment:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subject
-</th>
-<th style="text-align:left;">
-chocolate
-</th>
-<th style="text-align:left;">
-happiness
-</th>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">chocolate</th>
+<th align="left">happiness</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">4</td>
+<td align="left">6</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">5</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">5</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-7
-</td>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">6</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-42
-</td>
-<td style="text-align:left;">
-38
-</td>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">40</td>
+<td align="left">42</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-4.2
-</td>
-<td style="text-align:left;">
-3.8
-</td>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">4</td>
+<td align="left">4.2</td>
 </tr>
 </tbody>
 </table>
@@ -935,189 +798,85 @@ Means
 <p>“OK, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I’m good with that. I suppose we would need some way to measure that.” Correct, back to our table…notice anything new?</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subject
-</th>
-<th style="text-align:left;">
-chocolate
-</th>
-<th style="text-align:left;">
-happiness
-</th>
-<th style="text-align:left;">
-Chocolate_X_Happiness
-</th>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">chocolate</th>
+<th align="left">happiness</th>
+<th align="left">Chocolate_X_Happiness</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-6
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">6</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-12
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-12
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-12
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-30
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">4</td>
+<td align="left">6</td>
+<td align="left">24</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">5</td>
+<td align="left">45</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-70
-</td>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">6</td>
+<td align="left">9</td>
+<td align="left">54</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-42
-</td>
-<td style="text-align:left;">
-38
-</td>
-<td style="text-align:left;">
-197
-</td>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">40</td>
+<td align="left">42</td>
+<td align="left">202</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-4.2
-</td>
-<td style="text-align:left;">
-3.8
-</td>
-<td style="text-align:left;">
-19.7
-</td>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">4</td>
+<td align="left">4.2</td>
+<td align="left">20.2</td>
 </tr>
 </tbody>
 </table>
@@ -1130,306 +889,124 @@ Means
 <p>Then next step is to think about how the products of two measures sum together, depending on how they line up. Let’s look at another table:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-X
-</th>
-<th style="text-align:left;">
-Y
-</th>
-<th style="text-align:left;">
-A
-</th>
-<th style="text-align:left;">
-B
-</th>
-<th style="text-align:left;">
-XY
-</th>
-<th style="text-align:left;">
-AB
-</th>
+<tr class="header">
+<th align="left">scores</th>
+<th align="left">X</th>
+<th align="left">Y</th>
+<th align="left">A</th>
+<th align="left">B</th>
+<th align="left">XY</th>
+<th align="left">AB</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-10
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">10</td>
+<td align="left">1</td>
+<td align="left">10</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-18
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">9</td>
+<td align="left">4</td>
+<td align="left">18</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-24
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">8</td>
+<td align="left">9</td>
+<td align="left">24</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-16
-</td>
-<td style="text-align:left;">
-28
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">4</td>
+<td align="left">7</td>
+<td align="left">16</td>
+<td align="left">28</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-25
-</td>
-<td style="text-align:left;">
-30
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">25</td>
+<td align="left">30</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-36
-</td>
-<td style="text-align:left;">
-30
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">36</td>
+<td align="left">30</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-49
-</td>
-<td style="text-align:left;">
-28
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">4</td>
+<td align="left">49</td>
+<td align="left">28</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-64
-</td>
-<td style="text-align:left;">
-24
-</td>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">3</td>
+<td align="left">64</td>
+<td align="left">24</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-81
-</td>
-<td style="text-align:left;">
-18
-</td>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">2</td>
+<td align="left">81</td>
+<td align="left">18</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-100
-</td>
-<td style="text-align:left;">
-10
-</td>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">10</td>
+<td align="left">1</td>
+<td align="left">100</td>
+<td align="left">10</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-55
-</td>
-<td style="text-align:left;">
-55
-</td>
-<td style="text-align:left;">
-55
-</td>
-<td style="text-align:left;">
-55
-</td>
-<td style="text-align:left;">
-385
-</td>
-<td style="text-align:left;">
-220
-</td>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">55</td>
+<td align="left">385</td>
+<td align="left">220</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-5.5
-</td>
-<td style="text-align:left;">
-5.5
-</td>
-<td style="text-align:left;">
-5.5
-</td>
-<td style="text-align:left;">
-5.5
-</td>
-<td style="text-align:left;">
-38.5
-</td>
-<td style="text-align:left;">
-22
-</td>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">5.5</td>
+<td align="left">5.5</td>
+<td align="left">5.5</td>
+<td align="left">5.5</td>
+<td align="left">38.5</td>
+<td align="left">22</td>
 </tr>
 </tbody>
 </table>
@@ -1450,267 +1027,111 @@ Means
 <p>Let’s see what this look like in a table:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-subject
-</th>
-<th style="text-align:left;">
-chocolate
-</th>
-<th style="text-align:left;">
-happiness
-</th>
-<th style="text-align:left;">
-C_d
-</th>
-<th style="text-align:left;">
-H_d
-</th>
-<th style="text-align:left;">
-Cd_x_Hd
-</th>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">chocolate</th>
+<th align="left">happiness</th>
+<th align="left">C_d</th>
+<th align="left">H_d</th>
+<th align="left">Cd_x_Hd</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
--3.2
-</td>
-<td style="text-align:left;">
--2.8
-</td>
-<td style="text-align:left;">
-8.96
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">-3</td>
+<td align="left">-3.2</td>
+<td align="left">9.6</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--2.2
-</td>
-<td style="text-align:left;">
--1.8
-</td>
-<td style="text-align:left;">
-3.96
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">2</td>
+<td align="left">-2</td>
+<td align="left">-2.2</td>
+<td align="left">4.4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
--2.2
-</td>
-<td style="text-align:left;">
--0.8
-</td>
-<td style="text-align:left;">
-1.76
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">-2</td>
+<td align="left">-1.2</td>
+<td align="left">2.4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
--1.2
-</td>
-<td style="text-align:left;">
-0.2
-</td>
-<td style="text-align:left;">
--0.24
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">-1</td>
+<td align="left">-1.2</td>
+<td align="left">1.2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
--0.2
-</td>
-<td style="text-align:left;">
--0.8
-</td>
-<td style="text-align:left;">
-0.16
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">-1</td>
+<td align="left">-1.2</td>
+<td align="left">1.2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
--0.2
-</td>
-<td style="text-align:left;">
--0.8
-</td>
-<td style="text-align:left;">
-0.16
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">0.8</td>
+<td align="left">0.8</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-1.8
-</td>
-<td style="text-align:left;">
-1.2
-</td>
-<td style="text-align:left;">
-2.16
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">4</td>
+<td align="left">6</td>
+<td align="left">0</td>
+<td align="left">1.8</td>
+<td align="left">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-0.8
-</td>
-<td style="text-align:left;">
-1.2
-</td>
-<td style="text-align:left;">
-0.96
-</td>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">0.8</td>
+<td align="left">0.8</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-0.8
-</td>
-<td style="text-align:left;">
-1.2
-</td>
-<td style="text-align:left;">
-0.96
-</td>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">9</td>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">0.8</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-5.8
-</td>
-<td style="text-align:left;">
-3.2
-</td>
-<td style="text-align:left;">
-18.56
-</td>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">6</td>
+<td align="left">9</td>
+<td align="left">2</td>
+<td align="left">4.8</td>
+<td align="left">9.6</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-42
-</td>
-<td style="text-align:left;">
-38
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-37
-</td>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">40</td>
+<td align="left">42</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">34</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-4.2
-</td>
-<td style="text-align:left;">
-3.8
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-3.74
-</td>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">4</td>
+<td align="left">4.2</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">3.4</td>
 </tr>
 </tbody>
 </table>
@@ -1835,187 +1256,79 @@ Figure 3.9: Two different lines with different y-intercepts (where the line cros
 <p>In these formulas, the <span class="math inline">\(x\)</span> and the <span class="math inline">\(y\)</span> refer to the individual scores. Here’s a table showing you how everything fits together.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-x
-</th>
-<th style="text-align:left;">
-y
-</th>
-<th style="text-align:left;">
-x_squared
-</th>
-<th style="text-align:left;">
-y_squared
-</th>
-<th style="text-align:left;">
-xy
-</th>
+<tr class="header">
+<th align="left">scores</th>
+<th align="left">x</th>
+<th align="left">y</th>
+<th align="left">x_squared</th>
+<th align="left">y_squared</th>
+<th align="left">xy</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-2
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">4</td>
+<td align="left">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-16
-</td>
-<td style="text-align:left;">
-25
-</td>
-<td style="text-align:left;">
-20
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">4</td>
+<td align="left">5</td>
+<td align="left">16</td>
+<td align="left">25</td>
+<td align="left">20</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-3
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">9</td>
+<td align="left">1</td>
+<td align="left">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-36
-</td>
-<td style="text-align:left;">
-64
-</td>
-<td style="text-align:left;">
-48
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">6</td>
+<td align="left">8</td>
+<td align="left">36</td>
+<td align="left">64</td>
+<td align="left">48</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-25
-</td>
-<td style="text-align:left;">
-36
-</td>
-<td style="text-align:left;">
-30
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">25</td>
+<td align="left">36</td>
+<td align="left">30</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-49
-</td>
-<td style="text-align:left;">
-64
-</td>
-<td style="text-align:left;">
-56
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">7</td>
+<td align="left">8</td>
+<td align="left">49</td>
+<td align="left">64</td>
+<td align="left">56</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-64
-</td>
-<td style="text-align:left;">
-81
-</td>
-<td style="text-align:left;">
-72
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">8</td>
+<td align="left">9</td>
+<td align="left">64</td>
+<td align="left">81</td>
+<td align="left">72</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-34
-</td>
-<td style="text-align:left;">
-39
-</td>
-<td style="text-align:left;">
-200
-</td>
-<td style="text-align:left;">
-275
-</td>
-<td style="text-align:left;">
-231
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">34</td>
+<td align="left">39</td>
+<td align="left">200</td>
+<td align="left">275</td>
+<td align="left">231</td>
 </tr>
 </tbody>
 </table>
@@ -2051,7 +1364,7 @@ Figure 3.11: Illustration of a possible relationship between amount of water and
 </p>
 </div>
 <p>Granted this looks more like an inverted V, than an inverted U, but you get the picture right? There is clearly a relationship between watering and snake plant growth. But, the correlation isn’t in one direction. As a result, when we compute the correlation in terms of Pearson’s r, we get a value suggesting no relationship.</p>
-<pre><code>## [1] -0.002783379</code></pre>
+<pre><code>## [1] -0.001236861</code></pre>
 <p>What this really means is there is no linear relationship that can be described by a single straight line. When we need lines or curves going in more than one direction, we have a nonlinear relationship.</p>
 <p>This example illustrates some conundrums in interpreting correlations. We already know that water is needed for plants to grow, so we are rightly expecting there to be a relationship between our measure of amount of water and plant growth. If we look at the first half of the data we see a positive correlation, if we look at the last half of the data we see a negative correlation, and if we look at all of the data we see no correlation. Yikes. So, even when there is a causal connection between two measures, we won’t necessarily obtain clear evidence of the connection just by computing a correlation coefficient.</p>
 <blockquote>
@@ -2081,152 +1394,86 @@ Figure 3.11: Illustration of a possible relationship between amount of water and
 <p>Here is what the numbers on each ball could look like for each participant:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:right;">
-Ball
-</th>
-<th style="text-align:right;">
-North_pole
-</th>
-<th style="text-align:right;">
-South_pole
-</th>
+<tr class="header">
+<th align="right">Ball</th>
+<th align="right">North_pole</th>
+<th align="right">South_pole</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-9
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">7</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">8</td>
+<td align="right">8</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">9</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">6</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">10</td>
+<td align="right">10</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-8
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">5</td>
+<td align="right">8</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">2</td>
+<td align="right">5</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-5
-</td>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">3</td>
 </tr>
 </tbody>
 </table>
-<p>In this one case, if we computed Pearson’s <span class="math inline">\(r\)</span>, we would find that <span class="math inline">\(r =\)</span> -0.4001523. But, we already know that this value does not tell us anything about the relationship between the balls chosen in the north and south pole. We know that relationship should be completely random, because that is how we set up the game.</p>
+<p>In this one case, if we computed Pearson’s <span class="math inline">\(r\)</span>, we would find that <span class="math inline">\(r =\)</span> 0.8365034. But, we already know that this value does not tell us anything about the relationship between the balls chosen in the north and south pole. We know that relationship should be completely random, because that is how we set up the game.</p>
 <p>The better question here is to ask what can random chance do? For example, if we ran our game over and over again thousands of times, each time choosing new balls, and each time computing the correlation, what would we find?First, we will find fluctuation. The r value will sometimes be positive, sometimes be negative, sometimes be big and sometimes be small. Second, we will see what the fluctuation looks like. This will give us a window into the kinds of correlations that chance alone can produce. Let’s see what happens.</p>
 <div id="monte-carlo-simulation-of-random-correlations" class="section level4">
 <h4><span class="header-section-number">3.6.2.1</span> Monte-carlo simulation of random correlations</h4>
 <p>It is possible to use a computer to simulate our game as many times as we want. This process is often termed <strong>monte-carlo simulation</strong>.</p>
 <p>Below is a script written for the programming language R. We won’t go into the details of the code here. However, let’s briefly explain what is going on. Notice, the part that says <code>for(sim in 1:1000)</code>. This creates a loop that repeats our game 1000 times. Inside the loop there are variables named <code>North_pole</code> and <code>South_pole</code>. During each simulation, we sample 10 random numbers (between 1 to 10) into each variable. These random numbers stand for the numbers that would have been on the balls from the lottery machine. Once we have 10 random numbers for each, we then compute the correlation using <code>cor(North_pole,South_pole)</code>. Then, we save the correlation value and move on to the next simulation. At the end, we will have 1000 individual Pearson <span class="math inline">\(r\)</span> values.</p>
-<pre class="sourceCode r"><code class="sourceCode r">simulated_correlations &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">0</span>)
-<span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){
-  North_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)
-  South_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)
-  simulated_correlations[sim] &lt;-<span class="st"> </span><span class="kw">cor</span>(North_pole,South_pole)
-}
-
-sim_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sims=</span><span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>,simulated_correlations)
-
-<span class="kw">ggplot</span>(sim_df, <span class="kw">aes</span>(<span class="dt">x =</span> sims, <span class="dt">y =</span> simulated_correlations))<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">-1</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">1</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Simulation of 1000 r values&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="Correlation.html#cb4-1"></a>simulated_correlations &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">0</span>)</span>
+<span id="cb4-2"><a href="Correlation.html#cb4-2"></a><span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>){</span>
+<span id="cb4-3"><a href="Correlation.html#cb4-3"></a>  North_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb4-4"><a href="Correlation.html#cb4-4"></a>  South_pole &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb4-5"><a href="Correlation.html#cb4-5"></a>  simulated_correlations[sim] &lt;-<span class="st"> </span><span class="kw">cor</span>(North_pole,South_pole)</span>
+<span id="cb4-6"><a href="Correlation.html#cb4-6"></a>}</span>
+<span id="cb4-7"><a href="Correlation.html#cb4-7"></a></span>
+<span id="cb4-8"><a href="Correlation.html#cb4-8"></a>sim_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sims=</span><span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>,simulated_correlations)</span>
+<span id="cb4-9"><a href="Correlation.html#cb4-9"></a></span>
+<span id="cb4-10"><a href="Correlation.html#cb4-10"></a><span class="kw">ggplot</span>(sim_df, <span class="kw">aes</span>(<span class="dt">x =</span> sims, <span class="dt">y =</span> simulated_correlations))<span class="op">+</span></span>
+<span id="cb4-11"><a href="Correlation.html#cb4-11"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
+<span id="cb4-12"><a href="Correlation.html#cb4-12"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
+<span id="cb4-13"><a href="Correlation.html#cb4-13"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">-1</span>)<span class="op">+</span></span>
+<span id="cb4-14"><a href="Correlation.html#cb4-14"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">1</span>)<span class="op">+</span></span>
+<span id="cb4-15"><a href="Correlation.html#cb4-15"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Simulation of 1000 r values&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:3anotherthousand"></span>
 <img src="statistics_files/figure-html/3anotherthousand-1.png" alt="Another figure showing a range of r-values that can be obtained by chance" width="672" />
 <p class="caption">
@@ -2349,11 +1596,13 @@ Figure 3.19: How correlation behaves as a function of sample-size when there is 
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -2396,8 +1645,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

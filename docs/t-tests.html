@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 t-Tests | Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 t-Tests | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,19 @@
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
-<meta name="author" content="Videos: Jeffrey Suzuki">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="foundations-for-inference.html">
-<link rel="next" href="anova.html">
+<link rel="prev" href="foundations-for-inference.html"/>
+<link rel="next" href="anova.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -67,26 +69,27 @@ mattcrump=1;
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,9 +98,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,8 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -582,7 +589,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>How many samples do I need to take to know the whole population is 5 out of 5?</p></li>
 <li><p>What’s the fewest amount of samples I need to take to know the above, that would mean Guinness could test fewer beers for quality, sell more beers for profit, and make the product testing time shorter.</p></li>
 </ol>
-<p>Gosset solved those questions, and he invented something called the <em>Student’s t-test</em>. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym <span class="citation">(Student <a href="#ref-Student1908">1908</a>)</span>. He called himself Student, hence Student’s t-test. Now you know the rest of the story.</p>
+<p>Gosset solved those questions, and he invented something called the <em>Student’s t-test</em>. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym <span class="citation">(Student <a href="#ref-Student1908" role="doc-biblioref">1908</a>)</span>. He called himself Student, hence Student’s t-test. Now you know the rest of the story.</p>
 <p>It turns out this was a very nice thing for Gosset to have done. t-tests are used all the time, and they are useful, that’s why they are used. In this chapter we learn how they work.</p>
 <p>You’ll be surprised to learn that what we’ve already talked about, (the Crump Test, and the Randomization Test), are both very very similar to the t-test. So, in general, you have already been thinking about the things you need to think about to understand t-tests. You’re probably wondering what is this <span class="math inline">\(t\)</span>, what does <span class="math inline">\(t\)</span> mean? We will tell you. Before we tell what it means, we first tell you about one more idea.</p>
 <div id="check-your-confidence-in-your-mean" class="section level2">
@@ -663,270 +670,119 @@ Figure 6.2: A histogram of the sample means divided by the sample standard error
 <p>Every student completes the 5 questions, we grade them, and then we find their performance (mean percent correct). What we want to know is whether the students were guessing. If they were all guessing, then the sample mean should be about 50%, it shouldn’t be different from chance, which is 50%. Let’s look at the table:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-students
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-mean
-</th>
-<th style="text-align:left;">
-Difference_from_Mean
-</th>
-<th style="text-align:left;">
-Squared_Deviations
-</th>
+<tr class="header">
+<th align="left">students</th>
+<th align="left">scores</th>
+<th align="left">mean</th>
+<th align="left">Difference_from_Mean</th>
+<th align="left">Squared_Deviations</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-50
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
--11
-</td>
-<td style="text-align:left;">
-121
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">50</td>
+<td align="left">61</td>
+<td align="left">-11</td>
+<td align="left">121</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-70
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-81
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">70</td>
+<td align="left">61</td>
+<td align="left">9</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-60
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">60</td>
+<td align="left">61</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-40
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
--21
-</td>
-<td style="text-align:left;">
-441
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">40</td>
+<td align="left">61</td>
+<td align="left">-21</td>
+<td align="left">441</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-80
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
-19
-</td>
-<td style="text-align:left;">
-361
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">80</td>
+<td align="left">61</td>
+<td align="left">19</td>
+<td align="left">361</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-30
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
--31
-</td>
-<td style="text-align:left;">
-961
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">30</td>
+<td align="left">61</td>
+<td align="left">-31</td>
+<td align="left">961</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-90
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
-29
-</td>
-<td style="text-align:left;">
-841
-</td>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">90</td>
+<td align="left">61</td>
+<td align="left">29</td>
+<td align="left">841</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-8
-</td>
-<td style="text-align:left;">
-60
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">60</td>
+<td align="left">61</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-70
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-81
-</td>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">70</td>
+<td align="left">61</td>
+<td align="left">9</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:left;">
-60
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">60</td>
+<td align="left">61</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-610
-</td>
-<td style="text-align:left;">
-610
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2890
-</td>
+<tr class="odd">
+<td align="left">Sums</td>
+<td align="left">610</td>
+<td align="left">610</td>
+<td align="left">0</td>
+<td align="left">2890</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
-61
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-289
-</td>
+<tr class="even">
+<td align="left">Means</td>
+<td align="left">61</td>
+<td align="left">61</td>
+<td align="left">0</td>
+<td align="left">289</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sd
-</td>
-<td style="text-align:left;">
-17.92
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">sd</td>
+<td align="left">17.92</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-SEM
-</td>
-<td style="text-align:left;">
-5.67
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SEM</td>
+<td align="left">5.67</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-t
-</td>
-<td style="text-align:left;">
-1.94003527336861
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">t</td>
+<td align="left">1.94003527336861</td>
 </tr>
 </tbody>
 </table>
@@ -939,7 +795,7 @@ t
 <p><span class="math inline">\(t\)</span> is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.</p>
 <p><span class="math inline">\(\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}} = \frac{\bar{X}-u}{SEM} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>And, that is you how calculate <span class="math inline">\(t\)</span>, by hand. It’s a pain. I was annoyed doing it this way. In the lab, you learn how to calculate <span class="math inline">\(t\)</span> using software, so it will just spit out <span class="math inline">\(t\)</span>. For example in R, all you have to do is this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(scores, <span class="dt">mu=</span><span class="dv">50</span>)</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="t-tests.html#cb30-1"></a><span class="kw">t.test</span>(scores, <span class="dt">mu=</span><span class="dv">50</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -999,7 +855,7 @@ Figure 6.4: Applying decision criteria to the t-distribution.
 <p>So, I might measure somebody doing something in condition A, and measure the same person doing something in Condition B, and then I see that same person does different things in the two conditions. I <strong>repeatedly measure</strong> the same person in both conditions. I am interested in whether the experimental manipulation changes something about how people perform the task in question.</p>
 <div id="mehr-song-and-spelke-2016" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> Mehr, Song, and Spelke (2016)</h3>
-<p>We will introduce the paired-samples t-test with an example using real data, from a real study. <span class="citation">Mehr, Song, and Spelke (<a href="#ref-mehr20165">2016</a>)</span> were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.</p>
+<p>We will introduce the paired-samples t-test with an example using real data, from a real study. <span class="citation">Mehr, Song, and Spelke (<a href="#ref-mehr20165" role="doc-biblioref">2016</a>)</span> were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.</p>
 <p>First, parents were trained to sing a song to their infants. After many days of singing this song to the infants, a parent came into the lab with their infant. In the first session, parents sat with their infants on their knees, so the infant could watch two video presentations. There were two videos. Each video involved two unfamiliar new people the infant had never seen before. Each new person in the video (the singers) sang one song to the infant. One singer sang the “familiar” song the infant had learned from their parents. The other singer sang an “unfamiliar” song the infant had not hear before.</p>
 <p>There were two really important measurement phases: the baseline phase, and the test phase.</p>
 <p>The baseline phase occurred before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).</p>
@@ -1018,73 +874,37 @@ Figure 6.4: Applying decision criteria to the t-distribution.
 <p>Here is a table of the data:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:right;">
-infant
-</th>
-<th style="text-align:right;">
-Baseline
-</th>
-<th style="text-align:right;">
-Test
-</th>
+<tr class="header">
+<th align="right">infant</th>
+<th align="right">Baseline</th>
+<th align="right">Test</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:right;">
-0.60
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.44</td>
+<td align="right">0.60</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.41
-</td>
-<td style="text-align:right;">
-0.68
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.41</td>
+<td align="right">0.68</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.75
-</td>
-<td style="text-align:right;">
-0.72
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.75</td>
+<td align="right">0.72</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:right;">
-0.28
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0.44</td>
+<td align="right">0.28</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.47
-</td>
-<td style="text-align:right;">
-0.50
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0.47</td>
+<td align="right">0.50</td>
 </tr>
 </tbody>
 </table>
@@ -1102,91 +922,43 @@ Test
 <p>Let’s use the first formula. Why? Because it will give us positive differences when the test phase score is higher than the baseline phase score. This makes a positive score meaningful with respect to the study design, we know (because we defined it to be this way), that positive scores will refer to longer proportion looking times (to singer of familiar song) during the test phase compared to the baseline phase.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:right;">
-infant
-</th>
-<th style="text-align:right;">
-Baseline
-</th>
-<th style="text-align:right;">
-Test
-</th>
-<th style="text-align:right;">
-differences
-</th>
+<tr class="header">
+<th align="right">infant</th>
+<th align="right">Baseline</th>
+<th align="right">Test</th>
+<th align="right">differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:right;">
-0.60
-</td>
-<td style="text-align:right;">
-0.16
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.44</td>
+<td align="right">0.60</td>
+<td align="right">0.16</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.41
-</td>
-<td style="text-align:right;">
-0.68
-</td>
-<td style="text-align:right;">
-0.27
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.41</td>
+<td align="right">0.68</td>
+<td align="right">0.27</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.75
-</td>
-<td style="text-align:right;">
-0.72
-</td>
-<td style="text-align:right;">
--0.03
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.75</td>
+<td align="right">0.72</td>
+<td align="right">-0.03</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:right;">
-0.28
-</td>
-<td style="text-align:right;">
--0.16
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0.44</td>
+<td align="right">0.28</td>
+<td align="right">-0.16</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-0.47
-</td>
-<td style="text-align:right;">
-0.50
-</td>
-<td style="text-align:right;">
-0.03
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0.47</td>
+<td align="right">0.50</td>
+<td align="right">0.03</td>
 </tr>
 </tbody>
 </table>
@@ -1197,119 +969,55 @@ differences
 <p>As we have been discussing, the effect of interest in this study is the mean difference between the baseline and test phase proportion looking times. We can calculate the <strong>mean difference</strong>, by finding the <strong>mean of the difference scores</strong>. Let’s do that, in fact, for fun let’s calculate the mean of the baseline scores, the test scores, and the difference scores.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-infant
-</th>
-<th style="text-align:left;">
-Baseline
-</th>
-<th style="text-align:left;">
-Test
-</th>
-<th style="text-align:left;">
-differences
-</th>
+<tr class="header">
+<th align="left">infant</th>
+<th align="left">Baseline</th>
+<th align="left">Test</th>
+<th align="left">differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-0.44
-</td>
-<td style="text-align:left;">
-0.6
-</td>
-<td style="text-align:left;">
-0.16
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">0.44</td>
+<td align="left">0.6</td>
+<td align="left">0.16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-0.41
-</td>
-<td style="text-align:left;">
-0.68
-</td>
-<td style="text-align:left;">
-0.27
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">0.41</td>
+<td align="left">0.68</td>
+<td align="left">0.27</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-0.75
-</td>
-<td style="text-align:left;">
-0.72
-</td>
-<td style="text-align:left;">
--0.03
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">0.75</td>
+<td align="left">0.72</td>
+<td align="left">-0.03</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-0.44
-</td>
-<td style="text-align:left;">
-0.28
-</td>
-<td style="text-align:left;">
--0.16
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">0.44</td>
+<td align="left">0.28</td>
+<td align="left">-0.16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-0.47
-</td>
-<td style="text-align:left;">
-0.5
-</td>
-<td style="text-align:left;">
-0.03
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">0.47</td>
+<td align="left">0.5</td>
+<td align="left">0.03</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-2.51
-</td>
-<td style="text-align:left;">
-2.78
-</td>
-<td style="text-align:left;">
-0.27
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">2.51</td>
+<td align="left">2.78</td>
+<td align="left">0.27</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-0.502
-</td>
-<td style="text-align:left;">
-0.556
-</td>
-<td style="text-align:left;">
-0.054
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">0.502</td>
+<td align="left">0.556</td>
+<td align="left">0.054</td>
 </tr>
 </tbody>
 </table>
@@ -1324,215 +1032,95 @@ Means
 <p>Remember, the whole concept behind <span class="math inline">\(t\)</span>, is that it gives an indication of how confident we should be in our mean. Remember, <span class="math inline">\(t\)</span> involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denominator. The resulting <span class="math inline">\(t\)</span> value is small when the mean difference is small, or when the variation is large. So small <span class="math inline">\(t\)</span>-values tell us that we shouldn’t be that confident in the estimate of our mean difference. Large <span class="math inline">\(t\)</span>-values occur when the mean difference is large and/or when the measure of variation is small. So, large <span class="math inline">\(t\)</span>-values tell us that we can be more confident in the estimate of our mean difference. Let’s find <span class="math inline">\(t\)</span> for the mean difference scores. We use the same formulas as we did last time:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-infant
-</th>
-<th style="text-align:left;">
-Baseline
-</th>
-<th style="text-align:left;">
-Test
-</th>
-<th style="text-align:left;">
-differences
-</th>
-<th style="text-align:left;">
-diff_from_mean
-</th>
-<th style="text-align:left;">
-Squared_differences
-</th>
+<tr class="header">
+<th align="left">infant</th>
+<th align="left">Baseline</th>
+<th align="left">Test</th>
+<th align="left">differences</th>
+<th align="left">diff_from_mean</th>
+<th align="left">Squared_differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-0.44
-</td>
-<td style="text-align:left;">
-0.6
-</td>
-<td style="text-align:left;">
-0.16
-</td>
-<td style="text-align:left;">
-0.106
-</td>
-<td style="text-align:left;">
-0.011236
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">0.44</td>
+<td align="left">0.6</td>
+<td align="left">0.16</td>
+<td align="left">0.106</td>
+<td align="left">0.011236</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-0.41
-</td>
-<td style="text-align:left;">
-0.68
-</td>
-<td style="text-align:left;">
-0.27
-</td>
-<td style="text-align:left;">
-0.216
-</td>
-<td style="text-align:left;">
-0.046656
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">0.41</td>
+<td align="left">0.68</td>
+<td align="left">0.27</td>
+<td align="left">0.216</td>
+<td align="left">0.046656</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-0.75
-</td>
-<td style="text-align:left;">
-0.72
-</td>
-<td style="text-align:left;">
--0.03
-</td>
-<td style="text-align:left;">
--0.084
-</td>
-<td style="text-align:left;">
-0.00705600000000001
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">0.75</td>
+<td align="left">0.72</td>
+<td align="left">-0.03</td>
+<td align="left">-0.084</td>
+<td align="left">0.00705600000000001</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-0.44
-</td>
-<td style="text-align:left;">
-0.28
-</td>
-<td style="text-align:left;">
--0.16
-</td>
-<td style="text-align:left;">
--0.214
-</td>
-<td style="text-align:left;">
-0.045796
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">0.44</td>
+<td align="left">0.28</td>
+<td align="left">-0.16</td>
+<td align="left">-0.214</td>
+<td align="left">0.045796</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-0.47
-</td>
-<td style="text-align:left;">
-0.5
-</td>
-<td style="text-align:left;">
-0.03
-</td>
-<td style="text-align:left;">
--0.024
-</td>
-<td style="text-align:left;">
-0.000575999999999999
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">0.47</td>
+<td align="left">0.5</td>
+<td align="left">0.03</td>
+<td align="left">-0.024</td>
+<td align="left">0.000575999999999999</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-2.51
-</td>
-<td style="text-align:left;">
-2.78
-</td>
-<td style="text-align:left;">
-0.27
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.11132
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">2.51</td>
+<td align="left">2.78</td>
+<td align="left">0.27</td>
+<td align="left">0</td>
+<td align="left">0.11132</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-0.502
-</td>
-<td style="text-align:left;">
-0.556
-</td>
-<td style="text-align:left;">
-0.054
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.022264
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">0.502</td>
+<td align="left">0.556</td>
+<td align="left">0.054</td>
+<td align="left">0</td>
+<td align="left">0.022264</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sd
-</td>
-<td style="text-align:left;">
-0.167
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">sd</td>
+<td align="left">0.167</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-SEM
-</td>
-<td style="text-align:left;">
-0.075
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SEM</td>
+<td align="left">0.075</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-t
-</td>
-<td style="text-align:left;">
-0.72
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">t</td>
+<td align="left">0.72</td>
 </tr>
 </tbody>
 </table>
@@ -1677,215 +1265,95 @@ Figure 6.10: The width of the t distribution shrinks as sample size increases
 <p>Remember, we were wondering if the infants would look longer toward the singer who sang the familiar song during the test phase compared to the baseline phase. We showed you data from 5 infants, and walked through the computations for the <span class="math inline">\(t\)</span>-test. As a reminder, it looked like this:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-infant
-</th>
-<th style="text-align:left;">
-Baseline
-</th>
-<th style="text-align:left;">
-Test
-</th>
-<th style="text-align:left;">
-differences
-</th>
-<th style="text-align:left;">
-diff_from_mean
-</th>
-<th style="text-align:left;">
-Squared_differences
-</th>
+<tr class="header">
+<th align="left">infant</th>
+<th align="left">Baseline</th>
+<th align="left">Test</th>
+<th align="left">differences</th>
+<th align="left">diff_from_mean</th>
+<th align="left">Squared_differences</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-0.44
-</td>
-<td style="text-align:left;">
-0.6
-</td>
-<td style="text-align:left;">
-0.16
-</td>
-<td style="text-align:left;">
-0.106
-</td>
-<td style="text-align:left;">
-0.011236
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">0.44</td>
+<td align="left">0.6</td>
+<td align="left">0.16</td>
+<td align="left">0.106</td>
+<td align="left">0.011236</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-0.41
-</td>
-<td style="text-align:left;">
-0.68
-</td>
-<td style="text-align:left;">
-0.27
-</td>
-<td style="text-align:left;">
-0.216
-</td>
-<td style="text-align:left;">
-0.046656
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">0.41</td>
+<td align="left">0.68</td>
+<td align="left">0.27</td>
+<td align="left">0.216</td>
+<td align="left">0.046656</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-0.75
-</td>
-<td style="text-align:left;">
-0.72
-</td>
-<td style="text-align:left;">
--0.03
-</td>
-<td style="text-align:left;">
--0.084
-</td>
-<td style="text-align:left;">
-0.00705600000000001
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">0.75</td>
+<td align="left">0.72</td>
+<td align="left">-0.03</td>
+<td align="left">-0.084</td>
+<td align="left">0.00705600000000001</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-0.44
-</td>
-<td style="text-align:left;">
-0.28
-</td>
-<td style="text-align:left;">
--0.16
-</td>
-<td style="text-align:left;">
--0.214
-</td>
-<td style="text-align:left;">
-0.045796
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">0.44</td>
+<td align="left">0.28</td>
+<td align="left">-0.16</td>
+<td align="left">-0.214</td>
+<td align="left">0.045796</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-0.47
-</td>
-<td style="text-align:left;">
-0.5
-</td>
-<td style="text-align:left;">
-0.03
-</td>
-<td style="text-align:left;">
--0.024
-</td>
-<td style="text-align:left;">
-0.000575999999999999
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">0.47</td>
+<td align="left">0.5</td>
+<td align="left">0.03</td>
+<td align="left">-0.024</td>
+<td align="left">0.000575999999999999</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-2.51
-</td>
-<td style="text-align:left;">
-2.78
-</td>
-<td style="text-align:left;">
-0.27
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.11132
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">2.51</td>
+<td align="left">2.78</td>
+<td align="left">0.27</td>
+<td align="left">0</td>
+<td align="left">0.11132</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-0.502
-</td>
-<td style="text-align:left;">
-0.556
-</td>
-<td style="text-align:left;">
-0.054
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.022264
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">0.502</td>
+<td align="left">0.556</td>
+<td align="left">0.054</td>
+<td align="left">0</td>
+<td align="left">0.022264</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sd
-</td>
-<td style="text-align:left;">
-0.167
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">sd</td>
+<td align="left">0.167</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-SEM
-</td>
-<td style="text-align:left;">
-0.075
-</td>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SEM</td>
+<td align="left">0.075</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-t
-</td>
-<td style="text-align:left;">
-0.72
-</td>
+<tr class="even">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">t</td>
+<td align="left">0.72</td>
 </tr>
 </tbody>
 </table>
@@ -1933,30 +1401,30 @@ t
 <p>and, <span class="math inline">\(s_p\)</span>, which is the pooled sample standard deviation is defined as, note the s’s in the formula are variances:</p>
 <p><span class="math inline">\(s_p = \sqrt{\frac{(n_A-1)s_A^2 + (n_B-1)s^2_B}{n_A +n_B -2}}\)</span></p>
 <p>Believe you me, that is so much more formula than I wanted to type out. Shall we do one independent <span class="math inline">\(t\)</span>-test example by hand, just to see the computations? Let’s do it…but in a slightly different way than you expect. I show the steps using R. I made some fake scores for groups A and B. Then, I followed all of the steps from the formula, but made R do each of the calculations. This shows you the needed steps by following the code. At the end, I print the <span class="math inline">\(t\)</span>-test values I computed “by hand”, and then the <span class="math inline">\(t\)</span>-test value that the R software outputs using the <span class="math inline">\(t\)</span>-test function. You should be able to get the same values for <span class="math inline">\(t\)</span>, if you were brave enough to compute <span class="math inline">\(t\)</span> by hand.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## By &quot;hand&quot; using R r code</span>
-a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
-b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">9</span>)
-
-mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(a)<span class="op">-</span><span class="kw">mean</span>(b) <span class="co"># compute mean difference</span>
-
-variance_a &lt;-<span class="st"> </span><span class="kw">var</span>(a) <span class="co"># compute variance for A</span>
-variance_b &lt;-<span class="st"> </span><span class="kw">var</span>(b) <span class="co"># compute variance for B</span>
-
-<span class="co"># Compute top part and bottom part of sp formula</span>
-
-sp_numerator &lt;-<span class="st"> </span>(<span class="dv">4</span><span class="op">*</span>variance_a <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span><span class="st"> </span>variance_b) 
-sp_denominator &lt;-<span class="st"> </span><span class="dv">5</span><span class="op">+</span><span class="dv">5-2</span>
-sp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(sp_numerator<span class="op">/</span>sp_denominator) <span class="co"># compute sp</span>
-
-
-<span class="co"># compute t following formulat</span>
-
-t &lt;-<span class="st"> </span>mean_difference <span class="op">/</span><span class="st"> </span>( sp <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>( (<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) ) )
-
-t <span class="co"># print results</span></code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="t-tests.html#cb35-1"></a><span class="co">## By &quot;hand&quot; using R r code</span></span>
+<span id="cb35-2"><a href="t-tests.html#cb35-2"></a>a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb35-3"><a href="t-tests.html#cb35-3"></a>b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb35-4"><a href="t-tests.html#cb35-4"></a></span>
+<span id="cb35-5"><a href="t-tests.html#cb35-5"></a>mean_difference &lt;-<span class="st"> </span><span class="kw">mean</span>(a)<span class="op">-</span><span class="kw">mean</span>(b) <span class="co"># compute mean difference</span></span>
+<span id="cb35-6"><a href="t-tests.html#cb35-6"></a></span>
+<span id="cb35-7"><a href="t-tests.html#cb35-7"></a>variance_a &lt;-<span class="st"> </span><span class="kw">var</span>(a) <span class="co"># compute variance for A</span></span>
+<span id="cb35-8"><a href="t-tests.html#cb35-8"></a>variance_b &lt;-<span class="st"> </span><span class="kw">var</span>(b) <span class="co"># compute variance for B</span></span>
+<span id="cb35-9"><a href="t-tests.html#cb35-9"></a></span>
+<span id="cb35-10"><a href="t-tests.html#cb35-10"></a><span class="co"># Compute top part and bottom part of sp formula</span></span>
+<span id="cb35-11"><a href="t-tests.html#cb35-11"></a></span>
+<span id="cb35-12"><a href="t-tests.html#cb35-12"></a>sp_numerator &lt;-<span class="st"> </span>(<span class="dv">4</span><span class="op">*</span>variance_a <span class="op">+</span><span class="st"> </span><span class="dv">4</span><span class="op">*</span><span class="st"> </span>variance_b) </span>
+<span id="cb35-13"><a href="t-tests.html#cb35-13"></a>sp_denominator &lt;-<span class="st"> </span><span class="dv">5</span><span class="op">+</span><span class="dv">5-2</span></span>
+<span id="cb35-14"><a href="t-tests.html#cb35-14"></a>sp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(sp_numerator<span class="op">/</span>sp_denominator) <span class="co"># compute sp</span></span>
+<span id="cb35-15"><a href="t-tests.html#cb35-15"></a></span>
+<span id="cb35-16"><a href="t-tests.html#cb35-16"></a></span>
+<span id="cb35-17"><a href="t-tests.html#cb35-17"></a><span class="co"># compute t following formulat</span></span>
+<span id="cb35-18"><a href="t-tests.html#cb35-18"></a></span>
+<span id="cb35-19"><a href="t-tests.html#cb35-19"></a>t &lt;-<span class="st"> </span>mean_difference <span class="op">/</span><span class="st"> </span>( sp <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>( (<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>) ) )</span>
+<span id="cb35-20"><a href="t-tests.html#cb35-20"></a></span>
+<span id="cb35-21"><a href="t-tests.html#cb35-21"></a>t <span class="co"># print results</span></span></code></pre></div>
 <pre><code>## [1] -2.017991</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># using the R function t.test</span>
-<span class="kw">t.test</span>(a,b, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="t-tests.html#cb37-1"></a><span class="co"># using the R function t.test</span></span>
+<span id="cb37-2"><a href="t-tests.html#cb37-2"></a><span class="kw">t.test</span>(a,b, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -1982,168 +1450,168 @@ t <span class="co"># print results</span></code></pre>
 <li><p>sample simulated numbers from the distribution, then conduct a <span class="math inline">\(t\)</span>-test on the simulated numbers. Save the statistics you want (such as <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s), and then see how things behave.</p></li>
 </ol>
 <p>Let’s do this a couple different times. First, let’s simulate samples with N = 30, taken from a normal (mean= 50, SD =25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here, this is the null distribution that we are simulating. The distribution of no differences</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># steps to create fake data from a distribution </span>
-<span class="co"># and conduct t-tests on the simulated data</span>
-save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
-  my_sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">30</span>, <span class="dt">mean =</span><span class="dv">50</span>, <span class="dt">sd =</span><span class="dv">25</span>)
-  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span> (my_sample, <span class="dt">mu =</span> <span class="dv">50</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
-}
-
-<span class="co">#plot histograms of t and p values for 1000 simulations</span>
-<span class="kw">hist</span>(save_ts)</code></pre>
-<div class="figure"><span id="fig:6flatp"></span>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="t-tests.html#cb39-1"></a><span class="co"># steps to create fake data from a distribution </span></span>
+<span id="cb39-2"><a href="t-tests.html#cb39-2"></a><span class="co"># and conduct t-tests on the simulated data</span></span>
+<span id="cb39-3"><a href="t-tests.html#cb39-3"></a>save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb39-4"><a href="t-tests.html#cb39-4"></a>save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb39-5"><a href="t-tests.html#cb39-5"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){</span>
+<span id="cb39-6"><a href="t-tests.html#cb39-6"></a>  my_sample &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">30</span>, <span class="dt">mean =</span><span class="dv">50</span>, <span class="dt">sd =</span><span class="dv">25</span>)</span>
+<span id="cb39-7"><a href="t-tests.html#cb39-7"></a>  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span> (my_sample, <span class="dt">mu =</span> <span class="dv">50</span>)</span>
+<span id="cb39-8"><a href="t-tests.html#cb39-8"></a>  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value</span>
+<span id="cb39-9"><a href="t-tests.html#cb39-9"></a>  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic</span>
+<span id="cb39-10"><a href="t-tests.html#cb39-10"></a>}</span>
+<span id="cb39-11"><a href="t-tests.html#cb39-11"></a></span>
+<span id="cb39-12"><a href="t-tests.html#cb39-12"></a><span class="co">#plot histograms of t and p values for 1000 simulations</span></span>
+<span id="cb39-13"><a href="t-tests.html#cb39-13"></a><span class="kw">hist</span>(save_ts)</span></code></pre></div>
+<div class="figure"><span id="fig:6flatp1"></span>
 <img src="statistics_files/figure-html/6flatp-1.png" alt="The distribution of p-values is flat under the null" width="672" />
 <p class="caption">
 Figure 6.11: The distribution of p-values is flat under the null
 </p>
 </div>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(save_ps)</code></pre>
-<div class="figure"><span id="fig:6flatp"></span>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="t-tests.html#cb40-1"></a><span class="kw">hist</span>(save_ps)</span></code></pre></div>
+<div class="figure"><span id="fig:6flatp2"></span>
 <img src="statistics_files/figure-html/6flatp-2.png" alt="The distribution of p-values is flat under the null" width="672" />
 <p class="caption">
-Figure 6.11: The distribution of p-values is flat under the null
+Figure 6.12: The distribution of p-values is flat under the null
 </p>
 </div>
 <p>Neat. We see both a <span class="math inline">\(t\)</span> distribution, that looks like <span class="math inline">\(t\)</span> distribution as it should. And we see the <span class="math inline">\(p\)</span> distribution. This shows us how often we get <span class="math inline">\(t\)</span> values of particular sizes. You may find it interesting that the <span class="math inline">\(p\)</span>-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a <span class="math inline">\(t\)</span> with a p-value between 0 and 0.05, as you would for getting a <span class="math inline">\(t\)</span> with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of <span class="math inline">\(t\)</span> values in them by definition.</p>
 <p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop:</p>
-<pre class="sourceCode r"><code class="sourceCode r">simulated_ts &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
-                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))<span class="op">$</span>statistic)
-<span class="kw">hist</span>(simulated_ts)</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="t-tests.html#cb41-1"></a>simulated_ts &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,</span>
+<span id="cb41-2"><a href="t-tests.html#cb41-2"></a>                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))<span class="op">$</span>statistic)</span>
+<span id="cb41-3"><a href="t-tests.html#cb41-3"></a><span class="kw">hist</span>(simulated_ts)</span></code></pre></div>
 <div class="figure"><span id="fig:6simtsRep"></span>
 <img src="statistics_files/figure-html/6simtsRep-1.png" alt="Simulating ts in R" width="672" />
 <p class="caption">
-Figure 6.12: Simulating ts in R
+Figure 6.13: Simulating ts in R
 </p>
 </div>
-<pre class="sourceCode r"><code class="sourceCode r">simulated_ps &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,
-                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))<span class="op">$</span>p.value)
-<span class="kw">hist</span>(simulated_ps)</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="t-tests.html#cb42-1"></a>simulated_ps &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">1000</span>,</span>
+<span id="cb42-2"><a href="t-tests.html#cb42-2"></a>                          <span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">25</span>))<span class="op">$</span>p.value)</span>
+<span id="cb42-3"><a href="t-tests.html#cb42-3"></a><span class="kw">hist</span>(simulated_ps)</span></code></pre></div>
 <div class="figure"><span id="fig:6simpsRep"></span>
 <img src="statistics_files/figure-html/6simpsRep-1.png" alt="Simulating ps in R" width="672" />
 <p class="caption">
-Figure 6.13: Simulating ps in R
+Figure 6.14: Simulating ps in R
 </p>
 </div>
 </div>
 <div id="simulating-a-paired-samples-t-test" class="section level3">
 <h3><span class="header-section-number">6.6.2</span> Simulating a paired samples t-test</h3>
 <p>The code below is set up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
-<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
-  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B
-  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
-}</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="t-tests.html#cb43-1"></a>save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb43-2"><a href="t-tests.html#cb43-2"></a>save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb43-3"><a href="t-tests.html#cb43-3"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){</span>
+<span id="cb43-4"><a href="t-tests.html#cb43-4"></a>  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb43-5"><a href="t-tests.html#cb43-5"></a>  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb43-6"><a href="t-tests.html#cb43-6"></a>  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B</span>
+<span id="cb43-7"><a href="t-tests.html#cb43-7"></a>  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)</span>
+<span id="cb43-8"><a href="t-tests.html#cb43-8"></a>  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value</span>
+<span id="cb43-9"><a href="t-tests.html#cb43-9"></a>  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic</span>
+<span id="cb43-10"><a href="t-tests.html#cb43-10"></a>}</span></code></pre></div>
 <div class="figure"><span id="fig:6simps1000"></span>
 <img src="statistics_files/figure-html/6simps1000-1.png" alt="1000 simulated ts from the null distribution" width="672" />
 <p class="caption">
-Figure 6.14: 1000 simulated ts from the null distribution
+Figure 6.15: 1000 simulated ts from the null distribution
 </p>
 </div>
 <div class="figure"><span id="fig:6simts1000"></span>
 <img src="statistics_files/figure-html/6simts1000-1.png" alt="1000 simulated ps from the null distribution" width="672" />
 <p class="caption">
-Figure 6.15: 1000 simulated ps from the null distribution
+Figure 6.16: 1000 simulated ps from the null distribution
 </p>
 </div>
 <p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for <span class="math inline">\(t\)</span> and <span class="math inline">\(p\)</span>. These again show how the null distribution of no differences behaves.</p>
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])</code></pre>
-<pre><code>## [1] 52</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])<span class="op">/</span><span class="dv">1000</span></code></pre>
-<pre><code>## [1] 0.052</code></pre>
-<p>We happened to make 52. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="t-tests.html#cb44-1"></a><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="t-tests.html#cb46-1"></a><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])<span class="op">/</span><span class="dv">1000</span></span></code></pre></div>
+<pre><code>## [1] 0.055</code></pre>
+<p>We happened to make 55. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happens if there actually is a difference in the simulated data, let’s set one condition to have a larger mean than the other:</p>
-<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
-  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">5</span>)
-  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B
-  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
-}</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="t-tests.html#cb48-1"></a>save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb48-2"><a href="t-tests.html#cb48-2"></a>save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb48-3"><a href="t-tests.html#cb48-3"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){</span>
+<span id="cb48-4"><a href="t-tests.html#cb48-4"></a>  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb48-5"><a href="t-tests.html#cb48-5"></a>  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">5</span>)</span>
+<span id="cb48-6"><a href="t-tests.html#cb48-6"></a>  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B</span>
+<span id="cb48-7"><a href="t-tests.html#cb48-7"></a>  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)</span>
+<span id="cb48-8"><a href="t-tests.html#cb48-8"></a>  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value</span>
+<span id="cb48-9"><a href="t-tests.html#cb48-9"></a>  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic</span>
+<span id="cb48-10"><a href="t-tests.html#cb48-10"></a>}</span></code></pre></div>
 <div class="figure"><span id="fig:6simtruets"></span>
 <img src="statistics_files/figure-html/6simtruets-1.png" alt="1000 ts when there is a true difference" width="672" />
 <p class="caption">
-Figure 6.16: 1000 ts when there is a true difference
+Figure 6.17: 1000 ts when there is a true difference
 </p>
 </div>
 <div class="figure"><span id="fig:6simtrueps"></span>
 <img src="statistics_files/figure-html/6simtrueps-1.png" alt="1000 ps when there is a true difference" width="672" />
 <p class="caption">
-Figure 6.17: 1000 ps when there is a true difference
+Figure 6.18: 1000 ps when there is a true difference
 </p>
 </div>
 <p>Now you can see that the <span class="math inline">\(p\)</span>-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])</code></pre>
-<pre><code>## [1] 223</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])<span class="op">/</span><span class="dv">1000</span></code></pre>
-<pre><code>## [1] 0.223</code></pre>
-<p>We happened to get 223 simulations where p was less than .05, that’s only 0.223 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.223 of the time? I wouldn’t. I would run a better experiment.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="t-tests.html#cb49-1"></a><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])</span></code></pre></div>
+<pre><code>## [1] 216</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="t-tests.html#cb51-1"></a><span class="kw">length</span>(save_ps[save_ps<span class="op">&lt;</span>.<span class="dv">05</span>])<span class="op">/</span><span class="dv">1000</span></span></code></pre></div>
+<pre><code>## [1] 0.216</code></pre>
+<p>We happened to get 216 simulations where p was less than .05, that’s only 0.216 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.216 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase <span class="math inline">\(n\)</span>, the number of subjects in the experiment. Let’s increase <span class="math inline">\(n\)</span> from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
-<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
-  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">13</span>,<span class="dv">5</span>)
-  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B
-  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
-}</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="t-tests.html#cb53-1"></a>save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb53-2"><a href="t-tests.html#cb53-2"></a>save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb53-3"><a href="t-tests.html#cb53-3"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){</span>
+<span id="cb53-4"><a href="t-tests.html#cb53-4"></a>  condition_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb53-5"><a href="t-tests.html#cb53-5"></a>  condition_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">13</span>,<span class="dv">5</span>)</span>
+<span id="cb53-6"><a href="t-tests.html#cb53-6"></a>  differences &lt;-<span class="st"> </span>condition_A <span class="op">-</span><span class="st"> </span>condition_B</span>
+<span id="cb53-7"><a href="t-tests.html#cb53-7"></a>  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(differences, <span class="dt">mu=</span><span class="dv">0</span>)</span>
+<span id="cb53-8"><a href="t-tests.html#cb53-8"></a>  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value</span>
+<span id="cb53-9"><a href="t-tests.html#cb53-9"></a>  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic</span>
+<span id="cb53-10"><a href="t-tests.html#cb53-10"></a>}</span></code></pre></div>
 <div class="figure"><span id="fig:6simtsB"></span>
 <img src="statistics_files/figure-html/6simtsB-1.png" alt="1000 ts for n =100, when there is a true effect" width="672" />
 <p class="caption">
-Figure 6.18: 1000 ts for n =100, when there is a true effect
+Figure 6.19: 1000 ts for n =100, when there is a true effect
 </p>
 </div>
 <div class="figure"><span id="fig:6simpsB"></span>
 <img src="statistics_files/figure-html/6simpsB-1.png" alt="1000 ps for n =100, when there is a true effect" width="672" />
 <p class="caption">
-Figure 6.19: 1000 ps for n =100, when there is a true effect
+Figure 6.20: 1000 ps for n =100, when there is a true effect
 </p>
 </div>
-<pre><code>## [1] 991</code></pre>
-<pre><code>## [1] 0.991</code></pre>
+<pre><code>## [1] 985</code></pre>
+<pre><code>## [1] 0.985</code></pre>
 <p>Cool, now almost all of the experiments show a <span class="math inline">\(p\)</span>-value of less than .05 (using a two-tailed test, that’s the default in R). See, you could use this simulation process to determine how many subjects you need to reliably find your effect.</p>
 </div>
 <div id="simulating-an-independent-samples-t.test" class="section level3">
 <h3><span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</h3>
 <p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
-<pre class="sourceCode r"><code class="sourceCode r">save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)
-<span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){
-  group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)
-  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A, group_B, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)
-  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value
-  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic
-}</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="t-tests.html#cb56-1"></a>save_ps &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb56-2"><a href="t-tests.html#cb56-2"></a>save_ts &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="dv">1000</span>)</span>
+<span id="cb56-3"><a href="t-tests.html#cb56-3"></a><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span> ){</span>
+<span id="cb56-4"><a href="t-tests.html#cb56-4"></a>  group_A &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb56-5"><a href="t-tests.html#cb56-5"></a>  group_B &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">5</span>)</span>
+<span id="cb56-6"><a href="t-tests.html#cb56-6"></a>  t_test &lt;-<span class="st"> </span><span class="kw">t.test</span>(group_A, group_B, <span class="dt">paired=</span><span class="ot">FALSE</span>, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)</span>
+<span id="cb56-7"><a href="t-tests.html#cb56-7"></a>  save_ps[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>p.value</span>
+<span id="cb56-8"><a href="t-tests.html#cb56-8"></a>  save_ts[i] &lt;-<span class="st"> </span>t_test<span class="op">$</span>statistic</span>
+<span id="cb56-9"><a href="t-tests.html#cb56-9"></a>}</span></code></pre></div>
 <div class="figure"><span id="fig:6simtsC"></span>
 <img src="statistics_files/figure-html/6simtsC-1.png" alt="1000 ts for n =100, when there is a true effect" width="672" />
 <p class="caption">
-Figure 6.20: 1000 ts for n =100, when there is a true effect
+Figure 6.21: 1000 ts for n =100, when there is a true effect
 </p>
 </div>
 <div class="figure"><span id="fig:6simpsC"></span>
 <img src="statistics_files/figure-html/6simpsC-1.png" alt="1000 ps for n =100, when there is a true effect" width="672" />
 <p class="caption">
-Figure 6.21: 1000 ps for n =100, when there is a true effect
+Figure 6.22: 1000 ps for n =100, when there is a true effect
 </p>
 </div>
-<pre><code>## [1] 62</code></pre>
-<pre><code>## [1] 0.062</code></pre>
+<pre><code>## [1] 38</code></pre>
+<pre><code>## [1] 0.038</code></pre>
 </div>
 </div>
 <div id="videos-4" class="section level2">
@@ -2158,11 +1626,11 @@ Figure 6.21: 1000 ps for n =100, when there is a true effect
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-Student1908">
-<p>Student, A. 1908. “The Probable Error of a Mean.” <em>Biometrika</em> 6: 1–2.</p>
-</div>
 <div id="ref-mehr20165">
 <p>Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. “For 5-Month-Old Infants, Melodies Are Social.” <em>Psychological Science</em> 27 (4): 486–501.</p>
+</div>
+<div id="ref-Student1908">
+<p>Student, A. 1908. “The Probable Error of a Mean.” <em>Biometrika</em> 6: 1–2.</p>
 </div>
 </div>
             </section>
@@ -2176,11 +1644,13 @@ Figure 6.21: 1000 ps for n =100, when there is a true effect
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -2223,8 +1693,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

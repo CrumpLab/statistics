@@ -37,6 +37,7 @@ A uniform distribution is completely flat, it looks like this:
 
 ```{r 5unifagain, fig.cap="Uniform distribution showing that the numbers from 1 to 10 have an equal probability of being sampled",echo=F}
 library(ggplot2)
+library(dplyr)
 
 df<-data.frame(a=1:10,b=seq(.1,1,.1))
 df$a<-as.factor(df$a)
@@ -645,9 +646,14 @@ ggplot(all_df, aes(x=sample))+
 There you have it. The **sampling distribution of the mean differences** shrinks toward 0 as sample-size increases. This means if you run an experiment with a larger sample-size, you will be able to detect smaller mean differences, and be confident they aren't due to chance. Let's look at a table of the minimum and maximum values that chance produced across these four sample-sizes:
 
 ```{r}
-library(plyr)
-the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
-                                                  biggest=max(sample))
+#library(plyr)
+#the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
+#                                                  biggest=max(sample))
+the_range <- all_df %>%
+  group_by(sample_size) %>%
+  summarize(smallest=min(sample),
+            biggest=max(sample))
+
 knitr::kable(the_range)
 ```
 
@@ -680,8 +686,13 @@ for(sims in 1:1000){
   }
 }
 
-the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
-                                                  biggest=max(sample))
+#the_range<-ddply(all_df,.(sample_size), summarize, smallest=min(sample),
+#                                                  biggest=max(sample))
+
+the_range <- all_df %>%
+  group_by(sample_size) %>%
+  summarize(smallest=min(sample),
+            biggest=max(sample))
 
 
 ggplot(the_range, aes(x=sample_size,y=smallest))+
@@ -737,7 +748,7 @@ Let's say you run an experiment to find out if chewing gum causes students to ge
 Let's say the data looked like this:
 
 ```{r}
-library(dplyr)
+
 gum<-round(runif(20,70,100))
 no_gum<-round(runif(20,40,90))
 

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 ANOVA | Answering questions with data</title>
-  <meta name="description" content="An introductory statistics textbook for psychology students">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="An introductory statistics textbook for psychology students" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 ANOVA | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -22,19 +21,19 @@
   <meta name="twitter:description" content="An introductory statistics textbook for psychology students" />
   
 
-<meta name="author" content="Lead Author: Matthew J. C. Crump">
-<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D.">
-<meta name="author" content="Videos: Jeffrey Suzuki">
+<meta name="author" content="Lead Author: Matthew J. C. Crump" />
+<meta name="author" content="Chapters 2 and 4 adapted from Navarro, D." />
+<meta name="author" content="Videos: Jeffrey Suzuki" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="t-tests.html">
-<link rel="next" href="repeated-measures-anova.html">
+<link rel="prev" href="t-tests.html"/>
+<link rel="next" href="repeated-measures-anova.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +41,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -67,26 +69,27 @@ mattcrump=1;
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,9 +98,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -148,8 +151,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.1</b> Attributions</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.2</b> CC BY-SA 4.0 license</a></li>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i><b>0.1.4</b> Contributors</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
@@ -572,7 +579,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="anova" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> ANOVA</h1>
-<p>A fun bit of stats history <span class="citation">(Salsburg <a href="#ref-salsburg2001lady">2001</a>)</span>. Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika. The editor at the time was Karl Pearson (remember Pearson’s <span class="math inline">\(r\)</span> for correlation?). Pearson and Fisher were apparently not on good terms, they didn’t like each other. Pearson refused to publish Fisher’s new test. So, Fisher eventually published his work in the Journal of Agricultural Science. Funnily enough, the feud continued onto the next generation. Years after Fisher published his ANOVA, Karl Pearson’s son Egon Pearson, and Jersey Neyman revamped Fisher’s ideas, and re-cast them into what is commonly known as null vs. alternative hypothesis testing. Fisher didn’t like this very much.</p>
+<p>A fun bit of stats history <span class="citation">(Salsburg <a href="#ref-salsburg2001lady" role="doc-biblioref">2001</a>)</span>. Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika. The editor at the time was Karl Pearson (remember Pearson’s <span class="math inline">\(r\)</span> for correlation?). Pearson and Fisher were apparently not on good terms, they didn’t like each other. Pearson refused to publish Fisher’s new test. So, Fisher eventually published his work in the Journal of Agricultural Science. Funnily enough, the feud continued onto the next generation. Years after Fisher published his ANOVA, Karl Pearson’s son Egon Pearson, and Jersey Neyman revamped Fisher’s ideas, and re-cast them into what is commonly known as null vs. alternative hypothesis testing. Fisher didn’t like this very much.</p>
 <p>We present the ANOVA in the Fisherian sense, and at the end describe the Neyman-Pearson approach that invokes the concept of null vs. alternative hypotheses.</p>
 <div id="anova-is-analysis-of-variance" class="section level2">
 <h2><span class="header-section-number">7.1</span> ANOVA is Analysis of Variance</h2>
@@ -607,175 +614,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s imagine we had some data in three groups, A, B, and C. For example, we might have 3 scores in each group. The data could look like this:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-groups
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">groups</th>
+<th align="left">scores</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:left;">
-169
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">13</td>
+<td align="left">169</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="even">
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
--5
-</td>
-<td style="text-align:left;">
-25
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">-5</td>
+<td align="left">25</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-302
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">63</td>
+<td align="left">0</td>
+<td align="left">302</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-33.5555555555556
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">33.5555555555556</td>
 </tr>
 </tbody>
 </table>
@@ -798,211 +709,91 @@ Means
 <p>Consider this table, showing the calculations for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-groups
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-means
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">groups</th>
+<th align="left">scores</th>
+<th align="left">means</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:left;">
-16
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">11</td>
+<td align="left">4</td>
+<td align="left">16</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="odd">
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-72
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">63</td>
+<td align="left">63</td>
+<td align="left">0</td>
+<td align="left">72</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-8
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">8</td>
 </tr>
 </tbody>
 </table>
@@ -1025,211 +816,91 @@ Means
 <p>We could stop here and show you the rest of the ANOVA, we’re almost there. But, the next step might not make sense unless we show you how to calculate <span class="math inline">\(SS_\text{Error}\)</span> directly from the data, rather than just solving for it. We should do this just to double-check our work anyway.</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-groups
-</th>
-<th style="text-align:left;">
-scores
-</th>
-<th style="text-align:left;">
-means
-</th>
-<th style="text-align:left;">
-diff
-</th>
-<th style="text-align:left;">
-diff_squared
-</th>
+<tr class="header">
+<th align="left">groups</th>
+<th align="left">scores</th>
+<th align="left">means</th>
+<th align="left">diff</th>
+<th align="left">diff_squared</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-20
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
--9
-</td>
-<td style="text-align:left;">
-81
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">20</td>
+<td align="left">11</td>
+<td align="left">-9</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">11</td>
+<td align="left">11</td>
+<td align="left">0</td>
+<td align="left">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-9
-</td>
-<td style="text-align:left;">
-81
-</td>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">2</td>
+<td align="left">11</td>
+<td align="left">9</td>
+<td align="left">81</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--1
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">6</td>
+<td align="left">5</td>
+<td align="left">-1</td>
+<td align="left">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-9
-</td>
+<tr class="odd">
+<td align="left">B</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--2
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td align="left">B</td>
+<td align="left">7</td>
+<td align="left">5</td>
+<td align="left">-2</td>
+<td align="left">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-9
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
--6
-</td>
-<td style="text-align:left;">
-36
-</td>
+<tr class="even">
+<td align="left">C</td>
+<td align="left">11</td>
+<td align="left">5</td>
+<td align="left">-6</td>
+<td align="left">36</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-9
-</td>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">9</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Sums
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-63
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-230
-</td>
+<tr class="even">
+<td align="left">Sums</td>
+<td align="left">63</td>
+<td align="left">63</td>
+<td align="left">0</td>
+<td align="left">230</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Means
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-7
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-25.5555555555556
-</td>
+<tr class="odd">
+<td align="left">Means</td>
+<td align="left">7</td>
+<td align="left">7</td>
+<td align="left">0</td>
+<td align="left">25.5555555555556</td>
 </tr>
 </tbody>
 </table>
@@ -1276,66 +947,31 @@ Means
 <p>All of these little pieces are conveniently organized by ANOVA tables. ANOVA tables look like this:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-Sum Sq
-</th>
-<th style="text-align:right;">
-Mean Sq
-</th>
-<th style="text-align:right;">
-F value
-</th>
-<th style="text-align:right;">
-Pr(&gt;F)
-</th>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-groups
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-72
-</td>
-<td style="text-align:right;">
-36.00000
-</td>
-<td style="text-align:right;">
-0.9391304
-</td>
-<td style="text-align:right;">
-0.4417359
-</td>
+<tr class="odd">
+<td>groups</td>
+<td align="right">2</td>
+<td align="right">72</td>
+<td align="right">36.00000</td>
+<td align="right">0.9391304</td>
+<td align="right">0.4417359</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-230
-</td>
-<td style="text-align:right;">
-38.33333
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">6</td>
+<td align="right">230</td>
+<td align="right">38.33333</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1459,7 +1095,7 @@ Figure 7.6: Different patterns of group means under the null when F is above cri
 <p>So, we return to the application of the ANOVA to a real data set with a real question. This is the same one that you will be learning about in the lab. We give you a brief overview here so you know what to expect.</p>
 <div id="tetris-and-bad-memories" class="section level3">
 <h3><span class="header-section-number">7.4.1</span> Tetris and bad memories</h3>
-<p>Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie <span class="citation">(James et al. <a href="#ref-james2015computer">2015</a>)</span>. Sometimes in life people have intrusive memories, and they think about things they’d rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.</p>
+<p>Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie <span class="citation">(James et al. <a href="#ref-james2015computer" role="doc-biblioref">2015</a>)</span>. Sometimes in life people have intrusive memories, and they think about things they’d rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.</p>
 <p>Here’s what they did. Subjects watched a scary movie, then at the end of the week they reported how many intrusive memories about the movie they had. The mean number of intrusive memories was the measurement (the dependent variable). This was a between-subjects experiment with four groups. Each group of subjects received a different treatment following the scary movie. The question was whether any of these treatments would reduce the number of intrusive memories. All of these treatments occurred after watching the scary movie:</p>
 <ol style="list-style-type: decimal">
 <li>No-task control: These participants completed a 10-minute music filler task after watching the scary movie.</li>
@@ -1480,66 +1116,31 @@ Figure 7.7: Mean number of intrusive memories per week as a function of experime
 <p>We can now conduct the ANOVA on the data to ask the omnibus question. If we get a an <span class="math inline">\(F\)</span>-value with an associated <span class="math inline">\(p\)</span>-value of less than .05 (the alpha criterion set by the authors), then we can reject the hypothesis of no differences. Let’s see what happens:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Df
-</th>
-<th style="text-align:right;">
-Sum Sq
-</th>
-<th style="text-align:right;">
-Mean Sq
-</th>
-<th style="text-align:right;">
-F value
-</th>
-<th style="text-align:right;">
-Pr(&gt;F)
-</th>
+<tr class="header">
+<th></th>
+<th align="right">Df</th>
+<th align="right">Sum Sq</th>
+<th align="right">Mean Sq</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Condition
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-114.8194
-</td>
-<td style="text-align:right;">
-38.27315
-</td>
-<td style="text-align:right;">
-3.794762
-</td>
-<td style="text-align:right;">
-0.0140858
-</td>
+<tr class="odd">
+<td>Condition</td>
+<td align="right">3</td>
+<td align="right">114.8194</td>
+<td align="right">38.27315</td>
+<td align="right">3.794762</td>
+<td align="right">0.0140858</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Residuals
-</td>
-<td style="text-align:right;">
-68
-</td>
-<td style="text-align:right;">
-685.8333
-</td>
-<td style="text-align:right;">
-10.08578
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
+<tr class="even">
+<td>Residuals</td>
+<td align="right">68</td>
+<td align="right">685.8333</td>
+<td align="right">10.08578</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1606,11 +1207,11 @@ NA
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-salsburg2001lady">
-<p>Salsburg, David. 2001. <em>The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century</em>. Macmillan.</p>
-</div>
 <div id="ref-james2015computer">
 <p>James, Ella L, Michael B Bonsall, Laura Hoppitt, Elizabeth M Tunbridge, John R Geddes, Amy L Milton, and Emily A Holmes. 2015. “Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms.” <em>Psychological Science</em> 26 (8): 1201–15.</p>
+</div>
+<div id="ref-salsburg2001lady">
+<p>Salsburg, David. 2001. <em>The Lady Tasting Tea: How Statistics Revolutionized Science in the Twentieth Century</em>. Macmillan.</p>
 </div>
 </div>
             </section>
@@ -1624,11 +1225,13 @@ NA
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1671,8 +1274,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
