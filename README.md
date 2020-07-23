@@ -16,7 +16,7 @@ Course website is here: [https://crumplab.github.io/psyc3400/](https://crumplab.
 
 ## Project notes
 
-The major work for this projectd was completed in Summer 2018, with updates continuously from that point.
+The major work for this project was completed in Summer 2018, with updates continuously from that point.
 
 1. We wrote the book in Rmarkdown, using the bookdown package. All of the source code for compiling the book is in this repo.
 
