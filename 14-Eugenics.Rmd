@@ -1,0 +1,47 @@
+# Eugenics, Statistics, & Psychology
+
+This is an appendix with resources to learn more about the confluence of eugenics, statistics, and Psychology
+
+## Websites
+
+- [Eugenics Archives](http://eugenicsarchive.ca) This is a very comprehensive online resource about eugenics, with a focus on eugenic practices in Western Canadian provinces, but also a very well-rounded and extensive broader resource. For example, the timeline portion is very informative.
+- [Cold Spring Harbor Laboratory](http://library.cshl.edu/special-collections/eugenics) The national American Eugenic Records Office (ERO) was located in what is now Cold Springs Harbor Laboratory, in Long Island, New York.
+
+## Journal Articles
+
+```{r, results='asis', echo=FALSE}
+library(knitcitations)
+library(RefManageR)
+bib <- read.bibtex("eugenic.bib")
+
+in_text_ref <- function(x){
+  b<-capture.output(print(x,.opts = list(bib.style = "authoryear", first.inits = TRUE, style = "markdown",no.print.fields=c("URL","urldate","issn","doi"))))
+  cat("- ")
+  cat(b,collapse=" ")
+  
+}
+```
+
+
+
+```{r, results='asis', echo=FALSE}
+in_text_ref(bib["galtonHereditaryTalentCharacter1865"])
+```
+ - This is where eugenics begins in the writing of Sir Francis Galton. The original is online
+
+
+## Books
+
+```{r, results='asis', echo=FALSE}
+in_text_ref(bib["pressEugenicMindProject"])
+```
+
+```{r, results='asis', echo=FALSE}
+in_text_ref(bib["kaminSciencePoliticsIQ1974"])
+```
+
+```{r, results='asis', echo=FALSE}
+in_text_ref(bib["bashfordOxfordHandbookHistory2010"])
+```
+
+

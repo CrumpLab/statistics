@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Repeated Measures ANOVA | Answering questions with data</title>
   <meta name="description" content="An introductory statistics textbook for psychology students" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Repeated Measures ANOVA | Answering questions with data" />
   <meta property="og:type" content="book" />
@@ -69,18 +69,17 @@ mattcrump=1;
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -100,7 +99,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -149,8 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Statistics</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#important-notes"><i class="fa fa-check"></i><b>0.1</b> Important notes</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#textbook"><i class="fa fa-check"></i><b>0.1.1</b> Textbook</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#lab-manual"><i class="fa fa-check"></i><b>0.1.2</b> Lab Manual</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#course-website"><i class="fa fa-check"></i><b>0.1.3</b> Course website</a></li>
@@ -158,14 +159,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#attributions"><i class="fa fa-check"></i><b>0.1.5</b> Attributions</a></li>
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#cc-by-sa-4.0-license"><i class="fa fa-check"></i><b>0.1.6</b> CC BY-SA 4.0 license</a></li>
 </ul></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a><ul>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#copying-the-textbook"><i class="fa fa-check"></i><b>0.2</b> Copying the textbook</a>
+<ul>
 <li class="chapter" data-level="0.2.1" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.2.1</b> Acknowledgments</a></li>
 <li class="chapter" data-level="0.2.2" data-path="index.html"><a href="index.html#why-we-did-this"><i class="fa fa-check"></i><b>0.2.2</b> Why we did this</a></li>
 <li class="chapter" data-level="0.2.3" data-path="index.html"><a href="index.html#hypothes.is"><i class="fa fa-check"></i><b>0.2.3</b> Hypothes.is</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="why-statistics.html"><a href="why-statistics.html"><i class="fa fa-check"></i><b>1</b> Why Statistics?</a><ul>
-<li class="chapter" data-level="1.1" data-path="why-statistics.html"><a href="why-statistics.html#on-the-psychology-of-statistics"><i class="fa fa-check"></i><b>1.1</b> On the psychology of statistics</a><ul>
+<li class="chapter" data-level="1" data-path="why-statistics.html"><a href="why-statistics.html"><i class="fa fa-check"></i><b>1</b> Why Statistics?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="why-statistics.html"><a href="why-statistics.html#on-the-psychology-of-statistics"><i class="fa fa-check"></i><b>1.1</b> On the psychology of statistics</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="why-statistics.html"><a href="why-statistics.html#the-curse-of-belief-bias"><i class="fa fa-check"></i><b>1.1.1</b> The curse of belief bias</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="why-statistics.html"><a href="why-statistics.html#the-cautionary-tale-of-simpsons-paradox"><i class="fa fa-check"></i><b>1.2</b> The cautionary tale of Simpson’s paradox</a></li>
@@ -173,11 +177,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="why-statistics.html"><a href="why-statistics.html#statistics-in-everyday-life"><i class="fa fa-check"></i><b>1.4</b> Statistics in everyday life</a></li>
 <li class="chapter" data-level="1.5" data-path="why-statistics.html"><a href="why-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>1.5</b> There’s more to research methods than statistics</a></li>
 <li class="chapter" data-level="1.6" data-path="why-statistics.html"><a href="why-statistics.html#a-brief-introduction-to-research-design"><i class="fa fa-check"></i><b>1.6</b> A brief introduction to research design</a></li>
-<li class="chapter" data-level="1.7" data-path="why-statistics.html"><a href="why-statistics.html#introduction-to-psychological-measurement"><i class="fa fa-check"></i><b>1.7</b> Introduction to psychological measurement</a><ul>
+<li class="chapter" data-level="1.7" data-path="why-statistics.html"><a href="why-statistics.html#introduction-to-psychological-measurement"><i class="fa fa-check"></i><b>1.7</b> Introduction to psychological measurement</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="why-statistics.html"><a href="why-statistics.html#some-thoughts-about-psychological-measurement"><i class="fa fa-check"></i><b>1.7.1</b> Some thoughts about psychological measurement</a></li>
 <li class="chapter" data-level="1.7.2" data-path="why-statistics.html"><a href="why-statistics.html#operationalization-defining-your-measurement"><i class="fa fa-check"></i><b>1.7.2</b> Operationalization: defining your measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="1.8" data-path="why-statistics.html"><a href="why-statistics.html#scales-of-measurement"><i class="fa fa-check"></i><b>1.8</b> Scales of measurement</a><ul>
+<li class="chapter" data-level="1.8" data-path="why-statistics.html"><a href="why-statistics.html#scales-of-measurement"><i class="fa fa-check"></i><b>1.8</b> Scales of measurement</a>
+<ul>
 <li class="chapter" data-level="1.8.1" data-path="why-statistics.html"><a href="why-statistics.html#nominal-scale"><i class="fa fa-check"></i><b>1.8.1</b> Nominal scale</a></li>
 <li class="chapter" data-level="1.8.2" data-path="why-statistics.html"><a href="why-statistics.html#ordinal-scale"><i class="fa fa-check"></i><b>1.8.2</b> Ordinal scale</a></li>
 <li class="chapter" data-level="1.8.3" data-path="why-statistics.html"><a href="why-statistics.html#interval-scale"><i class="fa fa-check"></i><b>1.8.3</b> Interval scale</a></li>
@@ -187,18 +193,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.9" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-reliability-of-a-measurement"><i class="fa fa-check"></i><b>1.9</b> Assessing the reliability of a measurement</a></li>
 <li class="chapter" data-level="1.10" data-path="why-statistics.html"><a href="why-statistics.html#the-role-of-variables-predictors-and-outcomes"><i class="fa fa-check"></i><b>1.10</b> The role of variables: predictors and outcomes</a></li>
-<li class="chapter" data-level="1.11" data-path="why-statistics.html"><a href="why-statistics.html#experimental-and-non-experimental-research"><i class="fa fa-check"></i><b>1.11</b> Experimental and non-experimental research</a><ul>
+<li class="chapter" data-level="1.11" data-path="why-statistics.html"><a href="why-statistics.html#experimental-and-non-experimental-research"><i class="fa fa-check"></i><b>1.11</b> Experimental and non-experimental research</a>
+<ul>
 <li class="chapter" data-level="1.11.1" data-path="why-statistics.html"><a href="why-statistics.html#experimental-research"><i class="fa fa-check"></i><b>1.11.1</b> Experimental research</a></li>
 <li class="chapter" data-level="1.11.2" data-path="why-statistics.html"><a href="why-statistics.html#non-experimental-research"><i class="fa fa-check"></i><b>1.11.2</b> Non-experimental research</a></li>
 </ul></li>
-<li class="chapter" data-level="1.12" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-validity-of-a-study"><i class="fa fa-check"></i><b>1.12</b> Assessing the validity of a study</a><ul>
+<li class="chapter" data-level="1.12" data-path="why-statistics.html"><a href="why-statistics.html#assessing-the-validity-of-a-study"><i class="fa fa-check"></i><b>1.12</b> Assessing the validity of a study</a>
+<ul>
 <li class="chapter" data-level="1.12.1" data-path="why-statistics.html"><a href="why-statistics.html#internal-validity"><i class="fa fa-check"></i><b>1.12.1</b> Internal validity</a></li>
 <li class="chapter" data-level="1.12.2" data-path="why-statistics.html"><a href="why-statistics.html#external-validity"><i class="fa fa-check"></i><b>1.12.2</b> External validity</a></li>
 <li class="chapter" data-level="1.12.3" data-path="why-statistics.html"><a href="why-statistics.html#construct-validity"><i class="fa fa-check"></i><b>1.12.3</b> Construct validity</a></li>
 <li class="chapter" data-level="1.12.4" data-path="why-statistics.html"><a href="why-statistics.html#face-validity"><i class="fa fa-check"></i><b>1.12.4</b> Face validity</a></li>
 <li class="chapter" data-level="1.12.5" data-path="why-statistics.html"><a href="why-statistics.html#ecological-validity"><i class="fa fa-check"></i><b>1.12.5</b> Ecological validity</a></li>
 </ul></li>
-<li class="chapter" data-level="1.13" data-path="why-statistics.html"><a href="why-statistics.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>1.13</b> Confounds, artifacts and other threats to validity</a><ul>
+<li class="chapter" data-level="1.13" data-path="why-statistics.html"><a href="why-statistics.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>1.13</b> Confounds, artifacts and other threats to validity</a>
+<ul>
 <li class="chapter" data-level="1.13.1" data-path="why-statistics.html"><a href="why-statistics.html#history-effects"><i class="fa fa-check"></i><b>1.13.1</b> History effects</a></li>
 <li class="chapter" data-level="1.13.2" data-path="why-statistics.html"><a href="why-statistics.html#maturation-effects"><i class="fa fa-check"></i><b>1.13.2</b> Maturation effects</a></li>
 <li class="chapter" data-level="1.13.3" data-path="why-statistics.html"><a href="why-statistics.html#repeated-testing-effects"><i class="fa fa-check"></i><b>1.13.3</b> Repeated testing effects</a></li>
@@ -213,18 +222,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.13.12" data-path="why-statistics.html"><a href="why-statistics.html#fraud-deception-and-self-deception"><i class="fa fa-check"></i><b>1.13.12</b> Fraud, deception and self-deception</a></li>
 </ul></li>
 <li class="chapter" data-level="1.14" data-path="why-statistics.html"><a href="why-statistics.html#summary"><i class="fa fa-check"></i><b>1.14</b> Summary</a></li>
-<li class="chapter" data-level="1.15" data-path="why-statistics.html"><a href="why-statistics.html#videos"><i class="fa fa-check"></i><b>1.15</b> Videos</a><ul>
+<li class="chapter" data-level="1.15" data-path="why-statistics.html"><a href="why-statistics.html#videos"><i class="fa fa-check"></i><b>1.15</b> Videos</a>
+<ul>
 <li class="chapter" data-level="1.15.1" data-path="why-statistics.html"><a href="why-statistics.html#terms-of-statistics"><i class="fa fa-check"></i><b>1.15.1</b> Terms of Statistics</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a><ul>
+<li class="chapter" data-level="2" data-path="DescribingData.html"><a href="DescribingData.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="DescribingData.html"><a href="DescribingData.html#this-is-what-too-many-numbers-looks-like"><i class="fa fa-check"></i><b>2.1</b> This is what too many numbers looks like</a></li>
-<li class="chapter" data-level="2.2" data-path="DescribingData.html"><a href="DescribingData.html#look-at-the-data"><i class="fa fa-check"></i><b>2.2</b> Look at the data</a><ul>
+<li class="chapter" data-level="2.2" data-path="DescribingData.html"><a href="DescribingData.html#look-at-the-data"><i class="fa fa-check"></i><b>2.2</b> Look at the data</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="DescribingData.html"><a href="DescribingData.html#stop-plotting-time-o-o-oh-u-can-plot-this"><i class="fa fa-check"></i><b>2.2.1</b> Stop, plotting time (o o oh) U can plot this</a></li>
 <li class="chapter" data-level="2.2.2" data-path="DescribingData.html"><a href="DescribingData.html#histograms"><i class="fa fa-check"></i><b>2.2.2</b> Histograms</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="DescribingData.html"><a href="DescribingData.html#important-ideas-distribution-central-tendency-and-variance"><i class="fa fa-check"></i><b>2.3</b> Important Ideas: Distribution, Central Tendency, and Variance</a></li>
-<li class="chapter" data-level="2.4" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-central-tendency-sameness"><i class="fa fa-check"></i><b>2.4</b> Measures of Central Tendency (Sameness)</a><ul>
+<li class="chapter" data-level="2.4" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-central-tendency-sameness"><i class="fa fa-check"></i><b>2.4</b> Measures of Central Tendency (Sameness)</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="DescribingData.html"><a href="DescribingData.html#from-many-numbers-to-one"><i class="fa fa-check"></i><b>2.4.1</b> From many numbers to one</a></li>
 <li class="chapter" data-level="2.4.2" data-path="DescribingData.html"><a href="DescribingData.html#mode"><i class="fa fa-check"></i><b>2.4.2</b> Mode</a></li>
 <li class="chapter" data-level="2.4.3" data-path="DescribingData.html"><a href="DescribingData.html#median"><i class="fa fa-check"></i><b>2.4.3</b> Median</a></li>
@@ -232,74 +245,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.5" data-path="DescribingData.html"><a href="DescribingData.html#what-does-the-mean-mean"><i class="fa fa-check"></i><b>2.4.5</b> What does the mean mean?</a></li>
 <li class="chapter" data-level="2.4.6" data-path="DescribingData.html"><a href="DescribingData.html#all-together-now"><i class="fa fa-check"></i><b>2.4.6</b> All together now</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-variation-differentness"><i class="fa fa-check"></i><b>2.5</b> Measures of Variation (Differentness)</a><ul>
+<li class="chapter" data-level="2.5" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-variation-differentness"><i class="fa fa-check"></i><b>2.5</b> Measures of Variation (Differentness)</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="DescribingData.html"><a href="DescribingData.html#the-range"><i class="fa fa-check"></i><b>2.5.1</b> The Range</a></li>
 <li class="chapter" data-level="2.5.2" data-path="DescribingData.html"><a href="DescribingData.html#the-difference-scores"><i class="fa fa-check"></i><b>2.5.2</b> The Difference Scores</a></li>
 <li class="chapter" data-level="2.5.3" data-path="DescribingData.html"><a href="DescribingData.html#the-variance"><i class="fa fa-check"></i><b>2.5.3</b> The Variance</a></li>
 <li class="chapter" data-level="2.5.4" data-path="DescribingData.html"><a href="DescribingData.html#the-standard-deviation"><i class="fa fa-check"></i><b>2.5.4</b> The Standard Deviation</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="DescribingData.html"><a href="DescribingData.html#using-descriptive-statistics-with-data"><i class="fa fa-check"></i><b>2.6</b> Using Descriptive Statistics with data</a></li>
-<li class="chapter" data-level="2.7" data-path="DescribingData.html"><a href="DescribingData.html#rolling-your-own-descriptive-statistics"><i class="fa fa-check"></i><b>2.7</b> Rolling your own descriptive statistics</a><ul>
+<li class="chapter" data-level="2.7" data-path="DescribingData.html"><a href="DescribingData.html#rolling-your-own-descriptive-statistics"><i class="fa fa-check"></i><b>2.7</b> Rolling your own descriptive statistics</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="DescribingData.html"><a href="DescribingData.html#absolute-deviations"><i class="fa fa-check"></i><b>2.7.1</b> Absolute deviations</a></li>
 <li class="chapter" data-level="2.7.2" data-path="DescribingData.html"><a href="DescribingData.html#other-sign-inverting-operations"><i class="fa fa-check"></i><b>2.7.2</b> Other sign-inverting operations</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="DescribingData.html"><a href="DescribingData.html#remember-to-look-at-your-data"><i class="fa fa-check"></i><b>2.8</b> Remember to look at your data</a><ul>
+<li class="chapter" data-level="2.8" data-path="DescribingData.html"><a href="DescribingData.html#remember-to-look-at-your-data"><i class="fa fa-check"></i><b>2.8</b> Remember to look at your data</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="DescribingData.html"><a href="DescribingData.html#anscombes-quartet"><i class="fa fa-check"></i><b>2.8.1</b> Anscombe’s Quartet</a></li>
 <li class="chapter" data-level="2.8.2" data-path="DescribingData.html"><a href="DescribingData.html#datasaurus-dozen"><i class="fa fa-check"></i><b>2.8.2</b> Datasaurus Dozen</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="DescribingData.html"><a href="DescribingData.html#videos-1"><i class="fa fa-check"></i><b>2.9</b> Videos</a><ul>
+<li class="chapter" data-level="2.9" data-path="DescribingData.html"><a href="DescribingData.html#videos-1"><i class="fa fa-check"></i><b>2.9</b> Videos</a>
+<ul>
 <li class="chapter" data-level="2.9.1" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-center-mode"><i class="fa fa-check"></i><b>2.9.1</b> Measures of center: Mode</a></li>
 <li class="chapter" data-level="2.9.2" data-path="DescribingData.html"><a href="DescribingData.html#measures-of-center-median-and-mean"><i class="fa fa-check"></i><b>2.9.2</b> Measures of center: Median and Mean</a></li>
 <li class="chapter" data-level="2.9.3" data-path="DescribingData.html"><a href="DescribingData.html#standard-deviation-part-i"><i class="fa fa-check"></i><b>2.9.3</b> Standard deviation part I</a></li>
 <li class="chapter" data-level="2.9.4" data-path="DescribingData.html"><a href="DescribingData.html#standard-deviation-part-ii"><i class="fa fa-check"></i><b>2.9.4</b> Standard deviation part II</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="Correlation.html"><a href="Correlation.html"><i class="fa fa-check"></i><b>3</b> Correlation</a><ul>
-<li class="chapter" data-level="3.1" data-path="Correlation.html"><a href="Correlation.html#if-something-caused-something-else-to-change-what-would-that-look-like"><i class="fa fa-check"></i><b>3.1</b> If something caused something else to change, what would that look like?</a><ul>
+<li class="chapter" data-level="3" data-path="Correlation.html"><a href="Correlation.html"><i class="fa fa-check"></i><b>3</b> Correlation</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Correlation.html"><a href="Correlation.html#if-something-caused-something-else-to-change-what-would-that-look-like"><i class="fa fa-check"></i><b>3.1</b> If something caused something else to change, what would that look like?</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="Correlation.html"><a href="Correlation.html#charlie-and-the-chocolate-factory"><i class="fa fa-check"></i><b>3.1.1</b> Charlie and the Chocolate factory</a></li>
 <li class="chapter" data-level="3.1.2" data-path="Correlation.html"><a href="Correlation.html#scatter-plots"><i class="fa fa-check"></i><b>3.1.2</b> Scatter plots</a></li>
 <li class="chapter" data-level="3.1.3" data-path="Correlation.html"><a href="Correlation.html#positive-negative-and-no-correlation"><i class="fa fa-check"></i><b>3.1.3</b> Positive, Negative, and No-Correlation</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r"><i class="fa fa-check"></i><b>3.2</b> Pearson’s r</a><ul>
+<li class="chapter" data-level="3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r"><i class="fa fa-check"></i><b>3.2</b> Pearson’s r</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="Correlation.html"><a href="Correlation.html#the-idea-of-co-variance"><i class="fa fa-check"></i><b>3.2.1</b> The idea of co-variance</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="Correlation.html"><a href="Correlation.html#turning-the-numbers-into-a-measure-of-co-variance"><i class="fa fa-check"></i><b>3.3</b> Turning the numbers into a measure of co-variance</a><ul>
+<li class="chapter" data-level="3.3" data-path="Correlation.html"><a href="Correlation.html#turning-the-numbers-into-a-measure-of-co-variance"><i class="fa fa-check"></i><b>3.3</b> Turning the numbers into a measure of co-variance</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="Correlation.html"><a href="Correlation.html#co-variance-the-measure"><i class="fa fa-check"></i><b>3.3.1</b> Co-variance, the measure</a></li>
 <li class="chapter" data-level="3.3.2" data-path="Correlation.html"><a href="Correlation.html#pearsons-r-we-there-yet"><i class="fa fa-check"></i><b>3.3.2</b> Pearson’s r we there yet</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="Correlation.html"><a href="Correlation.html#examples-with-data"><i class="fa fa-check"></i><b>3.4</b> Examples with Data</a></li>
-<li class="chapter" data-level="3.5" data-path="Correlation.html"><a href="Correlation.html#regression-a-mini-intro"><i class="fa fa-check"></i><b>3.5</b> Regression: A mini intro</a><ul>
+<li class="chapter" data-level="3.5" data-path="Correlation.html"><a href="Correlation.html#regression-a-mini-intro"><i class="fa fa-check"></i><b>3.5</b> Regression: A mini intro</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="Correlation.html"><a href="Correlation.html#the-best-fit-line"><i class="fa fa-check"></i><b>3.5.1</b> The best fit line</a></li>
 <li class="chapter" data-level="3.5.2" data-path="Correlation.html"><a href="Correlation.html#lines"><i class="fa fa-check"></i><b>3.5.2</b> Lines</a></li>
 <li class="chapter" data-level="3.5.3" data-path="Correlation.html"><a href="Correlation.html#computing-the-best-fit-line"><i class="fa fa-check"></i><b>3.5.3</b> Computing the best fit line</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="Correlation.html"><a href="Correlation.html#interpreting-correlations"><i class="fa fa-check"></i><b>3.6</b> Interpreting Correlations</a><ul>
+<li class="chapter" data-level="3.6" data-path="Correlation.html"><a href="Correlation.html#interpreting-correlations"><i class="fa fa-check"></i><b>3.6</b> Interpreting Correlations</a>
+<ul>
 <li class="chapter" data-level="3.6.1" data-path="Correlation.html"><a href="Correlation.html#correlation-does-not-equal-causation"><i class="fa fa-check"></i><b>3.6.1</b> Correlation does not equal causation</a></li>
 <li class="chapter" data-level="3.6.2" data-path="Correlation.html"><a href="Correlation.html#correlation-and-random-chance"><i class="fa fa-check"></i><b>3.6.2</b> Correlation and Random chance</a></li>
 <li class="chapter" data-level="3.6.3" data-path="Correlation.html"><a href="Correlation.html#some-more-movies"><i class="fa fa-check"></i><b>3.6.3</b> Some more movies</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="Correlation.html"><a href="Correlation.html#summary-1"><i class="fa fa-check"></i><b>3.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Probability, Sampling, and Estimation</a><ul>
+<li class="chapter" data-level="4" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html"><i class="fa fa-check"></i><b>4</b> Probability, Sampling, and Estimation</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#how-are-probability-and-statistics-different"><i class="fa fa-check"></i><b>4.1</b> How are probability and statistics different?</a></li>
-<li class="chapter" data-level="4.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#what-does-probability-mean"><i class="fa fa-check"></i><b>4.2</b> What does probability mean?</a><ul>
+<li class="chapter" data-level="4.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#what-does-probability-mean"><i class="fa fa-check"></i><b>4.2</b> What does probability mean?</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-frequentist-view"><i class="fa fa-check"></i><b>4.2.1</b> The frequentist view</a></li>
 <li class="chapter" data-level="4.2.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-bayesian-view"><i class="fa fa-check"></i><b>4.2.2</b> The Bayesian view</a></li>
 <li class="chapter" data-level="4.2.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#whats-the-difference-and-who-is-right"><i class="fa fa-check"></i><b>4.2.3</b> What’s the difference? And who is right?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#basic-probability-theory"><i class="fa fa-check"></i><b>4.3</b> Basic probability theory</a><ul>
+<li class="chapter" data-level="4.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#basic-probability-theory"><i class="fa fa-check"></i><b>4.3</b> Basic probability theory</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#introducing-probability-distributions"><i class="fa fa-check"></i><b>4.3.1</b> Introducing probability distributions</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.4</b> The binomial distribution</a><ul>
+<li class="chapter" data-level="4.4" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-binomial-distribution"><i class="fa fa-check"></i><b>4.4</b> The binomial distribution</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#introducing-the-binomial"><i class="fa fa-check"></i><b>4.4.1</b> Introducing the binomial</a></li>
 <li class="chapter" data-level="4.4.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#working-with-the-binomial-distribution-in-r"><i class="fa fa-check"></i><b>4.4.2</b> Working with the binomial distribution in R</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-normal-distribution"><i class="fa fa-check"></i><b>4.5</b> The normal distribution</a><ul>
+<li class="chapter" data-level="4.5" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-normal-distribution"><i class="fa fa-check"></i><b>4.5</b> The normal distribution</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#probability-density"><i class="fa fa-check"></i><b>4.5.1</b> Probability density</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#other-useful-distributions"><i class="fa fa-check"></i><b>4.6</b> Other useful distributions</a></li>
 <li class="chapter" data-level="4.7" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#summary-of-probability"><i class="fa fa-check"></i><b>4.7</b> Summary of Probability</a></li>
-<li class="chapter" data-level="4.8" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#samples-populations-and-sampling"><i class="fa fa-check"></i><b>4.8</b> Samples, populations and sampling</a><ul>
+<li class="chapter" data-level="4.8" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#samples-populations-and-sampling"><i class="fa fa-check"></i><b>4.8</b> Samples, populations and sampling</a>
+<ul>
 <li class="chapter" data-level="4.8.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#defining-a-population"><i class="fa fa-check"></i><b>4.8.1</b> Defining a population</a></li>
 <li class="chapter" data-level="4.8.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#simple-random-samples"><i class="fa fa-check"></i><b>4.8.2</b> Simple random samples</a></li>
 <li class="chapter" data-level="4.8.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#most-samples-are-not-simple-random-samples"><i class="fa fa-check"></i><b>4.8.3</b> Most samples are not simple random samples</a></li>
@@ -307,17 +336,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.5" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#population-parameters-and-sample-statistics"><i class="fa fa-check"></i><b>4.8.5</b> Population parameters and sample statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-law-of-large-numbers"><i class="fa fa-check"></i><b>4.9</b> The law of large numbers</a></li>
-<li class="chapter" data-level="4.10" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>4.10</b> Sampling distributions and the central limit theorem</a><ul>
+<li class="chapter" data-level="4.10" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>4.10</b> Sampling distributions and the central limit theorem</a>
+<ul>
 <li class="chapter" data-level="4.10.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#sampling-distribution-of-the-sample-means"><i class="fa fa-check"></i><b>4.10.1</b> Sampling distribution of the sample means</a></li>
 <li class="chapter" data-level="4.10.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#seeing-the-pieces"><i class="fa fa-check"></i><b>4.10.2</b> Seeing the pieces</a></li>
 <li class="chapter" data-level="4.10.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#sampling-distributions-exist-for-any-sample-statistic"><i class="fa fa-check"></i><b>4.10.3</b> Sampling distributions exist for any sample statistic!</a></li>
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#the-central-limit-theorem"><i class="fa fa-check"></i><b>4.11</b> The central limit theorem</a></li>
-<li class="chapter" data-level="4.12" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#z-scores"><i class="fa fa-check"></i><b>4.12</b> z-scores</a><ul>
+<li class="chapter" data-level="4.12" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#z-scores"><i class="fa fa-check"></i><b>4.12</b> z-scores</a>
+<ul>
 <li class="chapter" data-level="4.12.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#idea-behind-z-scores"><i class="fa fa-check"></i><b>4.12.1</b> Idea behind z-scores</a></li>
 <li class="chapter" data-level="4.12.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#calculating-z-scores"><i class="fa fa-check"></i><b>4.12.2</b> Calculating z-scores</a></li>
 </ul></li>
-<li class="chapter" data-level="4.13" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#estimating-population-parameters"><i class="fa fa-check"></i><b>4.13</b> Estimating population parameters</a><ul>
+<li class="chapter" data-level="4.13" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#estimating-population-parameters"><i class="fa fa-check"></i><b>4.13</b> Estimating population parameters</a>
+<ul>
 <li class="chapter" data-level="4.13.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#concrete-population-parameters"><i class="fa fa-check"></i><b>4.13.1</b> Concrete population parameters</a></li>
 <li class="chapter" data-level="4.13.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#abstract-population-parameters"><i class="fa fa-check"></i><b>4.13.2</b> Abstract population parameters</a></li>
 <li class="chapter" data-level="4.13.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#experiments-and-population-parameters"><i class="fa fa-check"></i><b>4.13.3</b> Experiments and Population parameters</a></li>
@@ -325,11 +357,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.13.5" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#estimating-the-population-mean"><i class="fa fa-check"></i><b>4.13.5</b> Estimating the population mean</a></li>
 <li class="chapter" data-level="4.13.6" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#estimating-the-population-standard-deviation"><i class="fa fa-check"></i><b>4.13.6</b> Estimating the population standard deviation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.14" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#estimating-a-confidence-interval"><i class="fa fa-check"></i><b>4.14</b> Estimating a confidence interval</a><ul>
+<li class="chapter" data-level="4.14" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#estimating-a-confidence-interval"><i class="fa fa-check"></i><b>4.14</b> Estimating a confidence interval</a>
+<ul>
 <li class="chapter" data-level="4.14.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#a-slight-mistake-in-the-formula"><i class="fa fa-check"></i><b>4.14.1</b> A slight mistake in the formula</a></li>
 </ul></li>
 <li class="chapter" data-level="4.15" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#summary-2"><i class="fa fa-check"></i><b>4.15</b> Summary</a></li>
-<li class="chapter" data-level="4.16" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#videos-2"><i class="fa fa-check"></i><b>4.16</b> Videos</a><ul>
+<li class="chapter" data-level="4.16" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#videos-2"><i class="fa fa-check"></i><b>4.16</b> Videos</a>
+<ul>
 <li class="chapter" data-level="4.16.1" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#introduction-to-probability"><i class="fa fa-check"></i><b>4.16.1</b> Introduction to Probability</a></li>
 <li class="chapter" data-level="4.16.2" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#chebychevs-theorem"><i class="fa fa-check"></i><b>4.16.2</b> Chebychev’s Theorem</a></li>
 <li class="chapter" data-level="4.16.3" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#z-scores-1"><i class="fa fa-check"></i><b>4.16.3</b> Z-scores</a></li>
@@ -337,19 +371,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.16.5" data-path="probability-sampling-and-estimation.html"><a href="probability-sampling-and-estimation.html#normal-distribution-ii"><i class="fa fa-check"></i><b>4.16.5</b> Normal Distribution II</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html"><i class="fa fa-check"></i><b>5</b> Foundations for inference</a><ul>
+<li class="chapter" data-level="5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html"><i class="fa fa-check"></i><b>5</b> Foundations for inference</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#brief-review-of-experiments"><i class="fa fa-check"></i><b>5.1</b> Brief review of Experiments</a></li>
-<li class="chapter" data-level="5.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-data-came-from-a-distribution"><i class="fa fa-check"></i><b>5.2</b> The data came from a distribution</a><ul>
+<li class="chapter" data-level="5.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-data-came-from-a-distribution"><i class="fa fa-check"></i><b>5.2</b> The data came from a distribution</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#uniform-distribution"><i class="fa fa-check"></i><b>5.2.1</b> Uniform distribution</a></li>
 <li class="chapter" data-level="5.2.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#not-all-samples-are-the-same-they-are-usually-quite-different"><i class="fa fa-check"></i><b>5.2.2</b> Not all samples are the same, they are usually quite different</a></li>
 <li class="chapter" data-level="5.2.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#large-samples-are-more-like-the-distribution-they-came-from"><i class="fa fa-check"></i><b>5.2.3</b> Large samples are more like the distribution they came from</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#is-there-a-difference"><i class="fa fa-check"></i><b>5.3</b> Is there a difference?</a><ul>
+<li class="chapter" data-level="5.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#is-there-a-difference"><i class="fa fa-check"></i><b>5.3</b> Is there a difference?</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#chance-can-produce-differences"><i class="fa fa-check"></i><b>5.3.1</b> Chance can produce differences</a></li>
 <li class="chapter" data-level="5.3.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#differences-due-to-chance-can-be-simulated"><i class="fa fa-check"></i><b>5.3.2</b> Differences due to chance can be simulated</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#chance-makes-some-differences-more-likely-than-others"><i class="fa fa-check"></i><b>5.4</b> Chance makes some differences more likely than others</a></li>
-<li class="chapter" data-level="5.5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-crump-test"><i class="fa fa-check"></i><b>5.5</b> The Crump Test</a><ul>
+<li class="chapter" data-level="5.5" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-crump-test"><i class="fa fa-check"></i><b>5.5</b> The Crump Test</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#intuitive-methods"><i class="fa fa-check"></i><b>5.5.1</b> Intuitive methods</a></li>
 <li class="chapter" data-level="5.5.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-1-frequency-based-intuition-about-occurence"><i class="fa fa-check"></i><b>5.5.2</b> Part 1: Frequency based intuition about occurence</a></li>
 <li class="chapter" data-level="5.5.3" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-2-simulating-chance"><i class="fa fa-check"></i><b>5.5.3</b> Part 2: Simulating chance</a></li>
@@ -358,25 +396,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.6" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#part-5-i-have-the-power"><i class="fa fa-check"></i><b>5.5.6</b> Part 5: I have the power</a></li>
 <li class="chapter" data-level="5.5.7" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#summary-of-crump-test"><i class="fa fa-check"></i><b>5.5.7</b> Summary of Crump Test</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-randomization-test-permutation-test"><i class="fa fa-check"></i><b>5.6</b> The randomization test (permutation test)</a><ul>
+<li class="chapter" data-level="5.6" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#the-randomization-test-permutation-test"><i class="fa fa-check"></i><b>5.6</b> The randomization test (permutation test)</a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#pretend-example-does-chewing-gum-improve-your-grades"><i class="fa fa-check"></i><b>5.6.1</b> Pretend example does chewing gum improve your grades?</a></li>
 <li class="chapter" data-level="5.6.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#take-homes-so-far"><i class="fa fa-check"></i><b>5.6.2</b> Take homes so far</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#videos-3"><i class="fa fa-check"></i><b>5.7</b> Videos</a><ul>
+<li class="chapter" data-level="5.7" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#videos-3"><i class="fa fa-check"></i><b>5.7</b> Videos</a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#null-and-alternate-hypotheses"><i class="fa fa-check"></i><b>5.7.1</b> Null and Alternate Hypotheses</a></li>
 <li class="chapter" data-level="5.7.2" data-path="foundations-for-inference.html"><a href="foundations-for-inference.html#types-of-errors"><i class="fa fa-check"></i><b>5.7.2</b> Types of Errors</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-Tests</a><ul>
+<li class="chapter" data-level="6" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>6</b> t-Tests</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="t-tests.html"><a href="t-tests.html#check-your-confidence-in-your-mean"><i class="fa fa-check"></i><b>6.1</b> Check your confidence in your mean</a></li>
-<li class="chapter" data-level="6.2" data-path="t-tests.html"><a href="t-tests.html#one-sample-t-test-a-new-t-test"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test: A new t-test</a><ul>
+<li class="chapter" data-level="6.2" data-path="t-tests.html"><a href="t-tests.html#one-sample-t-test-a-new-t-test"><i class="fa fa-check"></i><b>6.2</b> One-sample t-test: A new t-test</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="t-tests.html"><a href="t-tests.html#formulas-for-one-sample-t-test"><i class="fa fa-check"></i><b>6.2.1</b> Formulas for one-sample t-test</a></li>
 <li class="chapter" data-level="6.2.2" data-path="t-tests.html"><a href="t-tests.html#what-does-t-represent"><i class="fa fa-check"></i><b>6.2.2</b> What does t represent?</a></li>
 <li class="chapter" data-level="6.2.3" data-path="t-tests.html"><a href="t-tests.html#calculating-t-from-data"><i class="fa fa-check"></i><b>6.2.3</b> Calculating t from data</a></li>
 <li class="chapter" data-level="6.2.4" data-path="t-tests.html"><a href="t-tests.html#how-does-t-behave"><i class="fa fa-check"></i><b>6.2.4</b> How does t behave?</a></li>
 <li class="chapter" data-level="6.2.5" data-path="t-tests.html"><a href="t-tests.html#making-a-decision"><i class="fa fa-check"></i><b>6.2.5</b> Making a decision</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples t-test</a><ul>
+<li class="chapter" data-level="6.3" data-path="t-tests.html"><a href="t-tests.html#paired-samples-t-test"><i class="fa fa-check"></i><b>6.3</b> Paired-samples t-test</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="t-tests.html"><a href="t-tests.html#mehr-song-and-spelke-2016"><i class="fa fa-check"></i><b>6.3.1</b> Mehr, Song, and Spelke (2016)</a></li>
 <li class="chapter" data-level="6.3.2" data-path="t-tests.html"><a href="t-tests.html#the-data"><i class="fa fa-check"></i><b>6.3.2</b> The data</a></li>
 <li class="chapter" data-level="6.3.3" data-path="t-tests.html"><a href="t-tests.html#the-difference-scores-1"><i class="fa fa-check"></i><b>6.3.3</b> The difference scores</a></li>
@@ -391,18 +434,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="t-tests.html"><a href="t-tests.html#the-paired-samples-t-test-strikes-back"><i class="fa fa-check"></i><b>6.4</b> The paired samples t-test strikes back</a></li>
 <li class="chapter" data-level="6.5" data-path="t-tests.html"><a href="t-tests.html#independent-samples-t-test-the-return-of-the-t-test"><i class="fa fa-check"></i><b>6.5</b> Independent samples t-test: The return of the t-test?</a></li>
-<li class="chapter" data-level="6.6" data-path="t-tests.html"><a href="t-tests.html#simulating-data-for-t-tests"><i class="fa fa-check"></i><b>6.6</b> Simulating data for t-tests</a><ul>
+<li class="chapter" data-level="6.6" data-path="t-tests.html"><a href="t-tests.html#simulating-data-for-t-tests"><i class="fa fa-check"></i><b>6.6</b> Simulating data for t-tests</a>
+<ul>
 <li class="chapter" data-level="6.6.1" data-path="t-tests.html"><a href="t-tests.html#simulating-a-one-sample-t-test"><i class="fa fa-check"></i><b>6.6.1</b> Simulating a one-sample t-test</a></li>
 <li class="chapter" data-level="6.6.2" data-path="t-tests.html"><a href="t-tests.html#simulating-a-paired-samples-t-test"><i class="fa fa-check"></i><b>6.6.2</b> Simulating a paired samples t-test</a></li>
 <li class="chapter" data-level="6.6.3" data-path="t-tests.html"><a href="t-tests.html#simulating-an-independent-samples-t.test"><i class="fa fa-check"></i><b>6.6.3</b> Simulating an independent samples t.test</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="t-tests.html"><a href="t-tests.html#videos-4"><i class="fa fa-check"></i><b>6.7</b> Videos</a><ul>
+<li class="chapter" data-level="6.7" data-path="t-tests.html"><a href="t-tests.html#videos-4"><i class="fa fa-check"></i><b>6.7</b> Videos</a>
+<ul>
 <li class="chapter" data-level="6.7.1" data-path="t-tests.html"><a href="t-tests.html#one-or-two-tailed-tests"><i class="fa fa-check"></i><b>6.7.1</b> One or Two tailed tests</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a><ul>
+<li class="chapter" data-level="7" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>7</b> ANOVA</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="anova.html"><a href="anova.html#anova-is-analysis-of-variance"><i class="fa fa-check"></i><b>7.1</b> ANOVA is Analysis of Variance</a></li>
-<li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#one-factor-anova"><i class="fa fa-check"></i><b>7.2</b> One-factor ANOVA</a><ul>
+<li class="chapter" data-level="7.2" data-path="anova.html"><a href="anova.html#one-factor-anova"><i class="fa fa-check"></i><b>7.2</b> One-factor ANOVA</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="anova.html"><a href="anova.html#computing-the-f-value"><i class="fa fa-check"></i><b>7.2.1</b> Computing the <span class="math inline">\(F\)</span>-value</a></li>
 <li class="chapter" data-level="7.2.2" data-path="anova.html"><a href="anova.html#ss-total"><i class="fa fa-check"></i><b>7.2.2</b> SS Total</a></li>
 <li class="chapter" data-level="7.2.3" data-path="anova.html"><a href="anova.html#ss-effect"><i class="fa fa-check"></i><b>7.2.3</b> SS Effect</a></li>
@@ -412,20 +459,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2.7" data-path="anova.html"><a href="anova.html#calculate-f"><i class="fa fa-check"></i><b>7.2.7</b> Calculate F</a></li>
 <li class="chapter" data-level="7.2.8" data-path="anova.html"><a href="anova.html#the-anova-table"><i class="fa fa-check"></i><b>7.2.8</b> The ANOVA TABLE</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#what-does-f-mean"><i class="fa fa-check"></i><b>7.3</b> What does F mean?</a><ul>
+<li class="chapter" data-level="7.3" data-path="anova.html"><a href="anova.html#what-does-f-mean"><i class="fa fa-check"></i><b>7.3</b> What does F mean?</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="anova.html"><a href="anova.html#making-decisions"><i class="fa fa-check"></i><b>7.3.1</b> Making Decisions</a></li>
 <li class="chapter" data-level="7.3.2" data-path="anova.html"><a href="anova.html#fs-and-means"><i class="fa fa-check"></i><b>7.3.2</b> Fs and means</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#anova-on-real-data"><i class="fa fa-check"></i><b>7.4</b> ANOVA on Real Data</a><ul>
+<li class="chapter" data-level="7.4" data-path="anova.html"><a href="anova.html#anova-on-real-data"><i class="fa fa-check"></i><b>7.4</b> ANOVA on Real Data</a>
+<ul>
 <li class="chapter" data-level="7.4.1" data-path="anova.html"><a href="anova.html#tetris-and-bad-memories"><i class="fa fa-check"></i><b>7.4.1</b> Tetris and bad memories</a></li>
 <li class="chapter" data-level="7.4.2" data-path="anova.html"><a href="anova.html#comparing-means-after-the-anova"><i class="fa fa-check"></i><b>7.4.2</b> Comparing means after the ANOVA</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="anova.html"><a href="anova.html#anova-summmary"><i class="fa fa-check"></i><b>7.5</b> ANOVA Summmary</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>8</b> Repeated Measures ANOVA</a><ul>
+<li class="chapter" data-level="8" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html"><i class="fa fa-check"></i><b>8</b> Repeated Measures ANOVA</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#repeated-measures-design"><i class="fa fa-check"></i><b>8.1</b> Repeated measures design</a></li>
 <li class="chapter" data-level="8.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#partioning-the-sums-of-squares"><i class="fa fa-check"></i><b>8.2</b> Partioning the Sums of Squares</a></li>
-<li class="chapter" data-level="8.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#calculating-the-rm-anova"><i class="fa fa-check"></i><b>8.3</b> Calculating the RM ANOVA</a><ul>
+<li class="chapter" data-level="8.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#calculating-the-rm-anova"><i class="fa fa-check"></i><b>8.3</b> Calculating the RM ANOVA</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#ss-total-1"><i class="fa fa-check"></i><b>8.3.1</b> SS Total</a></li>
 <li class="chapter" data-level="8.3.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#ss-effect-1"><i class="fa fa-check"></i><b>8.3.2</b> SS Effect</a></li>
 <li class="chapter" data-level="8.3.3" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#ss-error-within-conditions"><i class="fa fa-check"></i><b>8.3.3</b> SS Error (within-conditions)</a></li>
@@ -436,20 +487,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.8" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#compute-f"><i class="fa fa-check"></i><b>8.3.8</b> Compute F</a></li>
 <li class="chapter" data-level="8.3.9" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#p-value"><i class="fa fa-check"></i><b>8.3.9</b> p-value</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#things-worth-knowing"><i class="fa fa-check"></i><b>8.4</b> Things worth knowing</a><ul>
+<li class="chapter" data-level="8.4" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#things-worth-knowing"><i class="fa fa-check"></i><b>8.4</b> Things worth knowing</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#repeated-vs-between-subjects-anova"><i class="fa fa-check"></i><b>8.4.1</b> Repeated vs between-subjects ANOVA</a></li>
 <li class="chapter" data-level="8.4.2" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#repeated-measures-designs-are-more-sensitive"><i class="fa fa-check"></i><b>8.4.2</b> repeated measures designs are more sensitive</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#real-data"><i class="fa fa-check"></i><b>8.5</b> Real Data</a></li>
 <li class="chapter" data-level="8.6" data-path="repeated-measures-anova.html"><a href="repeated-measures-anova.html#summary-3"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVA</a><ul>
-<li class="chapter" data-level="9.1" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-basics"><i class="fa fa-check"></i><b>9.1</b> Factorial basics</a><ul>
+<li class="chapter" data-level="9" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>9</b> Factorial ANOVA</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-basics"><i class="fa fa-check"></i><b>9.1</b> Factorial basics</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="factorial-anova.html"><a href="factorial-anova.html#x2-designs"><i class="fa fa-check"></i><b>9.1.1</b> 2x2 Designs</a></li>
 <li class="chapter" data-level="9.1.2" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-notation"><i class="fa fa-check"></i><b>9.1.2</b> Factorial Notation</a></li>
 <li class="chapter" data-level="9.1.3" data-path="factorial-anova.html"><a href="factorial-anova.html#x-3-designs"><i class="fa fa-check"></i><b>9.1.3</b> 2 x 3 designs</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="factorial-anova.html"><a href="factorial-anova.html#purpose-of-factorial-designs"><i class="fa fa-check"></i><b>9.2</b> Purpose of Factorial Designs</a><ul>
+<li class="chapter" data-level="9.2" data-path="factorial-anova.html"><a href="factorial-anova.html#purpose-of-factorial-designs"><i class="fa fa-check"></i><b>9.2</b> Purpose of Factorial Designs</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="factorial-anova.html"><a href="factorial-anova.html#factorials-manipulate-an-effect-of-interest"><i class="fa fa-check"></i><b>9.2.1</b> Factorials manipulate an effect of interest</a></li>
 <li class="chapter" data-level="9.2.2" data-path="factorial-anova.html"><a href="factorial-anova.html#spot-the-difference"><i class="fa fa-check"></i><b>9.2.2</b> Spot the difference</a></li>
 <li class="chapter" data-level="9.2.3" data-path="factorial-anova.html"><a href="factorial-anova.html#distraction-manipulation"><i class="fa fa-check"></i><b>9.2.3</b> Distraction manipulation</a></li>
@@ -458,7 +513,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="factorial-anova.html"><a href="factorial-anova.html#graphing-the-means"><i class="fa fa-check"></i><b>9.3</b> Graphing the means</a></li>
 <li class="chapter" data-level="9.4" data-path="factorial-anova.html"><a href="factorial-anova.html#knowing-what-you-want-to-find-out"><i class="fa fa-check"></i><b>9.4</b> Knowing what you want to find out</a></li>
-<li class="chapter" data-level="9.5" data-path="factorial-anova.html"><a href="factorial-anova.html#simple-analysis-of-2x2-repeated-measures-design"><i class="fa fa-check"></i><b>9.5</b> Simple analysis of 2x2 repeated measures design</a><ul>
+<li class="chapter" data-level="9.5" data-path="factorial-anova.html"><a href="factorial-anova.html#simple-analysis-of-2x2-repeated-measures-design"><i class="fa fa-check"></i><b>9.5</b> Simple analysis of 2x2 repeated measures design</a>
+<ul>
 <li class="chapter" data-level="9.5.1" data-path="factorial-anova.html"><a href="factorial-anova.html#main-effects"><i class="fa fa-check"></i><b>9.5.1</b> Main effects</a></li>
 <li class="chapter" data-level="9.5.2" data-path="factorial-anova.html"><a href="factorial-anova.html#interaction"><i class="fa fa-check"></i><b>9.5.2</b> Interaction</a></li>
 <li class="chapter" data-level="9.5.3" data-path="factorial-anova.html"><a href="factorial-anova.html#looking-at-the-data"><i class="fa fa-check"></i><b>9.5.3</b> Looking at the data</a></li>
@@ -468,7 +524,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.7" data-path="factorial-anova.html"><a href="factorial-anova.html#writing-it-all-up"><i class="fa fa-check"></i><b>9.5.7</b> Writing it all up</a></li>
 <li class="chapter" data-level="9.5.8" data-path="factorial-anova.html"><a href="factorial-anova.html#x2-repeated-measures-anova"><i class="fa fa-check"></i><b>9.5.8</b> 2x2 Repeated Measures ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="factorial-anova.html"><a href="factorial-anova.html#x2-between-subjects-anova"><i class="fa fa-check"></i><b>9.6</b> 2x2 Between-subjects ANOVA</a><ul>
+<li class="chapter" data-level="9.6" data-path="factorial-anova.html"><a href="factorial-anova.html#x2-between-subjects-anova"><i class="fa fa-check"></i><b>9.6</b> 2x2 Between-subjects ANOVA</a>
+<ul>
 <li class="chapter" data-level="9.6.1" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-total-2"><i class="fa fa-check"></i><b>9.6.1</b> SS Total</a></li>
 <li class="chapter" data-level="9.6.2" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-distraction"><i class="fa fa-check"></i><b>9.6.2</b> SS Distraction</a></li>
 <li class="chapter" data-level="9.6.3" data-path="factorial-anova.html"><a href="factorial-anova.html#ss-reward"><i class="fa fa-check"></i><b>9.6.3</b> SS Reward</a></li>
@@ -477,7 +534,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6.6" data-path="factorial-anova.html"><a href="factorial-anova.html#check-your-work"><i class="fa fa-check"></i><b>9.6.6</b> Check your work</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="factorial-anova.html"><a href="factorial-anova.html#fireside-chat"><i class="fa fa-check"></i><b>9.7</b> Fireside chat</a></li>
-<li class="chapter" data-level="9.8" data-path="factorial-anova.html"><a href="factorial-anova.html#real-data-1"><i class="fa fa-check"></i><b>9.8</b> Real Data</a><ul>
+<li class="chapter" data-level="9.8" data-path="factorial-anova.html"><a href="factorial-anova.html#real-data-1"><i class="fa fa-check"></i><b>9.8</b> Real Data</a>
+<ul>
 <li class="chapter" data-level="9.8.1" data-path="factorial-anova.html"><a href="factorial-anova.html#stand-at-attention"><i class="fa fa-check"></i><b>9.8.1</b> Stand at attention</a></li>
 <li class="chapter" data-level="9.8.2" data-path="factorial-anova.html"><a href="factorial-anova.html#plot-the-data"><i class="fa fa-check"></i><b>9.8.2</b> Plot the data</a></li>
 <li class="chapter" data-level="9.8.3" data-path="factorial-anova.html"><a href="factorial-anova.html#conduct-the-anova"><i class="fa fa-check"></i><b>9.8.3</b> Conduct the ANOVA</a></li>
@@ -488,48 +546,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.9" data-path="factorial-anova.html"><a href="factorial-anova.html#factorial-summary"><i class="fa fa-check"></i><b>9.9</b> Factorial summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> More On Factorial Designs</a><ul>
-<li class="chapter" data-level="10.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#looking-at-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.1</b> Looking at main effects and interactions</a><ul>
+<li class="chapter" data-level="10" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html"><i class="fa fa-check"></i><b>10</b> More On Factorial Designs</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#looking-at-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.1</b> Looking at main effects and interactions</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#x2-designs-1"><i class="fa fa-check"></i><b>10.1.1</b> 2x2 designs</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#interpreting-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.2</b> Interpreting main effects and interactions</a><ul>
+<li class="chapter" data-level="10.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#interpreting-main-effects-and-interactions"><i class="fa fa-check"></i><b>10.2</b> Interpreting main effects and interactions</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#a-consistent-main-effect-and-an-interaction"><i class="fa fa-check"></i><b>10.2.1</b> A consistent main effect and an interaction</a></li>
 <li class="chapter" data-level="10.2.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#an-inconsistent-main-effect-and-an-interaction"><i class="fa fa-check"></i><b>10.2.2</b> An inconsistent main effect and an interaction</a></li>
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#mixed-designs"><i class="fa fa-check"></i><b>10.3</b> Mixed Designs</a></li>
-<li class="chapter" data-level="10.4" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#more-complicated-designs"><i class="fa fa-check"></i><b>10.4</b> More complicated designs</a><ul>
+<li class="chapter" data-level="10.4" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#more-complicated-designs"><i class="fa fa-check"></i><b>10.4</b> More complicated designs</a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#x3-design"><i class="fa fa-check"></i><b>10.4.1</b> 2x3 design</a></li>
 <li class="chapter" data-level="10.4.2" data-path="more-on-factorial-designs.html"><a href="more-on-factorial-designs.html#x2x2-designs"><i class="fa fa-check"></i><b>10.4.2</b> 2x2x2 designs</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>11</b> Simulating Data</a><ul>
+<li class="chapter" data-level="11" data-path="simulating-data.html"><a href="simulating-data.html"><i class="fa fa-check"></i><b>11</b> Simulating Data</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="simulating-data.html"><a href="simulating-data.html#reasons-to-simulate"><i class="fa fa-check"></i><b>11.1</b> Reasons to simulate</a></li>
 <li class="chapter" data-level="11.2" data-path="simulating-data.html"><a href="simulating-data.html#simulation-overview"><i class="fa fa-check"></i><b>11.2</b> Simulation overview</a></li>
 <li class="chapter" data-level="11.3" data-path="simulating-data.html"><a href="simulating-data.html#simulating-t-tests"><i class="fa fa-check"></i><b>11.3</b> Simulating t-tests</a></li>
 <li class="chapter" data-level="11.4" data-path="simulating-data.html"><a href="simulating-data.html#simulating-one-factor-anovas"><i class="fa fa-check"></i><b>11.4</b> Simulating one-factor ANOVAs</a></li>
 <li class="chapter" data-level="11.5" data-path="simulating-data.html"><a href="simulating-data.html#other-resources"><i class="fa fa-check"></i><b>11.5</b> Other resources</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a><ul>
-<li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a><ul>
+<li class="chapter" data-level="12" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html"><i class="fa fa-check"></i><b>12</b> Thinking about answering questions with data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-and-power"><i class="fa fa-check"></i><b>12.1</b> Effect-size and power</a>
+<ul>
 <li class="chapter" data-level="12.1.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#chance-vs.-real-effects"><i class="fa fa-check"></i><b>12.1.1</b> Chance vs. real effects</a></li>
 <li class="chapter" data-level="12.1.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#effect-size-concrete-vs.-abstract-notions"><i class="fa fa-check"></i><b>12.1.2</b> Effect size: concrete vs. abstract notions</a></li>
 <li class="chapter" data-level="12.1.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#cohens-d"><i class="fa fa-check"></i><b>12.1.3</b> Cohen’s d</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a><ul>
+<li class="chapter" data-level="12.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power"><i class="fa fa-check"></i><b>12.2</b> Power</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#a-digresssion-about-hypothesis-testing"><i class="fa fa-check"></i><b>12.2.1</b> A digresssion about hypothesis testing</a></li>
 <li class="chapter" data-level="12.2.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#back-to-power"><i class="fa fa-check"></i><b>12.2.2</b> Back to power</a></li>
 <li class="chapter" data-level="12.2.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#power-curves"><i class="fa fa-check"></i><b>12.2.3</b> Power curves</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#planning-your-design"><i class="fa fa-check"></i><b>12.3</b> Planning your design</a></li>
-<li class="chapter" data-level="12.4" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#some-considerations"><i class="fa fa-check"></i><b>12.4</b> Some considerations</a><ul>
+<li class="chapter" data-level="12.4" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#some-considerations"><i class="fa fa-check"></i><b>12.4</b> Some considerations</a>
+<ul>
 <li class="chapter" data-level="12.4.1" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#low-powered-studies"><i class="fa fa-check"></i><b>12.4.1</b> Low powered studies</a></li>
 <li class="chapter" data-level="12.4.2" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#large-n-and-small-effects"><i class="fa fa-check"></i><b>12.4.2</b> Large N and small effects</a></li>
 <li class="chapter" data-level="12.4.3" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#small-n-and-large-effects"><i class="fa fa-check"></i><b>12.4.3</b> Small N and Large effects</a></li>
 <li class="chapter" data-level="12.4.4" data-path="thinking-about-answering-questions-with-data.html"><a href="thinking-about-answering-questions-with-data.html#type-i-errors-are-convincing-when-n-is-small"><i class="fa fa-check"></i><b>12.4.4</b> Type I errors are convincing when N is small</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="gifs.html"><a href="gifs.html"><i class="fa fa-check"></i><b>13</b> GIFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="gifs.html"><a href="gifs.html#correlation-gifs"><i class="fa fa-check"></i><b>13.1</b> Correlation GIFs</a><ul>
+<li class="chapter" data-level="13" data-path="gifs.html"><a href="gifs.html"><i class="fa fa-check"></i><b>13</b> GIFs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="gifs.html"><a href="gifs.html#correlation-gifs"><i class="fa fa-check"></i><b>13.1</b> Correlation GIFs</a>
+<ul>
 <li class="chapter" data-level="13.1.1" data-path="gifs.html"><a href="gifs.html#n10-both-variables-drawn-from-a-uniform-distribution"><i class="fa fa-check"></i><b>13.1.1</b> N=10, both variables drawn from a uniform distribution</a></li>
 <li class="chapter" data-level="13.1.2" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>13.1.2</b> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
 <li class="chapter" data-level="13.1.3" data-path="gifs.html"><a href="gifs.html#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"><i class="fa fa-check"></i><b>13.1.3</b> Correlation between random deviates from normal distribution across four sample sizes</a></li>
@@ -538,13 +607,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.6" data-path="gifs.html"><a href="gifs.html#cell-size-and-correlation"><i class="fa fa-check"></i><b>13.1.6</b> Cell-size and correlation</a></li>
 <li class="chapter" data-level="13.1.7" data-path="gifs.html"><a href="gifs.html#regression"><i class="fa fa-check"></i><b>13.1.7</b> Regression</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="gifs.html"><a href="gifs.html#sampling-distributions"><i class="fa fa-check"></i><b>13.2</b> Sampling distributions</a><ul>
+<li class="chapter" data-level="13.2" data-path="gifs.html"><a href="gifs.html#sampling-distributions"><i class="fa fa-check"></i><b>13.2</b> Sampling distributions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="gifs.html"><a href="gifs.html#sampling-from-a-uniform-distribution"><i class="fa fa-check"></i><b>13.2.1</b> Sampling from a uniform distribution</a></li>
 <li class="chapter" data-level="13.2.2" data-path="gifs.html"><a href="gifs.html#sampling-from-uniform-with-line-showing-expected-value-for-each-number"><i class="fa fa-check"></i><b>13.2.2</b> Sampling from uniform with line showing expected value for each number</a></li>
 <li class="chapter" data-level="13.2.3" data-path="gifs.html"><a href="gifs.html#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms"><i class="fa fa-check"></i><b>13.2.3</b> Sampling distribution of the mean, Normal population distribution and sample histograms</a></li>
 <li class="chapter" data-level="13.2.4" data-path="gifs.html"><a href="gifs.html#null-and-true-effect-samples-and-sampling-means"><i class="fa fa-check"></i><b>13.2.4</b> Null and True effect samples and sampling means</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="gifs.html"><a href="gifs.html#statistical-inference"><i class="fa fa-check"></i><b>13.3</b> Statistical Inference</a><ul>
+<li class="chapter" data-level="13.3" data-path="gifs.html"><a href="gifs.html#statistical-inference"><i class="fa fa-check"></i><b>13.3</b> Statistical Inference</a>
+<ul>
 <li class="chapter" data-level="13.3.1" data-path="gifs.html"><a href="gifs.html#randomization-test"><i class="fa fa-check"></i><b>13.3.1</b> Randomization Test</a></li>
 <li class="chapter" data-level="13.3.2" data-path="gifs.html"><a href="gifs.html#independent-t-test-null"><i class="fa fa-check"></i><b>13.3.2</b> Independent t-test Null</a></li>
 <li class="chapter" data-level="13.3.3" data-path="gifs.html"><a href="gifs.html#independent-t-test-true"><i class="fa fa-check"></i><b>13.3.3</b> Independent t-test True</a></li>
@@ -552,7 +623,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3.5" data-path="gifs.html"><a href="gifs.html#one-factor-anova-null"><i class="fa fa-check"></i><b>13.3.5</b> one-factor ANOVA Null</a></li>
 <li class="chapter" data-level="13.3.6" data-path="gifs.html"><a href="gifs.html#factorial-null"><i class="fa fa-check"></i><b>13.3.6</b> Factorial Null</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="gifs.html"><a href="gifs.html#distributions"><i class="fa fa-check"></i><b>13.4</b> Distributions</a><ul>
+<li class="chapter" data-level="13.4" data-path="gifs.html"><a href="gifs.html#distributions"><i class="fa fa-check"></i><b>13.4</b> Distributions</a>
+<ul>
 <li class="chapter" data-level="13.4.1" data-path="gifs.html"><a href="gifs.html#normal-changing-mean"><i class="fa fa-check"></i><b>13.4.1</b> Normal changing mean</a></li>
 <li class="chapter" data-level="13.4.2" data-path="gifs.html"><a href="gifs.html#normal-changing-sd"><i class="fa fa-check"></i><b>13.4.2</b> Normal changing sd</a></li>
 </ul></li>
@@ -577,60 +649,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="repeated-measures-anova" class="section level1">
+<div id="repeated-measures-anova" class="section level1" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Repeated Measures ANOVA</h1>
 <p>This chapter introduces you to <strong>repeated measures ANOVA</strong>. Repeated measures ANOVAs are very common in Psychology, because psychologists often use repeated measures designs, and repeated measures ANOVAs are the appropriate test for making inferences about repeated measures designs.</p>
 <p>Remember the paired sample <span class="math inline">\(t\)</span>-test? We used that test to compare two means from a repeated measures design. Remember what a repeated measures design is? It’s also called a within-subjects design. These designs involve measuring the same subject more than once. Specifically, at least once for every experimental condition. In the paired <span class="math inline">\(t\)</span>-test example, we discussed a simple experiment with only two experimental conditions. There, each subject would contribute a measurement to level one and level two of the design.</p>
 <p>However, paired-samples <span class="math inline">\(t\)</span>-tests are limited to comparing two means. What if you had a design that had more than two experimental conditions? For example, perhaps your experiment had 3 levels for the independent variable, and each subject contributed data to each of the three levels?</p>
 <p>This is starting to sounds like an ANOVA problem. ANOVAs are capable of evaluating whether there is a difference between any number of means, two or greater. So, we can use an ANOVA for our repeated measures design with three levels for the independent variable.</p>
 <p>Great! So, what makes a repeated measures ANOVA different from the ANOVA we just talked about?</p>
-<div id="repeated-measures-design" class="section level2">
+<div id="repeated-measures-design" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Repeated measures design</h2>
 <p>Let’s use the exact same toy example from the previous chapter, but let’s convert it to a repeated measures design.</p>
 <p>Last time, we imagined we had some data in three groups, A, B, and C. The data looked like this:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">groups</th>
-<th align="right">scores</th>
+<tr>
+<th style="text-align:left;">
+groups
+</th>
+<th style="text-align:right;">
+scores
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="right">20</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+20
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="right">11</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+11
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+6
+</td>
 </tr>
-<tr class="odd">
-<td align="left">B</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="right">7</td>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">C</td>
-<td align="right">11</td>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+11
+</td>
 </tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
 </tbody>
 </table>
@@ -638,62 +750,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s change things up a tiny bit, and imagine we only had 3 subjects in total in the experiment. And, that each subject contributed data to the three levels of the independent variable, A, B, and C. Before we called the IV <code>groups</code>, because there were different groups of subjects. Let’s change that to <code>conditions</code>, because now the same group of subjects participates in all three conditions. Here’s the new table for a within-subjects (repeated measures) version of this experiment:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="right">subjects</th>
-<th align="left">conditions</th>
-<th align="right">scores</th>
+<tr>
+<th style="text-align:right;">
+subjects
+</th>
+<th style="text-align:left;">
+conditions
+</th>
+<th style="text-align:right;">
+scores
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">A</td>
-<td align="right">20</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+20
+</td>
 </tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">A</td>
-<td align="right">11</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+11
+</td>
 </tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">A</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="left">B</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+6
+</td>
 </tr>
-<tr class="odd">
-<td align="right">2</td>
-<td align="left">B</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="right">3</td>
-<td align="left">B</td>
-<td align="right">7</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">C</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">C</td>
-<td align="right">11</td>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+11
+</td>
 </tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">C</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="partioning-the-sums-of-squares" class="section level2">
+<div id="partioning-the-sums-of-squares" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Partioning the Sums of Squares</h2>
 <p>Time to introduce a new name for an idea you learned about last chapter, it’s called <strong>partitioning the sums of squares</strong>. Sometimes an obscure new name can be helpful for your understanding of what is going on. ANOVAs are all about partitioning the sums of squares. We already did some partitioning in the last chapter. What do we mean by partitioning?</p>
 <p>Imagine you had a big empty house with no rooms in it. What would happen if you partitioned the house? What would you be doing? One way to partition the house is to split it up into different rooms. You can do this by adding new walls and making little rooms everywhere. That’s what partitioning means, to split up.</p>
@@ -730,7 +902,7 @@ Figure 8.2: Close-up showing that the Error term is split into two parts in the 
 </div>
 <p>As we point out, the <span class="math inline">\(SS_\text{Error (left-over)}\)</span> in the green circle will be a smaller number than the <span class="math inline">\(SS_\text{Error (within-group)}\)</span>. That’s because we are able to subtract out the <span class="math inline">\(SS_\text{Subjects}\)</span> part of the <span class="math inline">\(SS_\text{Error (within-group)}\)</span>. As we will see shortly, this can have the effect of producing larger F-values when using a repeated-measures design compared to a between-subjects design.</p>
 </div>
-<div id="calculating-the-rm-anova" class="section level2">
+<div id="calculating-the-rm-anova" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Calculating the RM ANOVA</h2>
 <p>Now that you are familiar with the concept of an ANOVA table (remember the table from last chapter where we reported all of the parts to calculate the <span class="math inline">\(F\)</span>-value?), we can take a look at the things we need to find out to make the ANOVA table. The figure below presents an abstract for the repeated-measures ANOVA table. It shows us all the thing we need to calculate to get the <span class="math inline">\(F\)</span>-value for our data.</p>
 <div class="figure"><span id="fig:8rmtable"></span>
@@ -740,96 +912,214 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 </p>
 </div>
 <p>So, what we need to do is calculate all the <span class="math inline">\(SS\)</span>es that we did before for the between-subjects ANOVA. That means the next three steps are identical to the ones you did before. In fact, I will just basically copy the next three steps to find <span class="math inline">\(SS_\text{TOTAL}\)</span>, <span class="math inline">\(SS_\text{Effect}\)</span> , and <span class="math inline">\(SS_\text{Error (within-conditions)}\)</span>. After that we will talk about splitting up <span class="math inline">\(SS_\text{Error (within-conditions)}\)</span> into two parts, this is the new thing for this chapter. Here we go!</p>
-<div id="ss-total-1" class="section level3">
+<div id="ss-total-1" class="section level3" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> SS Total</h3>
 <p>The total sums of squares, or <span class="math inline">\(SS\text{Total}\)</span> measures the total variation in a set of data. All we do is find the difference between each score and the grand mean, then we square the differences and add them all up.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">subjects</th>
-<th align="left">conditions</th>
-<th align="left">scores</th>
-<th align="left">diff</th>
-<th align="left">diff_squared</th>
+<tr>
+<th style="text-align:left;">
+subjects
+</th>
+<th style="text-align:left;">
+conditions
+</th>
+<th style="text-align:left;">
+scores
+</th>
+<th style="text-align:left;">
+diff
+</th>
+<th style="text-align:left;">
+diff_squared
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">A</td>
-<td align="left">20</td>
-<td align="left">13</td>
-<td align="left">169</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+169
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">A</td>
-<td align="left">11</td>
-<td align="left">4</td>
-<td align="left">16</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+16
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">A</td>
-<td align="left">2</td>
-<td align="left">-5</td>
-<td align="left">25</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+-5
+</td>
+<td style="text-align:left;">
+25
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">B</td>
-<td align="left">6</td>
-<td align="left">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+-1
+</td>
+<td style="text-align:left;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2</td>
-<td align="left">B</td>
-<td align="left">2</td>
-<td align="left">-5</td>
-<td align="left">25</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+-5
+</td>
+<td style="text-align:left;">
+25
+</td>
 </tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">B</td>
-<td align="left">7</td>
-<td align="left">0</td>
-<td align="left">0</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">-5</td>
-<td align="left">25</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+-5
+</td>
+<td style="text-align:left;">
+25
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">C</td>
-<td align="left">11</td>
-<td align="left">4</td>
-<td align="left">16</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+16
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">-5</td>
-<td align="left">25</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+-5
+</td>
+<td style="text-align:left;">
+25
+</td>
 </tr>
-<tr class="even">
-<td align="left">Sums</td>
-<td align="left"></td>
-<td align="left">63</td>
-<td align="left">0</td>
-<td align="left">302</td>
+<tr>
+<td style="text-align:left;">
+Sums
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+302
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Means</td>
-<td align="left"></td>
-<td align="left">7</td>
-<td align="left">0</td>
-<td align="left">33.5555555555556</td>
+<tr>
+<td style="text-align:left;">
+Means
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+33.5555555555556
+</td>
 </tr>
 </tbody>
 </table>
@@ -841,7 +1131,7 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p><span class="math inline">\(SS_\text{total} = 302\)</span> and</p>
 <p><span class="math inline">\(302 = SS_\text{Effect} + SS_\text{Error}\)</span></p>
 </div>
-<div id="ss-effect-1" class="section level3">
+<div id="ss-effect-1" class="section level3" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> SS Effect</h3>
 <p><span class="math inline">\(SS_\text{Total}\)</span> gave us a number representing all of the change in our data, how they all are different from the grand mean.</p>
 <p>What we want to do next is estimate how much of the total change in the data might be due to the experimental manipulation. For example, if we ran an experiment that causes causes change in the measurement, then the means for each group will be different from other, and the scores in each group will be different from each. As a result, the manipulation forces change onto the numbers, and this will naturally mean that some part of the total variation in the numbers is caused by the manipulation.</p>
@@ -849,103 +1139,245 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p>Consider this table, showing the calculations for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">subjects</th>
-<th align="left">conditions</th>
-<th align="left">scores</th>
-<th align="left">means</th>
-<th align="left">diff</th>
-<th align="left">diff_squared</th>
+<tr>
+<th style="text-align:left;">
+subjects
+</th>
+<th style="text-align:left;">
+conditions
+</th>
+<th style="text-align:left;">
+scores
+</th>
+<th style="text-align:left;">
+means
+</th>
+<th style="text-align:left;">
+diff
+</th>
+<th style="text-align:left;">
+diff_squared
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">A</td>
-<td align="left">20</td>
-<td align="left">11</td>
-<td align="left">4</td>
-<td align="left">16</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+16
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">A</td>
-<td align="left">11</td>
-<td align="left">11</td>
-<td align="left">4</td>
-<td align="left">16</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+16
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">A</td>
-<td align="left">2</td>
-<td align="left">11</td>
-<td align="left">4</td>
-<td align="left">16</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+16
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">B</td>
-<td align="left">6</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2</td>
-<td align="left">B</td>
-<td align="left">2</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">B</td>
-<td align="left">7</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">C</td>
-<td align="left">11</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="even">
-<td align="left">Sums</td>
-<td align="left"></td>
-<td align="left">63</td>
-<td align="left">63</td>
-<td align="left">0</td>
-<td align="left">72</td>
+<tr>
+<td style="text-align:left;">
+Sums
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+72
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Means</td>
-<td align="left"></td>
-<td align="left">7</td>
-<td align="left">7</td>
-<td align="left">0</td>
-<td align="left">8</td>
+<tr>
+<td style="text-align:left;">
+Means
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+8
+</td>
 </tr>
 </tbody>
 </table>
@@ -953,7 +1385,7 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p><span class="math inline">\(SS_\text{Effect}\)</span> represents the amount of variation that is caused by differences between the means. The <code>diff</code> column is the difference between each condition mean and the grand mean, so for the first row, we have 11-7 = 4, and so on.</p>
 <p>We found that <span class="math inline">\(SS_\text{Effect} = 72\)</span>, this is the same as the ANOVA from the previous chapter</p>
 </div>
-<div id="ss-error-within-conditions" class="section level3">
+<div id="ss-error-within-conditions" class="section level3" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> SS Error (within-conditions)</h3>
 <p>Great, we made it to SS Error. We already found SS Total, and SS Effect, so now we can solve for SS Error just like this:</p>
 <p><span class="math inline">\(SS_\text{total} = SS_\text{Effect} + SS_\text{Error (within-conditions)}\)</span></p>
@@ -963,261 +1395,592 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p>Or, we could compute <span class="math inline">\(SS_\text{Error (within conditions)}\)</span> directly from the data as we did last time:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">subjects</th>
-<th align="left">conditions</th>
-<th align="left">scores</th>
-<th align="left">means</th>
-<th align="left">diff</th>
-<th align="left">diff_squared</th>
+<tr>
+<th style="text-align:left;">
+subjects
+</th>
+<th style="text-align:left;">
+conditions
+</th>
+<th style="text-align:left;">
+scores
+</th>
+<th style="text-align:left;">
+means
+</th>
+<th style="text-align:left;">
+diff
+</th>
+<th style="text-align:left;">
+diff_squared
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">A</td>
-<td align="left">20</td>
-<td align="left">11</td>
-<td align="left">-9</td>
-<td align="left">81</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+-9
+</td>
+<td style="text-align:left;">
+81
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">A</td>
-<td align="left">11</td>
-<td align="left">11</td>
-<td align="left">0</td>
-<td align="left">0</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">A</td>
-<td align="left">2</td>
-<td align="left">11</td>
-<td align="left">9</td>
-<td align="left">81</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+81
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">B</td>
-<td align="left">6</td>
-<td align="left">5</td>
-<td align="left">-1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-1
+</td>
+<td style="text-align:left;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2</td>
-<td align="left">B</td>
-<td align="left">2</td>
-<td align="left">5</td>
-<td align="left">3</td>
-<td align="left">9</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+9
+</td>
 </tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">B</td>
-<td align="left">7</td>
-<td align="left">5</td>
-<td align="left">-2</td>
-<td align="left">4</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-2
+</td>
+<td style="text-align:left;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">5</td>
-<td align="left">3</td>
-<td align="left">9</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+9
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">C</td>
-<td align="left">11</td>
-<td align="left">5</td>
-<td align="left">-6</td>
-<td align="left">36</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+-6
+</td>
+<td style="text-align:left;">
+36
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">5</td>
-<td align="left">3</td>
-<td align="left">9</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+9
+</td>
 </tr>
-<tr class="even">
-<td align="left">Sums</td>
-<td align="left"></td>
-<td align="left">63</td>
-<td align="left">63</td>
-<td align="left">0</td>
-<td align="left">230</td>
+<tr>
+<td style="text-align:left;">
+Sums
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+230
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Means</td>
-<td align="left"></td>
-<td align="left">7</td>
-<td align="left">7</td>
-<td align="left">0</td>
-<td align="left">25.5555555555556</td>
+<tr>
+<td style="text-align:left;">
+Means
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+25.5555555555556
+</td>
 </tr>
 </tbody>
 </table>
 <p>When we compute <span class="math inline">\(SS_\text{Error (within conditions)}\)</span> directly, we find the difference between each score and the condition mean for that score. This gives us the remaining error variation around the condition mean, that the condition mean does not explain.</p>
 </div>
-<div id="ss-subjects" class="section level3">
+<div id="ss-subjects" class="section level3" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> SS Subjects</h3>
 <p>Now we are ready to calculate new partition, called <span class="math inline">\(SS_\text{Subjects}\)</span>. We first find the means for each subject. For subject 1, this is the mean of their scores across Conditions A, B, and C. The mean for subject 1 is 9.33 (repeating). Notice there is going to be some rounding error here, that’s OK for now.</p>
 <p>The <code>means</code> column now shows all of the subject means. We then find the difference between each subject mean and the grand mean. These deviations are shown in the <code>diff</code> column. Then we square the deviations, and sum them up.</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">subjects</th>
-<th align="left">conditions</th>
-<th align="left">scores</th>
-<th align="left">means</th>
-<th align="left">diff</th>
-<th align="left">diff_squared</th>
+<tr>
+<th style="text-align:left;">
+subjects
+</th>
+<th style="text-align:left;">
+conditions
+</th>
+<th style="text-align:left;">
+scores
+</th>
+<th style="text-align:left;">
+means
+</th>
+<th style="text-align:left;">
+diff
+</th>
+<th style="text-align:left;">
+diff_squared
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">A</td>
-<td align="left">20</td>
-<td align="left">9.33</td>
-<td align="left">2.33</td>
-<td align="left">5.4289</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;">
+9.33
+</td>
+<td style="text-align:left;">
+2.33
+</td>
+<td style="text-align:left;">
+5.4289
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">A</td>
-<td align="left">11</td>
-<td align="left">8</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">A</td>
-<td align="left">2</td>
-<td align="left">3.66</td>
-<td align="left">-3.34</td>
-<td align="left">11.1556</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3.66
+</td>
+<td style="text-align:left;">
+-3.34
+</td>
+<td style="text-align:left;">
+11.1556
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="left">B</td>
-<td align="left">6</td>
-<td align="left">9.33</td>
-<td align="left">2.33</td>
-<td align="left">5.4289</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+9.33
+</td>
+<td style="text-align:left;">
+2.33
+</td>
+<td style="text-align:left;">
+5.4289
+</td>
 </tr>
-<tr class="odd">
-<td align="left">2</td>
-<td align="left">B</td>
-<td align="left">2</td>
-<td align="left">8</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">B</td>
-<td align="left">7</td>
-<td align="left">3.66</td>
-<td align="left">-3.34</td>
-<td align="left">11.1556</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+3.66
+</td>
+<td style="text-align:left;">
+-3.34
+</td>
+<td style="text-align:left;">
+11.1556
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">9.33</td>
-<td align="left">2.33</td>
-<td align="left">5.4289</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+9.33
+</td>
+<td style="text-align:left;">
+2.33
+</td>
+<td style="text-align:left;">
+5.4289
+</td>
 </tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">C</td>
-<td align="left">11</td>
-<td align="left">8</td>
-<td align="left">1</td>
-<td align="left">1</td>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">C</td>
-<td align="left">2</td>
-<td align="left">3.66</td>
-<td align="left">-3.34</td>
-<td align="left">11.1556</td>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+3.66
+</td>
+<td style="text-align:left;">
+-3.34
+</td>
+<td style="text-align:left;">
+11.1556
+</td>
 </tr>
-<tr class="even">
-<td align="left">Sums</td>
-<td align="left"></td>
-<td align="left">63</td>
-<td align="left">62.97</td>
-<td align="left">-0.0299999999999994</td>
-<td align="left">52.7535</td>
+<tr>
+<td style="text-align:left;">
+Sums
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+62.97
+</td>
+<td style="text-align:left;">
+-0.0299999999999994
+</td>
+<td style="text-align:left;">
+52.7535
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Means</td>
-<td align="left"></td>
-<td align="left">7</td>
-<td align="left">6.99666666666667</td>
-<td align="left">-0.00333333333333326</td>
-<td align="left">5.8615</td>
+<tr>
+<td style="text-align:left;">
+Means
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+6.99666666666667
+</td>
+<td style="text-align:left;">
+-0.00333333333333326
+</td>
+<td style="text-align:left;">
+5.8615
+</td>
 </tr>
 </tbody>
 </table>
 <p>We found that the sum of the squared deviations <span class="math inline">\(SS_\text{Subjects}\)</span> = 52.75. Note again, this has some small rounding error because some of the subject means had repeating decimal places, and did not divide evenly.</p>
 <p>We can see the effect of the rounding error if we look at the sum and mean in the <code>diff</code> column. We know these should be both zero, because the Grand mean is the balancing point in the data. The sum and mean are both very close to zero, but they are not zero because of rounding error.</p>
 </div>
-<div id="ss-error-left-over" class="section level3">
+<div id="ss-error-left-over" class="section level3" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> SS Error (left-over)</h3>
 <p>Now we can do the last thing. Remember we wanted to split up the <span class="math inline">\(SS_\text{Error (within conditions)}\)</span> into two parts, <span class="math inline">\(SS_\text{Subjects}\)</span> and <span class="math inline">\(SS_\text{Error (left-over)}\)</span>. Because we have already calculate <span class="math inline">\(SS_\text{Error (within conditions)}\)</span> and <span class="math inline">\(SS_\text{Subjects}\)</span>, we can solve for <span class="math inline">\(SS_\text{Error (left-over)}\)</span>:</p>
 <p><span class="math inline">\(SS_\text{Error (left-over)} = SS_\text{Error (within conditions)} - SS_\text{Subjects}\)</span></p>
 <p><span class="math inline">\(SS_\text{Error (left-over)} = SS_\text{Error (within conditions)} - SS_\text{Subjects} = 230 - 52.75 = 177.25\)</span></p>
 </div>
-<div id="check-our-work" class="section level3">
+<div id="check-our-work" class="section level3" number="8.3.6">
 <h3><span class="header-section-number">8.3.6</span> Check our work</h3>
 <p>Before we continue to compute the MSEs and F-value for our data, let’s quickly check our work. For example, we could have R compute the repeated measures ANOVA for us, and then we could look at the ANOVA table and see if we are on the right track so far.</p>
 <table>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Df</th>
-<th align="right">Sum Sq</th>
-<th align="right">Mean Sq</th>
-<th align="right">F value</th>
-<th align="right">Pr(&gt;F)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">2</td>
-<td align="right">52.66667</td>
-<td align="right">26.33333</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+52.66667
+</td>
+<td style="text-align:right;">
+26.33333
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td>conditions</td>
-<td align="right">2</td>
-<td align="right">72.00000</td>
-<td align="right">36.00000</td>
-<td align="right">0.8120301</td>
-<td align="right">0.505848</td>
+<tr>
+<td style="text-align:left;">
+conditions
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+72.00000
+</td>
+<td style="text-align:right;">
+36.00000
+</td>
+<td style="text-align:right;">
+0.8120301
+</td>
+<td style="text-align:right;">
+0.505848
+</td>
 </tr>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">4</td>
-<td align="right">177.33333</td>
-<td align="right">44.33333</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+177.33333
+</td>
+<td style="text-align:right;">
+44.33333
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table>
@@ -1225,7 +1988,7 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p>We have finished our job of computing the sums of squares that we need in order to do the next steps, which include computing the MSEs for the effect and the error term. Once we do that, we can find the F-value, which is the ratio of the two MSEs.</p>
 <p>Before we do that, you may have noticed that we solved for <span class="math inline">\(SS_\text{Error (left-over)}\)</span>, rather than directly computing it from the data. In this chapter we are not going to show you the steps for doing this. We are not trying to hide anything from, instead it turns out these steps are related to another important idea in ANOVA. We discuss this idea, which is called an <strong>interaction</strong> in the next chapter, when we discuss <strong>factorial</strong> designs (designs with more than one independent variable).</p>
 </div>
-<div id="compute-the-mses" class="section level3">
+<div id="compute-the-mses" class="section level3" number="8.3.7">
 <h3><span class="header-section-number">8.3.7</span> Compute the MSEs</h3>
 <p>Calculating the MSEs (mean squared error) that we need for the <span class="math inline">\(F\)</span>-value involves the same general steps as last time. We divide each SS by the degrees of freedom for the SS.</p>
 <p>The degrees of freedom for <span class="math inline">\(SS_\text{Effect}\)</span> are the same as before, the number of conditions - 1. We have three conditions, so the df is 2. Now we can compute the <span class="math inline">\(MSE_\text{Effect}\)</span>.</p>
@@ -1233,50 +1996,97 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p>The degrees of freedom for <span class="math inline">\(SS_\text{Error (left-over)}\)</span> are different than before, they are the (number of subjects - 1) multiplied by the (number of conditions -1). We have 3 subjects and three conditions, so <span class="math inline">\((3-1) * (3-1) = 2*2 =4\)</span>. You might be wondering why we are multiplying these numbers. Hold that thought for now and wait until the next chapter. Regardless, now we can compute the <span class="math inline">\(MSE_\text{Error (left-over)}\)</span>.</p>
 <p><span class="math inline">\(MSE_\text{Error (left-over)} = \frac{SS_\text{Error (left-over)}}{df} = \frac{177.33}{4}= 44.33\)</span></p>
 </div>
-<div id="compute-f" class="section level3">
+<div id="compute-f" class="section level3" number="8.3.8">
 <h3><span class="header-section-number">8.3.8</span> Compute F</h3>
 <p>We just found the two MSEs that we need to compute <span class="math inline">\(F\)</span>. We went through all of this to compute <span class="math inline">\(F\)</span> for our data, so let’s do it:</p>
 <p><span class="math inline">\(F = \frac{MSE_\text{Effect}}{MSE_\text{Error (left-over)}} = \frac{36}{44.33}= 0.812\)</span></p>
 <p>And, there we have it!</p>
 </div>
-<div id="p-value" class="section level3">
+<div id="p-value" class="section level3" number="8.3.9">
 <h3><span class="header-section-number">8.3.9</span> p-value</h3>
 <p>We already conducted the repeated-measures ANOVA using R and reported the ANOVA. Here it is again. The table shows the <span class="math inline">\(p\)</span>-value associated with our <span class="math inline">\(F\)</span>-value.</p>
 <table>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Df</th>
-<th align="right">Sum Sq</th>
-<th align="right">Mean Sq</th>
-<th align="right">F value</th>
-<th align="right">Pr(&gt;F)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">2</td>
-<td align="right">52.66667</td>
-<td align="right">26.33333</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+52.66667
+</td>
+<td style="text-align:right;">
+26.33333
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td>conditions</td>
-<td align="right">2</td>
-<td align="right">72.00000</td>
-<td align="right">36.00000</td>
-<td align="right">0.8120301</td>
-<td align="right">0.505848</td>
+<tr>
+<td style="text-align:left;">
+conditions
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+72.00000
+</td>
+<td style="text-align:right;">
+36.00000
+</td>
+<td style="text-align:right;">
+0.8120301
+</td>
+<td style="text-align:right;">
+0.505848
+</td>
 </tr>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">4</td>
-<td align="right">177.33333</td>
-<td align="right">44.33333</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+177.33333
+</td>
+<td style="text-align:right;">
+44.33333
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table>
@@ -1284,13 +2094,13 @@ Figure 8.3: Equations for computing the ANOVA table for a repeated measures desi
 <p>What does this statement mean? Remember, that the <span class="math inline">\(p\)</span>-value represents the probability of getting the <span class="math inline">\(F\)</span> value we observed or larger under the null (assuming that the samples come from the same distribution, the assumption of no differences). So, we know that an <span class="math inline">\(F\)</span>-value of 0.812 or larger happens fairly often by chance (when there are no real differences), in fact it happens 50.5% of the time. As a result, we do not reject the idea that any differences in the means we have observed could have been produced by chance.</p>
 </div>
 </div>
-<div id="things-worth-knowing" class="section level2">
+<div id="things-worth-knowing" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Things worth knowing</h2>
 <p>Repeated Measures ANOVAs have some special properties that are worth knowing about. The main special property is that the error term used to for the <span class="math inline">\(F\)</span>-value (the MSE in the denominator) will always be smaller than the error term used for the <span class="math inline">\(F\)</span>-value the ANOVA for a between-subjects design. We discussed this earlier. It is smaller, because we subtract out the error associated with the subject means.</p>
 <p>This can have the consequence of generally making <span class="math inline">\(F\)</span>-values in repeated measures designs larger than <span class="math inline">\(F\)</span>-values in between-subjects designs. When the number in the bottom of the <span class="math inline">\(F\)</span> formula is generally smaller, it will generally make the resulting ratio a larger number. That’s what happens when you make the number in the bottom smaller.</p>
 <p>Because big <span class="math inline">\(F\)</span> values usually let us reject the idea that differences in our means are due to chance, the repeated-measures ANOVA becomes a more sensitive test of the differences (its <span class="math inline">\(F\)</span>-values are usually larger).</p>
 <p>At the same time, there is a trade-off here. The repeated measures ANOVA uses different degrees of freedom for the error term, and these are typically a smaller number of degrees of freedom. So, the <span class="math inline">\(F\)</span>-distributions for the repeated measures and between-subjects designs are actually different <span class="math inline">\(F\)</span>-distributions, because they have different degrees of freedom.</p>
-<div id="repeated-vs-between-subjects-anova" class="section level3">
+<div id="repeated-vs-between-subjects-anova" class="section level3" number="8.4.1">
 <h3><span class="header-section-number">8.4.1</span> Repeated vs between-subjects ANOVA</h3>
 <p>Let’s do a couple simulations to see some the differences between the ANOVA for a repeated measures design, and the ANOVA for a between-subjects design.</p>
 <p>We will do the following.</p>
@@ -1312,7 +2122,7 @@ Figure 8.4: Comparing critical F values for a between and repeated measures desi
 <p>The critical value for the repeated measures version is slightly higher. This is because when $df$2 (the denominator) is smaller, the <span class="math inline">\(F\)</span>-distribution spreads out to the right a little bit. When it is skewed like this, we get some bigger <span class="math inline">\(F\)</span>s a greater proportion of the time.</p>
 <p>So, in order to detect a real difference, you need an <span class="math inline">\(F\)</span> of 3.35 or greater in a between-subjects design, or an <span class="math inline">\(F\)</span> of 3.55 or greater for a repeated-measures design. The catch here is that when there is a real difference between the means, you will detect it more often with the repeated-measures design, even though you need a larger <span class="math inline">\(F\)</span> (to pass the higher critical <span class="math inline">\(F\)</span>-value for the repeated measures design).</p>
 </div>
-<div id="repeated-measures-designs-are-more-sensitive" class="section level3">
+<div id="repeated-measures-designs-are-more-sensitive" class="section level3" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> repeated measures designs are more sensitive</h3>
 <p>To illustrate why repeated-measures designs are more sensitive, we will conduct another set of simulations.</p>
 <p>We will do something slightly different this time. We will make sure that the scores for condition A, are always a little bit higher than the other scores. In other words, we will program in a real true difference. Specifically, the scores for condition will be sampled from a normal distribution with mean = 105, and SD = 10. This mean is 5 larger than the means for the other two conditions (still set to 100).</p>
@@ -1325,8 +2135,8 @@ Figure 8.5: p-value distributions for a between and within-subjects ANOVA
 </p>
 </div>
 <p>Here we have two distributions of observed p-values for the simulations. The red line shows the location of 0.05. Overall, we can see that for both designs, we got a full range of <span class="math inline">\(p\)</span>-values from 0 to 1. This means that many times we would not have rejected the hypothesis of no differences (even though we know there is a small difference). We would have rejected the null every time the <span class="math inline">\(p\)</span>-value was less than 0.05.</p>
-<p>For the between subject design, there were 599 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.599 of experiments were “significant”, with alpha=.05.</p>
-<p>For the within subject design, there were 570 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.57 of experiments were “significant”, with alpha=.05.</p>
+<p>For the between subject design, there were 568 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.568 of experiments were “significant”, with alpha=.05.</p>
+<p>For the within subject design, there were 524 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.524 of experiments were “significant”, with alpha=.05.</p>
 <p>OK, well, you still might not be impressed. In this case, the between-subjects design detected the true effect slightly more often than the repeated measures design. Both them were right around 55% of the time. Based on this, we could say the two designs are pretty comparable in their sensitivity, or ability to detect a true difference when there is one.</p>
 <p>However, remember that the between-subjects design uses 30 subjects, and the repeated measures design only uses 10. We had to make a big investment to get our 30 subjects. And, we’re kind of unfairly comparing the between design (which is more sensitive because it has more subjects) with the repeated measures design that has fewer subjects.</p>
 <p>What do you think would happen if we ran 30 subjects in the repeated measures design? Let’s find out. Here we redo the above, but this time only for the repeated measures design. We increase <span class="math inline">\(N\)</span> from 10 to 30.</p>
@@ -1336,10 +2146,10 @@ Figure 8.5: p-value distributions for a between and within-subjects ANOVA
 Figure 8.6: p-value distribution for within-subjects design with n= 30
 </p>
 </div>
-<p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the <span class="math inline">\(p\)</span>-values were less than .05. There were 982 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.982 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design.</p>
+<p>Wowsers! Look at that. When we ran 30 subjects in the repeated measures design almost all of the <span class="math inline">\(p\)</span>-values were less than .05. There were 978 experiments with a <span class="math inline">\(p\)</span> less than 0.05, or 0.978 of experiments were “significant”, with alpha=.05. That’s huge! If we ran the repeated measures design, we would almost always detect the true difference when it is there. This is why the repeated measures design can be more sensitive than the between-subjects design.</p>
 </div>
 </div>
-<div id="real-data" class="section level2">
+<div id="real-data" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Real Data</h2>
 <p>Let’s look at some real data from a published experiment that uses a repeated measures design. This is the same example that you will be using in the lab for repeated measures ANOVA. The data happen to be taken from a recent study conducted by Lawrence Behmer and myself, at Brooklyn College <span class="citation">(Behmer and Crump <a href="#ref-behmer2017spatial" role="doc-biblioref">2017</a>)</span>.</p>
 <p>We were interested in how people perform sequences of actions. One question is whether people learn individual parts of actions, or the whole larger pattern of a sequence of actions. We looked at these issues in a computer keyboard typing task. One of our questions was whether we would replicate some well known findings about how people type words and letters.</p>
@@ -1359,46 +2169,93 @@ Figure 8.7: Results from Behmer &amp; Crump (2017)
 <p>Let’s focus only on the block of trials where participants were allowed to look at the keyboard while they typed, that’s the red line, for the “visible keyboard” block. We can see the means look different. Let’s next ask, what is the likelihood that chance (random sampling error) could have produced these mean differences. To do that we run a repeated-measures ANOVA in R. Here is the ANOVA table.</p>
 <table>
 <thead>
-<tr class="header">
-<th></th>
-<th align="right">Df</th>
-<th align="right">Sum Sq</th>
-<th align="right">Mean Sq</th>
-<th align="right">F value</th>
-<th align="right">Pr(&gt;F)</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Df
+</th>
+<th style="text-align:right;">
+Sum Sq
+</th>
+<th style="text-align:right;">
+Mean Sq
+</th>
+<th style="text-align:right;">
+F value
+</th>
+<th style="text-align:right;">
+Pr(&gt;F)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Residuals</td>
-<td align="right">37</td>
-<td align="right">2452611.9</td>
-<td align="right">66286.808</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+2452611.9
+</td>
+<td style="text-align:right;">
+66286.808
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td>Stimulus</td>
-<td align="right">2</td>
-<td align="right">1424914.0</td>
-<td align="right">712457.010</td>
-<td align="right">235.7342</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:left;">
+Stimulus
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1424914.0
+</td>
+<td style="text-align:right;">
+712457.010
+</td>
+<td style="text-align:right;">
+235.7342
+</td>
+<td style="text-align:right;">
+0
+</td>
 </tr>
-<tr class="odd">
-<td>Residuals1</td>
-<td align="right">74</td>
-<td align="right">223649.4</td>
-<td align="right">3022.289</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+Residuals1
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+223649.4
+</td>
+<td style="text-align:right;">
+3022.289
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table>
 <p>Alright, we might report the results like this. There was a significant main effect of Stimulus type, F(2, 74) = 235.73, MSE = 3022.289, p &lt; 0.001.</p>
 <p>Notice a couple things. First, this is a huge <span class="math inline">\(F\)</span>-value. It’s 253! Notice also that the p-value is listed as 0. That doesn’t mean there is zero chance of getting an F-value this big under the null. This is a rounding error. The true p-value is 0.00000000000000… The zeros keep going for a while. This means there is only a vanishingly small probability that these differences could have been produced by sampling error. So, we reject the idea that the differences between our means could be explained by chance. Instead, we are pretty confident, based on this evidence and and previous work showing the same thing, that our experimental manipulation caused the difference. In other words, people really do type normal words faster than random letters, and they type English-like strings somewhere in the middle in terms of speed.</p>
 </div>
-<div id="summary-3" class="section level2">
+<div id="summary-3" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Summary</h2>
 <p>In this chapter you were introduced to the repeated-measures ANOVA. This analyis is appropriate for within-subjects or repeated measures designs. The main difference between the independent factor ANOVA and the repeated measures ANOVA, is the ability to partial out variance due to the individual subject means. This can often result in the repeated-measures ANOVA being more sensitive to true effects than the between-subjects ANOVA.</p>
 
@@ -1435,12 +2292,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1452,6 +2308,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
