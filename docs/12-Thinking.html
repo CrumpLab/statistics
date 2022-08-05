@@ -78,7 +78,10 @@ ga('send', {
 <meta property="og:site-name" content="Answering questions with data">
 <meta name="twitter:title" content="Answering questions with data - 12&nbsp; Thinking about answering questions with data">
 <meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1310">
+<meta name="twitter:image-width" content="916">
 </head>
 
 <body class="nav-sidebar floating">
@@ -333,20 +336,20 @@ ga('send', {
 <p>To see this in practice let’s do a simulation. We will do a t-test on a between-groups design 10 subjects in each group. Group A will be a control group with scores sampled from a normal distribution with mean of 10, and standard deviation of 5. Group B will be a treatment group, we will say the treatment has an effect-size of Cohen’s <span class="math inline">\(d\)</span> = .5, that’s a standard deviation shift of .5, so the scores with come from a normal distribution with mean =12.5 and standard deivation of 5. Remember 1 standard deviation here is 5, so half of a standard deviation is 2.5.</p>
 <p>The following R script runs this simulated experiment 1000 times. We set the alpha criterion to .05, this means we will reject the null whenever the <span class="math inline">\(p\)</span>-value is less than .05. With this specific design, how many times out of of 1000 do we reject the null, and accept the alternative hypothesis?</p>
 <div class="cell" data-hash="cache/unnamed-chunk-5_8a5daf64c1b916732fb4347b49c057cd">
-<pre><code>#&gt; [1] 167</code></pre>
+<pre><code>#&gt; [1] 209</code></pre>
 </div>
-<p>The answer is that we reject the null, and accept the alternative 167 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 16.7 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
+<p>The answer is that we reject the null, and accept the alternative 209 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 20.9 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
 <p>Importantly, power is completely abstract idea that is completely determined by many assumptions including N, effect-size, and alpha. As a result, it is best not to think of power as a single number, but instead as a family of numbers.</p>
 <p>For example, power is different when we change N. If we increase N, our samples will more precisely estimate the true distributions that they came from. Increasing N reduces sampling error, and shrinks the range of differences that can be produced by chance. Lets’ increase our N in this simulation from 10 to 20 in each group and see what happens.</p>
 <div class="cell" data-hash="cache/unnamed-chunk-6_0b5f9e7adaf0af73bef4a203144a9667">
-<pre><code>#&gt; [1] 323</code></pre>
+<pre><code>#&gt; [1] 342</code></pre>
 </div>
-<p>Now the number of significant experiments i 323 out of 1000, or a power of 32.3 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
+<p>Now the number of significant experiments i 342 out of 1000, or a power of 34.2 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
 <p>We can change the power of the design by changing the alpha-value, which tells us how much evidence we need to reject the null. For example, if we set the alpha criterion to 0.01, then we will be more conservative, only rejecting the null when chance can produce the observed difference 1% of the time. In our example, this will have the effect of reducing power. Let’s keep N at 20, but reduce the alpha to 0.01 and see what happens:</p>
 <div class="cell" data-hash="cache/unnamed-chunk-7_c91db061673b9075da9eea9d1588d636">
-<pre><code>#&gt; [1] 142</code></pre>
+<pre><code>#&gt; [1] 150</code></pre>
 </div>
-<p>Now only 142 out of 1000 experiments are significant, that’s 14.2 power.</p>
+<p>Now only 150 out of 1000 experiments are significant, that’s 15 power.</p>
 <p>Finally, the power of the design depends on the actual size of the effect caused by the manipulation. In our example, we hypothesized that the effect caused a shift of .5 standard deviations. What if the effect causes a bigger shift? Say, a shift of 2 standard deviations. Let’s keep N= 20, and alpha &lt; .01, but change the effect-size to two standard deviations. When the effect in the real-world is bigger, it should be easier to measure, so our power will increase.</p>
 <div class="cell" data-hash="cache/unnamed-chunk-8_53c999eb9009662ca3e1abc7470904fd">
 <pre><code>#&gt; [1] 1000</code></pre>
