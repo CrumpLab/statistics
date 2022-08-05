@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew J. C. Crump">
+
+<title>Answering questions with data - 12&nbsp; Thinking about answering questions with data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./13-Gifs.html" rel="next">
+<link href="./11-Simulation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79429674-3', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Answering questions with data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#effect-size-and-power" id="toc-effect-size-and-power" class="nav-link active" data-scroll-target="#effect-size-and-power"> <span class="header-section-number">12.1</span> Effect-size and power</a>
+  <ul class="collapse">
+  <li><a href="#chance-vs.-real-effects" id="toc-chance-vs.-real-effects" class="nav-link" data-scroll-target="#chance-vs.-real-effects"> <span class="header-section-number">12.1.1</span> Chance vs.&nbsp;real effects</a></li>
+  <li><a href="#effect-size-concrete-vs.-abstract-notions" id="toc-effect-size-concrete-vs.-abstract-notions" class="nav-link" data-scroll-target="#effect-size-concrete-vs.-abstract-notions"> <span class="header-section-number">12.1.2</span> Effect size: concrete vs.&nbsp;abstract notions</a></li>
+  <li><a href="#cohens-d" id="toc-cohens-d" class="nav-link" data-scroll-target="#cohens-d"> <span class="header-section-number">12.1.3</span> Cohen’s d</a></li>
+  </ul></li>
+  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"> <span class="header-section-number">12.2</span> Power</a>
+  <ul class="collapse">
+  <li><a href="#a-digresssion-about-hypothesis-testing" id="toc-a-digresssion-about-hypothesis-testing" class="nav-link" data-scroll-target="#a-digresssion-about-hypothesis-testing"> <span class="header-section-number">12.2.1</span> A digresssion about hypothesis testing</a></li>
+  <li><a href="#back-to-power" id="toc-back-to-power" class="nav-link" data-scroll-target="#back-to-power"> <span class="header-section-number">12.2.2</span> Back to power</a></li>
+  <li><a href="#power-curves" id="toc-power-curves" class="nav-link" data-scroll-target="#power-curves"> <span class="header-section-number">12.2.3</span> Power curves</a></li>
+  </ul></li>
+  <li><a href="#planning-your-design" id="toc-planning-your-design" class="nav-link" data-scroll-target="#planning-your-design"> <span class="header-section-number">12.3</span> Planning your design</a></li>
+  <li><a href="#some-considerations" id="toc-some-considerations" class="nav-link" data-scroll-target="#some-considerations"> <span class="header-section-number">12.4</span> Some considerations</a>
+  <ul class="collapse">
+  <li><a href="#low-powered-studies" id="toc-low-powered-studies" class="nav-link" data-scroll-target="#low-powered-studies"> <span class="header-section-number">12.4.1</span> Low powered studies</a></li>
+  <li><a href="#large-n-and-small-effects" id="toc-large-n-and-small-effects" class="nav-link" data-scroll-target="#large-n-and-small-effects"> <span class="header-section-number">12.4.2</span> Large N and small effects</a></li>
+  <li><a href="#small-n-and-large-effects" id="toc-small-n-and-large-effects" class="nav-link" data-scroll-target="#small-n-and-large-effects"> <span class="header-section-number">12.4.3</span> Small N and Large effects</a></li>
+  <li><a href="#type-i-errors-are-convincing-when-n-is-small" id="toc-type-i-errors-are-convincing-when-n-is-small" class="nav-link" data-scroll-target="#type-i-errors-are-convincing-when-n-is-small"> <span class="header-section-number">12.4.4</span> Type I errors are convincing when N is small</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/12-Thinking.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew J. C. Crump </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-hash="cache/unnamed-chunk-2_d849fb2b27c7c0547a752afc7287e8ca">
+
+</div>
+<p>You might be happy that this is the last chapter (so far) of this textbook. At this point we are in the last weeks of our introductory statistics course. It’s called “introductory” for a reason. There’s just too much out there to cover in one short semester. In this chapter we acknowledge some of the things we haven’t yet covered, and treat them as things that you should think about. If there is one take home message that we want to get across to you, it’s that when you ask questions with data, you should be able to <strong>justify</strong> how you answer those questions.</p>
+<section id="effect-size-and-power" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="effect-size-and-power"><span class="header-section-number">12.1</span> Effect-size and power</h2>
+<p>If you already know something about statistics while you were reading this book, you might have noticed that we neglected to discuss the topic of effect-size, and we barely talked about statistical power. We will talk a little bit about these things here.</p>
+<p>First, it is worth pointing out that over the years, at least in Psychology, many societies and journals have made recommendations about how researchers should report their statistical analyses. Among the recommendations is that measures of “effect size” should be reported. Similarly, many journals now require that researchers report an “a priori” power-analysis (the recommendation is this should be done before the data is collected). Because these recommendations are so prevalent, it is worth discussing what these ideas refer to. At the same time, the meaning of effect-size and power somewhat depend on your “philosophical” bent, and these two ideas can become completely meaningless depending on how you think of statistics. For these complicating reasons we have suspended our discussion of the topic until now.</p>
+<p>The question or practice of using measures of effect size and conducting power-analyses are also good examples of the more general need to think about about what you are doing. If you are going to report effect size, and conduct power analyses, these activities should not be done blindly because someone else recommends that you do them, these activities and other suitable ones should be done as a part of justifying what you are doing. It is a part of thinking about how to make your data answer questions for you.</p>
+<section id="chance-vs.-real-effects" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="chance-vs.-real-effects"><span class="header-section-number">12.1.1</span> Chance vs.&nbsp;real effects</h3>
+<p>Let’s rehash something we’ve said over and over again. First, researchers are interested in whether their manipulation causes a change in their measurement. If it does, they can become confident that they have uncovered a causal force (the manipulation). However, we know that differences in the measure between experimental conditions can arise by chance alone, just by sampling error. In fact, we can create pictures that show us the window of chance for a given statistic, these tells us roughly the range and likelihoods of getting various differences just by chance. With these windows in hand, we can then determine whether the differences we found in some data that we collected were likely or unlikely to be due to chance. We also learned that sample-size plays a big role in the shape of the chance window. Small samples give chance a large opportunity make big differences. Large samples give chance a small opportunity to make big differences. The general lesson up to this point has been, design an experiment with a large enough sample to detect the effect of interest. If your design isn’t well formed, you could easily be measuring noise, and your differences could be caused by sampling error. Generally speaking, this is still a very good lesson: better designs produce better data; and you can’t fix a broken design with statistics.</p>
+<p>There is clearly another thing that can determine whether or not your differences are due to chance. That is the effect itself. If the manipulation does cause a change, then there is an effect, and that effect is a real one. Effects refer to differences in the measurement between experimental conditions. The thing about effects is that they can be big or small, they have a size.</p>
+<p>For example, you can think of a manipulation in terms of the size of its hammer. A strong manipulation is like a jack-hammer: it is loud, it produces a big effect, it creates huge differences. A medium manipulation is like regular hammer: it works, you can hear it, it drives a nail into wood, but it doesn’t destroy concrete like a jack-hammer, it produces a reliable effect. A small manipulation is like tapping something with a pencil: it does something, you can barely hear it, and only in a quiet room, it doesn’t do a good job of driving a nail into wood, and it does nothing to concrete, it produces tiny, unreliable effects. Finally, a really small effect would be hammering something with a feather, it leaves almost no mark and does nothing that is obviously perceptiple to nails or pavement. The lesson is, if you want to break up concrete, use a jack-hammer; or, if you want to measure your effect, make your manipulation stronger (like a jack-hammer) so it produces a bigger difference.</p>
+</section>
+<section id="effect-size-concrete-vs.-abstract-notions" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="effect-size-concrete-vs.-abstract-notions"><span class="header-section-number">12.1.2</span> Effect size: concrete vs.&nbsp;abstract notions</h3>
+<p>Generally speaking, the big concept of effect size, is simply how big the differences are, that’s it. However, the biggness or smallness of effects quickly becomes a little bit complicated. On the one hand, the raw difference in the means can be very meaningful. Let’s saw we are measuring performance on a final exam, and we are testing whether or not a miracle drug can make you do better on the test. Let’s say taking the drug makes you do 5% better on the test, compared to not taking the drug. You know what 5% means, that’s basically a whole letter grade. Pretty good. An effect-size of 25% would be even better right! Lot’s of measures have a concrete quality to them, and we often want to the size of the effect expressed in terms of the original measure.</p>
+<p>Let’s talk about concrete measures some more. How about learning a musical instrument. Let’s say it takes 10,000 hours to become an expert piano, violin, or guitar player. And, let’s say you found something online that says that using their method, you will learn the instrument in less time than normal. That is a claim about the effect size of their method. You would want to know how big the effect is right? For example, the effect-size could be 10 hours. That would mean it would take you 9,980 hours to become an expert (that’s a whole 10 hours less). If I knew the effect-size was so tiny, I wouldn’t bother with their new method. But, if the effect size was say 1,000 hours, that’s a pretty big deal, that’s 10% less (still doesn’t seem like much, but saving 1,000 hours seems like a lot).</p>
+<p>Just as often as we have concrete measures that are readily interpretable, Psychology often produces measures that are extremely difficult to interpret. For example, questionnaire measures often have no concrete meaning, and only an abstract statistical meaning. If you wanted to know whether a manipulation caused people to more or less happy, and you used to questionnaire to measure happiness, you might find that people were 50 happy in condition 1, and 60 happy in condition 2, that’s a difference of 10 happy units. But how much is 10? Is that a big or small difference? It’s not immediately obvious. What is the solution here? A common solution is to provide a standardized measure of the difference, like a z-score. For example, if a difference of 10 reflected a shift of one standard deviation that would be useful to know, and that would be a sizeable shift. If the difference was only a .1 shift in terms of standard deviation, then the difference of 10 wouldn’t be very large. We elaborate on this idea next in describing cohen’s d.</p>
+</section>
+<section id="cohens-d" class="level3" data-number="12.1.3">
+<h3 data-number="12.1.3" class="anchored" data-anchor-id="cohens-d"><span class="header-section-number">12.1.3</span> Cohen’s d</h3>
+<p>Let’s look a few distributions to firm up some ideas about effect-size. <a href="#fig-12effectdists">Figure&nbsp;<span>12.1</span></a> has four panels. The first panel (0) represents the null distribution of no differences. This is the idea that your manipulation (A vs.&nbsp;B) doesn’t do anything at all, as a result when you measure scores in conditions A and B, you are effectively sampling scores from the very same overall distribution. The panel shows the distribution as green for condition B, but the red one for condition A is identical and drawn underneath (it’s invisible). There is 0 difference between these distributions, so it represent a null effect.</p>
+<div class="cell" data-hash="cache/fig-12effectdists_b564190dbc3d8c3df58740ea0095fb1b">
+<div class="cell-output-display">
+<div id="fig-12effectdists" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-Thinking_files/figure-html/fig-12effectdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 12.1: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The remaining panels are hypothetical examples of what a true effect could look like, when your manipulation actually causes a difference. For example, if condition A is a control group, and condition B is a treatment group, we are looking at three cases where the treatment manipulation causes a positive shift in the mean of distribution. We are using normal curves with mean =0 and sd =1 for this demonstration, so a shift of .5 is a shift of half of a standard deviation. A shift of 1 is a shift of 1 standard deviation, and a shift of 2 is a shift of 2 standard deviations. We could draw many more examples showing even bigger shifts, or shifts that go in the other direction.</p>
+<p>Let’s look at another example, but this time we’ll use some concrete measurements. Let’s say we are looking at final exam performance, so our numbers are grade percentages. Let’s also say that we know the mean on the test is 65%, with a standard deviation of 5%. Group A could be a control that just takes the test, Group B could receive some “educational” manipulation designed to improve the test score. These graphs then show us some hypotheses about what the manipulation may or may not be doing.</p>
+<div class="cell" data-hash="cache/fig-12effectdistsB_8fea759392c37e15e308abcde42ab8b8">
+<div class="cell-output-display">
+<div id="fig-12effectdistsB" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-Thinking_files/figure-html/fig-12effectdistsB-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 12.2: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The first panel shows that both condition A and B will sample test scores from the same distribution (mean =65, with 0 effect). The other panels show shifted mean for condition B (the treatment that is supposed to increase test performance). So, the treatment could increase the test performance by 2.5% (mean 67.5, .5 sd shift), or by 5% (mean 70, 1 sd shift), or by 10% (mean 75%, 2 sd shift), or by any other amount. In terms of our previous metaphor, a shift of 2 standard deviations is more like jack-hammer in terms of size, and a shift of .5 standard deviations is more like using a pencil. The thing about research, is we often have no clue about whether our manipulation will produce a big or small effect, that’s why we are conducting the research.</p>
+<p>You might have noticed that the letter <span class="math inline">\(d\)</span> appears in the above figure. Why is that? Jacob Cohen <span class="citation" data-cites="cohen1988">(<a href="references.html#ref-cohen1988" role="doc-biblioref"><strong>cohen1988?</strong></a>)</span> used the letter <span class="math inline">\(d\)</span> in defining the effect-size for this situation, and now everyone calls it Cohen’s <span class="math inline">\(d\)</span>. The formula for Cohen’s <span class="math inline">\(d\)</span> is:</p>
+<p><span class="math inline">\(d = \frac{\text{mean for condition 1} - \text{mean for condition 2}}{\text{population standard deviation}}\)</span></p>
+<p>If you notice, this is just a kind of z-score. It is a way to standardize the mean difference in terms of the population standard deviation.</p>
+<p>It is also worth noting again that this measure of effect-size is entirely hypothetical for most purposes. In general, researchers do not know the population standard deviation, they can only guess at it, or estimate it from the sample. The same goes for means, in the formula these are hypothetical mean differences in two population distributions. In practice, researchers do not know these values, they guess at them from their samples.</p>
+<p>Before discussing why the concept of effect-size can be useful, we note that Cohen’s <span class="math inline">\(d\)</span> is useful for understanding abstract measures. For example, when you don’t know what a difference of 10 or 20 means as a raw score, you can standardize the difference by the sample standard deviation, then you know roughly how big the effect is in terms of standard units. If you thought a 20 was big, but it turned out to be only 1/10th of a standard deviation, then you would know the effect is actually quite small with respect to the overall variability in the data.</p>
+</section>
+</section>
+<section id="power" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="power"><span class="header-section-number">12.2</span> Power</h2>
+<p>When there is a true effect out there to measure, you want to make sure your design is sensitive enough to detect the effect, otherwise what’s the point. We’ve already talked about the idea that an effect can have different sizes. The next idea is that your design can be more less sensitive in its ability to reliabily measure the effect. We have discussed this general idea many times already in the textbook, for example we know that we will be more likely to detect “significant” effects (when there are real differences) when we increase our sample-size. Here, we will talk about the idea of design sensitivity in terms of the concept of power. Interestingly, the concept of power is a somewhat limited concept, in that it only exists as a concept within some philosophies of statistics.</p>
+<section id="a-digresssion-about-hypothesis-testing" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="a-digresssion-about-hypothesis-testing"><span class="header-section-number">12.2.1</span> A digresssion about hypothesis testing</h3>
+<p>In particular, the concept of power falls out of the Neyman-Pearson concept of null vs.&nbsp;alternative hypothesis testing. Up to this point, we have largely avoided this terminology. This is perhaps a disservice in that the Neyman-Pearson ideas are by now the most common and widespread, and in the opinion of some of us, they are also the most widely misunderstood and abused idea, which is why we have avoided these ideas until now.</p>
+<p>What we have been mainly doing is talking about hypothesis testing from the Fisherian (Sir Ronald Fisher, the ANOVA guy) perspective. This is a basic perspective that we think can’t be easily ignored. It is also quite limited. The basic idea is this:</p>
+<ol type="1">
+<li>We know that chance can cause some differences when we measure something between experimental conditions.</li>
+<li>We want to rule out the possibility that the difference that we observed can not be due to chance</li>
+<li>We construct large N designs that permit us to do this when a real effect is observed, such that we can confidently say that big differences that we find are so big (well outside the chance window) that it is highly implausible that chance alone could have produced.</li>
+<li>The final conclusion is that chance was extremely unlikely to have produced the differences. We then infer that something else, like the manipulation, must have caused the difference.</li>
+<li>We don’t say anything else about the something else.</li>
+<li>We either reject the null distribution as an explanation (that chance couldn’t have done it), or retain the null (admit that chance could have done it, and if it did we couldn’t tell the difference between what we found and what chance could do)</li>
+</ol>
+<p>Neyman and Pearson introduced one more idea to this mix, the idea of an alternative hypothesis. The alternative hypothesis is the idea that if there is a true effect, then the data sampled into each condition of the experiment must have come from two different distributions. Remember, when there is no effect we assume all of the data cam from the same distribution (which by definition can’t produce true differences in the long run, because all of the numbers are coming from the same distribution). The graphs of effect-sizes from before show examples of these alternative distributions, with samples for condition A coming from one distribution, and samples from condition B coming from a shifted distribution with a different mean.</p>
+<p>So, under the Neyman-Pearson tradition, when a researcher find a signifcant effect they do more than one things. First, they reject the null-hypothesis of no differences, and they accept the alternative hypothesis that there was differences. This seems like a sensible thing to do. And, because the researcher is actually interested in the properties of the real effect, they might be interested in learning more about the actual alternative hypothesis, that is they might want to know if their data come from two different distributions that were separated by some amount…in other words, they would want to know the size of the effect that they were measuring.</p>
+</section>
+<section id="back-to-power" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="back-to-power"><span class="header-section-number">12.2.2</span> Back to power</h3>
+<p>We have now discussed enough ideas to formalize the concept of statistical power. For this concept to exist we need to do a couple things.</p>
+<ol type="1">
+<li>Agree to set an alpha criterion. When the p-value for our test-statistic is below this value we will call our finding statistically significant, and agree to reject the null hypothesis and accept the “alternative” hypothesis (sidenote, usually it isn’t very clear which specific alternative hypothesis was accepted)</li>
+<li>In advance of conducting the study, figure out what kinds of effect-sizes our design is capable of detecting with particular probabilites.</li>
+</ol>
+<p>The power of a study is determined by the relationship between</p>
+<ol type="1">
+<li>The sample-size of the study</li>
+<li>The effect-size of the manipulation</li>
+<li>The alpha value set by the researcher.</li>
+</ol>
+<p>To see this in practice let’s do a simulation. We will do a t-test on a between-groups design 10 subjects in each group. Group A will be a control group with scores sampled from a normal distribution with mean of 10, and standard deviation of 5. Group B will be a treatment group, we will say the treatment has an effect-size of Cohen’s <span class="math inline">\(d\)</span> = .5, that’s a standard deviation shift of .5, so the scores with come from a normal distribution with mean =12.5 and standard deivation of 5. Remember 1 standard deviation here is 5, so half of a standard deviation is 2.5.</p>
+<p>The following R script runs this simulated experiment 1000 times. We set the alpha criterion to .05, this means we will reject the null whenever the <span class="math inline">\(p\)</span>-value is less than .05. With this specific design, how many times out of of 1000 do we reject the null, and accept the alternative hypothesis?</p>
+<div class="cell" data-hash="cache/unnamed-chunk-5_8a5daf64c1b916732fb4347b49c057cd">
+<pre><code>#&gt; [1] 167</code></pre>
+</div>
+<p>The answer is that we reject the null, and accept the alternative 167 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 16.7 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
+<p>Importantly, power is completely abstract idea that is completely determined by many assumptions including N, effect-size, and alpha. As a result, it is best not to think of power as a single number, but instead as a family of numbers.</p>
+<p>For example, power is different when we change N. If we increase N, our samples will more precisely estimate the true distributions that they came from. Increasing N reduces sampling error, and shrinks the range of differences that can be produced by chance. Lets’ increase our N in this simulation from 10 to 20 in each group and see what happens.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-6_0b5f9e7adaf0af73bef4a203144a9667">
+<pre><code>#&gt; [1] 344</code></pre>
+</div>
+<p>Now the number of significant experiments i 344 out of 1000, or a power of 34.4 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
+<p>We can change the power of the design by changing the alpha-value, which tells us how much evidence we need to reject the null. For example, if we set the alpha criterion to 0.01, then we will be more conservative, only rejecting the null when chance can produce the observed difference 1% of the time. In our example, this will have the effect of reducing power. Let’s keep N at 20, but reduce the alpha to 0.01 and see what happens:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-7_c91db061673b9075da9eea9d1588d636">
+<pre><code>#&gt; [1] 153</code></pre>
+</div>
+<p>Now only 153 out of 1000 experiments are significant, that’s 15.3 power.</p>
+<p>Finally, the power of the design depends on the actual size of the effect caused by the manipulation. In our example, we hypothesized that the effect caused a shift of .5 standard deviations. What if the effect causes a bigger shift? Say, a shift of 2 standard deviations. Let’s keep N= 20, and alpha &lt; .01, but change the effect-size to two standard deviations. When the effect in the real-world is bigger, it should be easier to measure, so our power will increase.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-8_53c999eb9009662ca3e1abc7470904fd">
+<pre><code>#&gt; [1] 1000</code></pre>
+</div>
+<p>Neat, if the effect-size is actually huge (2 standard deviation shift), then we have power 100 percent to detect the true effect.</p>
+</section>
+<section id="power-curves" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="power-curves"><span class="header-section-number">12.2.3</span> Power curves</h3>
+<p>We mentioned that it is best to think of power as a family of numbers, rather than as a single number. To elaborate on this consider the power curve below. This is the power curve for a specific design: a between groups experiments with two levels, that uses an independent samples t-test to test whether an observed difference is due to chance. Critically, N is set to 10 in each group, and alpha is set to .05</p>
+<p>In <a href="#fig-12powercurve">Figure&nbsp;<span>12.3</span></a> power (as a proportion, not a percentage) is plotted on the y-axis, and effect-size (Cohen’s d) in standard deviation units is plotted on the x-axis.</p>
+<div class="cell" data-hash="cache/fig-12powercurve_6101cb6b00791ab9b1e7f198e6681fe1">
+<div class="cell-output-display">
+<div id="fig-12powercurve" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-Thinking_files/figure-html/fig-12powercurve-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 12.3: This figure shows power as a function of effect-size (Cohen’s d) for a between-subjects independent samples t-test, with N=10, and alpha criterion 0.05.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A power curve like this one is very helpful to understand the sensitivity of a particular design. For example, we can see that a between subjects design with N=10 in both groups, will detect an effect of d=.5 (half a standard deviation shift) about 20% of the time, will detect an effect of d=.8 about 50% of the time, and will detect an effect of d=2 about 100% of the time. All of the percentages reflect the power of the design, which is the percentage of times the design would be expected to find a <span class="math inline">\(p\)</span> &lt; 0.05.</p>
+<p>Let’s imagine that based on prior research, the effect you are interested in measuring is fairly small, d=0.2. If you want to run an experiment that will detect an effect of this size a large percentage of the time, how many subjects do you need to have in each group? We know from the above graph that with N=10, power is very low to detect an effect of d=0.2. Let’s make <a href="#fig-12powercurveN">Figure&nbsp;<span>12.4</span></a> and vary the number of subjects rather than the size of the effect.</p>
+<div class="cell" data-hash="cache/fig-12powercurveN_b81c789182da938aaa872179928ec2bc">
+<div class="cell-output-display">
+<div id="fig-12powercurveN" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-Thinking_files/figure-html/fig-12powercurveN-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 12.4: This figure shows power as a function of N for a between-subjects independent samples t-test, with d=0.2, and alpha criterion 0.05.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure plots power to detect an effect of d=0.2, as a function of N. The green line shows where power = .8, or 80%. It looks like we would nee about 380 subjects in each group to measure an effect of d=0.2, with power = .8. This means that 80% of our experiments would succesfully show p &lt; 0.05. Often times power of 80% is recommended as a reasonable level of power, however even when your design has power = 80%, your experiment will still fail to find an effect (associated with that level of power) 20% of the time!</p>
+</section>
+</section>
+<section id="planning-your-design" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="planning-your-design"><span class="header-section-number">12.3</span> Planning your design</h2>
+<p>Our discussion of effect size and power highlight the importance of the understanding the statistical limitations of an experimental design. In particular, we have seen the relationship between:</p>
+<ol type="1">
+<li>Sample-size</li>
+<li>Effect-size</li>
+<li>Alpha criterion</li>
+<li>Power</li>
+</ol>
+<p>As a general rule of thumb, small N designs can only reliably detect very large effects, whereas large N designs can reliably detect much smaller effects. As a researcher, it is your responsibility to plan your design accordingly so that it is capable of reliably detecting the kinds of effects it is intended to measure.</p>
+</section>
+<section id="some-considerations" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="some-considerations"><span class="header-section-number">12.4</span> Some considerations</h2>
+<section id="low-powered-studies" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="low-powered-studies"><span class="header-section-number">12.4.1</span> Low powered studies</h3>
+<p>Consider the following case. A researcher runs a study to detect an effect of interest. There is good reason, from prior research, to believe the effect-size is d=0.5. The researcher uses a design that has 30% power to detect the effect. They run the experiment and find a significant p-value, (p&lt;.05). They conclude their manipulation worked, because it was unlikely that their result could have been caused by chance. How would you interpret the results of a study like this? Would you agree with thte researchers that the manipulation likely caused the difference? Would you be skeptical of the result?</p>
+<p>The situation above requires thinking about two kinds of probabilities. On the one hand we know that the result observed by the researchers does not occur often by chance (p is less than 0.05). At the same time, we know that the design was underpowered, it only detects results of the expected size 30% of the time. We are face with wondering what kind of luck was driving the difference. The researchers could have gotten unlucky, and the difference really could be due to chance. In this case, they would be making a type I error (saying the result is real when it isn’t). If the result was not due to chance, then they would also be lucky, as their design only detects this effect 30% of the time.</p>
+<p>Perhaps another way to look at this situation is in terms of the replicability of the result. Replicability refers to whether or not the findings of the study would be the same if the experiment was repeated. Because we know that power is low here (only 30%), we would expect that most replications of this experiment would not find a significant effect. Instead, the experiment would be expected to replicate only 30% of the time.</p>
+</section>
+<section id="large-n-and-small-effects" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="large-n-and-small-effects"><span class="header-section-number">12.4.2</span> Large N and small effects</h3>
+<p>Perhaps you have noticed that there is an intriguiing relationship between N (sample-size) and power and effect-size. As N increases, so does power to detect an effect of a particular size. Additionally, as N increases, a design is capable of detecting smaller and smaller effects with greater and greater power. For example, if N was large enough, we would have high power to detect very small effects, say d= 0.01, or even d=0.001. Let’s think about what this means.</p>
+<p>Imagine a drug company told you that they ran an experiment with 1 billion people to test whether their drug causes a significant change in headache pain. Let’s say they found a significant effect (with power =100%), but the effect was very small, it turns out the drug reduces headache pain by less than 1%, let’s say 0.01%. For our imaginary study we will also assume that this effect is very real, and not caused by chance.</p>
+<p>Clearly the design had enough power to detect the effect, and the effect was there, so the design did detect the effect. However, the issue is that there is little practical value to this effect. Nobody is going to by a drug to reduce their headache pain by 0.01%, even if it was “scientifcally proven” to work. This example brings up two issues. First, increasing N to very large levels will allow designs to detect almost any effect (even very tiny ones) with very high power. Second, sometimes effects are meaningless when they are very small, especially in applied research such as drug studies.</p>
+<p>These two issues can lead to interesting suggestions. For example, someone might claim that large N studies aren’t very useful, because they can always detect really tiny effects that are practically meaningless. On the other hand, large N studies will also detect larger effects too, and they will give a better estimate of the “true” effect in the population (because we know that larger samples do a better job of estimating population parameters). Additionally, although really small effects are often not interesting in the context of applied research, they can be very important in theoretical research. For example, one theory might predict that manipulating X should have no effect, but another theory might predict that X does have an effect, even if it is a small one. So, detecting a small effect can have theoretical implication that can help rule out false theories. Generally speaking, researchers asking both theoretical and applied questions should think about and establish guidelines for “meaningful” effect-sizes so that they can run designs of appropriate size to detect effects of “meaningful size”.</p>
+</section>
+<section id="small-n-and-large-effects" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="small-n-and-large-effects"><span class="header-section-number">12.4.3</span> Small N and Large effects</h3>
+<p>All other things being equal would you trust the results from a study with small N or large N? This isn’t a trick question, but sometimes people tie themselves into a knot trying to answer it. We already know that large sample-sizes provide better estimates of the distributions the samples come from. As a result, we can safely conclude that we should trust the data from large N studies more than small N studies.</p>
+<p>At the same time, you might try to convince yourself otherwise. For example, you know that large N studies can detect very small effects that are practically and possibly even theoretically meaningless. You also know that that small N studies are only capable of reliably detecting very large effects. So, you might reason that a small N study is better than a large N study because if a small N study detects an effect, that effect must be big and meaningful; whereas, a large N study could easily detect an effect that is tiny and meaningless.</p>
+<p>This line of thinking needs some improvement. First, just because a large N study can detect small effects, doesn’t mean that it only detects small effects. If the effect is large, a large N study will easily detect it. Large N studies have the power to detect a much wider range of effects, from small to large. Second, just because a small N study detected an effect, does not mean that the effect is real, or that the effect is large. For example, small N studies have more variability, so the estimate of the effect size will have more error. Also, there is 5% (or alpha rate) chance that the effect was spurious. Interestingly, there is a pernicious relationship between effect-size and type I error rate</p>
+</section>
+<section id="type-i-errors-are-convincing-when-n-is-small" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="type-i-errors-are-convincing-when-n-is-small"><span class="header-section-number">12.4.4</span> Type I errors are convincing when N is small</h3>
+<p>So what is this pernicious relationship between Type I errors and effect-size? Mainly, this relationship is pernicious for small N studies. For example, the following figure illustrates the results of 1000s of simulated experiments, all assuming the null distribution. In other words, for all of these simulations there is no true effect, as the numbers are all sampled from an identical distribution (normal distribution with mean =0, and standard deviation =1). The true effect-size is 0 in all cases.</p>
+<p>We know that under the null, researchers will find p values that are less 5% about 5% of the time, remember that is the definition. So, if a researcher happened to be in this situation (where there manipulation did absolutely nothing), they would make a type I error 5% of the time, or if they conducted 100 experiments, they would expect to find a significant result for 5 of them.</p>
+<p><a href="#fig-12effectsizeType1">Figure&nbsp;<span>12.5</span></a> reports the findings from only the type I errors, where the simulated study did produce p &lt; 0.05. For each type I error, we calculated the exact p-value, as well as the effect-size (cohen’s D) (mean difference divided by standard deviation). We already know that the true effect-size is zero, however take a look at this graph, and pay close attention to the smaller sample-sizes.</p>
+<div class="cell" data-hash="cache/fig-12effectsizeType1_4673d4c6f9c1e34cbb4a139d3461b629">
+<div class="cell-output-display">
+<div id="fig-12effectsizeType1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-Thinking_files/figure-html/fig-12effectsizeType1-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 12.5: Effect size as a function of p-values for type 1 Errors under the null, for a paired samples t-test.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For example, look at the red dots, when sample size is 10. Here we see that the effect-sizes are quite large. When p is near 0.05 the effect-size is around .8, and it goes up and up as when p gets smaller and smaller. What does this mean? It means that when you get unlucky with a small N design, and your manipulation does not work, but you by chance find a “significant” effect, the effect-size measurement will show you a “big effect”. This is the pernicious aspect. When you make a type I error for small N, your data will make you think there is no way it could be a type I error because the effect is just so big!. Notice that when N is very large, like 1000, the measure of effect-size approaches 0 (which is the true effect-size in the simulation shown in <a href="#fig-12cohensD">Figure&nbsp;<span>12.6</span></a>).</p>
+<div class="cell" data-hash="cache/fig-12cohensD_69226abb447ecadc9683db115aa2fafc">
+<div class="cell-output-display">
+<div id="fig-12cohensD" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="12-Thinking_files/figure-html/fig-12cohensD-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 12.6: Each panel shows a histogram of a different sampling statistic.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./11-Simulation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./13-Gifs.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

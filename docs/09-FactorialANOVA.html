@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew J. C. Crump">
+
+<title>Answering questions with data - 9&nbsp; Factorial ANOVA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-MixedANOVA.html" rel="next">
+<link href="./08-RMANOVA.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79429674-3', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Answering questions with data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#factorial-basics" id="toc-factorial-basics" class="nav-link active" data-scroll-target="#factorial-basics"> <span class="header-section-number">9.1</span> Factorial basics</a>
+  <ul class="collapse">
+  <li><a href="#x2-designs" id="toc-x2-designs" class="nav-link" data-scroll-target="#x2-designs"> <span class="header-section-number">9.1.1</span> 2x2 Designs</a></li>
+  <li><a href="#factorial-notation" id="toc-factorial-notation" class="nav-link" data-scroll-target="#factorial-notation"> <span class="header-section-number">9.1.2</span> Factorial Notation</a></li>
+  <li><a href="#x-3-designs" id="toc-x-3-designs" class="nav-link" data-scroll-target="#x-3-designs"> <span class="header-section-number">9.1.3</span> 2 x 3 designs</a></li>
+  </ul></li>
+  <li><a href="#purpose-of-factorial-designs" id="toc-purpose-of-factorial-designs" class="nav-link" data-scroll-target="#purpose-of-factorial-designs"> <span class="header-section-number">9.2</span> Purpose of Factorial Designs</a>
+  <ul class="collapse">
+  <li><a href="#factorials-manipulate-an-effect-of-interest" id="toc-factorials-manipulate-an-effect-of-interest" class="nav-link" data-scroll-target="#factorials-manipulate-an-effect-of-interest"> <span class="header-section-number">9.2.1</span> Factorials manipulate an effect of interest</a></li>
+  <li><a href="#spot-the-difference" id="toc-spot-the-difference" class="nav-link" data-scroll-target="#spot-the-difference"> <span class="header-section-number">9.2.2</span> Spot the difference</a></li>
+  <li><a href="#distraction-manipulation" id="toc-distraction-manipulation" class="nav-link" data-scroll-target="#distraction-manipulation"> <span class="header-section-number">9.2.3</span> Distraction manipulation</a></li>
+  <li><a href="#distraction-effect" id="toc-distraction-effect" class="nav-link" data-scroll-target="#distraction-effect"> <span class="header-section-number">9.2.4</span> Distraction effect</a></li>
+  <li><a href="#manipulating-the-distraction-effect" id="toc-manipulating-the-distraction-effect" class="nav-link" data-scroll-target="#manipulating-the-distraction-effect"> <span class="header-section-number">9.2.5</span> Manipulating the Distraction effect</a></li>
+  </ul></li>
+  <li><a href="#graphing-the-means" id="toc-graphing-the-means" class="nav-link" data-scroll-target="#graphing-the-means"> <span class="header-section-number">9.3</span> Graphing the means</a></li>
+  <li><a href="#knowing-what-you-want-to-find-out" id="toc-knowing-what-you-want-to-find-out" class="nav-link" data-scroll-target="#knowing-what-you-want-to-find-out"> <span class="header-section-number">9.4</span> Knowing what you want to find out</a></li>
+  <li><a href="#simple-analysis-of-2x2-repeated-measures-design" id="toc-simple-analysis-of-2x2-repeated-measures-design" class="nav-link" data-scroll-target="#simple-analysis-of-2x2-repeated-measures-design"> <span class="header-section-number">9.5</span> Simple analysis of 2x2 repeated measures design</a>
+  <ul class="collapse">
+  <li><a href="#main-effects" id="toc-main-effects" class="nav-link" data-scroll-target="#main-effects"> <span class="header-section-number">9.5.1</span> Main effects</a></li>
+  <li><a href="#interaction" id="toc-interaction" class="nav-link" data-scroll-target="#interaction"> <span class="header-section-number">9.5.2</span> Interaction</a></li>
+  <li><a href="#looking-at-the-data" id="toc-looking-at-the-data" class="nav-link" data-scroll-target="#looking-at-the-data"> <span class="header-section-number">9.5.3</span> Looking at the data</a></li>
+  <li><a href="#main-effect-of-distraction" id="toc-main-effect-of-distraction" class="nav-link" data-scroll-target="#main-effect-of-distraction"> <span class="header-section-number">9.5.4</span> Main effect of Distraction</a></li>
+  <li><a href="#main-effect-of-reward" id="toc-main-effect-of-reward" class="nav-link" data-scroll-target="#main-effect-of-reward"> <span class="header-section-number">9.5.5</span> Main effect of Reward</a></li>
+  <li><a href="#interaction-between-distraction-and-reward" id="toc-interaction-between-distraction-and-reward" class="nav-link" data-scroll-target="#interaction-between-distraction-and-reward"> <span class="header-section-number">9.5.6</span> Interaction between Distraction and Reward</a></li>
+  <li><a href="#writing-it-all-up" id="toc-writing-it-all-up" class="nav-link" data-scroll-target="#writing-it-all-up"> <span class="header-section-number">9.5.7</span> Writing it all up</a></li>
+  <li><a href="#x2-repeated-measures-anova" id="toc-x2-repeated-measures-anova" class="nav-link" data-scroll-target="#x2-repeated-measures-anova"> <span class="header-section-number">9.5.8</span> 2x2 Repeated Measures ANOVA</a></li>
+  </ul></li>
+  <li><a href="#x2-between-subjects-anova" id="toc-x2-between-subjects-anova" class="nav-link" data-scroll-target="#x2-between-subjects-anova"> <span class="header-section-number">9.6</span> 2x2 Between-subjects ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#ss-total" id="toc-ss-total" class="nav-link" data-scroll-target="#ss-total"> <span class="header-section-number">9.6.1</span> SS Total</a></li>
+  <li><a href="#ss-distraction" id="toc-ss-distraction" class="nav-link" data-scroll-target="#ss-distraction"> <span class="header-section-number">9.6.2</span> SS Distraction</a></li>
+  <li><a href="#ss-reward" id="toc-ss-reward" class="nav-link" data-scroll-target="#ss-reward"> <span class="header-section-number">9.6.3</span> SS Reward</a></li>
+  <li><a href="#ss-distraction-by-reward" id="toc-ss-distraction-by-reward" class="nav-link" data-scroll-target="#ss-distraction-by-reward"> <span class="header-section-number">9.6.4</span> SS Distraction by Reward</a></li>
+  <li><a href="#ss-error" id="toc-ss-error" class="nav-link" data-scroll-target="#ss-error"> <span class="header-section-number">9.6.5</span> SS Error</a></li>
+  <li><a href="#check-your-work" id="toc-check-your-work" class="nav-link" data-scroll-target="#check-your-work"> <span class="header-section-number">9.6.6</span> Check your work</a></li>
+  </ul></li>
+  <li><a href="#fireside-chat" id="toc-fireside-chat" class="nav-link" data-scroll-target="#fireside-chat"> <span class="header-section-number">9.7</span> Fireside chat</a></li>
+  <li><a href="#real-data" id="toc-real-data" class="nav-link" data-scroll-target="#real-data"> <span class="header-section-number">9.8</span> Real Data</a>
+  <ul class="collapse">
+  <li><a href="#stand-at-attention" id="toc-stand-at-attention" class="nav-link" data-scroll-target="#stand-at-attention"> <span class="header-section-number">9.8.1</span> Stand at attention</a></li>
+  <li><a href="#plot-the-data" id="toc-plot-the-data" class="nav-link" data-scroll-target="#plot-the-data"> <span class="header-section-number">9.8.2</span> Plot the data</a></li>
+  <li><a href="#conduct-the-anova" id="toc-conduct-the-anova" class="nav-link" data-scroll-target="#conduct-the-anova"> <span class="header-section-number">9.8.3</span> Conduct the ANOVA</a></li>
+  <li><a href="#main-effect-of-congruency" id="toc-main-effect-of-congruency" class="nav-link" data-scroll-target="#main-effect-of-congruency"> <span class="header-section-number">9.8.4</span> Main effect of Congruency</a></li>
+  <li><a href="#main-effect-of-posture" id="toc-main-effect-of-posture" class="nav-link" data-scroll-target="#main-effect-of-posture"> <span class="header-section-number">9.8.5</span> Main effect of Posture</a></li>
+  <li><a href="#congruency-x-posture-interaction" id="toc-congruency-x-posture-interaction" class="nav-link" data-scroll-target="#congruency-x-posture-interaction"> <span class="header-section-number">9.8.6</span> Congruency X Posture Interaction</a></li>
+  <li><a href="#what-does-it-all-mean" id="toc-what-does-it-all-mean" class="nav-link" data-scroll-target="#what-does-it-all-mean"> <span class="header-section-number">9.8.7</span> What does it all mean?</a></li>
+  </ul></li>
+  <li><a href="#factorial-summary" id="toc-factorial-summary" class="nav-link" data-scroll-target="#factorial-summary"> <span class="header-section-number">9.9</span> Factorial summary</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/09-FactorialANOVA.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew J. C. Crump </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-hash="cache/unnamed-chunk-2_4912726bbbe5de68270a7001fdd1ebc3">
+
+</div>
+<p>Factorial designs may be the most complicated topic discussed in this class. What’s so complicated? Up until now we have been talking about experiments with two important bits: the independent variable (the manipulation) and the dependent variable (what we measure). In most cases, our independent variable has had two levels, or three or four; but, there has only been one independent variable.</p>
+<p>What if you wanted to manipulate more than one independent variable? If you did that you would have at least two independent variables, each with their own levels. The rest of the book is about factorial designs with more than one independent variable, and the statistical tests we use to analyze those designs.</p>
+<p>Let’s go through some examples of designs. We will be imagining experiments that are trying to improve students grades. So, the dependent variable will always be grade on a test.</p>
+<ol type="1">
+<li>1 IV (two levels)</li>
+</ol>
+<p>We would use a t-test for these designs, because they only have two levels.</p>
+<ol type="a">
+<li><p>Time of day (Morning versus Afternoon): Do students do better on tests when they take them in the morning versus the afternoon? There is one IV (time of day), with two levels (Morning vs.&nbsp;Afternoon)</p></li>
+<li><p>Caffeine (some caffeine vs no caffeine): Do students do better on tests when they drink caffeine versus not drinking caffeine? There is one IV (caffeine), with two levels (some caffeine vs no caffeine)</p></li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li>1 IV (three levels):</li>
+</ol>
+<p>We would use an ANOVA for these designs because they have more than two levels</p>
+<ol type="a">
+<li><p>Time of day (Morning, Afternoon, Night): Do students do better on tests when they take them in the morning, the afternoon, or at night? There is one IV (time of day), with three levels (Morning, Afternoon, and Night)</p></li>
+<li><p>Caffeine (1 coffee, 2 coffees, 3 coffees): Do students do better on tests when they drink 1 coffee, 2 coffees, or three coffees? There is one IV (caffeine), with three levels (1 coffee, 2 coffees, and 3 coffees)</p></li>
+</ol>
+<!-- -->
+<ol start="3" type="1">
+<li><strong>2 IVs: IV1 (two levels), IV2 (two levels)</strong></li>
+</ol>
+<p>We haven’t talked about what kind of test to run for this design (hint it is called a factorial ANOVA)</p>
+<ol type="a">
+<li>IV1 (Time of Day: Morning vs.&nbsp;Afternoon); IV2 (Caffeine: some caffeine vs.&nbsp;no caffeine): How does time of day and caffeine consumption influence student grades? We had students take tests in the morning or in the afternoon, with or without caffeine. There are two IVs (time of day &amp; caffeine). IV1 (Time of day) has two levels (morning vs afternoon). IV2 (caffeine) has two levels (some caffeine vs.&nbsp;no caffeine)</li>
+</ol>
+<p>OK, let’s stop here for the moment. The first two designs both had one IV. The third design shows an example of a design with 2 IVs (time of day and caffeine), each with two levels. This is called a <strong>2x2 Factorial Design</strong>. It is called a <strong>factorial</strong> design, because the levels of each independent variable are fully crossed. This means that first each level of one IV, the levels of the other IV are also manipulated. “HOLD ON STOP PLEASE!” Yes, it seems as if we are starting to talk in the foreign language of statistics and research designs. We apologize for that. We’ll keep mixing it up with some plain language, and some pictures.</p>
+<section id="factorial-basics" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="factorial-basics"><span class="header-section-number">9.1</span> Factorial basics</h2>
+<section id="x2-designs" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="x2-designs"><span class="header-section-number">9.1.1</span> 2x2 Designs</h3>
+<p>We’ve just started talking about a <strong>2x2 Factorial design</strong>. We said this means the IVs are crossed. To illustrate this, take a look at <a href="#fig-9designs">Figure&nbsp;<span>9.1</span></a>. We show an abstract version and a concrete version using time of day and caffeine as the two IVs, each with two levels in the design:</p>
+<div class="cell" data-hash="cache/fig-9designs_182822682191b3f6e969411392415e4d">
+<div class="cell-output-display">
+<div id="fig-9designs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/figures/2x2Design.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.1: Structure of 2x2 factorial designs</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s talk about this crossing business. Here’s what it means for the design. For the first level of Time of Day (morning), we measure test performance when some people drank caffeine and some did not. So, in the morning we manipulate whether or not caffeine is taken. Also, in the second level of the Time of Day (afternoon), we also manipulate caffeine. Some people drink or don’t drink caffeine in the afternoon as well, and we collect measures of test performance in both conditions.</p>
+<p>We could say the same thing, but talk from the point of view of the second IV. For example, when people drink caffeine, we test those people in the morning, and in the afternoon. So, time of day is manipulated for the people who drank caffeine. Also, when people do not drink caffeine, we test those people in the morning, and in the afternoon, So, time of day is manipulated for the people who did not drink caffeine.</p>
+<p>Finally, each of the four squares representing a DV, is called a <strong>condition</strong>. So, we have 2 IVs, each with 2 levels, for a total of 4 conditions. This is why we call it a 2x2 design. 2x2 = 4. The notation tells us how to calculate the total number of conditions.</p>
+</section>
+<section id="factorial-notation" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="factorial-notation"><span class="header-section-number">9.1.2</span> Factorial Notation</h3>
+<p>Anytime <strong>all of the levels</strong> of each IV in a design are fully crossed, so that they all occur for each level of every other IV, we can say the design is a <strong>fully factorial</strong> design.</p>
+<p>We use a notation system to refer to these designs. The rules for notation are as follows. Each IV get’s it’s own number. The number of levels in the IV is the number we use for the IV. Let’s look at some examples:</p>
+<p>2x2 = There are two IVS, the first IV has two levels, the second IV has 2 levels. There are a total of 4 conditions, 2x2 = 4.</p>
+<p>2x3 = There are two IVs, the first IV has two levels, the second IV has three levels. There are a total of 6 conditions, 2x3 = 6</p>
+<p>3x2 = There are two IVs, the first IV has three levels, the second IV has two levels. There are a total of 6 conditions, 3x2=6.</p>
+<p>4x4 = There are two IVs, the first IV has 4 levels, the second IV has 4 levels. There are a total of 16 condition, 4x4=16</p>
+<p>2x3x2 = There are a total of three IVs. The first IV has 2 levels. The second IV has 3 levels. The third IV has 2 levels. There are a total of 12 condition. 2x3x2 = 12.</p>
+</section>
+<section id="x-3-designs" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="x-3-designs"><span class="header-section-number">9.1.3</span> 2 x 3 designs</h3>
+<p><a href="#fig-923design">Figure&nbsp;<span>9.2</span></a> shows the structure of a 2x3 factorial design.</p>
+<div class="cell" data-hash="cache/fig-923design_28be332f212dbcd0c56de27a4cb2af3d">
+<div class="cell-output-display">
+<div id="fig-923design" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/figures/2x3Design.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.2: Structure of 2x3 factorial designs</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All we did was add another row for the second IV. It’s a 2x3 design, so it should have 6 conditions. As you can see there are now 6 cells to measure the DV.</p>
+</section>
+</section>
+<section id="purpose-of-factorial-designs" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="purpose-of-factorial-designs"><span class="header-section-number">9.2</span> Purpose of Factorial Designs</h2>
+<p>Factorial designs let researchers manipulate more than one thing at once. This immediately makes things more complicated, because as you will see, there are many more details to keep track of. Why would researchers want to make things more complicated? Why would they want to manipulate more than one IV at a time.</p>
+<p>Before we go on, let’s clarify what we mean by manipulating more than one thing at once. When you have one IV in your design, by definition, you are manipulating only <strong>one</strong> thing. This might seem confusing at first, because the IV has more than one level, so it seems to have more than one manipulation. Consider manipulating the number of coffees that people drink before they do a test. We could have one IV (coffee), with three levels (1, 2, or 3 coffees). You might want to say we have three manipulations here, drinking 1, 2, or 3 coffees. But, the way we define manipulation is terms of the IV. There is only one coffee IV. It does have three levels. Nevertheless, we say you are only doing one coffee manipulation. The only thing you are manipulating is the amount of coffee. That’s just one thing, so it’s called one manipulation. To do another, second manipulation, you need to additionally manipulate something that is not coffee (like time of day in our previous example).</p>
+<p>Returning to our question: why would researchers want to manipulate more than one thing in their experiment. The answer might be kind of obvious. They want to know if more than one thing causes change in the thing they are measuring! For example, if you are measuring people’s happiness, you might assume that more than one thing causes happiness to change. If you wanted to track down how two things caused changes in happiness, then you might want to have two manipulations of two different IVs. This is not a wrong way to think about the reasons why researchers use factorial designs. They are often interested in questions like this. However, we think this is an unhelpful way to first learn about factorial designs.</p>
+<p>We present a slightly different way of thinking about the usefulness of factorial designs, and we think it is so important, it get’s its own section.</p>
+<section id="factorials-manipulate-an-effect-of-interest" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="factorials-manipulate-an-effect-of-interest"><span class="header-section-number">9.2.1</span> Factorials manipulate an effect of interest</h3>
+<p>Here is how researchers often use factorial designs to understand the causal influences behind the effects they are interested in measuring. Notice we didn’t say the dependent variables they are measuring, we are now talking about something called effects. Effects are the change in a measure caused by a manipulation. You get an effect, any time one IV causes a change in a DV.</p>
+<p>Here is an example. We will stick with this one example for a while, so pay attention… In fact, the example is about paying attention. Let’s say you wanted to measure something like paying attention. You could something like this:</p>
+<ol type="1">
+<li><p>Pick a task for people to do that you can measure. For example, you can measure how well they perform the task. That will be the dependent measure</p></li>
+<li><p>Pick a manipulation that you think will cause differences in paying attention. For example, we know that people can get distracted easily when there are distracting things around. You could have two levels for your manipulation: No distraction versus distraction.</p></li>
+<li><p>Measure performance in the task under the two conditions</p></li>
+<li><p>If your distraction manipulation changes how people perform the task, you may have successfully manipulated <strong>how well people can pay attention</strong> in your task.</p></li>
+</ol>
+</section>
+<section id="spot-the-difference" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="spot-the-difference"><span class="header-section-number">9.2.2</span> Spot the difference</h3>
+<p>Let’s elaborate this with another fake example. First, we pick a task. It’s called <strong>spot the difference</strong>. You may have played this game before. You look at two pictures side-by-side in <a href="#fig-9spotdiff">Figure&nbsp;<span>9.3</span></a>, and then you locate as many differences as you can find.</p>
+<div class="cell" data-hash="cache/fig-9spotdiff_17f824a0dcaf001784353eecf4df8fb9">
+<div class="cell-output-display">
+<div id="fig-9spotdiff" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/figures/spot_dif.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.3: Spot the differences between the two images</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>How many differences can you spot? When you look for the differences, it feels like you are doing something we would call “paying attention”. If you pay attention to the clock tower, you will see that the hands on the clock are different. Ya! One difference spotted.</p>
+<p>We could give people 30 seconds to find as many differences as they can. Then we give them another set of pictures and do it again. Every time we will measure how many differences they can spot. So, our measure of performance, our dependent variable, could be the mean number of differences spotted.</p>
+</section>
+<section id="distraction-manipulation" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="distraction-manipulation"><span class="header-section-number">9.2.3</span> Distraction manipulation</h3>
+<p>Now, let’s think about a manipulation that might cause differences in how people pay attention. If people need to pay attention to spot differences, then presumably if we made it difficult to pay attention, people would spot less differences. What is a good way to distract people? I’m sure there are lots of ways to do this. How about we do the following:</p>
+<ol type="1">
+<li><p>No distraction condition: Here people do the task with no added distractions. They sit in front of a computer, in a quiet, distraction-free room, and find as many differences as they can for each pair of pictures</p></li>
+<li><p>Distraction condition: Here we blast super loud ambulance sounds and fire alarms and heavy metal music while people attempt to spot differences. We also randomly turn the sounds on and off, and make them super-duper annoying and distracting. We make sure that the sounds aren’t loud enough to do any physical damage to anybody’s ear-drums. But, we want to make them loud enough to be super distracting. If you don’t like this, we could also tickle people with a feather, or whisper silly things into their ears, or surround them by clowns, or whatever we want, it just has to be super distracting.</p></li>
+</ol>
+</section>
+<section id="distraction-effect" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="distraction-effect"><span class="header-section-number">9.2.4</span> Distraction effect</h3>
+<p>If our distraction manipulation is super-distracting, then what should we expect to find when we compare spot-the-difference performance between the no-distraction and distraction conditions? We should find a difference!</p>
+<p>If our manipulation works, then we should find that people find more differences when they are not distracted, and less differences when they are distracted. <a href="#fig-9meandiff">Figure&nbsp;<span>9.4</span></a> shows how the data might look.</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-9meandiff_b4c5727aa29a60e00497ae4aa66ab5be">
+<div class="cell-output-display">
+<div id="fig-9meandiff" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-FactorialANOVA_files/figure-html/fig-9meandiff-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.4: Example data from pretend experiment showing number of differences spotted in a distraction versus no distraction condition</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure shows a big difference in the mean number of difference spotted. People found 5 differences on average when they were distracted, and 10 differences when they were not distracted. We labelled the figure, “The distraction effect”, because it shows a big effect of distraction. The effect of distraction is a mean of 5 spot the differences. It’s the difference between performance in the Distraction and No-Distraction conditions. In general, it is very common to use the word <strong>effect</strong> to refer to the differences caused by the manipulation. We manipulated distraction, it caused a difference, so we call this the “distraction effect”.</p>
+</section>
+<section id="manipulating-the-distraction-effect" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="manipulating-the-distraction-effect"><span class="header-section-number">9.2.5</span> Manipulating the Distraction effect</h3>
+<p>This is where factorial designs come in to play. We have done the hard work of finding an effect of interest, in this case the distraction effect. We think this distraction effect actually measures something about your ability to pay attention. For example, if you were the kind of person who had a small distraction effect (maybe you find 10 differences when you are not distracted, and 9 differences when you are distracted), that could mean you are very good at ignoring distracting things while you are paying attention. On the other hand, you could be the kind of person who had a big distraction effect (maybe you found 10 differences under no distraction, and only 1 difference when you were distracted); this could mean you are not very good at ignoring distracting things while you are paying attention.</p>
+<p>Overall now, we are thinking of our distraction effect (the difference in performance between the two conditions) as the important thing we want to measure. We then might want to know how to make people better at ignoring distracting things. Or, we might want to know what makes people worse at ignoring things. In other words we want to find out what manipulations control the size of the distraction effect (make it bigger or smaller, or even flip around!).</p>
+<p>Maybe there is a special drug that helps you ignore distracting things. People taking this drug should be less distracted, and if they took this drug while completing our task, they should have a smaller distraction effect compared to people not taking the drug.</p>
+<p>Maybe rewarding people with money can help you pay attention and ignore distracting things better. People receiving 5 dollars every time they spot a difference might be able to focus more because of the reward, and they would show a smaller distraction effect in our task, compared to people who got no money for finding differences. Let’s see what this would look like.</p>
+<p>We are going to add a second IV to our task. The second IV will manipulate reward. In one condition, people will get 5 dollars for every difference they find (so they could leave the study with lots of money if they find lots of differences). In the other condition, people will get no money, but they will still have find differences. Remember, this will be a factorial design, so everybody will have to find differences when they are distracted and when they are not distracted.</p>
+<p>The question we are now asking is: Will manipulating reward cause a change in the size of the distraction effect. We could predict that people receiving rewards will have a smaller distraction effect than people not receiving rewards. If that happened, the data would look something like <a href="#fig-9reward">Figure&nbsp;<span>9.5</span></a>.</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-9reward_e03a7d3720663d9d02e1fc86bb49b531">
+<div class="cell-output-display">
+<div id="fig-9reward" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-FactorialANOVA_files/figure-html/fig-9reward-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.5: Example data showing how the distraction effect could be modulated by a reward manipulation. Distraction condition plotted on the x-axis, makes it more difficult to compare the changes in the distraction effect between reward conditions</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I’ve just shown you a new kind of graph. I apologize right now for showing this to you first. It’s more unhelpful than the next graph. What I did was keep the x-axis the same as before (to be consistent). So, we have distraction vs.&nbsp;no distraction on the x-axis. In the distraction condition, there are means for spot-the-difference performance in the no-reward (red), and reward (aqua) conditions. The same goes for the no-distraction condition, a red and an aqua bar for the no-reward and reward conditions. We can try to interpret this graph, but <a href="#fig-9rewardB">Figure&nbsp;<span>9.6</span></a> plots the same data in a way that makes it easier to see what we are talking about.</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-9rewardB_7f6fc13f970b7e82b1cc0dadbcc2c6fc">
+<div class="cell-output-display">
+<div id="fig-9rewardB" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-FactorialANOVA_files/figure-html/fig-9rewardB-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.6: Example data showing how the distraction effect could be modulated by a reward manipulation. Reward condition plotted on the x-axis, makes it easier to compare the changes in the distraction effect between reward conditions</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All we did was change the x-axis. Now the left side of the x-axis is for the no-reward condition, and the right side is for the reward condition. The red bar is for the distraction condition, and the aqua bar is for the no distraction condition. It is easier to see the distraction effect in this graph. The distraction effect is the difference in size between the red and aqua bars. For each reward condition, the red and aqua bars are right beside each other, so can see if there is a difference between them more easily, compared to the first graph.</p>
+<p><strong>No-Reward condition</strong>: In the no-reward condition people played spot the difference when they were distracted and when they were not distracted. This is a replication of our first fake study. We should expect to find the same pattern of results, and that’s what the graph shows. There was a difference of 5. People found 5 differences when they were distracted and 10 when they were not distracted. So, there was a distraction effect of 5, same as we had last time.</p>
+<p><strong>Reward condition</strong>: In the reward condition people played spot the difference when they were distracted and when they were not distracted. Except, they got 5 dollars every time they spotted a difference. We predicted this would cause people to pay more attention and do a better job of ignoring distracting things. The graph shows this is what happened. People found 9 differences when they were distracted and 11 when they were not distracted. So, there was a distraction effect of 2.</p>
+<p>If we had conducted this study, we might have concluded that reward can manipulate the distraction effect. When there was no reward, the size of the distraction effect was 5. When there was reward, the size of the distraction effect was 2. So, the reward manipulation changed the size of the distraction effect by 3 (5-2 =3).</p>
+<p>This is our description of why factorial designs are so useful. They allow researchers to find out what kinds of manipulations can cause changes in the effects they measure. We measured the distraction effect, then we found that reward causes changes in the distraction effect. If we were trying to understand how paying attention works, we would then need to explain how it is that reward levels could causally change how people pay attention. We would have some evidence that reward does cause change in paying attention, and we would have to come up with some explanations, and then run more experiments to test whether those explanations hold water.</p>
+</section>
+</section>
+<section id="graphing-the-means" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="graphing-the-means"><span class="header-section-number">9.3</span> Graphing the means</h2>
+<p>In our example above we showed you two bar graphs of the very same means for our 2x2 design. Even though the graphs plot identical means, they look different, so they are more or less easy to interpret by looking at them. Results from 2x2 designs are also often plotted with line graphs. Those look different too. There are four different graphs in <a href="#fig-9visualdiffs">Figure&nbsp;<span>9.7</span></a>, using bars and lines to plot the very same means from before. We are showing you this so that you realize <strong>how you graph your data matters</strong> because it makes it more or less easy for people to understand the results. Also, how the data is plotted matters for what you need to look at to interpret the results.</p>
+<div class="cell" data-hash="cache/fig-9visualdiffs_01cb4cc8a320b5b014703263bf739ebe">
+<div class="cell-output-display">
+<div id="fig-9visualdiffs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-FactorialANOVA_files/figure-html/fig-9visualdiffs-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.7: same example means plotted using bar graphs or line graphs, and with Distraction or Reward on the x-axis</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="knowing-what-you-want-to-find-out" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="knowing-what-you-want-to-find-out"><span class="header-section-number">9.4</span> Knowing what you want to find out</h2>
+<p>When you conduct a design with more than one IV, you get more means to look at. As a result, there are more kinds of questions that you can ask of the data. Sometimes it turns out that the questions that you can ask, are not the ones that you want to ask, or have an interest in asking. Because you ran the design with more than one IV, you have the opportunity to ask these kinds of extra questions.</p>
+<p>What kinds of extra questions? Let’s keep going with our distraction effect experiment. We have the first IV where we manipulated distraction. So, we could find the overall means in spot-the difference for the distraction vs.&nbsp;no-distraction conditions (that’s two means). The second IV was reward. We could find the overall means in spot-the-difference performance for the reward vs.&nbsp;no-reward conditions (that’s two more means). We could do what we already did, and look at the means for each combination, that is the mean for distraction/reward, distraction/no-reward, no-distraction/reward, and no-distraction/no-reward (that’s four more means, if you’re counting).</p>
+<p>There’s even more. We could look at the mean distraction effect (the difference between distraction and no-distraction) for the reward condition, and the mean distraction effect for the no-reward condition (that’s two more).</p>
+<p><a href="#fig-9alleffects">Figure&nbsp;<span>9.8</span></a> shows multiple ways of looking at the means across four panels.</p>
+<div class="cell" data-hash="cache/fig-9alleffects_ab249fc183bf1fd9a0b59947e8a4adf8">
+<div class="cell-output-display">
+<div id="fig-9alleffects" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-FactorialANOVA_files/figure-html/fig-9alleffects-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.8: Each panel shows the mean for different effects in the design</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The purpose of showing all of these means is to orient you to your problem. If you conduct a 2x2 design (and this is the most simple factorial that you can conduct), you will get all of these means. You need to know what you want to know from the means. That is, you need to be able to connect the research question to the specific means you are interested in analyzing.</p>
+<p>For example, in our example, the research question was whether reward would change the size of the distraction effect. The top left panel gives us some info about this question. We can see all of the condition means, and we can visually see that the distraction effect was larger in the No-reward compared to the reward condition. But, to “see” this, we need to do some visual subtraction. You need to look at the difference between the red and aqua bars for each of the reward and no-reward conditions.</p>
+<p>Does the top right panel tell us about whether reward changed the size of the distraction effect? NO, it just shows that there was an overall distraction effect (this is called the <strong>main effect</strong> of distraction). <strong>Main effects</strong> are any differences between the levels of one independent variable.</p>
+<p>Does the bottom left panel tell us about whether reward changed the size of the distraction effect? NO! it just shows that there was an overall reward effect, called the main effect of reward. People who were rewarded spotted a few more differences than the people who weren’t, but this doesn’t tell us if they were any less distracted.</p>
+<p>Finally, how about the bottom left panel. Does this tell us about whether the reward changed the size of the distraction effect? YES! Notice, the y-axis is different for this panel. The y-axis here is labelled “Distraction Effect”. You are looking at two difference scores. The distraction effect in the no-reward condition (10-5 = 5), and the distraction effect in the Reward condition (11-9 = 2). These two bars are different as a function of reward. So, it looks like reward did produce a difference between the distraction effects! This was the whole point of the fake study. It is these means that were most important for answering the question of the study. As a very last point, this panel contains what we call an <strong>interaction</strong>. We explain this in the next section.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Pro tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you know what you want to know from your means before you run the study, otherwise you will just have way too many means, and you won’t know what they mean.</p>
+</div>
+</div>
+</section>
+<section id="simple-analysis-of-2x2-repeated-measures-design" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="simple-analysis-of-2x2-repeated-measures-design"><span class="header-section-number">9.5</span> Simple analysis of 2x2 repeated measures design</h2>
+<p>Normally in a chapter about factorial designs we would introduce you to Factorial ANOVAs, which are totally a thing. We will introduce you to them soon. But, before we do that, we are going to show you how to analyze a 2x2 repeated measures ANOVA design with paired-samples t-tests. This is probably something you won’t do very often. However, it turns out the answers you get from this method are the same ones you would get from an ANOVA.</p>
+<p>Admittedly, if you found the explanation of ANOVA complicated, it will just appear even more complicated for factorial designs. So, our purpose here is to delay the complication, and show you with t-tests what it is that the Factorial ANOVA is doing. More important, when you do the analysis with t-tests, you have to be very careful to make all of the comparisons in the right way. As a result, you will get some experience learning how to know what it is you want to know from factorial designs. Once you know what you want to know, you can use the ANOVA to find out the answers, and then you will also know what answers to look for after you run the ANOVA. Isn’t new knowledge fun!</p>
+<p>The first thing we need to do is define <strong>main effects</strong> and <strong>interactions</strong>. Whenever you conduct a Factorial design, you will also have the opportunity to analyze <strong>main effects</strong> and <strong>interactions</strong>. However, the number of <strong>main effects</strong> and <strong>interactions</strong> you get to analyse depends on the number of IVs in the design.</p>
+<section id="main-effects" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="main-effects"><span class="header-section-number">9.5.1</span> Main effects</h3>
+<p>Formally, main effects are the mean differences for a single Independent variable. There is always one main effect for each IV. A 2x2 design has 2 IVs, so there are two main effects. In our example, there is one main effect for distraction, and one main effect for reward. We will often ask if the main effect of some IV is significant. This refers to a statistical question: Were the differences between the means for that IV likely or unlikely to be caused by chance (sampling error).</p>
+<p>If you had a 2x2x2 design, you would measure three main effects, one for each IV. If you had a 3x3x3 design, you would still only have 3 IVs, so you would have three main effects.</p>
+</section>
+<section id="interaction" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="interaction"><span class="header-section-number">9.5.2</span> Interaction</h3>
+<p>We find that the interaction concept is one of the most confusing concepts for factorial designs. Formally, we might say an interaction occurs whenever the effect of one IV has an influence on the size of the effect for another IV. That’s probably not very helpful. In more concrete terms, using our example, we found that the reward IV had an effect on the size of the distraction effect. The distraction effect was larger when there was no-reward, and it was smaller when there was a reward. So, there was an interaction.</p>
+<p>We might also say an interaction occurs when the difference between the differences are different! Yikes. Let’s explain. There was a difference in spot-the-difference performance between the distraction and no-distraction condition, this is called the distraction effect (it is a difference measure). The reward manipulation changed the size of the distraction effect, that means there was difference in the size of the distraction effect. The distraction effect is itself a measure of differences. So, we did find that the difference (in the distraction effect) between the differences (the two measures of the distraction effect between the reward conditions) were different. When you start to write down explanations of what interactions are, you find out why they come across as complicated. We’ll leave our definition of interaction like this for now. Don’t worry, we’ll go through lots of examples to help firm up this concept for you.</p>
+<p>The number of interactions in the design also depend on the number of IVs. For a 2x2 design there is only 1 interaction. The interaction between IV1 and IV2. This occurs when the effect of say IV2 (whether there is a difference between the levels of IV2) changes across the levels of IV1. We could write this in reverse, and ask if the effect of IV1 (whether there is a difference between the levels of IV1) changes across the levels of IV2. However, just because we can write this two ways, does not mean there are two interactions. We’ll see in a bit, that no matter how do the calculation to see if the difference scores–measure of effect for one IV– change across the levels of the other IV, we always get the same answer. That is why there is only one interaction for a 2x2. Similarly, there is only one interaction for a 3x3, because there again we only have two IVs (each with three levels). Only when we get up to designs with more than 2 IVs, do we find more possible interactions. A design with three IVS, has four interactions. If the IVs are labelled A, B, and C, then we have three 2-way interactions (AB, AC, and BC), and one three-way interaction (ABC). We hold off on this stuff for much later</p>
+</section>
+<section id="looking-at-the-data" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="looking-at-the-data"><span class="header-section-number">9.5.3</span> Looking at the data</h3>
+<p>It is most helpful to see some data in order to understand how we will analyze it. Let’s imagine we ran our fake attention study. We will have five people in the study, and they will participate in all conditions, so it will be a fully repeated-measures design. The data could look like this:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-11_75a48e562766a31b41d652393e3f017b">
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> subject </th>
+   <th style="text-align:right;"> A </th>
+   <th style="text-align:right;"> B </th>
+   <th style="text-align:right;"> C </th>
+   <th style="text-align:right;"> D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+</tbody>
+<tfoot>
+<tr><td style="padding: 0; " colspan="100%"><span style="font-style: italic;">Note: </span></td></tr>
+<tr><td style="padding: 0; " colspan="100%">
+<sup></sup> Number of differences spotted for each subject in each condition. </td></tr>
+</tfoot>
+</table>
+
+</div>
+</div>
+</section>
+<section id="main-effect-of-distraction" class="level3" data-number="9.5.4">
+<h3 data-number="9.5.4" class="anchored" data-anchor-id="main-effect-of-distraction"><span class="header-section-number">9.5.4</span> Main effect of Distraction</h3>
+<p>The main effect of distraction compares the overall means for all scores in the no-distraction and distraction conditions, collapsing over the reward conditions.</p>
+<p>The yellow columns show the no-distraction scores for each subject. The blue columns show the distraction scores for each subject.</p>
+<p>The overall means for for each subject, for the two distraction conditions are shown to the right. For example, subject 1 had a 10 and 12 in the no-distraction condition, so their mean is 11.</p>
+<p>We are interested in the main effect of distraction. This is the difference between the AC column (average of subject scores in the no-distraction condition) and the BD column (average of the subject scores in the distraction condition). These differences for each subject are shown in the last green column. The overall means, averaging over subjects are in the bottom green row.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-12_922f4327ad63ffb31ba0eaf8e687a7bb">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "> All Conditions</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="3"></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "> Distraction Means </div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction Effect </div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Difference</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> AC </th>
+   <th style="text-align:left;"> BD </th>
+   <th style="text-align:left;"> AC.minus.BD </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 5 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 12 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 8 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 13 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8 </td>
+   <td style="text-align:left;"> 10.5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 11 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 14 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;"> 12.5 </td>
+   <td style="text-align:left;"> 6.5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 9 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 11 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 7.5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 2.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 2 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 13 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12 </td>
+   <td style="text-align:left;"> 11.5 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11.1 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6.8 </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;"> 4.3 </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+<p>Just looking at the means, we can see there was a main effect of Distraction, the mean for the no-distraction condition was 11.1, and the mean for the distraction condition was 6.8. The size of the main effect was 4.3 (the difference between 11.1 and 6.8).</p>
+<p>Now, what if we wanted to know if this main effect of distraction (the difference of 4.3) could have been caused by chance, or sampling error. You could do two things. You could run a paired samples <span class="math inline">\(t\)</span>-test between the mean no-distraction scores for each subject (column AC) and the mean distraction scores for each subject (column BD). Or, you could run a one-sample <span class="math inline">\(t\)</span>-test on the difference scores column, testing against a mean difference of 0. Either way you will get the same answer.</p>
+<p>Here’s the paired samples version:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-13_c3d98e702d637c84df921759558c5931">
+<pre><code>#&gt; 
+#&gt;  Paired t-test
+#&gt; 
+#&gt; data:  AC and BD
+#&gt; t = 7.6615, df = 4, p-value = 0.00156
+#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  2.741724 5.858276
+#&gt; sample estimates:
+#&gt; mean of the differences 
+#&gt;                     4.3</code></pre>
+</div>
+<p>Here’s the one sample version:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-14_d68627096f588f12f875e57a082f2b29">
+<pre><code>#&gt; 
+#&gt;  One Sample t-test
+#&gt; 
+#&gt; data:  AC - BD
+#&gt; t = 7.6615, df = 4, p-value = 0.00156
+#&gt; alternative hypothesis: true mean is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  2.741724 5.858276
+#&gt; sample estimates:
+#&gt; mean of x 
+#&gt;       4.3</code></pre>
+</div>
+<p>If we were to write-up our results for the main effect of distraction we could say something like this:</p>
+<p>The main effect of distraction was significant, <span class="math inline">\(t\)</span>(4) = 7.66, <span class="math inline">\(p\)</span> = 0.001. The mean number of differences spotted was higher in the no-distraction condition (M = 11.1) than the distraction condition (M = 6.8).</p>
+</section>
+<section id="main-effect-of-reward" class="level3" data-number="9.5.5">
+<h3 data-number="9.5.5" class="anchored" data-anchor-id="main-effect-of-reward"><span class="header-section-number">9.5.5</span> Main effect of Reward</h3>
+<p>The main effect of reward compares the overall means for all scores in the no-reward and reward conditions, collapsing over the reward conditions.</p>
+<p>The yellow columns show the no-reward scores for each subject. The blue columns show the reward scores for each subject.</p>
+<p>The overall means for for each subject, for the two reward conditions are shown to the right. For example, subject 1 had a 10 and 5 in the no-reward condition, so their mean is 7.5.</p>
+<p>We are interested in the main effect of reward. This is the difference between the AB column (average of subject scores in the no-reward condition) and the CD column (average of the subject scores in the reward condition). These differences for each subject are shown in the last green column. The overall means, averaging over subjects are in the bottom green row.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-15_6af6d2caa55f3857a50558ebb509bed4">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "> All Conditions</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="3"></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "> Reward Means </div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward Effect </div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Difference</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> AB </th>
+   <th style="text-align:left;"> CD </th>
+   <th style="text-align:left;"> CD.minus.AB </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 10 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9 </td>
+   <td style="text-align:left;"> 7.5 </td>
+   <td style="text-align:left;"> 10.5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 8 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 13 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 10.5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 11 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 3 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 14 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 9 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11 </td>
+   <td style="text-align:left;"> 6.5 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 10 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 2 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 13 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 12.5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11.3 </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;"> 4.7 </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+<p>Just looking at the means, we can see there was a main effect of reward. The mean number of differences spotted was 11.3 in the reward condition, and 6.6 in the no-reward condition. So, the size of the main effect of reward was 4.7.</p>
+<p>Is a difference of this size likely o unlikely due to chance? We could conduct a paired-samples <span class="math inline">\(t\)</span>-test on the AB vs.&nbsp;CD means, or a one-sample <span class="math inline">\(t\)</span>-test on the difference scores. They both give the same answer:</p>
+<p>Here’s the paired samples version:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-16_a3355260889933238db0fe2ea7528c9f">
+<pre><code>#&gt; 
+#&gt;  Paired t-test
+#&gt; 
+#&gt; data:  CD and AB
+#&gt; t = 8.3742, df = 4, p-value = 0.001112
+#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  3.141724 6.258276
+#&gt; sample estimates:
+#&gt; mean of the differences 
+#&gt;                     4.7</code></pre>
+</div>
+<p>Here’s the one sample version:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-17_06644c3e08a28c4b037660bb41888476">
+<pre><code>#&gt; 
+#&gt;  One Sample t-test
+#&gt; 
+#&gt; data:  CD - AB
+#&gt; t = 8.3742, df = 4, p-value = 0.001112
+#&gt; alternative hypothesis: true mean is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  3.141724 6.258276
+#&gt; sample estimates:
+#&gt; mean of x 
+#&gt;       4.7</code></pre>
+</div>
+<p>If we were to write-up our results for the main effect of reward we could say something like this:</p>
+<p>The main effect of reward was significant, t(4) = 8.37, p = 0.001. The mean number of differences spotted was higher in the reward condition (M = 11.3) than the no-reward condition (M = 6.6).</p>
+</section>
+<section id="interaction-between-distraction-and-reward" class="level3" data-number="9.5.6">
+<h3 data-number="9.5.6" class="anchored" data-anchor-id="interaction-between-distraction-and-reward"><span class="header-section-number">9.5.6</span> Interaction between Distraction and Reward</h3>
+<p>Now we are ready to look at the interaction. Remember, the whole point of this fake study was what? Can you remember?</p>
+<p>Here’s a reminder. We wanted to know if giving rewards versus not would change the size of the distraction effect.</p>
+<p>Notice, neither the main effect of distraction, or the main effect of reward, which we just went through the process of computing, answers this question.</p>
+<p>In order to answer the question we need to do two things. First, compute distraction effect for each subject when they were in the no-reward condition. Second, compute the distraction effect for each subject when they were in the reward condition.</p>
+<p>Then, we can compare the two distraction effects and see if they are different. The comparison between the two distraction effects is what we call the <strong>interaction effect</strong>. Remember, this is a difference between two difference scores. We first get the difference scores for the distraction effects in the no-reward and reward conditions. Then we find the difference scores between the two distraction effects. This difference of differences is the interaction effect (green column in the table)</p>
+<div class="cell" data-hash="cache/unnamed-chunk-18_c7c2ba650f37f6f647c9ee257d35ba23">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "> All Conditions</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="3"></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "> Distraction Effects </div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Interaction Effect </div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Difference</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> A-B </th>
+   <th style="text-align:left;"> C-D </th>
+   <th style="text-align:left;"> (A-B)-(C-D) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 5 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 12 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 8 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 13 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> -1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 11 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 14 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 9 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 4 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 11 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 2 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 13 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 2.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: lightgray !important;"> 3.4 </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+<p>The mean distraction effects in the no-reward (6) and reward (2.6) conditions were different. This difference is the interaction effect. The size of the interaction effect was 3.4.</p>
+<p>How can we test whether the interaction effect was likely or unlikely due to chance? We could run another paired-sample <span class="math inline">\(t\)</span>-test between the two distraction effect measures for each subject, or a one sample <span class="math inline">\(t\)</span>-test on the green column (representing the difference between the differences). Both of these <span class="math inline">\(t\)</span>-tests will give the same results:</p>
+<p>Here’s the paired samples version:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-19_9405bc25d00a2a19266a5d386a04b924">
+<pre><code>#&gt; 
+#&gt;  Paired t-test
+#&gt; 
+#&gt; data:  A_B and C_D
+#&gt; t = 2.493, df = 4, p-value = 0.06727
+#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  -0.3865663  7.1865663
+#&gt; sample estimates:
+#&gt; mean of the differences 
+#&gt;                     3.4</code></pre>
+</div>
+<p>Here’s the one sample version:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-20_a4283e4e13956735f40c539746c87834">
+<pre><code>#&gt; 
+#&gt;  One Sample t-test
+#&gt; 
+#&gt; data:  A_B - C_D
+#&gt; t = 2.493, df = 4, p-value = 0.06727
+#&gt; alternative hypothesis: true mean is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  -0.3865663  7.1865663
+#&gt; sample estimates:
+#&gt; mean of x 
+#&gt;       3.4</code></pre>
+</div>
+<p>Oh look, the interaction was not significant. At least, if we had set our alpha criterion to 0.05, it would not have met that criteria. We could write up the results like this. The two-way interaction between between distraction and reward was not significant, <span class="math inline">\(t\)</span>(4) = 2.493, <span class="math inline">\(p\)</span> = 0.067.</p>
+<p>Often times when a result is “not significant” according to the alpha criteria, the pattern among the means is not described further. One reason for this practice is that the researcher is treating the means as if they are not different (because there was an above alpha probability that the observed differences were due to chance). If they are not different, then there is no pattern to report.</p>
+<p>There are differences in opinion among reasonable and expert statisticians on what should or should not be reported. Let’s say we wanted to report the observed mean differences, we would write something like this:</p>
+<p>The two-way interaction between between distraction and reward was not significant, t(4) = 2.493, p = 0.067. The mean distraction effect in the no-reward condition was 6 and the mean distraction effect in the reward condition was 2.6.</p>
+</section>
+<section id="writing-it-all-up" class="level3" data-number="9.5.7">
+<h3 data-number="9.5.7" class="anchored" data-anchor-id="writing-it-all-up"><span class="header-section-number">9.5.7</span> Writing it all up</h3>
+<p>We have completed an analysis of a 2x2 repeated measures design using paired-samples <span class="math inline">\(t\)</span>-tests. Here is what a full write-up of the results could look like.</p>
+<p>The main effect of distraction was significant, <span class="math inline">\(t\)</span>(4) = 7.66, <span class="math inline">\(p\)</span> = 0.001. The mean number of differences spotted was higher in the no-distraction condition (M = 11.1) than the distraction condition (M = 6.8).</p>
+<p>The main effect of reward was significant, <span class="math inline">\(t\)</span>(4) = 8.37, <span class="math inline">\(p\)</span> = 0.001. The mean number of differences spotted was higher in the reward condition (M = 11.3) than the no-reward condition (M = 6.6).</p>
+<p>The two-way interaction between between distraction and reward was not significant, <span class="math inline">\(t\)</span>(4) = 2.493, <span class="math inline">\(p\)</span> = 0.067. The mean distraction effect in the no-reward condition was 6 and the mean distraction effect in the reward condition was 2.6.</p>
+<p><strong>Interim Summary</strong>. We went through this exercise to show you how to break up the data into individual comparisons of interest. Generally speaking, a 2x2 repeated measures design would not be analyzed with three paired-samples <span class="math inline">\(t\)</span>-test. This is because it is more convenient to use the repeated measures ANOVA for this task. We will do this in a moment to show you that they give the same results. And, by the same results, what we will show is that the <span class="math inline">\(p\)</span>-values for each main effect, and the interaction, are the same. The ANOVA will give us <span class="math inline">\(F\)</span>-values rather than <span class="math inline">\(t\)</span> values. It turns out that in this situation, the <span class="math inline">\(F\)</span>-values are related to the <span class="math inline">\(t\)</span> values. In fact, <span class="math inline">\(t^2 = F\)</span>.</p>
+</section>
+<section id="x2-repeated-measures-anova" class="level3" data-number="9.5.8">
+<h3 data-number="9.5.8" class="anchored" data-anchor-id="x2-repeated-measures-anova"><span class="header-section-number">9.5.8</span> 2x2 Repeated Measures ANOVA</h3>
+<p>We just showed how a 2x2 repeated measures design can be analyzed using paired-sampled <span class="math inline">\(t\)</span>-tests. We broke up the analysis into three parts. The main effect for distraction, the main effect for reward, and the 2-way interaction between distraction and reward. We claimed the results of the paired-samples <span class="math inline">\(t\)</span>-test analysis would mirror what we would find if we conducted the analysis using an ANOVA. Let’s show that the results are the same. Here are the results from the 2x2 repeated-measures ANOVA, using the <code>aov</code> function in R.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-21_38cd9e21011f7cb7be1d1fa0b3c764c3">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Df </th>
+   <th style="text-align:right;"> Sum Sq </th>
+   <th style="text-align:right;"> Mean Sq </th>
+   <th style="text-align:right;"> F value </th>
+   <th style="text-align:right;"> Pr(&gt;F) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3.70 </td>
+   <td style="text-align:right;"> 0.925 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Distraction </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 92.45 </td>
+   <td style="text-align:right;"> 92.450 </td>
+   <td style="text-align:right;"> 58.698413 </td>
+   <td style="text-align:right;"> 0.0015600 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 6.30 </td>
+   <td style="text-align:right;"> 1.575 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Reward </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 110.45 </td>
+   <td style="text-align:right;"> 110.450 </td>
+   <td style="text-align:right;"> 70.126984 </td>
+   <td style="text-align:right;"> 0.0011122 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 6.30 </td>
+   <td style="text-align:right;"> 1.575 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Distraction:Reward </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 14.45 </td>
+   <td style="text-align:right;"> 14.450 </td>
+   <td style="text-align:right;"> 6.215054 </td>
+   <td style="text-align:right;"> 0.0672681 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 9.30 </td>
+   <td style="text-align:right;"> 2.325 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Let’s compare these results with the paired-samples <span class="math inline">\(t\)</span>-tests.</p>
+<p><strong>Main effect of Distraction</strong>: Using the paired samples <span class="math inline">\(t\)</span>-test, we found <span class="math inline">\(t\)</span>(4) =7.6615, <span class="math inline">\(p\)</span>=0.00156. Using the ANOVA we found, <span class="math inline">\(F\)</span>(1,4) = 58.69, <span class="math inline">\(p\)</span>=0.00156. See, the <span class="math inline">\(p\)</span>-values are the same, and <span class="math inline">\(t^2 = 7.6615^2 = 58.69 = F\)</span>.</p>
+<p><strong>Main effect of Reward</strong>: Using the paired samples <span class="math inline">\(t\)</span>-test, we found <span class="math inline">\(t\)</span>(4) =8.3742, <span class="math inline">\(p\)</span>=0.001112. Using the ANOVA we found, <span class="math inline">\(F\)</span>(1,4) = 70.126, <span class="math inline">\(p\)</span>=0.001112. See, the <span class="math inline">\(p\)</span>-values are the same, and <span class="math inline">\(t^2 = 8.3742^2 = 70.12 = F\)</span>.</p>
+<p><strong>Interaction effect</strong>: Using the paired samples <span class="math inline">\(t\)</span>-test, we found <span class="math inline">\(t\)</span>(4) =2.493, <span class="math inline">\(p\)</span>=0.06727. Using the ANOVA we found, <span class="math inline">\(F\)</span>(1,4) = 6.215, <span class="math inline">\(p\)</span>=0.06727. See, the <span class="math inline">\(p\)</span>-values are the same, and <span class="math inline">\(t^2 = 2.493^2 = 6.215 = F\)</span>.</p>
+<p>There you have it. The results from a 2x2 repeated measures ANOVA are the same as you would get if you used paired-samples <span class="math inline">\(t\)</span>-tests for the main effects and interactions.</p>
+</section>
+</section>
+<section id="x2-between-subjects-anova" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="x2-between-subjects-anova"><span class="header-section-number">9.6</span> 2x2 Between-subjects ANOVA</h2>
+<p>You must be wondering how to calculate a 2x2 ANOVA. We haven’t discussed this yet. We’ve only shown you that you don’t have to do it when the design is a 2x2 repeated measures design (note this is a special case).</p>
+<p>We are now going to work through some examples of calculating the ANOVA table for 2x2 designs. We will start with the between-subjects ANOVA for 2x2 designs. We do essentially the same thing that we did before (in the other ANOVAs), and the only new thing is to show how to compute the interaction effect.</p>
+<p>Remember the logic of the ANOVA is to partition the variance into different parts. The SS formula for the between-subjects 2x2 ANOVA looks like this:</p>
+<p><span class="math inline">\(SS_\text{Total} = SS_\text{Effect IV1} + SS_\text{Effect IV2} + SS_\text{Effect IV1xIV2} + SS_\text{Error}\)</span></p>
+<p>In the following sections we use tables to show the calculation of each SS. We use the same example as before with the exception that <strong>we are turning this into a between-subjects design</strong>. There are now 5 different subjects in each condition, for a total of 20 subjects. As a result, we remove the subjects column.</p>
+<section id="ss-total" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="ss-total"><span class="header-section-number">9.6.1</span> SS Total</h3>
+<p>We calculate the grand mean (mean of all of the score). Then, we calculate the differences between each score and the grand mean. We square the difference scores, and sum them up. That is <span class="math inline">\(SS_\text{Total}\)</span>, reported in the bottom yellow row.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-22_7a5ad2353a1b7dcf51c6fb964d27efa9">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">All Conditions</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Difference from Grand Mean</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Squared Differences</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> A-GrandM </th>
+   <th style="text-align:left;"> B-GrandM </th>
+   <th style="text-align:left;"> C-GrandM </th>
+   <th style="text-align:left;"> D-GrandM </th>
+   <th style="text-align:left;"> (A-GrandM)^2 </th>
+   <th style="text-align:left;"> (B-GrandM)^2 </th>
+   <th style="text-align:left;"> (C-GrandM)^2 </th>
+   <th style="text-align:left;"> (D-GrandM)^2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 1.05 </td>
+   <td style="text-align:left;"> -3.95 </td>
+   <td style="text-align:left;"> 3.05 </td>
+   <td style="text-align:left;"> 0.05 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 1.1025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 15.6025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 9.3025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.0025 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> -0.95 </td>
+   <td style="text-align:left;"> -4.95 </td>
+   <td style="text-align:left;"> 4.05 </td>
+   <td style="text-align:left;"> -0.95 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.9025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 24.5025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 16.4025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.9025 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 2.05 </td>
+   <td style="text-align:left;"> -5.95 </td>
+   <td style="text-align:left;"> 5.05 </td>
+   <td style="text-align:left;"> 1.05 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.2025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 35.4025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 25.5025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 1.1025 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 0.05 </td>
+   <td style="text-align:left;"> -4.95 </td>
+   <td style="text-align:left;"> 2.05 </td>
+   <td style="text-align:left;"> 2.05 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.0025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 24.5025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.2025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.2025 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 1.05 </td>
+   <td style="text-align:left;"> -6.95 </td>
+   <td style="text-align:left;"> 4.05 </td>
+   <td style="text-align:left;"> 3.05 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 1.1025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 48.3025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 16.4025 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 9.3025 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Grand Mean </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8.95 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> sums </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> Sums </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 7.3125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 148.3125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 71.8125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 15.5125 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> SS Total </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> SS Total </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 242.95 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+</section>
+<section id="ss-distraction" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="ss-distraction"><span class="header-section-number">9.6.2</span> SS Distraction</h3>
+<p>We need to compute the SS for the main effect for distraction. We calculate the grand mean (mean of all of the scores). Then, we calculate the means for the two distraction conditions. Then we treat each score as if it was the mean for it’s respective distraction condition. We find the differences between each distraction condition mean and the grand mean. Then we square the differences and sum them up. That is <span class="math inline">\(SS_\text{Distraction}\)</span>, reported in the bottom yellow row.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-23_13b4a09a30e1b4dad8400221cfc660a5">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">All Conditions</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction Mean - GM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Squared Differences</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> NDM-GM A </th>
+   <th style="text-align:left;"> DM-GM B </th>
+   <th style="text-align:left;"> NDM-GM C </th>
+   <th style="text-align:left;"> DM-GM D </th>
+   <th style="text-align:left;"> (NDM-GM )^2 A </th>
+   <th style="text-align:left;"> (DM-GM)^2 B </th>
+   <th style="text-align:left;"> (NDM-GM)^2 C </th>
+   <th style="text-align:left;"> (DM-GM)^2 D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;"> 2.15 </td>
+   <td style="text-align:left;"> -2.15 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 4.6225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Grand Mean </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8.95 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> No Distraction </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11.1 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> Distraction </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6.8 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> sums </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> Sums </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 23.1125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 23.1125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 23.1125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 23.1125 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> SS Distraction </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> SS Distraction </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 92.45 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+<p>These tables are a lot to look at! Notice here, that we first found the grand mean (8.95). Then we found the mean for all the scores in the no-distraction condition (columns A and C), that was 11.1. All of the difference scores for the no-distraction condition are 11.1-8.95 = 2.15. We also found the mean for the scores in the distraction condition (columns B and D), that was 6.8. So, all of the difference scores are 6.8-8.95 = -2.15. Remember, means are the balancing point in the data, this is why the difference scores are +2.15 and -2.15. The grand mean 8.95 is in between the two condition means (11.1 and 6.8), by a difference of 2.15.</p>
+</section>
+<section id="ss-reward" class="level3" data-number="9.6.3">
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="ss-reward"><span class="header-section-number">9.6.3</span> SS Reward</h3>
+<p>We need to compute the SS for the main effect for reward. We calculate the grand mean (mean of all of the scores). Then, we calculate the means for the two reward conditions. Then we treat each score as if it was the mean for it’s respective reward condition. We find the differences between each reward condition mean and the grand mean. Then we square the differences and sum them up. That is <span class="math inline">\(SS_\text{Reward}\)</span>, reported in the bottom yellow row.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-24_ecbf764a3264eea7c25737833e6ed929">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">All Conditions</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward Mean - GM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Squared Differences</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> NRM-GM A </th>
+   <th style="text-align:left;"> NRM-GM B </th>
+   <th style="text-align:left;"> RM-GM C </th>
+   <th style="text-align:left;"> RM-GM D </th>
+   <th style="text-align:left;"> (NRM-GM )^2 A </th>
+   <th style="text-align:left;"> (NRM-GM)^2 B </th>
+   <th style="text-align:left;"> (RM-GM)^2 C </th>
+   <th style="text-align:left;"> (RM-GM)^2 D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> -2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;"> 2.35 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 5.5225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Grand Mean </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8.95 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> No Reward </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 6.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> Reward </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 11.3 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> sums </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> Sums </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 27.6125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 27.6125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 27.6125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 27.6125 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> SS Reward </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> SS Reward </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 110.45 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+<p>Now we treat each no-reward score as the mean for the no-reward condition (6.6), and subtract it from the grand mean (8.95), to get -2.35. Then, we treat each reward score as the mean for the reward condition (11.3), and subtract it from the grand mean (8.95), to get +2.35. Then we square the differences and sum them up.</p>
+</section>
+<section id="ss-distraction-by-reward" class="level3" data-number="9.6.4">
+<h3 data-number="9.6.4" class="anchored" data-anchor-id="ss-distraction-by-reward"><span class="header-section-number">9.6.4</span> SS Distraction by Reward</h3>
+<p>We need to compute the SS for the interaction effect between distraction and reward. This is the new thing that we do in an ANOVA with more than one IV. How do we calculate the variation explained by the interaction?</p>
+<p>The heart of the question is something like this. Do the individual means for each of the four conditions do something a little bit different than the group means for both of the independent variables.</p>
+<p>For example, consider the overall mean for all of the scores in the no reward group, we found that to be 6.6 Now, was the mean for each no-reward group in the whole design a 6.6? For example, in the no-distraction group, was the mean for column A (the no-reward condition in that group) also 6.6? The answer is no, it was 9.6. How about the distraction group? Was the mean for the reward condition in the distraction group (column B) 6.6? No, it was 3.6. The mean of 9.6 and 3.6 is 6.6. If there was no hint of an interaction, we would expect that the means for the reward condition in both levels of the distraction group would be the same, they would both be 6.6. However, when there is an interaction, the means for the reward group will depend on the levels of the group from another IV. In this case, it looks like there is an interaction because the means are different from 6.6, they are 9.6 and 3.6 for the no-distraction and distraction conditions. This is extra-variance that is not explained by the mean for the reward condition. We want to capture this extra variance and sum it up. Then we will have measure of the portion of the variance that is due to the interaction between the reward and distraction conditions.</p>
+<p>What we will do is this. We will find the four condition means. Then we will see how much additional variation they explain beyond the group means for reward and distraction. To do this we treat each score as the condition mean for that score. Then we subtract the mean for the distraction group, and the mean for the reward group, and then we add the grand mean. This gives us the unique variation that is due to the interaction. We could also say that we are subtracting each condition mean from the grand mean, and then adding back in the distraction mean and the reward mean, that would amount to the same thing, and perhaps make more sense.</p>
+<p>Here is a formula to describe the process for each score:</p>
+<p><span class="math inline">\(\bar{X}_\text{condition} -\bar{X}_\text{IV1} - \bar{X}_\text{IV2} + \bar{X}_\text{Grand Mean}\)</span></p>
+<p>Or we could write it this way:</p>
+<p><span class="math inline">\(\bar{X}_\text{condition} - \bar{X}_\text{Grand Mean} + \bar{X}_\text{IV1} + \bar{X}_\text{IV2}\)</span></p>
+<p>When you look at the following table, we apply this formula to the calculation of each of the differences scores. We then square the difference scores, and sum them up to get <span class="math inline">\(SS_\text{Interaction}\)</span>, which is reported in the bottom yellow row.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-25_05854b33c153479f39749d15083bb0c5">
+<div class="cell-output-display">
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">All Conditions</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Interaction Differences</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Squared Differences</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Reward</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Reward</div></th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">No Distraction</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Distraction</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> C </th>
+   <th style="text-align:left;"> D </th>
+   <th style="text-align:left;"> A-ND-NR+GM </th>
+   <th style="text-align:left;"> B-D-NR+GM </th>
+   <th style="text-align:left;"> C-ND-R+GM </th>
+   <th style="text-align:left;"> D-D-R+GM </th>
+   <th style="text-align:left;"> (A-ND-NR+GM)^2 A </th>
+   <th style="text-align:left;"> (B-D-NR+GM)^2 B </th>
+   <th style="text-align:left;"> (C-ND-R+GM)^2 C </th>
+   <th style="text-align:left;"> (D-D-R+GM)^2 D </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> -0.85 </td>
+   <td style="text-align:left;"> 0.85 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+   <td style="text-align:left;background-color: yellow !important;"> 0.7225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Means </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 9.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 3.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 12.6 </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 10 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: lightgray !important;"> Grand Mean </td>
+   <td style="text-align:left;background-color: lightgray !important;"> 8.95 </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: lightgray !important;background-color: yellow !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> sums </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> Sums </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 3.6125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 3.6125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 3.6125 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 3.6125 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: yellow !important;"> SS Interaction </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;"> SS Interaction </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;"> 14.45 </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+   <td style="text-align:left;background-color: yellow !important;background-color: yellow !important;">  </td>
+  </tr>
+</tbody>
+</table></div>
+
+</div>
+</div>
+</section>
+<section id="ss-error" class="level3" data-number="9.6.5">
+<h3 data-number="9.6.5" class="anchored" data-anchor-id="ss-error"><span class="header-section-number">9.6.5</span> SS Error</h3>
+<p>The last thing we need to find is the SS Error. We can solve for that because we found everything else in this formula:</p>
+<p><span class="math inline">\(SS_\text{Total} = SS_\text{Effect IV1} + SS_\text{Effect IV2} + SS_\text{Effect IV1xIV2} + SS_\text{Error}\)</span></p>
+<p>Even though this textbook meant to explain things in a step by step way, we guess you are tired from watching us work out the 2x2 ANOVA by hand. You and me both, making these tables was a lot of work. We have already shown you how to compute the SS for error before, so we will not do the full example here. Instead, we solve for SS Error using the numbers we have already obtained.</p>
+<p>$SS_ = SS_- SS_ - SS_ - SS_ $</p>
+<p>$SS_ = 242.95 - 92.45 - 110.45 - 14.45 = 25.6 $</p>
+</section>
+<section id="check-your-work" class="level3" data-number="9.6.6">
+<h3 data-number="9.6.6" class="anchored" data-anchor-id="check-your-work"><span class="header-section-number">9.6.6</span> Check your work</h3>
+<p>We are going to skip the part where we divide the SSes by their dfs to find the MSEs so that we can compute the three <span class="math inline">\(F\)</span>-values. Instead, if we have done the calculations of the <span class="math inline">\(SS\)</span>es correctly, they should be same as what we would get if we used R to calculate the <span class="math inline">\(SS\)</span>es. Let’s make R do the work, and then compare to check our work.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-26_853b4b49c46912e493ab18530a743e7a">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Df </th>
+   <th style="text-align:right;"> Sum Sq </th>
+   <th style="text-align:right;"> Mean Sq </th>
+   <th style="text-align:right;"> F value </th>
+   <th style="text-align:right;"> Pr(&gt;F) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Distraction </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 92.45 </td>
+   <td style="text-align:right;"> 92.45 </td>
+   <td style="text-align:right;"> 57.78125 </td>
+   <td style="text-align:right;"> 0.0000011 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Reward </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 110.45 </td>
+   <td style="text-align:right;"> 110.45 </td>
+   <td style="text-align:right;"> 69.03125 </td>
+   <td style="text-align:right;"> 0.0000003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Distraction:Reward </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 14.45 </td>
+   <td style="text-align:right;"> 14.45 </td>
+   <td style="text-align:right;"> 9.03125 </td>
+   <td style="text-align:right;"> 0.0083879 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 25.60 </td>
+   <td style="text-align:right;"> 1.60 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>A quick look through the column <code>Sum Sq</code> shows that we did our work by hand correctly. Congratulations to us! Note, this is not the same results as we had before with the repeated measures ANOVA. We conducted a between-subjects design, so we did not get to further partition the SS error into a part due to subject variation and a left-over part. We also gained degrees of freedom in the error term. It turns out with this specific set of data, we find p-values of less than 0.05 for all effects (main effects and the interaction, which was not less than 0.05 using the same data, but treating it as a repeated-measures design)</p>
+</section>
+</section>
+<section id="fireside-chat" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="fireside-chat"><span class="header-section-number">9.7</span> Fireside chat</h2>
+<p>Sometimes it’s good to get together around a fire and have a chat. Let’s pretend we’re sitting around a fire.</p>
+<p>It’s been a long day. A long couple of weeks and months since we started this course on statistics. We just went through the most complicated things we have done so far. This is a long chapter. What should we do next?</p>
+<p>Here’s a couple of options. We could work through, by hand, more and more ANOVAs. Do you want to do that? I don’t, making these tables isn’t too bad, but it takes a lot of time. It’s really good to see everything that we do laid bare in the table form a few times. We’ve done that already. It’s really good for you to attempt to calculate an ANOVA by hand at least once in your life. It builds character. It helps you know that you know what you are doing, and what the ANOVA is doing. We can’t make you do this, we can only make the suggestion. If we keep doing these by hand, it is not good for us, and it is not you doing them by hand. So, what are the other options.</p>
+<p>The other options are to work at a slightly higher level. We will discuss some research designs, and the ANOVAs that are appropriate for their analysis. We will conduct the ANOVAs using R, and print out the ANOVA tables. This is what you do in the lab, and what most researchers do. They use software most of the time to make the computer do the work. Because of this, it is most important that you know what the software is doing. You can make mistakes when telling software what to do, so you need to be able to check the software’s work so you know when the software is giving you wrong answers. All of these skills are built up over time through the process of analyzing different data sets. So, for the remainder of our discussion on ANOVAs we stick to that higher level. No more monster tables of SSes. You are welcome.</p>
+</section>
+<section id="real-data" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="real-data"><span class="header-section-number">9.8</span> Real Data</h2>
+<p>Let’s go through the process of looking at a 2x2 factorial design in the wild. This will be the very same data that you will analyze in the lab for factorial designs.</p>
+<section id="stand-at-attention" class="level3" data-number="9.8.1">
+<h3 data-number="9.8.1" class="anchored" data-anchor-id="stand-at-attention"><span class="header-section-number">9.8.1</span> Stand at attention</h3>
+<p>Do you pay more attention when you are sitting or standing? This was the kind of research question the researchers were asking in the study we will look at. In fact, the general question and design is very similar to our fake study idea that we used to explain factorial designs in this chapter.</p>
+<p>The paper we look at is called “Stand by your Stroop: Standing up enhances selective attention and cognitive control” <span class="citation" data-cites="rosenbaum2017stand">(<a href="references.html#ref-rosenbaum2017stand" role="doc-biblioref">Rosenbaum, Mama, and Algom 2017</a>)</span>. This paper asked whether sitting versus standing would influence a measure of selective attention, the ability to ignore distracting information.</p>
+<p>They used a classic test of selective attention, called the Stroop effect. You may already know what the Stroop effect is. In a typical Stroop experiment, subjects name the color of words as fast as they can. The trick is that sometimes the color of the word is the same as the name of the word, and sometimes it is not. <a href="#fig-9stroop">Figure&nbsp;<span>9.9</span></a> shows some examples:</p>
+<div class="cell" data-hash="cache/fig-9stroop_29579b2444ea5fbddfae72e1b93a0b1a">
+<div class="cell-output-display">
+<div id="fig-9stroop" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/figures/Stroop.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.9: Examples of congruent and incongruent Stroop stimuli. The task is to name the color, not the word.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Congruent trials occur when the color and word match. So, the correct answers for each of the congruent stimuli shown would be to say, red, green, blue and yellow. Incongruent trials occur when the color and word mismatch. The correct answers for each of the incongruent stimuli would be: blue, yellow, red, green.</p>
+<p>The Stroop effect is an example of a well-known phenomena. What happens is that people are faster to name the color of the congruent items compared to the color of the incongruent items. This difference (incongruent reaction time - congruent reaction time) is called the Stroop effect.</p>
+<p>Many researchers argue that the Stroop effect measures something about selective attention, the ability to ignore distracting information. In this case, the target information that you need to pay attention to is the color, not the word. For each item, the word is potentially distracting, it is not information that you are supposed to respond to. However, it seems that most people can’t help but notice the word, and their performance in the color-naming task is subsequently influenced by the presence of the distracting word.</p>
+<p>People who are good at ignoring the distracting words should have small Stroop effects. They will ignore the word, and it won’t influence them very much for either congruent or incongruent trials. As a result, the difference in performance (the Stroop effect) should be fairly small (if you have “good” selective attention in this task). People who are bad at ignoring the distracting words should have big Stroop effects. They will not ignore the words, causing them to be relatively fast when the word helps, and relatively slow when the word mismatches. As a result, they will show a difference in performance between the incongruent and congruent conditions.</p>
+<p>If we take the size of the Stroop effect as a measure of selective attention, we can then start wondering what sorts of things improve selective attention (e.g., that make the Stroop effect smaller), and what kinds of things impair selective attention (e.g., make the Stroop effect bigger).</p>
+<p>The research question of this study was to ask whether standing up improves selective attention compared to sitting down. They predicted smaller Stroop effects when people were standing up and doing the task, compared to when they were sitting down and doing the task.</p>
+<p>The design of the study was a 2x2 repeated-measures design. The first IV was congruency (congruent vs incongruent). The second IV was posture (sitting vs.&nbsp;standing). The DV was reaction time to name the word.</p>
+</section>
+<section id="plot-the-data" class="level3" data-number="9.8.2">
+<h3 data-number="9.8.2" class="anchored" data-anchor-id="plot-the-data"><span class="header-section-number">9.8.2</span> Plot the data</h3>
+<p>They had subjects perform many individual trials responding to single Stroop stimuli, both congruent and incongruent. And they had subjects stand up sometimes and do it, and sit-down sometimes and do it. <a href="#fig-9strp">Figure&nbsp;<span>9.10</span></a> shows what they found:</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-9strp_dc763df348e765d696bd3df23808fcf1">
+<div class="cell-output-display">
+<div id="fig-9strp" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="09-FactorialANOVA_files/figure-html/fig-9strp-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 9.10: Means from Rosenbaum et al (2017)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure shows the means. We can see that Stroop effects were observed in both the sitting position and the standing position. In the sitting position, mean congruent RTs were shorter than mean incongruent RTs (the red bar is lower than the aqua bar). The same general pattern is observed for the standing position. However, it does look as if the Stroop effect is slightly smaller in the stand condition: the difference between the red and aqua bars is slightly smaller compared to the difference when people were sitting.</p>
+</section>
+<section id="conduct-the-anova" class="level3" data-number="9.8.3">
+<h3 data-number="9.8.3" class="anchored" data-anchor-id="conduct-the-anova"><span class="header-section-number">9.8.3</span> Conduct the ANOVA</h3>
+<p>Let’s conduct a 2x2 repeated measures ANOVA on the data to evaluate whether the differences in the means are likely or unlikely to be due to chance. The ANOVA will give us main effects for congruency and posture (the two IVs), as well as one interaction effect to evaluate (congruency X posture). Remember, the interaction effect tells us whether the congruency effect changes across the levels of the posture manipulation.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-29_abb0f7cc55682e0a87887fb29dfb0994">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Df </th>
+   <th style="text-align:right;"> Sum Sq </th>
+   <th style="text-align:right;"> Mean Sq </th>
+   <th style="text-align:right;"> F value </th>
+   <th style="text-align:right;"> Pr(&gt;F) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 49 </td>
+   <td style="text-align:right;"> 2250738.636 </td>
+   <td style="text-align:right;"> 45933.4416 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congruency </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 576821.635 </td>
+   <td style="text-align:right;"> 576821.6349 </td>
+   <td style="text-align:right;"> 342.452244 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 49 </td>
+   <td style="text-align:right;"> 82534.895 </td>
+   <td style="text-align:right;"> 1684.3856 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Posture </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 32303.453 </td>
+   <td style="text-align:right;"> 32303.4534 </td>
+   <td style="text-align:right;"> 7.329876 </td>
+   <td style="text-align:right;"> 0.0093104 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals1 </td>
+   <td style="text-align:right;"> 49 </td>
+   <td style="text-align:right;"> 215947.614 </td>
+   <td style="text-align:right;"> 4407.0942 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Congruency:Posture </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6560.339 </td>
+   <td style="text-align:right;"> 6560.3389 </td>
+   <td style="text-align:right;"> 8.964444 </td>
+   <td style="text-align:right;"> 0.0043060 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Residuals </td>
+   <td style="text-align:right;"> 49 </td>
+   <td style="text-align:right;"> 35859.069 </td>
+   <td style="text-align:right;"> 731.8177 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="main-effect-of-congruency" class="level3" data-number="9.8.4">
+<h3 data-number="9.8.4" class="anchored" data-anchor-id="main-effect-of-congruency"><span class="header-section-number">9.8.4</span> Main effect of Congruency</h3>
+<p>Let’s talk about each aspect of the ANOVA table, one step at a time. First, we see that there was a significant main effect of congruency, <span class="math inline">\(F\)</span>(1, 49) = 342.45, <span class="math inline">\(p\)</span> &lt; 0.001. The <span class="math inline">\(F\)</span> value is extremely large, and the <span class="math inline">\(p\)</span>-value is so small it reads as a zero. This <span class="math inline">\(F\)</span>-value basically never happens by sampling error. We can be very confident that the overall mean difference between congruent and incongruent RTs was not caused by sampling error.</p>
+<p>What were the overall mean differences between mean RTs in the congruent and incongruent conditions? We would have to look at those means to find out. Here’s a table:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-30_42648663bf2ce399313e55ec677ac141">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Congruency </th>
+   <th style="text-align:right;"> mean_rt </th>
+   <th style="text-align:right;"> sd </th>
+   <th style="text-align:right;"> SEM </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Congruent </td>
+   <td style="text-align:right;"> 814.9415 </td>
+   <td style="text-align:right;"> 111.3193 </td>
+   <td style="text-align:right;"> 11.13193 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Incongruent </td>
+   <td style="text-align:right;"> 922.3493 </td>
+   <td style="text-align:right;"> 118.7960 </td>
+   <td style="text-align:right;"> 11.87960 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>The table shows the mean RTs, standard deviation (sd), and standard error of the mean for each condition. These means show that there was a Stroop effect. Mean incongruent RTs were slower (larger number in milliseconds) than mean congruent RTs. The main effect of congruency is important for establishing that the researchers were able to measure the Stroop effect. However, the main effect of congruency does not say whether the size of the Stroop effect changed between the levels of the posture variable. So, this main effect was not particularly important for answering the specific question posed by the study.</p>
+</section>
+<section id="main-effect-of-posture" class="level3" data-number="9.8.5">
+<h3 data-number="9.8.5" class="anchored" data-anchor-id="main-effect-of-posture"><span class="header-section-number">9.8.5</span> Main effect of Posture</h3>
+<p>There was also a main effect of posture, <span class="math inline">\(F\)</span>(1,49) = 7.329, <span class="math inline">\(p\)</span> =0.009.</p>
+<p>Let’s look at the overall means for the sitting and standing conditions and see what this is all about:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-31_2be9f8abb6a21b4ff06e82675a7bfd88">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Posture </th>
+   <th style="text-align:right;"> mean_rt </th>
+   <th style="text-align:right;"> sd </th>
+   <th style="text-align:right;"> SEM </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Sit </td>
+   <td style="text-align:right;"> 881.3544 </td>
+   <td style="text-align:right;"> 135.3842 </td>
+   <td style="text-align:right;"> 13.53842 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Stand </td>
+   <td style="text-align:right;"> 855.9365 </td>
+   <td style="text-align:right;"> 116.9436 </td>
+   <td style="text-align:right;"> 11.69436 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Remember, the posture main effect collapses over the means in the congruency condition. We are not measuring a Stroop effect here. We are measuring a general effect of sitting vs standing on overall reaction time. The table shows that people were a little faster overall when they were standing, compared to when they were sitting.</p>
+<p>Again, the main effect of posture was not the primary effect of interest. The authors weren’t interested if people are in general faster when they stand. They wanted to know if their selective attention would improve when they stand vs when they sit. They were most interested in whether the size of the Stroop effect (difference between incongruent and congruent performance) would be smaller when people stand, compared to when they sit. To answer this question, we need to look at the interaction effect.</p>
+</section>
+<section id="congruency-x-posture-interaction" class="level3" data-number="9.8.6">
+<h3 data-number="9.8.6" class="anchored" data-anchor-id="congruency-x-posture-interaction"><span class="header-section-number">9.8.6</span> Congruency X Posture Interaction</h3>
+<p>Last, there was a significant congruency X posture interaction, <span class="math inline">\(F\)</span>(1,49) = 8.96, <span class="math inline">\(p\)</span> = 0.004.</p>
+<p>With this information, and by looking at the figure, we can get a pretty good idea of what this means. We know the size of the Stroop effect must have been different between the standing and sitting conditions, otherwise we would have gotten a smaller <span class="math inline">\(F\)</span>-value and a much larger <span class="math inline">\(p\)</span>-value.</p>
+<p>We can see from the figure the direction of this difference, but let’s look at the table to see the numbers more clearly.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-32_671a4284134b0bff8b79a2e98d7f2569">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Posture </th>
+   <th style="text-align:left;"> Congruency </th>
+   <th style="text-align:right;"> mean_rt </th>
+   <th style="text-align:right;"> sd </th>
+   <th style="text-align:right;"> SEM </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Sit </td>
+   <td style="text-align:left;"> Congruent </td>
+   <td style="text-align:right;"> 821.9232 </td>
+   <td style="text-align:right;"> 117.4069 </td>
+   <td style="text-align:right;"> 16.60384 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sit </td>
+   <td style="text-align:left;"> Incongruent </td>
+   <td style="text-align:right;"> 940.7855 </td>
+   <td style="text-align:right;"> 126.6457 </td>
+   <td style="text-align:right;"> 17.91041 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Stand </td>
+   <td style="text-align:left;"> Congruent </td>
+   <td style="text-align:right;"> 807.9599 </td>
+   <td style="text-align:right;"> 105.6079 </td>
+   <td style="text-align:right;"> 14.93521 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Stand </td>
+   <td style="text-align:left;"> Incongruent </td>
+   <td style="text-align:right;"> 903.9131 </td>
+   <td style="text-align:right;"> 108.5366 </td>
+   <td style="text-align:right;"> 15.34939 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>In the sitting condition the Stroop effect was roughly 941-822 = 119 ms.</p>
+<p>In the standing condition the Stroop effect was roughly 904-808 = 96 ms.</p>
+<p>So, the Stroop effect was 119-96 = 23 ms smaller when people were standing. This is a pretty small effect in terms of the amount of time reduced, but even though it is small, a difference even this big was not very likely to be due to chance.</p>
+</section>
+<section id="what-does-it-all-mean" class="level3" data-number="9.8.7">
+<h3 data-number="9.8.7" class="anchored" data-anchor-id="what-does-it-all-mean"><span class="header-section-number">9.8.7</span> What does it all mean?</h3>
+<p>Based on this research there appears to be some support for the following logic chain. First, the researchers can say that standing up reduces the size of a person’s Stroop effect. Fine, what could that mean? Well, if the Stroop effect is an index of selective attention, then it could mean that standing up is one way to improve your ability to selectively focus and ignore distracting information. The actual size of the benefit is fairly small, so the real-world implications are not that clear. Nevertheless, maybe the next time you lose your keys, you should stand up and look for them, rather than sitting down and not look for them.</p>
+</section>
+</section>
+<section id="factorial-summary" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="factorial-summary"><span class="header-section-number">9.9</span> Factorial summary</h2>
+<p>We have introduced you to factorial designs, which are simply designs with more than one IV. The special property of factorial designs is that all of the levels of each IV need to be crossed with the other IVs.</p>
+<p>We showed you how to analyse a repeated measures 2x2 design with paired samples-tests, and what an ANOVA table would look like if you did this in R. We also went through, by hand, the task of calculating an ANOVA table for a 2x2 between subjects design.</p>
+<p>The main point we want you take away is that factorial designs are extremely useful for determining things that cause effects to change. Generally a researcher measures an effect of interest (their IV 1). Then, they want to know what makes that effect get bigger or smaller. They want to exert experimental control over their effect. For example, they might have a theory that says doing X should make the effect bigger, but doing Y should make it smaller. They can test these theories using factorial designs, and manipulating X or Y as a second independent variable.</p>
+<p>In a factorial design each IV will have it’s own main effect. Sometimes the main effect themselves are what the researcher is interested in measures. But more often, it is the interaction effect that is most relevant. The interaction can test whether the effect of IV1 changes between the levels of IV2. When it does, researchers can infer that their second manipulation (IV2) causes change in their effect of interest. These changes are then documented and used to test underlying causal theories about the effects of interest.</p>
+<!--
+What happens to your memory for an experience when you take a picture while it is happening? These days many people have camera phones and take pictures of things that are happening all the time. Does your memory for what happened change depending on whether you did or did not take a picture? This was the kind of research question that the authors asked (Barasch, Diehl, Silverman, and Zauberman, 2017).
+
+What kind of study did they run?
+
+-->
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-rosenbaum2017stand" class="csl-entry" role="doc-biblioentry">
+Rosenbaum, David, Yaniv Mama, and Daniel Algom. 2017. <span>“Stand by Your Stroop: <span>Standing</span> up Enhances Selective Attention and Cognitive Control.”</span> <em>Psychological Science</em> 28 (12): 1864–67. <a href="https://doi.org/10.1177/0956797617721270">https://doi.org/10.1177/0956797617721270</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./08-RMANOVA.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./10-MixedANOVA.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

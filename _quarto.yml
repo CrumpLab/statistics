@@ -1,0 +1,45 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Answering questions with data"
+  cover-image: imgs/TextbookCover.png
+  author:
+    - "Matthew J. C. Crump"
+    - "Danielle J. Navarro"
+    - "Jeffrey Suzuki"
+  date: "2018-09-01"
+  abstract: "Last Compiled `r Sys.Date()`. Chapters 2 and 4 adapted from Navarro, D. J. Videos created by Suzuki, J."
+  chapters:
+    - index.qmd
+    - 01-Science_Data.qmd
+    - 02-Describing_Data.qmd
+    - 03-Correlation.qmd
+    - 04-SamplesPopulations.qmd
+    - 05-Foundation_Inference.qmd
+    - 06-ttests.qmd
+    - 07-ANOVA.qmd
+    - 08-RMANOVA.qmd
+    - 09-FactorialANOVA.qmd
+    - 10-MixedANOVA.qmd
+    - 11-Simulation.qmd
+    - 12-Thinking.qmd
+    - 13-Gifs.qmd
+    - references.qmd
+  site-url: https://crumplab.com/statistics/
+  repo-url: https://github.com/CrumpLab/statistics/
+  repo-branch: master
+  repo-actions: [edit]
+  google-analytics: "UA-79429674-3"
+
+bibliography: [StatisticsTextbook.bib]
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

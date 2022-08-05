@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew J. C. Crump">
+
+<title>Answering questions with data - 2&nbsp; Describing Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-Correlation.html" rel="next">
+<link href="./01-Science_Data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79429674-3', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Answering questions with data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#this-is-what-too-many-numbers-looks-like" id="toc-this-is-what-too-many-numbers-looks-like" class="nav-link active" data-scroll-target="#this-is-what-too-many-numbers-looks-like"> <span class="header-section-number">2.1</span> This is what too many numbers looks like</a></li>
+  <li><a href="#look-at-the-data" id="toc-look-at-the-data" class="nav-link" data-scroll-target="#look-at-the-data"> <span class="header-section-number">2.2</span> Look at the data</a>
+  <ul class="collapse">
+  <li><a href="#stop-plotting-time-o-o-oh-u-can-plot-this" id="toc-stop-plotting-time-o-o-oh-u-can-plot-this" class="nav-link" data-scroll-target="#stop-plotting-time-o-o-oh-u-can-plot-this"> <span class="header-section-number">2.2.1</span> Stop, plotting time (o o oh) U can plot this</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"> <span class="header-section-number">2.2.2</span> Histograms</a></li>
+  </ul></li>
+  <li><a href="#important-ideas-distribution-central-tendency-and-variance" id="toc-important-ideas-distribution-central-tendency-and-variance" class="nav-link" data-scroll-target="#important-ideas-distribution-central-tendency-and-variance"> <span class="header-section-number">2.3</span> Important Ideas: Distribution, Central Tendency, and Variance</a></li>
+  <li><a href="#measures-of-central-tendency-sameness" id="toc-measures-of-central-tendency-sameness" class="nav-link" data-scroll-target="#measures-of-central-tendency-sameness"> <span class="header-section-number">2.4</span> Measures of Central Tendency (Sameness)</a>
+  <ul class="collapse">
+  <li><a href="#from-many-numbers-to-one" id="toc-from-many-numbers-to-one" class="nav-link" data-scroll-target="#from-many-numbers-to-one"> <span class="header-section-number">2.4.1</span> From many numbers to one</a></li>
+  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"> <span class="header-section-number">2.4.2</span> Mode</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"> <span class="header-section-number">2.4.3</span> Median</a></li>
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"> <span class="header-section-number">2.4.4</span> Mean</a></li>
+  <li><a href="#what-does-the-mean-mean" id="toc-what-does-the-mean-mean" class="nav-link" data-scroll-target="#what-does-the-mean-mean"> <span class="header-section-number">2.4.5</span> What does the mean mean?</a></li>
+  <li><a href="#all-together-now" id="toc-all-together-now" class="nav-link" data-scroll-target="#all-together-now"> <span class="header-section-number">2.4.6</span> All together now</a></li>
+  </ul></li>
+  <li><a href="#measures-of-variation-differentness" id="toc-measures-of-variation-differentness" class="nav-link" data-scroll-target="#measures-of-variation-differentness"> <span class="header-section-number">2.5</span> Measures of Variation (Different<em>ness</em>)</a>
+  <ul class="collapse">
+  <li><a href="#the-range" id="toc-the-range" class="nav-link" data-scroll-target="#the-range"> <span class="header-section-number">2.5.1</span> The Range</a></li>
+  <li><a href="#the-difference-scores" id="toc-the-difference-scores" class="nav-link" data-scroll-target="#the-difference-scores"> <span class="header-section-number">2.5.2</span> The Difference Scores</a></li>
+  <li><a href="#the-variance" id="toc-the-variance" class="nav-link" data-scroll-target="#the-variance"> <span class="header-section-number">2.5.3</span> The Variance</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"> <span class="header-section-number">2.5.4</span> The Standard Deviation</a></li>
+  </ul></li>
+  <li><a href="#using-descriptive-statistics-with-data" id="toc-using-descriptive-statistics-with-data" class="nav-link" data-scroll-target="#using-descriptive-statistics-with-data"> <span class="header-section-number">2.6</span> Using Descriptive Statistics with data</a></li>
+  <li><a href="#rolling-your-own-descriptive-statistics" id="toc-rolling-your-own-descriptive-statistics" class="nav-link" data-scroll-target="#rolling-your-own-descriptive-statistics"> <span class="header-section-number">2.7</span> Rolling your own descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#absolute-deviations" id="toc-absolute-deviations" class="nav-link" data-scroll-target="#absolute-deviations"> <span class="header-section-number">2.7.1</span> Absolute deviations</a></li>
+  <li><a href="#other-sign-inverting-operations" id="toc-other-sign-inverting-operations" class="nav-link" data-scroll-target="#other-sign-inverting-operations"> <span class="header-section-number">2.7.2</span> Other sign-inverting operations</a></li>
+  </ul></li>
+  <li><a href="#remember-to-look-at-your-data" id="toc-remember-to-look-at-your-data" class="nav-link" data-scroll-target="#remember-to-look-at-your-data"> <span class="header-section-number">2.8</span> Remember to look at your data</a>
+  <ul class="collapse">
+  <li><a href="#anscombes-quartet" id="toc-anscombes-quartet" class="nav-link" data-scroll-target="#anscombes-quartet"> <span class="header-section-number">2.8.1</span> Anscombe’s Quartet</a></li>
+  <li><a href="#datasaurus-dozen" id="toc-datasaurus-dozen" class="nav-link" data-scroll-target="#datasaurus-dozen"> <span class="header-section-number">2.8.2</span> Datasaurus Dozen</a></li>
+  </ul></li>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"> <span class="header-section-number">2.9</span> Videos</a>
+  <ul class="collapse">
+  <li><a href="#measures-of-center-mode" id="toc-measures-of-center-mode" class="nav-link" data-scroll-target="#measures-of-center-mode"> <span class="header-section-number">2.9.1</span> Measures of center: Mode</a></li>
+  <li><a href="#measures-of-center-median-and-mean" id="toc-measures-of-center-median-and-mean" class="nav-link" data-scroll-target="#measures-of-center-median-and-mean"> <span class="header-section-number">2.9.2</span> Measures of center: Median and Mean</a></li>
+  <li><a href="#standard-deviation-part-i" id="toc-standard-deviation-part-i" class="nav-link" data-scroll-target="#standard-deviation-part-i"> <span class="header-section-number">2.9.3</span> Standard deviation part I</a></li>
+  <li><a href="#standard-deviation-part-ii" id="toc-standard-deviation-part-ii" class="nav-link" data-scroll-target="#standard-deviation-part-ii"> <span class="header-section-number">2.9.4</span> Standard deviation part II</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/02-Describing_Data.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="DescribingData" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew J. C. Crump </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<blockquote class="blockquote">
+<p>Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise. —John W. Tukey</p>
+</blockquote>
+<p>This chapter is about <strong>descriptive statistics</strong>. These are tools for describing data. Some things to keep in mind as we go along are:</p>
+<ol type="1">
+<li>There are lots of different ways to describe data</li>
+<li>There is more than one “correct” way, and you get to choose the most “useful” way for the data that you are describing</li>
+<li>It is possible to invent new ways of describing data, all of the ways we discuss were previously invented by other people, and they are commonly used because they are useful.</li>
+<li>Describing data is necessary because there is usually too much of it, so it doesn’t make any sense by itself.</li>
+</ol>
+<section id="this-is-what-too-many-numbers-looks-like" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="this-is-what-too-many-numbers-looks-like"><span class="header-section-number">2.1</span> This is what too many numbers looks like</h2>
+<p>Let’s say you wanted to know how happy people are. So, you ask thousands of people on the street how happy they are. You let them pick any number they want from negative infinity to positive infinity. Then you record all the numbers. Now what?</p>
+<p>Well, how about you look at the numbers and see if that helps you determine anything about how happy people are. What could the numbers look like. Perhaps something like this:</p>
+<div class="cell" data-hash="cache/2toomany_75abb784102a333f3a33ea4b692bcc4f">
+<div class="cell-output-display">
+
+<table>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> -160 </td>
+   <td style="text-align:right;"> 374 </td>
+   <td style="text-align:right;"> -762 </td>
+   <td style="text-align:right;"> 134 </td>
+   <td style="text-align:right;"> 756 </td>
+   <td style="text-align:right;"> -108 </td>
+   <td style="text-align:right;"> 726 </td>
+   <td style="text-align:right;"> -607 </td>
+   <td style="text-align:right;"> 291 </td>
+   <td style="text-align:right;"> 201 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 640 </td>
+   <td style="text-align:right;"> 321 </td>
+   <td style="text-align:right;"> 725 </td>
+   <td style="text-align:right;"> 220 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> -864 </td>
+   <td style="text-align:right;"> 316 </td>
+   <td style="text-align:right;"> 583 </td>
+   <td style="text-align:right;"> -706 </td>
+   <td style="text-align:right;"> -275 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 139 </td>
+   <td style="text-align:right;"> 320 </td>
+   <td style="text-align:right;"> -181 </td>
+   <td style="text-align:right;"> -184 </td>
+   <td style="text-align:right;"> 1042 </td>
+   <td style="text-align:right;"> -963 </td>
+   <td style="text-align:right;"> -188 </td>
+   <td style="text-align:right;"> -944 </td>
+   <td style="text-align:right;"> 904 </td>
+   <td style="text-align:right;"> 309 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 272 </td>
+   <td style="text-align:right;"> 139 </td>
+   <td style="text-align:right;"> 279 </td>
+   <td style="text-align:right;"> -685 </td>
+   <td style="text-align:right;"> -308 </td>
+   <td style="text-align:right;"> -97 </td>
+   <td style="text-align:right;"> 203 </td>
+   <td style="text-align:right;"> -655 </td>
+   <td style="text-align:right;"> 482 </td>
+   <td style="text-align:right;"> -546 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 585 </td>
+   <td style="text-align:right;"> -201 </td>
+   <td style="text-align:right;"> 270 </td>
+   <td style="text-align:right;"> 997 </td>
+   <td style="text-align:right;"> 1055 </td>
+   <td style="text-align:right;"> -112 </td>
+   <td style="text-align:right;"> -481 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> -253 </td>
+   <td style="text-align:right;"> -527 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 99 </td>
+   <td style="text-align:right;"> -929 </td>
+   <td style="text-align:right;"> 242 </td>
+   <td style="text-align:right;"> -121 </td>
+   <td style="text-align:right;"> 192 </td>
+   <td style="text-align:right;"> -202 </td>
+   <td style="text-align:right;"> -138 </td>
+   <td style="text-align:right;"> -843 </td>
+   <td style="text-align:right;"> 206 </td>
+   <td style="text-align:right;"> 539 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 805 </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:right;"> 462 </td>
+   <td style="text-align:right;"> 358 </td>
+   <td style="text-align:right;"> 757 </td>
+   <td style="text-align:right;"> 384 </td>
+   <td style="text-align:right;"> -439 </td>
+   <td style="text-align:right;"> 151 </td>
+   <td style="text-align:right;"> 446 </td>
+   <td style="text-align:right;"> -66 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 410 </td>
+   <td style="text-align:right;"> 940 </td>
+   <td style="text-align:right;"> 47 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> -154 </td>
+   <td style="text-align:right;"> -123 </td>
+   <td style="text-align:right;"> 144 </td>
+   <td style="text-align:right;"> -368 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> -73 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1324 </td>
+   <td style="text-align:right;"> 249 </td>
+   <td style="text-align:right;"> 352 </td>
+   <td style="text-align:right;"> 104 </td>
+   <td style="text-align:right;"> -97 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> -431 </td>
+   <td style="text-align:right;"> -680 </td>
+   <td style="text-align:right;"> 509 </td>
+   <td style="text-align:right;"> -204 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -273 </td>
+   <td style="text-align:right;"> 686 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -605 </td>
+   <td style="text-align:right;"> -11 </td>
+   <td style="text-align:right;"> 47 </td>
+   <td style="text-align:right;"> -146 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 229 </td>
+   <td style="text-align:right;"> -131 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 238 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> -741 </td>
+   <td style="text-align:right;"> -250 </td>
+   <td style="text-align:right;"> 257 </td>
+   <td style="text-align:right;"> -382 </td>
+   <td style="text-align:right;"> 156 </td>
+   <td style="text-align:right;"> -128 </td>
+   <td style="text-align:right;"> 225 </td>
+   <td style="text-align:right;"> 392 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -331 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 120 </td>
+   <td style="text-align:right;"> 407 </td>
+   <td style="text-align:right;"> -728 </td>
+   <td style="text-align:right;"> 875 </td>
+   <td style="text-align:right;"> -456 </td>
+   <td style="text-align:right;"> 351 </td>
+   <td style="text-align:right;"> 234 </td>
+   <td style="text-align:right;"> -623 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 608 </td>
+   <td style="text-align:right;"> -646 </td>
+   <td style="text-align:right;"> 145 </td>
+   <td style="text-align:right;"> -125 </td>
+   <td style="text-align:right;"> 565 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -233 </td>
+   <td style="text-align:right;"> -203 </td>
+   <td style="text-align:right;"> -743 </td>
+   <td style="text-align:right;"> 611 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 429 </td>
+   <td style="text-align:right;"> 399 </td>
+   <td style="text-align:right;"> -408 </td>
+   <td style="text-align:right;"> -579 </td>
+   <td style="text-align:right;"> -476 </td>
+   <td style="text-align:right;"> 627 </td>
+   <td style="text-align:right;"> -1178 </td>
+   <td style="text-align:right;"> -13 </td>
+   <td style="text-align:right;"> 583 </td>
+   <td style="text-align:right;"> 134 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 310 </td>
+   <td style="text-align:right;"> 345 </td>
+   <td style="text-align:right;"> 500 </td>
+   <td style="text-align:right;"> -70 </td>
+   <td style="text-align:right;"> 267 </td>
+   <td style="text-align:right;"> -27 </td>
+   <td style="text-align:right;"> 591 </td>
+   <td style="text-align:right;"> -581 </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 330 </td>
+   <td style="text-align:right;"> -415 </td>
+   <td style="text-align:right;"> -263 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 559 </td>
+   <td style="text-align:right;"> 582 </td>
+   <td style="text-align:right;"> -347 </td>
+   <td style="text-align:right;"> -14 </td>
+   <td style="text-align:right;"> -385 </td>
+   <td style="text-align:right;"> 895 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 745 </td>
+   <td style="text-align:right;"> 191 </td>
+   <td style="text-align:right;"> 542 </td>
+   <td style="text-align:right;"> 255 </td>
+   <td style="text-align:right;"> 308 </td>
+   <td style="text-align:right;"> 695 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 626 </td>
+   <td style="text-align:right;"> 183 </td>
+   <td style="text-align:right;"> 831 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -688 </td>
+   <td style="text-align:right;"> -299 </td>
+   <td style="text-align:right;"> 218 </td>
+   <td style="text-align:right;"> 141 </td>
+   <td style="text-align:right;"> 257 </td>
+   <td style="text-align:right;"> -79 </td>
+   <td style="text-align:right;"> 1089 </td>
+   <td style="text-align:right;"> 244 </td>
+   <td style="text-align:right;"> -235 </td>
+   <td style="text-align:right;"> -369 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 430 </td>
+   <td style="text-align:right;"> -148 </td>
+   <td style="text-align:right;"> -204 </td>
+   <td style="text-align:right;"> -806 </td>
+   <td style="text-align:right;"> -213 </td>
+   <td style="text-align:right;"> -139 </td>
+   <td style="text-align:right;"> -150 </td>
+   <td style="text-align:right;"> 391 </td>
+   <td style="text-align:right;"> 626 </td>
+   <td style="text-align:right;"> 383 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 531 </td>
+   <td style="text-align:right;"> -602 </td>
+   <td style="text-align:right;"> 767 </td>
+   <td style="text-align:right;"> -72 </td>
+   <td style="text-align:right;"> -780 </td>
+   <td style="text-align:right;"> -271 </td>
+   <td style="text-align:right;"> 387 </td>
+   <td style="text-align:right;"> -276 </td>
+   <td style="text-align:right;"> -454 </td>
+   <td style="text-align:right;"> 271 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 310 </td>
+   <td style="text-align:right;"> 422 </td>
+   <td style="text-align:right;"> -486 </td>
+   <td style="text-align:right;"> 553 </td>
+   <td style="text-align:right;"> -434 </td>
+   <td style="text-align:right;"> 139 </td>
+   <td style="text-align:right;"> 651 </td>
+   <td style="text-align:right;"> -330 </td>
+   <td style="text-align:right;"> 464 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -135 </td>
+   <td style="text-align:right;"> 1491 </td>
+   <td style="text-align:right;"> -254 </td>
+   <td style="text-align:right;"> 289 </td>
+   <td style="text-align:right;"> -48 </td>
+   <td style="text-align:right;"> -53 </td>
+   <td style="text-align:right;"> -159 </td>
+   <td style="text-align:right;"> 330 </td>
+   <td style="text-align:right;"> -154 </td>
+   <td style="text-align:right;"> -517 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 109 </td>
+   <td style="text-align:right;"> -306 </td>
+   <td style="text-align:right;"> -210 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> -411 </td>
+   <td style="text-align:right;"> 301 </td>
+   <td style="text-align:right;"> -476 </td>
+   <td style="text-align:right;"> 401 </td>
+   <td style="text-align:right;"> 140 </td>
+   <td style="text-align:right;"> 269 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 383 </td>
+   <td style="text-align:right;"> 417 </td>
+   <td style="text-align:right;"> 518 </td>
+   <td style="text-align:right;"> -863 </td>
+   <td style="text-align:right;"> 113 </td>
+   <td style="text-align:right;"> -199 </td>
+   <td style="text-align:right;"> 1181 </td>
+   <td style="text-align:right;"> 374 </td>
+   <td style="text-align:right;"> -52 </td>
+   <td style="text-align:right;"> -168 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 241 </td>
+   <td style="text-align:right;"> -389 </td>
+   <td style="text-align:right;"> 264 </td>
+   <td style="text-align:right;"> 324 </td>
+   <td style="text-align:right;"> 151 </td>
+   <td style="text-align:right;"> 367 </td>
+   <td style="text-align:right;"> -316 </td>
+   <td style="text-align:right;"> 227 </td>
+   <td style="text-align:right;"> -10 </td>
+   <td style="text-align:right;"> 451 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -808 </td>
+   <td style="text-align:right;"> 549 </td>
+   <td style="text-align:right;"> 216 </td>
+   <td style="text-align:right;"> -383 </td>
+   <td style="text-align:right;"> -260 </td>
+   <td style="text-align:right;"> -1045 </td>
+   <td style="text-align:right;"> 947 </td>
+   <td style="text-align:right;"> 117 </td>
+   <td style="text-align:right;"> 323 </td>
+   <td style="text-align:right;"> -415 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 751 </td>
+   <td style="text-align:right;"> 1172 </td>
+   <td style="text-align:right;"> 267 </td>
+   <td style="text-align:right;"> 618 </td>
+   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 461 </td>
+   <td style="text-align:right;"> 316 </td>
+   <td style="text-align:right;"> -114 </td>
+   <td style="text-align:right;"> -704 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 464 </td>
+   <td style="text-align:right;"> 1112 </td>
+   <td style="text-align:right;"> -122 </td>
+   <td style="text-align:right;"> 741 </td>
+   <td style="text-align:right;"> 313 </td>
+   <td style="text-align:right;"> 455 </td>
+   <td style="text-align:right;"> -252 </td>
+   <td style="text-align:right;"> 108 </td>
+   <td style="text-align:right;"> 1188 </td>
+   <td style="text-align:right;"> -918 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -89 </td>
+   <td style="text-align:right;"> 628 </td>
+   <td style="text-align:right;"> -463 </td>
+   <td style="text-align:right;"> 738 </td>
+   <td style="text-align:right;"> 250 </td>
+   <td style="text-align:right;"> 382 </td>
+   <td style="text-align:right;"> 323 </td>
+   <td style="text-align:right;"> -205 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 395 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -391 </td>
+   <td style="text-align:right;"> 212 </td>
+   <td style="text-align:right;"> -527 </td>
+   <td style="text-align:right;"> 467 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> -511 </td>
+   <td style="text-align:right;"> -1032 </td>
+   <td style="text-align:right;"> -604 </td>
+   <td style="text-align:right;"> 337 </td>
+   <td style="text-align:right;"> -545 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 245 </td>
+   <td style="text-align:right;"> -487 </td>
+   <td style="text-align:right;"> -134 </td>
+   <td style="text-align:right;"> 613 </td>
+   <td style="text-align:right;"> 279 </td>
+   <td style="text-align:right;"> 421 </td>
+   <td style="text-align:right;"> 679 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 564 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -238 </td>
+   <td style="text-align:right;"> 928 </td>
+   <td style="text-align:right;"> 684 </td>
+   <td style="text-align:right;"> -213 </td>
+   <td style="text-align:right;"> 413 </td>
+   <td style="text-align:right;"> -981 </td>
+   <td style="text-align:right;"> 322 </td>
+   <td style="text-align:right;"> -155 </td>
+   <td style="text-align:right;"> -546 </td>
+   <td style="text-align:right;"> 80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -243 </td>
+   <td style="text-align:right;"> -483 </td>
+   <td style="text-align:right;"> 789 </td>
+   <td style="text-align:right;"> 950 </td>
+   <td style="text-align:right;"> 229 </td>
+   <td style="text-align:right;"> -41 </td>
+   <td style="text-align:right;"> -169 </td>
+   <td style="text-align:right;"> -338 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> -409 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> -346 </td>
+   <td style="text-align:right;"> -412 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 61 </td>
+   <td style="text-align:right;"> -172 </td>
+   <td style="text-align:right;"> 134 </td>
+   <td style="text-align:right;"> 597 </td>
+   <td style="text-align:right;"> 270 </td>
+   <td style="text-align:right;"> 242 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 441 </td>
+   <td style="text-align:right;"> -451 </td>
+   <td style="text-align:right;"> -902 </td>
+   <td style="text-align:right;"> -236 </td>
+   <td style="text-align:right;"> 161 </td>
+   <td style="text-align:right;"> 394 </td>
+   <td style="text-align:right;"> -662 </td>
+   <td style="text-align:right;"> -449 </td>
+   <td style="text-align:right;"> 622 </td>
+   <td style="text-align:right;"> 1023 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -851 </td>
+   <td style="text-align:right;"> 105 </td>
+   <td style="text-align:right;"> 114 </td>
+   <td style="text-align:right;"> -159 </td>
+   <td style="text-align:right;"> -88 </td>
+   <td style="text-align:right;"> 276 </td>
+   <td style="text-align:right;"> 1338 </td>
+   <td style="text-align:right;"> -55 </td>
+   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:right;"> 1179 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -365 </td>
+   <td style="text-align:right;"> 386 </td>
+   <td style="text-align:right;"> 369 </td>
+   <td style="text-align:right;"> 56 </td>
+   <td style="text-align:right;"> 675 </td>
+   <td style="text-align:right;"> -745 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> -121 </td>
+   <td style="text-align:right;"> 673 </td>
+   <td style="text-align:right;"> 205 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 770 </td>
+   <td style="text-align:right;"> 584 </td>
+   <td style="text-align:right;"> -491 </td>
+   <td style="text-align:right;"> -541 </td>
+   <td style="text-align:right;"> -215 </td>
+   <td style="text-align:right;"> -336 </td>
+   <td style="text-align:right;"> -280 </td>
+   <td style="text-align:right;"> 384 </td>
+   <td style="text-align:right;"> -218 </td>
+   <td style="text-align:right;"> 225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 785 </td>
+   <td style="text-align:right;"> 623 </td>
+   <td style="text-align:right;"> 125 </td>
+   <td style="text-align:right;"> 985 </td>
+   <td style="text-align:right;"> -221 </td>
+   <td style="text-align:right;"> -175 </td>
+   <td style="text-align:right;"> -268 </td>
+   <td style="text-align:right;"> -1001 </td>
+   <td style="text-align:right;"> -1245 </td>
+   <td style="text-align:right;"> -200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -231 </td>
+   <td style="text-align:right;"> 499 </td>
+   <td style="text-align:right;"> 246 </td>
+   <td style="text-align:right;"> -210 </td>
+   <td style="text-align:right;"> -110 </td>
+   <td style="text-align:right;"> 704 </td>
+   <td style="text-align:right;"> 578 </td>
+   <td style="text-align:right;"> 650 </td>
+   <td style="text-align:right;"> -378 </td>
+   <td style="text-align:right;"> 70 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 522 </td>
+   <td style="text-align:right;"> 770 </td>
+   <td style="text-align:right;"> -465 </td>
+   <td style="text-align:right;"> 992 </td>
+   <td style="text-align:right;"> 184 </td>
+   <td style="text-align:right;"> 683 </td>
+   <td style="text-align:right;"> 162 </td>
+   <td style="text-align:right;"> 868 </td>
+   <td style="text-align:right;"> 440 </td>
+   <td style="text-align:right;"> 620 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -416 </td>
+   <td style="text-align:right;"> -617 </td>
+   <td style="text-align:right;"> -739 </td>
+   <td style="text-align:right;"> -37 </td>
+   <td style="text-align:right;"> -153 </td>
+   <td style="text-align:right;"> 439 </td>
+   <td style="text-align:right;"> -623 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 227 </td>
+   <td style="text-align:right;"> 348 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 221 </td>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 231 </td>
+   <td style="text-align:right;"> -141 </td>
+   <td style="text-align:right;"> 896 </td>
+   <td style="text-align:right;"> -120 </td>
+   <td style="text-align:right;"> -603 </td>
+   <td style="text-align:right;"> 617 </td>
+   <td style="text-align:right;"> -276 </td>
+   <td style="text-align:right;"> -626 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -484 </td>
+   <td style="text-align:right;"> 987 </td>
+   <td style="text-align:right;"> -252 </td>
+   <td style="text-align:right;"> 903 </td>
+   <td style="text-align:right;"> 131 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 343 </td>
+   <td style="text-align:right;"> -363 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 149 </td>
+   <td style="text-align:right;"> -247 </td>
+   <td style="text-align:right;"> -145 </td>
+   <td style="text-align:right;"> 322 </td>
+   <td style="text-align:right;"> 448 </td>
+   <td style="text-align:right;"> 707 </td>
+   <td style="text-align:right;"> 461 </td>
+   <td style="text-align:right;"> -948 </td>
+   <td style="text-align:right;"> 229 </td>
+   <td style="text-align:right;"> 202 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -300 </td>
+   <td style="text-align:right;"> -10 </td>
+   <td style="text-align:right;"> -282 </td>
+   <td style="text-align:right;"> 536 </td>
+   <td style="text-align:right;"> -576 </td>
+   <td style="text-align:right;"> -47 </td>
+   <td style="text-align:right;"> 53 </td>
+   <td style="text-align:right;"> 203 </td>
+   <td style="text-align:right;"> 1069 </td>
+   <td style="text-align:right;"> 976 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 394 </td>
+   <td style="text-align:right;"> 282 </td>
+   <td style="text-align:right;"> 300 </td>
+   <td style="text-align:right;"> -545 </td>
+   <td style="text-align:right;"> 923 </td>
+   <td style="text-align:right;"> -1136 </td>
+   <td style="text-align:right;"> -161 </td>
+   <td style="text-align:right;"> 907 </td>
+   <td style="text-align:right;"> 520 </td>
+   <td style="text-align:right;"> 436 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -150 </td>
+   <td style="text-align:right;"> 1165 </td>
+   <td style="text-align:right;"> 524 </td>
+   <td style="text-align:right;"> 563 </td>
+   <td style="text-align:right;"> -554 </td>
+   <td style="text-align:right;"> 395 </td>
+   <td style="text-align:right;"> -950 </td>
+   <td style="text-align:right;"> 377 </td>
+   <td style="text-align:right;"> -376 </td>
+   <td style="text-align:right;"> 1150 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 305 </td>
+   <td style="text-align:right;"> -116 </td>
+   <td style="text-align:right;"> 116 </td>
+   <td style="text-align:right;"> 696 </td>
+   <td style="text-align:right;"> -691 </td>
+   <td style="text-align:right;"> 388 </td>
+   <td style="text-align:right;"> 348 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 475 </td>
+   <td style="text-align:right;"> -1145 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -301 </td>
+   <td style="text-align:right;"> -204 </td>
+   <td style="text-align:right;"> 203 </td>
+   <td style="text-align:right;"> -97 </td>
+   <td style="text-align:right;"> 669 </td>
+   <td style="text-align:right;"> -184 </td>
+   <td style="text-align:right;"> 611 </td>
+   <td style="text-align:right;"> -174 </td>
+   <td style="text-align:right;"> -317 </td>
+   <td style="text-align:right;"> -122 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Now, what are you going to with that big pile of numbers? Look at it all day long? When you deal with data, it will deal so many numbers to you that you will be overwhelmed by them. That is why we need ways to describe the data in a more manageable fashion.</p>
+<p>The complete description of the data is always the data itself. <strong>Descriptive statistics</strong> and other tools for describing data go one step further to summarize aspects of the data. Summaries are a way to compress the important bits of a thing down to a useful and manageable tidbit. It’s like telling your friends why they should watch a movie: you don’t replay the entire movie for them, instead you hit the highlights. Summarizing the data is just like a movie preview, only for data.</p>
+</section>
+<section id="look-at-the-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="look-at-the-data"><span class="header-section-number">2.2</span> Look at the data</h2>
+<p>We already tried one way of looking at the numbers, and it wasn’t useful. Let’s look at some other ways of looking at the numbers, using graphs.</p>
+<section id="stop-plotting-time-o-o-oh-u-can-plot-this" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="stop-plotting-time-o-o-oh-u-can-plot-this"><span class="header-section-number">2.2.1</span> Stop, plotting time (o o oh) U can plot this</h3>
+<p>Let’s turn all of the numbers into dots, then show them in a graph. Note, when we do this, we have not yet summarized anything about the data. Instead, we just look at all of the data in a visual format, rather than looking at the numbers.</p>
+<div class="cell" data-hash="cache/fig-happyPlot_7c6e835c3a27273ca3ef571a6083c1c2">
+<div class="cell-output-display">
+<div id="fig-happyPlot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 2.1: Pretend happiness ratings from 500 people</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-happyPlot">Figure&nbsp;<span>2.1</span></a> shows 500 measurements of happiness. The graph has two axes. The horizontal <strong>x-axis</strong>, going from left to right is labeled “Index”. The vertical <strong>y-axis</strong>, going up and down, is labelled “happiness”. Each dot represents one measurement of every person’s happiness from our pretend study. Before we talk about what we can and cannot see about the data, it is worth mentioning that the way you plot the data will make some things easier to see and some things harder to see. So, what can we now see about the data?</p>
+<p>There are lots of dots everywhere. It looks like there are 500 of them because the index goes to 500. It looks like some dots go as high as 1000-1500 and as low as -1500. It looks like there are more dots in the middle-ish area of the plot, sort of spread about 0.</p>
+<blockquote class="blockquote">
+<p>Take home: we can see all the numbers at once by putting them in a plot, and that is much easier and more helpful than looking at the raw numbers.</p>
+</blockquote>
+<p>OK, so if these dots represent how happy 500 people are, what can we say about those people? First, the dots are kind of all over the place, so different people have different levels of happiness. Are there any trends? Are more people happy than unhappy, or vice-versa? It’s hard to see that in the graph, so let’s make a different one, called a <strong>histogram</strong></p>
+</section>
+<section id="histograms" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="histograms"><span class="header-section-number">2.2.2</span> Histograms</h3>
+<p>Making a histogram will be our first act of officially summarizing something about the data. We will no longer look at the individual bits of data, instead we will see how the numbers group together. Let’s look at <a href="#fig-happyHist">Figure&nbsp;<span>2.2</span></a>, a histogram of the happiness data, and then explain it.</p>
+<div class="cell" data-hash="cache/fig-happyHist_d2c4e7ed20cae2e24338ec4d94961f33">
+<div class="cell-output-display">
+<div id="fig-happyHist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-Describing_Data_files/figure-html/fig-happyHist-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 2.2: A histogram of the happiness ratings</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The dots have disappeared, and now we some bars. Each bar is a summary of the dots, representing the number of dots (frequency count) inside a particular range of happiness, also called <strong>bins</strong>. For example, how many people gave a happiness rating between 0 and 500? The fifth bar, the one between 0 and 500 on the x-axis, tells you how many. Look how tall that bar is. How tall is it? The height is shown on the y-axis, which provides a frequency count (the number of dots or data points). It looks like around 150 people said their happiness was between 0-500.</p>
+<p>More generally, we see there are many bins on the x-axis. We have divided the data into bins of 500. Bin #1 goes from -2000 to -1500, bin #2 goes from -1500 to -1000, and so on until the last bin. To make the histogram, we just count up the number of data points falling inside each bin, then plot those frequency counts as a function of the bins. Voila, a histogram.</p>
+<p>What does the histogram help us see about the data? First, we can see the <strong>shape</strong> of data. The shape of the histogram refers to how it goes up and down. The shape tells us where the data is. For example, when the bars are low we know there isn’t much data there. When the bars are high, we know there is more data there. So, where is most of the data? It looks like it’s mostly in the middle two bins, between -500 and 500. We can also see the <strong>range</strong> of the data. This tells us the minimums and the maximums of the data. Most of the data is between -1500 and +1500, so no infinite sadness or infinite happiness in our data-set.</p>
+<p>When you make a histogram you get to choose how wide each bar will be. For example, below are four different histograms of the very same happiness data. What changes is the width of the bins.</p>
+<div class="cell" data-hash="cache/fig-manyhistbin_0bb0000cd9a67760c00996e823d6bead">
+<div class="cell-output-display">
+<div id="fig-manyhistbin" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-Describing_Data_files/figure-html/fig-manyhistbin-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 2.3: Four histograms of the same data using different bin widths</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>All of the histograms have roughly the same overall shape: From left to right, the bars start off small, then go up, then get small again. In other words, as the numbers get closer to zero, they start to occur more frequently. We see this general trend across all the histograms. But, some aspects of the trend fall apart when the bars get really narrow. For example, although the bars generally get taller when moving from -1000 to 0, there are some exceptions and the bars seem to fluctuate a little bit. When the bars are wider, there are less exceptions to the general trend. How wide or narrow should your histogram be? It’s a Goldilocks question. Make it just right for your data.</p>
+</section>
+</section>
+<section id="important-ideas-distribution-central-tendency-and-variance" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="important-ideas-distribution-central-tendency-and-variance"><span class="header-section-number">2.3</span> Important Ideas: Distribution, Central Tendency, and Variance</h2>
+<p>Let’s introduce three important terms we will use a lot, <strong>distribution</strong>, <strong>central tendency</strong>, and <strong>variance</strong>. These terms are similar to their everyday meanings (although I suspect most people don’t say central tendency very often).</p>
+<p><strong>Distribution.</strong> When you order something from Amazon, where does it come from, and how does it get to your place? That stuff comes from one of Amazon’s distribution centers. They distribute all sorts of things by spreading them around to your doorstep. “To Distribute”” is to spread something. Notice, the data in the histogram is distributed, or spread across the bins. We can also talk about a distribution as a noun. The histogram is a distribution of the frequency counts across the bins. Distributions are <strong>very, very, very, very, very</strong> important. They can have many different shapes. They can describe data, like in the histogram above. And as we will learn in later chapters, they can <strong>produce</strong> data. Many times we will be asking questions about where our data came from, and this usually means asking what kind of distribution could have created our data (more on that later.)</p>
+<p><strong>Central Tendency</strong> is all about sameness: What is common about some numbers? For example, is there anything similar about all of the numbers in the histogram? Yes, we can say that most of them are near 0. There is a tendency for most of the numbers to be centered near 0. Notice we are being cautious about our generalization about the numbers. We are not saying they are all 0. We are saying there is a tendency for many of them to be near zero. There are lots of ways to talk about the central tendency of some numbers. There can even be more than one kind of tendency. For example, if lots of the numbers were around -1000, and a similar large amount of numbers were grouped around 1000, we could say there was two tendencies.</p>
+<p><strong>Variance</strong> is all about different<em>ness</em>: What is different about some numbers?. For example, is there anything different about all of the numbers in the histogram? YES!!! The numbers are not all the same! When the numbers are not all the same, they must vary. So, the variance in the numbers refers to how the numbers are different. There are many ways to summarize the amount of variance in the numbers, and we discuss these very soon.</p>
+</section>
+<section id="measures-of-central-tendency-sameness" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="measures-of-central-tendency-sameness"><span class="header-section-number">2.4</span> Measures of Central Tendency (Sameness)</h2>
+<p>We’ve seen that we can get a sense of data by plotting dots in a graph, and by making a histogram. These tools show us what the numbers look like, approximately how big and small they are, and how similar and different they are from another. It is good to get a feeling about the numbers in this way. But, these visual sensitudes are not very precise. In addition to summarizing numbers with graphs, we can summarize numbers using numbers (NO, please not more numbers, we promise numbers can be your friend).</p>
+<section id="from-many-numbers-to-one" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="from-many-numbers-to-one"><span class="header-section-number">2.4.1</span> From many numbers to one</h3>
+<p>Measures of central have one important summary goal: to reduce a pile of numbers to a single number that we can look at. We already know that looking at thousands of numbers is hopeless. Wouldn’t it be nice if we could just look at one number instead? We think so. It turns out there are lots of ways to do this. Then, if your friend ever asks the frightening question, “hey, what are all these numbers like?”. You can say they are like this one number right here.</p>
+<p>But, just like in Indiana Jones and the Last Crusade (highly recommended movie), you must choose your measure of central tendency wisely.</p>
+</section>
+<section id="mode" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="mode"><span class="header-section-number">2.4.2</span> Mode</h3>
+<p>The <strong>mode</strong> is the most frequently occurring number in your measurement. That is it. How do you find it? You have to count the number of times each number appears in your measure, then whichever one occurs the most, is the mode.</p>
+<blockquote class="blockquote">
+<p>Example: 1 1 1 2 3 4 5 6</p>
+</blockquote>
+<p>The mode of the above set is 1, which occurs three times. Every other number only occurs once.</p>
+<p>OK fine. What happens here:</p>
+<blockquote class="blockquote">
+<p>Example: 1 1 1 2 2 2 3 4 5 6</p>
+</blockquote>
+<p>Hmm, now 1 and 2 both occur three times each. What do we do? We say there are two modes, and they are 1 and 2.</p>
+<p>Why is the mode a measure of central tendency? Well, when we ask, “what are my numbers like”, we can say, “most of the number are, like a 1 (or whatever the mode is)”.</p>
+<p>Is the mode a good measure of central tendency? That depends on your numbers. For example, consider these numbers</p>
+<blockquote class="blockquote">
+<p>1 1 2 3 4 5 6 7 8 9</p>
+</blockquote>
+<p>Here, the mode is 1 again, because there are two 1s, and all of the other numbers occur once. But, are most of the numbers like, a 1. No, they are mostly not 1s.</p>
+<p>“Argh, so should I or should I not use the mode? I thought this class was supposed to tell me what to do?”. There is no telling you what to do. Every time you use a tool in statistics you have to think about what you are doing and justify why what you are doing makes sense. Sorry.</p>
+</section>
+<section id="median" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="median"><span class="header-section-number">2.4.3</span> Median</h3>
+<p>The <strong>median</strong> is the exact middle of the data. After all, we are asking about central tendency, so why not go to the center of the data and see where we are. What do you mean middle of the data? Let’s look at these numbers:</p>
+<blockquote class="blockquote">
+<p>1 5 4 3 6 7 9</p>
+</blockquote>
+<p>Umm, OK. So, three is in the middle? Isn’t that kind of arbitrary. Yes. Before we can compute the median, we need to order the numbers from smallest to largest.</p>
+<blockquote class="blockquote">
+<p>1 3 4 <strong>5</strong> 6 7 9</p>
+</blockquote>
+<p>Now, 5 is in the middle. And, by middle we mean in the middle. There are three numbers to the left of 5, and three numbers to the right. So, five is definitely in the middle.</p>
+<p>OK fine, but what happens when there aren’t an even number of numbers? Then the middle will be missing right? Let’s see:</p>
+<blockquote class="blockquote">
+<p>1 2 3 4 5 6</p>
+</blockquote>
+<p>There is no number between 3 and 4 in the data, the middle is empty. In this case, we compute the median by figuring out the number in between 3 and 4. So, the median would be 3.5.</p>
+<p>Is the median a good measure of central tendency? Sure, it is often very useful. One property of the median is that it stays in the middle even when some of the other numbers get really weird. For example, consider these numbers:</p>
+<blockquote class="blockquote">
+<p>1 2 3 4 4 4 <strong>5</strong> 6 6 6 7 7 1000</p>
+</blockquote>
+<p>Most of these numbers are smallish, but the 1000 is a big old weird number, very different from the rest. The median is still 5, because it is in the middle of these ordered numbers. We can also see that five is pretty similar to most of the numbers (except for 1000). So, the median does a pretty good job of representing most of the numbers in the set, and it does so even if one or two of the numbers are very different from the others.</p>
+<p>Finally, <strong>outlier</strong> is a term will we use to describe numbers that appear in data that are very different from the rest. 1000 is an outlier, because it lies way out there on the number line compared to the other numbers. What to do with outliers is another topic we discuss sometimes throughout this course.</p>
+</section>
+<section id="mean" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="mean"><span class="header-section-number">2.4.4</span> Mean</h3>
+<p>Have you noticed this is a textbook about statistics that hasn’t used a formula yet? That is about to change, but for those of you with formula anxiety, don’t worry, we will do our best to explain them.</p>
+<p>The <strong>mean</strong> is also called the average. And, we’re guessing you might already now what the average of a bunch of numbers is? It’s the sum of the numbers, divided by the number of number right? How do we express that idea in a formula? Just like this:</p>
+<p><span class="math inline">\(Mean = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N}\)</span></p>
+<p>“That looks like Greek to me”. Yup. The <span class="math inline">\(\sum\)</span> symbol is called <strong>sigma</strong>, and it stands for the operation of summing. The little “i” on the bottom, and the little “n” on the top refers to all of the numbers in the set, from the first number “i” to the last number “n”. The letters are just arbitrary labels, called <strong>variables</strong> that we use for descriptive purposes. The <span class="math inline">\(x_{i}\)</span> refers to individual numbers in the set. We sum up all of the numbers, then divide the sum by <span class="math inline">\(N\)</span>, which is the total number of numbers. Sometimes you will see <span class="math inline">\(\bar{X}\)</span> to refer to the mean of all of the numbers.</p>
+<p>In plain English, the formula looks like:</p>
+<p><span class="math inline">\(mean = \frac{\text{Sum of my numbers}}{\text{Count of my numbers}}\)</span></p>
+<p>“Well, why didn’t you just say that?”. We just did.</p>
+<p>Let’s compute the mean for these five numbers:</p>
+<blockquote class="blockquote">
+<p>3 7 9 2 6</p>
+</blockquote>
+<p>Add em up:</p>
+<blockquote class="blockquote">
+<p>3+7+9+2+6 = 27</p>
+</blockquote>
+<p>Count em up:</p>
+<blockquote class="blockquote">
+<p><span class="math inline">\(i_{1}\)</span> = 3, <span class="math inline">\(i_{2}\)</span> = 7, <span class="math inline">\(i_{3}\)</span> = 9, <span class="math inline">\(i_{4}\)</span> = 2, <span class="math inline">\(i_{5}\)</span> = 6; N=5, because <span class="math inline">\(i\)</span> went from 1 to 5</p>
+</blockquote>
+<p>Divide em:</p>
+<blockquote class="blockquote">
+<p>mean = 27 / 5 = 5.4</p>
+</blockquote>
+<p>Or, to put the numbers in the formula, it looks like this:</p>
+<p><span class="math inline">\(Mean = \bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{N} = \frac{3+7+9+2+6}{5} = \frac{27}{5} = 5.4\)</span></p>
+<p>OK fine, that is how to compute the mean. But, like we imagined, you probably already knew that, and if you didn’t that’s OK, now you do. What’s next?</p>
+<p>Is the mean a good measure of central tendency? By now, you should know: it depends.</p>
+</section>
+<section id="what-does-the-mean-mean" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="what-does-the-mean-mean"><span class="header-section-number">2.4.5</span> What does the mean mean?</h3>
+<p>It is not enough to know the formula for the mean, or to be able to use the formula to compute a mean for a set of numbers. We believe in your ability to add and divide numbers. What you really need to know is what the mean really “means”. This requires that you know what the mean does, and not just how to do it. Puzzled? Let’s explain.</p>
+<p>Can you answer this question: What happens when you divide a sum of numbers by the number of numbers? What are the consequences of doing this? What is the formula doing? What kind of properties does the result give us? FYI, the answer is not that we compute the mean.</p>
+<p>OK, so what happens when you divide any number by another number? Of course, the key word here is divide. We literally carve the number up top in the numerator into pieces. How many times do we split the top number? That depends on the bottom number in the denominator. Watch:</p>
+<p><span class="math inline">\(\frac{12}{3} = 4\)</span></p>
+<p>So, we know the answer is 4. But, what is really going on here is that we are slicing and dicing up 12 aren’t we. Yes, and we slicing 12 into three parts. It turns out the size of those three parts is 4. So, now we are thinking of 12 as three different pieces <span class="math inline">\(12 = 4 + 4 + 4\)</span>. I know this will be obvious, but what kind of properties do our pieces have? You mean the fours? Yup. Well, obviously they are all fours. Yes. The pieces are all the same size. They are all equal. So, division equalizes the numerator by the denominator…</p>
+<p>“Umm, I think I learned this in elementary school, what does this have to do with the mean?”. The number on top of the formula for the mean is just another numerator being divided by a denominator isn’t it. In this case, the numerator is a sum of all the values in your data. What if it was the sum of all of the 500 happiness ratings? The sum of all of them would just be a single number adding up all the different ratings. If we split the sum up into equal parts representing one part for each person’s happiness what would we get? We would get 500 identical and equal numbers for each person. It would be like taking all of the happiness in the world, then dividing it up equally, then to be fair, giving back the same equal amount of happiness to everyone in the world. This would make some people more happy than they were before, and some people less happy right. Of course, that’s because it would be equalizing the distribution of happiness for everybody. This process of equalization by dividing something into equal parts is what the <strong>mean</strong> does. See, it’s more than just a formula. It’s an idea. This is just the beginning of thinking about these kinds of ideas. We will come back to this idea about the mean, and other ideas, in later chapters.</p>
+<blockquote class="blockquote">
+<p>Pro tip: The mean is the one and only number that can take the place of every number in the data, such that when you add up all the equal parts, you get back the original sum of the data.</p>
+</blockquote>
+</section>
+<section id="all-together-now" class="level3" data-number="2.4.6">
+<h3 data-number="2.4.6" class="anchored" data-anchor-id="all-together-now"><span class="header-section-number">2.4.6</span> All together now</h3>
+<p>Just to remind ourselves of the mode, median, and mean, take a look at the next histogram in @fig-meanmodemed. We have overlaid the location of the mean (red), median (green), and mode (blue). For this dataset, the three measures of central tendency all give different answers. The mean is the largest because it is influenced by large numbers, even if they occur rarely. The mode and median are insensitive to large numbers that occur infrequently, so they have smaller values.</p>
+<div class="cell" data-hash="cache/fig-meanmodemed_adbc36b7deb6360ab966650cc0cd3610">
+<div class="cell-output-display">
+<div id="fig-meanmodemed" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-Describing_Data_files/figure-html/fig-meanmodemed-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 2.4: A histogram with the mean (red), the median (green), and the mode (blue)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="measures-of-variation-differentness" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="measures-of-variation-differentness"><span class="header-section-number">2.5</span> Measures of Variation (Different<em>ness</em>)</h2>
+<p>What did you do when you wrote essays in high school about a book you read? Probably compare and contrast something right? When you summarize data, you do the same thing. Measures of central tendency give us something like comparing does, they tell us stuff about what is the same. Measures of variation give us something like contrasting does, they tell us stuff about what is different.</p>
+<p>First, we note that whenever you see a bunch of numbers that aren’t the same, you already know there are some differences. This means the numbers vary, and there is variation in the size of the numbers.</p>
+<section id="the-range" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="the-range"><span class="header-section-number">2.5.1</span> The Range</h3>
+<p>Consider these 10 numbers, that I already ordered from smallest to largest for you:</p>
+<blockquote class="blockquote">
+<p>1 3 4 5 5 6 7 8 9 24</p>
+</blockquote>
+<p>The numbers have variation, because they are not all the same. We can use the range to describe the width of the variation. The range refers to the <strong>minimum</strong> (smallest value) and <strong>maximum</strong> (largest value) in the set. So, the range would be 1 and 24.</p>
+<p>The range is a good way to quickly summarize the boundaries of your data in just two numbers. By computing the range we know that none of the data is larger or smaller than the range. And, it can alert you to outliers. For example, if you are expecting your numbers to be between 1 and 7, but you find the range is 1 - 340,500, then you know you have some big numbers that shouldn’t be there, and then you can try to figure out why those numbers occurred (and potentially remove them if something went wrong).</p>
+</section>
+<section id="the-difference-scores" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="the-difference-scores"><span class="header-section-number">2.5.2</span> The Difference Scores</h3>
+<p>It would be nice to summarize the amount of different<em>ness</em> in the data. Here’s why. If you thought that raw data (lots of numbers) is too big to look at, then you will be frightened to contemplate how many differences there are to look at. For example, these 10 numbers are easy to look at:</p>
+<blockquote class="blockquote">
+<p>1 3 4 5 5 6 7 8 9 24</p>
+</blockquote>
+<p>But, what about the difference between the numbers, what do those look like? We can compute the difference scores between each number, then put them in a matrix like the one below:</p>
+<div class="cell" data-hash="cache/2diffscores_aecf4a4549fae3024e5dcd9df811b536">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 3 </th>
+   <th style="text-align:right;"> 4 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> 5 </th>
+   <th style="text-align:right;"> 6 </th>
+   <th style="text-align:right;"> 7 </th>
+   <th style="text-align:right;"> 8 </th>
+   <th style="text-align:right;"> 9 </th>
+   <th style="text-align:right;"> 24 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 23 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 21 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:right;"> -4 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:right;"> -4 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:right;"> -5 </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:right;"> -6 </td>
+   <td style="text-align:right;"> -4 </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:right;"> -7 </td>
+   <td style="text-align:right;"> -5 </td>
+   <td style="text-align:right;"> -4 </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:right;"> -8 </td>
+   <td style="text-align:right;"> -6 </td>
+   <td style="text-align:right;"> -5 </td>
+   <td style="text-align:right;"> -4 </td>
+   <td style="text-align:right;"> -4 </td>
+   <td style="text-align:right;"> -3 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:right;"> -23 </td>
+   <td style="text-align:right;"> -21 </td>
+   <td style="text-align:right;"> -20 </td>
+   <td style="text-align:right;"> -19 </td>
+   <td style="text-align:right;"> -19 </td>
+   <td style="text-align:right;"> -18 </td>
+   <td style="text-align:right;"> -17 </td>
+   <td style="text-align:right;"> -16 </td>
+   <td style="text-align:right;"> -15 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We are looking at all of the possible differences between each number and every other number. So, in the top left, the difference between 1 and itself is 0. One column over to the right, the difference between 3 and 1 (3-1) is 2, etc. As you can see, this is a 10x10 matrix, which means there are 100 differences to look at. Not too bad, but if we had 500 numbers, then we would have 500*500 = 250,000 differences to look at (go for it if you like looking at that sort of thing).</p>
+<p>Pause for a simple question. What would this matrix look like if all of the 10 numbers in our data were the same number? It should look like a bunch of 0s right? Good. In that case, we could easily see that the numbers have no variation.</p>
+<p>But, when the numbers are different, we can see that there is a very large matrix of difference scores. How can we summarize that? How about we apply what we learned from the previous section on measures of central tendency. We have a lot of differences, so we could ask something like, what is the average difference that we have? So, we could just take all of our differences, and compute the mean difference right? What do you think would happen if we did that?</p>
+<p>Let’s try it out on these three numbers:</p>
+<blockquote class="blockquote">
+<p>1 2 3</p>
+</blockquote>
+<div class="cell" data-hash="cache/2diffscoreSmall_b539966f0e99663567a32654652517f9">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> 1 </th>
+   <th style="text-align:right;"> 2 </th>
+   <th style="text-align:right;"> 3 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> -2 </td>
+   <td style="text-align:right;"> -1 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>You might already guess what is going to happen. Let’s compute the mean:</p>
+<p><span class="math inline">\(\text{mean of difference scores} = \frac{0+1+2-1+0+1-2-1+0}{9} = \frac{0}{9} = 0\)</span></p>
+<p>Uh oh, we get zero for the mean of the difference scores. This will always happen whenever you take the mean of the difference scores. We can see that there are some differences between the numbers, so using 0 as the summary value for the variation in the numbers doesn’t make much sense.</p>
+<p>Furthermore, you might also notice that the matrices of difference scores are redundant. The diagonal is always zero, and numbers on one side of the diagonal are the same as the numbers on the other side, except their signs are reversed. So, that’s one reason why the difference scores add up to zero.</p>
+<p>These are little problems that can be solved by computing the <strong>variance</strong> and the <strong>standard deviation</strong>. For now, the standard deviation is a just a trick that we use to avoid getting a zero. But, later we will see it has properties that are important for other reasons.</p>
+</section>
+<section id="the-variance" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">2.5.3</span> The Variance</h3>
+<p>Variability, variation, variance, vary, variable, varying, variety. Confused yet? Before we describe <strong>the variance</strong>, we want to you be OK with how this word is used. First, don’t forget the big picture. We know that variability and variation refers to the big idea of differences between numbers. We can even use the word variance in the same way. When numbers are different, they have variance.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The formulas for variance and standard deviation depend on whether you think your data represents an entire population of numbers, or is sample from the population. We discuss this issue in later on. For now, we divide by N, later we discuss why you will often divide by N-1 instead.</p>
+</div>
+</div>
+<p>The word <strong>variance</strong> also refers to a specific summary statistic, the sum of the squared deviations from the mean. Hold on what? Plain English please. The variance is the sum of the squared difference scores, where the difference scores are computed between each score and the mean. What are these scores? The scores are the numbers in the data set. Let’s see the formula in English first:</p>
+<p><span class="math inline">\(variance = \frac{\text{Sum of squared difference scores}}{\text{Number of Scores}}\)</span></p>
+<section id="deviations-from-the-mean-difference-scores-from-the-mean" class="level4" data-number="2.5.3.1">
+<h4 data-number="2.5.3.1" class="anchored" data-anchor-id="deviations-from-the-mean-difference-scores-from-the-mean"><span class="header-section-number">2.5.3.1</span> Deviations from the mean, Difference scores from the mean</h4>
+<p>We got a little bit complicated before when we computed the difference scores between all of the numbers in the data. Let’s do it again, but in a more manageable way. This time, we calculate the difference between each score and the mean. The idea here is</p>
+<ol type="1">
+<li>We can figure out how similar our scores are by computing the mean</li>
+<li>Then we can figure out how different our scores are from the mean</li>
+</ol>
+<p>This could tell us, 1) something about whether our scores are really all very close to the mean (which could help us know if the mean is good representative number of the data), and 2) something about how much differences there are in the numbers.</p>
+<p>Take a look at this table:</p>
+<div class="cell" data-hash="cache/2deviations_13e8b85b6a73a31c9d8d66c001041de4">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> scores </th>
+   <th style="text-align:left;"> values </th>
+   <th style="text-align:left;"> mean </th>
+   <th style="text-align:left;"> Difference_from_Mean </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -3.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -0.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -2.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>The first column shows we have 6 scores in the data set, and the <code>value</code> columns shows each score. The sum of the values, and the mean is presented on the last two rows. The sum and the mean were obtained by:</p>
+<p><span class="math inline">\(\frac{1+6+4+2+6+8}{6} = \frac{27}{6} = 4.5\)</span>.</p>
+<p>The third column <code>mean</code>, appears a bit silly. We are just listing the mean once for every score. If you think back to our discussion about the meaning of the mean, then you will remember that it equally distributes the total sum across each data point. We can see that here, if we treat each score as the mean, then every score is a 4.5. We can also see that adding up all of the means for each score gives us back 27, which is the sum of the original values. Also, we see that if we find the mean of the mean scores, we get back the mean (4.5 again).</p>
+<p>All of the action is occurring in the fourth column, <code>Difference_from_Mean</code>. Here, we are showing the difference scores from the mean, using <span class="math inline">\(X_{i}-\bar{X}\)</span>. In other words, we subtracted the mean from each score. So, the first score, 1, is -3.5 from the mean, the second score, 6, is +1.5 from the mean, and so on.</p>
+<p>Now, we can look at our original scores and we can look at their differences from the mean. Notice, we don’t have a matrix of raw difference scores, so it is much easier to look at out. But, we still have a problem:</p>
+<p>We can see that there are non-zero values in the difference scores, so we know there are a differences in the data. But, when we add them all up, we still get zero, which makes it seem like there are a total of zero differences in the data…Why does this happen…and what to do about it?</p>
+</section>
+<section id="the-mean-is-the-balancing-point-in-the-data" class="level4" data-number="2.5.3.2">
+<h4 data-number="2.5.3.2" class="anchored" data-anchor-id="the-mean-is-the-balancing-point-in-the-data"><span class="header-section-number">2.5.3.2</span> The mean is the balancing point in the data</h4>
+<p>One brief pause here to point out another wonderful property of the mean. It is the balancing point in the data. If you take a pen or pencil and try to balance it on your figure so it lays flat what are you doing? You need to find the center of mass in the pen, so that half of it is on one side, and the other half is on the other side. That’s how balancing works. One side = the other side.</p>
+<p>We can think of data as having mass or weight to it. If we put our data on our bathroom scale, we could figure out how heavy it was by summing it up. If we wanted to split the data down the middle so that half of the weight was equal to the other half, then we could balance the data on top of a pin. The mean of the data tells you where to put the pin. It is the location in the data, where the numbers on the one side add up to the same sum as the numbers on the other side.</p>
+<p>If we think this through, it means that the sum of the difference scores from the mean will always add up to zero. This is because the numbers on one side of the mean will always add up to -x (whatever the sum of those numbers is), and the numbers of the other side of the mean will always add up to +x (which will be the same value only positive). And:</p>
+<p><span class="math inline">\(-x + x = 0\)</span>, right.</p>
+<p>Right.</p>
+</section>
+<section id="the-squared-deviations" class="level4" data-number="2.5.3.3">
+<h4 data-number="2.5.3.3" class="anchored" data-anchor-id="the-squared-deviations"><span class="header-section-number">2.5.3.3</span> The squared deviations</h4>
+<p>Some devious someone divined a solution to the fact that differences scores from the mean always add to zero. Can you think of any solutions? For example, what could you do to the difference scores so that you could add them up, and they would weigh something useful, that is they would not be zero?</p>
+<p>The devious solution is to square the numbers. Squaring numbers converts all the negative numbers to positive numbers. For example, <span class="math inline">\(2^2 = 4\)</span>, and <span class="math inline">\(-2^2 = 4\)</span>. Remember how squaring works, we multiply the number twice: <span class="math inline">\(2^2 = 2*2 = 4\)</span>, and <span class="math inline">\(-2^2 = -2*-2 = 4\)</span>. We use the term <strong>squared deviations</strong> to refer to differences scores that have been squared. Deviations are things that move away from something. The difference scores move away from the mean, so we also call them <strong>deviations</strong>.</p>
+<p>Let’s look at our table again, but add the squared deviations.</p>
+<div class="cell" data-hash="cache/2deviationssquared_afd7d43632882f6c581d12ad20eaf477">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> scores </th>
+   <th style="text-align:left;"> values </th>
+   <th style="text-align:left;"> mean </th>
+   <th style="text-align:left;"> Difference_from_Mean </th>
+   <th style="text-align:left;"> Squared_Deviations </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -3.5 </td>
+   <td style="text-align:left;"> 12.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 2.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -0.5 </td>
+   <td style="text-align:left;"> 0.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -2.5 </td>
+   <td style="text-align:left;"> 6.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 2.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.5 </td>
+   <td style="text-align:left;"> 12.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 35.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 5.91666666666667 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>OK, now we have a new column called <code>squared_deviations</code>. These are just the difference scores squared. So, <span class="math inline">\(-3.5^2 = 12.25\)</span>, etc. You can confirm for yourself with your cellphone calculator.</p>
+<p>Now that all of the squared deviations are positive, we can add them up. When we do this we create something very special called the sum of squares (SS), also known as the sum of the squared deviations from the mean. We will talk at length about this SS later on in the ANOVA chapter. So, when you get there, remember that you already know what it is, just some sums of some squared deviations, nothing fancy.</p>
+</section>
+<section id="finally-the-variance" class="level4" data-number="2.5.3.4">
+<h4 data-number="2.5.3.4" class="anchored" data-anchor-id="finally-the-variance"><span class="header-section-number">2.5.3.4</span> Finally, the variance</h4>
+<p>Guess what, we already computed the variance. It already happened, and maybe you didn’t notice. “Wait, I missed that, what happened?”.</p>
+<p>First, see if you can remember what we are trying to do here. Take a pause, and see if you can tell yourself what problem we are trying solve.</p>
+<blockquote class="blockquote">
+<p>pause</p>
+</blockquote>
+<p>Without further ado, we are trying to get a summary of the differences in our data. There are just as many difference scores from the mean as there are data points, which can be a lot, so it would be nice to have a single number to look at, something like a mean, that would tell us about the average differences in the data.</p>
+<p>If you look at the table, you can see we already computed the mean of the squared deviations. First, we found the sum (SS), then below that we calculated the mean = 5.916 repeating. This is <strong>the variance</strong>. The variance is the mean of the sum of the squared deviations:</p>
+<p><span class="math inline">\(variance = \frac{SS}{N}\)</span>, where SS is the sum of the squared deviations, and N is the number of observations.</p>
+<p>OK, now what. What do I do with the variance? What does this number mean? Good question. The variance is often an unhelpful number to look at. Why? Because it is not in the same scale as the original data. This is because we squared the difference scores before taking the mean. Squaring produces large numbers. For example, we see a 12.25 in there. That’s a big difference, bigger than any difference between any two original values. What to do? How can we bring the numbers back down to their original unsquared size?</p>
+<p>If you are thinking about taking the square root, that’s a ding ding ding, correct answer for you. We can always unsquare anything by taking the square root. So, let’s do that to 5.916. <span class="math inline">\(\sqrt{5.916} =\)</span> 2.4322829.</p>
+</section>
+</section>
+<section id="the-standard-deviation" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">2.5.4</span> The Standard Deviation</h3>
+<p>Oops, we did it again. We already computed the standard deviation, and we didn’t tell you. The standard deviation is the square root of the variance…At least, it is right now, until we complicate matters for you in the next chapter.</p>
+<p>Here is the formula for the standard deviation:</p>
+<p><span class="math inline">\(\text{standard deviation} = \sqrt{Variance} = \sqrt{\frac{SS}{N}}\)</span>.</p>
+<p>We could also expand this to say:</p>
+<p><span class="math inline">\(\text{standard deviation} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N}}\)</span></p>
+<p>Don’t let those big square root signs put you off. Now, you know what they are doing there. Just bringing our measure of the variance back down to the original size of the data. Let’s look at our table again:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-6_4130af97d1d70497284617ac3343dad9">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> scores </th>
+   <th style="text-align:left;"> values </th>
+   <th style="text-align:left;"> mean </th>
+   <th style="text-align:left;"> Difference_from_Mean </th>
+   <th style="text-align:left;"> Squared_Deviations </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -3.5 </td>
+   <td style="text-align:left;"> 12.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 2.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -0.5 </td>
+   <td style="text-align:left;"> 0.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -2.5 </td>
+   <td style="text-align:left;"> 6.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 2.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.5 </td>
+   <td style="text-align:left;"> 12.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 35.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 5.91666666666667 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We measured the standard deviation as 2.4322829. Notice this number fits right in the with differences scores from the mean. All of the scores are kind of in and around + or - 2.4322829. Whereas, if we looked at the variance, 5.916 is just too big, it doesn’t summarize the actual differences very well.</p>
+<p>What does all this mean? Well, if someone told they had some number with a mean of 4.5 (like the values in our table), and a standard deviation of 2.4322829, you would get a pretty good summary of the numbers. You would know that many of the numbers are around 4.5, and you would know that not all of the numbers are 4.5. You would know that the numbers spread around 4.5. You also know that the spread isn’t super huge, it’s only + or - 2.4322829 on average. That’s a good starting point for describing numbers.</p>
+<p>If you had loads of numbers, you could reduce them down to the mean and the standard deviation, and still be pretty well off in terms of getting a sense of those numbers.</p>
+</section>
+</section>
+<section id="using-descriptive-statistics-with-data" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="using-descriptive-statistics-with-data"><span class="header-section-number">2.6</span> Using Descriptive Statistics with data</h2>
+<p>Remember, you will be learning how to compute descriptive statistics using software in the labs. Check out the <a href="https://crumplab.github.io/statisticsLab/lab-2-descriptive-statistics.html">lab manual exercises for descriptives</a> to see some examples of working with real data.</p>
+</section>
+<section id="rolling-your-own-descriptive-statistics" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="rolling-your-own-descriptive-statistics"><span class="header-section-number">2.7</span> Rolling your own descriptive statistics</h2>
+<p>We spent many paragraphs talking about variation in numbers, and how to use calculate the <strong>variance</strong> and <strong>standard deviation</strong> to summarize the average differences between numbers in a data set. The basic process was to 1) calculate some measure of the differences, then 2) average the differences to create a summary. We found that we couldn’t average the raw difference scores, because we would always get a zero. So, we squared the differences from the mean, then averaged the squared differences differences. Finally, we square rooted our measure to bring the summary back down to the scale of the original numbers.</p>
+<p>Perhaps you haven’t heard, but there is more than one way to skin a cat, but we prefer to think of this in terms of petting cats, because some of us love cats. Jokes aside, perhaps you were also thinking that the problem of summing differences scores (so that they don’t equal zero), can be solved in more than one way. Can you think of a different way, besides squaring?</p>
+<section id="absolute-deviations" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="absolute-deviations"><span class="header-section-number">2.7.1</span> Absolute deviations</h3>
+<p>How about just taking the absolute value of the difference scores. Remember, the absolute value converts any number to a positive value. Check out the following table:</p>
+<div class="cell" data-hash="cache/2absolute_fd4efa6a7825c3ad01e60e60932b0916">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> scores </th>
+   <th style="text-align:left;"> values </th>
+   <th style="text-align:left;"> mean </th>
+   <th style="text-align:left;"> Difference_from_Mean </th>
+   <th style="text-align:left;"> Absolute_Deviations </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -3.5 </td>
+   <td style="text-align:left;"> 3.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -0.5 </td>
+   <td style="text-align:left;"> 0.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> -2.5 </td>
+   <td style="text-align:left;"> 2.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.5 </td>
+   <td style="text-align:left;"> 3.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 27 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 2.16666666666667 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>This works pretty well too. By converting the difference scores from the mean to positive values, we can now add them up and get a non-zero value (if there are differences). Then, we can find the mean of the sum of the absolute deviations. If we were to map the terms sum of squares (SS), variance and standard deviation onto these new measures based off of the absolute deviation, how would the mapping go? For example, what value in the table corresponds to the SS? That would be the sum of absolute deviations in the last column. How about the variance and standard deviation, what do those correspond to? Remember that the variance is mean (<span class="math inline">\(SS/N\)</span>), and the standard deviation is a square-rooted mean (<span class="math inline">\(\sqrt{SS/N}\)</span>). In the table above we only have one corresponding mean, the mean of the sum of the absolute deviations. So, we have a <strong>variance</strong> measure that does not need to be square rooted. We might say the mean absolute deviation, is doing double-duty as a variance and a standard-deviation. Neat.</p>
+</section>
+<section id="other-sign-inverting-operations" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="other-sign-inverting-operations"><span class="header-section-number">2.7.2</span> Other sign-inverting operations</h3>
+<p>In principle, we could create lots of different summary statistics for variance that solve the summing to zero problem. For example, we could raise every difference score to any even numbered power beyond 2 (which is the square). We could use, 4, 6, 8, 10, etc. There is an infinity of even numbers, so there is an infinity of possible variance statistics. We could also use odd numbers as powers, and then take their absolute value. Many things are possible. The important aspect to any of this is to have a reason for what you are doing, and to choose a method that works for the data-analysis problem you are trying to solve. Note also, we bring up this general issue because we want you to understand that statistics is a creative exercise. We invent things when we need them, and we use things that have already been invented when they work for the problem at hand.</p>
+</section>
+</section>
+<section id="remember-to-look-at-your-data" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="remember-to-look-at-your-data"><span class="header-section-number">2.8</span> Remember to look at your data</h2>
+<p>Descriptive statistics are great and we will use them a lot in the course to describe data. You may suspect that descriptive statistics also have some short-comings. This is very true. They are compressed summaries of large piles of numbers. They will almost always be unable to represent all of the numbers fairly. There are also different kinds of descriptive statistics that you could use, and it sometimes not clear which one’s you should use.</p>
+<p>Perhaps the most important thing you can do when using descriptives is to use them in combination with looking at the data in a graph form. This can help you see whether or not your descriptives are doing a good job of representing the data.</p>
+<section id="anscombes-quartet" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="anscombes-quartet"><span class="header-section-number">2.8.1</span> Anscombe’s Quartet</h3>
+<p>To hit this point home, and to get you thinking about the issues we discuss in the next chapter, check this out. It’s called Anscombe’s Quartet, because these interesting graphs and numbers and numbers were produced by <span class="citation" data-cites="Anscombe1973">Anscombe (<a href="references.html#ref-Anscombe1973" role="doc-biblioref">1973</a>)</span>. In <a href="#fig-anscombe">Figure&nbsp;<span>2.5</span></a> you are looking at pairs of measurements. Each graph has an X and Y axis, and each point represents two measurements. Each of the graphs looks very different, right?</p>
+<div class="cell" data-hash="cache/fig-anscombe_aaf933c5a1ff31e04ecb240cbeebd494">
+<div class="cell-output-display">
+<div id="fig-anscombe" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-Describing_Data_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 2.5: Anscombe’s Quartet</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Well, would you be surprised if I told that the descriptive statistics for the numbers in these graphs are exactly the same? It turns out they do have the same descriptive statistics. In the table below I present the mean and variance for the x-values in each graph, and the mean and the variance for the y-values in each graph.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-8_f3ab019b230e201994f722cc82af6556">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> quartet </th>
+   <th style="text-align:right;"> mean_x </th>
+   <th style="text-align:right;"> var_x </th>
+   <th style="text-align:right;"> mean_y </th>
+   <th style="text-align:right;"> var_y </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 7.500909 </td>
+   <td style="text-align:right;"> 4.127269 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 7.500909 </td>
+   <td style="text-align:right;"> 4.127629 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 7.500000 </td>
+   <td style="text-align:right;"> 4.122620 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 7.500909 </td>
+   <td style="text-align:right;"> 4.123249 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>The descriptives are all the same! Anscombe put these special numbers together to illustrate the point of graphing your numbers. If you only look at your descriptives, you don’t know what patterns in the data they are hiding. If you look at the graph, then you can get a better understanding.</p>
+</section>
+<section id="datasaurus-dozen" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="datasaurus-dozen"><span class="header-section-number">2.8.2</span> Datasaurus Dozen</h3>
+<p>If you thought that Anscombe’s quartet was neat, you should take a look at the <a href="https://www.autodeskresearch.com/publications/samestats">Datasaurus Dozen</a> <span class="citation" data-cites="matejka2017same">(<a href="references.html#ref-matejka2017same" role="doc-biblioref">Matejka and Fitzmaurice 2017</a>)</span>. Scroll down to see the examples. You will be looking at dot plots. The dot plots show many different patterns, including dinosaurs! What’s amazing is that all of the dots have very nearly the same descriptive statistics. Just another reminder to look at your data, it might look like a dinosaur!</p>
+</section>
+</section>
+<section id="videos" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="videos"><span class="header-section-number">2.9</span> Videos</h2>
+<section id="measures-of-center-mode" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="measures-of-center-mode"><span class="header-section-number">2.9.1</span> Measures of center: Mode</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hQ2p-QQpGso" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</section>
+<section id="measures-of-center-median-and-mean" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="measures-of-center-median-and-mean"><span class="header-section-number">2.9.2</span> Measures of center: Median and Mean</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BopmCXCjq08" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</section>
+<section id="standard-deviation-part-i" class="level3" data-number="2.9.3">
+<h3 data-number="2.9.3" class="anchored" data-anchor-id="standard-deviation-part-i"><span class="header-section-number">2.9.3</span> Standard deviation part I</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8Yguf93s5dI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+</section>
+<section id="standard-deviation-part-ii" class="level3" data-number="2.9.4">
+<h3 data-number="2.9.4" class="anchored" data-anchor-id="standard-deviation-part-ii"><span class="header-section-number">2.9.4</span> Standard deviation part II</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KodmsOXScBc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-Anscombe1973" class="csl-entry" role="doc-biblioentry">
+Anscombe, F. J. 1973. <span>“Graphs in Statistical Analysis.”</span> <em>American Statistician</em> 27: 17–21.
+</div>
+<div id="ref-matejka2017same" class="csl-entry" role="doc-biblioentry">
+Matejka, Justin, and George Fitzmaurice. 2017. <span>“Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics Through Simulated Annealing.”</span> In <em>Proceedings of the 2017 <span>CHI</span> Conference on Human Factors in Computing Systems</em>, 1290–94. <span>ACM</span>. <a href="https://doi.org/10.1145/3025453.3025912">https://doi.org/10.1145/3025453.3025912</a>.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./01-Science_Data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./03-Correlation.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

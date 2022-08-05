@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew J. C. Crump">
+
+<title>Answering questions with data - 3&nbsp; Correlation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-SamplesPopulations.html" rel="next">
+<link href="./02-Describing_Data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79429674-3', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Answering questions with data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#if-something-caused-something-else-to-change-what-would-that-look-like" id="toc-if-something-caused-something-else-to-change-what-would-that-look-like" class="nav-link active" data-scroll-target="#if-something-caused-something-else-to-change-what-would-that-look-like"> <span class="header-section-number">3.1</span> If something caused something else to change, what would that look like?</a>
+  <ul class="collapse">
+  <li><a href="#charlie-and-the-chocolate-factory" id="toc-charlie-and-the-chocolate-factory" class="nav-link" data-scroll-target="#charlie-and-the-chocolate-factory"> <span class="header-section-number">3.1.1</span> Charlie and the Chocolate factory</a></li>
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots"> <span class="header-section-number">3.1.2</span> Scatter plots</a></li>
+  <li><a href="#positive-negative-and-no-correlation" id="toc-positive-negative-and-no-correlation" class="nav-link" data-scroll-target="#positive-negative-and-no-correlation"> <span class="header-section-number">3.1.3</span> Positive, Negative, and No-Correlation</a></li>
+  </ul></li>
+  <li><a href="#pearsons-r" id="toc-pearsons-r" class="nav-link" data-scroll-target="#pearsons-r"> <span class="header-section-number">3.2</span> Pearson’s r</a>
+  <ul class="collapse">
+  <li><a href="#the-idea-of-co-variance" id="toc-the-idea-of-co-variance" class="nav-link" data-scroll-target="#the-idea-of-co-variance"> <span class="header-section-number">3.2.1</span> The idea of co-variance</a></li>
+  </ul></li>
+  <li><a href="#turning-the-numbers-into-a-measure-of-co-variance" id="toc-turning-the-numbers-into-a-measure-of-co-variance" class="nav-link" data-scroll-target="#turning-the-numbers-into-a-measure-of-co-variance"> <span class="header-section-number">3.3</span> Turning the numbers into a measure of co-variance</a>
+  <ul class="collapse">
+  <li><a href="#co-variance-the-measure" id="toc-co-variance-the-measure" class="nav-link" data-scroll-target="#co-variance-the-measure"> <span class="header-section-number">3.3.1</span> Co-variance, the measure</a></li>
+  <li><a href="#pearsons-r-we-there-yet" id="toc-pearsons-r-we-there-yet" class="nav-link" data-scroll-target="#pearsons-r-we-there-yet"> <span class="header-section-number">3.3.2</span> Pearson’s r we there yet</a></li>
+  </ul></li>
+  <li><a href="#examples-with-data" id="toc-examples-with-data" class="nav-link" data-scroll-target="#examples-with-data"> <span class="header-section-number">3.4</span> Examples with Data</a></li>
+  <li><a href="#regression-a-mini-intro" id="toc-regression-a-mini-intro" class="nav-link" data-scroll-target="#regression-a-mini-intro"> <span class="header-section-number">3.5</span> Regression: A mini intro</a>
+  <ul class="collapse">
+  <li><a href="#the-best-fit-line" id="toc-the-best-fit-line" class="nav-link" data-scroll-target="#the-best-fit-line"> <span class="header-section-number">3.5.1</span> The best fit line</a></li>
+  <li><a href="#lines" id="toc-lines" class="nav-link" data-scroll-target="#lines"> <span class="header-section-number">3.5.2</span> Lines</a></li>
+  <li><a href="#computing-the-best-fit-line" id="toc-computing-the-best-fit-line" class="nav-link" data-scroll-target="#computing-the-best-fit-line"> <span class="header-section-number">3.5.3</span> Computing the best fit line</a></li>
+  </ul></li>
+  <li><a href="#interpreting-correlations" id="toc-interpreting-correlations" class="nav-link" data-scroll-target="#interpreting-correlations"> <span class="header-section-number">3.6</span> Interpreting Correlations</a>
+  <ul class="collapse">
+  <li><a href="#correlation-does-not-equal-causation" id="toc-correlation-does-not-equal-causation" class="nav-link" data-scroll-target="#correlation-does-not-equal-causation"> <span class="header-section-number">3.6.1</span> Correlation does not equal causation</a></li>
+  <li><a href="#correlation-and-random-chance" id="toc-correlation-and-random-chance" class="nav-link" data-scroll-target="#correlation-and-random-chance"> <span class="header-section-number">3.6.2</span> Correlation and Random chance</a></li>
+  <li><a href="#some-more-movies" id="toc-some-more-movies" class="nav-link" data-scroll-target="#some-more-movies"> <span class="header-section-number">3.6.3</span> Some more movies</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">3.7</span> Summary</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/03-Correlation.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="Correlation" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew J. C. Crump </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<blockquote class="blockquote">
+<p>Correlation does not equal causation —Every Statistics and Research Methods Instructor Ever</p>
+</blockquote>
+<p>In the last chapter we had some data. It was too much too look at and it didn’t make sense. So, we talked about how to look at the data visually using plots and histograms, and we talked about how to summarize lots of numbers so we could determine their central tendencies (sameness) and variability (differentness). And, all was well with the world.</p>
+<p>Let’s not forget the big reason why we learned about descriptive statistics. The big reason is that we are interested in getting answers to questions using data.</p>
+<p>If you are looking for a big theme to think about while you take this course, the theme is: how do we ask and answer questions using data?</p>
+<p>For every section in this book, you should be connecting your inner monologue to this question, and asking yourself: How does what I am learning about help me answer questions with data? Advance warning: we know it is easy to forget this stuff when we dive into the details, and we will try to throw you a rope to help you out along the way…remember, we’re trying to answer questions with data.</p>
+<p>We started Chapter two with some fake data on human happiness, remember? We imagined that we asked a bunch of people to tell us how happy they were, then we looked at the numbers they gave us. Let’s continue with this imaginary thought experiment.</p>
+<p>What do you get when you ask people to use a number to describe how happy they are? A bunch of numbers. What kind of questions can you ask about those numbers? Well, you can look at the numbers and estimate their general properties as we already did. We would expect those numbers tell us some things we already know. There are different people, and different people are different amounts of happy. You’ve probably met some of those of really happy people, and really unhappy people, and you yourself probably have some amount of happiness. “Great, thanks Captain Obvious”.</p>
+<p>Before moving on, you should also be skeptical of what the numbers might mean. For example, if you force people to give a number between 0-100 to rate their happiness, does this number truly reflect how happy that person is? Can a person know how happy they are? Does the question format bias how they give their answer? Is happiness even a real thing? These are all good questions about the <strong>validity</strong> of the construct (happiness itself) and the measure (numbers) you are using to quantify it. For now, though, we will side-step those very important questions, and assume that, happiness is a thing, and our measure of happiness measures something about how happy people are.</p>
+<p>OK then, after we have measured some happiness, I bet you can think of some more pressing questions. For example, what causes happiness to go up or down. If you knew the causes of happiness what could you do? How about increase your own happiness; or, help people who are unhappy; or, better appreciate why Eeyore from Winnie the Pooh is unhappy; or, present valid scientific arguments that argue against incorrect claims about what causes happiness. A causal theory and understanding of happiness could be used for all of those things. How can we get there?</p>
+<p>Imagine you were an alien observer. You arrived on earth and heard about this thing called happiness that people have. You want to know what causes happiness. You also discover that planet earth has lots of other things. Which of those things, you wonder, cause happiness? How would your alien-self get started on this big question.</p>
+<p>As a person who has happiness, you might already have some hunches about what causes changes in happiness. For example things like: weather, friends, music, money, education, drugs, books, movies, beliefs, personality, color of your shoes, eyebrow length, number of cat’s you see per day, frequency of subway delay, a lifetime supply of chocolate, et cetera et cetera (as Willy Wonka would say), might all contribute to happiness in someway. There could be many different causes of happiness.</p>
+<section id="if-something-caused-something-else-to-change-what-would-that-look-like" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="if-something-caused-something-else-to-change-what-would-that-look-like"><span class="header-section-number">3.1</span> If something caused something else to change, what would that look like?</h2>
+<p>Before we go around determining the causes of happiness, we should prepare ourselves with some analytical tools so that we could identify what causation looks like. If we don’t prepare ourselves for what we might find, then we won’t know how to interpret our own data. Instead, we need to anticipate what the data could look like. Specifically, we need to know what data would look like when one thing does not cause another thing, and what data would look like when one thing does cause another thing. This chapter does some of this preparation. Fair warning: we will find out some tricky things. For example, we can find patterns that look like one thing is causing another, even when that one thing DOES NOT CAUSE the other thing. Hang in there.</p>
+<section id="charlie-and-the-chocolate-factory" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="charlie-and-the-chocolate-factory"><span class="header-section-number">3.1.1</span> Charlie and the Chocolate factory</h3>
+<p>Let’s imagine that a person’s supply of chocolate has a causal influence on their level of happiness. Let’s further imagine that, like Charlie, the more chocolate you have the more happy you will be, and the less chocolate you have, the less happy you will be. Finally, because we suspect happiness is caused by lots of other things in a person’s life, we anticipate that the relationship between chocolate supply and happiness won’t be perfect. What do these assumptions mean for how the data should look?</p>
+<p>Our first step is to collect some imaginary data from 100 people. We walk around and ask the first 100 people we meet to answer two questions:</p>
+<ol type="1">
+<li>how much chocolate do you have, and</li>
+<li>how happy are you.</li>
+</ol>
+<p>For convenience, both the scales will go from 0 to 100. For the chocolate scale, 0 means no chocolate, 100 means lifetime supply of chocolate. Any other number is somewhere in between. For the happiness scale, 0 means no happiness, 100 means all of the happiness, and in between means some amount in between.</p>
+<p>Here is some sample data from the first 10 imaginary subjects.</p>
+<div class="cell" data-hash="cache/3chocHappy_b9e013dd7e501ee4c0a2262bf080b6aa">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> subject </th>
+   <th style="text-align:right;"> chocolate </th>
+   <th style="text-align:right;"> happiness </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We asked each subject two questions so there are two scores for each subject, one for their chocolate supply, and one for their level of happiness. You might already notice some relationships between amount of chocolate and level of happiness in the table. To make those relationships even more clear, let’s plot all of the data in a graph.</p>
+</section>
+<section id="scatter-plots" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="scatter-plots"><span class="header-section-number">3.1.2</span> Scatter plots</h3>
+<p>When you have two measurements worth of data, you can always turn them into dots and plot them in a scatter plot. A scatter plot has a horizontal x-axis, and a vertical y-axis. You get to choose which measurement goes on which axis. Let’s put chocolate supply on the x-axis, and happiness level on the y-axis. <a href="#fig-3scatter1">Figure&nbsp;<span>3.1</span></a> shows 100 dots for each subject.</p>
+<div class="cell" data-hash="cache/fig-3scatter1_8433abfe183dc5acb2ea2afa8a228d2f">
+<div class="cell-output-display">
+<div id="fig-3scatter1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3scatter1-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.1: Imaginary data showing a positive correlation between amount of chocolate and amount happiness</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You might be wondering, why are there only 100 dots for the data. Didn’t we collect 100 measures for chocolate, and 100 measures for happiness, shouldn’t there be 200 dots? Nope. Each dot is for one subject, there are 100 subjects, so there are 100 dots.</p>
+<p>What do the dots mean? Each dot has two coordinates, an x-coordinate for chocolate, and a y-coordinate for happiness. The first dot, all the way on the bottom left is the first subject in the table, who had close to 0 chocolate and close to zero happiness. You can look at any dot, then draw a straight line down to the x-axis: that will tell you how much chocolate that subject has. You can draw a straight line left to the y-axis: that will tell you how much happiness the subject has.</p>
+<p>Now that we are looking at the scatter plot, we can see many things. The dots are scattered around a bit aren’t they, hence <strong>scatter plot</strong>. Even when the dot’s don’t scatter, they’re still called scatter plots, perhaps because those pesky dots in real life have so much scatter all the time. More important, the dots show a relationship between chocolate supply and happiness. Happiness is lower for people with smaller supplies of chocolate, and higher for people with larger supplies of chocolate. It looks like the more chocolate you have the happier you will be, and vice-versa. This kind of relationship is called a <strong>positive correlation</strong>.</p>
+</section>
+<section id="positive-negative-and-no-correlation" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="positive-negative-and-no-correlation"><span class="header-section-number">3.1.3</span> Positive, Negative, and No-Correlation</h3>
+<p>Seeing as we are in the business of imagining data, let’s imagine some more. We’ve already imagined what data would look like if larger chocolate supplies increase happiness. We’ll show that again in a bit. What do you imagine the scatter plot would look like if the relationship was reversed, and larger chocolate supplies decreased happiness. Or, what do you imagine the scatter plot would look like if there was no relationship, and the amount of chocolate that you have doesn’t do anything to your happiness. We invite your imagination to look at <a href="#fig-3posnegrand">Figure&nbsp;<span>3.2</span></a>:</p>
+<div class="cell" data-hash="cache/fig-3posnegrand_4b8cddbab8dea6bbc45892b3ab5774b6">
+<div class="cell-output-display">
+<div id="fig-3posnegrand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3posnegrand-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.2: Three scatterplots showing negative, positive, and zero correlation</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The first panel shows a <strong>negative correlation</strong>. Happiness goes down as chocolate supply increases. Negative correlation occurs when one thing goes up and the other thing goes down; or, when more of X is less of Y, and vice-versa. The second panel shows a <strong>positive correlation</strong>. Happiness goes up as chocolate as chocolate supply increases. Positive correlation occurs when both things go up together, and go down together: more of X is more of Y, and vice-versa. The third panel shows <strong>no correlation</strong>. Here, there doesn’t appear to be any obvious relationship between chocolate supply and happiness. The dots are scattered all over the place, the truest of the scatter plots.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We are wading into the idea that measures of two things can be related, or correlated with one another. It is possible for the relationships to be more complicated than just going up, or going down. For example, we could have a relationship that where the dots go up for the first half of X, and then go down for the second half.</p>
+</div>
+</div>
+<p>Zero correlation occurs when one thing is not related in any way to another things: changes in X do not relate to any changes in Y, and vice-versa.</p>
+</section>
+</section>
+<section id="pearsons-r" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="pearsons-r"><span class="header-section-number">3.2</span> Pearson’s r</h2>
+<p>If Beyoncé was a statistician, she might look at these scatter plots and want to “put a number on it”. We think this is a good idea too. We’ve already learned how to create descriptive statistics for a single measure, like chocolate, or happiness (i.e., means, variances, etc.). Is it possible to create a descriptive statistic that summarized the relationship between two measures, all in one number? Can it be done? Karl Pearson to the rescue.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The stories about the invention of various statistics are very interesting, you can read more about them in the book, “The Lady Tasting Tea” <span class="citation" data-cites="salsburg2001lady">(<a href="references.html#ref-salsburg2001lady" role="doc-biblioref">Salsburg 2001</a>)</span></p>
+</div>
+</div>
+<p>There’s a statistic for that, and Karl Pearson invented it. Everyone now calls it, “Pearson’s <span class="math inline">\(r\)</span>”. We will find out later that Karl Pearson was a big-wig editor at Biometrika in the 1930s. He took a hating to another big-wig statistician, Sir Ronald Fisher (who we learn about later), and they had some stats fights…why can’t we all just get along in statistics.</p>
+<p>How does Pearson’s <span class="math inline">\(r\)</span> work? Let’s look again at the first 10 subjects in our fake experiment:</p>
+<div class="cell" data-hash="cache/3chocHappyB_a34a49665983151b0db3bfbcc2d020bb">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> chocolate </th>
+   <th style="text-align:left;"> happiness </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 45 </td>
+   <td style="text-align:left;"> 39 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.9 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>What could we do to these numbers to produce a single summary value that represents the relationship between the chocolate supply and happiness?</p>
+<section id="the-idea-of-co-variance" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="the-idea-of-co-variance"><span class="header-section-number">3.2.1</span> The idea of co-variance</h3>
+<p>“Oh please no, don’t use the word variance again”. Yes, we’re doing it, we’re going to use the word variance again, and again, until it starts making sense. Remember what variance means about some numbers. It means the numbers have some change in them, they are not all the same, some of them are big, some are small. We can see that there is variance in chocolate supply across the 10 subjects. We can see that there is variance in happiness across the 10 subjects. We also saw in the scatter plot, that happiness increases as chocolate supply increases; which is a positive relationship, a positive correlation. What does this have to do with variance? Well, it means there is a relationship between the variance in chocolate supply, and the variance in happiness levels. The two measures vary together don’t they? When we have two measures that vary together, they are like a happy couple who share their variance. This is what co-variance refers to, the idea that the pattern of varying numbers in one measure is shared by the pattern of varying numbers in another measure.</p>
+<p><strong>Co-variance</strong> is <strong>very, very, very ,very</strong> important. We suspect that the word co-variance is initially confusing, especially if you are not yet fully comfortable with the meaning of variance for a single measure. Nevertheless, we must proceed and use the idea of co-variance over and over again to firmly implant it into your statistical mind (we already said, but redundancy works, it’s a thing).</p>
+<blockquote class="blockquote">
+<p>Pro tip: Three-legged race is a metaphor for co-variance. Two people tie one leg to each other, then try to walk. It works when they co-vary their legs together (positive relationship). They can also co-vary in an unhelpful way, when one person tries to move forward exactly when the other person tries to move backward. This is still co-variance (negative relationship). Funny random walking happens when there is no co-variance. This means one person does whatever they want, and so does the other person. There is a lot of variance, but the variance is shared randomly, so it’s just a bunch of legs moving around accomplishing nothing.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Pro tip #2: Successfully playing paddy-cake occurs when two people coordinate their actions so they have positively shared co-variance.</p>
+</blockquote>
+</section>
+</section>
+<section id="turning-the-numbers-into-a-measure-of-co-variance" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="turning-the-numbers-into-a-measure-of-co-variance"><span class="header-section-number">3.3</span> Turning the numbers into a measure of co-variance</h2>
+<p>“OK, so if you are saying that co-variance is just another word for correlation or relationship between two measures, I’m good with that. I suppose we would need some way to measure that.” Correct, back to our table…notice anything new?</p>
+<div class="cell" data-hash="cache/3chochappyCOV_e881af3ddb9e0e34e9605425f100a7df">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> chocolate </th>
+   <th style="text-align:left;"> happiness </th>
+   <th style="text-align:left;"> Chocolate_X_Happiness </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 56 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 72 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 45 </td>
+   <td style="text-align:left;"> 39 </td>
+   <td style="text-align:left;"> 234 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.9 </td>
+   <td style="text-align:left;"> 23.4 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We’ve added a new column called <code>Chocolate_X_Happiness</code>, which translates to Chocolate scores multiplied by Happiness scores. Each row in the new column, is the product, or multiplication of the chocolate and happiness score for that row. Yes, but why would we do this?</p>
+<p>Last chapter we took you back to Elementary school and had you think about division. Now it’s time to do the same thing with multiplication. We assume you know how that works. One number times another, means taking the first number, and adding it as many times as the second says to do,</p>
+<p><span class="math inline">\(2*2= 2+2=4\)</span></p>
+<p><span class="math inline">\(2*6= 2+2+2+2+2+2 = 12\)</span>, or <span class="math inline">\(6+6=12\)</span>, same thing.</p>
+<p>Yes, you know all that. But, can you bend multiplication to your will, and make it do your bidding when need to solve a problem like summarizing co-variance? Multiplication is the droid you are looking for.</p>
+<p>We know how to multiple numbers, and all we have to next is think about the consequences of multiplying sets of numbers together. For example, what happens when you multiply two small numbers together, compared to multiplying two big numbers together? The first product should be smaller than the second product right? How about things like multiplying a small number by a big number? Those products should be in between right?.</p>
+<p>Then next step is to think about how the products of two measures sum together, depending on how they line up. Let’s look at another table:</p>
+<div class="cell" data-hash="cache/3chocHappyCOVb_0012f550a1d9bfde3f22c0ae4c0864a5">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> scores </th>
+   <th style="text-align:left;"> X </th>
+   <th style="text-align:left;"> Y </th>
+   <th style="text-align:left;"> A </th>
+   <th style="text-align:left;"> B </th>
+   <th style="text-align:left;"> XY </th>
+   <th style="text-align:left;"> AB </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:left;"> 28 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 25 </td>
+   <td style="text-align:left;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 36 </td>
+   <td style="text-align:left;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 49 </td>
+   <td style="text-align:left;"> 28 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 64 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 81 </td>
+   <td style="text-align:left;"> 18 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 100 </td>
+   <td style="text-align:left;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 55 </td>
+   <td style="text-align:left;"> 55 </td>
+   <td style="text-align:left;"> 55 </td>
+   <td style="text-align:left;"> 55 </td>
+   <td style="text-align:left;"> 385 </td>
+   <td style="text-align:left;"> 220 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 5.5 </td>
+   <td style="text-align:left;"> 5.5 </td>
+   <td style="text-align:left;"> 5.5 </td>
+   <td style="text-align:left;"> 5.5 </td>
+   <td style="text-align:left;"> 38.5 </td>
+   <td style="text-align:left;"> 22 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Look at the <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> column. The scores for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> perfectly co-vary. When <span class="math inline">\(X\)</span> is 1, <span class="math inline">\(Y\)</span> is 1; when <span class="math inline">\(X\)</span> is 2, <span class="math inline">\(Y\)</span> is 2, etc. They are perfectly aligned. The scores for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> also perfectly co-vary, just in the opposite manner. When <span class="math inline">\(A\)</span> is 1, <span class="math inline">\(B\)</span> is 10; when <span class="math inline">\(A\)</span> is 2, <span class="math inline">\(B\)</span> is 9, etc. <span class="math inline">\(B\)</span> is a reversed copy of <span class="math inline">\(A\)</span>.</p>
+<p>Now, look at the column <span class="math inline">\(XY\)</span>. These are the products we get when we multiply the values of <span class="math inline">\(X\)</span> across with the values of <span class="math inline">\(Y\)</span>. Also, look at the column <span class="math inline">\(AB\)</span>. These are the products we get when we multiply the values of A across with the values of B. So far so good.</p>
+<p>Now, look at the <code>Sums</code> for the <span class="math inline">\(XY\)</span> and <span class="math inline">\(AB\)</span> columns. Not the same. The sum of the <span class="math inline">\(XY\)</span> products is 385, and the sum of the <span class="math inline">\(AB\)</span> products is 220. For this specific set of data, the numbers 385 and 220 are very important. They represent the biggest possible sum of products (385), and the smallest possible sum of products (220). There is no way of re-ordering the numbers 1 to 10, say for <span class="math inline">\(X\)</span>, and the numbers 1 to 10 for <span class="math inline">\(Y\)</span>, that would ever produce larger or smaller numbers. Don’t believe me? Check this out:</p>
+<div class="cell" data-hash="cache/fig-3simsum_4068218ef3890dee8d7a6f5b005f8906">
+<div class="cell-output-display">
+<div id="fig-3simsum" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3simsum-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.3: Simulated sums of products showing the kinds of values than can be produced by randomly ordering the numbers in X and Y.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-3simsum">Figure&nbsp;<span>3.3</span></a> shows 1000 computer simulations. I convinced my computer to randomly order the numbers 1 to 10 for X, and randomly order the numbers 1 to 10 for Y. Then, I multiplied X and Y, and added the products together. I did this 1000 times. The dots show the sum of the products for each simulation. The two black lines show the maximum possible sum (385), and the minimum possible sum (220), for this set of numbers. Notice, how all of the dots are in between the maximum and minimum possible values. Told you so.</p>
+<p>“OK fine, you told me so…So what, who cares?”. We’ve been looking for a way to summarize the co-variance between two measures right? Well, for these numbers, we have found one, haven’t we. It’s the sum of the products. We know that when the sum of the products is 385, we have found a perfect, positive correlation. We know, that when the sum of the products is 220, we have found a perfect negative correlation. What about the numbers in between. What could we conclude about the correlation if we found the sum of the products to be 350. Well, it’s going to be positive, because it’s close to 385, and that’s perfectly positive. If the sum of the products was 240, that’s going to be negative, because it’s close to the perfectly negatively correlating 220. What about no correlation? Well, that’s going to be in the middle between 220 and 385 right.</p>
+<p>We have just come up with a data-specific summary measure for the correlation between the numbers 1 to 10 in X, and the numbers 1 to 10 in Y, it’s the sum of the products. We know the maximum (385) and minimum values (220), so we can now interpret any product sum for this kind of data with respect to that scale.</p>
+<blockquote class="blockquote">
+<p>Pro tip: When the correlation between two measures increases in the positive direction, the sum of their products increases to its maximum possible value. This is because the bigger numbers in X will tend to line up with the bigger numbers in Y, creating the biggest possible sum of products. When the correlation between two measures increases in the negative direction, the sum of their products decreases to its minimum possible value. This is because the bigger numbers in X will tend to line up with the smaller numbers in Y, creating the smallest possible sum of products. When there is no correlation, the big numbers in X will be randomly lined up with the big and small numbers in Y, making the sum of the products, somewhere in the middle.</p>
+</blockquote>
+<section id="co-variance-the-measure" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="co-variance-the-measure"><span class="header-section-number">3.3.1</span> Co-variance, the measure</h3>
+<p>We took some time to see what happens when you multiply sets of numbers together. We found that <span class="math inline">\(big*big = bigger\)</span> and <span class="math inline">\(small*small=\text{still small}\)</span>, and <span class="math inline">\(big*small=\text{in the middle}\)</span>. The purpose of this was to give you some conceptual idea of how the co-variance between two measures is reflected in the sum of their products. We did something very straightforward. We just multiplied X with Y, and looked at how the product sums get big and small, as X and Y co-vary in different ways.</p>
+<p>Now, we can get a little bit more formal. In statistics, <strong>co-variance</strong> is not just the straight multiplication of values in X and Y. Instead, it’s the multiplication of the deviations in X from the mean of X, and the deviation in Y from the mean of Y. Remember those difference scores from the mean we talked about last chapter? They’re coming back to haunt you know, but in a good way like Casper the friendly ghost.</p>
+<p>Let’s see what this look like in a table:</p>
+<div class="cell" data-hash="cache/3cov_b290afef2706574a2c5bc501b1a11c59">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> subject </th>
+   <th style="text-align:left;"> chocolate </th>
+   <th style="text-align:left;"> happiness </th>
+   <th style="text-align:left;"> C_d </th>
+   <th style="text-align:left;"> H_d </th>
+   <th style="text-align:left;"> Cd_x_Hd </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> -3.5 </td>
+   <td style="text-align:left;"> -2.9 </td>
+   <td style="text-align:left;"> 10.15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> -2.5 </td>
+   <td style="text-align:left;"> -1.9 </td>
+   <td style="text-align:left;"> 4.75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> -2.5 </td>
+   <td style="text-align:left;"> -1.9 </td>
+   <td style="text-align:left;"> 4.75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> -2.5 </td>
+   <td style="text-align:left;"> -1.9 </td>
+   <td style="text-align:left;"> 4.75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> -1.5 </td>
+   <td style="text-align:left;"> 0.1 </td>
+   <td style="text-align:left;"> -0.15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> -0.5 </td>
+   <td style="text-align:left;"> -0.9 </td>
+   <td style="text-align:left;"> 0.45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 1.5 </td>
+   <td style="text-align:left;"> 0.1 </td>
+   <td style="text-align:left;"> 0.15 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 2.5 </td>
+   <td style="text-align:left;"> 4.1 </td>
+   <td style="text-align:left;"> 10.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 1.1 </td>
+   <td style="text-align:left;"> 4.95 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 4.1 </td>
+   <td style="text-align:left;"> 18.45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 45 </td>
+   <td style="text-align:left;"> 39 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 58 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Means </td>
+   <td style="text-align:left;"> 4.5 </td>
+   <td style="text-align:left;"> 3.9 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 5.85 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We have computed the deviations from the mean for the chocolate scores (column <code>C_d</code>), and the deviations from the mean for the happiness scores (column <code>H_d</code>). Then, we multiplied them together (last column). Finally, you can see the mean of the products listed in the bottom right corner of the table, the official <strong>the covariance</strong>.</p>
+<p>The formula for the co-variance is:</p>
+<p><span class="math inline">\(cov(X,Y) = \frac{\sum_{i}^{n}(x_{i}-\bar{X})(y_{i}-\bar{Y})}{N}\)</span></p>
+<p>OK, so now we have a formal single number to calculate the relationship between two variables. This is great, it’s what we’ve been looking for. However, there is a problem. Remember when we learned how to compute just the plain old <strong>variance</strong>. We looked at that number, and we didn’t know what to make of it. It was squared, it wasn’t in the same scale as the original data. So, we square rooted the <strong>variance</strong> to produce the <strong>standard deviation</strong>, which gave us a more interpretable number in the range of our data. The <strong>co-variance</strong> has a similar problem. When you calculate the co-variance as we just did, we don’t know immediately know its scale. Is a 3 big? is a 6 big? is a 100 big? How big or small is this thing?</p>
+<p>From our prelude discussion on the idea of co-variance, we learned the sum of products between two measures ranges between a maximum and minimum value. The same is true of the co-variance. For a given set of data, there is a maximum possible positive value for the co-variance (which occurs when there is perfect positive correlation). And, there is a minimum possible negative value for the co-variance (which occurs when there is a perfect negative correlation). When there is zero co-variation, guess what happens. Zeroes. So, at the very least, when we look at a co-variation statistic, we can see what direction it points, positive or negative. But, we don’t know how big or small it is compared to the maximum or minimum possible value, so we don’t know the relative size, which means we can’t say how strong the correlation is. What to do?</p>
+</section>
+<section id="pearsons-r-we-there-yet" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="pearsons-r-we-there-yet"><span class="header-section-number">3.3.2</span> Pearson’s r we there yet</h3>
+<p>Yes, we are here now. Wouldn’t it be nice if we could force our measure of co-variation to be between -1 and +1?</p>
+<p>-1 would be the minimum possible value for a perfect negative correlation. +1 would be the maximum possible value for a perfect positive correlation. 0 would mean no correlation. Everything in between 0 and -1 would be increasingly large negative correlations. Everything between 0 and +1 would be increasingly large positive correlations. It would be a fantastic, sensible, easy to interpret system. If only we could force the co-variation number to be between -1 and 1. Fortunately, for us, this episode is brought to you by Pearson’s <span class="math inline">\(r\)</span>, which does precisely this wonderful thing.</p>
+<p>Let’s take a look at a formula for Pearson’s <span class="math inline">\(r\)</span>:</p>
+<p><span class="math inline">\(r = \frac{cov(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{cov(X,Y)}{SD_{X}SD_{Y}}\)</span></p>
+<p>We see the symbol <span class="math inline">\(\sigma\)</span> here, that’s more Greek for you. <span class="math inline">\(\sigma\)</span> is often used as a symbol for the standard deviation (SD). If we read out the formula in English, we see that r is the co-variance of X and Y, divided by the product of the standard deviation of X and the standard deviation of Y. Why are we dividing the co-variance by the product of the standard deviations. This operation has the effect of <strong>normalizing</strong> the co-variance into the range -1 to 1.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>But, we will fill this part in as soon as we can…promissory note to explain the magic. FYI, it’s not magic. Brief explanation here is that dividing each measure by its standard deviation ensures that the values in each measure are in the same range as one another.</p>
+</div>
+</div>
+<p>For now, we will call this mathematical magic. It works, but we don’t have space to tell you why it works right now.</p>
+<div class="{callout-note}">
+<p>It’s worth saying that there are loads of different formulas for computing Pearson’s <span class="math inline">\(r\)</span>. You can find them by Googling them. We will probably include more of them here, when we get around to it. However, they all give you the same answer. And, they are all not as pretty as each other. Some of them might even look scary. In other statistics textbook you will often find formulas that are easier to use for calculation purposes. For example, if you only had a pen and paper, you might use one or another formula because it helps you compute the answer faster by hand. To be honest, we are not very interested in teaching you how to plug numbers into formulas. We give one lesson on that here: Put the numbers into the letters, then compute the answer. Sorry to be snarky. Nowadays you have a computer that you should use for this kind of stuff. So, we are more interested in teaching you what the calculations mean, rather than how to do them. Of course, every week we are showing you how to do the calculations in lab with computers, because that is important too.</p>
+</div>
+<p>Does Pearson’s <span class="math inline">\(r\)</span> really stay between -1 and 1 no matter what? It’s true, take a look at the following simulation. Here I randomly ordered the numbers 1 to 10 for an X measure, and did the same for a Y measure. Then, I computed Pearson’s <span class="math inline">\(r\)</span>, and repeated this process 1000 times. As you can see from <a href="#fig-3onethousandr">Figure&nbsp;<span>3.4</span></a> all of the dots are between -1 and 1. Neat huh.</p>
+<div class="cell" data-hash="cache/fig-3onethousandr_6b444e19327e6ad712e82ad8557bdfdd">
+<div class="cell-output-display">
+<div id="fig-3onethousandr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3onethousandr-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.4: A simulation of of correlations. Each dot represents the r-value for the correlation between an X and Y variable that each contain the numbers 1 to 10 in random orders. The figure ilustrates that many r-values can be obtained by this random process</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="examples-with-data" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="examples-with-data"><span class="header-section-number">3.4</span> Examples with Data</h2>
+<p>In the lab for correlation you will be shown how to compute correlations in real data-sets using software. To give you a brief preview, let’s look at some data from the <a href="http://worldhappiness.report">world happiness report</a> (2018).</p>
+<p>This report measured various attitudes across people from different countries. For example, one question asked about how much freedom people thought they had to make life choices. Another question asked how confident people were in their national government. <span class="quarto-unresolved-ref">?fig-3hrsdata</span> is a scatterplot showing the relationship between these two measures. Each dot represents means for different countries.</p>
+<div class="cell" data-hash="cache/fig-3hsrdata_faaab01d6133586d4d6e0a09b07272a8">
+<div class="cell-output-display">
+<div id="fig-3hsrdata" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3hsrdata-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.5: Relationship between freedom to make life choices and confidence in national government. Data from the world happiness report for 2018</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We put a blue line on the scatterplot to summarize the positive relationship. It appears that as “freedom to make life choices goes up”, so to does confidence in national government. It’s a positive correlation.</p>
+<p>The actual correlation, as measured by Pearson’s <span class="math inline">\(r\)</span> is:</p>
+<div class="cell" data-hash="cache/unnamed-chunk-7_58e185bebcdc99a6812e169907e6cbd0">
+<pre><code>#&gt; [1] 0.4080963</code></pre>
+</div>
+<p>You will do a lot more of this kind of thing in the lab. Looking at the graph you might start to wonder: Does freedom to make life choices cause changes how confident people are in their national government? Our does it work the other way? Does being confident in your national government give you a greater sense of freedom to make life choices? Or, is this just a random relationship that doesn’t mean anything? All good questions. These data do not provide the answers, they just suggest a possible relationship.</p>
+</section>
+<section id="regression-a-mini-intro" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="regression-a-mini-intro"><span class="header-section-number">3.5</span> Regression: A mini intro</h2>
+<p>We’re going to spend the next little bit adding one more thing to our understanding of correlation. It’s called <strong>linear regression</strong>. It sounds scary, and it really is. You’ll find out much later in your Statistics education that everything we will be soon be talking about can be thought of as a special case of regression. But, we don’t want to scare you off, so right now we just introduce the basic concepts.</p>
+<p>First, let’s look at a linear regression. This way we can see what we’re trying to learn about. <a href="#fig-3regression">Figure&nbsp;<span>3.6</span></a> shows the same scatter plots as before with something new: lines!</p>
+<div class="cell" data-hash="cache/fig-3regression_67689141bd193e292cbc45145924b860">
+<div class="cell-output-display">
+<div id="fig-3regression" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3regression-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.6: Three scatterplots showing negative, positive, and a random correlation (where the r-value is expected to be 0), along with the best fit regression line</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="the-best-fit-line" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="the-best-fit-line"><span class="header-section-number">3.5.1</span> The best fit line</h3>
+<p>Notice anything about these blue lines? Hopefully you can see, at least for the first two panels, that they go straight through the data, just like a kebab skewer. We call these lines <strong>best fit</strong> lines, because according to our definition (soon we promise) there are no other lines that you could draw that would do a better job of going straight throw the data.</p>
+<p>One big idea here is that we are using the line as a kind of mean to describe the relationship between the two variables. When we only have one variable, that variable exists on a single dimension, it’s 1D. So, it is appropriate that we only have one number, like the mean, to describe it’s central tendency. When we have two variables, and plot them together, we now have a two-dimensional space. So, for two dimensions we could use a bigger thing that is 2d, like a line, to summarize the central tendency of the relationship between the two variables.</p>
+<p>What do we want out of our line? Well, if you had a pencil, and a printout of the data, you could draw all sorts of straight lines any way you wanted. Your lines wouldn’t even have to go through the data, or they could slant through the data with all sorts of angles. Would all of those lines be very good a describing the general pattern of the dots? Most of them would not. The best lines would go through the data following the general shape of the dots. Of the best lines, however, which one is the best? How can we find out, and what do we mean by that? In short, the best fit line is the one that has the least error.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>R code for plotting residuals thanks to Simon Jackson’s blog post: <a href="https://drsimonj.svbtle.com/visualising-residuals" class="uri">https://drsimonj.svbtle.com/visualising-residuals</a></p>
+</div>
+</div>
+<p>Check out this next plot, it shows a line through some dots. But, it also shows some teeny tiny lines. These lines drop down from each dot, and they land on the line. Each of these little lines is called a <strong>residual</strong>. They show you how far off the line is for different dots. It’s measure of error, it shows us just how wrong the line is. After all, it’s pretty obvious that not all of the dots are on the line. This means the line does not actually represent all of the dots. The line is wrong. But, the best fit line is the least wrong of all the wrong lines.</p>
+<div class="cell" data-hash="cache/fig-3regressionResiduals_d1306eff1f2e85bbc41e5c1402e57477">
+<div class="cell-output-display">
+<div id="fig-3regressionResiduals" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3regressionResiduals-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.7: Black dots represent data points. The blue line is the best fit regression line. The white dots are repesent the predicted location of each black dot. The red lines show the error between each black dot and the regression line. The blue line is the best fit line because it minimizes the error shown by the red lines.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There’s a lot going on in <a href="#fig-3regressionResiduals">Figure&nbsp;<span>3.7</span></a>. First, we are looking at a scatter plot of two variables, an X and Y variable. Each of the black dots are the actual values from these variables. You can see there is a negative correlation here, as X increases, Y tends to decrease. We drew a regression line through the data, that’s the blue line. There’s these little white dots too. This is where the line thinks the black dots should be. The red lines are the important residuals we’ve been talking about. Each black dot has a red line that drops straight down, or straight up from the location of the black dot, and lands directly on the line. We can already see that many of the dots are not on the line, so we already know the line is “off” by some amount for each dot. The red line just makes it easier to see exactly how off the line is.</p>
+<p>The important thing that is happening here, is that the the blue line is drawn is such a way, that it minimizes the total length of the red lines. For example, if we wanted to know how wrong this line was, we could simply gather up all the red lines, measure how long they are, and then add all the wrongness together. This would give us the total amount of wrongness. We usually call this the error. In fact, we’ve already talked about this idea before when we discussed standard deviation. What we will actually be doing with the red lines, is computing the sum of the squared deviations from the line. That sum is the total amount of error. Now, this blue line here minimizes the sum of the squared deviations. Any other line would produce a larger total error.</p>
+<p><a href="#fig-3regressionGIF">Figure&nbsp;<span>3.8</span></a> is an animation to see this in action. The animations compares the best fit line in blue, to some other possible lines in black. The black line moves up and down. The red lines show the error between the black line and the data points. As the black line moves toward the best fit line, the total error, depicted visually by the grey area shrinks to it’s minimum value. The total error expands as the black line moves away from the best fit line.</p>
+<div>
+<div class="cell" data-hash="cache/fig-3regressionGIF_dd84fe56dd35de2d6d45ad86f8c82c98">
+<div class="cell-output-display">
+<div id="fig-3regressionGIF" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/regression-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.8: The blue line is the best fit regression line explaining the co-variation among the black dots. The black line moves up and down showing alternative lines that could be drawn. The red lines show the amount of error between each data point and the black line. The total amount of error is depicted by the shaded grey area. The size of the grey area expands as the black line moves away from the best fit line, and shrinks to a minimum as the black line moves toward the best fit line.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Whenever the black line does not overlap with the blue line, it is worse than the best fit line. The blue regression line is like Goldilocks, it’s just right, and it’s in the middle.</p>
+<p><a href="#fig-3minimizeSS">Figure&nbsp;<span>3.9</span></a> shows how the sum of squared deviations (the sum of the squared lengths of the red lines) behaves as we move the line up and down. What’s going on here is that we are computing a measure of the total error as the black line moves through the best fit line. This represents the sum of the squared deviations. In other words, we square the length of each red line from the above animation, then we add up all of the squared red lines, and get the total error (the total sum of the squared deviations). The graph below shows what the total error looks like as the black line approaches then moves away from the best fit line. Notice, the dots in this graph start high on the left side, then they swoop down to a minimum at the bottom middle of the graph. When they reach their minimum point, we have found a line that minimizes the total error. This is the best fit regression line.</p>
+<div class="cell" data-hash="cache/fig-3minimizeSS_3bb503c114736313db837c0bffd3e8c5">
+<div class="cell-output-display">
+<div id="fig-3minimizeSS" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3minimizeSS-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.9: A plot of the sum of the squared deviations for different lines moving up and down, through the best fit line. The best fit line occurs at the position that minimizes the sum of the sqaured deviations.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>OK, so we haven’t talked about the y-intercept yet. But, what this graph shows us is how the total error behaves as we move the line up and down. The y-intercept here is the thing we change that makes our line move up and down. As you can see the dots go up when we move the line down from 0 to -5, and the dots go up when we move the line up from 0 to +5. The best line, that minimizes the error occurs right in the middle, when we don’t move the blue regression line at all.</p>
+</section>
+<section id="lines" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="lines"><span class="header-section-number">3.5.2</span> Lines</h3>
+<p>OK, fine you say. So, there is one magic line that will go through the middle of the scatter plot and minimize the sum of the squared deviations. How do I find this magic line? We’ll show you. But, to be completely honest, you’ll almost never do it the way we’ll show you here. Instead, it’s much easier to use software and make your computer do it for. You’ll learn how to that in the labs.</p>
+<p>Before we show you how to find the regression line, it’s worth refreshing your memory about how lines work, especially in 2 dimensions. Remember this?</p>
+<p><span class="math inline">\(y = ax + b\)</span>, or also <span class="math inline">\(y = mx + b\)</span> (sometimes a or m is used for the slope)</p>
+<p>This is the formula for a line. Another way of writing it is:</p>
+<p><span class="math inline">\(y = slope * x + \text{y-intercept}\)</span></p>
+<p>The slope is the slant of the line, and the y-intercept is where the line crosses the y-axis. Let’s look at the lines in <a href="#fig-3twolines">Figure&nbsp;<span>3.10</span></a>.</p>
+<div class="cell" data-hash="cache/fig-3twolines_b6375b70f55d2c0ccd24cd32c057fe77">
+<div class="cell-output-display">
+<div id="fig-3twolines" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3twolines-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.10: Two different lines with different y-intercepts (where the line crosses the y-axis), and different slopes. A positive slope makes the line go up from left to right. A negative slope makes the line go down from left to right.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The formula for the blue line is <span class="math inline">\(y = 1*x + 5\)</span>. Let’s talk about that. When x = 0, where is the blue line on the y-axis? It’s at five. That happens because 1 times 0 is 0, and then we just have the five left over. How about when x = 5? In that case y =10. You just need the plug in the numbers to the formula, like this:</p>
+<p><span class="math inline">\(y = 1*x + 5\)</span> <span class="math inline">\(y = 1*5 + 5 = 5+5 =10\)</span></p>
+<p>The point of the formula is to tell you where y will be, for any number of x. The slope of the line tells you whether the line is going to go up or down, as you move from the left to the right. The blue line has a positive slope of one, so it goes up as x goes up. How much does it go up? It goes up by one for everyone one of x! If we made the slope a 2, it would be much steeper, and go up faster. The red line has a negative slope, so it slants down. This means <span class="math inline">\(y\)</span> goes down, as <span class="math inline">\(x\)</span> goes up. When there is no slant, and we want to make a perfectly flat line, we set the slope to 0. This means that y doesn’t go anywhere as x gets bigger and smaller.</p>
+<p>That’s lines.</p>
+</section>
+<section id="computing-the-best-fit-line" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="computing-the-best-fit-line"><span class="header-section-number">3.5.3</span> Computing the best fit line</h3>
+<p>If you have a scatter plot showing the locations of scores from two variables, the real question is how can you find the slope and the y-intercept for the best fit line? What are you going to do? Draw millions of lines, add up the residuals, and then see which one was best? That would take forever. Fortunately, there are computers, and when you don’t have one around, there’s also some handy formulas.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s worth pointing out just how much computers have changed everything. Before computers everyone had to do these calculations by hand, such a chore! Aside from the deeper mathematical ideas in the formulas, many of them were made for convenience, to speed up hand calculations, because there were no computers. Now that we have computers, the hand calculations are often just an exercise in algebra. Perhaps they build character. You decide.</p>
+</div>
+</div>
+<p>We’ll show you the formulas. And, work through one example by hand. It’s the worst, we know. By the way, you should feel sorry for me as I do this entire thing by hand for you.</p>
+<p>Here are two formulas we can use to calculate the slope and the intercept, straight from the data. We won’t go into why these formulas do what they do. These ones are for “easy” calculation.</p>
+<p><span class="math inline">\(intercept = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2}\)</span></p>
+<p><span class="math inline">\(slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2}\)</span></p>
+<p>In these formulas, the <span class="math inline">\(x\)</span> and the <span class="math inline">\(y\)</span> refer to the individual scores. Here’s a table showing you how everything fits together.</p>
+<div class="cell" data-hash="cache/3morcov_cf3d34557d492a71c684185585f0ffd2">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> scores </th>
+   <th style="text-align:left;"> x </th>
+   <th style="text-align:left;"> y </th>
+   <th style="text-align:left;"> x_squared </th>
+   <th style="text-align:left;"> y_squared </th>
+   <th style="text-align:left;"> xy </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:left;"> 25 </td>
+   <td style="text-align:left;"> 20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 36 </td>
+   <td style="text-align:left;"> 64 </td>
+   <td style="text-align:left;"> 48 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 25 </td>
+   <td style="text-align:left;"> 36 </td>
+   <td style="text-align:left;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 49 </td>
+   <td style="text-align:left;"> 64 </td>
+   <td style="text-align:left;"> 56 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 64 </td>
+   <td style="text-align:left;"> 81 </td>
+   <td style="text-align:left;"> 72 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sums </td>
+   <td style="text-align:left;"> 34 </td>
+   <td style="text-align:left;"> 39 </td>
+   <td style="text-align:left;"> 200 </td>
+   <td style="text-align:left;"> 275 </td>
+   <td style="text-align:left;"> 231 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>We see 7 sets of scores for the x and y variable. We calculated <span class="math inline">\(x^2\)</span> by squaring each value of x, and putting it in a column. We calculated <span class="math inline">\(y^2\)</span> by squaring each value of y, and putting it in a column. Then we calculated <span class="math inline">\(xy\)</span>, by multiplying each <span class="math inline">\(x\)</span> score with each <span class="math inline">\(y\)</span> score, and put that in a column. Then we added all the columns up, and put the sums at the bottom. These are all the number we need for the formulas to find the best fit line. Here’s what the formulas look like when we put numbers in them:</p>
+<p><span class="math inline">\(intercept = b = \frac{\sum{y}\sum{x^2}-\sum{x}\sum{xy}}{n\sum{x^2}-(\sum{x})^2} = \frac{39 * 200 - 34*231}{7*200-34^2} = -.221\)</span></p>
+<p><span class="math inline">\(slope = m = \frac{n\sum{xy}-\sum{x}\sum{y}}{n\sum{x^2}-(\sum{x})^2} = \frac{7*231-34*39}{7*275-34^2} = 1.19\)</span></p>
+<p>Great, now we can check our work, let’s plot the scores in a scatter plot and draw a line through it with slope = 1.19, and a y-intercept of -.221. As shown in <a href="#fig-3corwithLine">Figure&nbsp;<span>3.11</span></a>, the line should go through the middle of the dots.</p>
+<div class="cell" data-hash="cache/fig-3corwithLine_e6634a891914cb686324efe6b6ce0360">
+<div class="cell-output-display">
+<div id="fig-3corwithLine" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3corwithLine-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.11: An example regression line with confidence bands going through a few data points in a scatterplot</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="interpreting-correlations" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="interpreting-correlations"><span class="header-section-number">3.6</span> Interpreting Correlations</h2>
+<p>What does the presence or the absence of a correlation between two measures mean? How should correlations be interpreted? What kind of inferences can be drawn from correlations? These are all very good questions. A first piece of advice is to use caution when interpreting correlations. Here’s why.</p>
+<section id="correlation-does-not-equal-causation" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="correlation-does-not-equal-causation"><span class="header-section-number">3.6.1</span> Correlation does not equal causation</h3>
+<p>Perhaps you have heard that correlation does not equal causation. Why not? There are lots of reasons why not. However, before listing some of the reasons let’s start with a case where we would expect a causal connection between two measurements. Consider, buying a snake plant for your home. Snake plants are supposed to be easy to take care of because you can mostly ignore them.</p>
+<p>Like most plants, snake plants need some water to stay alive. However, they also need just the right amount of water. Imagine an experiment where 1000 snake plants were grown in a house. Each snake plant is given a different amount of water per day, from zero teaspoons of water per day to 1000 teaspoons of water per day. We will assume that water is part of the causal process that allows snake plants to grow. The amount of water given to each snake plant per day can also be one of our measures. Imagine further that every week the experimenter measures snake plant growth, which will be the second measurement. Now, can you imagine for yourself what a scatter plot of weekly snake plant growth by tablespoons of water would look like?</p>
+<section id="even-when-there-is-causation-there-might-not-be-obvious-correlation" class="level4" data-number="3.6.1.1">
+<h4 data-number="3.6.1.1" class="anchored" data-anchor-id="even-when-there-is-causation-there-might-not-be-obvious-correlation"><span class="header-section-number">3.6.1.1</span> Even when there is causation, there might not be obvious correlation</h4>
+<p>The first plant given no water at all would have a very hard time and eventually die. It should have the least amount of weekly growth. How about the plants given only a few teaspoons of water per day. This could be just enough water to keep the plants alive, so they will grow a little bit but not a lot. If you are imagining a scatter plot, with each dot being a snake plant, then you should imagine some dots starting in the bottom left hand corner (no water &amp; no plant growth), moving up and to the right (a bit of water, and a bit of growth). As we look at snake plants getting more and more water, we should see more and more plant growth, right? “Sure, but only up to a point”. Correct, there should be a trend for a positive correlation with increasing plant growth as amount of water per day increases. But, what happens when you give snake plants too much water? From personal experience, they die. So, at some point, the dots in the scatter plot will start moving back down again. Snake plants that get way too much water will not grow very well.</p>
+<p>The imaginary scatter plot you should be envisioning could have an upside U shape. Going from left to right, the dot’s go up, they reach a maximum, then they go down again reaching a minimum. Computing Pearson’s <span class="math inline">\(r\)</span> for data like this can give you <span class="math inline">\(r\)</span> values close to zero. The scatter plot could look something like <a href="#fig-3snakeplant">Figure&nbsp;<span>3.12</span></a>.</p>
+<div class="cell" data-hash="cache/fig-3snakeplant_1fbbce37292519397017ded3d2f54cca">
+<div class="cell-output-display">
+<div id="fig-3snakeplant" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3snakeplant-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.12: Illustration of a possible relationship between amount of water and snake plant growth. Growth goes up with water, but eventually goes back down as too much water makes snake plants die.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Granted this looks more like an inverted V, than an inverted U, but you get the picture right? There is clearly a relationship between watering and snake plant growth. But, the correlation isn’t in one direction. As a result, when we compute the correlation in terms of Pearson’s r, we get a value suggesting no relationship.</p>
+<div class="cell" data-hash="cache/unnamed-chunk-15_fcabb72dc34583e521f5df64fe3fa71b">
+<pre><code>#&gt; [1] 0.002417426</code></pre>
+</div>
+<p>What this really means is there is no linear relationship that can be described by a single straight line. When we need lines or curves going in more than one direction, we have a nonlinear relationship.</p>
+<p>This example illustrates some conundrums in interpreting correlations. We already know that water is needed for plants to grow, so we are rightly expecting there to be a relationship between our measure of amount of water and plant growth. If we look at the first half of the data we see a positive correlation, if we look at the last half of the data we see a negative correlation, and if we look at all of the data we see no correlation. Yikes. So, even when there is a causal connection between two measures, we won’t necessarily obtain clear evidence of the connection just by computing a correlation coefficient.</p>
+<blockquote class="blockquote">
+<p>Pro Tip: This is one reason why plotting your data is so important. If you see an upside U shape pattern, then a correlation analysis is probably not the best analysis for your data.</p>
+</blockquote>
+</section>
+<section id="confounding-variable-or-third-variable-problem" class="level4" data-number="3.6.1.2">
+<h4 data-number="3.6.1.2" class="anchored" data-anchor-id="confounding-variable-or-third-variable-problem"><span class="header-section-number">3.6.1.2</span> Confounding variable, or Third variable problem</h4>
+<p>Anybody can correlate any two things that can be quantified and measured. For example, we could find a hundred people, ask them all sorts of questions like:</p>
+<ol type="1">
+<li>how happy are you</li>
+<li>how old are you</li>
+<li>how tall are you</li>
+<li>how much money do you make per year</li>
+<li>how long are your eyelashes</li>
+<li>how many books have you read in your life</li>
+<li>how loud is your inner voice</li>
+</ol>
+<p>Let’s say we found a positive correlation between yearly salary and happiness. Note, we could have just as easily computed the same correlation between happiness and yearly salary. If we found a correlation, would you be willing to infer that yearly salary causes happiness? Perhaps it does play a small part. But, something like happiness probably has a lot of contributing causes. Money could directly cause some people to be happy. But, more likely, money buys people access to all sorts of things, and some of those things might contribute happiness. These “other” things are called <strong>third</strong> variables. For example, perhaps people living in nicer places in more expensive houses are more happy than people in worse places in cheaper houses. In this scenario, money isn’t causing happiness, it’s the places and houses that money buys. But, even is this were true, people can still be more or less happy in lots of different situations.</p>
+<p>The lesson here is that a correlation can occur between two measures because of a third variable that is not directly measured. So, just because we find a correlation, does not mean we can conclude anything about a causal connection between two measurements.</p>
+</section>
+</section>
+<section id="correlation-and-random-chance" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="correlation-and-random-chance"><span class="header-section-number">3.6.2</span> Correlation and Random chance</h3>
+<p>Another very important aspect of correlations is the fact that they can be produced by random chance. This means that you can find a positive or negative correlation between two measures, even when they have absolutely nothing to do with one another. You might have hoped to find zero correlation when two measures are totally unrelated to each other. Although this certainly happens, unrelated measures can accidentally produce <strong>spurious</strong> correlations, just by chance alone.</p>
+<p>Let’s demonstrate how correlations can occur by chance when there is no causal connection between two measures. Imagine two participants. One is at the North pole with a lottery machine full of balls with numbers from 1 to 10. The other is at the south pole with a different lottery machine full of balls with numbers from 1 to 10. There are an endless supply of balls in the machine, so every number could be picked for any ball. Each participant randomly chooses 10 balls, then records the number on the ball. In this situation we will assume that there is no possible way that balls chosen by the first participant could causally influence the balls chosen by the second participant. They are on the other side of the world. We should assume that the balls will be chosen by chance alone.</p>
+<p>Here is what the numbers on each ball could look like for each participant:</p>
+<div class="cell" data-hash="cache/3northsouth_f8298ea4454cb913550b1cca4f5f2349">
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Ball </th>
+   <th style="text-align:right;"> North_pole </th>
+   <th style="text-align:right;"> South_pole </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>In this one case, if we computed Pearson’s <span class="math inline">\(r\)</span>, we would find that <span class="math inline">\(r =\)</span> -0.0394794. But, we already know that this value does not tell us anything about the relationship between the balls chosen in the north and south pole. We know that relationship should be completely random, because that is how we set up the game.</p>
+<p>The better question here is to ask what can random chance do? For example, if we ran our game over and over again thousands of times, each time choosing new balls, and each time computing the correlation, what would we find?First, we will find fluctuation. The r value will sometimes be positive, sometimes be negative, sometimes be big and sometimes be small. Second, we will see what the fluctuation looks like. This will give us a window into the kinds of correlations that chance alone can produce. Let’s see what happens.</p>
+<section id="monte-carlo-simulation-of-random-correlations" class="level4" data-number="3.6.2.1">
+<h4 data-number="3.6.2.1" class="anchored" data-anchor-id="monte-carlo-simulation-of-random-correlations"><span class="header-section-number">3.6.2.1</span> Monte-carlo simulation of random correlations</h4>
+<p>It is possible to use a computer to simulate our game as many times as we want. This process is often termed <strong>monte-carlo simulation</strong>.</p>
+<p>Below is a script written for the programming language R. We won’t go into the details of the code here. However, let’s briefly explain what is going on. Notice, the part that says <code>for(sim in 1:1000)</code>. This creates a loop that repeats our game 1000 times. Inside the loop there are variables named <code>North_pole</code> and <code>South_pole</code>. During each simulation, we sample 10 random numbers (between 1 to 10) into each variable. These random numbers stand for the numbers that would have been on the balls from the lottery machine. Once we have 10 random numbers for each, we then compute the correlation using <code>cor(North_pole,South_pole)</code>. Then, we save the correlation value and move on to the next simulation. At the end, we will have 1000 individual Pearson <span class="math inline">\(r\)</span> values.</p>
+<div class="cell" data-hash="cache/fig-3anotherthousand_b0fb712635f80615007e94cb30450c63">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>simulated_correlations <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">0</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  North_pole <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  South_pole <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  simulated_correlations[sim] <span class="ot">&lt;-</span> <span class="fu">cor</span>(North_pole,South_pole)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sims=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,simulated_correlations)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_df, <span class="fu">aes</span>(<span class="at">x =</span> sims, <span class="at">y =</span> simulated_correlations))<span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="sc">-</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Simulation of 1000 r values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-3anotherthousand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3anotherthousand-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.13: Another figure showing a range of r-values that can be obtained by chance.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-3anotherthousand">Figure&nbsp;<span>3.13</span></a> shows the 1000 Pearson <span class="math inline">\(r\)</span> values from the simulation. Does the figure below look familiar to you? We have already conducted a similar kind of simulation before. Each dot in the scatter plot shows the Pearson <span class="math inline">\(r\)</span> for each simulation from 1 to 1000. As you can see the dots are all over of the place, in between the range -1 to 1. The important lesson here is that random chance produced all of these correlations. This means we can find “correlations” in the data that are completely meaningless, and do not reflect any causal relationship between one measure and another.</p>
+<p>Let’s illustrate the idea of finding “random” correlations one more time, with a little movie. This time, we will show you a scatter plot of the random values sampled for the balls chosen from the North and South pole. If there is no relationship we should see dots going everywhere. If there happens to be a positive relationship (purely by chance), we should see the dots going from the bottom left to the top right. If there happens to be a negative relationship (purely by chance), we should see the dots going from the top left down to the bottom right.</p>
+<p>On more thing to prepare you for the movie. There are three scatter plots below in <a href="#fig-3reminder">Figure&nbsp;<span>3.14</span></a>, showing negative, positive, and zero correlations between two variables. You’ve already seen this graph before. We are just reminding you that the blue lines are helpful for seeing the correlation.Negative correlations occur when a line goes down from the top left to bottom right. Positive correlations occur when a line goes up from the bottom left to the top right. Zero correlations occur when the line is flat (doesn’t go up or down).</p>
+<div class="cell" data-hash="cache/fig-3reminder_24bd3994ed5e682ad3e1511e802cdf60">
+<div class="cell-output-display">
+<div id="fig-3reminder" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3reminder-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.14: A reminder of what positive, negative, and zero correlation looks like</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>OK, now we are ready for the movie. <a href="#fig-3randcor10gif">Figure&nbsp;<span>3.15</span></a> shows the process of sampling two sets of numbers randomly, one for the X variable, and one for the Y variable. Each time we sample 10 numbers for each, plot them, then draw a line through them. Remember, these numbers are all completely random, so we should expect, on average that there should be no correlation between the numbers. However, this is not what happens. You can the line going all over the place. Sometimes we find a negative correlation (line goes down), sometimes we see a positive correlation (line goes up), and sometimes it looks like zero correlation (line is more flat).</p>
+<div>
+<div class="cell" data-hash="cache/fig-3randcor10gif_783ba050ffa5bd0a3354d4780598b16f">
+<div class="cell-output-display">
+<div id="fig-3randcor10gif" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corUnifn10-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.15: Completely random data points drawn from a uniform distribution with a small sampl-size of 10. The blue line twirls around sometimes showing large correlations that are produced by chance</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="cache/unnamed-chunk-19_34a1cfa5000261c280bc2da1d697fd7b">
+
+</div>
+<p>You might be thinking this is kind of disturbing. If we know that there should be no correlation between two random variables, how come we are finding correlations? This is a big problem right? I mean, if someone showed me a correlation between two things, and then claimed one thing was related to another, how could know I if it was true. After all, it could be chance! Chance can do that too.</p>
+<p>Fortunately, all is not lost. We can look at our simulated data in another way, using a histogram. Remember, just before the movie, we simulated 1000 different correlations using random numbers. By, putting all of those <span class="math inline">\(r\)</span> values into a histogram, we can get a better sense of how chance behaves. We can see what kind of correlations chance is likely or unlikely to produce. <a href="#fig-3histrandcor">Figure&nbsp;<span>3.16</span></a> is a histogram of the simulated <span class="math inline">\(r\)</span> values.</p>
+<div class="cell" data-hash="cache/fig-3histrandcor_c7627696c59fc2ce1bc66fb53d786e7f">
+<div class="cell-output-display">
+<div id="fig-3histrandcor" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3histrandcor-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.16: A histogram showing the frequency distribution of r-values for completely random values between an X and Y variable (sample-size=10). A rull range of r-values can be obtained by chance alone. Larger r-values are less common than smaller r-values</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that this histogram is not flat. Most of the simulated <span class="math inline">\(r\)</span> values are close to zero. Notice, also that the bars get smaller as you move away from zero in the positive or negative direction. The general take home here is that chance can produce a wide range of correlations. However, not all correlations happen very often. For example, the bars for -1 and 1 are very small. Chance does not produce nearly perfect correlations very often. The bars around -.5 and .5 are smaller than the bars around zero, as medium correlations do not occur as often as small correlations by chance alone.</p>
+<p>You can think of this histogram as the window of chance. It shows what chance often does, and what it often does not do. If you found a correlation under these very same circumstances (e.g., measured the correlation between two sets of 10 random numbers), then you could consult this window. What should you ask the window? How about, could my observed correlation (the one that you found in your data) have come from this window. Let’s say you found a correlation of <span class="math inline">\(r = .1\)</span>. Could a .1 have come from the histogram? Well, look at the histogram around where the .1 mark on the x-axis is. Is there a big bar there? If so, this means that chance produces this value fairly often. You might be comfortable with the inference: Yes, this .1 could have been produced by chance, because it is well inside the window of chance. How about <span class="math inline">\(r = .5\)</span>? The bar is much smaller here, you might think, “well, I can see that chance does produce .5 some times, so chance could have produced my .5. Did it? Maybe, maybe not, not sure”. Here, your confidence in a strong inference about the role of chance might start getting a bit shakier.</p>
+<p>How about an <span class="math inline">\(r = .95\)</span>?. You might see that the bar for .95 is very very small, perhaps too small to see. What does this tell you? It tells you that chance does not produce .95 very often, hardly if at all, pretty much never. So, if you found a .95 in your data, what would you infer? Perhaps you would be comfortable inferring that chance did not produce your .95, after .95 is mostly outside the window of chance.</p>
+</section>
+<section id="increasing-sample-size-decreases-opportunity-for-spurious-correlation" class="level4" data-number="3.6.2.2">
+<h4 data-number="3.6.2.2" class="anchored" data-anchor-id="increasing-sample-size-decreases-opportunity-for-spurious-correlation"><span class="header-section-number">3.6.2.2</span> Increasing sample-size decreases opportunity for spurious correlation</h4>
+<p>Before moving on, let’s do one more thing with correlations. In our pretend lottery game, each participant only sampled 10 balls each. We found that this could lead to a range of correlations between the numbers randomly drawn from either sides of the pole. Indeed, we even found some correlations that were medium to large in size. If you were a researcher who found such correlations, you might be tempted to believe there was a relationship between your measurements. However, we know in our little game, that those correlations would be spurious, just a product of random sampling.</p>
+<p>The good news is that, as a researcher, you get to make the rules of the game. You get to determine how chance can play. This is all a little bit metaphorical, so let’s make it concrete.</p>
+<p>We will see what happens in four different scenarios. First, we will repeat what we already did. Each participant will draw 10 balls, then we compute the correlation, and do this over 1000 times and look at a histogram. Second, we will change the game so each participant draws 50 balls each, and then repeat our simulation. Third, and fourth, we will change the game so each participant draws 100 balls each, and then 1000 balls each, and repeat etc.</p>
+<p><a href="#fig-3corrandN">Figure&nbsp;<span>3.17</span></a> shows four different histograms of the Pearson <span class="math inline">\(r\)</span> values in each of the different scenarios. Each scenario involves a different sample-size, from, 10, 50, 100 to 1000.</p>
+<div class="cell" data-hash="cache/fig-3corrandN_ca13a26d4334b8ddba3a0ec2b4cdd6e1">
+<div class="cell-output-display">
+<div id="fig-3corrandN" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="03-Correlation_files/figure-html/fig-3corrandN-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.17: Four histograms showing the frequency distributions of r-values between completely random X and Y variables as a function of sample-size. The width of the distributions shrink as sample-size increases. Smaller sample-sizes are more likely to produce a wider range of r-values by chance. Larger sample-sizes always produce a narrow range of small r-values</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>By inspecting the four histograms you should notice a clear pattern. The width or range of each histogram shrinks as the sample-size increases. What is going on here? Well, we already know that we can think of these histograms as windows of chance. They tell us which <span class="math inline">\(r\)</span> values occur fairly often, which do not. When our sample-size is 10, lots of different <span class="math inline">\(r\)</span> values happen. That histogram is very flat and spread out. However, as the sample-size increases, we see that the window of chance gets pulled in. For example, by the time we get to 1000 balls each, almost all of the Pearson <span class="math inline">\(r\)</span> values are very close to 0.</p>
+<p>One take home here, is that increasing sample-size narrows the window of chance. So, for example, if you ran a study involving 1000 samples of two measures, and you found a correlation of .5, then you can clearly see in the bottom right histogram that .5 does not occur very often by chance alone. In fact, there is no bar, because it didn’t happen even once in the simulation. As a result, when you have a large sample size like n = 1000, you might be more confident that your observed correlation (say of .5) was not a spurious correlation. If chance is not producing your result, then something else is.</p>
+<p>Finally, notice how your confidence about whether or not chance is mucking about with your results depends on your sample size. If you only obtained 10 samples per measurement, and found <span class="math inline">\(r = .5\)</span>, you should not be as confident that your correlation reflects a real relationship. Instead, you can see that <span class="math inline">\(r\)</span>’s of .5 happen fairly often by chance alone.</p>
+<blockquote class="blockquote">
+<p>Pro tip: when you run an experiment you get to decide how many samples you will collect, which means you can choose to narrow the window of chance. Then, if you find a relationship in the data you can be more confident that your finding is real, and not just something that happened by chance.</p>
+</blockquote>
+</section>
+</section>
+<section id="some-more-movies" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="some-more-movies"><span class="header-section-number">3.6.3</span> Some more movies</h3>
+<p>Let’s ingrain these idea with some more movies. When our sample-size is small (N is small), sampling error can cause all sort “patterns” in the data. This makes it possible, and indeed common, for “correlations” to occur between two sets of numbers. When we increase the sample-size, sampling error is reduced, making it less possible for “correlations” to occur just by chance alone. When N is large, chance has less of an opportunity to operate.</p>
+<section id="watching-how-correlation-behaves-when-there-is-no-correlation" class="level4" data-number="3.6.3.1">
+<h4 data-number="3.6.3.1" class="anchored" data-anchor-id="watching-how-correlation-behaves-when-there-is-no-correlation"><span class="header-section-number">3.6.3.1</span> Watching how correlation behaves when there is no correlation</h4>
+<p>Below we randomly sample numbers for two variables, plot them, and show the correlation using a line. There are four panels, each showing the number of observations in the samples, from 10, 50, 100, to 1000 in each sample.</p>
+<p>Remember, because we are randomly sampling numbers, there should be no relationship between the X and Y variables. But, as we have been discussing, because of chance, we can sometimes observe a correlation (due to chance). The important thing to watch is how the line behaves across the four panels in <a href="#fig-3corRandfour">Figure&nbsp;<span>3.18</span></a>. The line twirls around in all directions when the sample size is 10. It is also moves around quite a bit when the sample size is 50 or 100. It still moves a bit when the sample size is 1000, but much less. In all cases we expect that the line should be flat, but every time we take new samples, sometimes the line shows us pseudo patterns.</p>
+<div>
+<div class="cell" data-hash="cache/fig-3corRandfour_862d3ad8d7ae22ed1d214be185cd9445">
+<div class="cell-output-display">
+<div id="fig-3corRandfour" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corUnifFourNs-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.18: Animation of how correlation behaves for completely random X and Y variables as a function of sample size. The best fit line is not very stable for small sample-sizes, but becomes more reliably flat as sample-size increases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="cache/unnamed-chunk-23_6cf533183263a2e4257267eb2adf2ce2">
+
+</div>
+<p>Which line should you trust? Well, hopefully you can see that the line for 1000 samples is the most stable. It tends to be very flat every time, and it does not depend so much on the particular sample. The line with 10 observations per sample goes all over the place. The take home here, is that if someone told you that they found a correlation, you should want to know how many observations they hand in their sample. If they only had 10 observations, how could you trust the claim that there was a correlation? You can’t!!! Not now that you know samples that are that small can do all sorts of things by chance alone. If instead, you found out the sample was very large, then you might trust that finding a little bit more. For example, in the above movie you can see that when there are 1000 samples, we never see a strong or weak correlation; the line is always flat. This is because chance almost never produces strong correlations when the sample size is very large.</p>
+<p>In the above example, we sampled numbers random numbers from a uniform distribution. Many examples of real-world data will come from a normal or approximately normal distribution. We can repeat the above, but sample random numbers from the same normal distribution. There will still be zero actual correlation between the X and Y variables, because everything is sampled randomly. <a href="#fig-3normCorfour">Figure&nbsp;<span>3.19</span></a> shows the same behavior. The computed correlation for small sample-sizes fluctuate wildly, and large sample sizes do not.</p>
+<div>
+<div class="cell" data-hash="cache/fig-3normCorfour_bd3a96ce047f1e77a4f4b20f6ea6f325">
+<div class="cell-output-display">
+<div id="fig-3normCorfour" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corNormFourNs-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.19: Animation of correlation for random values sampled from a normal distribution, rather than a uniform distribution.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>OK, so what do things look like when there actually is a correlation between variables?</p>
+</section>
+<section id="watching-correlations-behave-when-there-really-is-a-correlation" class="level4" data-number="3.6.3.2">
+<h4 data-number="3.6.3.2" class="anchored" data-anchor-id="watching-correlations-behave-when-there-really-is-a-correlation"><span class="header-section-number">3.6.3.2</span> Watching correlations behave when there really is a correlation</h4>
+<p>Sometimes there really are correlations between two variables that are not caused by chance. <a href="#fig-3realcorFour">Figure&nbsp;<span>3.20</span></a> shows a movie of four scatter plots. Each shows the correlation between two variables. Again, we change the sample-size in steps of 10, 50 100, and 1000. The data have been programmed to contain a real positive correlation. So, we should expect that the line will be going up from the bottom left to the top right. However, there is still variability in the data. So this time, sampling error due to chance will fuzz the correlation. We know it is there, but sometimes chance will cause the correlation to be eliminated.</p>
+<p>Notice that in the top left panel (sample-size = 10), the line is twirling around much more than the other panels. Every new set of samples produces different correlations. Sometimes, the line even goes flat or downward. However, as we increase sample-size, we can see that the line doesn’t change very much, it is always going up showing a positive correlation.</p>
+<div>
+<div class="cell" data-hash="cache/fig-3realcorFour_0e3dc85c7091eb12f99a2152cb9d1e45">
+<div class="cell-output-display">
+<div id="fig-3realcorFour" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="imgs/gifs/corRealgif-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 3.20: How correlation behaves as a function of sample-size when there is a true correlation between X and Y variables.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The main takeaway here is that even when there is a positive correlation between two things, you might not be able to see it if your sample size is small. For example, you might get unlucky with the one sample that you measured. Your sample could show a negative correlation, even when the actual correlation is positive! Unfortunately, in the real world we usually only have the sample that we collected, so we always have to wonder if we got lucky or unlucky. Fortunately, if you want to remove luck, all you need to do is collect larger samples. Then you will be much more likely to observe the real pattern, rather the pattern that can be introduced by chance.</p>
+</section>
+</section>
+</section>
+<section id="summary" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.7</span> Summary</h2>
+<p>In this section we have talked about correlation, and started to build some intuitions about <strong>inferential statistics</strong>, which is the major topic of the remaining chapters. For now, the main ideas are:</p>
+<ol type="1">
+<li>We can measure relationships in data using things like correlation</li>
+<li>The correlations we measure can be produced by numerous things, so they are hard to to interpret</li>
+<li>Correlations can be produced by chance, so have the potential to be completely meaningless.</li>
+<li>However, we can create a model of exactly what chance can do. The model tells us whether chance is more or less likely to produce correlations of different sizes</li>
+<li>We can use the chance model to help us make decisions about our own data. We can compare the correlation we found in our data to the model, then ask whether or not chance could have or was likely to have produced our results.</li>
+</ol>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-salsburg2001lady" class="csl-entry" role="doc-biblioentry">
+Salsburg, David. 2001. <em>The Lady Tasting Tea: <span>How</span> Statistics Revolutionized Science in the Twentieth Century</em>. <span>Macmillan</span>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-Describing_Data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-SamplesPopulations.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

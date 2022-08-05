@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Matthew J. C. Crump">
+
+<title>Answering questions with data - 10&nbsp; More On Factorial Designs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./11-Simulation.html" rel="next">
+<link href="./09-FactorialANOVA.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79429674-3', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Answering questions with data</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#looking-at-main-effects-and-interactions" id="toc-looking-at-main-effects-and-interactions" class="nav-link active" data-scroll-target="#looking-at-main-effects-and-interactions"> <span class="header-section-number">10.1</span> Looking at main effects and interactions</a>
+  <ul class="collapse">
+  <li><a href="#x2-designs" id="toc-x2-designs" class="nav-link" data-scroll-target="#x2-designs"> <span class="header-section-number">10.1.1</span> 2x2 designs</a></li>
+  </ul></li>
+  <li><a href="#interpreting-main-effects-and-interactions" id="toc-interpreting-main-effects-and-interactions" class="nav-link" data-scroll-target="#interpreting-main-effects-and-interactions"> <span class="header-section-number">10.2</span> Interpreting main effects and interactions</a>
+  <ul class="collapse">
+  <li><a href="#a-consistent-main-effect-and-an-interaction" id="toc-a-consistent-main-effect-and-an-interaction" class="nav-link" data-scroll-target="#a-consistent-main-effect-and-an-interaction"> <span class="header-section-number">10.2.1</span> A consistent main effect and an interaction</a></li>
+  <li><a href="#an-inconsistent-main-effect-and-an-interaction" id="toc-an-inconsistent-main-effect-and-an-interaction" class="nav-link" data-scroll-target="#an-inconsistent-main-effect-and-an-interaction"> <span class="header-section-number">10.2.2</span> An inconsistent main effect and an interaction</a></li>
+  </ul></li>
+  <li><a href="#mixed-designs" id="toc-mixed-designs" class="nav-link" data-scroll-target="#mixed-designs"> <span class="header-section-number">10.3</span> Mixed Designs</a></li>
+  <li><a href="#more-complicated-designs" id="toc-more-complicated-designs" class="nav-link" data-scroll-target="#more-complicated-designs"> <span class="header-section-number">10.4</span> More complicated designs</a>
+  <ul class="collapse">
+  <li><a href="#x3-design" id="toc-x3-design" class="nav-link" data-scroll-target="#x3-design"> <span class="header-section-number">10.4.1</span> 2x3 design</a></li>
+  <li><a href="#x2x2-designs" id="toc-x2x2-designs" class="nav-link" data-scroll-target="#x2x2-designs"> <span class="header-section-number">10.4.2</span> 2x2x2 designs</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/10-MixedANOVA.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Matthew J. C. Crump </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-hash="cache/unnamed-chunk-2_9f47e34674026a009f1de27588015e07">
+
+</div>
+<p>We are going to do a couple things in this chapter. The most important thing is more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA. You already know that you can have more than one IV. And, you know that research designs can be between-subjects or within-subjects (repeated-measures). When you have more than one IV, they can all be between-subjects variables, they can all be within-subject repeated measures, or they can be a mix: say one between-subject variable and one within-subject variable. You can use ANOVA to analyze all of these kinds of designs. You always get one main effect for each IV, and a number of interactions, or just one, depending on the number of IVs.</p>
+<section id="looking-at-main-effects-and-interactions" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="looking-at-main-effects-and-interactions"><span class="header-section-number">10.1</span> Looking at main effects and interactions</h2>
+<p>Designs with multiple factors are very common. When you read a research article you will often see graphs that show the results from designs with multiple factors. It would be good for you if you were comfortable interpreting the meaning of those results. The skill here is to be able to look at a graph and see the pattern of main effects and interactions. This skill is important, because the patterns in the data can quickly become very complicated looking, especially when there are more than two independent variables, with more than two levels.</p>
+<section id="x2-designs" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="x2-designs"><span class="header-section-number">10.1.1</span> 2x2 designs</h3>
+<p>Let’s take the case of 2x2 designs. There will always be the possibility of two main effects and one interaction. You will always be able to compare the means for each main effect and interaction. If the appropriate means are different then there is a main effect or interaction. Here’s the thing, there a bunch of ways all of this can turn out. Check out the ways, there are 8 of them:</p>
+<ol type="1">
+<li>no IV1 main effect, no IV2 main effect, no interaction</li>
+<li>IV1 main effect, no IV2 main effect, no interaction</li>
+<li>IV1 main effect, no IV2 main effect, interaction</li>
+<li>IV1 main effect, IV2 main effect, no interaction</li>
+<li>IV1 main effect, IV2 main effect, interaction</li>
+<li>no IV1 main effect, IV2 main effect, no interaction</li>
+<li>no IV1 main effect, IV2 main effect, interaction</li>
+<li>no IV1 main effect, no IV2 main effect, interaction</li>
+</ol>
+<p>OK, so if you run a 2x2, any of these 8 general patterns could occur in your data. That’s a lot to keep track of isn’t. As you develop your skills in examining graphs that plot means, you should be able to look at the graph and visually guesstimate if there is, or is not, a main effect or interaction. You will need you inferential statistics to tell you for sure, but it is worth knowing how to know see the patterns.</p>
+<p><a href="#fig-10bar22">Figure&nbsp;<span>10.1</span></a> shows the possible patterns of main effects and interactions in bar graph form. Here is a legend for the labels in the panels.</p>
+<ul>
+<li>1 = there was a main effect for IV1.</li>
+<li>~1 = there was <strong>not</strong> a main effect for IV1</li>
+<li>2 = there was a main effect for IV2</li>
+<li>~2 = there was <strong>not</strong> a main effect of IV2</li>
+<li>1x2 = there was an interaction</li>
+<li>~1x2 = there was <strong>not</strong> an interaction</li>
+</ul>
+<div class="cell" data-hash="cache/fig-10bar22_9a57c6472e94e0267ab879e52632b8a5">
+<div class="cell-output-display">
+<div id="fig-10bar22" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-10bar22-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.1: 8 Example patterns for means for each of the possible kinds of general outcomes in a 2x2 design.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-10lines22">Figure&nbsp;<span>10.2</span></a> shows the same eight patterns in line graph form:</p>
+<div class="cell" data-hash="cache/fig-10lines22_41f1370d22dc2a2bc9ad84df31b41d60">
+<div class="cell-output-display">
+<div id="fig-10lines22" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-10lines22-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.2: Line graphs showing 8 possible general outcomes for a 2x2 design.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The line graphs accentuates the presence of interaction effects. Whenever the lines cross, or would cross if they kept going, you have a possibility of an interaction. Whenever the lines are parallel, there can’t be an interaction. When both of the points on the A side are higher or lower than both of the points on the B side, then you have a main effect for IV1 (A vs B). Whenever the green line is above or below the red line, then you have a main effect for IV2 (1 vs.&nbsp;2). We know this is complicated. You should see what all the possibilities look like when we start adding more levels or more IVs. It gets nuts. Because of this nuttiness, it is often good practice to make your research designs simple (as few IVs and levels as possible to test your question). That way it will be easier to interpret your data. Whenever you see that someone ran a 4x3x7x2 design, your head should spin. It’s just too complicated.</p>
+</section>
+</section>
+<section id="interpreting-main-effects-and-interactions" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="interpreting-main-effects-and-interactions"><span class="header-section-number">10.2</span> Interpreting main effects and interactions</h2>
+<p>The interpretation of main effects and interactions can get tricky. Consider the concept of a main effect. This is the idea that a particular IV has a consistent effect. For example, drinking 5 cups of coffee makes you more awake compared to not drinking 5 cups of coffee. The main effect of drinking 5 cups of coffee vs not drinking coffee will generally be true across the levels of other IVs in our life. For example, let’s say you conducted an experiment testing whether the effect of drinking 5 cups of coffee vs not, changes depending on whether you are in your house or in a car. Perhaps the situation matters? No, probably not so much. You will probably still be more awake in your house, or your car, after having 5 cups of coffee, compared to if you hadn’t.</p>
+<p>The coffee example is a reasonably good example of a consistent main effect. Another silly kind of example might be the main effect of shoes on your height. For example, if your IV was wearing shoes or not, and your DV was height, then we could expect to find a main effect of wearing shoes on your measurement of height. When you wear shoes, you will become taller compared to when you don’t wear shoes. Wearing shoes adds to your total height. In fact, it’s hard to imagine how the effect of wearing shoes on your total height would ever interact with other kinds of variables. You will be always be that extra bit taller wearing shoes. Indeed, if there was another manipulation that could cause an interaction that would truly be strange. For example, imagine if the effect of being inside a bodega or outside a bodega interacted with the effect of wearing shoes on your height. That could mean that shoes make you taller when you are outside a bodega, but when you step inside, your shoes make you shorter…but, obviously this is just totally ridiculous. That’s correct, it is often ridiculous to expect that one IV will have an influence on the effect of another, especially when there is no good reason.</p>
+<p>The summary here is that it is convenient to think of main effects as a consistent influence of one manipulation. However, when an interaction is observed, this messes up the consistency of the main effect. That is the very definition of an interaction. It means that some main effect is <strong>not</strong> behaving consistently across different situations. Indeed, whenever we find an interaction, sometimes we can question whether or not there really is a general consistent effect of some manipulation, or instead whether that effect only happens in specific situations.</p>
+<p>For this reason, you will often see that researchers report their findings this way:</p>
+<p>“We found a main effect of X, BUT, this main effect was qualified by an interaction between X and Y”.</p>
+<p>Notice the big <strong>BUT</strong>. Why is it there? The sentence points out that before they talk about the main effect, they need to first talk about the interaction, which is making the main effect behave inconsistently. In other words, the interpretation of the main effect depends on the interaction, the two things have to be thought of together to make sense of them.</p>
+<p>Here are two examples to help you make sense of these issues:</p>
+<section id="a-consistent-main-effect-and-an-interaction" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="a-consistent-main-effect-and-an-interaction"><span class="header-section-number">10.2.1</span> A consistent main effect and an interaction</h3>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10mainint_4591eb45212404f9d674f2b6b3cf8345">
+<div class="cell-output-display">
+<div id="fig-10mainint" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-10mainint-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.3: Example means showing a generally consistent main effect along with an interaction</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-10mainint">Figure&nbsp;<span>10.3</span></a> shows a main effect and interaction. There is a main effect of IV2: the level 1 means (red points and line) are both lower than the level 2 means (aqua points and line). There is also an interaction. The size of the difference between the red and aqua points in the A condition (left) is bigger than the size of the difference in the B condition.</p>
+<p><strong>How would we interpret this</strong>? We could say there WAS a main effect of IV2, BUT it was qualified by an IV1 x IV2 interaction.</p>
+<p><strong>What’s the qualification</strong>? The size of the IV2 effect changed as a function of the levels of IV1. It was big for level A, and small for level B of IV1.</p>
+<p><strong>What does the qualification mean for the main effect</strong>? Well, first it means the main effect can be changed by the other IV. That’s important to know. Does it also mean that the main effect is not a real main effect because there was an interaction? Not really, there is a generally consistent effect of IV2. The green points are above the red points in all cases. Whatever IV2 is doing, it seems to work in at least a couple situations, even if the other IV also causes some change to the influence.</p>
+</section>
+<section id="an-inconsistent-main-effect-and-an-interaction" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="an-inconsistent-main-effect-and-an-interaction"><span class="header-section-number">10.2.2</span> An inconsistent main effect and an interaction</h3>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10mainintInc_2a0bbc85f2a9cb2d1ce70048c207d273">
+<div class="cell-output-display">
+<div id="fig-10mainintInc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-10mainintInc-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.4: Example data showing how an interaction exists, and a main effect does not, even though the means for the main effect may show a difference</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-10mainintInc">Figure&nbsp;<span>10.4</span></a> shows another 2x2 design. You should see an interaction here straight away. The difference between the aqua and red points in condition A (left two dots) is huge, and there is 0 difference between them in condition B. Is there an interaction? Yes!</p>
+<p>Are there any main effects here? With data like this, sometimes an ANOVA will suggest that you do have significant main effects. For example, what is the mean difference between level 1 and 2 of IV2? That is the average of the green points ( (10+5)/2 = 15/2= 7.5 ) compared to the average of the red points (5). There will be a difference of 2.5 for the main effect (7.5 vs.&nbsp;5).</p>
+<p>Starting to see the issue here? From the perspective of the main effect (which collapses over everything and ignores the interaction), there is an overall effect of 2.5. In other words, level 2 adds 2.5 in general compared to level 1. However, we can see from the graph that IV2 does not do anything in general. It does not add 2.5s everywhere. It adds 5 in condition A, and nothing in condition B. It only does one thing in one condition.</p>
+<p>What is happening here is that a “main effect” is produced by the process of averaging over a clear interaction.</p>
+<p><strong>How would we interpret this</strong>? We might have to say there was a main effect of IV2, BUT we would definitely say it was qualified by an IV1 x IV2 interaction.</p>
+<p><strong>What’s the qualification</strong>? The size of the IV2 effect completely changes as a function of the levels of IV1. It was big for level A, and nonexistent for level B of IV1.</p>
+<p><strong>What does the qualification mean for the main effect</strong>? In this case, we might doubt whether there is a main effect of IV2 at all. It could turn out that IV2 does not have a general influence over the DV all of the time, it may only do something in very specific circumstances, in combination with the presence of other factors.</p>
+</section>
+</section>
+<section id="mixed-designs" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="mixed-designs"><span class="header-section-number">10.3</span> Mixed Designs</h2>
+<p>Throughout this book we keep reminding you that research designs can take different forms. The manipulations can be between-subjects (different subjects in each group), or within-subjects (everybody contributes data in all conditions). If you have more than one manipulation, you can have a mixed design when one of your IVs is between-subjects and one of the other ones is within-subjects.</p>
+<p>The only “trick” to these designs is to use the appropriate error terms to construct the F-values for each effect. Effects that have a within-subjects repeated measure (IV) use different error terms than effects that only have a between-subject IV. In principle, you could run an ANOVA with any number of IVs, and any of them good be between or within-subjects variables.</p>
+<p>Because this is an introductory textbook, we leave out a full discussion on mixed designs. What we are leaving out are the formulas to construct ANOVA tables that show how to use the correct error terms for each effect. There are many good more advanced textbooks that discuss these issues in much more depth. And, these things can all be Googled. This is a bit of a cop-out on our part, and we may return to fill in this section at some point in the future (or perhaps someone else will add a chapter about this).</p>
+<p>In the lab manual, you will learn how to conduct a mixed design ANOVA using software. Generally speaking, the software takes care of the problem of using the correct error terms to construct the ANOVA table.</p>
+</section>
+<section id="more-complicated-designs" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="more-complicated-designs"><span class="header-section-number">10.4</span> More complicated designs</h2>
+<p>Up until now we have focused on the simplest case for factorial designs, the 2x2 design, with two IVs, each with 2 levels. It is worth spending some time looking at a few more complicated designs and how to interpret them.</p>
+<section id="x3-design" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="x3-design"><span class="header-section-number">10.4.1</span> 2x3 design</h3>
+<p>In a 2x3 design there are two IVs. IV1 has two levels, and IV2 has three levels. Typically, there would be one DV. Let’s talk about the main effects and interaction for this design.</p>
+<p>First, let’s make the design concrete. Let’s imagine we are running a memory experiment. We give people some words to remember, and then test them to see how many they can correctly remember. Our DV is proportion correct. We know that people forget things over time. Our first IV will be time of test, immediate vs.&nbsp;1 week. The time of test IV will produce a forgetting effect. Generally, people will have a higher proportion correct on an immediate test of their memory for things they just saw, compared to testing a week later.</p>
+<p>We might be interested in manipulations that reduce the amount of forgetting that happens over the week. The second IV could be many things. Let’s make it the number of time people got to study the items before the memory test, once, twice or three times. We call IV2 the repetition manipulation.</p>
+<p>We might expect data like shown in <a href="#fig-1023design">Figure&nbsp;<span>10.5</span></a>:</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-1023design_98756700e9ec2ea9acc45aa92521b2fb">
+<div class="cell-output-display">
+<div id="fig-1023design" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-1023design-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.5: Example means for a 2x3 factorial design</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure shows some pretend means in all conditions. Let’s talk about the main effects and interaction.</p>
+<p>First, the main effect of delay (time of test) is very obvious, the red line is way above the aqua line. Proportion correct on the memory test is always higher when the memory test is taken immediately compared to after one week.</p>
+<p>Second, the main effect of repetition seems to be clearly present. The more times people saw the items in the memory test (once, twice, or three times), the more they remembered, as measured by increasingly higher proportion correct as a function of number of repetitions.</p>
+<p>Is there an interaction? Yes, there is. Remember, an interaction occurs when the effect of one IV depends on the levels of an another. The delay IV measures the forgetting effect. Does the size of the forgetting effect change across the levels of the repetition variable? Yes it does. With one repetition the forgetting effect is .9-.6 =.4. With two repetitions, the forgetting effect is a little bit smaller, and with three, the repetition is even smaller still. So, the size of the forgetting effect changes as a function of the levels of the repetition IV. There is evidence in the means for an interaction. You would have to conduct an inferential test on the interaction term to see if these differences were likely or unlikely to be due to sampling error.</p>
+<p>If there was no interaction and no main effect of repetition, we would see something like the pattern in <a href="#fig-1023one">Figure&nbsp;<span>10.6</span></a>.</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-1023one_694a1e182fe3cd10d7842c70c64ff3b5">
+<div class="cell-output-display">
+<div id="fig-1023one" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-1023one-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.6: Example means for a 2x3 design when there is only one main effect</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What would you say about the interaction if you saw the pattern in <a href="#fig-1023int">Figure&nbsp;<span>10.7</span></a>?</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-1023int_fddd229a6800794e327140fe34f5bb96">
+<div class="cell-output-display">
+<div id="fig-1023int" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-1023int-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.7: Example means for a 2x3 design showing another pattern that produces an interaction</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The correct answer is that there is evidence in the means for an interaction. Remember, we are measuring the forgetting effect (effect of delay) three times. The forgetting effect is the same for repetition condition 1 and 2, but it is much smaller for repetition condition 3. The size of the forgetting effect depends on the levels of the repetition IV, so here again there is an interaction.</p>
+</section>
+<section id="x2x2-designs" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="x2x2-designs"><span class="header-section-number">10.4.2</span> 2x2x2 designs</h3>
+<p>Let’s take it up a notch and look at a 2x2x2 design. Here, there are three IVs with 2 levels each. There are three main effects, three two-way (2x2) interactions, and one 3-way (2x2x2) interaction.</p>
+<p>We will use the same example as before but add an additional manipulation of the kind of material that is to be remembered. For example, we could present words during an encoding phase either visually or spoken (auditory) over headphones.</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10222_a69ede61124c5a45888192ae8ffcf7b6">
+<div class="cell-output-display">
+<div id="fig-10222" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-10222-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.8: Example means from a 2x2x2 design with no three-way interaction.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-10222">Figure&nbsp;<span>10.8</span></a> has two panels one for auditory and one for visual. You can think of the 2x2x2, as two 2x2s, one for auditory and one for visual. What’s the take home from this example data? We can see that the graphs for auditory and visual are the same. They both show a 2x2 interaction between delay and repetition. People forgot more things across the week when they studied the material once, compared to when they studied the material twice. There is a main effect of delay, there is a main effect of repetition, there is no main effect of modality, and there is no three-way interaction.</p>
+<p>What is a three-way interaction anyway? That would occur if there was a difference between the 2x2 interactions. For example, consider the pattern of results in <a href="#fig-10222int">Figure&nbsp;<span>10.9</span></a>.</p>
+<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10222int_45c01697ed0633ebc9c1df0f029e0ac5">
+<div class="cell-output-display">
+<div id="fig-10222int" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="10-MixedANOVA_files/figure-html/fig-10222int-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure 10.9: Example means from a 2x2x2 design with a three-way interaction.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We are looking at a 3-way interaction between modality, repetition and delay. What is going on here? These results would be very strange, here is an interpretation.</p>
+<p>For auditory stimuli, we see that there is a small forgetting effect when people studied things once, but the forgetting effect gets bigger if they studies things twice. A pattern like this would generally be very strange, usually people would do better if they got to review the material twice.</p>
+<p>The visual stimuli show a different pattern. Here, the forgetting effect is large when studying visual things once, and it get’s smaller when studying visual things twice.</p>
+<p>We see that there is an interaction between delay (the forgetting effect) and repetition for the auditory stimuli; BUT, this interaction effect is <strong>different</strong> from the interaction effect we see for the visual stimuli. The 2x2 interaction for the auditory stimuli is <strong>different</strong> from the 2x2 interaction for the visual stimuli. In other words, there is an interaction between the two interactions, as a result there is a three-way interaction, called a 2x2x2 interaction.</p>
+<p>We will note a general pattern here. Imagine you had a 2x2x2x2 design. That would have a 4-way interaction. What would that mean? It would mean that the pattern of the 2x2x2 interaction changes across the levels of the 4th IV. If two three-way interactions are different, then there is a four-way interaction.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-FactorialANOVA.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./11-Simulation.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
