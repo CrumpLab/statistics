@@ -321,13 +321,13 @@ ga('send', {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Two Sample t-test</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  group_A and group_B</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -2.4259, df = 18, p-value = 0.026</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -1.0325, df = 18, p-value = 0.3155</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -15.047773  -1.080302</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -11.017689   3.756669</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  96.44356 104.50760</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  101.4705  105.1010</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We sampled 10 scores from a normal distribution for each group. We changed the mean for group_b to 105, because we were thinking their heart rate would be 5 more than group A. We ran one <span class="math inline">\(t\)</span>-test, and we got a result. This result tells us what happens for this one simulation.</p>
 <p>We could learn more by repeating the simulation 1000 times, saving the <span class="math inline">\(p\)</span>-values from each replication, and then finding out how many of our 1000 simulated experiments give us a significant result:</p>
@@ -342,9 +342,9 @@ ga('send', {
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.321</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.328</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now this is more interesting. We found that 32.1% of simulated experiments had a <span class="math inline">\(p\)</span>-value less than 0.05. That’s not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.</p>
+<p>Now this is more interesting. We found that 32.8% of simulated experiments had a <span class="math inline">\(p\)</span>-value less than 0.05. That’s not very good. If you were going to collect data in this kind of experiment, and you made the correct assumptions about the mean and standard deviation of the distribution, and you made the correct assumption about the size of difference between the groups, you would be planning to run an experiment that would not work-out most of the time.</p>
 <p>What happens if we increase the number of subject to 50 in each group?</p>
 <div class="cell" data-hash="cache/unnamed-chunk-5_ff41c4795fa3fe107c0b4aef324b4b5d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>save_ps<span class="ot">&lt;-</span><span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -357,7 +357,7 @@ ga('send', {
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>prop_p<span class="ot">&lt;-</span><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_p)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.936</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.954</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ooh, look, almost all of the experiments are significant now. So, it would be better to use 50 subjects per group than 10 per group according to this simulation.</p>
 <p>Of course, you might already be wondering so many different kinds of things. How can we plausibly know the parameters for the distribution we are sampling from? Isn’t this all just guess work? We’ll discuss some of these issues as we move forward in this chapter.</p>
@@ -492,7 +492,7 @@ for(i in 1:1000){
 
 prop_p&lt;-length(save_ps[save_ps&lt;0.05])/1000
 print(prop_p)
-#&gt; [1] 0.935
+#&gt; [1] 0.93
 ```
 :::
 
@@ -550,16 +550,16 @@ knitr::kable(xtable(aov_results))
   &lt;tr&gt;
    &lt;td style=&quot;text-align:left;&quot;&gt; groups &lt;/td&gt;
    &lt;td style=&quot;text-align:right;&quot;&gt; 2 &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;&quot;&gt; 42.99725 &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;&quot;&gt; 21.49862 &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;&quot;&gt; 0.0919985 &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;&quot;&gt; 0.9121325 &lt;/td&gt;
+   &lt;td style=&quot;text-align:right;&quot;&gt; 105.2986 &lt;/td&gt;
+   &lt;td style=&quot;text-align:right;&quot;&gt; 52.6493 &lt;/td&gt;
+   &lt;td style=&quot;text-align:right;&quot;&gt; 0.2342089 &lt;/td&gt;
+   &lt;td style=&quot;text-align:right;&quot;&gt; 0.7913425 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style=&quot;text-align:left;&quot;&gt; Residuals &lt;/td&gt;
    &lt;td style=&quot;text-align:right;&quot;&gt; 297 &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;&quot;&gt; 69404.32645 &lt;/td&gt;
-   &lt;td style=&quot;text-align:right;&quot;&gt; 233.68460 &lt;/td&gt;
+   &lt;td style=&quot;text-align:right;&quot;&gt; 66764.5234 &lt;/td&gt;
+   &lt;td style=&quot;text-align:right;&quot;&gt; 224.7964 &lt;/td&gt;
    &lt;td style=&quot;text-align:right;&quot;&gt; NA &lt;/td&gt;
    &lt;td style=&quot;text-align:right;&quot;&gt; NA &lt;/td&gt;
   &lt;/tr&gt;
@@ -586,7 +586,7 @@ knitr::kable(xtable(aov_results))
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_p[save_p<span class="sc">&lt;</span><span class="fl">0.05</span>])<span class="sc">/</span><span class="dv">100</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.04</span></span></code></pre></div>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.07</span></span></code></pre></div>
 </div>
 </section>
 </section>

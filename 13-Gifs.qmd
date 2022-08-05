@@ -1,12 +1,12 @@
 ---
 author: 
   - Matthew J. C. Crump
-aliases: [gifs]
+aliases: [gifs.html]
 ---
 
 # GIFs
 
-This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book <https://github.com/CrumpLab/statistics/tree/master/gifs>. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alonside each gif. The animiations are made possible by the **gganimate** package.
+This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book <https://github.com/CrumpLab/statistics/tree/master/gifs>. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alongside each gif. The animations are made possible by the **gganimate** package.
 
 **This is a work in progress, subject to change and addition**
 
@@ -188,7 +188,7 @@ ggplot(all_df,aes(x=North_pole,y=South_pole))+
 
 ### Type I errors, sampling random deviates from normal distribution with regression lines
 
-These scatterplots only show what would be type I errors (assuming alpha=.05). The X and Y values were both sampled from the same normal distribution (mean = 0, sd=1). 1000 simulations were conducted for each sample size (10,50,100,1000). For each, the animiation shows 10 scatterplots where the observed "correlation" would have passed a significance test. According to definition, these correlations only arise from random normal deviates 5% of the time, but when they do arise for small sample sizes, they look fairly convincing.
+These scatter plots only show what would be type I errors (assuming alpha=.05). The X and Y values were both sampled from the same normal distribution (mean = 0, sd=1). 1000 simulations were conducted for each sample size (10,50,100,1000). For each, the animation shows 10 scatter plots where the observed "correlation" would have passed a significance test. According to definition, these correlations only arise from random normal deviates 5% of the time, but when they do arise for small sample sizes, they look fairly convincing.
 
 ::: {.content-visible when-format="html"}
 ```{r, echo=F,eval=T}
@@ -413,13 +413,13 @@ ggplot(df,aes(x=a))+
 
 ### Sampling distribution of the mean, Normal population distribution and sample histograms
 
-This animiation illustrates the relationship between a distribution (population), samples from the distribution, and the sampling distribution of the sample means, all as a function of n
+This animation illustrates the relationship between a distribution (population), samples from the distribution, and the sampling distribution of the sample means, all as a function of n
 
 Normal distribution in red. Individual sample histograms in grey. Vertical red line is mean of individual sample. Histograms for sampling distribution of the sample mean in blue. Vertical blue line is mean of the sampling distribution of the sample mean.
 
 Note: for purposes of the animation (and because it was easier to do this way), the histograms for the sampling distribution of the sample means have different sizes. When sample-size = 10, the histogram shows 10 sample means. When sample size=100, the histogram shows 100 sample means. I could have simulated many more sample means (say 10000) for each, but then the histograms for the sample means would be static.
 
-The y-axis is very rough. The heights of the histrograms and distributions were scaled to be in the same range for the animation.
+The y-axis is very rough. The heights of the histograms and distributions were scaled to be in the same range for the animation.
 
 ::: {.content-visible when-format="html"}
 ```{r, echo=F,eval=T}
@@ -586,7 +586,7 @@ This is a simulation of the null distribution for an independent samples t-test,
 
 This animation has two panels. The left panel shows means for group A and B, sampled from the same normal distribution (mu=50, sd =10). The dots represent individual scores for each of 10 observations per group.
 
-The right panel shows a t-distribution (df=18) along with the observerd t-statistic for each simulation.
+The right panel shows a t-distribution (df=18) along with the observed t-statistic for each simulation.
 
 `gganimate` does not yet directly support multiple panels as shown in this gif. I hacked together these two gifs using the `magick` package. Apologies for the hackiness.
 
@@ -678,7 +678,7 @@ This is a simulation of an independent samples t-test, two groups, 10 observatio
 
 This animation has two panels. The left panel shows means for group A (normal, mu=50, sd=10) and B (normal, mu=70, sd=10). The dots represent individual scores for each of 10 observations per group.
 
-The right panel shows a t-distribution (df=18) along with the observerd t-statistic for each simulation.
+The right panel shows a t-distribution (df=18) along with the observed t-statistic for each simulation.
 
 ::: {.content-visible when-format="html"}
 ```{r, echo=F,eval=T}

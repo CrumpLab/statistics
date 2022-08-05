@@ -1395,11 +1395,11 @@ Note
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
 <div class="cell" data-hash="cache/unnamed-chunk-31_803727eacfaddb7783720893ea87f45a">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 40</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 54</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.04</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.054</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We happened to make 40. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
+<p>We happened to make 54. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happens if there actually is a difference in the simulated data, let’s set one condition to have a larger mean than the other:</p>
 <div class="cell" data-hash="cache/unnamed-chunk-32_8373ff378e7b82934438883827a17021">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -1438,11 +1438,11 @@ Note
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
 <div class="cell" data-hash="cache/unnamed-chunk-35_889d4ad25fbfd083ce10c3a0e8ec30ae">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 246</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 243</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.246</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.243</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We happened to get 246 simulations where p was less than .05, that’s only 0.246 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.246 of the time? I wouldn’t. I would run a better experiment.</p>
+<p>We happened to get 243 simulations where p was less than .05, that’s only 0.243 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.243 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase <span class="math inline">\(n\)</span>, the number of subjects in the experiment. Let’s increase <span class="math inline">\(n\)</span> from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
 <div class="cell" data-hash="cache/unnamed-chunk-36_fa839dc6fc1d47ff1d2b418d85f2f086">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -1468,8 +1468,8 @@ Note
 </div>
 </div>
 <div class="cell" data-hash="cache/fig-6simpsB_978963e6aa3a7ebfc0856d785cc9ed01">
-<pre><code>#&gt; [1] 984
-#&gt; [1] 0.984</code></pre>
+<pre><code>#&gt; [1] 982
+#&gt; [1] 0.982</code></pre>
 <div class="cell-output-display">
 <div id="fig-6simpsB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1507,8 +1507,8 @@ Note
 </div>
 </div>
 <div class="cell" data-hash="cache/fig-6simpsC_4331c4ba8b9b8f492508a2c5b55f1d81">
-<pre><code>#&gt; [1] 60
-#&gt; [1] 0.06</code></pre>
+<pre><code>#&gt; [1] 66
+#&gt; [1] 0.066</code></pre>
 <div class="cell-output-display">
 <div id="fig-6simpsC" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
