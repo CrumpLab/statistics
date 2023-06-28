@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,16 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -42,48 +48,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -97,8 +74,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -138,29 +114,29 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Answering questions with data - 6&nbsp; t-tests">
-<meta property="og:description" content="Back in the day, William Sealy Gosset got a job working for Guinness Breweries. They make the famous Irish stout called Guinness.">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/06-ttests_files/figure-html/fig-6sampleMSEM-1.png">
 <meta property="og:site-name" content="Answering questions with data">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Answering questions with data - 6&nbsp; t-tests">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -170,11 +146,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -182,140 +163,156 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#check-your-confidence-in-your-mean" id="toc-check-your-confidence-in-your-mean" class="nav-link active" data-scroll-target="#check-your-confidence-in-your-mean"> <span class="header-section-number">6.1</span> Check your confidence in your mean</a></li>
-  <li><a href="#one-sample-t-test-a-new-t-test" id="toc-one-sample-t-test-a-new-t-test" class="nav-link" data-scroll-target="#one-sample-t-test-a-new-t-test"> <span class="header-section-number">6.2</span> One-sample t-test: A new t-test</a>
+  <li><a href="#check-your-confidence-in-your-mean" id="toc-check-your-confidence-in-your-mean" class="nav-link active" data-scroll-target="#check-your-confidence-in-your-mean"><span class="header-section-number">6.1</span> Check your confidence in your mean</a></li>
+  <li><a href="#one-sample-t-test-a-new-t-test" id="toc-one-sample-t-test-a-new-t-test" class="nav-link" data-scroll-target="#one-sample-t-test-a-new-t-test"><span class="header-section-number">6.2</span> One-sample t-test: A new t-test</a>
   <ul class="collapse">
-  <li><a href="#formulas-for-one-sample-t-test" id="toc-formulas-for-one-sample-t-test" class="nav-link" data-scroll-target="#formulas-for-one-sample-t-test"> <span class="header-section-number">6.2.1</span> Formulas for one-sample t-test</a></li>
-  <li><a href="#what-does-t-represent" id="toc-what-does-t-represent" class="nav-link" data-scroll-target="#what-does-t-represent"> <span class="header-section-number">6.2.2</span> What does t represent?</a></li>
-  <li><a href="#calculating-t-from-data" id="toc-calculating-t-from-data" class="nav-link" data-scroll-target="#calculating-t-from-data"> <span class="header-section-number">6.2.3</span> Calculating t from data</a></li>
-  <li><a href="#how-does-t-behave" id="toc-how-does-t-behave" class="nav-link" data-scroll-target="#how-does-t-behave"> <span class="header-section-number">6.2.4</span> How does t behave?</a></li>
-  <li><a href="#making-a-decision" id="toc-making-a-decision" class="nav-link" data-scroll-target="#making-a-decision"> <span class="header-section-number">6.2.5</span> Making a decision</a></li>
+  <li><a href="#formulas-for-one-sample-t-test" id="toc-formulas-for-one-sample-t-test" class="nav-link" data-scroll-target="#formulas-for-one-sample-t-test"><span class="header-section-number">6.2.1</span> Formulas for one-sample t-test</a></li>
+  <li><a href="#what-does-t-represent" id="toc-what-does-t-represent" class="nav-link" data-scroll-target="#what-does-t-represent"><span class="header-section-number">6.2.2</span> What does t represent?</a></li>
+  <li><a href="#calculating-t-from-data" id="toc-calculating-t-from-data" class="nav-link" data-scroll-target="#calculating-t-from-data"><span class="header-section-number">6.2.3</span> Calculating t from data</a></li>
+  <li><a href="#how-does-t-behave" id="toc-how-does-t-behave" class="nav-link" data-scroll-target="#how-does-t-behave"><span class="header-section-number">6.2.4</span> How does t behave?</a></li>
+  <li><a href="#making-a-decision" id="toc-making-a-decision" class="nav-link" data-scroll-target="#making-a-decision"><span class="header-section-number">6.2.5</span> Making a decision</a></li>
   </ul></li>
-  <li><a href="#paired-samples-t-test" id="toc-paired-samples-t-test" class="nav-link" data-scroll-target="#paired-samples-t-test"> <span class="header-section-number">6.3</span> Paired-samples t-test</a>
+  <li><a href="#paired-samples-t-test" id="toc-paired-samples-t-test" class="nav-link" data-scroll-target="#paired-samples-t-test"><span class="header-section-number">6.3</span> Paired-samples t-test</a>
   <ul class="collapse">
-  <li><a href="#mehr-song-and-spelke-2016" id="toc-mehr-song-and-spelke-2016" class="nav-link" data-scroll-target="#mehr-song-and-spelke-2016"> <span class="header-section-number">6.3.1</span> Mehr, Song, and Spelke (2016)</a></li>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"> <span class="header-section-number">6.3.2</span> The data</a></li>
-  <li><a href="#the-difference-scores" id="toc-the-difference-scores" class="nav-link" data-scroll-target="#the-difference-scores"> <span class="header-section-number">6.3.3</span> The difference scores</a></li>
-  <li><a href="#the-mean-difference" id="toc-the-mean-difference" class="nav-link" data-scroll-target="#the-mean-difference"> <span class="header-section-number">6.3.4</span> The mean difference</a></li>
-  <li><a href="#calculate-t" id="toc-calculate-t" class="nav-link" data-scroll-target="#calculate-t"> <span class="header-section-number">6.3.5</span> Calculate t</a></li>
-  <li><a href="#interpreting-ts" id="toc-interpreting-ts" class="nav-link" data-scroll-target="#interpreting-ts"> <span class="header-section-number">6.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</a></li>
-  <li><a href="#getting-the-p-values-for-t-values" id="toc-getting-the-p-values-for-t-values" class="nav-link" data-scroll-target="#getting-the-p-values-for-t-values"> <span class="header-section-number">6.3.7</span> Getting the p-values for <span class="math inline">\(t\)</span>-values</a></li>
-  <li><a href="#one-tailed-tests" id="toc-one-tailed-tests" class="nav-link" data-scroll-target="#one-tailed-tests"> <span class="header-section-number">6.3.8</span> One-tailed tests</a></li>
-  <li><a href="#two-tailed-tests" id="toc-two-tailed-tests" class="nav-link" data-scroll-target="#two-tailed-tests"> <span class="header-section-number">6.3.9</span> Two-tailed tests</a></li>
-  <li><a href="#one-or-two-tailed-which-one" id="toc-one-or-two-tailed-which-one" class="nav-link" data-scroll-target="#one-or-two-tailed-which-one"> <span class="header-section-number">6.3.10</span> One or two tailed, which one?</a></li>
-  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"> <span class="header-section-number">6.3.11</span> Degrees of freedom</a></li>
+  <li><a href="#mehr-song-and-spelke-2016" id="toc-mehr-song-and-spelke-2016" class="nav-link" data-scroll-target="#mehr-song-and-spelke-2016"><span class="header-section-number">6.3.1</span> Mehr, Song, and Spelke (2016)</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data"><span class="header-section-number">6.3.2</span> The data</a></li>
+  <li><a href="#the-difference-scores" id="toc-the-difference-scores" class="nav-link" data-scroll-target="#the-difference-scores"><span class="header-section-number">6.3.3</span> The difference scores</a></li>
+  <li><a href="#the-mean-difference" id="toc-the-mean-difference" class="nav-link" data-scroll-target="#the-mean-difference"><span class="header-section-number">6.3.4</span> The mean difference</a></li>
+  <li><a href="#calculate-t" id="toc-calculate-t" class="nav-link" data-scroll-target="#calculate-t"><span class="header-section-number">6.3.5</span> Calculate t</a></li>
+  <li><a href="#interpreting-ts" id="toc-interpreting-ts" class="nav-link" data-scroll-target="#interpreting-ts"><span class="header-section-number">6.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</a></li>
+  <li><a href="#getting-the-p-values-for-t-values" id="toc-getting-the-p-values-for-t-values" class="nav-link" data-scroll-target="#getting-the-p-values-for-t-values"><span class="header-section-number">6.3.7</span> Getting the p-values for <span class="math inline">\(t\)</span>-values</a></li>
+  <li><a href="#one-tailed-tests" id="toc-one-tailed-tests" class="nav-link" data-scroll-target="#one-tailed-tests"><span class="header-section-number">6.3.8</span> One-tailed tests</a></li>
+  <li><a href="#two-tailed-tests" id="toc-two-tailed-tests" class="nav-link" data-scroll-target="#two-tailed-tests"><span class="header-section-number">6.3.9</span> Two-tailed tests</a></li>
+  <li><a href="#one-or-two-tailed-which-one" id="toc-one-or-two-tailed-which-one" class="nav-link" data-scroll-target="#one-or-two-tailed-which-one"><span class="header-section-number">6.3.10</span> One or two tailed, which one?</a></li>
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"><span class="header-section-number">6.3.11</span> Degrees of freedom</a></li>
   </ul></li>
-  <li><a href="#the-paired-samples-t-test-strikes-back" id="toc-the-paired-samples-t-test-strikes-back" class="nav-link" data-scroll-target="#the-paired-samples-t-test-strikes-back"> <span class="header-section-number">6.4</span> The paired samples t-test strikes back</a></li>
-  <li><a href="#independent-samples-t-test-the-return-of-the-t-test" id="toc-independent-samples-t-test-the-return-of-the-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test-the-return-of-the-t-test"> <span class="header-section-number">6.5</span> Independent samples t-test: The return of the t-test?</a></li>
-  <li><a href="#simulating-data-for-t-tests" id="toc-simulating-data-for-t-tests" class="nav-link" data-scroll-target="#simulating-data-for-t-tests"> <span class="header-section-number">6.6</span> Simulating data for t-tests</a>
+  <li><a href="#the-paired-samples-t-test-strikes-back" id="toc-the-paired-samples-t-test-strikes-back" class="nav-link" data-scroll-target="#the-paired-samples-t-test-strikes-back"><span class="header-section-number">6.4</span> The paired samples t-test strikes back</a></li>
+  <li><a href="#independent-samples-t-test-the-return-of-the-t-test" id="toc-independent-samples-t-test-the-return-of-the-t-test" class="nav-link" data-scroll-target="#independent-samples-t-test-the-return-of-the-t-test"><span class="header-section-number">6.5</span> Independent samples t-test: The return of the t-test?</a></li>
+  <li><a href="#simulating-data-for-t-tests" id="toc-simulating-data-for-t-tests" class="nav-link" data-scroll-target="#simulating-data-for-t-tests"><span class="header-section-number">6.6</span> Simulating data for t-tests</a>
   <ul class="collapse">
-  <li><a href="#simulating-a-one-sample-t-test" id="toc-simulating-a-one-sample-t-test" class="nav-link" data-scroll-target="#simulating-a-one-sample-t-test"> <span class="header-section-number">6.6.1</span> Simulating a one-sample t-test</a></li>
-  <li><a href="#simulating-a-paired-samples-t-test" id="toc-simulating-a-paired-samples-t-test" class="nav-link" data-scroll-target="#simulating-a-paired-samples-t-test"> <span class="header-section-number">6.6.2</span> Simulating a paired samples t-test</a></li>
-  <li><a href="#simulating-an-independent-samples-t.test" id="toc-simulating-an-independent-samples-t.test" class="nav-link" data-scroll-target="#simulating-an-independent-samples-t.test"> <span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</a></li>
+  <li><a href="#simulating-a-one-sample-t-test" id="toc-simulating-a-one-sample-t-test" class="nav-link" data-scroll-target="#simulating-a-one-sample-t-test"><span class="header-section-number">6.6.1</span> Simulating a one-sample t-test</a></li>
+  <li><a href="#simulating-a-paired-samples-t-test" id="toc-simulating-a-paired-samples-t-test" class="nav-link" data-scroll-target="#simulating-a-paired-samples-t-test"><span class="header-section-number">6.6.2</span> Simulating a paired samples t-test</a></li>
+  <li><a href="#simulating-an-independent-samples-t.test" id="toc-simulating-an-independent-samples-t.test" class="nav-link" data-scroll-target="#simulating-an-independent-samples-t.test"><span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</a></li>
   </ul></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"> <span class="header-section-number">6.7</span> Videos</a>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">6.7</span> Videos</a>
   <ul class="collapse">
-  <li><a href="#one-or-two-tailed-tests" id="toc-one-or-two-tailed-tests" class="nav-link" data-scroll-target="#one-or-two-tailed-tests"> <span class="header-section-number">6.7.1</span> One or Two tailed tests</a></li>
+  <li><a href="#one-or-two-tailed-tests" id="toc-one-or-two-tailed-tests" class="nav-link" data-scroll-target="#one-or-two-tailed-tests"><span class="header-section-number">6.7.1</span> One or Two tailed tests</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/06-ttests.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -325,7 +322,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></h1>
 </div>
 
 
@@ -339,15 +336,13 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
 
 </header>
 
-<div class="cell" data-hash="cache/unnamed-chunk-2_29d9b2b44cf1f087e24811fe2afd907e">
-
-</div>
 <p>Back in the day, William Sealy Gosset got a job working for Guinness Breweries. They make the famous Irish stout called Guinness. What happens next went something like this (total fabrication, but mostly on point).</p>
 <p>Guinness wanted all of their beers to be the best beers. No mistakes, no bad beers. They wanted to improve their quality control so that when Guinness was poured anywhere in the world, it would always comes out fantastic: 5 stars out of 5 every time, the best.</p>
 <p>Guinness had some beer tasters, who were super-experts. Every time they tasted a Guinness from the factory that wasn’t 5 out of 5, they knew right away.</p>
@@ -358,7 +353,7 @@ ga('send', {
 <li><p>How many samples do I need to take to know the whole population is 5 out of 5?</p></li>
 <li><p>What’s the fewest amount of samples I need to take to know the above, that would mean Guinness could test fewer beers for quality, sell more beers for profit, and make the product testing time shorter.</p></li>
 </ol>
-<p>Gosset solved those questions, and he invented something called the <em>Student’s t-test</em>. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym <span class="citation" data-cites="Student1908">(<a href="references.html#ref-Student1908" role="doc-biblioref">Student 1908</a>)</span>. He called himself Student, hence Student’s t-test. Now you know the rest of the story.</p>
+<p>Gosset solved those questions, and he invented something called the <em>Student’s t-test</em>. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym <span class="citation" data-cites="Student1908">(<a href="#ref-Student1908" role="doc-biblioref">Student 1908</a>)</span>. He called himself Student, hence Student’s t-test. Now you know the rest of the story.</p>
 <p>It turns out this was a very nice thing for Gosset to have done. t-tests are used all the time, and they are useful, that’s why they are used. In this chapter we learn how they work.</p>
 <p>You’ll be surprised to learn that what we’ve already talked about, (the Crump Test, and the Randomization Test), are both very very similar to the t-test. So, in general, you have already been thinking about the things you need to think about to understand t-tests. You’re probably wondering what is this <span class="math inline">\(t\)</span>, what does <span class="math inline">\(t\)</span> mean? We will tell you. Before we tell what it means, we first tell you about one more idea.</p>
 <section id="check-your-confidence-in-your-mean" class="level2" data-number="6.1">
@@ -405,12 +400,12 @@ ga('send', {
 <section id="what-does-t-represent" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="what-does-t-represent"><span class="header-section-number">6.2.2</span> What does t represent?</h3>
 <p><span class="math inline">\(t\)</span> gives us a measure of confidence, just like our previous ratio for dividing the mean by a standard deviations. The only difference with <span class="math inline">\(t\)</span>, is that we divide by the standard error of mean (remember, this is also a standard deviation, it is the standard deviation of the sampling distribution of the mean)</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -427,24 +422,24 @@ Note
 <p>So, that is some intuitions about what the kinds of values t can take. <span class="math inline">\(t\)</span> can be positive or negative, and big or small.</p>
 <p>Let’s do one more thing to build our intuitions about what <span class="math inline">\(t\)</span> can look like. How about we sample some numbers and then measure the sample mean <strong>and</strong> the standard error of the mean, and then plot those two things against each each. This will show us how a sample mean typically varies with respect to the standard error of the mean.</p>
 <p>In <a href="#fig-6sampleMSEM">Figure&nbsp;<span>6.1</span></a>, I pulled 1,000 samples of <span class="math inline">\(N = 10\)</span> from a normal distribution (mean = 0, sd = 1). Each time I measured the mean and standard error of the sample. That gave two descriptive statistics for each sample, letting us plot each sample as dot in a scatter plot.</p>
-<div class="cell" data-hash="cache/fig-6sampleMSEM_057a53ba3f75172b70a29e5c5fbc9d76">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6sampleMSEM_f52bff7ec961e5e911f550232577d5a6">
 <div class="cell-output-display">
 <div id="fig-6sampleMSEM" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6sampleMSEM-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.1: A scatter plot with sample mean on the x-axis, and standard error of the mean on the y-axis</figcaption><p></p>
+<p><img src="06-ttests_files/figure-html/fig-6sampleMSEM-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: A scatter plot with sample mean on the x-axis, and standard error of the mean on the y-axis</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>What we get is a cloud of dots. You might notice the cloud has a circular quality. There’s more dots in the middle, and fewer dots as they radiate out from the middle. The dot cloud shows us the general range of the sample mean, for example most of the dots are in between -1 and 1. Similarly, the range for the sample standard error is roughly between .2 and .5. Remember, each dot represents one sample.</p>
 <p>We can look at the same data a different way. For example, rather than using a scatter plot, we can divide the mean for each dot by the standard error for each dot. <a href="#fig-6thisexample">Figure&nbsp;<span>6.2</span></a> shows the result in a histogram.</p>
-<div class="cell" data-hash="cache/fig-6thisexample_b493358d2734d5c0028500ee7f97bea3">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6thisexample_0d2e192dba1c7d632f401ce4711feed0">
 <div class="cell-output-display">
 <div id="fig-6thisexample" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.2: A histogram of the sample means divided by the sample standard errors, this is a t-distribution.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.2: A histogram of the sample means divided by the sample standard errors, this is a t-distribution.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -455,129 +450,128 @@ Note
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="calculating-t-from-data"><span class="header-section-number">6.2.3</span> Calculating t from data</h3>
 <p>Let’s briefly calculate a t-value from a small sample. Let’s say we had 10 students do a true/false quiz with 5 questions on it. There’s a 50% chance of getting each answer correct.</p>
 <p>Every student completes the 5 questions, we grade them, and then we find their performance (mean percent correct). What we want to know is whether the students were guessing. If they were all guessing, then the sample mean should be about 50%, it shouldn’t be different from chance, which is 50%. Let’s look at <a href="#tbl-tsmall">Table&nbsp;<span>6.1</span></a>.</p>
-<div class="cell" data-hash="cache/tbl-tsmall_e5888ddfec66d5066cd182049e32bcd7">
+<div class="cell" data-hash="06-ttests_cache/html/tbl-tsmall_b6b9e2a9e9d560436e3b6b79694f8c38">
 <div class="cell-output-display">
 <div id="tbl-tsmall" class="anchored">
-
-<table><caption>Table 6.1:  Calculating the t-value for a one-sample test. </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> students </th>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> mean </th>
-   <th style="text-align:left;"> Difference_from_Mean </th>
-   <th style="text-align:left;"> Squared_Deviations </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;6.1: Calculating the t-value for a one-sample test.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">students</th>
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">mean</th>
+<th style="text-align: left;">Difference_from_Mean</th>
+<th style="text-align: left;">Squared_Deviations</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 50 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> -11 </td>
-   <td style="text-align:left;"> 121 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 70 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 81 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 60 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> -1 </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 40 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> -21 </td>
-   <td style="text-align:left;"> 441 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 80 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> 19 </td>
-   <td style="text-align:left;"> 361 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 30 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> -31 </td>
-   <td style="text-align:left;"> 961 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 90 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> 29 </td>
-   <td style="text-align:left;"> 841 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> 60 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> -1 </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 70 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 81 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10 </td>
-   <td style="text-align:left;"> 60 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> -1 </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 610 </td>
-   <td style="text-align:left;"> 610 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 2890 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 289 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> sd </td>
-   <td style="text-align:left;"> 17.92 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> SEM </td>
-   <td style="text-align:left;"> 5.67 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> t </td>
-   <td style="text-align:left;"> 1.94003527336861 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">-11</td>
+<td style="text-align: left;">121</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">81</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">-21</td>
+<td style="text-align: left;">441</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">361</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">-31</td>
+<td style="text-align: left;">961</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">841</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">610</td>
+<td style="text-align: left;">610</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">2890</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">289</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">17.92</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">SEM</td>
+<td style="text-align: left;">5.67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">t</td>
+<td style="text-align: left;">1.94003527336861</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </div>
@@ -590,7 +584,7 @@ Note
 <p><span class="math inline">\(t\)</span> is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.</p>
 <p><span class="math inline">\(\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}} = \frac{\bar{X}-u}{SEM} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>And, that is you how calculate <span class="math inline">\(t\)</span>, by hand. It’s a pain. I was annoyed doing it this way. In the lab, you learn how to calculate <span class="math inline">\(t\)</span> using software, so it will just spit out <span class="math inline">\(t\)</span>. For example in R, all you have to do is this:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-6_4cb4944841d69f06e60200a9ac941b0b">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-6_1ec3e1c0bddfaeafe683523fd4e25fa1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(scores, <span class="at">mu=</span><span class="dv">50</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  One Sample t-test</span></span>
@@ -610,12 +604,12 @@ Note
 <p>If <span class="math inline">\(t\)</span> is just a number that we can compute from our sample (it is), what can we do with it? How can we use <span class="math inline">\(t\)</span> for statistical inference?</p>
 <p>Remember back to the chapter on sampling and distributions, that’s where we discussed the sampling distribution of the sample mean. Remember, we made a lot of samples, then computed the mean for each sample, then we plotted a histogram of the sample means. Later, in that same section, we mentioned that we could generate sampling distributions for any statistic. For each sample, we could compute the mean, the standard deviation, the standard error, and now even <span class="math inline">\(t\)</span>, if we wanted to. We could generate 10,000 samples, and draw four histograms, one for each sampling distribution for each statistic.</p>
 <p>This is exactly what I did, and the results are shown in the four panels of <a href="#fig-6sampdists">Figure&nbsp;<span>6.3</span></a> below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let’s look at the sampling distributions for each of the statistics. <span class="math inline">\(t\)</span> was computed assuming with the population mean assumed to be 0.</p>
-<div class="cell" data-hash="cache/fig-6sampdists_61649f2ac8a4760043a67938c73cdabb">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6sampdists_f6c731785af0304f67d93f9eec971d51">
 <div class="cell-output-display">
 <div id="fig-6sampdists" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.3: Sampling distributions for the mean, standard deviation, standard error of the mean, and <span class="math inline">\(t\)</span>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.3: Sampling distributions for the mean, standard deviation, standard error of the mean, and <span class="math inline">\(t\)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -635,12 +629,12 @@ Note
 </ol>
 <p>We’ll formalize this in a second. I just want you to know that what you will be doing is something that you have already done before. For example, in the Crump test and the Randomization test we focused on the distribution of mean differences. We could do that again here, but instead, we will focus on the distribution of <span class="math inline">\(t\)</span> values. We then apply the same kinds of decision rules to the <span class="math inline">\(t\)</span> distribution, as we did for the other distributions. Below you will see a graph you have already seen, except this time it is a distribution of <span class="math inline">\(t\)</span>s, not mean differences:</p>
 <p>Remember, if we obtained a single <span class="math inline">\(t\)</span> from one sample we collected, we could consult the chance window in <a href="#fig-6tdecision">Figure&nbsp;<span>6.4</span></a> below to find out whether the <span class="math inline">\(t\)</span> we obtained from the sample was likely or unlikely to occur by chance.</p>
-<div class="cell" data-hash="cache/fig-6tdecision_73a0838cdbc11f3a632d4e717dd9fed3">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6tdecision_759b102b97b8808c008f0784b095a489">
 <div class="cell-output-display">
 <div id="fig-6tdecision" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.4: Applying decision criteria to the <span class="math inline">\(t\)</span>-distribution. Histogram of <span class="math inline">\(t\)</span>s from samples (n=20) drawn from the same normal distribution (u=0, sd=1)</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.4: Applying decision criteria to the <span class="math inline">\(t\)</span>-distribution. Histogram of <span class="math inline">\(t\)</span>s from samples (n=20) drawn from the same normal distribution (u=0, sd=1)</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -660,7 +654,7 @@ Note
 <p>So, I might measure somebody doing something in condition A, and measure the same person doing something in Condition B, and then I see that same person does different things in the two conditions. I <strong>repeatedly measure</strong> the same person in both conditions. I am interested in whether the experimental manipulation changes something about how people perform the task in question.</p>
 <section id="mehr-song-and-spelke-2016" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="mehr-song-and-spelke-2016"><span class="header-section-number">6.3.1</span> Mehr, Song, and Spelke (2016)</h3>
-<p>We will introduce the paired-samples t-test with an example using real data, from a real study. <span class="citation" data-cites="mehr20165">Mehr, Song, and Spelke (<a href="references.html#ref-mehr20165" role="doc-biblioref">2016</a>)</span> were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.</p>
+<p>We will introduce the paired-samples t-test with an example using real data, from a real study. <span class="citation" data-cites="mehr20165">Mehr, Song, and Spelke (<a href="#ref-mehr20165" role="doc-biblioref">2016</a>)</span> were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.</p>
 <p>First, parents were trained to sing a song to their infants. After many days of singing this song to the infants, a parent came into the lab with their infant. In the first session, parents sat with their infants on their knees, so the infant could watch two video presentations. There were two videos. Each video involved two unfamiliar new people the infant had never seen before. Each new person in the video (the singers) sang one song to the infant. One singer sang the “familiar” song the infant had learned from their parents. The other singer sang an “unfamiliar” song the infant had not hear before.</p>
 <p>There were two really important measurement phases: the baseline phase, and the test phase.</p>
 <p>The baseline phase occurred before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).</p>
@@ -677,46 +671,44 @@ Note
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="the-data"><span class="header-section-number">6.3.2</span> The data</h3>
 <p>Let’s take a look at the data for the first 5 infants in the study. This will help us better understand some properties of the data before we analyze it. We will see that the data is structured in a particular way that we can take advantage of with a paired samples t-test. Note, we look at the first 5 infants to show how the computations work. The results of the paired-samples t-test change when we use all of the data from the study.</p>
 <p>Here is a table of the data:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-9_19538f361756b5154576d6bb9c5e84e4">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-9_e7f2d43e08b11e7cd54340218ead07b0">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> infant </th>
-   <th style="text-align:right;"> Baseline </th>
-   <th style="text-align:right;"> Test </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">infant</th>
+<th style="text-align: right;">Baseline</th>
+<th style="text-align: right;">Test</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.44 </td>
-   <td style="text-align:right;"> 0.60 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0.41 </td>
-   <td style="text-align:right;"> 0.68 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0.75 </td>
-   <td style="text-align:right;"> 0.72 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0.44 </td>
-   <td style="text-align:right;"> 0.28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0.47 </td>
-   <td style="text-align:right;"> 0.50 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.72</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">0.50</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>The table shows proportion looking times toward the singer of the familiar song during the Baseline and Test phases. Notice there are five different infants, (1 to 5). Each infant is measured twice, once during the Baseline phase, and once during the Test phase. To repeat from before, this is a repeated-measures design, because the infants are measured repeatedly (twice in this case). Or, this kind of design is also called a <strong>paired-samples</strong> design. Why? because each participant comes with a pair of samples (two samples), one for each level of the design.</p>
@@ -731,52 +723,50 @@ Note
 <li>Baseline phase score - Test Phase score</li>
 </ol>
 <p>Let’s use the first formula. Why? Because it will give us positive differences when the test phase score is higher than the baseline phase score. This makes a positive score meaningful with respect to the study design, we know (because we defined it to be this way), that positive scores will refer to longer proportion looking times (to singer of familiar song) during the test phase compared to the baseline phase.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-10_1f20aae82ac9988a89ec991aed9dbe1c">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-10_745705b0bbbf8419eb16be94f0e8a66c">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> infant </th>
-   <th style="text-align:right;"> Baseline </th>
-   <th style="text-align:right;"> Test </th>
-   <th style="text-align:right;"> differences </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">infant</th>
+<th style="text-align: right;">Baseline</th>
+<th style="text-align: right;">Test</th>
+<th style="text-align: right;">differences</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.44 </td>
-   <td style="text-align:right;"> 0.60 </td>
-   <td style="text-align:right;"> 0.16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0.41 </td>
-   <td style="text-align:right;"> 0.68 </td>
-   <td style="text-align:right;"> 0.27 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0.75 </td>
-   <td style="text-align:right;"> 0.72 </td>
-   <td style="text-align:right;"> -0.03 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0.44 </td>
-   <td style="text-align:right;"> 0.28 </td>
-   <td style="text-align:right;"> -0.16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0.47 </td>
-   <td style="text-align:right;"> 0.50 </td>
-   <td style="text-align:right;"> 0.03 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.72</td>
+<td style="text-align: right;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">-0.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.03</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>There we have it, the difference scores. The first thing we can do here is look at the difference scores, and ask how many infants showed the effect of interest. Specifically, how many infants showed a positive difference score. We can see that three of five infants showed a positive difference (they looked more at the singer of the familiar song during the test than baseline phase), and two the infants showed the opposite effect (negative difference, they looked more at the singer of the familiar song during baseline than test).</p>
@@ -784,64 +774,62 @@ Note
 <section id="the-mean-difference" class="level3" data-number="6.3.4">
 <h3 data-number="6.3.4" class="anchored" data-anchor-id="the-mean-difference"><span class="header-section-number">6.3.4</span> The mean difference</h3>
 <p>As we have been discussing, the effect of interest in this study is the mean difference between the baseline and test phase proportion looking times. We can calculate the <strong>mean difference</strong>, by finding the <strong>mean of the difference scores</strong>. Let’s do that, in fact, for fun let’s calculate the mean of the baseline scores, the test scores, and the difference scores.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-11_be6134d74f13c64999c37ca7e4e5ad99">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-11_713f1c78fa341d4509b52daa1ae30683">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> infant </th>
-   <th style="text-align:left;"> Baseline </th>
-   <th style="text-align:left;"> Test </th>
-   <th style="text-align:left;"> differences </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">infant</th>
+<th style="text-align: left;">Baseline</th>
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">differences</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 0.44 </td>
-   <td style="text-align:left;"> 0.6 </td>
-   <td style="text-align:left;"> 0.16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 0.41 </td>
-   <td style="text-align:left;"> 0.68 </td>
-   <td style="text-align:left;"> 0.27 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 0.75 </td>
-   <td style="text-align:left;"> 0.72 </td>
-   <td style="text-align:left;"> -0.03 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 0.44 </td>
-   <td style="text-align:left;"> 0.28 </td>
-   <td style="text-align:left;"> -0.16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 0.47 </td>
-   <td style="text-align:left;"> 0.5 </td>
-   <td style="text-align:left;"> 0.03 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 2.51 </td>
-   <td style="text-align:left;"> 2.78 </td>
-   <td style="text-align:left;"> 0.27 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 0.502 </td>
-   <td style="text-align:left;"> 0.556 </td>
-   <td style="text-align:left;"> 0.054 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">0.16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">0.68</td>
+<td style="text-align: left;">0.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0.75</td>
+<td style="text-align: left;">0.72</td>
+<td style="text-align: left;">-0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.28</td>
+<td style="text-align: left;">-0.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0.47</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.03</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">2.51</td>
+<td style="text-align: left;">2.78</td>
+<td style="text-align: left;">0.27</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">0.502</td>
+<td style="text-align: left;">0.556</td>
+<td style="text-align: left;">0.054</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>We can see there was a positive mean difference of 0.054, between the test and baseline phases.</p>
@@ -853,108 +841,114 @@ Note
 <p>OK, so how do we calculate <span class="math inline">\(t\)</span> for a paired-samples <span class="math inline">\(t\)</span>-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample <span class="math inline">\(t\)</span>-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample <span class="math inline">\(t\)</span>-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distribution with mean difference = 0. This is a special distribution we refer to as the <strong>null distribution</strong>. It is the distribution no differences. Of course, this <strong>null distribution</strong> can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.</p>
 <p>We calculate <span class="math inline">\(t\)</span> in a moment. Let’s now consider again why we want to calculate <span class="math inline">\(t\)</span>? Why don’t we just stick with the mean difference we already have?</p>
 <p>Remember, the whole concept behind <span class="math inline">\(t\)</span>, is that it gives an indication of how confident we should be in our mean. Remember, <span class="math inline">\(t\)</span> involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denominator. The resulting <span class="math inline">\(t\)</span> value is small when the mean difference is small, or when the variation is large. So small <span class="math inline">\(t\)</span>-values tell us that we shouldn’t be that confident in the estimate of our mean difference. Large <span class="math inline">\(t\)</span>-values occur when the mean difference is large and/or when the measure of variation is small. So, large <span class="math inline">\(t\)</span>-values tell us that we can be more confident in the estimate of our mean difference. Let’s find <span class="math inline">\(t\)</span> for the mean difference scores. We use the same formulas as we did last time:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-12_bb4b2f75ccfe9eeea128df9e267524a8">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-12_b38ddbf997bfe5140c57b814a6a5a145">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> infant </th>
-   <th style="text-align:left;"> Baseline </th>
-   <th style="text-align:left;"> Test </th>
-   <th style="text-align:left;"> differences </th>
-   <th style="text-align:left;"> diff_from_mean </th>
-   <th style="text-align:left;"> Squared_differences </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">infant</th>
+<th style="text-align: left;">Baseline</th>
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">differences</th>
+<th style="text-align: left;">diff_from_mean</th>
+<th style="text-align: left;">Squared_differences</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 0.44 </td>
-   <td style="text-align:left;"> 0.6 </td>
-   <td style="text-align:left;"> 0.16 </td>
-   <td style="text-align:left;"> 0.106 </td>
-   <td style="text-align:left;"> 0.011236 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 0.41 </td>
-   <td style="text-align:left;"> 0.68 </td>
-   <td style="text-align:left;"> 0.27 </td>
-   <td style="text-align:left;"> 0.216 </td>
-   <td style="text-align:left;"> 0.046656 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 0.75 </td>
-   <td style="text-align:left;"> 0.72 </td>
-   <td style="text-align:left;"> -0.03 </td>
-   <td style="text-align:left;"> -0.084 </td>
-   <td style="text-align:left;"> 0.00705600000000001 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 0.44 </td>
-   <td style="text-align:left;"> 0.28 </td>
-   <td style="text-align:left;"> -0.16 </td>
-   <td style="text-align:left;"> -0.214 </td>
-   <td style="text-align:left;"> 0.045796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 0.47 </td>
-   <td style="text-align:left;"> 0.5 </td>
-   <td style="text-align:left;"> 0.03 </td>
-   <td style="text-align:left;"> -0.024 </td>
-   <td style="text-align:left;"> 0.000575999999999999 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 2.51 </td>
-   <td style="text-align:left;"> 2.78 </td>
-   <td style="text-align:left;"> 0.27 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 0.11132 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 0.502 </td>
-   <td style="text-align:left;"> 0.556 </td>
-   <td style="text-align:left;"> 0.054 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 0.022264 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> sd </td>
-   <td style="text-align:left;"> 0.167 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> SEM </td>
-   <td style="text-align:left;"> 0.075 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> t </td>
-   <td style="text-align:left;"> 0.72 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">0.16</td>
+<td style="text-align: left;">0.106</td>
+<td style="text-align: left;">0.011236</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">0.68</td>
+<td style="text-align: left;">0.27</td>
+<td style="text-align: left;">0.216</td>
+<td style="text-align: left;">0.046656</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0.75</td>
+<td style="text-align: left;">0.72</td>
+<td style="text-align: left;">-0.03</td>
+<td style="text-align: left;">-0.084</td>
+<td style="text-align: left;">0.00705600000000001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.28</td>
+<td style="text-align: left;">-0.16</td>
+<td style="text-align: left;">-0.214</td>
+<td style="text-align: left;">0.045796</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0.47</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.03</td>
+<td style="text-align: left;">-0.024</td>
+<td style="text-align: left;">0.000575999999999999</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">2.51</td>
+<td style="text-align: left;">2.78</td>
+<td style="text-align: left;">0.27</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.11132</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">0.502</td>
+<td style="text-align: left;">0.556</td>
+<td style="text-align: left;">0.054</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.022264</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">0.167</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">SEM</td>
+<td style="text-align: left;">0.075</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">t</td>
+<td style="text-align: left;">0.72</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>If we did this test using R, we would obtain almost the same numbers (there is a little bit of rounding in the table).</p>
-<div class="cell" data-hash="cache/unnamed-chunk-13_489f83f8c13938b9a63e95331789377c">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-13_80d531ce38b70d8576a0bb41cd8b8964">
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
 #&gt; 
@@ -973,12 +967,12 @@ Note
 <section id="interpreting-ts" class="level3" data-number="6.3.6">
 <h3 data-number="6.3.6" class="anchored" data-anchor-id="interpreting-ts"><span class="header-section-number">6.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</h3>
 <p>Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of <span class="math inline">\(t\)</span>-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like in <a href="#fig-6tnull">Figure&nbsp;<span>6.5</span></a>.</p>
-<div class="cell" data-hash="cache/fig-6tnull_189abbf2ff0a1ce817add5a1510c5e99">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6tnull_c50ccd96b3a1869938c787c2e6b58ceb">
 <div class="cell-output-display">
 <div id="fig-6tnull" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.5: A distribution of <span class="math inline">\(t\)</span>-values that can occur by chance alone, when there is no difference between the sample and a population</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.5: A distribution of <span class="math inline">\(t\)</span>-values that can occur by chance alone, when there is no difference between the sample and a population</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -992,12 +986,12 @@ Note
 </ol>
 <p>We can answer all of those questions just by looking at our t-distribution, and dividing it into two equal regions, the left side (containing 50% of the <span class="math inline">\(t\)</span> values), and the right side containing 50% of the <span class="math inline">\(t\)</span>-values).</p>
 <p>What if we wanted to take a more fine-grained approach, let’s say we were interested in regions of 10%. What kinds of <span class="math inline">\(t\)</span>s occur 10% of the time. We would apply lines like the following. Notice, the likelihood of bigger numbers (positive or negative) gets smaller, so we have to increase the width of the bars for each of the intervals between the bars to contain 10% of the <span class="math inline">\(t\)</span>-values, it looks like <a href="#fig-6percentregions">Figure&nbsp;<span>6.6</span></a>.</p>
-<div class="cell" data-hash="cache/fig-6percentregions_d342b3440f4ab4d9df8b141182ab3c30">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6percentregions_67811ba8a73e8d45f95eee2c42c2df25">
 <div class="cell-output-display">
 <div id="fig-6percentregions" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.6: Splitting the t distribution up into regions each containing 10% of the <span class="math inline">\(t\)</span>-values. The width between the bars narrows as they approach the center of the distribution, where there are more <span class="math inline">\(t\)</span>-values.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.6: Splitting the t distribution up into regions each containing 10% of the <span class="math inline">\(t\)</span>-values. The width between the bars narrows as they approach the center of the distribution, where there are more <span class="math inline">\(t\)</span>-values.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1022,12 +1016,12 @@ Note
 <h3 data-number="6.3.8" class="anchored" data-anchor-id="one-tailed-tests"><span class="header-section-number">6.3.8</span> One-tailed tests</h3>
 <p>A <strong>one-tailed test</strong> is sometimes also called a directional test. It is called a directional test, because a researcher might have a hypothesis in mind suggesting that the difference they observe in their means is going to have a particular direction, either a positive difference, or a negative difference.</p>
 <p>Typically, a researcher would set an <strong>alpha criterion</strong>. The alpha criterion describes a line in the sand for the researcher. Often, the alpha criterion is set at <span class="math inline">\(p = .05\)</span>. What does this mean? <a href="#fig-6critT">Figure&nbsp;<span>6.7</span></a> shows the <span class="math inline">\(t\)</span>-distribution and the alpha criterion.</p>
-<div class="cell" data-hash="cache/fig-6critT_cb61540306457844abdd1a0dcf5751a8">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6critT_ed47fd598cde3d3c9c203cadd8ceb3c9">
 <div class="cell-output-display">
 <div id="fig-6critT" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.7: The critical value of t for an alpha criterion of 0.05. 5% of all ts are at this value or larger</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.7: The critical value of t for an alpha criterion of 0.05. 5% of all ts are at this value or larger</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1041,12 +1035,12 @@ Note
 <li><p><strong>p-value</strong>. The <span class="math inline">\(p\)</span>-value is the probability of obtaining the observed <span class="math inline">\(t\)</span> value or larger. Now, you could look back at our previous example, and find that the <span class="math inline">\(p\)</span>-value for <span class="math inline">\(t\)</span> (4) = .72, was <span class="math inline">\(p = .509\)</span> . HOWEVER, this p-value was not calculated for a one-directional test…(we talk about what .509 means in the next section).</p></li>
 </ol>
 <p><a href="#fig-6tonedirection">Figure&nbsp;<span>6.8</span></a> shows what the <span class="math inline">\(p\)</span>-value for <span class="math inline">\(t\)</span> (4) = .72 using a one-directional test would would look like:</p>
-<div class="cell" data-hash="cache/fig-6tonedirection_16a85a57e1380346c5125da05ab0c5f7">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6tonedirection_9e83a57e07e5e2c94dbd0aa4386012c5">
 <div class="cell-output-display">
 <div id="fig-6tonedirection" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.8: A case where the observed value of t is much less than the critical value for a one-directional t-test.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.8: A case where the observed value of t is much less than the critical value for a one-directional t-test.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1060,12 +1054,12 @@ Note
 <p>The two-tailed test, is asking a more general question about whether a difference is likely to have been produced by chance. The question is: what is probability of any difference. It is also called a <strong>non-directional</strong> test, because here we don’t care about the direction or sign of the difference (positive or negative), we just care if there is any kind of difference.</p>
 <p>The same basic things as before are involved. We define an alpha criterion (<span class="math inline">\(\alpha = 0.05\)</span>). And, we say that any observed <span class="math inline">\(t\)</span> value that has a probability of <span class="math inline">\(p\)</span> &lt;.05 (<span class="math inline">\(p\)</span> is less than .05) will be called <strong>statistically significant</strong>, and ones that are more likely (<span class="math inline">\(p\)</span> &gt;.05, <span class="math inline">\(p\)</span> is greater than .05) will be called null-results, or not statistically significant. The only difference is how we draw the alpha range. Before it was on the right side of the <span class="math inline">\(t\)</span> distribution (we were conducting a one-sided test remember, so we were only interested in one side).</p>
 <p><a href="#fig-6twotailedt">Figure&nbsp;<span>6.9</span></a> shows what the most extreme 5% of the <span class="math inline">\(t\)</span>-values are when we ignore their sign (whether they are positive or negative).</p>
-<div class="cell" data-hash="cache/fig-6twotailedt_ba549b950637cd8b392617532fbc8246">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6twotailedt_7f9b4d13cf612d1b818a6fafe35658fb">
 <div class="cell-output-display">
 <div id="fig-6twotailedt" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6twotailedt-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.9: Critical values for a two-tailed test. Each line represents the location where 2.5% of all <span class="math inline">\(t\)</span>s are larger or smaller than critical value. The total for both tails is 5%</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.9: Critical values for a two-tailed test. Each line represents the location where 2.5% of all <span class="math inline">\(t\)</span>s are larger or smaller than critical value. The total for both tails is 5%</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1099,12 +1093,12 @@ Note
 <h4 data-number="6.3.11.1" class="anchored" data-anchor-id="simulating-how-degrees-of-freedom-affects-the-t-distribution"><span class="header-section-number">6.3.11.1</span> Simulating how degrees of freedom affects the <span class="math inline">\(t\)</span> distribution</h4>
 <p>There are at least two ways to think the degrees of freedom for a <span class="math inline">\(t\)</span>-test. For example, if you want to use math to compute aspects of the <span class="math inline">\(t\)</span> distribution, then you need the degrees of freedom to plug in to the formula… If you want to see the formulas I’m talking about, scroll down on the <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="math inline">\(t\)</span>-test wikipedia page</a> and look for the probability density or cumulative distribution functions…We think that is quite scary for most people, and one reason why degrees of freedom are not well-understood.</p>
 <p>If we wanted to simulate the <span class="math inline">\(t\)</span> distribution we could more easily see what influence degrees of freedom has on the shape of the distribution. Remember, <span class="math inline">\(t\)</span> is a sample statistic, it is something we measure from the sample. So, we could simulate the process of measuring <span class="math inline">\(t\)</span> from many different samples, then plot the histogram of <span class="math inline">\(t\)</span> to show us the simulated <span class="math inline">\(t\)</span> distribution.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-6dft_13af9a44a296ecf13325100e598d21b6">
+<div class="cell" data-fig.asp="0.5" data-hash="06-ttests_cache/html/fig-6dft_a4c199f130bb00f7a532a45787c27e55">
 <div class="cell-output-display">
 <div id="fig-6dft" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.10: The width of the t distribution shrinks as sample size and degrees of freedom (from 4 to 100) increases.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.10: The width of the t distribution shrinks as sample size and degrees of freedom (from 4 to 100) increases.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1118,104 +1112,110 @@ Note
 <h2 data-number="6.4" class="anchored" data-anchor-id="the-paired-samples-t-test-strikes-back"><span class="header-section-number">6.4</span> The paired samples t-test strikes back</h2>
 <p>You must be wondering if we will ever be finished talking about paired samples t-tests… why are we doing round 2, oh no! Don’t worry, we’re just going to 1) remind you about what we were doing with the infant study, and 2) do a paired samples t-test on the entire data set and discuss.</p>
 <p>Remember, we were wondering if the infants would look longer toward the singer who sang the familiar song during the test phase compared to the baseline phase. We showed you data from 5 infants, and walked through the computations for the <span class="math inline">\(t\)</span>-test. As a reminder, it looked like this:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-20_3053c5cb998871619691b404db9fdbb4">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-20_dc7267f03723b35e245265c0b641fd17">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> infant </th>
-   <th style="text-align:left;"> Baseline </th>
-   <th style="text-align:left;"> Test </th>
-   <th style="text-align:left;"> differences </th>
-   <th style="text-align:left;"> diff_from_mean </th>
-   <th style="text-align:left;"> Squared_differences </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">infant</th>
+<th style="text-align: left;">Baseline</th>
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">differences</th>
+<th style="text-align: left;">diff_from_mean</th>
+<th style="text-align: left;">Squared_differences</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 0.44 </td>
-   <td style="text-align:left;"> 0.6 </td>
-   <td style="text-align:left;"> 0.16 </td>
-   <td style="text-align:left;"> 0.106 </td>
-   <td style="text-align:left;"> 0.011236 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 0.41 </td>
-   <td style="text-align:left;"> 0.68 </td>
-   <td style="text-align:left;"> 0.27 </td>
-   <td style="text-align:left;"> 0.216 </td>
-   <td style="text-align:left;"> 0.046656 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 0.75 </td>
-   <td style="text-align:left;"> 0.72 </td>
-   <td style="text-align:left;"> -0.03 </td>
-   <td style="text-align:left;"> -0.084 </td>
-   <td style="text-align:left;"> 0.00705600000000001 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 0.44 </td>
-   <td style="text-align:left;"> 0.28 </td>
-   <td style="text-align:left;"> -0.16 </td>
-   <td style="text-align:left;"> -0.214 </td>
-   <td style="text-align:left;"> 0.045796 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 0.47 </td>
-   <td style="text-align:left;"> 0.5 </td>
-   <td style="text-align:left;"> 0.03 </td>
-   <td style="text-align:left;"> -0.024 </td>
-   <td style="text-align:left;"> 0.000575999999999999 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 2.51 </td>
-   <td style="text-align:left;"> 2.78 </td>
-   <td style="text-align:left;"> 0.27 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 0.11132 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 0.502 </td>
-   <td style="text-align:left;"> 0.556 </td>
-   <td style="text-align:left;"> 0.054 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 0.022264 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> sd </td>
-   <td style="text-align:left;"> 0.167 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> SEM </td>
-   <td style="text-align:left;"> 0.075 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> t </td>
-   <td style="text-align:left;"> 0.72 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.6</td>
+<td style="text-align: left;">0.16</td>
+<td style="text-align: left;">0.106</td>
+<td style="text-align: left;">0.011236</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0.41</td>
+<td style="text-align: left;">0.68</td>
+<td style="text-align: left;">0.27</td>
+<td style="text-align: left;">0.216</td>
+<td style="text-align: left;">0.046656</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0.75</td>
+<td style="text-align: left;">0.72</td>
+<td style="text-align: left;">-0.03</td>
+<td style="text-align: left;">-0.084</td>
+<td style="text-align: left;">0.00705600000000001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0.44</td>
+<td style="text-align: left;">0.28</td>
+<td style="text-align: left;">-0.16</td>
+<td style="text-align: left;">-0.214</td>
+<td style="text-align: left;">0.045796</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">0.47</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.03</td>
+<td style="text-align: left;">-0.024</td>
+<td style="text-align: left;">0.000575999999999999</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">2.51</td>
+<td style="text-align: left;">2.78</td>
+<td style="text-align: left;">0.27</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.11132</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">0.502</td>
+<td style="text-align: left;">0.556</td>
+<td style="text-align: left;">0.054</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.022264</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">sd</td>
+<td style="text-align: left;">0.167</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">SEM</td>
+<td style="text-align: left;">0.075</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">t</td>
+<td style="text-align: left;">0.72</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
@@ -1232,7 +1232,7 @@ Note
 <p>Let’s write down the finding one more time: The mean difference was 0.054, <span class="math inline">\(t\)</span>(4) = .72, <span class="math inline">\(p\)</span> =.509. We can also now confirm, that the <span class="math inline">\(p\)</span>-value was from a two-tailed test. So, what does this all really mean.</p>
 <p>We can say that a <span class="math inline">\(t\)</span> value with an absolute of .72 or larger occurs 50.9% of the time. More precisely, the distribution of no differences (the null), will produce a <span class="math inline">\(t\)</span> value this large or larger 50.9% of the time. In other words, chance alone good have easily produced the <span class="math inline">\(t\)</span> value from our sample, and the mean difference we observed or .054, could easily have been a result of chance.</p>
 <p>Let’s quickly put all of the data in the <span class="math inline">\(t\)</span>-test, and re-run the test using all of the infant subjects.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-21_c1f6fa95ff64ed100751073ddc2c49f2">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-21_e1fd45ce1f987e831847ff863b141139">
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
 #&gt; 
@@ -1264,7 +1264,7 @@ Note
 <p>and, <span class="math inline">\(s_p\)</span>, which is the pooled sample standard deviation is defined as, note the $s$es in the formula are variances:</p>
 <p><span class="math inline">\(s_p = \sqrt{\frac{(n_A-1)s_A^2 + (n_B-1)s^2_B}{n_A +n_B -2}}\)</span></p>
 <p>Believe you me, that is so much more formula than I wanted to type out. Shall we do one independent <span class="math inline">\(t\)</span>-test example by hand, just to see the computations? Let’s do it…but in a slightly different way than you expect. I show the steps using R. I made some fake scores for groups A and B. Then, I followed all of the steps from the formula, but made R do each of the calculations. This shows you the needed steps by following the code. At the end, I print the <span class="math inline">\(t\)</span>-test values I computed “by hand”, and then the <span class="math inline">\(t\)</span>-test value that the R software outputs using the <span class="math inline">\(t\)</span>-test function. You should be able to get the same values for <span class="math inline">\(t\)</span>, if you were brave enough to compute <span class="math inline">\(t\)</span> by hand.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-22_fb11a7b818bd05d1d08216bedc39ab08">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-22_9cfceb62f563a908c23defa8e3bac119">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## By "hand" using R r code</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
@@ -1318,47 +1318,44 @@ Note
 <li><p>sample simulated numbers from the distribution, then conduct a <span class="math inline">\(t\)</span>-test on the simulated numbers. Save the statistics you want (such as <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s), and then see how things behave.</p></li>
 </ol>
 <p>Let’s do this a couple different times. First, let’s simulate samples with N = 30, taken from a normal (mean= 50, sd = 25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here. <a href="#fig-6nullt">Figure&nbsp;<span>6.11</span></a> is the null distribution that we are simulating.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-23_411d07c410c2a7a3c9d92020129c0673">
-
-</div>
-<div class="cell" data-hash="cache/fig-6nullt_57fb68339002167348a737d42f97873f">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6nullt_ed583ab2a715715a5eb0309718f4b85b">
 <div class="cell-output-display">
 <div id="fig-6nullt" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.11: The distribution of <span class="math inline">\(t\)</span>-values under the null. These are the <span class="math inline">\(t\)</span> values that are produced by chance alone.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.11: The distribution of <span class="math inline">\(t\)</span>-values under the null. These are the <span class="math inline">\(t\)</span> values that are produced by chance alone.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="cache/fig-6flatp_5886dc71ea38822ee7aa1978dfb1a5e7">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6flatp_7103cd910ac9f80c53bb686f8228cf46">
 <div class="cell-output-display">
 <div id="fig-6flatp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.12: The distribution of <span class="math inline">\(p\)</span>-values that are observed is flat under the null.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.12: The distribution of <span class="math inline">\(p\)</span>-values that are observed is flat under the null.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Neat. We see both a <span class="math inline">\(t\)</span> distribution, that looks like <span class="math inline">\(t\)</span> distribution as it should. And we see the <span class="math inline">\(p\)</span> distribution. This shows us how often we get <span class="math inline">\(t\)</span> values of particular sizes. You may find it interesting that the <span class="math inline">\(p\)</span>-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a <span class="math inline">\(t\)</span> with a p-value between 0 and 0.05, as you would for getting a <span class="math inline">\(t\)</span> with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of <span class="math inline">\(t\)</span> values in them by definition.</p>
 <p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop:</p>
-<div class="cell" data-hash="cache/fig-6simtsRep_a73e71fc05728e0f62f9ddb398f4da68">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsRep_1490b2c45926ea42062143301a59f0b0">
 <div class="cell-output-display">
 <div id="fig-6simtsRep" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.13: Simulating <span class="math inline">\(t\)</span>s in R.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.13: Simulating <span class="math inline">\(t\)</span>s in R.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="cache/fig-6simpsRep_544bac8e30563e3f5a6bb4dc63967f67">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsRep_0ca18e88c296011b5aeebdb7a48d7912">
 <div class="cell-output-display">
 <div id="fig-6simpsRep" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.14: Simulating <span class="math inline">\(p\)</span>s in R.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.14: Simulating <span class="math inline">\(p\)</span>s in R.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1367,7 +1364,7 @@ Note
 <section id="simulating-a-paired-samples-t-test" class="level3" data-number="6.6.2">
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="simulating-a-paired-samples-t-test"><span class="header-section-number">6.6.2</span> Simulating a paired samples t-test</h3>
 <p>The code below is set up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-28_93cd9c871802c2368703077e1899f1b4">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-28_9c3a2c863268888c1ff1bc86d91b1be8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1380,37 +1377,37 @@ Note
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="cache/fig-6simps1000_9fa21e0f723da1adee81bd1ab2f1818f">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simps1000_b1716ce2d813a4db99f0316b6d88f82a">
 <div class="cell-output-display">
 <div id="fig-6simps1000" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.15: 1000 simulated ts from the null distribution</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.15: 1000 simulated ts from the null distribution</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="cache/fig-6simts1000_0a6939f160dcbd4c2e79be432e5956ca">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simts1000_e88ec602e3ea8a6a04360f53ab371ff1">
 <div class="cell-output-display">
 <div id="fig-6simts1000" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.16: 1000 simulated ps from the null distribution</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.16: 1000 simulated ps from the null distribution</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for <span class="math inline">\(t\)</span> and <span class="math inline">\(p\)</span>. These again show how the null distribution of no differences behaves.</p>
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-31_803727eacfaddb7783720893ea87f45a">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-31_cfb17e3bd6f78a661c4f2c3acd6bd4f5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 54</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 45</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.054</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.045</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We happened to make 54. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
+<p>We happened to make 45. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happens if there actually is a difference in the simulated data, let’s set one condition to have a larger mean than the other:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-32_8373ff378e7b82934438883827a17021">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-32_39e714a1e215f59a6db43c7f25c23b84">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1423,37 +1420,37 @@ Note
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="cache/fig-6simtruets_84ff9d129890ccb1e856fe8044addb0c">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtruets_10320f6eafb9f23488f5722e40bedc62">
 <div class="cell-output-display">
 <div id="fig-6simtruets" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.17: 1000 ts when there is a true difference</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.17: 1000 ts when there is a true difference</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="cache/fig-6simtrueps_f5acccef2b56b3954c25e59321620390">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtrueps_37354f4fb3ec8519ca057ca2decf6dd2">
 <div class="cell-output-display">
 <div id="fig-6simtrueps" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.18: 1000 ps when there is a true difference</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.18: 1000 ps when there is a true difference</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Now you can see that the <span class="math inline">\(p\)</span>-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
-<div class="cell" data-hash="cache/unnamed-chunk-35_889d4ad25fbfd083ce10c3a0e8ec30ae">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-35_895e016db2dcb9fdb9076f2f6e2bd69d">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 243</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 211</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.243</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.211</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We happened to get 243 simulations where p was less than .05, that’s only 0.243 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.243 of the time? I wouldn’t. I would run a better experiment.</p>
+<p>We happened to get 211 simulations where p was less than .05, that’s only 0.211 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.211 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase <span class="math inline">\(n\)</span>, the number of subjects in the experiment. Let’s increase <span class="math inline">\(n\)</span> from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-36_fa839dc6fc1d47ff1d2b418d85f2f086">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-36_8fad8416c0a7bd124f5a2a8f73b74203">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1466,24 +1463,24 @@ Note
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="cache/fig-6simtsB_a0d85578e233cef6a299ddcaf4f5e2c6">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsB_8d5a892362dd04abf8ba93f1b68607fa">
 <div class="cell-output-display">
 <div id="fig-6simtsB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.19: 1000 ts for n =100, when there is a true effect</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.19: 1000 ts for n =100, when there is a true effect</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="cache/fig-6simpsB_978963e6aa3a7ebfc0856d785cc9ed01">
-<pre><code>#&gt; [1] 982
-#&gt; [1] 0.982</code></pre>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsB_217b73ad17425a20679d28ea635f1fa4">
+<pre><code>#&gt; [1] 988
+#&gt; [1] 0.988</code></pre>
 <div class="cell-output-display">
 <div id="fig-6simpsB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.20: 1000 ps for n =100, when there is a true effect</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.20: 1000 ps for n =100, when there is a true effect</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1493,7 +1490,7 @@ Note
 <section id="simulating-an-independent-samples-t.test" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="simulating-an-independent-samples-t.test"><span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</h3>
 <p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-39_0d854ad31ea8adc07f553d99e670aa00">
+<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-39_531965852ff116b440adb0572ffa9e3e">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1505,24 +1502,24 @@ Note
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="cache/fig-6simtsC_d304cfd480ba8e7a9617271cbab79c0c">
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsC_f35598cd2ea0718261573bbe16aaea2c">
 <div class="cell-output-display">
 <div id="fig-6simtsC" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.21: 1000 ts for n =100, when there is a true effect</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.21: 1000 ts for n =100, when there is a true effect</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="cache/fig-6simpsC_4331c4ba8b9b8f492508a2c5b55f1d81">
-<pre><code>#&gt; [1] 66
-#&gt; [1] 0.066</code></pre>
+<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsC_c2699e8db7742c6633007165b2fea12c">
+<pre><code>#&gt; [1] 48
+#&gt; [1] 0.048</code></pre>
 <div class="cell-output-display">
 <div id="fig-6simpsC" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 6.22: 1000 ps for n =100, when there is a true effect</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.22: 1000 ps for n =100, when there is a true effect</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1537,11 +1534,11 @@ Note
 </iframe>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-mehr20165" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-mehr20165" class="csl-entry" role="listitem">
 Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. <span>“For 5-Month-Old Infants, Melodies Are Social.”</span> <em>Psychological Science</em> 27 (4): 486–501. <a href="https://doi.org/10.1177/0956797615626691">https://doi.org/10.1177/0956797615626691</a>.
 </div>
-<div id="ref-Student1908" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Student1908" class="csl-entry" role="listitem">
 Student, A. 1908. <span>“The Probable Error of a Mean.”</span> <em>Biometrika</em> 6: 1–2.
 </div>
 </div>
@@ -1576,9 +1573,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1590,7 +1601,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1618,31 +1646,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

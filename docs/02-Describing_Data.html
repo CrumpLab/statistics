@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,15 +12,21 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -34,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,29 +80,29 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Answering questions with data - 2&nbsp; Describing Data">
-<meta property="og:description" content="This chapter is about descriptive statistics. These are tools for describing data. Some things to keep in mind as we go along are:">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/02-Describing_Data_files/figure-html/fig-happyPlot-1.png">
 <meta property="og:site-name" content="Answering questions with data">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Answering questions with data - 2&nbsp; Describing Data">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -107,11 +112,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-Describing_Data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -119,146 +129,162 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#this-is-what-too-many-numbers-looks-like" id="toc-this-is-what-too-many-numbers-looks-like" class="nav-link active" data-scroll-target="#this-is-what-too-many-numbers-looks-like"> <span class="header-section-number">2.1</span> This is what too many numbers looks like</a></li>
-  <li><a href="#look-at-the-data" id="toc-look-at-the-data" class="nav-link" data-scroll-target="#look-at-the-data"> <span class="header-section-number">2.2</span> Look at the data</a>
+  <li><a href="#this-is-what-too-many-numbers-looks-like" id="toc-this-is-what-too-many-numbers-looks-like" class="nav-link active" data-scroll-target="#this-is-what-too-many-numbers-looks-like"><span class="header-section-number">2.1</span> This is what too many numbers looks like</a></li>
+  <li><a href="#look-at-the-data" id="toc-look-at-the-data" class="nav-link" data-scroll-target="#look-at-the-data"><span class="header-section-number">2.2</span> Look at the data</a>
   <ul class="collapse">
-  <li><a href="#stop-plotting-time-o-o-oh-u-can-plot-this" id="toc-stop-plotting-time-o-o-oh-u-can-plot-this" class="nav-link" data-scroll-target="#stop-plotting-time-o-o-oh-u-can-plot-this"> <span class="header-section-number">2.2.1</span> Stop, plotting time (o o oh) U can plot this</a></li>
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"> <span class="header-section-number">2.2.2</span> Histograms</a></li>
+  <li><a href="#stop-plotting-time-o-o-oh-u-can-plot-this" id="toc-stop-plotting-time-o-o-oh-u-can-plot-this" class="nav-link" data-scroll-target="#stop-plotting-time-o-o-oh-u-can-plot-this"><span class="header-section-number">2.2.1</span> Stop, plotting time (o o oh) U can plot this</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">2.2.2</span> Histograms</a></li>
   </ul></li>
-  <li><a href="#important-ideas-distribution-central-tendency-and-variance" id="toc-important-ideas-distribution-central-tendency-and-variance" class="nav-link" data-scroll-target="#important-ideas-distribution-central-tendency-and-variance"> <span class="header-section-number">2.3</span> Important Ideas: Distribution, Central Tendency, and Variance</a></li>
-  <li><a href="#measures-of-central-tendency-sameness" id="toc-measures-of-central-tendency-sameness" class="nav-link" data-scroll-target="#measures-of-central-tendency-sameness"> <span class="header-section-number">2.4</span> Measures of Central Tendency (Sameness)</a>
+  <li><a href="#important-ideas-distribution-central-tendency-and-variance" id="toc-important-ideas-distribution-central-tendency-and-variance" class="nav-link" data-scroll-target="#important-ideas-distribution-central-tendency-and-variance"><span class="header-section-number">2.3</span> Important Ideas: Distribution, Central Tendency, and Variance</a></li>
+  <li><a href="#measures-of-central-tendency-sameness" id="toc-measures-of-central-tendency-sameness" class="nav-link" data-scroll-target="#measures-of-central-tendency-sameness"><span class="header-section-number">2.4</span> Measures of Central Tendency (Sameness)</a>
   <ul class="collapse">
-  <li><a href="#from-many-numbers-to-one" id="toc-from-many-numbers-to-one" class="nav-link" data-scroll-target="#from-many-numbers-to-one"> <span class="header-section-number">2.4.1</span> From many numbers to one</a></li>
-  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"> <span class="header-section-number">2.4.2</span> Mode</a></li>
-  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"> <span class="header-section-number">2.4.3</span> Median</a></li>
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"> <span class="header-section-number">2.4.4</span> Mean</a></li>
-  <li><a href="#what-does-the-mean-mean" id="toc-what-does-the-mean-mean" class="nav-link" data-scroll-target="#what-does-the-mean-mean"> <span class="header-section-number">2.4.5</span> What does the mean mean?</a></li>
-  <li><a href="#all-together-now" id="toc-all-together-now" class="nav-link" data-scroll-target="#all-together-now"> <span class="header-section-number">2.4.6</span> All together now</a></li>
+  <li><a href="#from-many-numbers-to-one" id="toc-from-many-numbers-to-one" class="nav-link" data-scroll-target="#from-many-numbers-to-one"><span class="header-section-number">2.4.1</span> From many numbers to one</a></li>
+  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"><span class="header-section-number">2.4.2</span> Mode</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><span class="header-section-number">2.4.3</span> Median</a></li>
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">2.4.4</span> Mean</a></li>
+  <li><a href="#what-does-the-mean-mean" id="toc-what-does-the-mean-mean" class="nav-link" data-scroll-target="#what-does-the-mean-mean"><span class="header-section-number">2.4.5</span> What does the mean mean?</a></li>
+  <li><a href="#all-together-now" id="toc-all-together-now" class="nav-link" data-scroll-target="#all-together-now"><span class="header-section-number">2.4.6</span> All together now</a></li>
   </ul></li>
-  <li><a href="#measures-of-variation-differentness" id="toc-measures-of-variation-differentness" class="nav-link" data-scroll-target="#measures-of-variation-differentness"> <span class="header-section-number">2.5</span> Measures of Variation (Different<em>ness</em>)</a>
+  <li><a href="#measures-of-variation-differentness" id="toc-measures-of-variation-differentness" class="nav-link" data-scroll-target="#measures-of-variation-differentness"><span class="header-section-number">2.5</span> Measures of Variation (Different<em>ness</em>)</a>
   <ul class="collapse">
-  <li><a href="#the-range" id="toc-the-range" class="nav-link" data-scroll-target="#the-range"> <span class="header-section-number">2.5.1</span> The Range</a></li>
-  <li><a href="#the-difference-scores" id="toc-the-difference-scores" class="nav-link" data-scroll-target="#the-difference-scores"> <span class="header-section-number">2.5.2</span> The Difference Scores</a></li>
-  <li><a href="#the-variance" id="toc-the-variance" class="nav-link" data-scroll-target="#the-variance"> <span class="header-section-number">2.5.3</span> The Variance</a></li>
-  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"> <span class="header-section-number">2.5.4</span> The Standard Deviation</a></li>
+  <li><a href="#the-range" id="toc-the-range" class="nav-link" data-scroll-target="#the-range"><span class="header-section-number">2.5.1</span> The Range</a></li>
+  <li><a href="#the-difference-scores" id="toc-the-difference-scores" class="nav-link" data-scroll-target="#the-difference-scores"><span class="header-section-number">2.5.2</span> The Difference Scores</a></li>
+  <li><a href="#the-variance" id="toc-the-variance" class="nav-link" data-scroll-target="#the-variance"><span class="header-section-number">2.5.3</span> The Variance</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">2.5.4</span> The Standard Deviation</a></li>
   </ul></li>
-  <li><a href="#using-descriptive-statistics-with-data" id="toc-using-descriptive-statistics-with-data" class="nav-link" data-scroll-target="#using-descriptive-statistics-with-data"> <span class="header-section-number">2.6</span> Using Descriptive Statistics with data</a></li>
-  <li><a href="#rolling-your-own-descriptive-statistics" id="toc-rolling-your-own-descriptive-statistics" class="nav-link" data-scroll-target="#rolling-your-own-descriptive-statistics"> <span class="header-section-number">2.7</span> Rolling your own descriptive statistics</a>
+  <li><a href="#using-descriptive-statistics-with-data" id="toc-using-descriptive-statistics-with-data" class="nav-link" data-scroll-target="#using-descriptive-statistics-with-data"><span class="header-section-number">2.6</span> Using Descriptive Statistics with data</a></li>
+  <li><a href="#rolling-your-own-descriptive-statistics" id="toc-rolling-your-own-descriptive-statistics" class="nav-link" data-scroll-target="#rolling-your-own-descriptive-statistics"><span class="header-section-number">2.7</span> Rolling your own descriptive statistics</a>
   <ul class="collapse">
-  <li><a href="#absolute-deviations" id="toc-absolute-deviations" class="nav-link" data-scroll-target="#absolute-deviations"> <span class="header-section-number">2.7.1</span> Absolute deviations</a></li>
-  <li><a href="#other-sign-inverting-operations" id="toc-other-sign-inverting-operations" class="nav-link" data-scroll-target="#other-sign-inverting-operations"> <span class="header-section-number">2.7.2</span> Other sign-inverting operations</a></li>
+  <li><a href="#absolute-deviations" id="toc-absolute-deviations" class="nav-link" data-scroll-target="#absolute-deviations"><span class="header-section-number">2.7.1</span> Absolute deviations</a></li>
+  <li><a href="#other-sign-inverting-operations" id="toc-other-sign-inverting-operations" class="nav-link" data-scroll-target="#other-sign-inverting-operations"><span class="header-section-number">2.7.2</span> Other sign-inverting operations</a></li>
   </ul></li>
-  <li><a href="#remember-to-look-at-your-data" id="toc-remember-to-look-at-your-data" class="nav-link" data-scroll-target="#remember-to-look-at-your-data"> <span class="header-section-number">2.8</span> Remember to look at your data</a>
+  <li><a href="#remember-to-look-at-your-data" id="toc-remember-to-look-at-your-data" class="nav-link" data-scroll-target="#remember-to-look-at-your-data"><span class="header-section-number">2.8</span> Remember to look at your data</a>
   <ul class="collapse">
-  <li><a href="#anscombes-quartet" id="toc-anscombes-quartet" class="nav-link" data-scroll-target="#anscombes-quartet"> <span class="header-section-number">2.8.1</span> Anscombe’s Quartet</a></li>
-  <li><a href="#datasaurus-dozen" id="toc-datasaurus-dozen" class="nav-link" data-scroll-target="#datasaurus-dozen"> <span class="header-section-number">2.8.2</span> Datasaurus Dozen</a></li>
+  <li><a href="#anscombes-quartet" id="toc-anscombes-quartet" class="nav-link" data-scroll-target="#anscombes-quartet"><span class="header-section-number">2.8.1</span> Anscombe’s Quartet</a></li>
+  <li><a href="#datasaurus-dozen" id="toc-datasaurus-dozen" class="nav-link" data-scroll-target="#datasaurus-dozen"><span class="header-section-number">2.8.2</span> Datasaurus Dozen</a></li>
   </ul></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"> <span class="header-section-number">2.9</span> Videos</a>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">2.9</span> Videos</a>
   <ul class="collapse">
-  <li><a href="#measures-of-center-mode" id="toc-measures-of-center-mode" class="nav-link" data-scroll-target="#measures-of-center-mode"> <span class="header-section-number">2.9.1</span> Measures of center: Mode</a></li>
-  <li><a href="#measures-of-center-median-and-mean" id="toc-measures-of-center-median-and-mean" class="nav-link" data-scroll-target="#measures-of-center-median-and-mean"> <span class="header-section-number">2.9.2</span> Measures of center: Median and Mean</a></li>
-  <li><a href="#standard-deviation-part-i" id="toc-standard-deviation-part-i" class="nav-link" data-scroll-target="#standard-deviation-part-i"> <span class="header-section-number">2.9.3</span> Standard deviation part I</a></li>
-  <li><a href="#standard-deviation-part-ii" id="toc-standard-deviation-part-ii" class="nav-link" data-scroll-target="#standard-deviation-part-ii"> <span class="header-section-number">2.9.4</span> Standard deviation part II</a></li>
+  <li><a href="#measures-of-center-mode" id="toc-measures-of-center-mode" class="nav-link" data-scroll-target="#measures-of-center-mode"><span class="header-section-number">2.9.1</span> Measures of center: Mode</a></li>
+  <li><a href="#measures-of-center-median-and-mean" id="toc-measures-of-center-median-and-mean" class="nav-link" data-scroll-target="#measures-of-center-median-and-mean"><span class="header-section-number">2.9.2</span> Measures of center: Median and Mean</a></li>
+  <li><a href="#standard-deviation-part-i" id="toc-standard-deviation-part-i" class="nav-link" data-scroll-target="#standard-deviation-part-i"><span class="header-section-number">2.9.3</span> Standard deviation part I</a></li>
+  <li><a href="#standard-deviation-part-ii" id="toc-standard-deviation-part-ii" class="nav-link" data-scroll-target="#standard-deviation-part-ii"><span class="header-section-number">2.9.4</span> Standard deviation part II</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/02-Describing_Data.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -268,7 +294,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="DescribingData" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></h1>
+<h1 class="title"><span id="DescribingData" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></h1>
 </div>
 
 
@@ -282,6 +308,7 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
@@ -302,614 +329,612 @@ ga('send', {
 <h2 data-number="2.1" class="anchored" data-anchor-id="this-is-what-too-many-numbers-looks-like"><span class="header-section-number">2.1</span> This is what too many numbers looks like</h2>
 <p>Let’s say you wanted to know how happy people are. So, you ask thousands of people on the street how happy they are. You let them pick any number they want from negative infinity to positive infinity. Then you record all the numbers. Now what?</p>
 <p>Well, how about you look at the numbers and see if that helps you determine anything about how happy people are. What could the numbers look like. Perhaps something like this:</p>
-<div class="cell" data-hash="cache/2toomany_75abb784102a333f3a33ea4b692bcc4f">
+<div class="cell" data-hash="02-Describing_Data_cache/html/2toomany_dbb44d087f86eabf073362bea61c765b">
 <div class="cell-output-display">
-
-<table>
+<table class="table table-sm table-striped">
 <tbody>
-  <tr>
-   <td style="text-align:right;"> 221 </td>
-   <td style="text-align:right;"> -475 </td>
-   <td style="text-align:right;"> 500 </td>
-   <td style="text-align:right;"> 1236 </td>
-   <td style="text-align:right;"> 241 </td>
-   <td style="text-align:right;"> 649 </td>
-   <td style="text-align:right;"> 124 </td>
-   <td style="text-align:right;"> 220 </td>
-   <td style="text-align:right;"> 609 </td>
-   <td style="text-align:right;"> 1615 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 465 </td>
-   <td style="text-align:right;"> 432 </td>
-   <td style="text-align:right;"> 355 </td>
-   <td style="text-align:right;"> 490 </td>
-   <td style="text-align:right;"> 1685 </td>
-   <td style="text-align:right;"> -205 </td>
-   <td style="text-align:right;"> -443 </td>
-   <td style="text-align:right;"> -27 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> -705 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -232 </td>
-   <td style="text-align:right;"> 157 </td>
-   <td style="text-align:right;"> -589 </td>
-   <td style="text-align:right;"> 309 </td>
-   <td style="text-align:right;"> 810 </td>
-   <td style="text-align:right;"> -368 </td>
-   <td style="text-align:right;"> 54 </td>
-   <td style="text-align:right;"> -203 </td>
-   <td style="text-align:right;"> 649 </td>
-   <td style="text-align:right;"> 232 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 671 </td>
-   <td style="text-align:right;"> 62 </td>
-   <td style="text-align:right;"> 75 </td>
-   <td style="text-align:right;"> 394 </td>
-   <td style="text-align:right;"> 732 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 130 </td>
-   <td style="text-align:right;"> 68 </td>
-   <td style="text-align:right;"> 134 </td>
-   <td style="text-align:right;"> -664 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 84 </td>
-   <td style="text-align:right;"> 380 </td>
-   <td style="text-align:right;"> 139 </td>
-   <td style="text-align:right;"> -1099 </td>
-   <td style="text-align:right;"> 426 </td>
-   <td style="text-align:right;"> 615 </td>
-   <td style="text-align:right;"> 270 </td>
-   <td style="text-align:right;"> -84 </td>
-   <td style="text-align:right;"> 677 </td>
-   <td style="text-align:right;"> 557 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -569 </td>
-   <td style="text-align:right;"> 136 </td>
-   <td style="text-align:right;"> 173 </td>
-   <td style="text-align:right;"> 447 </td>
-   <td style="text-align:right;"> -1048 </td>
-   <td style="text-align:right;"> 534 </td>
-   <td style="text-align:right;"> -92 </td>
-   <td style="text-align:right;"> -340 </td>
-   <td style="text-align:right;"> -704 </td>
-   <td style="text-align:right;"> 237 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -104 </td>
-   <td style="text-align:right;"> -533 </td>
-   <td style="text-align:right;"> -606 </td>
-   <td style="text-align:right;"> 656 </td>
-   <td style="text-align:right;"> 666 </td>
-   <td style="text-align:right;"> 783 </td>
-   <td style="text-align:right;"> 487 </td>
-   <td style="text-align:right;"> 235 </td>
-   <td style="text-align:right;"> 220 </td>
-   <td style="text-align:right;"> 1004 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -102 </td>
-   <td style="text-align:right;"> -190 </td>
-   <td style="text-align:right;"> 237 </td>
-   <td style="text-align:right;"> -678 </td>
-   <td style="text-align:right;"> -405 </td>
-   <td style="text-align:right;"> 96 </td>
-   <td style="text-align:right;"> 323 </td>
-   <td style="text-align:right;"> -33 </td>
-   <td style="text-align:right;"> -423 </td>
-   <td style="text-align:right;"> -242 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -381 </td>
-   <td style="text-align:right;"> 67 </td>
-   <td style="text-align:right;"> 452 </td>
-   <td style="text-align:right;"> 840 </td>
-   <td style="text-align:right;"> -628 </td>
-   <td style="text-align:right;"> -401 </td>
-   <td style="text-align:right;"> 195 </td>
-   <td style="text-align:right;"> 886 </td>
-   <td style="text-align:right;"> 161 </td>
-   <td style="text-align:right;"> 61 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -313 </td>
-   <td style="text-align:right;"> -770 </td>
-   <td style="text-align:right;"> -441 </td>
-   <td style="text-align:right;"> 242 </td>
-   <td style="text-align:right;"> -128 </td>
-   <td style="text-align:right;"> 195 </td>
-   <td style="text-align:right;"> 372 </td>
-   <td style="text-align:right;"> -194 </td>
-   <td style="text-align:right;"> -1775 </td>
-   <td style="text-align:right;"> -186 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 333 </td>
-   <td style="text-align:right;"> -125 </td>
-   <td style="text-align:right;"> 564 </td>
-   <td style="text-align:right;"> -528 </td>
-   <td style="text-align:right;"> 701 </td>
-   <td style="text-align:right;"> 827 </td>
-   <td style="text-align:right;"> -281 </td>
-   <td style="text-align:right;"> 483 </td>
-   <td style="text-align:right;"> 513 </td>
-   <td style="text-align:right;"> 68 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 659 </td>
-   <td style="text-align:right;"> -16 </td>
-   <td style="text-align:right;"> -1190 </td>
-   <td style="text-align:right;"> -598 </td>
-   <td style="text-align:right;"> 554 </td>
-   <td style="text-align:right;"> -232 </td>
-   <td style="text-align:right;"> -495 </td>
-   <td style="text-align:right;"> -50 </td>
-   <td style="text-align:right;"> 443 </td>
-   <td style="text-align:right;"> 537 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 517 </td>
-   <td style="text-align:right;"> -1240 </td>
-   <td style="text-align:right;"> 387 </td>
-   <td style="text-align:right;"> -435 </td>
-   <td style="text-align:right;"> 338 </td>
-   <td style="text-align:right;"> 632 </td>
-   <td style="text-align:right;"> -622 </td>
-   <td style="text-align:right;"> -1037 </td>
-   <td style="text-align:right;"> 306 </td>
-   <td style="text-align:right;"> 356 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -807 </td>
-   <td style="text-align:right;"> 89 </td>
-   <td style="text-align:right;"> 159 </td>
-   <td style="text-align:right;"> -391 </td>
-   <td style="text-align:right;"> 179 </td>
-   <td style="text-align:right;"> 507 </td>
-   <td style="text-align:right;"> 652 </td>
-   <td style="text-align:right;"> -25 </td>
-   <td style="text-align:right;"> -13 </td>
-   <td style="text-align:right;"> 43 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 52 </td>
-   <td style="text-align:right;"> -7 </td>
-   <td style="text-align:right;"> -188 </td>
-   <td style="text-align:right;"> -108 </td>
-   <td style="text-align:right;"> -39 </td>
-   <td style="text-align:right;"> -436 </td>
-   <td style="text-align:right;"> 31 </td>
-   <td style="text-align:right;"> 183 </td>
-   <td style="text-align:right;"> 739 </td>
-   <td style="text-align:right;"> 19 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -79 </td>
-   <td style="text-align:right;"> -263 </td>
-   <td style="text-align:right;"> -170 </td>
-   <td style="text-align:right;"> -1512 </td>
-   <td style="text-align:right;"> 256 </td>
-   <td style="text-align:right;"> 1205 </td>
-   <td style="text-align:right;"> -582 </td>
-   <td style="text-align:right;"> 569 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> -496 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -1044 </td>
-   <td style="text-align:right;"> 233 </td>
-   <td style="text-align:right;"> 807 </td>
-   <td style="text-align:right;"> -468 </td>
-   <td style="text-align:right;"> 178 </td>
-   <td style="text-align:right;"> 426 </td>
-   <td style="text-align:right;"> -108 </td>
-   <td style="text-align:right;"> 985 </td>
-   <td style="text-align:right;"> -424 </td>
-   <td style="text-align:right;"> 375 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 324 </td>
-   <td style="text-align:right;"> -253 </td>
-   <td style="text-align:right;"> 328 </td>
-   <td style="text-align:right;"> 688 </td>
-   <td style="text-align:right;"> 236 </td>
-   <td style="text-align:right;"> 301 </td>
-   <td style="text-align:right;"> 239 </td>
-   <td style="text-align:right;"> -96 </td>
-   <td style="text-align:right;"> 435 </td>
-   <td style="text-align:right;"> 292 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 354 </td>
-   <td style="text-align:right;"> 159 </td>
-   <td style="text-align:right;"> -102 </td>
-   <td style="text-align:right;"> 889 </td>
-   <td style="text-align:right;"> -844 </td>
-   <td style="text-align:right;"> -901 </td>
-   <td style="text-align:right;"> 284 </td>
-   <td style="text-align:right;"> -265 </td>
-   <td style="text-align:right;"> 516 </td>
-   <td style="text-align:right;"> 265 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 700 </td>
-   <td style="text-align:right;"> -70 </td>
-   <td style="text-align:right;"> -727 </td>
-   <td style="text-align:right;"> 243 </td>
-   <td style="text-align:right;"> 529 </td>
-   <td style="text-align:right;"> 235 </td>
-   <td style="text-align:right;"> 357 </td>
-   <td style="text-align:right;"> -717 </td>
-   <td style="text-align:right;"> -122 </td>
-   <td style="text-align:right;"> 277 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -49 </td>
-   <td style="text-align:right;"> 804 </td>
-   <td style="text-align:right;"> 343 </td>
-   <td style="text-align:right;"> -313 </td>
-   <td style="text-align:right;"> -138 </td>
-   <td style="text-align:right;"> -550 </td>
-   <td style="text-align:right;"> -156 </td>
-   <td style="text-align:right;"> -348 </td>
-   <td style="text-align:right;"> -311 </td>
-   <td style="text-align:right;"> 472 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -49 </td>
-   <td style="text-align:right;"> 715 </td>
-   <td style="text-align:right;"> 793 </td>
-   <td style="text-align:right;"> 316 </td>
-   <td style="text-align:right;"> 308 </td>
-   <td style="text-align:right;"> 641 </td>
-   <td style="text-align:right;"> -238 </td>
-   <td style="text-align:right;"> -373 </td>
-   <td style="text-align:right;"> 37 </td>
-   <td style="text-align:right;"> 249 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -150 </td>
-   <td style="text-align:right;"> -30 </td>
-   <td style="text-align:right;"> -105 </td>
-   <td style="text-align:right;"> -297 </td>
-   <td style="text-align:right;"> 510 </td>
-   <td style="text-align:right;"> -181 </td>
-   <td style="text-align:right;"> -294 </td>
-   <td style="text-align:right;"> 167 </td>
-   <td style="text-align:right;"> 186 </td>
-   <td style="text-align:right;"> -64 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 689 </td>
-   <td style="text-align:right;"> -339 </td>
-   <td style="text-align:right;"> 375 </td>
-   <td style="text-align:right;"> -89 </td>
-   <td style="text-align:right;"> -118 </td>
-   <td style="text-align:right;"> -153 </td>
-   <td style="text-align:right;"> -643 </td>
-   <td style="text-align:right;"> 647 </td>
-   <td style="text-align:right;"> 666 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 97 </td>
-   <td style="text-align:right;"> 246 </td>
-   <td style="text-align:right;"> -982 </td>
-   <td style="text-align:right;"> -1025 </td>
-   <td style="text-align:right;"> -439 </td>
-   <td style="text-align:right;"> 303 </td>
-   <td style="text-align:right;"> -996 </td>
-   <td style="text-align:right;"> -623 </td>
-   <td style="text-align:right;"> 140 </td>
-   <td style="text-align:right;"> 431 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -88 </td>
-   <td style="text-align:right;"> 793 </td>
-   <td style="text-align:right;"> -179 </td>
-   <td style="text-align:right;"> -490 </td>
-   <td style="text-align:right;"> 262 </td>
-   <td style="text-align:right;"> -522 </td>
-   <td style="text-align:right;"> 620 </td>
-   <td style="text-align:right;"> 976 </td>
-   <td style="text-align:right;"> 278 </td>
-   <td style="text-align:right;"> 280 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -301 </td>
-   <td style="text-align:right;"> 190 </td>
-   <td style="text-align:right;"> 148 </td>
-   <td style="text-align:right;"> -378 </td>
-   <td style="text-align:right;"> 194 </td>
-   <td style="text-align:right;"> -469 </td>
-   <td style="text-align:right;"> -774 </td>
-   <td style="text-align:right;"> -490 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> 275 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 474 </td>
-   <td style="text-align:right;"> 557 </td>
-   <td style="text-align:right;"> 84 </td>
-   <td style="text-align:right;"> -642 </td>
-   <td style="text-align:right;"> -218 </td>
-   <td style="text-align:right;"> 253 </td>
-   <td style="text-align:right;"> -134 </td>
-   <td style="text-align:right;"> 161 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> -101 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1020 </td>
-   <td style="text-align:right;"> 683 </td>
-   <td style="text-align:right;"> 198 </td>
-   <td style="text-align:right;"> -12 </td>
-   <td style="text-align:right;"> 410 </td>
-   <td style="text-align:right;"> -192 </td>
-   <td style="text-align:right;"> -1121 </td>
-   <td style="text-align:right;"> -191 </td>
-   <td style="text-align:right;"> -76 </td>
-   <td style="text-align:right;"> -271 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 59 </td>
-   <td style="text-align:right;"> 420 </td>
-   <td style="text-align:right;"> -296 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 508 </td>
-   <td style="text-align:right;"> 1236 </td>
-   <td style="text-align:right;"> 703 </td>
-   <td style="text-align:right;"> 273 </td>
-   <td style="text-align:right;"> -264 </td>
-   <td style="text-align:right;"> 398 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 648 </td>
-   <td style="text-align:right;"> 689 </td>
-   <td style="text-align:right;"> -305 </td>
-   <td style="text-align:right;"> -460 </td>
-   <td style="text-align:right;"> -22 </td>
-   <td style="text-align:right;"> 602 </td>
-   <td style="text-align:right;"> 194 </td>
-   <td style="text-align:right;"> 219 </td>
-   <td style="text-align:right;"> 442 </td>
-   <td style="text-align:right;"> -291 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 472 </td>
-   <td style="text-align:right;"> -531 </td>
-   <td style="text-align:right;"> 1099 </td>
-   <td style="text-align:right;"> -510 </td>
-   <td style="text-align:right;"> 98 </td>
-   <td style="text-align:right;"> 145 </td>
-   <td style="text-align:right;"> 642 </td>
-   <td style="text-align:right;"> 419 </td>
-   <td style="text-align:right;"> 349 </td>
-   <td style="text-align:right;"> 47 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> -830 </td>
-   <td style="text-align:right;"> -658 </td>
-   <td style="text-align:right;"> 582 </td>
-   <td style="text-align:right;"> 214 </td>
-   <td style="text-align:right;"> 841 </td>
-   <td style="text-align:right;"> 402 </td>
-   <td style="text-align:right;"> 72 </td>
-   <td style="text-align:right;"> 1077 </td>
-   <td style="text-align:right;"> 160 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 350 </td>
-   <td style="text-align:right;"> 71 </td>
-   <td style="text-align:right;"> -542 </td>
-   <td style="text-align:right;"> -301 </td>
-   <td style="text-align:right;"> -469 </td>
-   <td style="text-align:right;"> -310 </td>
-   <td style="text-align:right;"> -763 </td>
-   <td style="text-align:right;"> -128 </td>
-   <td style="text-align:right;"> 512 </td>
-   <td style="text-align:right;"> -52 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -387 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -219 </td>
-   <td style="text-align:right;"> 1080 </td>
-   <td style="text-align:right;"> 1801 </td>
-   <td style="text-align:right;"> 1100 </td>
-   <td style="text-align:right;"> 168 </td>
-   <td style="text-align:right;"> 750 </td>
-   <td style="text-align:right;"> 675 </td>
-   <td style="text-align:right;"> -295 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 89 </td>
-   <td style="text-align:right;"> -132 </td>
-   <td style="text-align:right;"> -198 </td>
-   <td style="text-align:right;"> 823 </td>
-   <td style="text-align:right;"> 1063 </td>
-   <td style="text-align:right;"> -418 </td>
-   <td style="text-align:right;"> 578 </td>
-   <td style="text-align:right;"> -148 </td>
-   <td style="text-align:right;"> -182 </td>
-   <td style="text-align:right;"> -21 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 83 </td>
-   <td style="text-align:right;"> 101 </td>
-   <td style="text-align:right;"> -334 </td>
-   <td style="text-align:right;"> 250 </td>
-   <td style="text-align:right;"> -571 </td>
-   <td style="text-align:right;"> -381 </td>
-   <td style="text-align:right;"> 397 </td>
-   <td style="text-align:right;"> -59 </td>
-   <td style="text-align:right;"> -542 </td>
-   <td style="text-align:right;"> -154 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -551 </td>
-   <td style="text-align:right;"> -148 </td>
-   <td style="text-align:right;"> 66 </td>
-   <td style="text-align:right;"> -7 </td>
-   <td style="text-align:right;"> -93 </td>
-   <td style="text-align:right;"> -16 </td>
-   <td style="text-align:right;"> -64 </td>
-   <td style="text-align:right;"> -72 </td>
-   <td style="text-align:right;"> 600 </td>
-   <td style="text-align:right;"> -873 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 277 </td>
-   <td style="text-align:right;"> 176 </td>
-   <td style="text-align:right;"> -207 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> -309 </td>
-   <td style="text-align:right;"> 83 </td>
-   <td style="text-align:right;"> 250 </td>
-   <td style="text-align:right;"> 76 </td>
-   <td style="text-align:right;"> 928 </td>
-   <td style="text-align:right;"> 149 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 145 </td>
-   <td style="text-align:right;"> 57 </td>
-   <td style="text-align:right;"> -48 </td>
-   <td style="text-align:right;"> -314 </td>
-   <td style="text-align:right;"> -552 </td>
-   <td style="text-align:right;"> -74 </td>
-   <td style="text-align:right;"> 816 </td>
-   <td style="text-align:right;"> 242 </td>
-   <td style="text-align:right;"> 291 </td>
-   <td style="text-align:right;"> -257 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 963 </td>
-   <td style="text-align:right;"> -729 </td>
-   <td style="text-align:right;"> 1441 </td>
-   <td style="text-align:right;"> 781 </td>
-   <td style="text-align:right;"> 394 </td>
-   <td style="text-align:right;"> 125 </td>
-   <td style="text-align:right;"> -541 </td>
-   <td style="text-align:right;"> 564 </td>
-   <td style="text-align:right;"> 591 </td>
-   <td style="text-align:right;"> -239 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -688 </td>
-   <td style="text-align:right;"> 541 </td>
-   <td style="text-align:right;"> -72 </td>
-   <td style="text-align:right;"> 651 </td>
-   <td style="text-align:right;"> 14 </td>
-   <td style="text-align:right;"> 377 </td>
-   <td style="text-align:right;"> 591 </td>
-   <td style="text-align:right;"> 299 </td>
-   <td style="text-align:right;"> 694 </td>
-   <td style="text-align:right;"> -484 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -422 </td>
-   <td style="text-align:right;"> -8 </td>
-   <td style="text-align:right;"> 623 </td>
-   <td style="text-align:right;"> 73 </td>
-   <td style="text-align:right;"> -312 </td>
-   <td style="text-align:right;"> 631 </td>
-   <td style="text-align:right;"> -727 </td>
-   <td style="text-align:right;"> -565 </td>
-   <td style="text-align:right;"> 389 </td>
-   <td style="text-align:right;"> -424 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 457 </td>
-   <td style="text-align:right;"> 382 </td>
-   <td style="text-align:right;"> -35 </td>
-   <td style="text-align:right;"> 110 </td>
-   <td style="text-align:right;"> 493 </td>
-   <td style="text-align:right;"> 879 </td>
-   <td style="text-align:right;"> 442 </td>
-   <td style="text-align:right;"> -12 </td>
-   <td style="text-align:right;"> 409 </td>
-   <td style="text-align:right;"> 261 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 118 </td>
-   <td style="text-align:right;"> -639 </td>
-   <td style="text-align:right;"> 624 </td>
-   <td style="text-align:right;"> -392 </td>
-   <td style="text-align:right;"> 280 </td>
-   <td style="text-align:right;"> -150 </td>
-   <td style="text-align:right;"> -419 </td>
-   <td style="text-align:right;"> -19 </td>
-   <td style="text-align:right;"> -74 </td>
-   <td style="text-align:right;"> -509 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 530 </td>
-   <td style="text-align:right;"> 478 </td>
-   <td style="text-align:right;"> -192 </td>
-   <td style="text-align:right;"> -50 </td>
-   <td style="text-align:right;"> 289 </td>
-   <td style="text-align:right;"> 1263 </td>
-   <td style="text-align:right;"> 325 </td>
-   <td style="text-align:right;"> 150 </td>
-   <td style="text-align:right;"> -81 </td>
-   <td style="text-align:right;"> 607 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 80 </td>
-   <td style="text-align:right;"> -315 </td>
-   <td style="text-align:right;"> 99 </td>
-   <td style="text-align:right;"> -562 </td>
-   <td style="text-align:right;"> 106 </td>
-   <td style="text-align:right;"> 485 </td>
-   <td style="text-align:right;"> 223 </td>
-   <td style="text-align:right;"> -215 </td>
-   <td style="text-align:right;"> 351 </td>
-   <td style="text-align:right;"> -1090 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> -251 </td>
-   <td style="text-align:right;"> -249 </td>
-   <td style="text-align:right;"> 155 </td>
-   <td style="text-align:right;"> 265 </td>
-   <td style="text-align:right;"> -557 </td>
-   <td style="text-align:right;"> 115 </td>
-   <td style="text-align:right;"> -517 </td>
-   <td style="text-align:right;"> 427 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 798 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 714 </td>
-   <td style="text-align:right;"> 763 </td>
-   <td style="text-align:right;"> -1214 </td>
-   <td style="text-align:right;"> 741 </td>
-   <td style="text-align:right;"> -174 </td>
-   <td style="text-align:right;"> -33 </td>
-   <td style="text-align:right;"> -204 </td>
-   <td style="text-align:right;"> -498 </td>
-   <td style="text-align:right;"> 90 </td>
-   <td style="text-align:right;"> 887 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 892 </td>
-   <td style="text-align:right;"> 295 </td>
-   <td style="text-align:right;"> 100 </td>
-   <td style="text-align:right;"> 864 </td>
-   <td style="text-align:right;"> 56 </td>
-   <td style="text-align:right;"> 415 </td>
-   <td style="text-align:right;"> -990 </td>
-   <td style="text-align:right;"> -286 </td>
-   <td style="text-align:right;"> -47 </td>
-   <td style="text-align:right;"> -477 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">558</td>
+<td style="text-align: right;">1104</td>
+<td style="text-align: right;">-355</td>
+<td style="text-align: right;">1261</td>
+<td style="text-align: right;">-34</td>
+<td style="text-align: right;">741</td>
+<td style="text-align: right;">370</td>
+<td style="text-align: right;">-175</td>
+<td style="text-align: right;">518</td>
+<td style="text-align: right;">196</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">1066</td>
+<td style="text-align: right;">290</td>
+<td style="text-align: right;">741</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">768</td>
+<td style="text-align: right;">-110</td>
+<td style="text-align: right;">-171</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-162</td>
+<td style="text-align: right;">469</td>
+<td style="text-align: right;">655</td>
+<td style="text-align: right;">-333</td>
+<td style="text-align: right;">335</td>
+<td style="text-align: right;">227</td>
+<td style="text-align: right;">454</td>
+<td style="text-align: right;">-661</td>
+<td style="text-align: right;">246</td>
+<td style="text-align: right;">734</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-396</td>
+<td style="text-align: right;">289</td>
+<td style="text-align: right;">859</td>
+<td style="text-align: right;">913</td>
+<td style="text-align: right;">-160</td>
+<td style="text-align: right;">862</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">-656</td>
+<td style="text-align: right;">-451</td>
+<td style="text-align: right;">789</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">284</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">624</td>
+<td style="text-align: right;">189</td>
+<td style="text-align: right;">-63</td>
+<td style="text-align: right;">-75</td>
+<td style="text-align: right;">-11</td>
+<td style="text-align: right;">629</td>
+<td style="text-align: right;">-759</td>
+<td style="text-align: right;">343</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">457</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">-327</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">-42</td>
+<td style="text-align: right;">-783</td>
+<td style="text-align: right;">-259</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">238</td>
+<td style="text-align: right;">-102</td>
+<td style="text-align: right;">725</td>
+<td style="text-align: right;">1017</td>
+<td style="text-align: right;">-405</td>
+<td style="text-align: right;">-576</td>
+<td style="text-align: right;">-568</td>
+<td style="text-align: right;">-360</td>
+<td style="text-align: right;">-36</td>
+<td style="text-align: right;">533</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-103</td>
+<td style="text-align: right;">353</td>
+<td style="text-align: right;">-672</td>
+<td style="text-align: right;">-520</td>
+<td style="text-align: right;">-365</td>
+<td style="text-align: right;">132</td>
+<td style="text-align: right;">615</td>
+<td style="text-align: right;">1347</td>
+<td style="text-align: right;">565</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-684</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: right;">222</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-518</td>
+<td style="text-align: right;">-86</td>
+<td style="text-align: right;">257</td>
+<td style="text-align: right;">-330</td>
+<td style="text-align: right;">-418</td>
+<td style="text-align: right;">422</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">464</td>
+<td style="text-align: right;">445</td>
+<td style="text-align: right;">1377</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">-119</td>
+<td style="text-align: right;">447</td>
+<td style="text-align: right;">211</td>
+<td style="text-align: right;">-294</td>
+<td style="text-align: right;">-641</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">284</td>
+<td style="text-align: right;">741</td>
+<td style="text-align: right;">-955</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">935</td>
+<td style="text-align: right;">-594</td>
+<td style="text-align: right;">-365</td>
+<td style="text-align: right;">630</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">944</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">269</td>
+<td style="text-align: right;">298</td>
+<td style="text-align: right;">418</td>
+<td style="text-align: right;">-316</td>
+<td style="text-align: right;">1269</td>
+<td style="text-align: right;">-693</td>
+<td style="text-align: right;">157</td>
+<td style="text-align: right;">1051</td>
+<td style="text-align: right;">196</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-33</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">-9</td>
+<td style="text-align: right;">-126</td>
+<td style="text-align: right;">706</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">-854</td>
+<td style="text-align: right;">-418</td>
+<td style="text-align: right;">-170</td>
+<td style="text-align: right;">-178</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">873</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">-527</td>
+<td style="text-align: right;">573</td>
+<td style="text-align: right;">-692</td>
+<td style="text-align: right;">767</td>
+<td style="text-align: right;">-363</td>
+<td style="text-align: right;">-259</td>
+<td style="text-align: right;">430</td>
+<td style="text-align: right;">739</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-1185</td>
+<td style="text-align: right;">-93</td>
+<td style="text-align: right;">720</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">-213</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">-1099</td>
+<td style="text-align: right;">1095</td>
+<td style="text-align: right;">1567</td>
+<td style="text-align: right;">186</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">241</td>
+<td style="text-align: right;">-578</td>
+<td style="text-align: right;">-335</td>
+<td style="text-align: right;">-135</td>
+<td style="text-align: right;">-189</td>
+<td style="text-align: right;">233</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">-174</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">635</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">573</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;">1203</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">621</td>
+<td style="text-align: right;">727</td>
+<td style="text-align: right;">-338</td>
+<td style="text-align: right;">1101</td>
+<td style="text-align: right;">641</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">-171</td>
+<td style="text-align: right;">138</td>
+<td style="text-align: right;">698</td>
+<td style="text-align: right;">1063</td>
+<td style="text-align: right;">527</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">511</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">-271</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">349</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: right;">452</td>
+<td style="text-align: right;">331</td>
+<td style="text-align: right;">-100</td>
+<td style="text-align: right;">-786</td>
+<td style="text-align: right;">-1063</td>
+<td style="text-align: right;">620</td>
+<td style="text-align: right;">345</td>
+<td style="text-align: right;">-407</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-1255</td>
+<td style="text-align: right;">-115</td>
+<td style="text-align: right;">-422</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">-131</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">732</td>
+<td style="text-align: right;">-64</td>
+<td style="text-align: right;">-399</td>
+<td style="text-align: right;">518</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-272</td>
+<td style="text-align: right;">637</td>
+<td style="text-align: right;">1174</td>
+<td style="text-align: right;">1412</td>
+<td style="text-align: right;">-94</td>
+<td style="text-align: right;">-54</td>
+<td style="text-align: right;">-254</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">504</td>
+<td style="text-align: right;">357</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-196</td>
+<td style="text-align: right;">333</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">-277</td>
+<td style="text-align: right;">-529</td>
+<td style="text-align: right;">-63</td>
+<td style="text-align: right;">-231</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">-697</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">586</td>
+<td style="text-align: right;">117</td>
+<td style="text-align: right;">437</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">-193</td>
+<td style="text-align: right;">-295</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">-222</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">259</td>
+<td style="text-align: right;">-630</td>
+<td style="text-align: right;">1129</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">-1182</td>
+<td style="text-align: right;">159</td>
+<td style="text-align: right;">347</td>
+<td style="text-align: right;">-288</td>
+<td style="text-align: right;">-190</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-646</td>
+<td style="text-align: right;">312</td>
+<td style="text-align: right;">148</td>
+<td style="text-align: right;">531</td>
+<td style="text-align: right;">-152</td>
+<td style="text-align: right;">729</td>
+<td style="text-align: right;">-496</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: right;">153</td>
+<td style="text-align: right;">386</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">420</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">-110</td>
+<td style="text-align: right;">595</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: right;">-527</td>
+<td style="text-align: right;">-88</td>
+<td style="text-align: right;">-853</td>
+<td style="text-align: right;">453</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-104</td>
+<td style="text-align: right;">801</td>
+<td style="text-align: right;">-498</td>
+<td style="text-align: right;">554</td>
+<td style="text-align: right;">871</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">888</td>
+<td style="text-align: right;">-436</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">243</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">564</td>
+<td style="text-align: right;">-1238</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">651</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: right;">482</td>
+<td style="text-align: right;">-109</td>
+<td style="text-align: right;">-556</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">752</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">335</td>
+<td style="text-align: right;">-548</td>
+<td style="text-align: right;">-249</td>
+<td style="text-align: right;">-703</td>
+<td style="text-align: right;">636</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">-556</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">668</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">327</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">287</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">420</td>
+<td style="text-align: right;">382</td>
+<td style="text-align: right;">279</td>
+<td style="text-align: right;">-24</td>
+<td style="text-align: right;">-1170</td>
+<td style="text-align: right;">-176</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-194</td>
+<td style="text-align: right;">-862</td>
+<td style="text-align: right;">758</td>
+<td style="text-align: right;">-328</td>
+<td style="text-align: right;">-379</td>
+<td style="text-align: right;">-345</td>
+<td style="text-align: right;">-291</td>
+<td style="text-align: right;">792</td>
+<td style="text-align: right;">510</td>
+<td style="text-align: right;">-635</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">-362</td>
+<td style="text-align: right;">433</td>
+<td style="text-align: right;">305</td>
+<td style="text-align: right;">882</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">-432</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">852</td>
+<td style="text-align: right;">253</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">847</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: right;">1038</td>
+<td style="text-align: right;">-711</td>
+<td style="text-align: right;">604</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">977</td>
+<td style="text-align: right;">-81</td>
+<td style="text-align: right;">573</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-756</td>
+<td style="text-align: right;">-288</td>
+<td style="text-align: right;">-211</td>
+<td style="text-align: right;">158</td>
+<td style="text-align: right;">444</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">412</td>
+<td style="text-align: right;">636</td>
+<td style="text-align: right;">802</td>
+<td style="text-align: right;">-148</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">456</td>
+<td style="text-align: right;">435</td>
+<td style="text-align: right;">296</td>
+<td style="text-align: right;">-78</td>
+<td style="text-align: right;">-925</td>
+<td style="text-align: right;">733</td>
+<td style="text-align: right;">784</td>
+<td style="text-align: right;">-249</td>
+<td style="text-align: right;">866</td>
+<td style="text-align: right;">-78</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-40</td>
+<td style="text-align: right;">-91</td>
+<td style="text-align: right;">-632</td>
+<td style="text-align: right;">-172</td>
+<td style="text-align: right;">-586</td>
+<td style="text-align: right;">-279</td>
+<td style="text-align: right;">530</td>
+<td style="text-align: right;">-461</td>
+<td style="text-align: right;">-21</td>
+<td style="text-align: right;">387</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">804</td>
+<td style="text-align: right;">610</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">159</td>
+<td style="text-align: right;">672</td>
+<td style="text-align: right;">-89</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">-508</td>
+<td style="text-align: right;">-334</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">767</td>
+<td style="text-align: right;">-208</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">925</td>
+<td style="text-align: right;">647</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">-18</td>
+<td style="text-align: right;">956</td>
+<td style="text-align: right;">-549</td>
+<td style="text-align: right;">212</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-275</td>
+<td style="text-align: right;">597</td>
+<td style="text-align: right;">732</td>
+<td style="text-align: right;">-188</td>
+<td style="text-align: right;">-389</td>
+<td style="text-align: right;">-132</td>
+<td style="text-align: right;">-101</td>
+<td style="text-align: right;">589</td>
+<td style="text-align: right;">302</td>
+<td style="text-align: right;">-32</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">431</td>
+<td style="text-align: right;">711</td>
+<td style="text-align: right;">879</td>
+<td style="text-align: right;">659</td>
+<td style="text-align: right;">-631</td>
+<td style="text-align: right;">-86</td>
+<td style="text-align: right;">-545</td>
+<td style="text-align: right;">-320</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">-690</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">476</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">-70</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">416</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">-310</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">437</td>
+<td style="text-align: right;">274</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">355</td>
+<td style="text-align: right;">412</td>
+<td style="text-align: right;">-79</td>
+<td style="text-align: right;">163</td>
+<td style="text-align: right;">-25</td>
+<td style="text-align: right;">274</td>
+<td style="text-align: right;">451</td>
+<td style="text-align: right;">735</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">-179</td>
+<td style="text-align: right;">-56</td>
+<td style="text-align: right;">403</td>
+<td style="text-align: right;">-559</td>
+<td style="text-align: right;">-526</td>
+<td style="text-align: right;">-399</td>
+<td style="text-align: right;">-208</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: right;">200</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">195</td>
+<td style="text-align: right;">1581</td>
+<td style="text-align: right;">-204</td>
+<td style="text-align: right;">740</td>
+<td style="text-align: right;">909</td>
+<td style="text-align: right;">262</td>
+<td style="text-align: right;">-172</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">247</td>
+<td style="text-align: right;">1166</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">-650</td>
+<td style="text-align: right;">-488</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">483</td>
+<td style="text-align: right;">-453</td>
+<td style="text-align: right;">725</td>
+<td style="text-align: right;">907</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">514</td>
+<td style="text-align: right;">-246</td>
+<td style="text-align: right;">1380</td>
+<td style="text-align: right;">-474</td>
+<td style="text-align: right;">734</td>
+<td style="text-align: right;">-361</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">-219</td>
+<td style="text-align: right;">1142</td>
+<td style="text-align: right;">-22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">777</td>
+<td style="text-align: right;">1483</td>
+<td style="text-align: right;">664</td>
+<td style="text-align: right;">668</td>
+<td style="text-align: right;">-271</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">425</td>
+<td style="text-align: right;">-639</td>
+<td style="text-align: right;">261</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-60</td>
+<td style="text-align: right;">894</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">466</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">394</td>
+<td style="text-align: right;">-975</td>
+<td style="text-align: right;">-368</td>
+<td style="text-align: right;">-157</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">-444</td>
+<td style="text-align: right;">-763</td>
+<td style="text-align: right;">-6</td>
+<td style="text-align: right;">1179</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">-570</td>
+<td style="text-align: right;">-168</td>
+<td style="text-align: right;">334</td>
+<td style="text-align: right;">-305</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-129</td>
+<td style="text-align: right;">156</td>
+<td style="text-align: right;">367</td>
+<td style="text-align: right;">-69</td>
+<td style="text-align: right;">-525</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">-100</td>
+<td style="text-align: right;">454</td>
+<td style="text-align: right;">1336</td>
+<td style="text-align: right;">299</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>Now, what are you going to with that big pile of numbers? Look at it all day long? When you deal with data, it will deal so many numbers to you that you will be overwhelmed by them. That is why we need ways to describe the data in a more manageable fashion.</p>
@@ -921,12 +946,12 @@ ga('send', {
 <section id="stop-plotting-time-o-o-oh-u-can-plot-this" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="stop-plotting-time-o-o-oh-u-can-plot-this"><span class="header-section-number">2.2.1</span> Stop, plotting time (o o oh) U can plot this</h3>
 <p>Let’s turn all of the numbers into dots, then show them in a graph. Note, when we do this, we have not yet summarized anything about the data. Instead, we just look at all of the data in a visual format, rather than looking at the numbers.</p>
-<div class="cell" data-hash="cache/fig-happyPlot_7c6e835c3a27273ca3ef571a6083c1c2">
+<div class="cell" data-hash="02-Describing_Data_cache/html/fig-happyPlot_9fcc3f2eb50946f4622a7c6e77d71fe9">
 <div class="cell-output-display">
 <div id="fig-happyPlot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 2.1: Pretend happiness ratings from 500 people</figcaption><p></p>
+<p><img src="02-Describing_Data_files/figure-html/fig-happyPlot-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: Pretend happiness ratings from 500 people</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -941,12 +966,12 @@ ga('send', {
 <section id="histograms" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="histograms"><span class="header-section-number">2.2.2</span> Histograms</h3>
 <p>Making a histogram will be our first act of officially summarizing something about the data. We will no longer look at the individual bits of data, instead we will see how the numbers group together. Let’s look at <a href="#fig-happyHist">Figure&nbsp;<span>2.2</span></a>, a histogram of the happiness data, and then explain it.</p>
-<div class="cell" data-hash="cache/fig-happyHist_d2c4e7ed20cae2e24338ec4d94961f33">
+<div class="cell" data-hash="02-Describing_Data_cache/html/fig-happyHist_c1b186142f54e940abd03087759bae12">
 <div class="cell-output-display">
 <div id="fig-happyHist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-Describing_Data_files/figure-html/fig-happyHist-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 2.2: A histogram of the happiness ratings</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: A histogram of the happiness ratings</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -955,12 +980,12 @@ ga('send', {
 <p>More generally, we see there are many bins on the x-axis. We have divided the data into bins of 500. Bin #1 goes from -2000 to -1500, bin #2 goes from -1500 to -1000, and so on until the last bin. To make the histogram, we just count up the number of data points falling inside each bin, then plot those frequency counts as a function of the bins. Voila, a histogram.</p>
 <p>What does the histogram help us see about the data? First, we can see the <strong>shape</strong> of data. The shape of the histogram refers to how it goes up and down. The shape tells us where the data is. For example, when the bars are low we know there isn’t much data there. When the bars are high, we know there is more data there. So, where is most of the data? It looks like it’s mostly in the middle two bins, between -500 and 500. We can also see the <strong>range</strong> of the data. This tells us the minimums and the maximums of the data. Most of the data is between -1500 and +1500, so no infinite sadness or infinite happiness in our data-set.</p>
 <p>When you make a histogram you get to choose how wide each bar will be. For example, below are four different histograms of the very same happiness data. What changes is the width of the bins.</p>
-<div class="cell" data-hash="cache/fig-manyhistbin_0bb0000cd9a67760c00996e823d6bead">
+<div class="cell" data-hash="02-Describing_Data_cache/html/fig-manyhistbin_5abe663c3bf019f3ae984c803d5ce52a">
 <div class="cell-output-display">
 <div id="fig-manyhistbin" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-Describing_Data_files/figure-html/fig-manyhistbin-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 2.3: Four histograms of the same data using different bin widths</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.3: Four histograms of the same data using different bin widths</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1071,12 +1096,12 @@ ga('send', {
 <section id="all-together-now" class="level3" data-number="2.4.6">
 <h3 data-number="2.4.6" class="anchored" data-anchor-id="all-together-now"><span class="header-section-number">2.4.6</span> All together now</h3>
 <p>Just to remind ourselves of the mode, median, and mean, take a look at the next histogram in @fig-meanmodemed. We have overlaid the location of the mean (red), median (green), and mode (blue). For this dataset, the three measures of central tendency all give different answers. The mean is the largest because it is influenced by large numbers, even if they occur rarely. The mode and median are insensitive to large numbers that occur infrequently, so they have smaller values.</p>
-<div class="cell" data-hash="cache/fig-meanmodemed_adbc36b7deb6360ab966650cc0cd3610">
+<div class="cell" data-hash="02-Describing_Data_cache/html/fig-meanmodemed_9ed5773d151e1f8aa3a7398b674d7366">
 <div class="cell-output-display">
 <div id="fig-meanmodemed" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-Describing_Data_files/figure-html/fig-meanmodemed-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 2.4: A histogram with the mean (red), the median (green), and the mode (blue)</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.4: A histogram with the mean (red), the median (green), and the mode (blue)</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1103,159 +1128,157 @@ ga('send', {
 <p>1 3 4 5 5 6 7 8 9 24</p>
 </blockquote>
 <p>But, what about the difference between the numbers, what do those look like? We can compute the difference scores between each number, then put them in a matrix like the one below:</p>
-<div class="cell" data-hash="cache/2diffscores_aecf4a4549fae3024e5dcd9df811b536">
+<div class="cell" data-hash="02-Describing_Data_cache/html/2diffscores_2d29293cf2d1a9da2c72b392b4c610b2">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> 1 </th>
-   <th style="text-align:right;"> 3 </th>
-   <th style="text-align:right;"> 4 </th>
-   <th style="text-align:right;"> 5 </th>
-   <th style="text-align:right;"> 5 </th>
-   <th style="text-align:right;"> 6 </th>
-   <th style="text-align:right;"> 7 </th>
-   <th style="text-align:right;"> 8 </th>
-   <th style="text-align:right;"> 9 </th>
-   <th style="text-align:right;"> 24 </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">3</th>
+<th style="text-align: right;">4</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">5</th>
+<th style="text-align: right;">6</th>
+<th style="text-align: right;">7</th>
+<th style="text-align: right;">8</th>
+<th style="text-align: right;">9</th>
+<th style="text-align: right;">24</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 23 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 21 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> -3 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 20 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 19 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 19 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -3 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 18 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:right;"> -6 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -3 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 17 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:right;"> -7 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -3 </td>
-   <td style="text-align:right;"> -3 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:right;"> -8 </td>
-   <td style="text-align:right;"> -6 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -3 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 15 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 24 </td>
-   <td style="text-align:right;"> -23 </td>
-   <td style="text-align:right;"> -21 </td>
-   <td style="text-align:right;"> -20 </td>
-   <td style="text-align:right;"> -19 </td>
-   <td style="text-align:right;"> -19 </td>
-   <td style="text-align:right;"> -18 </td>
-   <td style="text-align:right;"> -17 </td>
-   <td style="text-align:right;"> -16 </td>
-   <td style="text-align:right;"> -15 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">-6</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">-7</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: right;">-8</td>
+<td style="text-align: right;">-6</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">-3</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">24</td>
+<td style="text-align: right;">-23</td>
+<td style="text-align: right;">-21</td>
+<td style="text-align: right;">-20</td>
+<td style="text-align: right;">-19</td>
+<td style="text-align: right;">-19</td>
+<td style="text-align: right;">-18</td>
+<td style="text-align: right;">-17</td>
+<td style="text-align: right;">-16</td>
+<td style="text-align: right;">-15</td>
+<td style="text-align: right;">0</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>We are looking at all of the possible differences between each number and every other number. So, in the top left, the difference between 1 and itself is 0. One column over to the right, the difference between 3 and 1 (3-1) is 2, etc. As you can see, this is a 10x10 matrix, which means there are 100 differences to look at. Not too bad, but if we had 500 numbers, then we would have 500*500 = 250,000 differences to look at (go for it if you like looking at that sort of thing).</p>
@@ -1265,40 +1288,38 @@ ga('send', {
 <blockquote class="blockquote">
 <p>1 2 3</p>
 </blockquote>
-<div class="cell" data-hash="cache/2diffscoreSmall_b539966f0e99663567a32654652517f9">
+<div class="cell" data-hash="02-Describing_Data_cache/html/2diffscoreSmall_37ca9df04e771204296251ff47ca6d69">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> 1 </th>
-   <th style="text-align:right;"> 2 </th>
-   <th style="text-align:right;"> 3 </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">1</th>
+<th style="text-align: right;">2</th>
+<th style="text-align: right;">3</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> -2 </td>
-   <td style="text-align:right;"> -1 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">0</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>You might already guess what is going to happen. Let’s compute the mean:</p>
@@ -1310,12 +1331,12 @@ ga('send', {
 <section id="the-variance" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">2.5.3</span> The Variance</h3>
 <p>Variability, variation, variance, vary, variable, varying, variety. Confused yet? Before we describe <strong>the variance</strong>, we want to you be OK with how this word is used. First, don’t forget the big picture. We know that variability and variation refers to the big idea of differences between numbers. We can even use the word variance in the same way. When numbers are different, they have variance.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -1334,70 +1355,68 @@ Note
 </ol>
 <p>This could tell us, 1) something about whether our scores are really all very close to the mean (which could help us know if the mean is good representative number of the data), and 2) something about how much differences there are in the numbers.</p>
 <p>Take a look at this table:</p>
-<div class="cell" data-hash="cache/2deviations_13e8b85b6a73a31c9d8d66c001041de4">
+<div class="cell" data-hash="02-Describing_Data_cache/html/2deviations_219152a12f97e04a9804ddcbb444125c">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> values </th>
-   <th style="text-align:left;"> mean </th>
-   <th style="text-align:left;"> Difference_from_Mean </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">values</th>
+<th style="text-align: left;">mean</th>
+<th style="text-align: left;">Difference_from_Mean</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -3.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -2.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 3.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 0 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-3.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-2.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">3.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">0</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>The first column shows we have 6 scores in the data set, and the <code>value</code> columns shows each score. The sum of the values, and the mean is presented on the last two rows. The sum and the mean were obtained by:</p>
@@ -1420,79 +1439,77 @@ Note
 <p>Some devious someone divined a solution to the fact that differences scores from the mean always add to zero. Can you think of any solutions? For example, what could you do to the difference scores so that you could add them up, and they would weigh something useful, that is they would not be zero?</p>
 <p>The devious solution is to square the numbers. Squaring numbers converts all the negative numbers to positive numbers. For example, <span class="math inline">\(2^2 = 4\)</span>, and <span class="math inline">\(-2^2 = 4\)</span>. Remember how squaring works, we multiply the number twice: <span class="math inline">\(2^2 = 2*2 = 4\)</span>, and <span class="math inline">\(-2^2 = -2*-2 = 4\)</span>. We use the term <strong>squared deviations</strong> to refer to differences scores that have been squared. Deviations are things that move away from something. The difference scores move away from the mean, so we also call them <strong>deviations</strong>.</p>
 <p>Let’s look at our table again, but add the squared deviations.</p>
-<div class="cell" data-hash="cache/2deviationssquared_afd7d43632882f6c581d12ad20eaf477">
+<div class="cell" data-hash="02-Describing_Data_cache/html/2deviationssquared_dcdfd264bdaa10320f26e4aebb21f310">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> values </th>
-   <th style="text-align:left;"> mean </th>
-   <th style="text-align:left;"> Difference_from_Mean </th>
-   <th style="text-align:left;"> Squared_Deviations </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">values</th>
+<th style="text-align: left;">mean</th>
+<th style="text-align: left;">Difference_from_Mean</th>
+<th style="text-align: left;">Squared_Deviations</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -3.5 </td>
-   <td style="text-align:left;"> 12.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-   <td style="text-align:left;"> 2.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -0.5 </td>
-   <td style="text-align:left;"> 0.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -2.5 </td>
-   <td style="text-align:left;"> 6.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-   <td style="text-align:left;"> 2.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 3.5 </td>
-   <td style="text-align:left;"> 12.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 35.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 5.91666666666667 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-3.5</td>
+<td style="text-align: left;">12.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">2.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">0.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-2.5</td>
+<td style="text-align: left;">6.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">2.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">3.5</td>
+<td style="text-align: left;">12.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">35.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">5.91666666666667</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>OK, now we have a new column called <code>squared_deviations</code>. These are just the difference scores squared. So, <span class="math inline">\(-3.5^2 = 12.25\)</span>, etc. You can confirm for yourself with your cellphone calculator.</p>
@@ -1520,79 +1537,77 @@ Note
 <p>We could also expand this to say:</p>
 <p><span class="math inline">\(\text{standard deviation} = \sqrt{\frac{\sum_{i}^{n}({x_{i}-\bar{x})^2}}{N}}\)</span></p>
 <p>Don’t let those big square root signs put you off. Now, you know what they are doing there. Just bringing our measure of the variance back down to the original size of the data. Let’s look at our table again:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-6_4130af97d1d70497284617ac3343dad9">
+<div class="cell" data-hash="02-Describing_Data_cache/html/unnamed-chunk-6_4288ecefdb72467a95ab67ed6c5aedca">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> values </th>
-   <th style="text-align:left;"> mean </th>
-   <th style="text-align:left;"> Difference_from_Mean </th>
-   <th style="text-align:left;"> Squared_Deviations </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">values</th>
+<th style="text-align: left;">mean</th>
+<th style="text-align: left;">Difference_from_Mean</th>
+<th style="text-align: left;">Squared_Deviations</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -3.5 </td>
-   <td style="text-align:left;"> 12.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-   <td style="text-align:left;"> 2.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -0.5 </td>
-   <td style="text-align:left;"> 0.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -2.5 </td>
-   <td style="text-align:left;"> 6.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-   <td style="text-align:left;"> 2.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 3.5 </td>
-   <td style="text-align:left;"> 12.25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 35.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 5.91666666666667 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-3.5</td>
+<td style="text-align: left;">12.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">2.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">0.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-2.5</td>
+<td style="text-align: left;">6.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">2.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">3.5</td>
+<td style="text-align: left;">12.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">35.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">5.91666666666667</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>We measured the standard deviation as 2.4322829. Notice this number fits right in the with differences scores from the mean. All of the scores are kind of in and around + or - 2.4322829. Whereas, if we looked at the variance, 5.916 is just too big, it doesn’t summarize the actual differences very well.</p>
@@ -1611,79 +1626,77 @@ Note
 <section id="absolute-deviations" class="level3" data-number="2.7.1">
 <h3 data-number="2.7.1" class="anchored" data-anchor-id="absolute-deviations"><span class="header-section-number">2.7.1</span> Absolute deviations</h3>
 <p>How about just taking the absolute value of the difference scores. Remember, the absolute value converts any number to a positive value. Check out the following table:</p>
-<div class="cell" data-hash="cache/2absolute_fd4efa6a7825c3ad01e60e60932b0916">
+<div class="cell" data-hash="02-Describing_Data_cache/html/2absolute_4c9a5b139096ff461e21f769b2ca1d7c">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> values </th>
-   <th style="text-align:left;"> mean </th>
-   <th style="text-align:left;"> Difference_from_Mean </th>
-   <th style="text-align:left;"> Absolute_Deviations </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">values</th>
+<th style="text-align: left;">mean</th>
+<th style="text-align: left;">Difference_from_Mean</th>
+<th style="text-align: left;">Absolute_Deviations</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -3.5 </td>
-   <td style="text-align:left;"> 3.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -0.5 </td>
-   <td style="text-align:left;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> -2.5 </td>
-   <td style="text-align:left;"> 2.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-   <td style="text-align:left;"> 1.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 3.5 </td>
-   <td style="text-align:left;"> 3.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 27 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 13 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 4.5 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 2.16666666666667 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-3.5</td>
+<td style="text-align: left;">3.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">-2.5</td>
+<td style="text-align: left;">2.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">1.5</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">3.5</td>
+<td style="text-align: left;">3.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">4.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">2.16666666666667</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>This works pretty well too. By converting the difference scores from the mean to positive values, we can now add them up and get a non-zero value (if there are differences). Then, we can find the mean of the sum of the absolute deviations. If we were to map the terms sum of squares (SS), variance and standard deviation onto these new measures based off of the absolute deviation, how would the mapping go? For example, what value in the table corresponds to the SS? That would be the sum of absolute deviations in the last column. How about the variance and standard deviation, what do those correspond to? Remember that the variance is mean (<span class="math inline">\(SS/N\)</span>), and the standard deviation is a square-rooted mean (<span class="math inline">\(\sqrt{SS/N}\)</span>). In the table above we only have one corresponding mean, the mean of the sum of the absolute deviations. So, we have a <strong>variance</strong> measure that does not need to be square rooted. We might say the mean absolute deviation, is doing double-duty as a variance and a standard-deviation. Neat.</p>
@@ -1699,70 +1712,68 @@ Note
 <p>Perhaps the most important thing you can do when using descriptives is to use them in combination with looking at the data in a graph form. This can help you see whether or not your descriptives are doing a good job of representing the data.</p>
 <section id="anscombes-quartet" class="level3" data-number="2.8.1">
 <h3 data-number="2.8.1" class="anchored" data-anchor-id="anscombes-quartet"><span class="header-section-number">2.8.1</span> Anscombe’s Quartet</h3>
-<p>To hit this point home, and to get you thinking about the issues we discuss in the next chapter, check this out. It’s called Anscombe’s Quartet, because these interesting graphs and numbers and numbers were produced by <span class="citation" data-cites="Anscombe1973">Anscombe (<a href="references.html#ref-Anscombe1973" role="doc-biblioref">1973</a>)</span>. In <a href="#fig-anscombe">Figure&nbsp;<span>2.5</span></a> you are looking at pairs of measurements. Each graph has an X and Y axis, and each point represents two measurements. Each of the graphs looks very different, right?</p>
-<div class="cell" data-hash="cache/fig-anscombe_aaf933c5a1ff31e04ecb240cbeebd494">
+<p>To hit this point home, and to get you thinking about the issues we discuss in the next chapter, check this out. It’s called Anscombe’s Quartet, because these interesting graphs and numbers and numbers were produced by <span class="citation" data-cites="Anscombe1973">Anscombe (<a href="#ref-Anscombe1973" role="doc-biblioref">1973</a>)</span>. In <a href="#fig-anscombe">Figure&nbsp;<span>2.5</span></a> you are looking at pairs of measurements. Each graph has an X and Y axis, and each point represents two measurements. Each of the graphs looks very different, right?</p>
+<div class="cell" data-hash="02-Describing_Data_cache/html/fig-anscombe_ff702cfb55017f9ce66466f0b34513a2">
 <div class="cell-output-display">
 <div id="fig-anscombe" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-Describing_Data_files/figure-html/fig-anscombe-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 2.5: Anscombe’s Quartet</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.5: Anscombe’s Quartet</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Well, would you be surprised if I told that the descriptive statistics for the numbers in these graphs are exactly the same? It turns out they do have the same descriptive statistics. In the table below I present the mean and variance for the x-values in each graph, and the mean and the variance for the y-values in each graph.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-8_f3ab019b230e201994f722cc82af6556">
+<div class="cell" data-hash="02-Describing_Data_cache/html/unnamed-chunk-8_02d9bfdd2e2d2a665bb2ea07be202a8f">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> quartet </th>
-   <th style="text-align:right;"> mean_x </th>
-   <th style="text-align:right;"> var_x </th>
-   <th style="text-align:right;"> mean_y </th>
-   <th style="text-align:right;"> var_y </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">quartet</th>
+<th style="text-align: right;">mean_x</th>
+<th style="text-align: right;">var_x</th>
+<th style="text-align: right;">mean_y</th>
+<th style="text-align: right;">var_y</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 7.500909 </td>
-   <td style="text-align:right;"> 4.127269 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 7.500909 </td>
-   <td style="text-align:right;"> 4.127629 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 7.500000 </td>
-   <td style="text-align:right;"> 4.122620 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 7.500909 </td>
-   <td style="text-align:right;"> 4.123249 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">7.500909</td>
+<td style="text-align: right;">4.127269</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">7.500909</td>
+<td style="text-align: right;">4.127629</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">7.500000</td>
+<td style="text-align: right;">4.122620</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">7.500909</td>
+<td style="text-align: right;">4.123249</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>The descriptives are all the same! Anscombe put these special numbers together to illustrate the point of graphing your numbers. If you only look at your descriptives, you don’t know what patterns in the data they are hiding. If you look at the graph, then you can get a better understanding.</p>
 </section>
 <section id="datasaurus-dozen" class="level3" data-number="2.8.2">
 <h3 data-number="2.8.2" class="anchored" data-anchor-id="datasaurus-dozen"><span class="header-section-number">2.8.2</span> Datasaurus Dozen</h3>
-<p>If you thought that Anscombe’s quartet was neat, you should take a look at the <a href="https://www.autodeskresearch.com/publications/samestats">Datasaurus Dozen</a> <span class="citation" data-cites="matejka2017same">(<a href="references.html#ref-matejka2017same" role="doc-biblioref">Matejka and Fitzmaurice 2017</a>)</span>. Scroll down to see the examples. You will be looking at dot plots. The dot plots show many different patterns, including dinosaurs! What’s amazing is that all of the dots have very nearly the same descriptive statistics. Just another reminder to look at your data, it might look like a dinosaur!</p>
+<p>If you thought that Anscombe’s quartet was neat, you should take a look at the <a href="https://www.autodeskresearch.com/publications/samestats">Datasaurus Dozen</a> <span class="citation" data-cites="matejka2017same">(<a href="#ref-matejka2017same" role="doc-biblioref">Matejka and Fitzmaurice 2017</a>)</span>. Scroll down to see the examples. You will be looking at dot plots. The dot plots show many different patterns, including dinosaurs! What’s amazing is that all of the dots have very nearly the same descriptive statistics. Just another reminder to look at your data, it might look like a dinosaur!</p>
 </section>
 </section>
 <section id="videos" class="level2" data-number="2.9">
@@ -1788,11 +1799,11 @@ Note
 </iframe>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-Anscombe1973" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Anscombe1973" class="csl-entry" role="listitem">
 Anscombe, F. J. 1973. <span>“Graphs in Statistical Analysis.”</span> <em>American Statistician</em> 27: 17–21.
 </div>
-<div id="ref-matejka2017same" class="csl-entry" role="doc-biblioentry">
+<div id="ref-matejka2017same" class="csl-entry" role="listitem">
 Matejka, Justin, and George Fitzmaurice. 2017. <span>“Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics Through Simulated Annealing.”</span> In <em>Proceedings of the 2017 <span>CHI</span> Conference on Human Factors in Computing Systems</em>, 1290–94. <span>ACM</span>. <a href="https://doi.org/10.1145/3025453.3025912">https://doi.org/10.1145/3025453.3025912</a>.
 </div>
 </div>
@@ -1827,9 +1838,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1841,7 +1866,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1869,31 +1911,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

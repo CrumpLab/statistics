@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,16 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -42,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -119,29 +95,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Answering questions with data - 5&nbsp; Foundations for inference">
-<meta property="og:description" content="So far we have been talking about describing data and looking for possible relationships between things we measure.">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/05-Foundation_Inference_files/figure-html/fig-5unifagain-1.png">
 <meta property="og:site-name" content="Answering questions with data">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Answering questions with data - 5&nbsp; Foundations for inference">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -151,11 +127,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-Foundation_Inference.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,138 +144,154 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#brief-review-of-experiments" id="toc-brief-review-of-experiments" class="nav-link active" data-scroll-target="#brief-review-of-experiments"> <span class="header-section-number">5.1</span> Brief review of Experiments</a></li>
-  <li><a href="#the-data-came-from-a-distribution" id="toc-the-data-came-from-a-distribution" class="nav-link" data-scroll-target="#the-data-came-from-a-distribution"> <span class="header-section-number">5.2</span> The data came from a distribution</a>
+  <li><a href="#brief-review-of-experiments" id="toc-brief-review-of-experiments" class="nav-link active" data-scroll-target="#brief-review-of-experiments"><span class="header-section-number">5.1</span> Brief review of Experiments</a></li>
+  <li><a href="#the-data-came-from-a-distribution" id="toc-the-data-came-from-a-distribution" class="nav-link" data-scroll-target="#the-data-came-from-a-distribution"><span class="header-section-number">5.2</span> The data came from a distribution</a>
   <ul class="collapse">
-  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"> <span class="header-section-number">5.2.1</span> Uniform distribution</a></li>
-  <li><a href="#not-all-samples-are-the-same-they-are-usually-quite-different" id="toc-not-all-samples-are-the-same-they-are-usually-quite-different" class="nav-link" data-scroll-target="#not-all-samples-are-the-same-they-are-usually-quite-different"> <span class="header-section-number">5.2.2</span> Not all samples are the same, they are usually quite different</a></li>
-  <li><a href="#large-samples-are-more-like-the-distribution-they-came-from" id="toc-large-samples-are-more-like-the-distribution-they-came-from" class="nav-link" data-scroll-target="#large-samples-are-more-like-the-distribution-they-came-from"> <span class="header-section-number">5.2.3</span> Large samples are more like the distribution they came from</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">5.2.1</span> Uniform distribution</a></li>
+  <li><a href="#not-all-samples-are-the-same-they-are-usually-quite-different" id="toc-not-all-samples-are-the-same-they-are-usually-quite-different" class="nav-link" data-scroll-target="#not-all-samples-are-the-same-they-are-usually-quite-different"><span class="header-section-number">5.2.2</span> Not all samples are the same, they are usually quite different</a></li>
+  <li><a href="#large-samples-are-more-like-the-distribution-they-came-from" id="toc-large-samples-are-more-like-the-distribution-they-came-from" class="nav-link" data-scroll-target="#large-samples-are-more-like-the-distribution-they-came-from"><span class="header-section-number">5.2.3</span> Large samples are more like the distribution they came from</a></li>
   </ul></li>
-  <li><a href="#is-there-a-difference" id="toc-is-there-a-difference" class="nav-link" data-scroll-target="#is-there-a-difference"> <span class="header-section-number">5.3</span> Is there a difference?</a>
+  <li><a href="#is-there-a-difference" id="toc-is-there-a-difference" class="nav-link" data-scroll-target="#is-there-a-difference"><span class="header-section-number">5.3</span> Is there a difference?</a>
   <ul class="collapse">
-  <li><a href="#chance-can-produce-differences" id="toc-chance-can-produce-differences" class="nav-link" data-scroll-target="#chance-can-produce-differences"> <span class="header-section-number">5.3.1</span> Chance can produce differences</a></li>
-  <li><a href="#differences-due-to-chance-can-be-simulated" id="toc-differences-due-to-chance-can-be-simulated" class="nav-link" data-scroll-target="#differences-due-to-chance-can-be-simulated"> <span class="header-section-number">5.3.2</span> Differences due to chance can be simulated</a></li>
+  <li><a href="#chance-can-produce-differences" id="toc-chance-can-produce-differences" class="nav-link" data-scroll-target="#chance-can-produce-differences"><span class="header-section-number">5.3.1</span> Chance can produce differences</a></li>
+  <li><a href="#differences-due-to-chance-can-be-simulated" id="toc-differences-due-to-chance-can-be-simulated" class="nav-link" data-scroll-target="#differences-due-to-chance-can-be-simulated"><span class="header-section-number">5.3.2</span> Differences due to chance can be simulated</a></li>
   </ul></li>
-  <li><a href="#chance-makes-some-differences-more-likely-than-others" id="toc-chance-makes-some-differences-more-likely-than-others" class="nav-link" data-scroll-target="#chance-makes-some-differences-more-likely-than-others"> <span class="header-section-number">5.4</span> Chance makes some differences more likely than others</a></li>
-  <li><a href="#the-crump-test" id="toc-the-crump-test" class="nav-link" data-scroll-target="#the-crump-test"> <span class="header-section-number">5.5</span> The Crump Test</a>
+  <li><a href="#chance-makes-some-differences-more-likely-than-others" id="toc-chance-makes-some-differences-more-likely-than-others" class="nav-link" data-scroll-target="#chance-makes-some-differences-more-likely-than-others"><span class="header-section-number">5.4</span> Chance makes some differences more likely than others</a></li>
+  <li><a href="#the-crump-test" id="toc-the-crump-test" class="nav-link" data-scroll-target="#the-crump-test"><span class="header-section-number">5.5</span> The Crump Test</a>
   <ul class="collapse">
-  <li><a href="#intuitive-methods" id="toc-intuitive-methods" class="nav-link" data-scroll-target="#intuitive-methods"> <span class="header-section-number">5.5.1</span> Intuitive methods</a></li>
-  <li><a href="#part-1-frequency-based-intuition-about-occurrence" id="toc-part-1-frequency-based-intuition-about-occurrence" class="nav-link" data-scroll-target="#part-1-frequency-based-intuition-about-occurrence"> <span class="header-section-number">5.5.2</span> Part 1: Frequency based intuition about occurrence</a></li>
-  <li><a href="#part-2-simulating-chance" id="toc-part-2-simulating-chance" class="nav-link" data-scroll-target="#part-2-simulating-chance"> <span class="header-section-number">5.5.3</span> Part 2: Simulating chance</a></li>
-  <li><a href="#part-3-judgment-and-decision-making" id="toc-part-3-judgment-and-decision-making" class="nav-link" data-scroll-target="#part-3-judgment-and-decision-making"> <span class="header-section-number">5.5.4</span> Part 3: Judgment and Decision-making</a></li>
-  <li><a href="#part-4-experiment-design" id="toc-part-4-experiment-design" class="nav-link" data-scroll-target="#part-4-experiment-design"> <span class="header-section-number">5.5.5</span> Part 4: Experiment Design</a></li>
-  <li><a href="#part-5-i-have-the-power" id="toc-part-5-i-have-the-power" class="nav-link" data-scroll-target="#part-5-i-have-the-power"> <span class="header-section-number">5.5.6</span> Part 5: I have the power</a></li>
-  <li><a href="#summary-of-crump-test" id="toc-summary-of-crump-test" class="nav-link" data-scroll-target="#summary-of-crump-test"> <span class="header-section-number">5.5.7</span> Summary of Crump Test</a></li>
+  <li><a href="#intuitive-methods" id="toc-intuitive-methods" class="nav-link" data-scroll-target="#intuitive-methods"><span class="header-section-number">5.5.1</span> Intuitive methods</a></li>
+  <li><a href="#part-1-frequency-based-intuition-about-occurrence" id="toc-part-1-frequency-based-intuition-about-occurrence" class="nav-link" data-scroll-target="#part-1-frequency-based-intuition-about-occurrence"><span class="header-section-number">5.5.2</span> Part 1: Frequency based intuition about occurrence</a></li>
+  <li><a href="#part-2-simulating-chance" id="toc-part-2-simulating-chance" class="nav-link" data-scroll-target="#part-2-simulating-chance"><span class="header-section-number">5.5.3</span> Part 2: Simulating chance</a></li>
+  <li><a href="#part-3-judgment-and-decision-making" id="toc-part-3-judgment-and-decision-making" class="nav-link" data-scroll-target="#part-3-judgment-and-decision-making"><span class="header-section-number">5.5.4</span> Part 3: Judgment and Decision-making</a></li>
+  <li><a href="#part-4-experiment-design" id="toc-part-4-experiment-design" class="nav-link" data-scroll-target="#part-4-experiment-design"><span class="header-section-number">5.5.5</span> Part 4: Experiment Design</a></li>
+  <li><a href="#part-5-i-have-the-power" id="toc-part-5-i-have-the-power" class="nav-link" data-scroll-target="#part-5-i-have-the-power"><span class="header-section-number">5.5.6</span> Part 5: I have the power</a></li>
+  <li><a href="#summary-of-crump-test" id="toc-summary-of-crump-test" class="nav-link" data-scroll-target="#summary-of-crump-test"><span class="header-section-number">5.5.7</span> Summary of Crump Test</a></li>
   </ul></li>
-  <li><a href="#the-randomization-test-permutation-test" id="toc-the-randomization-test-permutation-test" class="nav-link" data-scroll-target="#the-randomization-test-permutation-test"> <span class="header-section-number">5.6</span> The randomization test (permutation test)</a>
+  <li><a href="#the-randomization-test-permutation-test" id="toc-the-randomization-test-permutation-test" class="nav-link" data-scroll-target="#the-randomization-test-permutation-test"><span class="header-section-number">5.6</span> The randomization test (permutation test)</a>
   <ul class="collapse">
-  <li><a href="#pretend-example-does-chewing-gum-improve-your-grades" id="toc-pretend-example-does-chewing-gum-improve-your-grades" class="nav-link" data-scroll-target="#pretend-example-does-chewing-gum-improve-your-grades"> <span class="header-section-number">5.6.1</span> Pretend example does chewing gum improve your grades?</a></li>
-  <li><a href="#take-homes-so-far" id="toc-take-homes-so-far" class="nav-link" data-scroll-target="#take-homes-so-far"> <span class="header-section-number">5.6.2</span> Take homes so far</a></li>
+  <li><a href="#pretend-example-does-chewing-gum-improve-your-grades" id="toc-pretend-example-does-chewing-gum-improve-your-grades" class="nav-link" data-scroll-target="#pretend-example-does-chewing-gum-improve-your-grades"><span class="header-section-number">5.6.1</span> Pretend example does chewing gum improve your grades?</a></li>
+  <li><a href="#take-homes-so-far" id="toc-take-homes-so-far" class="nav-link" data-scroll-target="#take-homes-so-far"><span class="header-section-number">5.6.2</span> Take homes so far</a></li>
   </ul></li>
-  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"> <span class="header-section-number">5.7</span> Videos</a>
+  <li><a href="#videos" id="toc-videos" class="nav-link" data-scroll-target="#videos"><span class="header-section-number">5.7</span> Videos</a>
   <ul class="collapse">
-  <li><a href="#null-and-alternate-hypotheses" id="toc-null-and-alternate-hypotheses" class="nav-link" data-scroll-target="#null-and-alternate-hypotheses"> <span class="header-section-number">5.7.1</span> Null and Alternate Hypotheses</a></li>
-  <li><a href="#types-of-errors" id="toc-types-of-errors" class="nav-link" data-scroll-target="#types-of-errors"> <span class="header-section-number">5.7.2</span> Types of Errors</a></li>
+  <li><a href="#null-and-alternate-hypotheses" id="toc-null-and-alternate-hypotheses" class="nav-link" data-scroll-target="#null-and-alternate-hypotheses"><span class="header-section-number">5.7.1</span> Null and Alternate Hypotheses</a></li>
+  <li><a href="#types-of-errors" id="toc-types-of-errors" class="nav-link" data-scroll-target="#types-of-errors"><span class="header-section-number">5.7.2</span> Types of Errors</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/05-Foundation_Inference.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -304,7 +301,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></h1>
 </div>
 
 
@@ -318,6 +315,7 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
@@ -345,159 +343,158 @@ ga('send', {
 <section id="uniform-distribution" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">5.2.1</span> Uniform distribution</h3>
 <p>As a reminder from last chapter, <a href="#fig-5unifagain">Figure&nbsp;<span>5.1</span></a> shows that the shape of a uniform distribution is completely flat.</p>
-<div class="cell" data-hash="cache/fig-5unifagain_65bd42b89e1d10fd06ae9c2a4396c003">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5unifagain_e3e2cd66bccc609dee9a0137166b7eba">
 <div class="cell-output-display">
 <div id="fig-5unifagain" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="05-Foundation_Inference_files/figure-html/fig-5unifagain-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.1: Uniform distribution showing that the numbers from 1 to 10 have an equal probability of being sampled</figcaption><p></p>
+<p><img src="05-Foundation_Inference_files/figure-html/fig-5unifagain-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.1: Uniform distribution showing that the numbers from 1 to 10 have an equal probability of being sampled</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>OK, so that doesn’t look like much. What is going on here? The y-axis is labelled <code>probability</code>, and it goes from 0 to 1. The x-axis is labelled <code>Number</code>, and it goes from one to 10. There is a horizontal line drawn straight through. This line tells you the probability of each number from 1 to 10. Notice the line is flat. This means all of the numbers have the same probability of occurring. More specifically, there are 10 numbers from 1 to 10 (1,2,3,4,5,6,7,8,9,10), and they all have an equal chance of occurring. 1/10 = .1, which is the probability indicated by the horizontal line.</p>
 <p>“So what?”. Imagine that this uniform distribution is a number generating machine. It spits out numbers, but it spits out each number with the probability indicated by the line. If this distribution was going to start spitting out numbers, it would spit out 10% 1s, 10% 2s, 10% 3s, and so on, up to 10% 10s. Wanna see what that would look like? Let’s make it spit out 100 numbers and put them in <a href="#tbl-5100rand">Table&nbsp;<span>5.1</span></a>.</p>
-<div class="cell" data-hash="cache/tbl-5100rand_4d10d5906b9857b9fb040dcabbed212c">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/tbl-5100rand_ea01ee11246e0bf1e922e6bfb487584a">
 <div class="cell-output-display">
 <div id="tbl-5100rand" class="anchored">
-
-<table><caption>Table 5.1:  100 numbers randomly sampled from a uniform distribution. </caption>
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.1: 100 numbers randomly sampled from a uniform distribution.</caption>
 <tbody>
-  <tr>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 9 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 8 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </div>
 <p>We used the uniform distribution to generate these numbers. Officially, we call this <strong>sampling</strong> from a <strong>distribution</strong>. Sampling is what you do at a grocery store when there is free food. You can keep taking more. However, if you take all of the samples, then what you have is called the <strong>population</strong>. We’ll talk more about samples and populations as we go along.</p>
 <p>Because we used the uniform distribution to create numbers, we already know where our numbers came from. However, we can still pretend for the moment that someone showed up at your door, showed you these numbers, and then you wondered where they came from. Can you tell just by looking at these numbers that they came from a uniform distribution? What would need to look at? Perhaps you would want to know if all of the numbers occur with roughly equal frequency, after all they should have right? That is, if each number had the same chance of occurring, we should see that each number occurs roughly the same number of times.</p>
 <p>We already know what a histogram is, so we can put our sample of 100 numbers into a histogram and see what the counts look like. If all of the numbers from 1 to 10 occur with equal frequency, then each individual number should occur about 10 times. <a href="#fig-5histunif">Figure&nbsp;<span>5.2</span></a> shows the histogram:</p>
-<div class="cell" data-hash="cache/fig-5histunif_452bf0ec55c20476346cf0e68b0bd3dd">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5histunif_fef5526256bb289a62471ed848bd65b9">
 <div class="cell-output-display">
 <div id="fig-5histunif" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5histunif-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.2: Histogram of 100 numbers randomly sampled from the uniform distribution containing the integers from 1 to 10</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.2: Histogram of 100 numbers randomly sampled from the uniform distribution containing the integers from 1 to 10</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -507,27 +504,25 @@ ga('send', {
 <section id="not-all-samples-are-the-same-they-are-usually-quite-different" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="not-all-samples-are-the-same-they-are-usually-quite-different"><span class="header-section-number">5.2.2</span> Not all samples are the same, they are usually quite different</h3>
 <p>Let’s look at sampling error more closely. We will sample 20 numbers from the uniform distribution. We should expect that each number between 1 and 10 occurs about two times each. As before, this expectation can be visualized in a histogram. To get a better sense of sampling error, let’s repeat the above process ten times. <a href="#fig-5manysamples">Figure&nbsp;<span>5.3</span></a> has 10 histograms, each showing what 10 different samples of twenty numbers looks like:</p>
-<div class="cell" data-hash="cache/fig-5manysamples_fdb7d389b0c6f6fdb8bd8aaed2e5df0b">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5manysamples_20bf39fa5e74aab64ebd1405c68ad5f4">
 <div class="cell-output-display">
 <div id="fig-5manysamples" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5manysamples-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.3: Histograms for 10 different samples from the uniform distribution. Each sample contains 20 numbers. The histograms all look quite different. The differences between the samples are due to sampling error or random chance.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.3: Histograms for 10 different samples from the uniform distribution. Each sample contains 20 numbers. The histograms all look quite different. The differences between the samples are due to sampling error or random chance.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>You might notice right away that none of the histograms are the same. Even though we are randomly taking 20 numbers from the very same uniform distribution, each sample of 20 numbers comes out different. This is sampling variability, or sampling error.</p>
 <p><a href="#fig-5expectedUnif">Figure&nbsp;<span>5.4</span></a> shows an animated version of the process of repeatedly choosing 20 new random numbers and plotting a histogram. The horizontal line shows the flat-line shape of the uniform distribution. The line crosses the y-axis at 2; and, we expect that each number (from 1 to 10) should occur about 2 times each in a sample of 20. However, each sample bounces around quite a bit, due to random chance.</p>
-<div>
-<div class="cell" data-hash="cache/fig-5expectedUnif_7f825eb42f0627f2361022fe6f2be854">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5expectedUnif_0e0df49676aeada61ad985be45df887b">
 <div class="cell-output-display">
 <div id="fig-5expectedUnif" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/gifs/sampleUnifExpected-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.4: Animation of histograms for different samples of 20 from Uniform distribution (numbers 1 to 10). The black lines shows the expected number of times each number from 1 to 10 should occur. The fact that each number does not occur 2 times each illustrates the error associated with sampling</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.4: Animation of histograms for different samples of 20 from Uniform distribution (numbers 1 to 10). The black lines shows the expected number of times each number from 1 to 10 should occur. The fact that each number does not occur 2 times each illustrates the error associated with sampling</figcaption><p></p>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -536,12 +531,12 @@ ga('send', {
 <section id="large-samples-are-more-like-the-distribution-they-came-from" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="large-samples-are-more-like-the-distribution-they-came-from"><span class="header-section-number">5.2.3</span> Large samples are more like the distribution they came from</h3>
 <p>Let’s refresh the question. Which of the two samples in <a href="#fig-5whichone">Figure&nbsp;<span>5.5</span></a> do you think came from a uniform distribution?</p>
-<div class="cell" data-hash="cache/fig-5whichone_e9f6f76750c84904020de78a0d052644">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5whichone_a5b8776c55a8a2ee4679a4f06b390f47">
 <div class="cell-output-display">
 <div id="fig-5whichone" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5whichone-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.5: Which of these two samples came from a uniform distribution?</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.5: Which of these two samples came from a uniform distribution?</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -549,47 +544,47 @@ ga('send', {
 <p>The answer is that they both did. But, neither of them look like they did.</p>
 <p>Can we improve things, and make it easier to see if a sample came from a uniform distribution? Yes, we can. All we need to do is increase the <strong>sample-size</strong>. We will often use the letter <code>n</code> to refer to sample-size. N is the number of observations in the sample.</p>
 <p>So let’s increase the number of observations in each sample from 20 to 100. We will again create 10 samples (each with 100 observations), and make histograms for each of them. All of these samples will be drawn from the very same uniform distribution. This, means we should expect each number from 1 to 10 to occur about 10 times in each sample. The histograms are shown in <a href="#fig-5unifsamp100">Figure&nbsp;<span>5.6</span></a>.</p>
-<div class="cell" data-hash="cache/fig-5unifsamp100_d59ff1973d2347898ce3682069b48490">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5unifsamp100_b861375a23939eaf9c48157c54002005">
 <div class="cell-output-display">
 <div id="fig-5unifsamp100" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5unifsamp100-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.6: Histograms for different samples from a uniform distribution. N = 100 for each sample.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.6: Histograms for different samples from a uniform distribution. N = 100 for each sample.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Again, most of these histograms don’t look very flat, and all of the bars seem to be going up or down, and they are not exactly at 10 each. So, we are still dealing with sampling error. It’s a pain. It’s always there.</p>
 <p>Let’s bump up the <span class="math inline">\(N\)</span> from 100 to 1000 observations per sample. Now we should expect every number to appear about 100 times each. What happens?</p>
-<div class="cell" data-hash="cache/fig-5unifsamp1000_26c2c5a1ddf9aecbc6c940e531e97e67">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5unifsamp1000_4a42e78cc75023b311fa2c3ae0c81279">
 <div class="cell-output-display">
 <div id="fig-5unifsamp1000" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5unifsamp1000-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.7: Histograms for different samples from a uniform distribution. N = 1000 for each sample.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.7: Histograms for different samples from a uniform distribution. N = 1000 for each sample.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p><a href="#fig-5unifsamp1000">Figure&nbsp;<span>5.7</span></a> shows the histograms are starting to flatten out. The bars are still not perfectly at 100, because there is still sampling error (there always will be). But, if you found a histogram that looked flat and knew that the sample contained many observations, you might be more confident that those numbers came from a uniform distribution.</p>
 <p>Just for fun let’s make the samples really big. Say 100,000 observations per sample. Here, we should expect that each number occurs about 10,000 times each. What happens?</p>
-<div class="cell" data-hash="cache/fig-5sampunifALOT_0aab6d7a5fc61e1c65e0fbe2a920baeb">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5sampunifALOT_c1c2483c6ef019d16a89b7f6076976f0">
 <div class="cell-output-display">
 <div id="fig-5sampunifALOT" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5sampunifALOT-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.8: Histograms for different samples from a uniform distribution. N = 100,000 for each sample.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.8: Histograms for different samples from a uniform distribution. N = 100,000 for each sample.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p><a href="#fig-5sampunifALOT">Figure&nbsp;<span>5.8</span></a> shows that the histograms for each sample are starting to look the same. They all have 100,000 observations, and this gives chance enough opportunity to equally distribute the numbers, roughly making sure that they all occur very close to the same amount of times. As you can see, the bars are all very close to 10,000, which is where they should be if the sample came from a uniform distribution.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Pro tip
 </div>
 </div>
@@ -598,24 +593,24 @@ Pro tip
 </div>
 </div>
 <p>Before getting back to the topic of experiments that we started with, let’s ask two more questions. First, which of the two samples in <a href="#fig-5whichoneB">Figure&nbsp;<span>5.9</span></a> do you think came from a uniform distribution? FYI, each of these samples had 20 observations each.</p>
-<div class="cell" data-hash="cache/fig-5whichoneB_d7383e6cd5a3ddd6d8bec2f6c68e9250">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5whichoneB_ed6d9d1c70f6680ceb025b439df7aeea">
 <div class="cell-output-display">
 <div id="fig-5whichoneB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5whichoneB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.9: Which of these samples came from a uniform distribution?</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.9: Which of these samples came from a uniform distribution?</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>If you are not confident in the answer, this is because <strong>sampling error</strong> (randomness) is fuzzing with the histograms.</p>
 <p>Here is the very same question, only this time we will take 1,000 observations for each sample. Which histogram in <a href="#fig-5whichoneC">Figure&nbsp;<span>5.10</span></a> do you think came from a uniform distribution, which one did not?</p>
-<div class="cell" data-hash="cache/fig-5whichoneC_f260c748772cb3bd307c37c21ac045a7">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5whichoneC_6a8a0b64eceb8bd7f4cc46e4157055f5">
 <div class="cell-output-display">
 <div id="fig-5whichoneC" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5whichoneC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.10: Which of these samples came from a uniform distribution?</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.10: Which of these samples came from a uniform distribution?</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -651,110 +646,108 @@ SHINY APP here
 <p>You are the experimenter standing in front of a gumball machine. It is very big, has thousands of gumballs. 50% of the gumballs are green, and 50% are red. You want to find out if picking gumballs with your right hand vs.&nbsp;your left hand will cause you to pick more green gumballs. Plus, you will be blindfolded the entire time. The independent variable is Hand: right hand vs.&nbsp;left hand. The dependent variable is the measurement of the color of each gumball.</p>
 <p>You run the experiment as follows. 1) put on blind fold. 2) pick 10 gumballs randomly with left hand, set them aside. 3) pick 10 gumballs randomly with right hand, set them aside. 4) count the number of green and red gumballs chosen by your left hand, and count the number of green and red gumballs chosen by your right hand. Hopefully you will agree that your hands will not be able to tell the difference between the gumballs. If you don’t agree, we will further stipulate the gumballs are completely identical in every way except their color, so it would be impossible to tell them apart using your hands. So, what should happen in this experiment?</p>
 <p>“Umm, maybe you get 5 red gum balls and 5 green balls from your left hand, and also from your right hand?”. Sort of yes, this is what you would usually get. But, it is not all that you can get. Here is some data showing what happened from one pretend experiment:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-13_247fd0fe7374adcdc0f87d32ae30e15c">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-13_0b7ff958775036719e71d4a3063c5b3b">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> hand </th>
-   <th style="text-align:right;"> gumball </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">hand</th>
+<th style="text-align: right;">gumball</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> left </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> right </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">left</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">right</td>
+<td style="text-align: right;">0</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>“What am I looking at here”. This is a long-format table. Each row is one gumball. The first column tells you what hand was used. The second column tells you what kind of gumball. We will say 1s stand for green gum balls, and 0s stand for red gumballs. So, did your left hand cause you to pick more green gumballs than your right hand?</p>
 <p>It would be easier to look at the data using a bar graph (<a href="#fig-5gumballA">Figure&nbsp;<span>5.11</span></a>). To keep things simple, we only count the green gumballs (the other gumballs must be red). So, all we need to do is sum up the 1s. The 0s won’t add anything.</p>
-<div class="cell" data-hash="cache/fig-5gumballA_eb1d242cfb8910c26a8a8fe24fa79520">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5gumballA_b40e5aaf7903e94bc7707ad73768b4c6">
 <div class="cell-output-display">
 <div id="fig-5gumballA" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5gumballA-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.11: Counts of green gumballs picked randomly by each hand.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.11: Counts of green gumballs picked randomly by each hand.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -765,12 +758,12 @@ SHINY APP here
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="differences-due-to-chance-can-be-simulated"><span class="header-section-number">5.3.2</span> Differences due to chance can be simulated</h3>
 <p>Remember when we showed that chance can produce correlations. We also showed that chance is restricted in its ability to produce correlations. For example, chance more often produces weak correlations than strong correlations. Remember the window of chance? We found out before that correlations falling outside the window of chance were very unlikely. We can do the same thing for differences. Let’s find out just what chance can do in our experiment. Once we know what chance is capable of we will be in a better position to judge whether our manipulation caused a difference, or whether it could have been chance.</p>
 <p>The first thing to do is pretend you conduct the gumball experiment 10 times in a row. This will produce 10 different sets of results. <a href="#fig-5gumballsims">Figure&nbsp;<span>5.12</span></a> shows bar graphs for each replication of the experiment. Now we can look at whether the left hand chose more green gumballs than red gumballs.</p>
-<div class="cell" data-hash="cache/fig-5gumballsims_c05ab4041caf9b48c47c9e3adf56ee06">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5gumballsims_b0bcb9f0e5dffc637b02a09698ad4be8">
 <div class="cell-output-display">
 <div id="fig-5gumballsims" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5gumballsims-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.12: 10 simulated replications of picking gumballs. Each replication gives a slightly different answer. Any difference between the bars is due to chance, or sampling error. This shows that chance alone can produce differences, just by the act of sampling.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.12: 10 simulated replications of picking gumballs. Each replication gives a slightly different answer. Any difference between the bars is due to chance, or sampling error. This shows that chance alone can produce differences, just by the act of sampling.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -782,36 +775,36 @@ SHINY APP here
 <h2 data-number="5.4" class="anchored" data-anchor-id="chance-makes-some-differences-more-likely-than-others"><span class="header-section-number">5.4</span> Chance makes some differences more likely than others</h2>
 <p>OK, we have seen that chance can produce differences here. But, we still don’t have a good idea about what chance usually does and doesn’t do. For example, if we could find the window of opportunity here, we would be able find out that chance usually does not produce differences of a certain large size. If we knew what the size was, then if we ran experiment and our difference was bigger than what chance can do, we could be confident that chance did not produce our difference.</p>
 <p>Let’s think about our measure of green balls in terms of a difference. For example, in each experiment we counted the green balls for the left and right hand. What we really want to know is if there is a difference between them. So, we can calculate the <strong>difference score</strong>. Let’s decide that the difference score = # of green gumballs in left hand - # of green gumballs in right hand. <a href="#fig-5gumballdiffs">Figure&nbsp;<span>5.13</span></a> redraws the 10 bar graphs from above; however, now there is only one bar for each experiment. This bar represents the difference in number of green gumballs drawn by the left and right hand.</p>
-<div class="cell" data-hash="cache/fig-5gumballdiffs_4e9d8b5c017ab5fa5f1d28def472d9ba">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5gumballdiffs_9cf03439a99f7d20751fe9f4b60a8227">
 <div class="cell-output-display">
 <div id="fig-5gumballdiffs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5gumballdiffs-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.13: A look at the differences between number of each kind of gumball for the different replications. The difference should be zero, but sampling error produces non-zero differences.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.13: A look at the differences between number of each kind of gumball for the different replications. The difference should be zero, but sampling error produces non-zero differences.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Missing bars mean that there were an equal number of green gumballs chosen by the left and right hands (difference score is 0). A positive value means that more green gumballs were chosen by the left than right hand. A negative value means that more green gumballs were chosen by the right than left hand. Note that if we decided (and we get to decide) to calculate the difference in reverse (right hand - left hand), the signs of the differences scores would flip around.</p>
 <p>We are starting to see more of the differences that chance can produce. The difference scores are mostly between -2 to +2. We could get an even better impression by running this pretend experiment 100 times instead of only 10 times. The results are shown in <a href="#fig-5manydiffs">Figure&nbsp;<span>5.14</span></a>.</p>
-<div class="cell" data-hash="cache/fig-5manydiffs_054199ff18a6e71847c760e773397f10">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5manydiffs_1b51536070742b805866efbda6e864a7">
 <div class="cell-output-display">
 <div id="fig-5manydiffs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5manydiffs-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.14: Replicating the experiment 100 times, and looking at the differences each time. There are mnay kinds of differences that chance alone can produce.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.14: Replicating the experiment 100 times, and looking at the differences each time. There are mnay kinds of differences that chance alone can produce.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Ooph, we just ran so many simulated experiments that the x-axis is unreadable, but it goes from 1 to 100. Each bar represents the difference of number of green balls chosen randomly by the left or right hand. Beginning to notice anything? Look at the y-axis, this shows the size of the difference. Yes, there are lots of bars of different sizes, this shows us that many kinds of differences do occur by chance. However, the y-axis is also restricted. It does not go from -10 to +10. Big differences greater than 5 or -5 don’t happen very often.</p>
 <p>Now that we have a method for simulating differences due to chance, let’s run 10,000 simulated experiments. But, instead of plotting the differences in a bar graph for each experiment, how about we look at the histogram of difference scores. The histogram in <a href="#fig-5histdiffgumball">Figure&nbsp;<span>5.15</span></a> provides a clearer picture about which differences happen most often, and which ones do not. This will be another window into observing what kinds of differences chance is capable of producing.</p>
-<div class="cell" data-hash="cache/fig-5histdiffgumball_7463799854677f31654858ef362b1a64">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5histdiffgumball_9a738023886a5b1e56938725588b89f9">
 <div class="cell-output-display">
 <div id="fig-5histdiffgumball" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5histdiffgumball-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.15: A histogram of the differences obtained by chance over 10,000 replications. The most frequency difference is 0, which is what we expect by chance. But the differences can be as large as -10 or +10. Larger differences occur less often by chance. Chance can’t do everything.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.15: A histogram of the differences obtained by chance over 10,000 replications. The most frequency difference is 0, which is what we expect by chance. But the differences can be as large as -10 or +10. Larger differences occur less often by chance. Chance can’t do everything.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -822,12 +815,12 @@ SHINY APP here
 <section id="the-crump-test" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="the-crump-test"><span class="header-section-number">5.5</span> The Crump Test</h2>
 <p>We are going to be doing a lot of inference throughout the rest of this course. Pretty much all of it will come down to one question. Did chance produce the differences in my data? We will be talking about experiments mostly, and in experiments we want to know if our manipulation caused a difference in our measurement. But, we measure things that have natural variability, so every time we measure things we will always find a difference. We want to know if the difference we found (between our experimental conditions) could have been produced by chance. If chance is a very unlikely explanation of our observed difference, we will make the inference that chance did not produce the difference, and that something about our experimental manipulation did produce the difference. This is it (for this textbook).</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -866,22 +859,22 @@ Note
 <p>Before we do the simulation, we need to answer one question. How much is a lot? We could pick any number for a lot. I’m going to pick 10,000. That is a lot. If something happens only 1 times out 10,000, I am willing to say that is not a lot.</p>
 <p>OK, now we have our number, we are going to simulate the possible mean differences between group A and group B that could arise by chance. We do this 10,000 times. This gives chance a lot of opportunity to show us what it does do, and what it does not do.</p>
 <p>This is what I did: I sampled 20 numbers into group A, and 20 into group B. The numbers both came from the same normal distribution, with mean = 100, and standard deviation = 15. Because the samples are coming from the same distribution, we expect that on average they will be similar (but we already know that samples differ from one another). Then, I compute the mean for each sample, and compute the difference between the means. I save the <strong>mean difference score</strong>, and end up with 10,000 of them. Then, I draw the histogram in <a href="#fig-5crumptestdiff">Figure&nbsp;<span>5.16</span></a>.</p>
-<div class="cell" data-hash="cache/fig-5crumptestdiff_29b8d524e7369726ff4d7995c01d9069">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumptestdiff_3856042fe84a962dfef23c2c6d2972e3">
 <div class="cell-output-display">
 <div id="fig-5crumptestdiff" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5crumptestdiff-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.16: Histogram of mean differences arising by chance.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.16: Histogram of mean differences arising by chance.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -893,14 +886,14 @@ Note
 <p>Pause for a second. Why should the mean differences usually be zero, wasn’t the population mean = 100, shouldn’t they be around 100? No.&nbsp;The mean of group A will tend to be around 100, and the mean of group B will tend be around 100. So, the difference score will tend to be 100-100 = 0. That is why we expect a mean difference of zero when the samples are drawn from the same population.</p>
 <p>So, differences near zero happen the most, that’s good, that’s what we expect. Bigger or smaller differences happen increasingly less often. Differences greater than 15 or -15 never happen at all. For our purposes, it looks like chance only produces differences between -15 to 15.</p>
 <p>OK, let’s ask a couple simple questions. What was the biggest negative number that occurred in the simulation? We’ll use R for this. All of the 10,000 difference scores are stored in a variable I made called <code>difference</code>. If we want to find the minimum value, we use the <code>min</code> function. Here’s the result.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-20_7f4fc414c4846f3c65a060a59648350c">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-20_b144373e088af456ab5763248c1cc76c">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(difference)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -21.20175</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -17.12294</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>OK, so what was the biggest positive number that occurred? Let’s use the <code>max</code> function to find out. It finds the biggest (maximum) value in the variable. FYI, we’ve just computed the range, the minimum and maximum numbers in the data. Remember we learned that before. Anyway, here’s the max.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-21_7d7596dba01d4fe94240668fab0a5953">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-21_035ca94f9bffdc0a0c09bd8caa07b72a">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(difference)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16.89783</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 18.45391</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Both of these extreme values only occurred once. Those values were so rare we couldn’t even see them on the histogram, the bar was so small. Also, these biggest negative and positive numbers are pretty much the same size if you ignore their sign, which makes sense because the distribution looks roughly symmetrical.</p>
 <p>So, what can we say about these two numbers for the min and max? We can say the min happens 1 times out of 10,000. We can say the max happens 1 times out of 10,000. Is that a lot of times? Not to me. It’s not a lot.</p>
@@ -919,12 +912,12 @@ Note
 <li>Region of not chance. Chance didn’t do it. Chance couldn’t have done it.</li>
 </ol>
 <p>The regions are defined by the minimum value and the maximum value. Chance never produced a smaller or bigger number. The region inside the range is what chance did do, and the the region outside the range on both sides is what chance never did. It looks like <a href="#fig-5crumpdecision">Figure&nbsp;<span>5.17</span></a>:</p>
-<div class="cell" data-hash="cache/fig-5crumpdecision_78880d9b28fa3ac7b66eb9d3d2fb77c0">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpdecision_97c0077340aa3e709ffbccaef2d32a4a">
 <div class="cell-output-display">
 <div id="fig-5crumpdecision" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5crumpdecision-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.17: Applying decision boundaries to the histogrm of mean differences. The boundaries identify what differences chance did or did not produce in the simulation.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.17: Applying decision boundaries to the histogrm of mean differences. The boundaries identify what differences chance did or did not produce in the simulation.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -936,12 +929,12 @@ Note
 <h4 data-number="5.5.4.1" class="anchored" data-anchor-id="grey-areas"><span class="header-section-number">5.5.4.1</span> Grey areas</h4>
 <p>So what’s the problem? Depending on who you are, and what kinds of risks you’re willing to take, there might not be a problem. But, if you are just even a little bit risky then there is a problem that makes clear judgments about the role of chance difficult. We would like to say chance did or did not cause our difference. But, we’re really always in the position of admitting that it could have sometimes, or wouldn’t have most times. These are wishy washy statements, they are in between yes or no. That’s OK. Grey is a color too, let’s give grey some respect.</p>
 <p>“What grey areas are you talking about?, I only see red or green, am I grey blind?”. Let’s look at where some grey areas might be. I say might be, because people disagree about where the grey is. People have different comfort levels with grey. <a href="#fig-5crumpuncertainty">Figure&nbsp;<span>5.18</span></a> shows my opinion on grey areas.</p>
-<div class="cell" data-hash="cache/fig-5crumpuncertainty_d69e5276aaa47f852b5ec623a2698d09">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpuncertainty_a3d44b1a3c5aa6c5bcc1594ef7abba8b">
 <div class="cell-output-display">
 <div id="fig-5crumpuncertainty" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5crumpuncertainty-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.18: The question marks refer to an area where you have some uncertainty. Differences inside the question mark region do not happen very often by chance. When you find differences of these sizes, should you reject the idea that chance caused your difference? You will always have some uncertainty associated with this decision because it is clear that chance could have caused the difference. But, chance usually does not produce differences of these sizes.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.18: The question marks refer to an area where you have some uncertainty. Differences inside the question mark region do not happen very often by chance. When you find differences of these sizes, should you reject the idea that chance caused your difference? You will always have some uncertainty associated with this decision because it is clear that chance could have caused the difference. But, chance usually does not produce differences of these sizes.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -951,12 +944,12 @@ Note
 <p>You might be thinking that your grey areas aren’t the same as the ones I’ve drawn. Maybe you want to be more conservative, and make them smaller. Or, maybe you’re more risky, and would make them bigger. Or, maybe you’d add some grey area going in a little bit to the green area (after all, chance could probably produce some bigger differences sometimes, and to avoid those you would have to make the grey area go a bit into the green area).</p>
 <p>Another thing to think about is your decision policy. What will you do, when your observed difference is in your grey area? Will you always make the same decision about the role of chance? Or, will you sometimes flip-flop depending on how you feel. Perhaps, you think that there shouldn’t be a strict policy, and that you should accept some level of uncertainty. The difference you found could be a real one, or it might not. There’s uncertainty, hard to avoid that.</p>
 <p>So let’s illustrate one more kind of strategy for making decisions. We just talked about one that had some lines, and some regions. This makes it seem like a binary choice: we can either rule out, or not rule out the role of chance. Another perspective is that everything is a different shade of grey, like in <a href="#fig-5crumpshade">Figure&nbsp;<span>5.19</span></a>.</p>
-<div class="cell" data-hash="cache/fig-5crumpshade_6e9ded557149009d0dce2dbfc2d5d440">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpshade_d942762b05ecda7d6b362aa3a8992f0a">
 <div class="cell-output-display">
 <div id="fig-5crumpshade" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5crumpshade-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.19: The shading of the blue bars indicates levels of confidence in whether a difference could have been produced by chance. Darker bars represent increased confidence that the difference was not produced by chance. Bars get darker as the mean difference increases in absolute value.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.19: The shading of the blue bars indicates levels of confidence in whether a difference could have been produced by chance. Darker bars represent increased confidence that the difference was not produced by chance. Bars get darker as the mean difference increases in absolute value.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -977,53 +970,52 @@ Note
 <p>EXPERIMENT DESIGN TO THE RESCUE! Newsflash, it is often possible to change how you run your experiment so that it is <strong>more sensitive</strong> to smaller effects. How do you think we can do this? Here is a hint. It’s the stuff you learned about the sampling distribution of the sample mean, and the role of sample-size. What happens to the sampling distribution of the sample mean when N (sample size)? The distribution gets narrower and narrower, and starts to look the a single number (the hypothetical mean of the hypothetical population). That’s great. If you switch to thinking about mean difference scores, like the distribution we created in this test, what do you think will happen to that distribution as we increase N? It will will also shrink. As we increase N to infinity, it will shrink to 0. Which means that, when N is infinity, chance never produces any differences at all. We can use this.</p>
 <p>For example, we could run our experiment with 20 subjects in each group. Or, we could decide to invest more time and run 40 subjects in each group, or 80, or 150. When you are the experimenter, you get to decide the design. These decisions matter big time. Basically, the more subjects you have, the more sensitive your experiment. With bigger N, you will be able to reliably detect smaller mean differences, and be able to confidently conclude that chance did not produce those small effects.</p>
 <p>Check out the histograms in <a href="#fig-5sampleDistNormal">Figure&nbsp;<span>5.20</span></a>. This is the same simulation as before, but with four different sample-sizes: 20, 40, 80, 160. We are doubling our sample-size across each simulation just to see what happens to the width of the chance window.</p>
-<div class="cell" data-hash="cache/fig-5sampleDistNormal_c3c86b8cd969d7bb3660d699be04303c">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5sampleDistNormal_939fdb0f4c77ed0ea3c7abc12fd29ae5">
 <div class="cell-output-display">
 <div id="fig-5sampleDistNormal" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5sampleDistNormal-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.20: The range or width of the differences produced by chance shrinks as sample-size increases.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.20: The range or width of the differences produced by chance shrinks as sample-size increases.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>There you have it. The <strong>sampling distribution of the mean differences</strong> shrinks toward 0 as sample-size increases. This means if you run an experiment with a larger sample-size, you will be able to detect smaller mean differences, and be confident they aren’t due to chance. <a href="#tbl-5minmax">Table&nbsp;<span>5.2</span></a> contains the minimum and maximum values that chance produced across the four sample-sizes:</p>
-<div class="cell" data-hash="cache/tbl-5minmax_21c32121c12e32ab600337bbbbcdb6c1">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/tbl-5minmax_9369dfde9c167f3751262c53b6338462">
 <div class="cell-output-display">
 <div id="tbl-5minmax" class="anchored">
-
-<table><caption>Table 5.2:  The smallest and largest mean differences produced by chance as a function of sample-size. </caption>
- <thead>
-  <tr>
-   <th style="text-align:right;"> sample_size </th>
-   <th style="text-align:right;"> smallest </th>
-   <th style="text-align:right;"> largest </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<caption>Table&nbsp;5.2: The smallest and largest mean differences produced by chance as a function of sample-size.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">sample_size</th>
+<th style="text-align: right;">smallest</th>
+<th style="text-align: right;">largest</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> -21.67572 </td>
-   <td style="text-align:right;"> 23.96715 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 40 </td>
-   <td style="text-align:right;"> -15.72793 </td>
-   <td style="text-align:right;"> 17.35004 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 80 </td>
-   <td style="text-align:right;"> -13.27236 </td>
-   <td style="text-align:right;"> 10.17919 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 160 </td>
-   <td style="text-align:right;"> -11.96147 </td>
-   <td style="text-align:right;"> 12.26891 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">-21.59282</td>
+<td style="text-align: right;">22.39210</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">-16.48221</td>
+<td style="text-align: right;">16.66491</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">-12.73404</td>
+<td style="text-align: right;">14.16237</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">-11.13086</td>
+<td style="text-align: right;">12.29345</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </div>
@@ -1039,24 +1031,24 @@ Note
 <p>The last topic in this section is called <strong>power</strong>. Later we will define power in terms of some particular ideas about statistical inference. Here, we will just talk about the big idea. And, we’ll show how to make sure your design has 100% power. Because, why not. Why run a design that doesn’t have the power?</p>
 <p>The big idea behind power is the concept of sensitivity. The concept of sensitivity assumes that there is something to be sensitive to. That is, there is some real difference that can be measured. So, the question is, how sensitive is your experiment? We’ve already seen that the number of subjects (sample-size), changes the sensitivity of the design. More subjects = more sensitivity to smaller effects.</p>
 <p>Let’s take a look at one more plot. What we will do is simulate a measure of sensitivity across a whole bunch of sample sizes, from 10 to 300. We’ll do this in steps of 10. For each simulation, we’ll compute the mean differences as we have done. But, rather than showing the histogram, we’ll just compute the smallest value and the largest value. This is a pretty good measure of the outer reach of chance. Then we’ll plot those values as a function of sample size and see what we’ve got.</p>
-<div class="cell" data-hash="cache/fig-5crumpminmax_5307f27d48a43a7c5bb7e3def4e4d347">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpminmax_37320377d7483898e7e7a676e1ce5a31">
 <div class="cell-output-display">
 <div id="fig-5crumpminmax" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5crumpminmax-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.21: A graph of the maximum and minimum mean differences produced by chance as a function of sample-size. The range narrows as sample-size increases showing that chance alone produces a smaller range of mean differences as sample-size increases.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.21: A graph of the maximum and minimum mean differences produced by chance as a function of sample-size. The range narrows as sample-size increases showing that chance alone produces a smaller range of mean differences as sample-size increases.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p><a href="#fig-5crumpminmax">Figure&nbsp;<span>5.21</span></a> shows a reasonably precise window of sensitivity as a function of sample size. For each sample size, we can see the maximum difference that chance produced and the minimum difference. In those simulations, chance never produced bigger or smaller differences. So, each design is sensitive to any difference that is underneath the bottom line, or above the top line.</p>
 <p>Here’s another way of putting it. Which of the sample sizes will be sensitive to a difference of +10 or -10. That is, if a difference of +10 or -10 was observed, then we could very confidently say that the difference was not due to chance, because according to these simulations, chance never produced differences that big. To help us see which ones are sensitive, <a href="#fig-5crumpredline">Figure&nbsp;<span>5.22</span></a> draws horizontal lines at -10 and +10.</p>
-<div class="cell" data-hash="cache/fig-5crumpredline_ce64f8819242749fe7e1ea3b3329506e">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5crumpredline_37fb1cfa108e83b921194daf3b38c8b7">
 <div class="cell-output-display">
 <div id="fig-5crumpredline" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5crumpredline-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.22: The red line represents the size of a mean difference that a researcher may be interested in detecting. All of the dots outside (above or below) the red line represent designs with small sample-sizes. When a difference of 10 occurs for these designs, we can rule out chance with confidence. The dots between the red lines represent designs with larger sample-sizes. These designs never produce differences as large as 10, so when those differences occur, we can be confident chance did not produce them.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.22: The red line represents the size of a mean difference that a researcher may be interested in detecting. All of the dots outside (above or below) the red line represent designs with small sample-sizes. When a difference of 10 occurs for these designs, we can rule out chance with confidence. The dots between the red lines represent designs with larger sample-sizes. These designs never produce differences as large as 10, so when those differences occur, we can be confident chance did not produce them.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1076,134 +1068,132 @@ Note
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="pretend-example-does-chewing-gum-improve-your-grades"><span class="header-section-number">5.6.1</span> Pretend example does chewing gum improve your grades?</h3>
 <p>Let’s say you run an experiment to find out if chewing gum causes students to get better grades on statistics exams. You randomly assign 20 students to the chewing gum condition, and 20 different students to the no-chewing gum condition. Then, you give everybody statistics tests and measure their grades. If chewing gum causes better grades, then the chewing gum group should have higher grades on average than the group who did not chew gum.</p>
 <p>Let’s say the data looked like this:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-29_c9ba44f3952af52a437f092d2b860277">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-29_97997d6d304e66645486f5018f7e7b05">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> student </th>
-   <th style="text-align:left;"> gum </th>
-   <th style="text-align:left;"> no_gum </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">student</th>
+<th style="text-align: left;">gum</th>
+<th style="text-align: left;">no_gum</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 76 </td>
-   <td style="text-align:left;"> 41 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 77 </td>
-   <td style="text-align:left;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 75 </td>
-   <td style="text-align:left;"> 85 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 56 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 79 </td>
-   <td style="text-align:left;"> 81 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 91 </td>
-   <td style="text-align:left;"> 87 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 82 </td>
-   <td style="text-align:left;"> 71 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 60 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 73 </td>
-   <td style="text-align:left;"> 51 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10 </td>
-   <td style="text-align:left;"> 96 </td>
-   <td style="text-align:left;"> 76 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 73 </td>
-   <td style="text-align:left;"> 73 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12 </td>
-   <td style="text-align:left;"> 92 </td>
-   <td style="text-align:left;"> 86 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> 99 </td>
-   <td style="text-align:left;"> 78 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 14 </td>
-   <td style="text-align:left;"> 80 </td>
-   <td style="text-align:left;"> 84 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:left;"> 96 </td>
-   <td style="text-align:left;"> 80 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 16 </td>
-   <td style="text-align:left;"> 90 </td>
-   <td style="text-align:left;"> 83 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 17 </td>
-   <td style="text-align:left;"> 80 </td>
-   <td style="text-align:left;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 18 </td>
-   <td style="text-align:left;"> 100 </td>
-   <td style="text-align:left;"> 76 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 19 </td>
-   <td style="text-align:left;"> 73 </td>
-   <td style="text-align:left;"> 67 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 20 </td>
-   <td style="text-align:left;"> 71 </td>
-   <td style="text-align:left;"> 77 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 1673 </td>
-   <td style="text-align:left;"> 1401 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 83.65 </td>
-   <td style="text-align:left;"> 70.05 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">52</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">77</td>
+<td style="text-align: left;">55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">78</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">73</td>
+<td style="text-align: left;">79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">82</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">76</td>
+<td style="text-align: left;">46</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">82</td>
+<td style="text-align: left;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">92</td>
+<td style="text-align: left;">41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">82</td>
+<td style="text-align: left;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">1613</td>
+<td style="text-align: left;">1313</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">80.65</td>
+<td style="text-align: left;">65.65</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
-<p>So, did the students chewing gum do better than the students who didn’t chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was 83.65, and the mean for students who did not chew gum was 70.05. Just looking at the means, it looks like chewing gum worked!</p>
+<p>So, did the students chewing gum do better than the students who didn’t chew gum? Look at the mean test performance at the bottom of the table. The mean for students chewing gum was 80.65, and the mean for students who did not chew gum was 65.65. Just looking at the means, it looks like chewing gum worked!</p>
 <p>“STOP THE PRESSES, this is silly”. We already know this is silly because we are making pretend data. But, even if this was real data, you might think, “Chewing gum won’t do anything, this difference could have been caused by chance, I mean, maybe the better students just happened to be put into the chewing group, so because of that their grades were higher, chewing gum didn’t do anything…”. We agree. But, let’s take a closer look. We already know how the data come out. What we want to know is how they could have come out, what are all the possibilities?</p>
 <p>For example, the data would have come out a bit different if we happened to have put some of the students from the gum group into the no gum group, and vice versa. Think of all the ways you could have assigned the 40 students into two groups, there are lots of ways. And, the means for each group would turn out differently depending on how the students are assigned to each group.</p>
 <p>Practically speaking, it’s not possible to run the experiment every possible way, that would take too long. But, we can nevertheless estimate how all of those experiments might have turned out using simulation.</p>
@@ -1211,186 +1201,177 @@ Note
 <section id="doing-the-randomization" class="level4" data-number="5.6.1.1">
 <h4 data-number="5.6.1.1" class="anchored" data-anchor-id="doing-the-randomization"><span class="header-section-number">5.6.1.1</span> Doing the randomization</h4>
 <p>Before we do that, let’s show how the randomization part works. We’ll use fewer numbers to make the process easier to look at. Here are the first 5 exam scores for students in both groups.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-30_cee48dd7db983bbae931ce8f71f092c9">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-30_7a771ca4b158af672dff77c915f5b307">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> student </th>
-   <th style="text-align:left;"> gum </th>
-   <th style="text-align:left;"> no_gum </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">student</th>
+<th style="text-align: left;">gum</th>
+<th style="text-align: left;">no_gum</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 76 </td>
-   <td style="text-align:left;"> 41 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 77 </td>
-   <td style="text-align:left;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 75 </td>
-   <td style="text-align:left;"> 85 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 56 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 79 </td>
-   <td style="text-align:left;"> 81 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 392 </td>
-   <td style="text-align:left;"> 308 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 78.4 </td>
-   <td style="text-align:left;"> 61.6 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">68</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">52</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">395</td>
+<td style="text-align: left;">328</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">65.6</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>Things could have turned out differently if some of the subjects in the gum group were switched with the subjects in the no gum group. Here’s how we can do some random switching. We will do this using R.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-31_a79188dc6538ec1ada69b4f63559a749">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-31_fdb3de0b04bb87de9f9312d1e7f4810a">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>all_scores       <span class="ot">&lt;-</span> <span class="fu">c</span>(gum[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],no_gum[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>randomize_scores <span class="ot">&lt;-</span> <span class="fu">sample</span>(all_scores)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>new_gum          <span class="ot">&lt;-</span> randomize_scores[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>new_no_gum       <span class="ot">&lt;-</span> randomize_scores[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>]</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(new_gum)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 75 41 79 45 85</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 64 81 68 87 70</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(new_no_gum)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 76 85 77 81 56</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 65 79 52 71 86</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We have taken the first 5 numbers from the original data, and put them all into a variable called <code>all_scores</code>. Then we use the <code>sample</code> function in R to shuffle the scores. Finally, we take the first 5 scores from the shuffled numbers and put them into a new variable called <code>new_gum</code>. Then, we put the last five scores into the variable <code>new_no_gum</code>. Then we printed them, so we can see them.</p>
 <p>If we do this a couple of times and put them in a table, we can indeed see that the means for gum and no gum would be different if the subjects were shuffled around. Check it out:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-32_a842a763e8ed30a4d4d2216524fee48d">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/unnamed-chunk-32_74f5b208e34b077291570cecdff343d3">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> student </th>
-   <th style="text-align:left;"> gum </th>
-   <th style="text-align:left;"> no_gum </th>
-   <th style="text-align:left;"> gum2 </th>
-   <th style="text-align:left;"> no_gum2 </th>
-   <th style="text-align:left;"> gum3 </th>
-   <th style="text-align:left;"> no_gum3 </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">student</th>
+<th style="text-align: left;">gum</th>
+<th style="text-align: left;">no_gum</th>
+<th style="text-align: left;">gum2</th>
+<th style="text-align: left;">no_gum2</th>
+<th style="text-align: left;">gum3</th>
+<th style="text-align: left;">no_gum3</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> 76 </td>
-   <td style="text-align:left;"> 41 </td>
-   <td style="text-align:left;"> 56 </td>
-   <td style="text-align:left;"> 45 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 75 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 77 </td>
-   <td style="text-align:left;"> 45 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 77 </td>
-   <td style="text-align:left;"> 79 </td>
-   <td style="text-align:left;"> 45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 75 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 75 </td>
-   <td style="text-align:left;"> 76 </td>
-   <td style="text-align:left;"> 41 </td>
-   <td style="text-align:left;"> 77 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 56 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 81 </td>
-   <td style="text-align:left;"> 85 </td>
-   <td style="text-align:left;"> 56 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 79 </td>
-   <td style="text-align:left;"> 81 </td>
-   <td style="text-align:left;"> 41 </td>
-   <td style="text-align:left;"> 79 </td>
-   <td style="text-align:left;"> 81 </td>
-   <td style="text-align:left;"> 76 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 392 </td>
-   <td style="text-align:left;"> 308 </td>
-   <td style="text-align:left;"> 342 </td>
-   <td style="text-align:left;"> 358 </td>
-   <td style="text-align:left;"> 371 </td>
-   <td style="text-align:left;"> 329 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 78.4 </td>
-   <td style="text-align:left;"> 61.6 </td>
-   <td style="text-align:left;"> 68.4 </td>
-   <td style="text-align:left;"> 71.6 </td>
-   <td style="text-align:left;"> 74.2 </td>
-   <td style="text-align:left;"> 65.8 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">79</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">68</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">87</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">68</td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">395</td>
+<td style="text-align: left;">328</td>
+<td style="text-align: left;">367</td>
+<td style="text-align: left;">356</td>
+<td style="text-align: left;">377</td>
+<td style="text-align: left;">346</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">65.6</td>
+<td style="text-align: left;">73.4</td>
+<td style="text-align: left;">71.2</td>
+<td style="text-align: left;">75.4</td>
+<td style="text-align: left;">69.2</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </section>
 <section id="simulating-the-mean-differences-across-the-different-randomizations" class="level4" data-number="5.6.1.2">
 <h4 data-number="5.6.1.2" class="anchored" data-anchor-id="simulating-the-mean-differences-across-the-different-randomizations"><span class="header-section-number">5.6.1.2</span> Simulating the mean differences across the different randomizations</h4>
-<p>In our pretend experiment we found that the mean for students chewing gum was 83.65, and the mean for students who did not chew gum was 70.05. The mean difference (gum - no gum) was 13.6. This is a pretty big difference. This is <strong>what did happen</strong>. But, <strong>what could have happened</strong>? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let’s find out. This is what the randomization test is all about.</p>
+<p>In our pretend experiment we found that the mean for students chewing gum was 80.65, and the mean for students who did not chew gum was 65.65. The mean difference (gum - no gum) was 15. This is a pretty big difference. This is <strong>what did happen</strong>. But, <strong>what could have happened</strong>? If we tried out all of the experiments where different subjects were switched around, what does the distribution of the possible mean differences look like? Let’s find out. This is what the randomization test is all about.</p>
 <p>When we do our randomization test we will measure the mean difference in exam scores between the gum group and the no gum group. Every time we randomize we will save the mean difference.</p>
 <p>Let’s look at a short animation of what is happening in the randomization test. <a href="#fig-5randtest">Figure&nbsp;<span>5.23</span></a> shows data from a different fake experiment, but the principles are the same. We’ll return to the gum no gum experiment after the animation. The animation is showing three important things. First, the purple dots show the mean scores in two groups (didn’t study vs study). It looks like there is a difference, as 1 dot is lower than the other. We want to know if chance could produce a difference this big. At the beginning of the animation, the light green and red dots show the individual scores from each of 10 subjects in the design (the purple dots are the means of these original scores). Now, during the randomizations, we randomly shuffle the original scores between the groups. You can see this happening throughout the animation, as the green and red dots appear in different random combinations. The moving yellow dots show you the new means for each group after the randomization. The differences between the yellow dots show you the range of differences that chance could produce.</p>
-<div>
-<div class="cell" data-hash="cache/fig-5randtest_4c3ea984027d44050c1fb94c1b02d1ee">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randtest_ea5eb60439d0e8ca196c02f5ccbe504c">
 <div class="cell-output-display">
 <div id="fig-5randtest" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="imgs/gifs/randomizationTest-1.gif" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.23: Animation of a randomization test. The purple dots represent the location of the original sample means in each condition. The yellow dots represent the means of each randomized sample. The blue and red dots show how the original scores are shuffled across each randomization.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.23: Animation of a randomization test. The purple dots represent the location of the original sample means in each condition. The yellow dots represent the means of each randomized sample. The blue and red dots show how the original scores are shuffled across each randomization.</figcaption><p></p>
 </figure>
 </div>
 </div>
-</div>
-</div>
-<div class="cell" data-hash="cache/rtestGif_eb09583580925a21e14b11faa7193e9f">
-
 </div>
 <p>We are engaging in some visual statistical inference. By looking at the range of motion of the yellow dots, we are watching what kind of differences chance can produce. In this animation, the purple dots, representing the original difference, are generally outside of the range of chance. The yellow dots don’t move past the purple dots, as a result chance is an unlikely explanation of the difference.</p>
 <p>If the purple dots were inside the range of the yellow dots, then when would know that chance is capable of producing the difference we observed, and that it does so fairly often. As a result, we should not conclude the manipulation caused the difference, because it could have easily occurred by chance.</p>
 <p>Let’s return to the gum example. After we randomize our scores many times, and computed the new means, and the mean differences, we will have loads of mean differences to look at, which we can plot in a histogram. The histogram gives a picture of <strong>what could have happened</strong>. Then, we can compare <strong>what did happen</strong> with <strong>what could have happened</strong>.</p>
 <p>Here’s the histogram of the mean differences from the randomization test. For this simulation, we randomized the results from the original experiment 1000 times. This is what could have happened. The blue line in <a href="#fig-5randhist">Figure&nbsp;<span>5.24</span></a> shows where the observed difference lies on the x-axis.</p>
-<div class="cell" data-hash="cache/fig-5randhist_63f489a7e70841d4166c9c6062b19e02">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randhist_2808cfe850376f98aeced376ecf9d019">
 <div class="cell-output-display">
 <div id="fig-5randhist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5randhist-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.24: A histogram of simulated mean differences for a randomization test</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.24: A histogram of simulated mean differences for a randomization test</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1400,12 +1381,12 @@ Note
 <p>IMPORTANT: In this case, when we speak of <strong>what could have happened</strong>. We are talking about what could have happened <strong>by chance</strong>. When we compare what did happen to what chance could have done, we can get a better idea of whether our result was caused by chance.</p>
 <hr>
 <p>OK, let’s pretend we got a much smaller mean difference when we first ran the experiment. We can draw new lines (blue and red) to represent a smaller mean that we might have found.</p>
-<div class="cell" data-hash="cache/fig-5randquestion_8c5bf1a585708d91573abbe4975d6779">
+<div class="cell" data-hash="05-Foundation_Inference_cache/html/fig-5randquestion_4139d79e9a315b66ecf5b5c143c5c337">
 <div class="cell-output-display">
 <div id="fig-5randquestion" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="05-Foundation_Inference_files/figure-html/fig-5randquestion-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 5.25: Would you expect a mean difference represented by the blue line to occur more or less often by chance compared to the mean difference represented by the red line?</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5.25: Would you expect a mean difference represented by the blue line to occur more or less often by chance compared to the mean difference represented by the red line?</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1464,9 +1445,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1478,7 +1473,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1506,31 +1518,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

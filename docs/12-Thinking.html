@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
 </style>
 
 
@@ -56,29 +61,29 @@ ul.task-list{list-style: none;}
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Answering questions with data - 12&nbsp; Thinking about answering questions with data">
-<meta property="og:description" content="You might be happy that this is the last chapter (so far) of this textbook. At this point we are in the last weeks of our introductory statistics course. It’s called “introductory” for a reason.">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/12-Thinking_files/figure-html/fig-12effectdists-1.png">
 <meta property="og:site-name" content="Answering questions with data">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Answering questions with data - 12&nbsp; Thinking about answering questions with data">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -88,11 +93,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-Thinking.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -100,125 +110,141 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#effect-size-and-power" id="toc-effect-size-and-power" class="nav-link active" data-scroll-target="#effect-size-and-power"> <span class="header-section-number">12.1</span> Effect-size and power</a>
+  <li><a href="#effect-size-and-power" id="toc-effect-size-and-power" class="nav-link active" data-scroll-target="#effect-size-and-power"><span class="header-section-number">12.1</span> Effect-size and power</a>
   <ul class="collapse">
-  <li><a href="#chance-vs.-real-effects" id="toc-chance-vs.-real-effects" class="nav-link" data-scroll-target="#chance-vs.-real-effects"> <span class="header-section-number">12.1.1</span> Chance vs.&nbsp;real effects</a></li>
-  <li><a href="#effect-size-concrete-vs.-abstract-notions" id="toc-effect-size-concrete-vs.-abstract-notions" class="nav-link" data-scroll-target="#effect-size-concrete-vs.-abstract-notions"> <span class="header-section-number">12.1.2</span> Effect size: concrete vs.&nbsp;abstract notions</a></li>
-  <li><a href="#cohens-d" id="toc-cohens-d" class="nav-link" data-scroll-target="#cohens-d"> <span class="header-section-number">12.1.3</span> Cohen’s d</a></li>
+  <li><a href="#chance-vs.-real-effects" id="toc-chance-vs.-real-effects" class="nav-link" data-scroll-target="#chance-vs.-real-effects"><span class="header-section-number">12.1.1</span> Chance vs.&nbsp;real effects</a></li>
+  <li><a href="#effect-size-concrete-vs.-abstract-notions" id="toc-effect-size-concrete-vs.-abstract-notions" class="nav-link" data-scroll-target="#effect-size-concrete-vs.-abstract-notions"><span class="header-section-number">12.1.2</span> Effect size: concrete vs.&nbsp;abstract notions</a></li>
+  <li><a href="#cohens-d" id="toc-cohens-d" class="nav-link" data-scroll-target="#cohens-d"><span class="header-section-number">12.1.3</span> Cohen’s d</a></li>
   </ul></li>
-  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"> <span class="header-section-number">12.2</span> Power</a>
+  <li><a href="#power" id="toc-power" class="nav-link" data-scroll-target="#power"><span class="header-section-number">12.2</span> Power</a>
   <ul class="collapse">
-  <li><a href="#a-digresssion-about-hypothesis-testing" id="toc-a-digresssion-about-hypothesis-testing" class="nav-link" data-scroll-target="#a-digresssion-about-hypothesis-testing"> <span class="header-section-number">12.2.1</span> A digresssion about hypothesis testing</a></li>
-  <li><a href="#back-to-power" id="toc-back-to-power" class="nav-link" data-scroll-target="#back-to-power"> <span class="header-section-number">12.2.2</span> Back to power</a></li>
-  <li><a href="#power-curves" id="toc-power-curves" class="nav-link" data-scroll-target="#power-curves"> <span class="header-section-number">12.2.3</span> Power curves</a></li>
+  <li><a href="#a-digresssion-about-hypothesis-testing" id="toc-a-digresssion-about-hypothesis-testing" class="nav-link" data-scroll-target="#a-digresssion-about-hypothesis-testing"><span class="header-section-number">12.2.1</span> A digresssion about hypothesis testing</a></li>
+  <li><a href="#back-to-power" id="toc-back-to-power" class="nav-link" data-scroll-target="#back-to-power"><span class="header-section-number">12.2.2</span> Back to power</a></li>
+  <li><a href="#power-curves" id="toc-power-curves" class="nav-link" data-scroll-target="#power-curves"><span class="header-section-number">12.2.3</span> Power curves</a></li>
   </ul></li>
-  <li><a href="#planning-your-design" id="toc-planning-your-design" class="nav-link" data-scroll-target="#planning-your-design"> <span class="header-section-number">12.3</span> Planning your design</a></li>
-  <li><a href="#some-considerations" id="toc-some-considerations" class="nav-link" data-scroll-target="#some-considerations"> <span class="header-section-number">12.4</span> Some considerations</a>
+  <li><a href="#planning-your-design" id="toc-planning-your-design" class="nav-link" data-scroll-target="#planning-your-design"><span class="header-section-number">12.3</span> Planning your design</a></li>
+  <li><a href="#some-considerations" id="toc-some-considerations" class="nav-link" data-scroll-target="#some-considerations"><span class="header-section-number">12.4</span> Some considerations</a>
   <ul class="collapse">
-  <li><a href="#low-powered-studies" id="toc-low-powered-studies" class="nav-link" data-scroll-target="#low-powered-studies"> <span class="header-section-number">12.4.1</span> Low powered studies</a></li>
-  <li><a href="#large-n-and-small-effects" id="toc-large-n-and-small-effects" class="nav-link" data-scroll-target="#large-n-and-small-effects"> <span class="header-section-number">12.4.2</span> Large N and small effects</a></li>
-  <li><a href="#small-n-and-large-effects" id="toc-small-n-and-large-effects" class="nav-link" data-scroll-target="#small-n-and-large-effects"> <span class="header-section-number">12.4.3</span> Small N and Large effects</a></li>
-  <li><a href="#type-i-errors-are-convincing-when-n-is-small" id="toc-type-i-errors-are-convincing-when-n-is-small" class="nav-link" data-scroll-target="#type-i-errors-are-convincing-when-n-is-small"> <span class="header-section-number">12.4.4</span> Type I errors are convincing when N is small</a></li>
+  <li><a href="#low-powered-studies" id="toc-low-powered-studies" class="nav-link" data-scroll-target="#low-powered-studies"><span class="header-section-number">12.4.1</span> Low powered studies</a></li>
+  <li><a href="#large-n-and-small-effects" id="toc-large-n-and-small-effects" class="nav-link" data-scroll-target="#large-n-and-small-effects"><span class="header-section-number">12.4.2</span> Large N and small effects</a></li>
+  <li><a href="#small-n-and-large-effects" id="toc-small-n-and-large-effects" class="nav-link" data-scroll-target="#small-n-and-large-effects"><span class="header-section-number">12.4.3</span> Small N and Large effects</a></li>
+  <li><a href="#type-i-errors-are-convincing-when-n-is-small" id="toc-type-i-errors-are-convincing-when-n-is-small" class="nav-link" data-scroll-target="#type-i-errors-are-convincing-when-n-is-small"><span class="header-section-number">12.4.4</span> Type I errors are convincing when N is small</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/12-Thinking.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -228,7 +254,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></h1>
 </div>
 
 
@@ -242,15 +268,13 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
 
 </header>
 
-<div class="cell" data-hash="cache/unnamed-chunk-2_d849fb2b27c7c0547a752afc7287e8ca">
-
-</div>
 <p>You might be happy that this is the last chapter (so far) of this textbook. At this point we are in the last weeks of our introductory statistics course. It’s called “introductory” for a reason. There’s just too much out there to cover in one short semester. In this chapter we acknowledge some of the things we haven’t yet covered, and treat them as things that you should think about. If there is one take home message that we want to get across to you, it’s that when you ask questions with data, you should be able to <strong>justify</strong> how you answer those questions.</p>
 <section id="effect-size-and-power" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="effect-size-and-power"><span class="header-section-number">12.1</span> Effect-size and power</h2>
@@ -272,30 +296,30 @@ ga('send', {
 <section id="cohens-d" class="level3" data-number="12.1.3">
 <h3 data-number="12.1.3" class="anchored" data-anchor-id="cohens-d"><span class="header-section-number">12.1.3</span> Cohen’s d</h3>
 <p>Let’s look a few distributions to firm up some ideas about effect-size. <a href="#fig-12effectdists">Figure&nbsp;<span>12.1</span></a> has four panels. The first panel (0) represents the null distribution of no differences. This is the idea that your manipulation (A vs.&nbsp;B) doesn’t do anything at all, as a result when you measure scores in conditions A and B, you are effectively sampling scores from the very same overall distribution. The panel shows the distribution as green for condition B, but the red one for condition A is identical and drawn underneath (it’s invisible). There is 0 difference between these distributions, so it represent a null effect.</p>
-<div class="cell" data-hash="cache/fig-12effectdists_b564190dbc3d8c3df58740ea0095fb1b">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectdists_eee4714521960ea63355b982d93a668a">
 <div class="cell-output-display">
 <div id="fig-12effectdists" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="12-Thinking_files/figure-html/fig-12effectdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 12.1: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
+<p><img src="12-Thinking_files/figure-html/fig-12effectdists-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.1: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The remaining panels are hypothetical examples of what a true effect could look like, when your manipulation actually causes a difference. For example, if condition A is a control group, and condition B is a treatment group, we are looking at three cases where the treatment manipulation causes a positive shift in the mean of distribution. We are using normal curves with mean =0 and sd =1 for this demonstration, so a shift of .5 is a shift of half of a standard deviation. A shift of 1 is a shift of 1 standard deviation, and a shift of 2 is a shift of 2 standard deviations. We could draw many more examples showing even bigger shifts, or shifts that go in the other direction.</p>
 <p>Let’s look at another example, but this time we’ll use some concrete measurements. Let’s say we are looking at final exam performance, so our numbers are grade percentages. Let’s also say that we know the mean on the test is 65%, with a standard deviation of 5%. Group A could be a control that just takes the test, Group B could receive some “educational” manipulation designed to improve the test score. These graphs then show us some hypotheses about what the manipulation may or may not be doing.</p>
-<div class="cell" data-hash="cache/fig-12effectdistsB_8fea759392c37e15e308abcde42ab8b8">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectdistsB_90ccc8c70c11a26facafe44756e96506">
 <div class="cell-output-display">
 <div id="fig-12effectdistsB" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12effectdistsB-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 12.2: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.2: Each panel shows hypothetical distributions for two conditions. As the effect-size increases, the difference between the distributions become larger.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The first panel shows that both condition A and B will sample test scores from the same distribution (mean =65, with 0 effect). The other panels show shifted mean for condition B (the treatment that is supposed to increase test performance). So, the treatment could increase the test performance by 2.5% (mean 67.5, .5 sd shift), or by 5% (mean 70, 1 sd shift), or by 10% (mean 75%, 2 sd shift), or by any other amount. In terms of our previous metaphor, a shift of 2 standard deviations is more like jack-hammer in terms of size, and a shift of .5 standard deviations is more like using a pencil. The thing about research, is we often have no clue about whether our manipulation will produce a big or small effect, that’s why we are conducting the research.</p>
-<p>You might have noticed that the letter <span class="math inline">\(d\)</span> appears in the above figure. Why is that? Jacob Cohen <span class="citation" data-cites="cohen1988">(<a href="references.html#ref-cohen1988" role="doc-biblioref"><strong>cohen1988?</strong></a>)</span> used the letter <span class="math inline">\(d\)</span> in defining the effect-size for this situation, and now everyone calls it Cohen’s <span class="math inline">\(d\)</span>. The formula for Cohen’s <span class="math inline">\(d\)</span> is:</p>
+<p>You might have noticed that the letter <span class="math inline">\(d\)</span> appears in the above figure. Why is that? Jacob Cohen <span class="citation" data-cites="cohen1988">(<a href="#ref-cohen1988" role="doc-biblioref"><strong>cohen1988?</strong></a>)</span> used the letter <span class="math inline">\(d\)</span> in defining the effect-size for this situation, and now everyone calls it Cohen’s <span class="math inline">\(d\)</span>. The formula for Cohen’s <span class="math inline">\(d\)</span> is:</p>
 <p><span class="math inline">\(d = \frac{\text{mean for condition 1} - \text{mean for condition 2}}{\text{population standard deviation}}\)</span></p>
 <p>If you notice, this is just a kind of z-score. It is a way to standardize the mean difference in terms of the population standard deviation.</p>
 <p>It is also worth noting again that this measure of effect-size is entirely hypothetical for most purposes. In general, researchers do not know the population standard deviation, they can only guess at it, or estimate it from the sample. The same goes for means, in the formula these are hypothetical mean differences in two population distributions. In practice, researchers do not know these values, they guess at them from their samples.</p>
@@ -335,23 +359,23 @@ ga('send', {
 </ol>
 <p>To see this in practice let’s do a simulation. We will do a t-test on a between-groups design 10 subjects in each group. Group A will be a control group with scores sampled from a normal distribution with mean of 10, and standard deviation of 5. Group B will be a treatment group, we will say the treatment has an effect-size of Cohen’s <span class="math inline">\(d\)</span> = .5, that’s a standard deviation shift of .5, so the scores with come from a normal distribution with mean =12.5 and standard deivation of 5. Remember 1 standard deviation here is 5, so half of a standard deviation is 2.5.</p>
 <p>The following R script runs this simulated experiment 1000 times. We set the alpha criterion to .05, this means we will reject the null whenever the <span class="math inline">\(p\)</span>-value is less than .05. With this specific design, how many times out of of 1000 do we reject the null, and accept the alternative hypothesis?</p>
-<div class="cell" data-hash="cache/unnamed-chunk-5_8a5daf64c1b916732fb4347b49c057cd">
-<pre><code>#&gt; [1] 209</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-5_cccb3568faad7b2dccbe6d4980aef0e9">
+<pre><code>#&gt; [1] 173</code></pre>
 </div>
-<p>The answer is that we reject the null, and accept the alternative 209 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 20.9 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
+<p>The answer is that we reject the null, and accept the alternative 173 times out of 1000. In other words our experiment succesfully accepts the alternative hypothesis 17.3 percent of the time, this is known as the power of the study. Power is the probability that a design will succesfully detect an effect of a specific size.</p>
 <p>Importantly, power is completely abstract idea that is completely determined by many assumptions including N, effect-size, and alpha. As a result, it is best not to think of power as a single number, but instead as a family of numbers.</p>
 <p>For example, power is different when we change N. If we increase N, our samples will more precisely estimate the true distributions that they came from. Increasing N reduces sampling error, and shrinks the range of differences that can be produced by chance. Lets’ increase our N in this simulation from 10 to 20 in each group and see what happens.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-6_0b5f9e7adaf0af73bef4a203144a9667">
-<pre><code>#&gt; [1] 342</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-6_1afe3dace25df6cf62ed805d7f3d2e2d">
+<pre><code>#&gt; [1] 352</code></pre>
 </div>
-<p>Now the number of significant experiments i 342 out of 1000, or a power of 34.2 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
+<p>Now the number of significant experiments i 352 out of 1000, or a power of 35.2 percent. That’s roughly doubled from before. We have made the design more sensitive to the effect by increasing N.</p>
 <p>We can change the power of the design by changing the alpha-value, which tells us how much evidence we need to reject the null. For example, if we set the alpha criterion to 0.01, then we will be more conservative, only rejecting the null when chance can produce the observed difference 1% of the time. In our example, this will have the effect of reducing power. Let’s keep N at 20, but reduce the alpha to 0.01 and see what happens:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-7_c91db061673b9075da9eea9d1588d636">
-<pre><code>#&gt; [1] 150</code></pre>
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-7_370bb2b56c038a58efcd07fb6a949fad">
+<pre><code>#&gt; [1] 139</code></pre>
 </div>
-<p>Now only 150 out of 1000 experiments are significant, that’s 15 power.</p>
+<p>Now only 139 out of 1000 experiments are significant, that’s 13.9 power.</p>
 <p>Finally, the power of the design depends on the actual size of the effect caused by the manipulation. In our example, we hypothesized that the effect caused a shift of .5 standard deviations. What if the effect causes a bigger shift? Say, a shift of 2 standard deviations. Let’s keep N= 20, and alpha &lt; .01, but change the effect-size to two standard deviations. When the effect in the real-world is bigger, it should be easier to measure, so our power will increase.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-8_53c999eb9009662ca3e1abc7470904fd">
+<div class="cell" data-hash="12-Thinking_cache/html/unnamed-chunk-8_88f91b1aee15e0fb44c0a91461c0a796">
 <pre><code>#&gt; [1] 1000</code></pre>
 </div>
 <p>Neat, if the effect-size is actually huge (2 standard deviation shift), then we have power 100 percent to detect the true effect.</p>
@@ -360,24 +384,24 @@ ga('send', {
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="power-curves"><span class="header-section-number">12.2.3</span> Power curves</h3>
 <p>We mentioned that it is best to think of power as a family of numbers, rather than as a single number. To elaborate on this consider the power curve below. This is the power curve for a specific design: a between groups experiments with two levels, that uses an independent samples t-test to test whether an observed difference is due to chance. Critically, N is set to 10 in each group, and alpha is set to .05</p>
 <p>In <a href="#fig-12powercurve">Figure&nbsp;<span>12.3</span></a> power (as a proportion, not a percentage) is plotted on the y-axis, and effect-size (Cohen’s d) in standard deviation units is plotted on the x-axis.</p>
-<div class="cell" data-hash="cache/fig-12powercurve_6101cb6b00791ab9b1e7f198e6681fe1">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12powercurve_79c8f0d99a2389b2dea4aa7d297f3bf5">
 <div class="cell-output-display">
 <div id="fig-12powercurve" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12powercurve-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 12.3: This figure shows power as a function of effect-size (Cohen’s d) for a between-subjects independent samples t-test, with N=10, and alpha criterion 0.05.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.3: This figure shows power as a function of effect-size (Cohen’s d) for a between-subjects independent samples t-test, with N=10, and alpha criterion 0.05.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>A power curve like this one is very helpful to understand the sensitivity of a particular design. For example, we can see that a between subjects design with N=10 in both groups, will detect an effect of d=.5 (half a standard deviation shift) about 20% of the time, will detect an effect of d=.8 about 50% of the time, and will detect an effect of d=2 about 100% of the time. All of the percentages reflect the power of the design, which is the percentage of times the design would be expected to find a <span class="math inline">\(p\)</span> &lt; 0.05.</p>
 <p>Let’s imagine that based on prior research, the effect you are interested in measuring is fairly small, d=0.2. If you want to run an experiment that will detect an effect of this size a large percentage of the time, how many subjects do you need to have in each group? We know from the above graph that with N=10, power is very low to detect an effect of d=0.2. Let’s make <a href="#fig-12powercurveN">Figure&nbsp;<span>12.4</span></a> and vary the number of subjects rather than the size of the effect.</p>
-<div class="cell" data-hash="cache/fig-12powercurveN_b81c789182da938aaa872179928ec2bc">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12powercurveN_9eb63e92f338d3b30547a5b3a02f20aa">
 <div class="cell-output-display">
 <div id="fig-12powercurveN" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12powercurveN-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 12.4: This figure shows power as a function of N for a between-subjects independent samples t-test, with d=0.2, and alpha criterion 0.05.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.4: This figure shows power as a function of N for a between-subjects independent samples t-test, with d=0.2, and alpha criterion 0.05.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -422,23 +446,23 @@ ga('send', {
 <p>So what is this pernicious relationship between Type I errors and effect-size? Mainly, this relationship is pernicious for small N studies. For example, the following figure illustrates the results of 1000s of simulated experiments, all assuming the null distribution. In other words, for all of these simulations there is no true effect, as the numbers are all sampled from an identical distribution (normal distribution with mean =0, and standard deviation =1). The true effect-size is 0 in all cases.</p>
 <p>We know that under the null, researchers will find p values that are less 5% about 5% of the time, remember that is the definition. So, if a researcher happened to be in this situation (where there manipulation did absolutely nothing), they would make a type I error 5% of the time, or if they conducted 100 experiments, they would expect to find a significant result for 5 of them.</p>
 <p><a href="#fig-12effectsizeType1">Figure&nbsp;<span>12.5</span></a> reports the findings from only the type I errors, where the simulated study did produce p &lt; 0.05. For each type I error, we calculated the exact p-value, as well as the effect-size (cohen’s D) (mean difference divided by standard deviation). We already know that the true effect-size is zero, however take a look at this graph, and pay close attention to the smaller sample-sizes.</p>
-<div class="cell" data-hash="cache/fig-12effectsizeType1_4673d4c6f9c1e34cbb4a139d3461b629">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12effectsizeType1_d40a687eeebf299a762fcbb43c112d49">
 <div class="cell-output-display">
 <div id="fig-12effectsizeType1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12effectsizeType1-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 12.5: Effect size as a function of p-values for type 1 Errors under the null, for a paired samples t-test.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.5: Effect size as a function of p-values for type 1 Errors under the null, for a paired samples t-test.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>For example, look at the red dots, when sample size is 10. Here we see that the effect-sizes are quite large. When p is near 0.05 the effect-size is around .8, and it goes up and up as when p gets smaller and smaller. What does this mean? It means that when you get unlucky with a small N design, and your manipulation does not work, but you by chance find a “significant” effect, the effect-size measurement will show you a “big effect”. This is the pernicious aspect. When you make a type I error for small N, your data will make you think there is no way it could be a type I error because the effect is just so big!. Notice that when N is very large, like 1000, the measure of effect-size approaches 0 (which is the true effect-size in the simulation shown in <a href="#fig-12cohensD">Figure&nbsp;<span>12.6</span></a>).</p>
-<div class="cell" data-hash="cache/fig-12cohensD_69226abb447ecadc9683db115aa2fafc">
+<div class="cell" data-hash="12-Thinking_cache/html/fig-12cohensD_6d1cca0dd89be85f45e50a4985e8c224">
 <div class="cell-output-display">
 <div id="fig-12cohensD" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="12-Thinking_files/figure-html/fig-12cohensD-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 12.6: Each panel shows a histogram of a different sampling statistic.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12.6: Each panel shows a histogram of a different sampling statistic.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -476,9 +500,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -490,7 +528,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -518,31 +573,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

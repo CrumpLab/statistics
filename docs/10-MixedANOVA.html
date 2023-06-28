@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
 </style>
 
 
@@ -56,28 +61,27 @@ ul.task-list{list-style: none;}
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
 
 <meta property="og:title" content="Answering questions with data - 10&nbsp; More On Factorial Designs">
-<meta property="og:description" content="We are going to do a couple things in this chapter. The most important thing is more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA.">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/10-MixedANOVA_files/figure-html/fig-10bar22-1.png">
 <meta property="og:site-name" content="Answering questions with data">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Answering questions with data - 10&nbsp; More On Factorial Designs">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -87,11 +91,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-MixedANOVA.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -99,120 +108,136 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#looking-at-main-effects-and-interactions" id="toc-looking-at-main-effects-and-interactions" class="nav-link active" data-scroll-target="#looking-at-main-effects-and-interactions"> <span class="header-section-number">10.1</span> Looking at main effects and interactions</a>
+  <li><a href="#looking-at-main-effects-and-interactions" id="toc-looking-at-main-effects-and-interactions" class="nav-link active" data-scroll-target="#looking-at-main-effects-and-interactions"><span class="header-section-number">10.1</span> Looking at main effects and interactions</a>
   <ul class="collapse">
-  <li><a href="#x2-designs" id="toc-x2-designs" class="nav-link" data-scroll-target="#x2-designs"> <span class="header-section-number">10.1.1</span> 2x2 designs</a></li>
+  <li><a href="#x2-designs" id="toc-x2-designs" class="nav-link" data-scroll-target="#x2-designs"><span class="header-section-number">10.1.1</span> 2x2 designs</a></li>
   </ul></li>
-  <li><a href="#interpreting-main-effects-and-interactions" id="toc-interpreting-main-effects-and-interactions" class="nav-link" data-scroll-target="#interpreting-main-effects-and-interactions"> <span class="header-section-number">10.2</span> Interpreting main effects and interactions</a>
+  <li><a href="#interpreting-main-effects-and-interactions" id="toc-interpreting-main-effects-and-interactions" class="nav-link" data-scroll-target="#interpreting-main-effects-and-interactions"><span class="header-section-number">10.2</span> Interpreting main effects and interactions</a>
   <ul class="collapse">
-  <li><a href="#a-consistent-main-effect-and-an-interaction" id="toc-a-consistent-main-effect-and-an-interaction" class="nav-link" data-scroll-target="#a-consistent-main-effect-and-an-interaction"> <span class="header-section-number">10.2.1</span> A consistent main effect and an interaction</a></li>
-  <li><a href="#an-inconsistent-main-effect-and-an-interaction" id="toc-an-inconsistent-main-effect-and-an-interaction" class="nav-link" data-scroll-target="#an-inconsistent-main-effect-and-an-interaction"> <span class="header-section-number">10.2.2</span> An inconsistent main effect and an interaction</a></li>
+  <li><a href="#a-consistent-main-effect-and-an-interaction" id="toc-a-consistent-main-effect-and-an-interaction" class="nav-link" data-scroll-target="#a-consistent-main-effect-and-an-interaction"><span class="header-section-number">10.2.1</span> A consistent main effect and an interaction</a></li>
+  <li><a href="#an-inconsistent-main-effect-and-an-interaction" id="toc-an-inconsistent-main-effect-and-an-interaction" class="nav-link" data-scroll-target="#an-inconsistent-main-effect-and-an-interaction"><span class="header-section-number">10.2.2</span> An inconsistent main effect and an interaction</a></li>
   </ul></li>
-  <li><a href="#mixed-designs" id="toc-mixed-designs" class="nav-link" data-scroll-target="#mixed-designs"> <span class="header-section-number">10.3</span> Mixed Designs</a></li>
-  <li><a href="#more-complicated-designs" id="toc-more-complicated-designs" class="nav-link" data-scroll-target="#more-complicated-designs"> <span class="header-section-number">10.4</span> More complicated designs</a>
+  <li><a href="#mixed-designs" id="toc-mixed-designs" class="nav-link" data-scroll-target="#mixed-designs"><span class="header-section-number">10.3</span> Mixed Designs</a></li>
+  <li><a href="#more-complicated-designs" id="toc-more-complicated-designs" class="nav-link" data-scroll-target="#more-complicated-designs"><span class="header-section-number">10.4</span> More complicated designs</a>
   <ul class="collapse">
-  <li><a href="#x3-design" id="toc-x3-design" class="nav-link" data-scroll-target="#x3-design"> <span class="header-section-number">10.4.1</span> 2x3 design</a></li>
-  <li><a href="#x2x2-designs" id="toc-x2x2-designs" class="nav-link" data-scroll-target="#x2x2-designs"> <span class="header-section-number">10.4.2</span> 2x2x2 designs</a></li>
+  <li><a href="#x3-design" id="toc-x3-design" class="nav-link" data-scroll-target="#x3-design"><span class="header-section-number">10.4.1</span> 2x3 design</a></li>
+  <li><a href="#x2x2-designs" id="toc-x2x2-designs" class="nav-link" data-scroll-target="#x2x2-designs"><span class="header-section-number">10.4.2</span> 2x2x2 designs</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/10-MixedANOVA.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -222,7 +247,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></h1>
 </div>
 
 
@@ -236,15 +261,13 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
 
 </header>
 
-<div class="cell" data-hash="cache/unnamed-chunk-2_9f47e34674026a009f1de27588015e07">
-
-</div>
 <p>We are going to do a couple things in this chapter. The most important thing is more exposure to factorial designs. The second thing we do is show that you can mix it up with ANOVA. You already know that you can have more than one IV. And, you know that research designs can be between-subjects or within-subjects (repeated-measures). When you have more than one IV, they can all be between-subjects variables, they can all be within-subject repeated measures, or they can be a mix: say one between-subject variable and one within-subject variable. You can use ANOVA to analyze all of these kinds of designs. You always get one main effect for each IV, and a number of interactions, or just one, depending on the number of IVs.</p>
 <section id="looking-at-main-effects-and-interactions" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="looking-at-main-effects-and-interactions"><span class="header-section-number">10.1</span> Looking at main effects and interactions</h2>
@@ -272,23 +295,23 @@ ga('send', {
 <li>1x2 = there was an interaction</li>
 <li>~1x2 = there was <strong>not</strong> an interaction</li>
 </ul>
-<div class="cell" data-hash="cache/fig-10bar22_9a57c6472e94e0267ab879e52632b8a5">
+<div class="cell" data-hash="10-MixedANOVA_cache/html/fig-10bar22_e3d94501a5f4bd794e82298e0acc65c4">
 <div class="cell-output-display">
 <div id="fig-10bar22" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="10-MixedANOVA_files/figure-html/fig-10bar22-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.1: 8 Example patterns for means for each of the possible kinds of general outcomes in a 2x2 design.</figcaption><p></p>
+<p><img src="10-MixedANOVA_files/figure-html/fig-10bar22-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.1: 8 Example patterns for means for each of the possible kinds of general outcomes in a 2x2 design.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p><a href="#fig-10lines22">Figure&nbsp;<span>10.2</span></a> shows the same eight patterns in line graph form:</p>
-<div class="cell" data-hash="cache/fig-10lines22_41f1370d22dc2a2bc9ad84df31b41d60">
+<div class="cell" data-hash="10-MixedANOVA_cache/html/fig-10lines22_dc1430b319569104bdd473e7f421782f">
 <div class="cell-output-display">
 <div id="fig-10lines22" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-10lines22-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.2: Line graphs showing 8 possible general outcomes for a 2x2 design.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.2: Line graphs showing 8 possible general outcomes for a 2x2 design.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -307,12 +330,12 @@ ga('send', {
 <p>Here are two examples to help you make sense of these issues:</p>
 <section id="a-consistent-main-effect-and-an-interaction" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="a-consistent-main-effect-and-an-interaction"><span class="header-section-number">10.2.1</span> A consistent main effect and an interaction</h3>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10mainint_4591eb45212404f9d674f2b6b3cf8345">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-10mainint_ccbb5c26dc5500a44df05cb36800777e">
 <div class="cell-output-display">
 <div id="fig-10mainint" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-10mainint-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.3: Example means showing a generally consistent main effect along with an interaction</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.3: Example means showing a generally consistent main effect along with an interaction</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -324,12 +347,12 @@ ga('send', {
 </section>
 <section id="an-inconsistent-main-effect-and-an-interaction" class="level3" data-number="10.2.2">
 <h3 data-number="10.2.2" class="anchored" data-anchor-id="an-inconsistent-main-effect-and-an-interaction"><span class="header-section-number">10.2.2</span> An inconsistent main effect and an interaction</h3>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10mainintInc_2a0bbc85f2a9cb2d1ce70048c207d273">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-10mainintInc_25fb32dbac587951aae35b6020c8436e">
 <div class="cell-output-display">
 <div id="fig-10mainintInc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-10mainintInc-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.4: Example data showing how an interaction exists, and a main effect does not, even though the means for the main effect may show a difference</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.4: Example data showing how an interaction exists, and a main effect does not, even though the means for the main effect may show a difference</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -359,12 +382,12 @@ ga('send', {
 <p>First, let’s make the design concrete. Let’s imagine we are running a memory experiment. We give people some words to remember, and then test them to see how many they can correctly remember. Our DV is proportion correct. We know that people forget things over time. Our first IV will be time of test, immediate vs.&nbsp;1 week. The time of test IV will produce a forgetting effect. Generally, people will have a higher proportion correct on an immediate test of their memory for things they just saw, compared to testing a week later.</p>
 <p>We might be interested in manipulations that reduce the amount of forgetting that happens over the week. The second IV could be many things. Let’s make it the number of time people got to study the items before the memory test, once, twice or three times. We call IV2 the repetition manipulation.</p>
 <p>We might expect data like shown in <a href="#fig-1023design">Figure&nbsp;<span>10.5</span></a>:</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-1023design_98756700e9ec2ea9acc45aa92521b2fb">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-1023design_956a1a860f3edf1332a9b0e0560267fa">
 <div class="cell-output-display">
 <div id="fig-1023design" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-1023design-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.5: Example means for a 2x3 factorial design</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.5: Example means for a 2x3 factorial design</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -374,23 +397,23 @@ ga('send', {
 <p>Second, the main effect of repetition seems to be clearly present. The more times people saw the items in the memory test (once, twice, or three times), the more they remembered, as measured by increasingly higher proportion correct as a function of number of repetitions.</p>
 <p>Is there an interaction? Yes, there is. Remember, an interaction occurs when the effect of one IV depends on the levels of an another. The delay IV measures the forgetting effect. Does the size of the forgetting effect change across the levels of the repetition variable? Yes it does. With one repetition the forgetting effect is .9-.6 =.4. With two repetitions, the forgetting effect is a little bit smaller, and with three, the repetition is even smaller still. So, the size of the forgetting effect changes as a function of the levels of the repetition IV. There is evidence in the means for an interaction. You would have to conduct an inferential test on the interaction term to see if these differences were likely or unlikely to be due to sampling error.</p>
 <p>If there was no interaction and no main effect of repetition, we would see something like the pattern in <a href="#fig-1023one">Figure&nbsp;<span>10.6</span></a>.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-1023one_694a1e182fe3cd10d7842c70c64ff3b5">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-1023one_1872ff2715076117b07187baea099282">
 <div class="cell-output-display">
 <div id="fig-1023one" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-1023one-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.6: Example means for a 2x3 design when there is only one main effect</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.6: Example means for a 2x3 design when there is only one main effect</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>What would you say about the interaction if you saw the pattern in <a href="#fig-1023int">Figure&nbsp;<span>10.7</span></a>?</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-1023int_fddd229a6800794e327140fe34f5bb96">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-1023int_4b5ed8f5c95f58adf3838334ff4aa6b6">
 <div class="cell-output-display">
 <div id="fig-1023int" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-1023int-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.7: Example means for a 2x3 design showing another pattern that produces an interaction</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.7: Example means for a 2x3 design showing another pattern that produces an interaction</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -401,24 +424,24 @@ ga('send', {
 <h3 data-number="10.4.2" class="anchored" data-anchor-id="x2x2-designs"><span class="header-section-number">10.4.2</span> 2x2x2 designs</h3>
 <p>Let’s take it up a notch and look at a 2x2x2 design. Here, there are three IVs with 2 levels each. There are three main effects, three two-way (2x2) interactions, and one 3-way (2x2x2) interaction.</p>
 <p>We will use the same example as before but add an additional manipulation of the kind of material that is to be remembered. For example, we could present words during an encoding phase either visually or spoken (auditory) over headphones.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10222_a69ede61124c5a45888192ae8ffcf7b6">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-10222_c9e3771fabc4d81402bcb80a04fe0be7">
 <div class="cell-output-display">
 <div id="fig-10222" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-10222-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.8: Example means from a 2x2x2 design with no three-way interaction.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.8: Example means from a 2x2x2 design with no three-way interaction.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p><a href="#fig-10222">Figure&nbsp;<span>10.8</span></a> has two panels one for auditory and one for visual. You can think of the 2x2x2, as two 2x2s, one for auditory and one for visual. What’s the take home from this example data? We can see that the graphs for auditory and visual are the same. They both show a 2x2 interaction between delay and repetition. People forgot more things across the week when they studied the material once, compared to when they studied the material twice. There is a main effect of delay, there is a main effect of repetition, there is no main effect of modality, and there is no three-way interaction.</p>
 <p>What is a three-way interaction anyway? That would occur if there was a difference between the 2x2 interactions. For example, consider the pattern of results in <a href="#fig-10222int">Figure&nbsp;<span>10.9</span></a>.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-10222int_45c01697ed0633ebc9c1df0f029e0ac5">
+<div class="cell" data-fig.asp="0.5" data-hash="10-MixedANOVA_cache/html/fig-10222int_e19cff6de124c197abfddde9be252e34">
 <div class="cell-output-display">
 <div id="fig-10222int" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="10-MixedANOVA_files/figure-html/fig-10222int-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 10.9: Example means from a 2x2x2 design with a three-way interaction.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10.9: Example means from a 2x2x2 design with a three-way interaction.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -461,9 +484,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -475,7 +512,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -503,31 +557,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

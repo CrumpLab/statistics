@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,16 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -42,43 +48,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -119,28 +95,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
 
 <meta property="og:title" content="Answering questions with data - 13&nbsp; GIFs">
-<meta property="og:description" content="This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book https://github.">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/imgs/gifs/corUnifn10-1.gif">
 <meta property="og:site-name" content="Answering questions with data">
 <meta name="twitter:title" content="Answering questions with data - 13&nbsp; GIFs">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -150,11 +123,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13-Gifs.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -162,136 +140,152 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#correlation-gifs" id="toc-correlation-gifs" class="nav-link active" data-scroll-target="#correlation-gifs"> <span class="header-section-number">13.1</span> Correlation GIFs</a>
+  <li><a href="#correlation-gifs" id="toc-correlation-gifs" class="nav-link active" data-scroll-target="#correlation-gifs"><span class="header-section-number">13.1</span> Correlation GIFs</a>
   <ul class="collapse">
-  <li><a href="#n10-both-variables-drawn-from-a-uniform-distribution" id="toc-n10-both-variables-drawn-from-a-uniform-distribution" class="nav-link" data-scroll-target="#n10-both-variables-drawn-from-a-uniform-distribution"> <span class="header-section-number">13.1.1</span> N=10, both variables drawn from a uniform distribution</a></li>
-  <li><a href="#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes" id="toc-correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes" class="nav-link" data-scroll-target="#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"> <span class="header-section-number">13.1.2</span> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
-  <li><a href="#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes" id="toc-correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes" class="nav-link" data-scroll-target="#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"> <span class="header-section-number">13.1.3</span> Correlation between random deviates from normal distribution across four sample sizes</a></li>
-  <li><a href="#correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size" id="toc-correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size" class="nav-link" data-scroll-target="#correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size"> <span class="header-section-number">13.1.4</span> Correlation between X and Y variables that have a true correlation as a function of sample-size</a></li>
-  <li><a href="#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines" id="toc-type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines" class="nav-link" data-scroll-target="#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines"> <span class="header-section-number">13.1.5</span> Type I errors, sampling random deviates from normal distribution with regression lines</a></li>
-  <li><a href="#cell-size-and-correlation" id="toc-cell-size-and-correlation" class="nav-link" data-scroll-target="#cell-size-and-correlation"> <span class="header-section-number">13.1.6</span> Cell-size and correlation</a></li>
-  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression"> <span class="header-section-number">13.1.7</span> Regression</a></li>
+  <li><a href="#n10-both-variables-drawn-from-a-uniform-distribution" id="toc-n10-both-variables-drawn-from-a-uniform-distribution" class="nav-link" data-scroll-target="#n10-both-variables-drawn-from-a-uniform-distribution"><span class="header-section-number">13.1.1</span> N=10, both variables drawn from a uniform distribution</a></li>
+  <li><a href="#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes" id="toc-correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes" class="nav-link" data-scroll-target="#correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><span class="header-section-number">13.1.2</span> Correlation between random deviates from uniform distribution across four sample sizes</a></li>
+  <li><a href="#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes" id="toc-correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes" class="nav-link" data-scroll-target="#correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"><span class="header-section-number">13.1.3</span> Correlation between random deviates from normal distribution across four sample sizes</a></li>
+  <li><a href="#correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size" id="toc-correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size" class="nav-link" data-scroll-target="#correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size"><span class="header-section-number">13.1.4</span> Correlation between X and Y variables that have a true correlation as a function of sample-size</a></li>
+  <li><a href="#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines" id="toc-type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines" class="nav-link" data-scroll-target="#type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines"><span class="header-section-number">13.1.5</span> Type I errors, sampling random deviates from normal distribution with regression lines</a></li>
+  <li><a href="#cell-size-and-correlation" id="toc-cell-size-and-correlation" class="nav-link" data-scroll-target="#cell-size-and-correlation"><span class="header-section-number">13.1.6</span> Cell-size and correlation</a></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression"><span class="header-section-number">13.1.7</span> Regression</a></li>
   </ul></li>
-  <li><a href="#sampling-distributions" id="toc-sampling-distributions" class="nav-link" data-scroll-target="#sampling-distributions"> <span class="header-section-number">13.2</span> Sampling distributions</a>
+  <li><a href="#sampling-distributions" id="toc-sampling-distributions" class="nav-link" data-scroll-target="#sampling-distributions"><span class="header-section-number">13.2</span> Sampling distributions</a>
   <ul class="collapse">
-  <li><a href="#sampling-from-a-uniform-distribution" id="toc-sampling-from-a-uniform-distribution" class="nav-link" data-scroll-target="#sampling-from-a-uniform-distribution"> <span class="header-section-number">13.2.1</span> Sampling from a uniform distribution</a></li>
-  <li><a href="#sampling-from-uniform-with-line-showing-expected-value-for-each-number" id="toc-sampling-from-uniform-with-line-showing-expected-value-for-each-number" class="nav-link" data-scroll-target="#sampling-from-uniform-with-line-showing-expected-value-for-each-number"> <span class="header-section-number">13.2.2</span> Sampling from uniform with line showing expected value for each number</a></li>
-  <li><a href="#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms" id="toc-sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms" class="nav-link" data-scroll-target="#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms"> <span class="header-section-number">13.2.3</span> Sampling distribution of the mean, Normal population distribution and sample histograms</a></li>
-  <li><a href="#null-and-true-effect-samples-and-sampling-means" id="toc-null-and-true-effect-samples-and-sampling-means" class="nav-link" data-scroll-target="#null-and-true-effect-samples-and-sampling-means"> <span class="header-section-number">13.2.4</span> Null and True effect samples and sampling means</a></li>
+  <li><a href="#sampling-from-a-uniform-distribution" id="toc-sampling-from-a-uniform-distribution" class="nav-link" data-scroll-target="#sampling-from-a-uniform-distribution"><span class="header-section-number">13.2.1</span> Sampling from a uniform distribution</a></li>
+  <li><a href="#sampling-from-uniform-with-line-showing-expected-value-for-each-number" id="toc-sampling-from-uniform-with-line-showing-expected-value-for-each-number" class="nav-link" data-scroll-target="#sampling-from-uniform-with-line-showing-expected-value-for-each-number"><span class="header-section-number">13.2.2</span> Sampling from uniform with line showing expected value for each number</a></li>
+  <li><a href="#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms" id="toc-sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms" class="nav-link" data-scroll-target="#sampling-distribution-of-the-mean-normal-population-distribution-and-sample-histograms"><span class="header-section-number">13.2.3</span> Sampling distribution of the mean, Normal population distribution and sample histograms</a></li>
+  <li><a href="#null-and-true-effect-samples-and-sampling-means" id="toc-null-and-true-effect-samples-and-sampling-means" class="nav-link" data-scroll-target="#null-and-true-effect-samples-and-sampling-means"><span class="header-section-number">13.2.4</span> Null and True effect samples and sampling means</a></li>
   </ul></li>
-  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference"> <span class="header-section-number">13.3</span> Statistical Inference</a>
+  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference"><span class="header-section-number">13.3</span> Statistical Inference</a>
   <ul class="collapse">
-  <li><a href="#randomization-test" id="toc-randomization-test" class="nav-link" data-scroll-target="#randomization-test"> <span class="header-section-number">13.3.1</span> Randomization Test</a></li>
-  <li><a href="#independent-t-test-null" id="toc-independent-t-test-null" class="nav-link" data-scroll-target="#independent-t-test-null"> <span class="header-section-number">13.3.2</span> Independent t-test Null</a></li>
-  <li><a href="#independent-t-test-true" id="toc-independent-t-test-true" class="nav-link" data-scroll-target="#independent-t-test-true"> <span class="header-section-number">13.3.3</span> Independent t-test True</a></li>
-  <li><a href="#t-test-true-sample-size" id="toc-t-test-true-sample-size" class="nav-link" data-scroll-target="#t-test-true-sample-size"> <span class="header-section-number">13.3.4</span> T-test True sample-size</a></li>
-  <li><a href="#one-factor-anova-null" id="toc-one-factor-anova-null" class="nav-link" data-scroll-target="#one-factor-anova-null"> <span class="header-section-number">13.3.5</span> one-factor ANOVA Null</a></li>
-  <li><a href="#factorial-null" id="toc-factorial-null" class="nav-link" data-scroll-target="#factorial-null"> <span class="header-section-number">13.3.6</span> Factorial Null</a></li>
+  <li><a href="#randomization-test" id="toc-randomization-test" class="nav-link" data-scroll-target="#randomization-test"><span class="header-section-number">13.3.1</span> Randomization Test</a></li>
+  <li><a href="#independent-t-test-null" id="toc-independent-t-test-null" class="nav-link" data-scroll-target="#independent-t-test-null"><span class="header-section-number">13.3.2</span> Independent t-test Null</a></li>
+  <li><a href="#independent-t-test-true" id="toc-independent-t-test-true" class="nav-link" data-scroll-target="#independent-t-test-true"><span class="header-section-number">13.3.3</span> Independent t-test True</a></li>
+  <li><a href="#t-test-true-sample-size" id="toc-t-test-true-sample-size" class="nav-link" data-scroll-target="#t-test-true-sample-size"><span class="header-section-number">13.3.4</span> T-test True sample-size</a></li>
+  <li><a href="#one-factor-anova-null" id="toc-one-factor-anova-null" class="nav-link" data-scroll-target="#one-factor-anova-null"><span class="header-section-number">13.3.5</span> one-factor ANOVA Null</a></li>
+  <li><a href="#factorial-null" id="toc-factorial-null" class="nav-link" data-scroll-target="#factorial-null"><span class="header-section-number">13.3.6</span> Factorial Null</a></li>
   </ul></li>
-  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"> <span class="header-section-number">13.4</span> Distributions</a>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"><span class="header-section-number">13.4</span> Distributions</a>
   <ul class="collapse">
-  <li><a href="#normal-changing-mean" id="toc-normal-changing-mean" class="nav-link" data-scroll-target="#normal-changing-mean"> <span class="header-section-number">13.4.1</span> Normal changing mean</a></li>
-  <li><a href="#normal-changing-sd" id="toc-normal-changing-sd" class="nav-link" data-scroll-target="#normal-changing-sd"> <span class="header-section-number">13.4.2</span> Normal changing sd</a></li>
+  <li><a href="#normal-changing-mean" id="toc-normal-changing-mean" class="nav-link" data-scroll-target="#normal-changing-mean"><span class="header-section-number">13.4.1</span> Normal changing mean</a></li>
+  <li><a href="#normal-changing-sd" id="toc-normal-changing-sd" class="nav-link" data-scroll-target="#normal-changing-sd"><span class="header-section-number">13.4.2</span> Normal changing sd</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/13-Gifs.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -301,7 +295,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></h1>
 </div>
 
 
@@ -315,6 +309,7 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
@@ -323,7 +318,7 @@ ga('send', {
 
 <p>This is the place where I put the stats gifs as I make them. The gifs can downloaded from this page, or they can be downloaded from this folder on the github repo for this book <a href="https://github.com/CrumpLab/statistics/tree/master/gifs" class="uri">https://github.com/CrumpLab/statistics/tree/master/gifs</a>. Please feel free to use them however you wish. The source code for compiling the gifs in R is shown alongside each gif. The animations are made possible by the <strong>gganimate</strong> package.</p>
 <p><strong>This is a work in progress, subject to change and addition</strong></p>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-1_3b7b0cffc45951f0af3dc939f23fbecc">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -333,14 +328,12 @@ ga('send', {
 <p>Note regression lines and confidence bands can be added using <code>geom_smooth(method=lm, se=T)</code></p>
 <section id="n10-both-variables-drawn-from-a-uniform-distribution" class="level3" data-number="13.1.1">
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="n10-both-variables-drawn-from-a-uniform-distribution"><span class="header-section-number">13.1.1</span> N=10, both variables drawn from a uniform distribution</h3>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-2_35d90b04c2b7877301d32496cfa2bc66">
 <div class="cell-output-display">
-<p><img src="imgs/gifs/corUnifn10-1.gif" class="img-fluid"></p>
+<p><img src="imgs/gifs/corUnifn10-1.gif" class="quarto-discovered-preview-image img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/corUnifn10gif_808cfc8dbbfbca065a31dcf81264d8e7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  North_pole <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>)</span>
@@ -368,14 +361,12 @@ ga('send', {
 <section id="correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes" class="level3" data-number="13.1.2">
 <h3 data-number="13.1.2" class="anchored" data-anchor-id="correlation-between-random-deviates-from-uniform-distribution-across-four-sample-sizes"><span class="header-section-number">13.1.2</span> Correlation between random deviates from uniform distribution across four sample sizes</h3>
 <p>N= 10,50,100,1000 All values sampled from a uniform distribution</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-3_09f948bd06b78caa7dff794940e59cf0">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/corUnifFourNs-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/corUnifFourNsgif_a489c2fef9efb7165e1bf1f4e56db55d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">1000</span>)){</span>
@@ -407,14 +398,12 @@ ga('send', {
 <section id="correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes" class="level3" data-number="13.1.3">
 <h3 data-number="13.1.3" class="anchored" data-anchor-id="correlation-between-random-deviates-from-normal-distribution-across-four-sample-sizes"><span class="header-section-number">13.1.3</span> Correlation between random deviates from normal distribution across four sample sizes</h3>
 <p>N= 10,50,100,1000 All values sampled from the same normal distribution (mean=0, sd=1)</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-4_5f31d1b11093bd6c3f1186ef6b7d0fec">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/corNormFourNs-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/corNormFourNsgif_c8edf98455cd614eec4443bdd0e2eb53">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(sim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">1000</span>)){</span>
@@ -445,14 +434,12 @@ ga('send', {
 </section>
 <section id="correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size" class="level3" data-number="13.1.4">
 <h3 data-number="13.1.4" class="anchored" data-anchor-id="correlation-between-x-and-y-variables-that-have-a-true-correlation-as-a-function-of-sample-size"><span class="header-section-number">13.1.4</span> Correlation between X and Y variables that have a true correlation as a function of sample-size</h3>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-5_79919fd098f07c34208bb00c670f58e8">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/corRealgif-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/corRealgif_c07eaa8b854608dc0f1bb87f2709ad9c">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>r<span class="ot">&lt;-</span>.<span class="dv">7</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -500,14 +487,12 @@ ga('send', {
 <section id="type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines" class="level3" data-number="13.1.5">
 <h3 data-number="13.1.5" class="anchored" data-anchor-id="type-i-errors-sampling-random-deviates-from-normal-distribution-with-regression-lines"><span class="header-section-number">13.1.5</span> Type I errors, sampling random deviates from normal distribution with regression lines</h3>
 <p>These scatter plots only show what would be type I errors (assuming alpha=.05). The X and Y values were both sampled from the same normal distribution (mean = 0, sd=1). 1000 simulations were conducted for each sample size (10,50,100,1000). For each, the animation shows 10 scatter plots where the observed “correlation” would have passed a significance test. According to definition, these correlations only arise from random normal deviates 5% of the time, but when they do arise for small sample sizes, they look fairly convincing.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-6_da84fc625e7ea4f32331545167f35336">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/corNormFourNsTypeI-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/corNormFourNsTypeIgif_be77b095160d4715ff3e76fdd0d1734f">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">1000</span>)){</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  count_sims<span class="ot">&lt;-</span><span class="dv">0</span></span>
@@ -547,14 +532,12 @@ ga('send', {
 <section id="cell-size-and-correlation" class="level3" data-number="13.1.6">
 <h3 data-number="13.1.6" class="anchored" data-anchor-id="cell-size-and-correlation"><span class="header-section-number">13.1.6</span> Cell-size and correlation</h3>
 <p>This simulation illustrates how the behavior of correlating two random normal samples as a function of cell-size. The sample-size is always set at N=10. For each panel, the simulation uses an increasing cell-size to estimate the mean for X and Y. When cell-size is 1, 10 X and Y values are drawn from the same normal (u=0, sd=1). When cell-size is 5, for each X,Y score in the plot, 5 samples were drawn from the same normal, and then the mean of the samples is plotted. The effect of cell-size shrinks the dot cloud, as both X and Y scores provide better estimates of the population mean = 0. Cell-size has no effect on the behavior of r, which swings around because sample-size N is small. These are all random, so there is always a 5% type I error rate (alpha =.05).</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-7_7df4eb59ed0c29634ee3bcc7ca3254be">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/cellsizeCor-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/cellsizeCorgif_eecde8d64c500c95b03d9aa3fb30b195">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>get_sampling_means<span class="ot">&lt;-</span><span class="cf">function</span>(m,sd,cell_size,s_size){</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  save_means<span class="ot">&lt;-</span><span class="fu">length</span>(s_size)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>s_size){</span>
@@ -597,14 +580,12 @@ ga('send', {
 <section id="regression" class="level3" data-number="13.1.7">
 <h3 data-number="13.1.7" class="anchored" data-anchor-id="regression"><span class="header-section-number">13.1.7</span> Regression</h3>
 <p>We look at how the residuals (error from points to line) behave as the regression lines moves above and below it’s true value. The total error associated with all of the red lines is represents by the grey area. This total error is smallest (minimized) when the black line overlaps with the blue regression line (the best fit line). The total error expands as the black line moves away from the regression. That’s why the regression line is the least wrong (best fit) line to skewer the data (according to least squares definition)</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-8_dcdee0a2ba9abdf321d6e6b119640818">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/regression-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/regressiongif_f7bc634cde31abbef1238d34b8c6680e">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> mtcars</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp, <span class="at">data =</span> d)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)   <span class="co"># Save the predicted values</span></span>
@@ -658,14 +639,12 @@ ga('send', {
 <section id="sampling-from-a-uniform-distribution" class="level3" data-number="13.2.1">
 <h3 data-number="13.2.1" class="anchored" data-anchor-id="sampling-from-a-uniform-distribution"><span class="header-section-number">13.2.1</span> Sampling from a uniform distribution</h3>
 <p>Animation shows histograms for N=20, sampled from a uniform distribution, along with mean (red line). Uniform distribution in this case is integer values from 1 to 10.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-9_d8cab60d5b595cfd8835e9515c624eaf">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/sampleHistUnif-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/sampleHistUnif_bbd02a0fb15ad59715b4e13c8908c6b6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">20</span><span class="sc">*</span><span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(a,<span class="at">sample=</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">each=</span><span class="dv">20</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df2<span class="ot">&lt;-</span><span class="fu">aggregate</span>(a<span class="sc">~</span>sample,df,mean)</span>
@@ -689,14 +668,12 @@ ga('send', {
 </section>
 <section id="sampling-from-uniform-with-line-showing-expected-value-for-each-number" class="level3" data-number="13.2.2">
 <h3 data-number="13.2.2" class="anchored" data-anchor-id="sampling-from-uniform-with-line-showing-expected-value-for-each-number"><span class="header-section-number">13.2.2</span> Sampling from uniform with line showing expected value for each number</h3>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-10_5d04e17649a88c21ae88fa991cc22f22">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/sampleUnifExpected-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/sampleUnifExpected_2b45f3e62ed9e4debdc74ceba844727d">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">20</span><span class="sc">*</span><span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">10</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(a,<span class="at">sample=</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">each=</span><span class="dv">20</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -723,14 +700,12 @@ ga('send', {
 <p>Normal distribution in red. Individual sample histograms in grey. Vertical red line is mean of individual sample. Histograms for sampling distribution of the sample mean in blue. Vertical blue line is mean of the sampling distribution of the sample mean.</p>
 <p>Note: for purposes of the animation (and because it was easier to do this way), the histograms for the sampling distribution of the sample means have different sizes. When sample-size = 10, the histogram shows 10 sample means. When sample size=100, the histogram shows 100 sample means. I could have simulated many more sample means (say 10000) for each, but then the histograms for the sample means would be static.</p>
 <p>The y-axis is very rough. The heights of the histograms and distributions were scaled to be in the same range for the animation.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-11_2a10a46c9d3e755de6c1a2709845f1a7">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/sampleDistNormal-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/sampleDistNormalgif_168f0d2a2c016b661d9cb0f743c7b5d0">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>get_sampling_means<span class="ot">&lt;-</span><span class="cf">function</span>(m,sd,s_size){</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  save_means<span class="ot">&lt;-</span><span class="fu">length</span>(s_size)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>s_size){</span>
@@ -780,14 +755,12 @@ ga('send', {
 <section id="null-and-true-effect-samples-and-sampling-means" class="level3" data-number="13.2.4">
 <h3 data-number="13.2.4" class="anchored" data-anchor-id="null-and-true-effect-samples-and-sampling-means"><span class="header-section-number">13.2.4</span> Null and True effect samples and sampling means</h3>
 <p>The null dots show 50 different samples, with the red dot as the mean for each sample. Null dots are all sampled from normal (u=0, sd=1). The true dots show 50 more samples, with red dots for their means. However, the mean of the true shifts between -1.5 and +1.5 standard deviations of 0. This illustrates how a true effect moves in and out of the null range.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-12_5305019fe91da75a59e1120a21a02af0">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/sampleNullTrue-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/sampleNullTruegif_2a1cb00254e25aa9439c4f2615b3298a">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>all_df_means<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>dif_sim<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">1.5</span>,<span class="fl">1.5</span>,.<span class="dv">25</span>)</span>
@@ -827,14 +800,12 @@ ga('send', {
 <h3 data-number="13.3.1" class="anchored" data-anchor-id="randomization-test"><span class="header-section-number">13.3.1</span> Randomization Test</h3>
 <p>This is an attempt at visualizing a randomization test. Samples are taken under two conditions of the IV (A and B). At the beginning of the animation, the original scores in the first condition are shown as green dots on the left, and the original scores in the second condition are the red dots on the right. The means for each group are the purple dots. During the randomization, the original scores are shuffled randomly between the two conditions. After each shuffle, two new means are computed and displayed as the yellow dots. This occurs either for all permutations, or for a large random sample of them. The animation shows the original scores being shuffled around across the randomizations (the colored dots switch their original condition, appearing from side to side).</p>
 <p>For intuitive inference, one might look at the range of motion of the yellow dots. This is how the mean difference between group 1 and group 2 behaves under randomization. It’s what chance can do. If the difference between the purple dots is well outside the range of motion of the yellow dots, then the mean difference observed in the beginning is not likely produced by chance.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-13_8e881b6f69e593635e842866605391ca">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/randomizationTest-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/randomizationTestgif_9a36406af64577ce7e1a2d798c5fd2e1">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>study<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">10</span>,<span class="dv">80</span>,<span class="dv">100</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>no_study<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">10</span>,<span class="dv">40</span>,<span class="dv">90</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -887,14 +858,12 @@ ga('send', {
 <p>This animation has two panels. The left panel shows means for group A and B, sampled from the same normal distribution (mu=50, sd =10). The dots represent individual scores for each of 10 observations per group.</p>
 <p>The right panel shows a t-distribution (df=18) along with the observed t-statistic for each simulation.</p>
 <p><code>gganimate</code> does not yet directly support multiple panels as shown in this gif. I hacked together these two gifs using the <code>magick</code> package. Apologies for the hackiness.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-14_74c5ad46a57dcf9b7fe8764220028857">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/indTtest.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-15_9e6bf7d6dbc4fd62631a097981dc1fe6">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
@@ -974,14 +943,12 @@ ga('send', {
 <p>This is a simulation of an independent samples t-test, two groups, 10 observations per group, assuming a true difference of 2 standard deviations between groups</p>
 <p>This animation has two panels. The left panel shows means for group A (normal, mu=50, sd=10) and B (normal, mu=70, sd=10). The dots represent individual scores for each of 10 observations per group.</p>
 <p>The right panel shows a t-distribution (df=18) along with the observed t-statistic for each simulation.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-16_ed17328d35d326ac8a0d1a1b1aed4c40">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/indTtestTrue.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-17_30fe14b0972a79f36d30a1fdf7e93d0e">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
@@ -1062,14 +1029,12 @@ ga('send', {
 <p>The top row shows 10 simulations of an independent sample t-test, with N=10, and true difference of 1 sd.</p>
 <p>The bottom row shows 10 simulations with N=50.</p>
 <p>The observed t-value occurs past the critical value (green) line much more reliably and often when sample size is larger than smaller.</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-18_91e192976e443de4587f2360ae016233">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/indTtestN.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-19_c38a1da981dbf269988f3771adc58767">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
@@ -1227,14 +1192,12 @@ ga('send', {
 <section id="one-factor-anova-null" class="level3" data-number="13.3.5">
 <h3 data-number="13.3.5" class="anchored" data-anchor-id="one-factor-anova-null"><span class="header-section-number">13.3.5</span> one-factor ANOVA Null</h3>
 <p>Three groups, N=10, all observations sampled from same normal distribution (mu=50, sd = 10)</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-20_3b68f1b47d8a3e24a05ddca9566300ed">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/OneWayNull.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-21_e2c723a2d7999705e87e7f2a69816eab">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
@@ -1306,14 +1269,12 @@ ga('send', {
 <section id="factorial-null" class="level3" data-number="13.3.6">
 <h3 data-number="13.3.6" class="anchored" data-anchor-id="factorial-null"><span class="header-section-number">13.3.6</span> Factorial Null</h3>
 <p>10 simulations, N=10 in each of 4 conditions in a 2x2 (between-subjects). All observations taken from the same normal distribution (mu=50, sd =10).</p>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-22_a24b44205f2d21221436b51c8a650d24">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/FactorialNull.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-23_9c670cca4cdb1ff52211a901bb8b78ab">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>A<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>B<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>C<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="dv">10</span>)</span>
@@ -1394,14 +1355,12 @@ ga('send', {
 <h2 data-number="13.4" class="anchored" data-anchor-id="distributions"><span class="header-section-number">13.4</span> Distributions</h2>
 <section id="normal-changing-mean" class="level3" data-number="13.4.1">
 <h3 data-number="13.4.1" class="anchored" data-anchor-id="normal-changing-mean"><span class="header-section-number">13.4.1</span> Normal changing mean</h3>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-24_a6142121c7c2fe0b612a2cd309aa006f">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/normalMovingMean-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/normalMovingMean_0cc0c895d0beb56f72c117bcabb37779">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>some_means<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
@@ -1431,14 +1390,12 @@ ga('send', {
 </section>
 <section id="normal-changing-sd" class="level3" data-number="13.4.2">
 <h3 data-number="13.4.2" class="anchored" data-anchor-id="normal-changing-sd"><span class="header-section-number">13.4.2</span> Normal changing sd</h3>
-<div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/unnamed-chunk-25_4e93a4c3501cbc750c5cd30403dde639">
 <div class="cell-output-display">
 <p><img src="imgs/gifs/normalMovingSD-1.gif" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<div class="cell">
+<div class="cell" data-hash="13-Gifs_cache/html/normalMovingSD_4b5298c364252f99cdac5d9af8031a29">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>some_sds<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.5</span>,<span class="dv">5</span>,.<span class="dv">5</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>all_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
@@ -1502,9 +1459,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1516,7 +1487,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1544,31 +1532,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

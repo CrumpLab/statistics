@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.37">
+<meta name="generator" content="quarto-1.3.258">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,15 +12,21 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -34,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,29 +80,29 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
 
 <script type="text/javascript">
 
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-79429674-3', 'auto');
-
-ga('send', {
-  hitType: 'pageview',
-  'anonymizeIp': true,
-});
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta property="og:title" content="Answering questions with data - 7&nbsp; ANOVA">
-<meta property="og:description" content="A fun bit of stats history (Salsburg 2001). Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika.">
+<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta property="og:image" content="https://crumplab.com/statistics/07-ANOVA_files/figure-html/fig-7fnull-1.png">
 <meta property="og:site-name" content="Answering questions with data">
+<meta property="og:image:height" content="672">
+<meta property="og:image:width" content="1344">
 <meta name="twitter:title" content="Answering questions with data - 7&nbsp; ANOVA">
-<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
+<meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image-height" content="1310">
 <meta name="twitter:image-width" content="916">
@@ -107,11 +112,16 @@ ga('send', {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-ANOVA.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -119,129 +129,145 @@ ga('send', {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/CrumpLab/statistics/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></a>
+  <a href="./01-Science_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Statistics?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></a>
+  <a href="./02-Describing_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Describing Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></a>
+  <a href="./03-Correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Correlation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></a>
+  <a href="./04-SamplesPopulations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability, Sampling, and Estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></a>
+  <a href="./05-Foundation_Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a>
+  <a href="./06-ttests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></a>
+  <a href="./07-ANOVA.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></a>
+  <a href="./08-RMANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Repeated Measures ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></a>
+  <a href="./09-FactorialANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></a>
+  <a href="./10-MixedANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">More On Factorial Designs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></a>
+  <a href="./11-Simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Simulating Data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></a>
+  <a href="./12-Thinking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Thinking about answering questions with data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></a>
+  <a href="./13-Gifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">GIFs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#anova-is-analysis-of-variance" id="toc-anova-is-analysis-of-variance" class="nav-link active" data-scroll-target="#anova-is-analysis-of-variance"> <span class="header-section-number">7.1</span> ANOVA is Analysis of Variance</a></li>
-  <li><a href="#one-factor-anova" id="toc-one-factor-anova" class="nav-link" data-scroll-target="#one-factor-anova"> <span class="header-section-number">7.2</span> One-factor ANOVA</a>
+  <li><a href="#anova-is-analysis-of-variance" id="toc-anova-is-analysis-of-variance" class="nav-link active" data-scroll-target="#anova-is-analysis-of-variance"><span class="header-section-number">7.1</span> ANOVA is Analysis of Variance</a></li>
+  <li><a href="#one-factor-anova" id="toc-one-factor-anova" class="nav-link" data-scroll-target="#one-factor-anova"><span class="header-section-number">7.2</span> One-factor ANOVA</a>
   <ul class="collapse">
-  <li><a href="#computing-the-f-value" id="toc-computing-the-f-value" class="nav-link" data-scroll-target="#computing-the-f-value"> <span class="header-section-number">7.2.1</span> Computing the <span class="math inline">\(F\)</span>-value</a></li>
-  <li><a href="#ss-total" id="toc-ss-total" class="nav-link" data-scroll-target="#ss-total"> <span class="header-section-number">7.2.2</span> SS Total</a></li>
-  <li><a href="#ss-effect" id="toc-ss-effect" class="nav-link" data-scroll-target="#ss-effect"> <span class="header-section-number">7.2.3</span> SS Effect</a></li>
-  <li><a href="#ss-error" id="toc-ss-error" class="nav-link" data-scroll-target="#ss-error"> <span class="header-section-number">7.2.4</span> SS Error</a></li>
-  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"> <span class="header-section-number">7.2.5</span> Degrees of freedom</a></li>
-  <li><a href="#mean-squared-error" id="toc-mean-squared-error" class="nav-link" data-scroll-target="#mean-squared-error"> <span class="header-section-number">7.2.6</span> Mean Squared Error</a></li>
-  <li><a href="#calculate-f" id="toc-calculate-f" class="nav-link" data-scroll-target="#calculate-f"> <span class="header-section-number">7.2.7</span> Calculate F</a></li>
-  <li><a href="#the-anova-table" id="toc-the-anova-table" class="nav-link" data-scroll-target="#the-anova-table"> <span class="header-section-number">7.2.8</span> The ANOVA TABLE</a></li>
+  <li><a href="#computing-the-f-value" id="toc-computing-the-f-value" class="nav-link" data-scroll-target="#computing-the-f-value"><span class="header-section-number">7.2.1</span> Computing the <span class="math inline">\(F\)</span>-value</a></li>
+  <li><a href="#ss-total" id="toc-ss-total" class="nav-link" data-scroll-target="#ss-total"><span class="header-section-number">7.2.2</span> SS Total</a></li>
+  <li><a href="#ss-effect" id="toc-ss-effect" class="nav-link" data-scroll-target="#ss-effect"><span class="header-section-number">7.2.3</span> SS Effect</a></li>
+  <li><a href="#ss-error" id="toc-ss-error" class="nav-link" data-scroll-target="#ss-error"><span class="header-section-number">7.2.4</span> SS Error</a></li>
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"><span class="header-section-number">7.2.5</span> Degrees of freedom</a></li>
+  <li><a href="#mean-squared-error" id="toc-mean-squared-error" class="nav-link" data-scroll-target="#mean-squared-error"><span class="header-section-number">7.2.6</span> Mean Squared Error</a></li>
+  <li><a href="#calculate-f" id="toc-calculate-f" class="nav-link" data-scroll-target="#calculate-f"><span class="header-section-number">7.2.7</span> Calculate F</a></li>
+  <li><a href="#the-anova-table" id="toc-the-anova-table" class="nav-link" data-scroll-target="#the-anova-table"><span class="header-section-number">7.2.8</span> The ANOVA TABLE</a></li>
   </ul></li>
-  <li><a href="#what-does-f-mean" id="toc-what-does-f-mean" class="nav-link" data-scroll-target="#what-does-f-mean"> <span class="header-section-number">7.3</span> What does F mean?</a>
+  <li><a href="#what-does-f-mean" id="toc-what-does-f-mean" class="nav-link" data-scroll-target="#what-does-f-mean"><span class="header-section-number">7.3</span> What does F mean?</a>
   <ul class="collapse">
-  <li><a href="#making-decisions" id="toc-making-decisions" class="nav-link" data-scroll-target="#making-decisions"> <span class="header-section-number">7.3.1</span> Making Decisions</a></li>
-  <li><a href="#fs-and-means" id="toc-fs-and-means" class="nav-link" data-scroll-target="#fs-and-means"> <span class="header-section-number">7.3.2</span> Fs and means</a></li>
+  <li><a href="#making-decisions" id="toc-making-decisions" class="nav-link" data-scroll-target="#making-decisions"><span class="header-section-number">7.3.1</span> Making Decisions</a></li>
+  <li><a href="#fs-and-means" id="toc-fs-and-means" class="nav-link" data-scroll-target="#fs-and-means"><span class="header-section-number">7.3.2</span> Fs and means</a></li>
   </ul></li>
-  <li><a href="#anova-on-real-data" id="toc-anova-on-real-data" class="nav-link" data-scroll-target="#anova-on-real-data"> <span class="header-section-number">7.4</span> ANOVA on Real Data</a>
+  <li><a href="#anova-on-real-data" id="toc-anova-on-real-data" class="nav-link" data-scroll-target="#anova-on-real-data"><span class="header-section-number">7.4</span> ANOVA on Real Data</a>
   <ul class="collapse">
-  <li><a href="#tetris-and-bad-memories" id="toc-tetris-and-bad-memories" class="nav-link" data-scroll-target="#tetris-and-bad-memories"> <span class="header-section-number">7.4.1</span> Tetris and bad memories</a></li>
-  <li><a href="#comparing-means-after-the-anova" id="toc-comparing-means-after-the-anova" class="nav-link" data-scroll-target="#comparing-means-after-the-anova"> <span class="header-section-number">7.4.2</span> Comparing means after the ANOVA</a></li>
+  <li><a href="#tetris-and-bad-memories" id="toc-tetris-and-bad-memories" class="nav-link" data-scroll-target="#tetris-and-bad-memories"><span class="header-section-number">7.4.1</span> Tetris and bad memories</a></li>
+  <li><a href="#comparing-means-after-the-anova" id="toc-comparing-means-after-the-anova" class="nav-link" data-scroll-target="#comparing-means-after-the-anova"><span class="header-section-number">7.4.2</span> Comparing means after the ANOVA</a></li>
   </ul></li>
-  <li><a href="#anova-summary" id="toc-anova-summary" class="nav-link" data-scroll-target="#anova-summary"> <span class="header-section-number">7.5</span> ANOVA Summary</a></li>
+  <li><a href="#anova-summary" id="toc-anova-summary" class="nav-link" data-scroll-target="#anova-summary"><span class="header-section-number">7.5</span> ANOVA Summary</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/07-ANOVA.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -250,7 +276,7 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></h1>
 </div>
 
 
@@ -264,16 +290,14 @@ ga('send', {
           </div>
   </div>
     
+  
     
   </div>
   
 
 </header>
 
-<div class="cell" data-hash="cache/unnamed-chunk-2_97a30b4bc0dd5f946ba2425fc5d86ac1">
-
-</div>
-<p>A fun bit of stats history <span class="citation" data-cites="salsburg2001lady">(<a href="references.html#ref-salsburg2001lady" role="doc-biblioref">Salsburg 2001</a>)</span>. Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika. The editor at the time was Karl Pearson (remember Pearson’s <span class="math inline">\(r\)</span> for correlation?). Pearson and Fisher were apparently not on good terms, they didn’t like each other. Pearson refused to publish Fisher’s new test. So, Fisher eventually published his work in the Journal of Agricultural Science. Funnily enough, the feud continued onto the next generation. Years after Fisher published his ANOVA, Karl Pearson’s son Egon Pearson, and Jersey Neyman revamped Fisher’s ideas, and re-cast them into what is commonly known as null vs.&nbsp;alternative hypothesis testing. Fisher didn’t like this very much.</p>
+<p>A fun bit of stats history <span class="citation" data-cites="salsburg2001lady">(<a href="#ref-salsburg2001lady" role="doc-biblioref">Salsburg 2001</a>)</span>. Sir Ronald Fisher invented the ANOVA, which we learn about in this section. He wanted to publish his new test in the journal Biometrika. The editor at the time was Karl Pearson (remember Pearson’s <span class="math inline">\(r\)</span> for correlation?). Pearson and Fisher were apparently not on good terms, they didn’t like each other. Pearson refused to publish Fisher’s new test. So, Fisher eventually published his work in the Journal of Agricultural Science. Funnily enough, the feud continued onto the next generation. Years after Fisher published his ANOVA, Karl Pearson’s son Egon Pearson, and Jersey Neyman revamped Fisher’s ideas, and re-cast them into what is commonly known as null vs.&nbsp;alternative hypothesis testing. Fisher didn’t like this very much.</p>
 <p>We present the ANOVA in the Fisherian sense, and at the end describe the Neyman-Pearson approach that invokes the concept of null vs.&nbsp;alternative hypotheses.</p>
 <section id="anova-is-analysis-of-variance" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="anova-is-analysis-of-variance"><span class="header-section-number">7.1</span> ANOVA is Analysis of Variance</h2>
@@ -306,88 +330,86 @@ ga('send', {
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="ss-total"><span class="header-section-number">7.2.2</span> SS Total</h3>
 <p>The total sums of squares, or <span class="math inline">\(SS\text{Total}\)</span> is a way of thinking about all of the variation in a set of data. It’s pretty straightforward to measure. No tricky business. All we do is find the difference between each score and the grand mean, then we square the differences and add them all up.</p>
 <p>Let’s imagine we had some data in three groups, A, B, and C. For example, we might have 3 scores in each group. The data could look like this:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-3_73a7c8a36d49f04ba7ddec4836949225">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-3_ac0a3b9900fdfae730df54b80bcb12c8">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> groups </th>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> diff </th>
-   <th style="text-align:left;"> diff_squared </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">groups</th>
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">diff</th>
+<th style="text-align: left;">diff_squared</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 20 </td>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> 169 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> -5 </td>
-   <td style="text-align:left;"> 25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> -1 </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> -5 </td>
-   <td style="text-align:left;"> 25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> -5 </td>
-   <td style="text-align:left;"> 25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> -5 </td>
-   <td style="text-align:left;"> 25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 63 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 302 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 33.5555555555556 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">169</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-5</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-5</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-5</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-5</td>
+<td style="text-align: left;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">302</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">33.5555555555556</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>The data is organized in long format, so that each row is a single score. There are three scores for the A, B, and C groups. The mean of all of the scores is called the <strong>Grand Mean</strong>. It’s calculated in the table, the Grand Mean = 7.</p>
@@ -407,100 +429,98 @@ ga('send', {
 <p>What we want to do next is estimate how much of the total change in the data might be due to the experimental manipulation. For example, if we ran an experiment that causes causes change in the measurement, then the means for each group will be different from other. As a result, the manipulation forces change onto the numbers, and this will naturally mean that some part of the total variation in the numbers is caused by the manipulation.</p>
 <p>The way to isolate the variation due to the manipulation (also called effect) is to look at the means in each group, and calculate the difference scores between each group mean and the grand mean, and then sum the squared deviations to find <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
 <p>Consider this table, showing the calculations for <span class="math inline">\(SS_\text{Effect}\)</span>.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-4_355bdac9d918acf49cf580934c732964">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-4_f502c31f73e5ea9dfde476330d28a8d7">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> groups </th>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> means </th>
-   <th style="text-align:left;"> diff </th>
-   <th style="text-align:left;"> diff_squared </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">groups</th>
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">means</th>
+<th style="text-align: left;">diff</th>
+<th style="text-align: left;">diff_squared</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 20 </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 63 </td>
-   <td style="text-align:left;"> 63 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 72 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 8 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">8</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>Notice we created a new column called <code>means</code>. For example, the mean for group A was 11. You can see there are three 11s, one for each observation in row A. The means for group B and C happen to both be 5. So, the rest of the numbers in the means column are 5s.</p>
@@ -520,100 +540,98 @@ ga('send', {
 <p>$ SS_ = SS_ - SS_ $</p>
 <p>$ SS_ = 302 - 72 = 230 $</p>
 <p>We could stop here and show you the rest of the ANOVA, we’re almost there. But, the next step might not make sense unless we show you how to calculate <span class="math inline">\(SS_\text{Error}\)</span> directly from the data, rather than just solving for it. We should do this just to double-check our work anyway.</p>
-<div class="cell" data-hash="cache/unnamed-chunk-5_4880fca216e9168122a12f10643370e7">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-5_361d2bc815a0285d22a2bff0f9ec3aa4">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> groups </th>
-   <th style="text-align:left;"> scores </th>
-   <th style="text-align:left;"> means </th>
-   <th style="text-align:left;"> diff </th>
-   <th style="text-align:left;"> diff_squared </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">groups</th>
+<th style="text-align: left;">scores</th>
+<th style="text-align: left;">means</th>
+<th style="text-align: left;">diff</th>
+<th style="text-align: left;">diff_squared</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 20 </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> -9 </td>
-   <td style="text-align:left;"> 81 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 81 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -1 </td>
-   <td style="text-align:left;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 9 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -2 </td>
-   <td style="text-align:left;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 9 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> -6 </td>
-   <td style="text-align:left;"> 36 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 9 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sums </td>
-   <td style="text-align:left;"> 63 </td>
-   <td style="text-align:left;"> 63 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 230 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Means </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 25.5555555555556 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">-9</td>
+<td style="text-align: left;">81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">81</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-6</td>
+<td style="text-align: left;">36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sums</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">230</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Means</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">25.5555555555556</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>Alright, we did almost the same thing as we did to find <span class="math inline">\(SS_\text{Effect}\)</span>. Can you spot the difference? This time for each score we first found the group mean, then we found the error in the group mean estimate for each score. In other words, the values in the <span class="math inline">\(diff\)</span> column are the differences between each score and it’s group mean. The values in the <code>diff_squared</code> column are the squared deviations. When we sum up the squared deviations, we get another Sums of Squares, this time it’s the <span class="math inline">\(SS_\text{Error}\)</span>. This is an appropriate name, because these deviations are the ones that the group means can’t explain!</p>
@@ -657,40 +675,38 @@ ga('send', {
 <h3 data-number="7.2.8" class="anchored" data-anchor-id="the-anova-table"><span class="header-section-number">7.2.8</span> The ANOVA TABLE</h3>
 <p>You might suspect we aren’t totally done here. We’ve walked through the steps of computing <span class="math inline">\(F\)</span>. Remember, <span class="math inline">\(F\)</span> is a sample statistic, we computed <span class="math inline">\(F\)</span> directly from the data. There were a whole bunch of pieces we needed, the dfs, the SSes, the MSEs, and then finally the F.</p>
 <p>All of these little pieces are conveniently organized by ANOVA tables. ANOVA tables look like this:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-6_3f1934219e51e31f785262657cf01f9c">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-6_eee1645af8382e813b0624e6bfe85442">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> Df </th>
-   <th style="text-align:right;"> Sum Sq </th>
-   <th style="text-align:right;"> Mean Sq </th>
-   <th style="text-align:right;"> F value </th>
-   <th style="text-align:right;"> Pr(&gt;F) </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Df</th>
+<th style="text-align: right;">Sum Sq</th>
+<th style="text-align: right;">Mean Sq</th>
+<th style="text-align: right;">F value</th>
+<th style="text-align: right;">Pr(&gt;F)</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> groups </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 72 </td>
-   <td style="text-align:right;"> 36.00000 </td>
-   <td style="text-align:right;"> 0.9391304 </td>
-   <td style="text-align:right;"> 0.4417359 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Residuals </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 230 </td>
-   <td style="text-align:right;"> 38.33333 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">groups</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">36.00000</td>
+<td style="text-align: right;">0.9391304</td>
+<td style="text-align: right;">0.4417359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;">38.33333</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>You are looking at the print-out of an ANOVA summary table from R. Notice, it had columns for <span class="math inline">\(Df\)</span>, <span class="math inline">\(SS\)</span> (Sum Sq), <span class="math inline">\(MSE\)</span> (Mean Sq), <span class="math inline">\(F\)</span>, and a <span class="math inline">\(p\)</span>-value. There are two rows. The <code>groups</code> row is for the Effect (what our means can explain). The <code>Residuals</code> row is for the Error (what our means can’t explain). Different programs give slightly different labels, but they are all attempting to present the same information in the ANOVA table. There isn’t anything special about the ANOVA table, it’s just a way of organizing all the pieces. Notice, the MSE for the effect (36) is placed above the MSE for the error (38.333), and this seems natural because we divide 36/38.33 in or to get the <span class="math inline">\(F\)</span>-value!</p>
@@ -704,12 +720,12 @@ ga('send', {
 <p>Here is the set-up, we are going to run an experiment with three levels. In our imaginary experiment we are going to test whether a new magic pill can make you smarter. The independent variable is the number of magic pills you take: 1, 2, or 3. We will measure your smartness using a smartness test. We will assume the smartness test has some known properties, the mean score on the test is 100, with a standard deviation of 10 (and the distribution is normal).</p>
 <p>The only catch is that our magic pill does NOTHING AT ALL. The fake people in our fake experiment will all take sugar pills that do absolutely nothing to their smartness. Why would we want to simulate such a bunch of nonsense? The answer is that this kind of simulation is critical for making inferences about chance if you were to conduct a real experiment.</p>
 <p>Here are some more details for the experiment. Each group will have 10 different subjects, so there will be a total of 30 subjects. We are going to run this experiment 10,000 times. Each time drawing numbers randomly from the very same normal distribution. We are going to calculate <span class="math inline">\(F\)</span> from our sample data every time, and then we are going to draw the histogram of <span class="math inline">\(F\)</span>-values. <a href="#fig-7fnull">Figure&nbsp;<span>7.1</span></a> shows the sampling distribution of <span class="math inline">\(F\)</span> for our situation.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-7fnull_c5cbda23c04afb57d14f2be09a2c36d5">
+<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7fnull_0d615a14ecc01d41c82129c6476f107c">
 <div class="cell-output-display">
 <div id="fig-7fnull" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="07-ANOVA_files/figure-html/fig-7fnull-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.1: A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 <span class="math inline">\(F\)</span>-values, one for each simulation. These are values that F can take in this situation. All of these <span class="math inline">\(F\)</span>-values were produced by random sampling error.</figcaption><p></p>
+<p><img src="07-ANOVA_files/figure-html/fig-7fnull-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.1: A simulation of 10,000 experiments from a null distribution where there is no differences. The histogram shows 10,000 <span class="math inline">\(F\)</span>-values, one for each simulation. These are values that F can take in this situation. All of these <span class="math inline">\(F\)</span>-values were produced by random sampling error.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -725,12 +741,12 @@ ga('send', {
 <li>Find out the critical value for <span class="math inline">\(F\)</span>, for our particular situation (with our <span class="math inline">\(df\)</span>s for the numerator and denominator).</li>
 </ol>
 <p>Let’s do that. I’ve drawn the line for the critical value onto the histogram in <a href="#fig-7criticalF">Figure&nbsp;<span>7.2</span></a>:</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-7criticalF_5f7a63c93fd22e6459447703607766b7">
+<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7criticalF_99953ab19be0100024a3831916a3540d">
 <div class="cell-output-display">
 <div id="fig-7criticalF" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7criticalF-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.2: The critical value for <span class="math inline">\(F\)</span> where 5% of all <span class="math inline">\(F\)</span>-values lie beyond this point</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.2: The critical value for <span class="math inline">\(F\)</span> where 5% of all <span class="math inline">\(F\)</span>-values lie beyond this point</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -766,12 +782,12 @@ ga('send', {
 <section id="looking-at-a-bunch-of-group-means" class="level4" data-number="7.3.2.2">
 <h4 data-number="7.3.2.2" class="anchored" data-anchor-id="looking-at-a-bunch-of-group-means"><span class="header-section-number">7.3.2.2</span> Looking at a bunch of group means</h4>
 <p>We just ran 10,000 experiments and we didn’t even once look at the group means for any of the experiments. Different patterns of group means under the null are shown in <a href="#fig-7manyDiffs">Figure&nbsp;<span>7.3</span></a> for a subset of 10 random simulations.</p>
-<div class="cell" data-hash="cache/fig-7manyDiffs_0d839405e3af0781397a0fb5f7a301b4">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7manyDiffs_370c9837c29ca2bc81e9c7424809e84c">
 <div class="cell-output-display">
 <div id="fig-7manyDiffs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7manyDiffs-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.3: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.3: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -783,12 +799,12 @@ ga('send', {
 <section id="looking-at-bar-graphs" class="level4" data-number="7.3.2.3">
 <h4 data-number="7.3.2.3" class="anchored" data-anchor-id="looking-at-bar-graphs"><span class="header-section-number">7.3.2.3</span> Looking at bar graphs</h4>
 <p>Let’s look at the exact same graph as above, but this time use bars to visually illustrate the means, instead of dots. We’ll re-do our simulation of 10 experiments, so the pattern will be a little bit different:</p>
-<div class="cell" data-hash="cache/fig-7manyDiffsBar_14ea857d9c6838b90fc8c2b26b85d3a8">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7manyDiffsBar_d2b38a5e2c9a92ef81ca763dbf20a970">
 <div class="cell-output-display">
 <div id="fig-7manyDiffsBar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7manyDiffsBar-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.4: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.4: Different patterns of group means under the null (all scores for each group sampled from the same distribution).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -799,12 +815,12 @@ ga('send', {
 <h4 data-number="7.3.2.4" class="anchored" data-anchor-id="what-mean-differences-look-like-when-f-is-less-than-1"><span class="header-section-number">7.3.2.4</span> What mean differences look like when <span class="math inline">\(F\)</span> is less than 1</h4>
 <p>We are now giving you some visual experience looking at what means look like from a particular experiment. This is for your stats intuition. We’re trying to improve your data senses.</p>
 <p>What we are going to do now is similar to what we did before. Except this time we are going to look at 10 simulated experiments, where all of the <span class="math inline">\(F\)</span>-values were less than 1. All of these <span class="math inline">\(F\)</span>-values would also be associated with fairly large <span class="math inline">\(p\)</span>-values. When F is less than one, we would not reject the hypothesis of no differences. So, when we look at patterns of means when F is less than 1, we should see mostly the same means, and no big differences.</p>
-<div class="cell" data-hash="cache/fig-7flesshthanone_acfd9cc8222382312457db8c9f1ed0ca">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7flesshthanone_05c48bc74fe1ffeef650dfcde959ef44">
 <div class="cell-output-display">
 <div id="fig-7flesshthanone" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7flesshthanone-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.5: Different patterns of group means under the null (sampled from same distribution) when F is less than 1.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.5: Different patterns of group means under the null (sampled from same distribution) when F is less than 1.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -815,12 +831,12 @@ ga('send', {
 <section id="what-mean-differences-look-like-when-f-3.35" class="level4" data-number="7.3.2.5">
 <h4 data-number="7.3.2.5" class="anchored" data-anchor-id="what-mean-differences-look-like-when-f-3.35"><span class="header-section-number">7.3.2.5</span> What mean differences look like when F &gt; 3.35</h4>
 <p>Earlier we found that the critical value for <span class="math inline">\(F\)</span> in our situation was 3.35, this was the location on the <span class="math inline">\(F\)</span> distribution where only 5% of <span class="math inline">\(F\)</span>s were 3.35 or greater. We would reject the hypothesis of no differences whenever <span class="math inline">\(F\)</span> was greater than 3.35. In this case, whenever we did that, we would be making a type I error. That is because we are simulating the distribution of no differences (remember all of our sample means are coming from the exact same distribution). So, now we can take a look at what type I errors look like. In other words, we can run some simulations and look at the pattern in the means, only when <span class="math inline">\(F\)</span> happens to be 3.35 or greater (this only happens 5% of the time, so we might have to let the computer simulate for a while). Let’s see what that looks like:</p>
-<div class="cell" data-hash="cache/fig-7sigdiffs_87604522ae58632d347408fe597696db">
+<div class="cell" data-hash="07-ANOVA_cache/html/fig-7sigdiffs_1eecda35e783f09b0306e383d2a42e7d">
 <div class="cell-output-display">
 <div id="fig-7sigdiffs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7sigdiffs-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.6: Different patterns of group means under the null when F is above critical value (these are all type I Errors).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.6: Different patterns of group means under the null when F is above critical value (these are all type I Errors).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -837,7 +853,7 @@ ga('send', {
 <p>So, we return to the application of the ANOVA to a real data set with a real question. This is the same one that you will be learning about in the lab. We give you a brief overview here so you know what to expect.</p>
 <section id="tetris-and-bad-memories" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="tetris-and-bad-memories"><span class="header-section-number">7.4.1</span> Tetris and bad memories</h3>
-<p>Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie <span class="citation" data-cites="james2015computer">(<a href="references.html#ref-james2015computer" role="doc-biblioref">James et al. 2015</a>)</span>. Sometimes in life people have intrusive memories, and they think about things they’d rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.</p>
+<p>Yup, you read that right. The research you will learn about tests whether playing Tetris after watching a scary movie can help prevent you from having bad memories from the movie <span class="citation" data-cites="james2015computer">(<a href="#ref-james2015computer" role="doc-biblioref">James et al. 2015</a>)</span>. Sometimes in life people have intrusive memories, and they think about things they’d rather not have to think about. This research looks at one method that could reduce the frequency of intrusive memories.</p>
 <p>Here’s what they did. Subjects watched a scary movie, then at the end of the week they reported how many intrusive memories about the movie they had. The mean number of intrusive memories was the measurement (the dependent variable). This was a between-subjects experiment with four groups. Each group of subjects received a different treatment following the scary movie. The question was whether any of these treatments would reduce the number of intrusive memories. All of these treatments occurred after watching the scary movie:</p>
 <ol type="1">
 <li>No-task control: These participants completed a 10-minute music filler task after watching the scary movie.</li>
@@ -847,12 +863,12 @@ ga('send', {
 </ol>
 <p>For reasons we elaborate on in the lab, the researchers hypothesized that the <code>Reactivation+Tetris</code> group would have fewer intrusive memories over the week than the other groups.</p>
 <p>Let’s look at the findings. Note you will learn how to do all of these steps in the lab. For now, we just show the findings and the ANOVA table. Then we walk through how to interpret it.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="cache/fig-7tetrisData_2f1af5a319474f19d75d2a5c65570d48">
+<div class="cell" data-fig.asp="0.5" data-hash="07-ANOVA_cache/html/fig-7tetrisData_b39d210fd59687f5afb47150cddf2706">
 <div class="cell-output-display">
 <div id="fig-7tetrisData" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="07-ANOVA_files/figure-html/fig-7tetrisData-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure 7.7: Mean number of intrusive memories per week as a function of experimental treatments.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7.7: Mean number of intrusive memories per week as a function of experimental treatments.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -860,40 +876,38 @@ ga('send', {
 <p>OOooh, look at that. We did something fancy. <a href="#fig-7tetrisData">Figure&nbsp;<span>7.7</span></a> shows the data from the four groups. The height of each bar shows the mean intrusive memories for the week. The dots show the individual scores for each subject in each group (useful to to the spread of the data). The error bars show the standard errors of the mean.</p>
 <p>What can we see here? Right away it looks like there is some support for the research hypothesis. The green bar, for the Reactivation + Tetris group had the lowest mean number of intrusive memories. Also, the error bar is not overlapping with any of the other error bars. This implies that the mean for the Reactivation + Tetris group is different from the means for the other groups. And, this difference is probably not very likely by chance.</p>
 <p>We can now conduct the ANOVA on the data to ask the omnibus question. If we get a an <span class="math inline">\(F\)</span>-value with an associated <span class="math inline">\(p\)</span>-value of less than .05 (the alpha criterion set by the authors), then we can reject the hypothesis of no differences. Let’s see what happens:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-14_b134a4814533e779f00b2adddc2b0f95">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-14_9cb5bf943a12e79a489d0cd307c8e655">
 <div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> Df </th>
-   <th style="text-align:right;"> Sum Sq </th>
-   <th style="text-align:right;"> Mean Sq </th>
-   <th style="text-align:right;"> F value </th>
-   <th style="text-align:right;"> Pr(&gt;F) </th>
-  </tr>
- </thead>
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Df</th>
+<th style="text-align: right;">Sum Sq</th>
+<th style="text-align: right;">Mean Sq</th>
+<th style="text-align: right;">F value</th>
+<th style="text-align: right;">Pr(&gt;F)</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Condition </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 114.8194 </td>
-   <td style="text-align:right;"> 38.27315 </td>
-   <td style="text-align:right;"> 3.794762 </td>
-   <td style="text-align:right;"> 0.0140858 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Residuals </td>
-   <td style="text-align:right;"> 68 </td>
-   <td style="text-align:right;"> 685.8333 </td>
-   <td style="text-align:right;"> 10.08578 </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Condition</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">114.8194</td>
+<td style="text-align: right;">38.27315</td>
+<td style="text-align: right;">3.794762</td>
+<td style="text-align: right;">0.0140858</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">685.8333</td>
+<td style="text-align: right;">10.08578</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <p>We see the ANOVA table, it’s up there. We could report the results from the ANOVA table like this:</p>
@@ -910,7 +924,7 @@ ga('send', {
 <section id="control-vs.-reactivationtetris" class="level4" data-number="7.4.2.1">
 <h4 data-number="7.4.2.1" class="anchored" data-anchor-id="control-vs.-reactivationtetris"><span class="header-section-number">7.4.2.1</span> Control vs.&nbsp;Reactivation+Tetris</h4>
 <p>What we really want to know is if Reactivation+Tetris caused fewer intrusive memories…but compared to what? Well, if it did something, the Reactivation+Tetris group should have a smaller mean than the Control group. So, let’s do that comparison:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-15_89b694e4588a3f514149b3e91bd78bf5">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-15_224520545b357cc11bd7dc9475375702">
 <pre><code>#&gt; 
 #&gt;  Two Sample t-test
 #&gt; 
@@ -930,7 +944,7 @@ ga('send', {
 <section id="control-vs.-tetris_only" class="level4" data-number="7.4.2.2">
 <h4 data-number="7.4.2.2" class="anchored" data-anchor-id="control-vs.-tetris_only"><span class="header-section-number">7.4.2.2</span> Control vs.&nbsp;Tetris_only</h4>
 <p>Now we can really start wondering what caused the difference. Was it just playing Tetris? Does just playing Tetris reduce the number of intrusive memories during the week? Let’s compare that to control:</p>
-<div class="cell" data-hash="cache/unnamed-chunk-16_3cbe7a575e4b7591eb37a151e4bdfdc5">
+<div class="cell" data-hash="07-ANOVA_cache/html/unnamed-chunk-16_848d48b5058701b012112df3120a18bd">
 <pre><code>#&gt; 
 #&gt;  Two Sample t-test
 #&gt; 
@@ -960,11 +974,11 @@ ga('send', {
 <p>So what’s next…the ANOVA for repeated measures designs. See you in the next chapter.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-james2015computer" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-james2015computer" class="csl-entry" role="listitem">
 James, Ella L, Michael B Bonsall, Laura Hoppitt, Elizabeth M Tunbridge, John R Geddes, Amy L Milton, and Emily A Holmes. 2015. <span>“Computer Game Play Reduces Intrusive Memories of Experimental Trauma via Reconsolidation-Update Mechanisms.”</span> <em>Psychological Science</em> 26 (8): 1201–15. <a href="https://doi.org/10.1177/0956797615583071">https://doi.org/10.1177/0956797615583071</a>.
 </div>
-<div id="ref-salsburg2001lady" class="csl-entry" role="doc-biblioentry">
+<div id="ref-salsburg2001lady" class="csl-entry" role="listitem">
 Salsburg, David. 2001. <em>The Lady Tasting Tea: <span>How</span> Statistics Revolutionized Science in the Twentieth Century</em>. <span>Macmillan</span>.
 </div>
 </div>
@@ -998,9 +1012,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1012,7 +1040,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1040,31 +1085,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
