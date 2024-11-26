@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.258">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthew J. C. Crump">
 
-<title>Answering questions with data - 6&nbsp; t-tests</title>
+<title>6&nbsp; t-tests – Answering questions with data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -101,7 +102,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -110,8 +117,10 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1116FZ99DZ"></script>
@@ -124,17 +133,41 @@ gtag('js', new Date());
 gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Answering questions with data - 6&nbsp; t-tests">
-<meta property="og:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
-<meta property="og:image" content="https://crumplab.com/statistics/06-ttests_files/figure-html/fig-6sampleMSEM-1.png">
-<meta property="og:site-name" content="Answering questions with data">
-<meta property="og:image:height" content="960">
-<meta property="og:image:width" content="1344">
-<meta name="twitter:title" content="Answering questions with data - 6&nbsp; t-tests">
-<meta name="twitter:description" content="">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="6&nbsp; t-tests – Answering questions with data">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Answering questions with data">
+<meta name="twitter:title" content="6&nbsp; t-tests – Answering questions with data">
+<meta name="twitter:description" content="A free textbook teaching introductory statistics for undergraduates in psychology, including a lab manual, and course website. Licensed on CC BY SA 4.0">
 <meta name="twitter:image" content="https://crumplab.com/statistics/imgs/TextbookCover.png">
 <meta name="twitter:site" content="@MattCrumpLab">
 <meta name="twitter:card" content="summary">
@@ -148,12 +181,12 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-ttests.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">t-tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -163,7 +196,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Answering questions with data</a> 
@@ -272,7 +305,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -315,7 +348,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   <li><a href="#one-or-two-tailed-tests" id="toc-one-or-two-tailed-tests" class="nav-link" data-scroll-target="#one-or-two-tailed-tests"><span class="header-section-number">6.7.1</span> One or Two tailed tests</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/CrumpLab/statistics/edit/master/06-ttests.qmd" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CrumpLab/statistics/edit/master/06-ttests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -341,7 +374,9 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <p>Back in the day, William Sealy Gosset got a job working for Guinness Breweries. They make the famous Irish stout called Guinness. What happens next went something like this (total fabrication, but mostly on point).</p>
 <p>Guinness wanted all of their beers to be the best beers. No mistakes, no bad beers. They wanted to improve their quality control so that when Guinness was poured anywhere in the world, it would always comes out fantastic: 5 stars out of 5 every time, the best.</p>
@@ -353,7 +388,7 @@ gtag('config', 'G-1116FZ99DZ', { 'anonymize_ip': true});
 <li><p>How many samples do I need to take to know the whole population is 5 out of 5?</p></li>
 <li><p>What’s the fewest amount of samples I need to take to know the above, that would mean Guinness could test fewer beers for quality, sell more beers for profit, and make the product testing time shorter.</p></li>
 </ol>
-<p>Gosset solved those questions, and he invented something called the <em>Student’s t-test</em>. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym <span class="citation" data-cites="Student1908">(<a href="#ref-Student1908" role="doc-biblioref">Student 1908</a>)</span>. He called himself Student, hence Student’s t-test. Now you know the rest of the story.</p>
+<p>Gosset solved those questions, and he invented something called the <em>Student’s t-test</em>. Gosset was working for Guinness, and could be fired for releasing trade-secrets that he invented (the t-test). But, Gosset published the work anyways, under a pseudonym <span class="citation" data-cites="Student1908">(<a href="references.html#ref-Student1908" role="doc-biblioref">Student 1908</a>)</span>. He called himself Student, hence Student’s t-test. Now you know the rest of the story.</p>
 <p>It turns out this was a very nice thing for Gosset to have done. t-tests are used all the time, and they are useful, that’s why they are used. In this chapter we learn how they work.</p>
 <p>You’ll be surprised to learn that what we’ve already talked about, (the Crump Test, and the Randomization Test), are both very very similar to the t-test. So, in general, you have already been thinking about the things you need to think about to understand t-tests. You’re probably wondering what is this <span class="math inline">\(t\)</span>, what does <span class="math inline">\(t\)</span> mean? We will tell you. Before we tell what it means, we first tell you about one more idea.</p>
 <section id="check-your-confidence-in-your-mean" class="level2" data-number="6.1">
@@ -417,29 +452,37 @@ Note
 <p>What kinds of numbers should we expect to find for these <span class="math inline">\(ts\)</span>? How could we figure that out?</p>
 <p>Let’s start small and work through some examples. Imagine your sample mean is 5. You want to know if it came from a population that also has a mean of 5. In this case, what would <span class="math inline">\(t\)</span> be? It would be zero: we first subtract the sample mean from the population mean, <span class="math inline">\(5-5=0\)</span>. Because the numerator is 0, <span class="math inline">\(t\)</span> will be zero. So, <span class="math inline">\(t\)</span> = 0, occurs, when there is no difference.</p>
 <p>Let’s say you take another sample, do you think the mean will be 5 every time, probably not. Let’s say the mean is 6. So, what can <span class="math inline">\(t\)</span> be here? It will be a positive number, because 6-5= +1. But, will <span class="math inline">\(t\)</span> be +1? That depends on the standard error of the sample. If the standard error of the sample is 1, then <span class="math inline">\(t\)</span> could be 1, because 1/1 = 1.</p>
-<p>If the sample standard error is smaller than 1, what happens to <span class="math inline">\(t\)</span>? It get’s bigger right? For example, 1 divided by 0.5 = 2. If the sample standard error was 0.5, <span class="math inline">\(t\)</span> would be 2. And, what could we do with this information? Well, it be like a measure of confidence. As <span class="math inline">\(t\)</span> get’s bigger we could be more confident in the mean difference we are measuring.</p>
+<p>If the sample standard error is smaller than 1, what happens to <span class="math inline">\(t\)</span>? It gets bigger right? For example, 1 divided by 0.5 = 2. If the sample standard error was 0.5, <span class="math inline">\(t\)</span> would be 2. And, what could we do with this information? Well, it be like a measure of confidence. As <span class="math inline">\(t\)</span> gets bigger we could be more confident in the mean difference we are measuring.</p>
 <p>Can <span class="math inline">\(t\)</span> be smaller than 1? Sure, it can. If the sample standard error is big, say like 2, then <span class="math inline">\(t\)</span> will be smaller than one (in our case), e.g., 1/2 = .5. The direction of the difference between the sample mean and population mean, can also make the <span class="math inline">\(t\)</span> become negative. What if our sample mean was 4. Well, then <span class="math inline">\(t\)</span> will be negative, because the mean difference in the numerator will be negative, and the number in the bottom (denominator) will always be positive (remember why, it’s the standard error, computed from the sample standard deviation, which is always positive because of the squaring that we did.).</p>
 <p>So, that is some intuitions about what the kinds of values t can take. <span class="math inline">\(t\)</span> can be positive or negative, and big or small.</p>
 <p>Let’s do one more thing to build our intuitions about what <span class="math inline">\(t\)</span> can look like. How about we sample some numbers and then measure the sample mean <strong>and</strong> the standard error of the mean, and then plot those two things against each each. This will show us how a sample mean typically varies with respect to the standard error of the mean.</p>
-<p>In <a href="#fig-6sampleMSEM">Figure&nbsp;<span>6.1</span></a>, I pulled 1,000 samples of <span class="math inline">\(N = 10\)</span> from a normal distribution (mean = 0, sd = 1). Each time I measured the mean and standard error of the sample. That gave two descriptive statistics for each sample, letting us plot each sample as dot in a scatter plot.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6sampleMSEM_f52bff7ec961e5e911f550232577d5a6">
+<p>In <a href="#fig-6sampleMSEM" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>, I pulled 1,000 samples of <span class="math inline">\(N = 10\)</span> from a normal distribution (mean = 0, sd = 1). Each time I measured the mean and standard error of the sample. That gave two descriptive statistics for each sample, letting us plot each sample as dot in a scatter plot.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6sampleMSEM" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6sampleMSEM-1.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: A scatter plot with sample mean on the x-axis, and standard error of the mean on the y-axis</figcaption><p></p>
+<div id="fig-6sampleMSEM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6sampleMSEM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6sampleMSEM-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6sampleMSEM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: A scatter plot with sample mean on the x-axis, and standard error of the mean on the y-axis
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>What we get is a cloud of dots. You might notice the cloud has a circular quality. There’s more dots in the middle, and fewer dots as they radiate out from the middle. The dot cloud shows us the general range of the sample mean, for example most of the dots are in between -1 and 1. Similarly, the range for the sample standard error is roughly between .2 and .5. Remember, each dot represents one sample.</p>
-<p>We can look at the same data a different way. For example, rather than using a scatter plot, we can divide the mean for each dot by the standard error for each dot. <a href="#fig-6thisexample">Figure&nbsp;<span>6.2</span></a> shows the result in a histogram.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6thisexample_0d2e192dba1c7d632f401ce4711feed0">
+<p>We can look at the same data a different way. For example, rather than using a scatter plot, we can divide the mean for each dot by the standard error for each dot. <a href="#fig-6thisexample" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> shows the result in a histogram.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6thisexample" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.2: A histogram of the sample means divided by the sample standard errors, this is a t-distribution.</figcaption><p></p>
+<div id="fig-6thisexample" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6thisexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6thisexample-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6thisexample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: A histogram of the sample means divided by the sample standard errors, this is a t-distribution.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -449,12 +492,16 @@ Note
 <section id="calculating-t-from-data" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="calculating-t-from-data"><span class="header-section-number">6.2.3</span> Calculating t from data</h3>
 <p>Let’s briefly calculate a t-value from a small sample. Let’s say we had 10 students do a true/false quiz with 5 questions on it. There’s a 50% chance of getting each answer correct.</p>
-<p>Every student completes the 5 questions, we grade them, and then we find their performance (mean percent correct). What we want to know is whether the students were guessing. If they were all guessing, then the sample mean should be about 50%, it shouldn’t be different from chance, which is 50%. Let’s look at <a href="#tbl-tsmall">Table&nbsp;<span>6.1</span></a>.</p>
-<div class="cell" data-hash="06-ttests_cache/html/tbl-tsmall_b6b9e2a9e9d560436e3b6b79694f8c38">
+<p>Every student completes the 5 questions, we grade them, and then we find their performance (mean percent correct). What we want to know is whether the students were guessing. If they were all guessing, then the sample mean should be about 50%, it shouldn’t be different from chance, which is 50%. Let’s look at <a href="#tbl-tsmall" class="quarto-xref">Table&nbsp;<span>6.1</span></a>.</p>
+<div class="cell">
+<div id="tbl-tsmall" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tsmall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: Calculating the t-value for a one-sample test.
+</figcaption>
+<div aria-describedby="tbl-tsmall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tsmall" class="anchored">
-<table class="table table-sm table-striped">
-<caption>Table&nbsp;6.1: Calculating the t-value for a one-sample test.</caption>
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">students</th>
@@ -574,6 +621,8 @@ Note
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 <p>You can see the <code>scores</code> column has all of the test scores for each of the 10 students. We did the things we need to do to compute the standard deviation.</p>
 <p>Remember the sample standard deviation is the square root of the sample variance, or:</p>
@@ -584,7 +633,7 @@ Note
 <p><span class="math inline">\(t\)</span> is the difference between our sample mean (61), and our population mean (50, assuming chance), divided by the standard error of the mean.</p>
 <p><span class="math inline">\(\text{t} = \frac{\bar{X}-u}{S_{\bar{X}}} = \frac{\bar{X}-u}{SEM} = \frac{61-50}{5.67} = 1.94\)</span></p>
 <p>And, that is you how calculate <span class="math inline">\(t\)</span>, by hand. It’s a pain. I was annoyed doing it this way. In the lab, you learn how to calculate <span class="math inline">\(t\)</span> using software, so it will just spit out <span class="math inline">\(t\)</span>. For example in R, all you have to do is this:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-6_1ec3e1c0bddfaeafe683523fd4e25fa1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(scores, <span class="at">mu=</span><span class="dv">50</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  One Sample t-test</span></span>
@@ -603,13 +652,17 @@ Note
 <h3 data-number="6.2.4" class="anchored" data-anchor-id="how-does-t-behave"><span class="header-section-number">6.2.4</span> How does t behave?</h3>
 <p>If <span class="math inline">\(t\)</span> is just a number that we can compute from our sample (it is), what can we do with it? How can we use <span class="math inline">\(t\)</span> for statistical inference?</p>
 <p>Remember back to the chapter on sampling and distributions, that’s where we discussed the sampling distribution of the sample mean. Remember, we made a lot of samples, then computed the mean for each sample, then we plotted a histogram of the sample means. Later, in that same section, we mentioned that we could generate sampling distributions for any statistic. For each sample, we could compute the mean, the standard deviation, the standard error, and now even <span class="math inline">\(t\)</span>, if we wanted to. We could generate 10,000 samples, and draw four histograms, one for each sampling distribution for each statistic.</p>
-<p>This is exactly what I did, and the results are shown in the four panels of <a href="#fig-6sampdists">Figure&nbsp;<span>6.3</span></a> below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let’s look at the sampling distributions for each of the statistics. <span class="math inline">\(t\)</span> was computed assuming with the population mean assumed to be 0.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6sampdists_f6c731785af0304f67d93f9eec971d51">
+<p>This is exactly what I did, and the results are shown in the four panels of <a href="#fig-6sampdists" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> below. I used a sample size of 20, and drew random observations for each sample from a normal distribution, with mean = 0, and standard deviation = 1. Let’s look at the sampling distributions for each of the statistics. <span class="math inline">\(t\)</span> was computed assuming with the population mean assumed to be 0.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6sampdists" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.3: Sampling distributions for the mean, standard deviation, standard error of the mean, and <span class="math inline">\(t\)</span>.</figcaption><p></p>
+<div id="fig-6sampdists" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6sampdists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6sampdists-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6sampdists-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Sampling distributions for the mean, standard deviation, standard error of the mean, and <span class="math inline">\(t\)</span>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -628,13 +681,17 @@ Note
 <li>See if you think your sample statistics were probable or improbable.</li>
 </ol>
 <p>We’ll formalize this in a second. I just want you to know that what you will be doing is something that you have already done before. For example, in the Crump test and the Randomization test we focused on the distribution of mean differences. We could do that again here, but instead, we will focus on the distribution of <span class="math inline">\(t\)</span> values. We then apply the same kinds of decision rules to the <span class="math inline">\(t\)</span> distribution, as we did for the other distributions. Below you will see a graph you have already seen, except this time it is a distribution of <span class="math inline">\(t\)</span>s, not mean differences:</p>
-<p>Remember, if we obtained a single <span class="math inline">\(t\)</span> from one sample we collected, we could consult the chance window in <a href="#fig-6tdecision">Figure&nbsp;<span>6.4</span></a> below to find out whether the <span class="math inline">\(t\)</span> we obtained from the sample was likely or unlikely to occur by chance.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6tdecision_759b102b97b8808c008f0784b095a489">
+<p>Remember, if we obtained a single <span class="math inline">\(t\)</span> from one sample we collected, we could consult the chance window in <a href="#fig-6tdecision" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> below to find out whether the <span class="math inline">\(t\)</span> we obtained from the sample was likely or unlikely to occur by chance.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6tdecision" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.4: Applying decision criteria to the <span class="math inline">\(t\)</span>-distribution. Histogram of <span class="math inline">\(t\)</span>s from samples (n=20) drawn from the same normal distribution (u=0, sd=1)</figcaption><p></p>
+<div id="fig-6tdecision" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6tdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6tdecision-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tdecision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Applying decision criteria to the <span class="math inline">\(t\)</span>-distribution. Histogram of <span class="math inline">\(t\)</span>s from samples (n=20) drawn from the same normal distribution (u=0, sd=1)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -654,7 +711,7 @@ Note
 <p>So, I might measure somebody doing something in condition A, and measure the same person doing something in Condition B, and then I see that same person does different things in the two conditions. I <strong>repeatedly measure</strong> the same person in both conditions. I am interested in whether the experimental manipulation changes something about how people perform the task in question.</p>
 <section id="mehr-song-and-spelke-2016" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="mehr-song-and-spelke-2016"><span class="header-section-number">6.3.1</span> Mehr, Song, and Spelke (2016)</h3>
-<p>We will introduce the paired-samples t-test with an example using real data, from a real study. <span class="citation" data-cites="mehr20165">Mehr, Song, and Spelke (<a href="#ref-mehr20165" role="doc-biblioref">2016</a>)</span> were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.</p>
+<p>We will introduce the paired-samples t-test with an example using real data, from a real study. <span class="citation" data-cites="mehr20165">Mehr, Song, and Spelke (<a href="references.html#ref-mehr20165" role="doc-biblioref">2016</a>)</span> were interested in whether singing songs to infants helps infants become more sensitive to social cues. For example, infants might need to learn to direct their attention toward people as a part of learning how to interact socially with people. Perhaps singing songs to infants aids this process of directing attention. When an infant hears a familiar song, they might start to pay more attention to the person singing that song, even after they are done singing the song. The person who sang the song might become more socially important to the infant. You will learn more about this study in the lab for this week. This example, prepares you for the lab activities. Here is a brief summary of what they did.</p>
 <p>First, parents were trained to sing a song to their infants. After many days of singing this song to the infants, a parent came into the lab with their infant. In the first session, parents sat with their infants on their knees, so the infant could watch two video presentations. There were two videos. Each video involved two unfamiliar new people the infant had never seen before. Each new person in the video (the singers) sang one song to the infant. One singer sang the “familiar” song the infant had learned from their parents. The other singer sang an “unfamiliar” song the infant had not hear before.</p>
 <p>There were two really important measurement phases: the baseline phase, and the test phase.</p>
 <p>The baseline phase occurred before the infants saw and heard each singer sing a song. During the baseline phase, the infants watched a video of both singers at the same time. The researchers recorded the proportion of time that the infant looked at each singer. The baseline phase was conducted to determine whether infants had a preference to look at either person (who would later sing them a song).</p>
@@ -671,9 +728,9 @@ Note
 <h3 data-number="6.3.2" class="anchored" data-anchor-id="the-data"><span class="header-section-number">6.3.2</span> The data</h3>
 <p>Let’s take a look at the data for the first 5 infants in the study. This will help us better understand some properties of the data before we analyze it. We will see that the data is structured in a particular way that we can take advantage of with a paired samples t-test. Note, we look at the first 5 infants to show how the computations work. The results of the paired-samples t-test change when we use all of the data from the study.</p>
 <p>Here is a table of the data:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-9_e7f2d43e08b11e7cd54340218ead07b0">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">infant</th>
@@ -723,9 +780,9 @@ Note
 <li>Baseline phase score - Test Phase score</li>
 </ol>
 <p>Let’s use the first formula. Why? Because it will give us positive differences when the test phase score is higher than the baseline phase score. This makes a positive score meaningful with respect to the study design, we know (because we defined it to be this way), that positive scores will refer to longer proportion looking times (to singer of familiar song) during the test phase compared to the baseline phase.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-10_745705b0bbbf8419eb16be94f0e8a66c">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">infant</th>
@@ -774,9 +831,9 @@ Note
 <section id="the-mean-difference" class="level3" data-number="6.3.4">
 <h3 data-number="6.3.4" class="anchored" data-anchor-id="the-mean-difference"><span class="header-section-number">6.3.4</span> The mean difference</h3>
 <p>As we have been discussing, the effect of interest in this study is the mean difference between the baseline and test phase proportion looking times. We can calculate the <strong>mean difference</strong>, by finding the <strong>mean of the difference scores</strong>. Let’s do that, in fact, for fun let’s calculate the mean of the baseline scores, the test scores, and the difference scores.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-11_713f1c78fa341d4509b52daa1ae30683">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">infant</th>
@@ -841,9 +898,9 @@ Note
 <p>OK, so how do we calculate <span class="math inline">\(t\)</span> for a paired-samples <span class="math inline">\(t\)</span>-test? Surprise, we use the one-sample t-test formula that you already learned about! Specifically, we use the one-sample <span class="math inline">\(t\)</span>-test formula on the difference scores. We have one sample of difference scores (you can see they are in one column), so we can use the one-sample <span class="math inline">\(t\)</span>-test on the difference scores. Specifically, we are interested in comparing whether the mean of our difference scores came from a distribution with mean difference = 0. This is a special distribution we refer to as the <strong>null distribution</strong>. It is the distribution no differences. Of course, this <strong>null distribution</strong> can produce differences due to to sampling error, but those differences are not caused by any experimental manipulation, they caused by the random sampling process.</p>
 <p>We calculate <span class="math inline">\(t\)</span> in a moment. Let’s now consider again why we want to calculate <span class="math inline">\(t\)</span>? Why don’t we just stick with the mean difference we already have?</p>
 <p>Remember, the whole concept behind <span class="math inline">\(t\)</span>, is that it gives an indication of how confident we should be in our mean. Remember, <span class="math inline">\(t\)</span> involves a measure of the mean in the numerator, divided by a measure of variation (standard error of the sample mean) in the denominator. The resulting <span class="math inline">\(t\)</span> value is small when the mean difference is small, or when the variation is large. So small <span class="math inline">\(t\)</span>-values tell us that we shouldn’t be that confident in the estimate of our mean difference. Large <span class="math inline">\(t\)</span>-values occur when the mean difference is large and/or when the measure of variation is small. So, large <span class="math inline">\(t\)</span>-values tell us that we can be more confident in the estimate of our mean difference. Let’s find <span class="math inline">\(t\)</span> for the mean difference scores. We use the same formulas as we did last time:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-12_b38ddbf997bfe5140c57b814a6a5a145">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 12%">
@@ -948,7 +1005,7 @@ Note
 </div>
 </div>
 <p>If we did this test using R, we would obtain almost the same numbers (there is a little bit of rounding in the table).</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-13_80d531ce38b70d8576a0bb41cd8b8964">
+<div class="cell">
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
 #&gt; 
@@ -966,13 +1023,17 @@ Note
 </section>
 <section id="interpreting-ts" class="level3" data-number="6.3.6">
 <h3 data-number="6.3.6" class="anchored" data-anchor-id="interpreting-ts"><span class="header-section-number">6.3.6</span> Interpreting <span class="math inline">\(t\)</span>s</h3>
-<p>Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of <span class="math inline">\(t\)</span>-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like in <a href="#fig-6tnull">Figure&nbsp;<span>6.5</span></a>.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6tnull_c50ccd96b3a1869938c787c2e6b58ceb">
+<p>Remember what it is we are doing here. We are evaluating whether our sample data could have come from a particular kind of distribution. The null distribution of no differences. This is the distribution of <span class="math inline">\(t\)</span>-values that would occur for samples of size 5, with a mean difference of 0, and a standard error of the sample mean of .075 (this is the SEM that we calculated from our sample). We can see what this particular null-distribution looks like in <a href="#fig-6tnull" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6tnull" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.5: A distribution of <span class="math inline">\(t\)</span>-values that can occur by chance alone, when there is no difference between the sample and a population</figcaption><p></p>
+<div id="fig-6tnull" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6tnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6tnull-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: A distribution of <span class="math inline">\(t\)</span>-values that can occur by chance alone, when there is no difference between the sample and a population
+</figcaption>
 </figure>
 </div>
 </div>
@@ -985,13 +1046,17 @@ Note
 <li><p>What is the of <span class="math inline">\(t\)</span> = 0 or smaller than 0? The answer is p=.5, or 50%. 50% of <span class="math inline">\(t\)</span>-values are 0 or smaller.</p></li>
 </ol>
 <p>We can answer all of those questions just by looking at our t-distribution, and dividing it into two equal regions, the left side (containing 50% of the <span class="math inline">\(t\)</span> values), and the right side containing 50% of the <span class="math inline">\(t\)</span>-values).</p>
-<p>What if we wanted to take a more fine-grained approach, let’s say we were interested in regions of 10%. What kinds of <span class="math inline">\(t\)</span>s occur 10% of the time. We would apply lines like the following. Notice, the likelihood of bigger numbers (positive or negative) gets smaller, so we have to increase the width of the bars for each of the intervals between the bars to contain 10% of the <span class="math inline">\(t\)</span>-values, it looks like <a href="#fig-6percentregions">Figure&nbsp;<span>6.6</span></a>.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6percentregions_67811ba8a73e8d45f95eee2c42c2df25">
+<p>What if we wanted to take a more fine-grained approach, let’s say we were interested in regions of 10%. What kinds of <span class="math inline">\(t\)</span>s occur 10% of the time. We would apply lines like the following. Notice, the likelihood of bigger numbers (positive or negative) gets smaller, so we have to increase the width of the bars for each of the intervals between the bars to contain 10% of the <span class="math inline">\(t\)</span>-values, it looks like <a href="#fig-6percentregions" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6percentregions" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.6: Splitting the t distribution up into regions each containing 10% of the <span class="math inline">\(t\)</span>-values. The width between the bars narrows as they approach the center of the distribution, where there are more <span class="math inline">\(t\)</span>-values.</figcaption><p></p>
+<div id="fig-6percentregions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6percentregions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6percentregions-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6percentregions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: Splitting the t distribution up into regions each containing 10% of the <span class="math inline">\(t\)</span>-values. The width between the bars narrows as they approach the center of the distribution, where there are more <span class="math inline">\(t\)</span>-values.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1015,13 +1080,17 @@ Note
 <section id="one-tailed-tests" class="level3" data-number="6.3.8">
 <h3 data-number="6.3.8" class="anchored" data-anchor-id="one-tailed-tests"><span class="header-section-number">6.3.8</span> One-tailed tests</h3>
 <p>A <strong>one-tailed test</strong> is sometimes also called a directional test. It is called a directional test, because a researcher might have a hypothesis in mind suggesting that the difference they observe in their means is going to have a particular direction, either a positive difference, or a negative difference.</p>
-<p>Typically, a researcher would set an <strong>alpha criterion</strong>. The alpha criterion describes a line in the sand for the researcher. Often, the alpha criterion is set at <span class="math inline">\(p = .05\)</span>. What does this mean? <a href="#fig-6critT">Figure&nbsp;<span>6.7</span></a> shows the <span class="math inline">\(t\)</span>-distribution and the alpha criterion.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6critT_ed47fd598cde3d3c9c203cadd8ceb3c9">
+<p>Typically, a researcher would set an <strong>alpha criterion</strong>. The alpha criterion describes a line in the sand for the researcher. Often, the alpha criterion is set at <span class="math inline">\(p = .05\)</span>. What does this mean? <a href="#fig-6critT" class="quarto-xref">Figure&nbsp;<span>6.7</span></a> shows the <span class="math inline">\(t\)</span>-distribution and the alpha criterion.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6critT" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.7: The critical value of t for an alpha criterion of 0.05. 5% of all ts are at this value or larger</figcaption><p></p>
+<div id="fig-6critT" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6critT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6critT-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6critT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.7: The critical value of t for an alpha criterion of 0.05. 5% of all ts are at this value or larger
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1034,13 +1103,17 @@ Note
 <li><p><strong>Observed</strong> <span class="math inline">\(t\)</span>. The observed <span class="math inline">\(t\)</span> is the one that you calculated from your sample. In our example about the infants, the observed <span class="math inline">\(t\)</span> was <span class="math inline">\(t\)</span> (4) = 0.72.</p></li>
 <li><p><strong>p-value</strong>. The <span class="math inline">\(p\)</span>-value is the probability of obtaining the observed <span class="math inline">\(t\)</span> value or larger. Now, you could look back at our previous example, and find that the <span class="math inline">\(p\)</span>-value for <span class="math inline">\(t\)</span> (4) = .72, was <span class="math inline">\(p = .509\)</span> . HOWEVER, this p-value was not calculated for a one-directional test…(we talk about what .509 means in the next section).</p></li>
 </ol>
-<p><a href="#fig-6tonedirection">Figure&nbsp;<span>6.8</span></a> shows what the <span class="math inline">\(p\)</span>-value for <span class="math inline">\(t\)</span> (4) = .72 using a one-directional test would would look like:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6tonedirection_9e83a57e07e5e2c94dbd0aa4386012c5">
+<p><a href="#fig-6tonedirection" class="quarto-xref">Figure&nbsp;<span>6.8</span></a> shows what the <span class="math inline">\(p\)</span>-value for <span class="math inline">\(t\)</span> (4) = .72 using a one-directional test would would look like:</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6tonedirection" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.8: A case where the observed value of t is much less than the critical value for a one-directional t-test.</figcaption><p></p>
+<div id="fig-6tonedirection" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6tonedirection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6tonedirection-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6tonedirection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.8: A case where the observed value of t is much less than the critical value for a one-directional t-test.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1053,13 +1126,17 @@ Note
 <p>OK, so that was one-tailed tests… What are two tailed tests? The <span class="math inline">\(p\)</span>-value that we originally calculated from our paired-samples <span class="math inline">\(t\)</span>-test was for a 2-tailed test. Often, the default is that the <span class="math inline">\(p\)</span>-value is for a two-tailed test.</p>
 <p>The two-tailed test, is asking a more general question about whether a difference is likely to have been produced by chance. The question is: what is probability of any difference. It is also called a <strong>non-directional</strong> test, because here we don’t care about the direction or sign of the difference (positive or negative), we just care if there is any kind of difference.</p>
 <p>The same basic things as before are involved. We define an alpha criterion (<span class="math inline">\(\alpha = 0.05\)</span>). And, we say that any observed <span class="math inline">\(t\)</span> value that has a probability of <span class="math inline">\(p\)</span> &lt;.05 (<span class="math inline">\(p\)</span> is less than .05) will be called <strong>statistically significant</strong>, and ones that are more likely (<span class="math inline">\(p\)</span> &gt;.05, <span class="math inline">\(p\)</span> is greater than .05) will be called null-results, or not statistically significant. The only difference is how we draw the alpha range. Before it was on the right side of the <span class="math inline">\(t\)</span> distribution (we were conducting a one-sided test remember, so we were only interested in one side).</p>
-<p><a href="#fig-6twotailedt">Figure&nbsp;<span>6.9</span></a> shows what the most extreme 5% of the <span class="math inline">\(t\)</span>-values are when we ignore their sign (whether they are positive or negative).</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6twotailedt_7f9b4d13cf612d1b818a6fafe35658fb">
+<p><a href="#fig-6twotailedt" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> shows what the most extreme 5% of the <span class="math inline">\(t\)</span>-values are when we ignore their sign (whether they are positive or negative).</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6twotailedt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6twotailedt-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.9: Critical values for a two-tailed test. Each line represents the location where 2.5% of all <span class="math inline">\(t\)</span>s are larger or smaller than critical value. The total for both tails is 5%</figcaption><p></p>
+<div id="fig-6twotailedt" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6twotailedt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6twotailedt-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6twotailedt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.9: Critical values for a two-tailed test. Each line represents the location where 2.5% of all <span class="math inline">\(t\)</span>s are larger or smaller than critical value. The total for both tails is 5%
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1093,17 +1170,21 @@ Note
 <h4 data-number="6.3.11.1" class="anchored" data-anchor-id="simulating-how-degrees-of-freedom-affects-the-t-distribution"><span class="header-section-number">6.3.11.1</span> Simulating how degrees of freedom affects the <span class="math inline">\(t\)</span> distribution</h4>
 <p>There are at least two ways to think the degrees of freedom for a <span class="math inline">\(t\)</span>-test. For example, if you want to use math to compute aspects of the <span class="math inline">\(t\)</span> distribution, then you need the degrees of freedom to plug in to the formula… If you want to see the formulas I’m talking about, scroll down on the <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="math inline">\(t\)</span>-test wikipedia page</a> and look for the probability density or cumulative distribution functions…We think that is quite scary for most people, and one reason why degrees of freedom are not well-understood.</p>
 <p>If we wanted to simulate the <span class="math inline">\(t\)</span> distribution we could more easily see what influence degrees of freedom has on the shape of the distribution. Remember, <span class="math inline">\(t\)</span> is a sample statistic, it is something we measure from the sample. So, we could simulate the process of measuring <span class="math inline">\(t\)</span> from many different samples, then plot the histogram of <span class="math inline">\(t\)</span> to show us the simulated <span class="math inline">\(t\)</span> distribution.</p>
-<div class="cell" data-fig.asp="0.5" data-hash="06-ttests_cache/html/fig-6dft_a4c199f130bb00f7a532a45787c27e55">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6dft" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.10: The width of the t distribution shrinks as sample size and degrees of freedom (from 4 to 100) increases.</figcaption><p></p>
+<div id="fig-6dft" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6dft-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6dft-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6dft-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.10: The width of the t distribution shrinks as sample size and degrees of freedom (from 4 to 100) increases.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-6dft">Figure&nbsp;<span>6.10</span></a> notice that the red distribution for <span class="math inline">\(df = 4\)</span>, is a little bit shorter, and a little bit wider than the bluey-green distribution for <span class="math inline">\(df = 100\)</span>. As degrees of freedom increase the <span class="math inline">\(t\)</span> distribution gets taller (in the middle), and narrower in the range. It get’s more peaky. Can you guess the reason for this? Remember, we are estimating a sample statistic, and degrees of freedom is really just a number that refers to the number of subjects (well minus one). And, we already know that as we increase <span class="math inline">\(n\)</span>, our sample statistics become better estimates (less variance) of the distributional parameters they are estimating. So, <span class="math inline">\(t\)</span> becomes a better estimate of it’s “true” value as sample size increase, resulting in a more narrow distribution of <span class="math inline">\(t\)</span>s.</p>
+<p>In <a href="#fig-6dft" class="quarto-xref">Figure&nbsp;<span>6.10</span></a> notice that the red distribution for <span class="math inline">\(df = 4\)</span>, is a little bit shorter, and a little bit wider than the bluey-green distribution for <span class="math inline">\(df = 100\)</span>. As degrees of freedom increase the <span class="math inline">\(t\)</span> distribution gets taller (in the middle), and narrower in the range. It gets more peaky. Can you guess the reason for this? Remember, we are estimating a sample statistic, and degrees of freedom is really just a number that refers to the number of subjects (well minus one). And, we already know that as we increase <span class="math inline">\(n\)</span>, our sample statistics become better estimates (less variance) of the distributional parameters they are estimating. So, <span class="math inline">\(t\)</span> becomes a better estimate of it’s “true” value as sample size increase, resulting in a more narrow distribution of <span class="math inline">\(t\)</span>s.</p>
 <p>There is a slightly different <span class="math inline">\(t\)</span> distribution for every degrees of freedom, and the critical regions associated with 5% of the extreme values are thus slightly different every time. This is why we report the degrees of freedom for each t-test, they define the distribution of <span class="math inline">\(t\)</span> values for the sample-size in question. Why do we use n-1 and not n? Well, we calculate <span class="math inline">\(t\)</span> using the sample standard deviation to estimate the standard error or the mean, that estimate uses n-1 in the denominator, so our <span class="math inline">\(t\)</span> distribution is built assuming n-1. That’s enough for degrees of freedom…</p>
 </section>
 </section>
@@ -1112,9 +1193,9 @@ Note
 <h2 data-number="6.4" class="anchored" data-anchor-id="the-paired-samples-t-test-strikes-back"><span class="header-section-number">6.4</span> The paired samples t-test strikes back</h2>
 <p>You must be wondering if we will ever be finished talking about paired samples t-tests… why are we doing round 2, oh no! Don’t worry, we’re just going to 1) remind you about what we were doing with the infant study, and 2) do a paired samples t-test on the entire data set and discuss.</p>
 <p>Remember, we were wondering if the infants would look longer toward the singer who sang the familiar song during the test phase compared to the baseline phase. We showed you data from 5 infants, and walked through the computations for the <span class="math inline">\(t\)</span>-test. As a reminder, it looked like this:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-20_dc7267f03723b35e245265c0b641fd17">
+<div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 12%">
@@ -1232,7 +1313,7 @@ Note
 <p>Let’s write down the finding one more time: The mean difference was 0.054, <span class="math inline">\(t\)</span>(4) = .72, <span class="math inline">\(p\)</span> =.509. We can also now confirm, that the <span class="math inline">\(p\)</span>-value was from a two-tailed test. So, what does this all really mean.</p>
 <p>We can say that a <span class="math inline">\(t\)</span> value with an absolute of .72 or larger occurs 50.9% of the time. More precisely, the distribution of no differences (the null), will produce a <span class="math inline">\(t\)</span> value this large or larger 50.9% of the time. In other words, chance alone good have easily produced the <span class="math inline">\(t\)</span> value from our sample, and the mean difference we observed or .054, could easily have been a result of chance.</p>
 <p>Let’s quickly put all of the data in the <span class="math inline">\(t\)</span>-test, and re-run the test using all of the infant subjects.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-21_e1fd45ce1f987e831847ff863b141139">
+<div class="cell">
 <pre><code>#&gt; 
 #&gt;  One Sample t-test
 #&gt; 
@@ -1264,7 +1345,7 @@ Note
 <p>and, <span class="math inline">\(s_p\)</span>, which is the pooled sample standard deviation is defined as, note the $s$es in the formula are variances:</p>
 <p><span class="math inline">\(s_p = \sqrt{\frac{(n_A-1)s_A^2 + (n_B-1)s^2_B}{n_A +n_B -2}}\)</span></p>
 <p>Believe you me, that is so much more formula than I wanted to type out. Shall we do one independent <span class="math inline">\(t\)</span>-test example by hand, just to see the computations? Let’s do it…but in a slightly different way than you expect. I show the steps using R. I made some fake scores for groups A and B. Then, I followed all of the steps from the formula, but made R do each of the calculations. This shows you the needed steps by following the code. At the end, I print the <span class="math inline">\(t\)</span>-test values I computed “by hand”, and then the <span class="math inline">\(t\)</span>-test value that the R software outputs using the <span class="math inline">\(t\)</span>-test function. You should be able to get the same values for <span class="math inline">\(t\)</span>, if you were brave enough to compute <span class="math inline">\(t\)</span> by hand.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-22_9cfceb62f563a908c23defa8e3bac119">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">## By "hand" using R r code</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
@@ -1317,45 +1398,61 @@ Note
 <li><p>Make some assumptions about what your sample (that you might be planning to collect) might look like. For example, you might be planning to collect 30 subjects worth of data. The scores of those data points might come from a normal distribution (mean = 50, sd = 10).</p></li>
 <li><p>sample simulated numbers from the distribution, then conduct a <span class="math inline">\(t\)</span>-test on the simulated numbers. Save the statistics you want (such as <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s), and then see how things behave.</p></li>
 </ol>
-<p>Let’s do this a couple different times. First, let’s simulate samples with N = 30, taken from a normal (mean= 50, sd = 25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here. <a href="#fig-6nullt">Figure&nbsp;<span>6.11</span></a> is the null distribution that we are simulating.</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6nullt_ed583ab2a715715a5eb0309718f4b85b">
+<p>Let’s do this a couple different times. First, let’s simulate samples with N = 30, taken from a normal (mean= 50, sd = 25). We’ll do a simulation with 1000 simulations. For each simulation, we will compare the sample mean with a population mean of 50. There should be no difference on average here. <a href="#fig-6nullt" class="quarto-xref">Figure&nbsp;<span>6.11</span></a> is the null distribution that we are simulating.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6nullt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.11: The distribution of <span class="math inline">\(t\)</span>-values under the null. These are the <span class="math inline">\(t\)</span> values that are produced by chance alone.</figcaption><p></p>
+<div id="fig-6nullt" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6nullt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6nullt-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6nullt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.11: The distribution of <span class="math inline">\(t\)</span>-values under the null. These are the <span class="math inline">\(t\)</span> values that are produced by chance alone.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6flatp_7103cd910ac9f80c53bb686f8228cf46">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6flatp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.12: The distribution of <span class="math inline">\(p\)</span>-values that are observed is flat under the null.</figcaption><p></p>
+<div id="fig-6flatp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6flatp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6flatp-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6flatp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.12: The distribution of <span class="math inline">\(p\)</span>-values that are observed is flat under the null.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Neat. We see both a <span class="math inline">\(t\)</span> distribution, that looks like <span class="math inline">\(t\)</span> distribution as it should. And we see the <span class="math inline">\(p\)</span> distribution. This shows us how often we get <span class="math inline">\(t\)</span> values of particular sizes. You may find it interesting that the <span class="math inline">\(p\)</span>-distribution is flat under the null, which we are simulating here. This means that you have the same chances of a getting a <span class="math inline">\(t\)</span> with a p-value between 0 and 0.05, as you would for getting a <span class="math inline">\(t\)</span> with a p-value between .90 and .95. Those ranges are both ranges of 5%, so there are an equal amount of <span class="math inline">\(t\)</span> values in them by definition.</p>
 <p>Here’s another way to do the same simulation in R, using the replicate function, instead a for loop:</p>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsRep_1490b2c45926ea42062143301a59f0b0">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtsRep" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.13: Simulating <span class="math inline">\(t\)</span>s in R.</figcaption><p></p>
+<div id="fig-6simtsRep" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtsRep-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.13: Simulating <span class="math inline">\(t\)</span>s in R.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsRep_0ca18e88c296011b5aeebdb7a48d7912">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simpsRep" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.14: Simulating <span class="math inline">\(p\)</span>s in R.</figcaption><p></p>
+<div id="fig-6simpsRep" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simpsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simpsRep-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsRep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.14: Simulating <span class="math inline">\(p\)</span>s in R.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1364,7 +1461,7 @@ Note
 <section id="simulating-a-paired-samples-t-test" class="level3" data-number="6.6.2">
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="simulating-a-paired-samples-t-test"><span class="header-section-number">6.6.2</span> Simulating a paired samples t-test</h3>
 <p>The code below is set up to sample 10 scores for condition A and B from the same normal distribution. The simulation is conducted 1000 times, and the <span class="math inline">\(t\)</span>s and <span class="math inline">\(p\)</span>s are saved and plotted for each.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-28_9c3a2c863268888c1ff1bc86d91b1be8">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1377,37 +1474,45 @@ Note
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simps1000_b1716ce2d813a4db99f0316b6d88f82a">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simps1000" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.15: 1000 simulated ts from the null distribution</figcaption><p></p>
+<div id="fig-6simps1000" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simps1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simps1000-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simps1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.15: 1000 simulated ts from the null distribution
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simts1000_e88ec602e3ea8a6a04360f53ab371ff1">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simts1000" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.16: 1000 simulated ps from the null distribution</figcaption><p></p>
+<div id="fig-6simts1000" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simts1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simts1000-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simts1000-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.16: 1000 simulated ps from the null distribution
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>According to the simulation. When there are no differences between the conditions, and the samples are being pulled from the very same distribution, you get these two distributions for <span class="math inline">\(t\)</span> and <span class="math inline">\(p\)</span>. These again show how the null distribution of no differences behaves.</p>
 <p>For any of these simulations, if you rejected the null-hypothesis (that your difference was only due to chance), you would be making a type I error. If you set your alpha criteria to <span class="math inline">\(\alpha = .05\)</span>, we can ask how many type I errors were made in these 1000 simulations. The answer is:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-31_cfb17e3bd6f78a661c4f2c3acd6bd4f5">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 45</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 49</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.045</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.049</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We happened to make 45. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
+<p>We happened to make 49. The expectation over the long run is 5% type I error rates (if your alpha is .05).</p>
 <p>What happens if there actually is a difference in the simulated data, let’s set one condition to have a larger mean than the other:</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-32_39e714a1e215f59a6db43c7f25c23b84">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1420,37 +1525,45 @@ Note
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtruets_10320f6eafb9f23488f5722e40bedc62">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtruets" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.17: 1000 ts when there is a true difference</figcaption><p></p>
+<div id="fig-6simtruets" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtruets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtruets-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtruets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.17: 1000 ts when there is a true difference
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtrueps_37354f4fb3ec8519ca057ca2decf6dd2">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtrueps" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.18: 1000 ps when there is a true difference</figcaption><p></p>
+<div id="fig-6simtrueps" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtrueps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtrueps-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtrueps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.18: 1000 ps when there is a true difference
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Now you can see that the <span class="math inline">\(p\)</span>-value distribution is skewed to the left. This is because when there is a true effect, you will get p-values that are less than .05 more often. Or, rather, you get larger <span class="math inline">\(t\)</span> values than you normally would if there were no differences.</p>
 <p>In this case, we wouldn’t be making a type I error if we rejected the null when p was smaller than .05. How many times would we do that out of our 1000 experiments?</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-35_895e016db2dcb9fdb9076f2f6e2bd69d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 211</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 225</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(save_ps[save_ps<span class="sc">&lt;</span>.<span class="dv">05</span>])<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.211</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.225</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We happened to get 211 simulations where p was less than .05, that’s only 0.211 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.211 of the time? I wouldn’t. I would run a better experiment.</p>
+<p>We happened to get 225 simulations where p was less than .05, that’s only 0.225 experiments. If you were the researcher, would you want to run an experiment that would be successful only 0.225 of the time? I wouldn’t. I would run a better experiment.</p>
 <p>How would you run a better simulated experiment? Well, you could increase <span class="math inline">\(n\)</span>, the number of subjects in the experiment. Let’s increase <span class="math inline">\(n\)</span> from 10 to 100, and see what happens to the number of “significant” simulated experiments.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-36_8fad8416c0a7bd124f5a2a8f73b74203">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1463,24 +1576,32 @@ Note
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsB_8d5a892362dd04abf8ba93f1b68607fa">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtsB" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.19: 1000 ts for n =100, when there is a true effect</figcaption><p></p>
+<div id="fig-6simtsB" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtsB-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.19: 1000 ts for n =100, when there is a true effect
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsB_217b73ad17425a20679d28ea635f1fa4">
+<div class="cell">
 <pre><code>#&gt; [1] 988
 #&gt; [1] 0.988</code></pre>
 <div class="cell-output-display">
-<div id="fig-6simpsB" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.20: 1000 ps for n =100, when there is a true effect</figcaption><p></p>
+<div id="fig-6simpsB" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simpsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simpsB-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.20: 1000 ps for n =100, when there is a true effect
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1490,7 +1611,7 @@ Note
 <section id="simulating-an-independent-samples-t.test" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="simulating-an-independent-samples-t.test"><span class="header-section-number">6.6.3</span> Simulating an independent samples t.test</h3>
 <p>Just change the t.test function like so… this is for the null, assuming no difference between groups.</p>
-<div class="cell" data-hash="06-ttests_cache/html/unnamed-chunk-39_531965852ff116b440adb0572ffa9e3e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>save_ps <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>save_ts <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="dv">1000</span>)</span>
@@ -1502,24 +1623,32 @@ Note
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  save_ts[i] <span class="ot">&lt;-</span> t_test<span class="sc">$</span>statistic</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simtsC_f35598cd2ea0718261573bbe16aaea2c">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-6simtsC" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.21: 1000 ts for n =100, when there is a true effect</figcaption><p></p>
+<div id="fig-6simtsC" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simtsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simtsC-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simtsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.21: 1000 ts for n =100, when there is a true effect
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-hash="06-ttests_cache/html/fig-6simpsC_c2699e8db7742c6633007165b2fea12c">
+<div class="cell">
 <pre><code>#&gt; [1] 48
 #&gt; [1] 0.048</code></pre>
 <div class="cell-output-display">
-<div id="fig-6simpsC" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.22: 1000 ps for n =100, when there is a true effect</figcaption><p></p>
+<div id="fig-6simpsC" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6simpsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-ttests_files/figure-html/fig-6simpsC-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6simpsC-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.22: 1000 ps for n =100, when there is a true effect
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1534,7 +1663,7 @@ Note
 </iframe>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-mehr20165" class="csl-entry" role="listitem">
 Mehr, Samuel A, Lee Ann Song, and Elizabeth S Spelke. 2016. <span>“For 5-Month-Old Infants, Melodies Are Social.”</span> <em>Psychological Science</em> 27 (4): 486–501. <a href="https://doi.org/10.1177/0956797615626691">https://doi.org/10.1177/0956797615626691</a>.
 </div>
@@ -1581,18 +1710,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1624,11 +1742,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/crumplab\.com\/statistics\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1638,8 +1795,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1651,7 +1817,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1695,6 +1984,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1720,6 +2010,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1781,12 +2097,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./05-Foundation_Inference.html" class="pagination-link">
+      <a href="./05-Foundation_Inference.html" class="pagination-link" aria-label="Foundations for inference">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Foundations for inference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07-ANOVA.html" class="pagination-link">
+      <a href="./07-ANOVA.html" class="pagination-link" aria-label="ANOVA">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ANOVA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1795,4 +2111,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CrumpLab/statistics/edit/master/06-ttests.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
